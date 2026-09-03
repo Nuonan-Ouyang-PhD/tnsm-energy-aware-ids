@@ -3,10 +3,10 @@ AIGC:
   ContentProducer: '001191110102MAD55U9H0F10002'
   ContentPropagator: '001191110102MAD55U9H0F10002'
   Label: '1'
-  ProduceID: '3a12ee93-11ce-463b-9015-0c5d6e4efb83'
-  PropagateID: '3a12ee93-11ce-463b-9015-0c5d6e4efb83'
-  ReservedCode1: 'eca74b70-42ac-47b1-a00a-f697a99aaea5'
-  ReservedCode2: 'eca74b70-42ac-47b1-a00a-f697a99aaea5'
+  ProduceID: '31d0c646-0920-4096-b434-e5af683fc890'
+  PropagateID: '31d0c646-0920-4096-b434-e5af683fc890'
+  ReservedCode1: '2e63d2dd-9b87-4b04-a5d3-856f3dc64f50'
+  ReservedCode2: '2e63d2dd-9b87-4b04-a5d3-856f3dc64f50'
 ---
 
 # Official dataset acquisition and hash freeze
@@ -68,6 +68,16 @@ Official page: <https://archive.ics.uci.edu/dataset/442/detection%2Bof%2Biot%2Bb
 Download the 1.7 GB archive (DOI `10.24432/C5RC8J`). Retain all nine device
 directories. UCI identifies the license as CC BY 4.0. N-BaIoT labels are encoded
 by directory and filename rather than a universal CSV label column.
+
+Inside the official ZIP, each device directory carries one plain
+`benign_traffic.csv` plus the attack captures packed as RAR archives
+(`mirai_attacks.rar`, `gafgyt_attacks.rar`; Ennio_Doorbell and
+Samsung_SNH_1011_N_Webcam ship only the gafgyt archive officially). The
+original ZIP and RAR archives stay unchanged in `datasets/incoming/`; the
+RAR contents are unpacked into per-archive copies under
+`datasets/extracted/n_baiot/<device>/<archive>_extracted/` for inventory.
+Attack labels derive from the archive subdirectory and CSV filename
+(e.g., `mirai_attacks/ack.csv` -> Mirai ack).
 
 ## 3. Register immutable acquisition hashes
 

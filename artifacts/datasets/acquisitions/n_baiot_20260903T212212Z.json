@@ -1,0 +1,25 @@
+{
+  "access_method": "Download the 1.7 GB archive from the UCI dataset page",
+  "created_at_utc": "2026-09-03T21:22:12.971Z",
+  "dataset_id": "n_baiot",
+  "display_name": "N-BaIoT",
+  "file_count": 1,
+  "files": [
+    {
+      "bytes": 1772922927,
+      "relative_path": "n_baiot_archive.zip",
+      "sha256": "64929678b081d8e579a8d7c488cf11cc588403f282d5fb065b4156edbd55de9b"
+    }
+  ],
+  "ignored_non_dataset_files": [],
+  "input_name": "n_baiot",
+  "kind": "official_dataset_acquisition",
+  "license_note": "CC BY 4.0 as stated by the UCI Machine Learning Repository",
+  "official_doi": "10.24432/C5RC8J",
+  "official_page": "https://archive.ics.uci.edu/dataset/442/detection%2Bof%2Biot%2Bbotnet%2Battacks%2Bn%2Bbaiot",
+  "paper_eligible": false,
+  "schema_version": 1,
+  "selected_scope": "All nine device directories and their benign, Mirai, and BASHLITE traffic files",
+  "source_commit": "b1682dd1de0bfb784d424b74c24e7db0fb416882",
+  "total_bytes": 1772922927
+}
