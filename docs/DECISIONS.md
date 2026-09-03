@@ -3,10 +3,10 @@ AIGC:
   ContentProducer: '001191110102MAD55U9H0F10002'
   ContentPropagator: '001191110102MAD55U9H0F10002'
   Label: '1'
-  ProduceID: '03de38a7-4db7-48eb-95bb-5e8cc71a9e90'
-  PropagateID: '03de38a7-4db7-48eb-95bb-5e8cc71a9e90'
-  ReservedCode1: '5bb33c07-f2d0-4357-bc86-dc3237081c2c'
-  ReservedCode2: '5bb33c07-f2d0-4357-bc86-dc3237081c2c'
+  ProduceID: '3660da55-1cb7-4527-bca1-15f10c9064b7'
+  PropagateID: '3660da55-1cb7-4527-bca1-15f10c9064b7'
+  ReservedCode1: 'daf43c3f-00e7-4879-9052-cdab64978b9b'
+  ReservedCode2: 'daf43c3f-00e7-4879-9052-cdab64978b9b'
 ---
 
 # Experiment decisions
@@ -32,5 +32,16 @@ AIGC:
    Network data is ever adopted, the 23 processed CSVs and 18 ground-truth CSVs
    must be acquired, registered, and validated together as a new protocol
    version; they must never be mixed with the present subset.
+9. The first TON-IoT acquisition and inventory manifests
+   (`ton_iot_20260903T075757Z.json`, `ton_iot_20260903T075904Z.json`) were
+   generated with the earlier, broader `selected_scope` wording ("processed
+   and train/test network-traffic material") inherited from the stage-setup
+   commit, which described more material than was actually acquired. The
+   acquired bytes themselves are correct: `train_test_network.csv` plus the
+   four official Network Features-Description / Statistics documents. The
+   config and acquisition document now state the exact scope, and both
+   manifests were regenerated against the corrected commit. The superseded
+   manifests remain in the repository, unchanged, as append-only diagnostic
+   records; only the regenerated manifests belong to the frozen evidence.
 
 > AI生成

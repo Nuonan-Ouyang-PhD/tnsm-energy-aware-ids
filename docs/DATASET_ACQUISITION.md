@@ -1,3 +1,14 @@
+---
+AIGC:
+  ContentProducer: '001191110102MAD55U9H0F10002'
+  ContentPropagator: '001191110102MAD55U9H0F10002'
+  Label: '1'
+  ProduceID: '07cefa4b-fb25-4b14-8142-aa160eb10c3d'
+  PropagateID: '07cefa4b-fb25-4b14-8142-aa160eb10c3d'
+  ReservedCode1: 'ab2457ac-b693-4fa9-a710-e8b382f001ec'
+  ReservedCode2: 'ab2457ac-b693-4fa9-a710-e8b382f001ec'
+---
+
 # Official dataset acquisition and hash freeze
 
 The dataset bytes are acquired and hashed on the M4 Mac mini. Large raw files
@@ -22,10 +33,14 @@ the original archive. Have at least 30 GB free on the Mac before beginning.
 
 Official page: <https://research.unsw.edu.au/projects/toniot-datasets>
 
-Follow the UNSW SharePoint link. Select only the processed and train/test
-**network-traffic** material. Do not mix its Windows, Linux, or IoT sensor
-telemetry datasets into this experiment. The official page states that academic
-research use is free in perpetuity and requires citation of the dataset papers.
+Follow the UNSW SharePoint link. Acquire only the train/test network subset
+(`train_test_network.csv`) together with the official Network
+Features-Description and Statistics documents. Exclude the
+Processed_Network_dataset CSVs, the SecurityEvents_Network_datasets
+ground-truth files, raw network logs, and the operating-system and sensor
+telemetry datasets (see DECISIONS.md #8 and #9). The official page states
+that academic research use is free in perpetuity and requires citation of the
+dataset papers.
 
 ### CICIoT2023 (`ciciot2023`)
 
@@ -79,3 +94,4 @@ correct. The feature mapping and split policy will be constructed only from the
 three real inventories. Acquisition and inventory manifests are
 `paper_eligible=false`; they are provenance inputs, not results.
 
+> AI生成
