@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 from .dataset_registry import inventory_csv_tree, register_acquisition
+from .label_census import census_labels
 from .platform_info import snapshot
 from .preflight import run_primary_preflight
 from .quality_exceptions import register_quality_exceptions
@@ -35,6 +36,11 @@ def build_parser() -> argparse.ArgumentParser:
     exceptions_parser = subparsers.add_parser("dataset-quality-exceptions")
     exceptions_parser.add_argument("dataset_id", choices=["ton_iot", "ciciot2023", "n_baiot"])
     exceptions_parser.add_argument("input_path", type=Path)
+    census_parser = subparsers.add_parser("dataset-label-census")
+    census_parser.add_argument("dataset_id", choices=["ton_iot", "ciciot2023", "n_baiot"])
+    census_parser.add_argument("input_path", type=Path)
+    census_parser.add_argument("--expected-sha256", default=None)
+    census_parser.add_argument("--expected-total-rows", type=int, default=None)
     subparsers.add_parser("formal-gate")
     return parser
 
@@ -111,6 +117,17 @@ def main(argv: list[str] | None = None) -> int:
             args.input_path,
         )
         emit({"output_path": str(output_path), "quality_exceptions": result})
+        return 0
+
+    if args.command == "dataset-label-census":
+        output_path, result = census_labels(
+            repo_root,
+            args.dataset_id,
+            args.input_path,
+            expected_sha256=args.expected_sha256,
+            expected_total_rows=args.expected_total_rows,
+        )
+        emit({"output_path": str(output_path), "census": result})
         return 0
 
     if args.command == "formal-gate":
