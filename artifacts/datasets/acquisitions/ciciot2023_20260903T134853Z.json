@@ -1,0 +1,39 @@
+{
+  "access_method": "Complete the CIC download form linked from the official UNB page, then download the CSV directory",
+  "created_at_utc": "2026-09-03T13:48:53.068Z",
+  "dataset_id": "ciciot2023",
+  "display_name": "CICIoT2023",
+  "file_count": 4,
+  "files": [
+    {
+      "bytes": 82902,
+      "relative_path": "CSV-README.pdf",
+      "sha256": "01bdf30343455fb6d252ec415da19d5d8b1c3add16b09d63598be870fe2a057d"
+    },
+    {
+      "bytes": 1430268604,
+      "relative_path": "CSV.zip",
+      "sha256": "e211e878d2f39226ea3a854683f91ae6175b628807ee96eeecb7a04a36a28dbd"
+    },
+    {
+      "bytes": 3819227,
+      "relative_path": "README.pdf",
+      "sha256": "0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92"
+    },
+    {
+      "bytes": 10535,
+      "relative_path": "download-terms-2026-09-03.html",
+      "sha256": "6df6a49b408a057ac2e43fcb76d8745e92ce40ab7500d66d5fcbf6d95c35a67e"
+    }
+  ],
+  "ignored_non_dataset_files": [],
+  "input_name": "ciciot2023",
+  "kind": "official_dataset_acquisition",
+  "license_note": "Use is subject to the terms displayed by CIC/UNB at download time; retain a dated copy of those terms",
+  "official_page": "https://www.unb.ca/cic/datasets/iotdataset-2023.html",
+  "paper_eligible": false,
+  "schema_version": 1,
+  "selected_scope": "Extracted-feature CSV directory only; do not download PCAP for the present feature-replay experiment",
+  "source_commit": "efe5f80a0fe370cd6533a5d738feaf16be06f33e",
+  "total_bytes": 1434181268
+}
