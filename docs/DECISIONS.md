@@ -3,10 +3,10 @@ AIGC:
   ContentProducer: '001191110102MAD55U9H0F10002'
   ContentPropagator: '001191110102MAD55U9H0F10002'
   Label: '1'
-  ProduceID: '3660da55-1cb7-4527-bca1-15f10c9064b7'
-  PropagateID: '3660da55-1cb7-4527-bca1-15f10c9064b7'
-  ReservedCode1: 'daf43c3f-00e7-4879-9052-cdab64978b9b'
-  ReservedCode2: 'daf43c3f-00e7-4879-9052-cdab64978b9b'
+  ProduceID: '9c5e18c2-17b7-46db-abdc-1ef77a8105e9'
+  PropagateID: '9c5e18c2-17b7-46db-abdc-1ef77a8105e9'
+  ReservedCode1: '6f4955e0-4a61-40ae-9b55-2b7966743c03'
+  ReservedCode2: '6f4955e0-4a61-40ae-9b55-2b7966743c03'
 ---
 
 # Experiment decisions
@@ -43,5 +43,24 @@ AIGC:
    manifests were regenerated against the corrected commit. The superseded
    manifests remain in the repository, unchanged, as append-only diagnostic
    records; only the regenerated manifests belong to the frozen evidence.
+10. CICIoT2023 is acquired as the standard per-category directory release
+    (`CSV/CSV.zip`, 309 CSV files in 34 category directories, 39 feature
+    columns, no label column). Labels are derived deterministically from the
+    directory and filename (`<Category>/<Capture>.pcap.csv`), which preserves
+    the official capture boundaries for group-aware splits. The `MERGED_CSV`
+    release is excluded: it is the same data merged, shuffled, and split with
+    an attached `Label` column, but shuffling destroys the capture-group
+    structure needed for leakage control, and switching releases to obtain a
+    label column would silently hide quality issues in the directory release.
+    Three files in the directory release (`DoS-UDP_Flood7.pcap.csv`,
+    `DoS-UDP_Flood8.pcap.csv`, `DoS-UDP_Flood9.pcap.csv`) each end with one
+    truncated final line (no trailing newline, 33/35/4 observed columns
+    instead of 39). The raw CSVs remain unchanged; the three lines are
+    registered in the quality-exception manifest
+    (`artifacts/datasets/quality_exceptions/ciciot2023_*.json`) with their
+    physical line numbers, byte lengths, and line hashes, and will be excluded
+    deterministically by those registered positions during preprocessing. The
+    3 rows out of 46,776,700 total rows (6.4e-5 %) do not affect any
+    statistics at the reported precision.
 
 > AI生成

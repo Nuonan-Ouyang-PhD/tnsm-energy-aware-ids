@@ -7,6 +7,7 @@ from pathlib import Path
 from .dataset_registry import inventory_csv_tree, register_acquisition
 from .platform_info import snapshot
 from .preflight import run_primary_preflight
+from .quality_exceptions import register_quality_exceptions
 from .smoke import register_files, run_smoke
 from .util import read_json, repo_root_from_module, write_json
 from .validate import formal_gate, validate_smoke
@@ -31,6 +32,9 @@ def build_parser() -> argparse.ArgumentParser:
     inventory_parser = subparsers.add_parser("dataset-inventory")
     inventory_parser.add_argument("dataset_id", choices=["ton_iot", "ciciot2023", "n_baiot"])
     inventory_parser.add_argument("input_path", type=Path)
+    exceptions_parser = subparsers.add_parser("dataset-quality-exceptions")
+    exceptions_parser.add_argument("dataset_id", choices=["ton_iot", "ciciot2023", "n_baiot"])
+    exceptions_parser.add_argument("input_path", type=Path)
     subparsers.add_parser("formal-gate")
     return parser
 
@@ -99,6 +103,15 @@ def main(argv: list[str] | None = None) -> int:
         )
         emit({"output_path": str(output_path), "inventory": result})
         return 0 if result["all_rows_well_formed"] else 2
+
+    if args.command == "dataset-quality-exceptions":
+        output_path, result = register_quality_exceptions(
+            repo_root,
+            args.dataset_id,
+            args.input_path,
+        )
+        emit({"output_path": str(output_path), "quality_exceptions": result})
+        return 0
 
     if args.command == "formal-gate":
         result = formal_gate(repo_root)

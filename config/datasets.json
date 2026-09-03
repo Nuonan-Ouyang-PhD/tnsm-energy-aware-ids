@@ -14,9 +14,9 @@
       "display_name": "CICIoT2023",
       "official_page": "https://www.unb.ca/cic/datasets/iotdataset-2023.html",
       "access_method": "Complete the CIC download form linked from the official UNB page, then download the CSV directory",
-      "selected_scope": "Extracted-feature CSV directory only; do not download PCAP for the present feature-replay experiment",
+      "selected_scope": "Official CICIoT2023 CSV/CSV.zip standard per-category directory release; labels are derived deterministically from directory and filename; exclude MERGED_CSV.zip, PCAP, example, and Supplementary Materials.",
       "license_note": "Use is subject to the terms displayed by CIC/UNB at download time; retain a dated copy of those terms",
-      "label_source": "CSV Label column"
+      "label_source": "Directory and filename"
     },
     "n_baiot": {
       "display_name": "N-BaIoT",

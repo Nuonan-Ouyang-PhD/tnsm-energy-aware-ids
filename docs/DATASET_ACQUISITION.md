@@ -3,10 +3,10 @@ AIGC:
   ContentProducer: '001191110102MAD55U9H0F10002'
   ContentPropagator: '001191110102MAD55U9H0F10002'
   Label: '1'
-  ProduceID: '07cefa4b-fb25-4b14-8142-aa160eb10c3d'
-  PropagateID: '07cefa4b-fb25-4b14-8142-aa160eb10c3d'
-  ReservedCode1: 'ab2457ac-b693-4fa9-a710-e8b382f001ec'
-  ReservedCode2: 'ab2457ac-b693-4fa9-a710-e8b382f001ec'
+  ProduceID: '3a12ee93-11ce-463b-9015-0c5d6e4efb83'
+  PropagateID: '3a12ee93-11ce-463b-9015-0c5d6e4efb83'
+  ReservedCode1: 'eca74b70-42ac-47b1-a00a-f697a99aaea5'
+  ReservedCode2: 'eca74b70-42ac-47b1-a00a-f697a99aaea5'
 ---
 
 # Official dataset acquisition and hash freeze
@@ -46,10 +46,20 @@ dataset papers.
 
 Official page: <https://www.unb.ca/cic/datasets/iotdataset-2023.html>
 
-Complete the download form linked from the UNB page. Download the extracted
-feature CSV directory, not the PCAP directory. Save a dated PDF or screenshot
-of the download terms next to the original archive because the form controls
-access and the public page does not state a simple reusable checksum list.
+Complete the download form linked from the UNB page. Download the standard
+per-category directory release (`CSV/CSV.zip`), not the PCAP directory, the
+`MERGED_CSV` release, the example notebook, or the Supplementary Materials.
+Labels are not present as a CSV column in the directory release; they are
+derived deterministically from the directory and filename (see DECISIONS.md
+#10). Save a dated copy of the download terms next to the original archive
+because the form controls access and the public page does not state a simple
+reusable checksum list.
+
+Three files in the official release contain one truncated final line each
+(no trailing newline, fewer than 39 columns). The raw CSVs are kept unchanged;
+the three lines are registered in the quality-exception manifest and will be
+excluded deterministically by their registered positions during preprocessing
+(see DECISIONS.md #10).
 
 ### N-BaIoT (`n_baiot`)
 
