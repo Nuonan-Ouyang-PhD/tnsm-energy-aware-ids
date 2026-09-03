@@ -9,6 +9,11 @@ if ! command -v python3 >/dev/null 2>&1; then
   exit 2
 fi
 
+if ! command -v git >/dev/null 2>&1; then
+  echo "git is required so every run can be tied to an exact source revision." >&2
+  exit 2
+fi
+
 python3 - <<'PY'
 import sys
 if sys.version_info < (3, 11):
@@ -23,4 +28,3 @@ fi
 PYTHONPATH=src .venv/bin/python -m compileall -q src tests
 PYTHONPATH=src .venv/bin/python -m unittest discover -s tests -v
 echo "Mac-side bootstrap passed."
-

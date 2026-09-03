@@ -3,13 +3,16 @@
 This repository rebuilds the paper experiments from auditable raw evidence.
 The first supported target is the Raspberry Pi 4 Model B 8 GB (`pi4b8g`).
 
-## Current stage: v0.1 preflight and smoke only
+## Current stage: v0.2 provenance smoke and dataset acquisition
 
 The current code deliberately produces **no paper-eligible result**. It checks
 the host, records telemetry, runs a deterministic diagnostic workload, and
 validates the resulting files. Formal runs remain locked until the official
 dataset, shared inference cache, trained-model registry, policy registry, and
 external power-logger configuration have all been registered.
+
+Version 0.2 additionally requires every run to carry a 40-character source
+commit transferred from the Mac, even when Git is not installed on the Pi.
 
 ## From the Mac mini
 
@@ -42,3 +45,10 @@ make formal-gate
 
 `make formal-gate` is expected to exit with status 3 until the formal inputs
 exist. See `docs/PROTOCOL.md` and `docs/DATA_CONTRACT.md`.
+
+## Dataset stage
+
+After the corrected provenance smoke passes, follow
+`docs/DATASET_ACQUISITION.md`. The repository registers immutable SHA-256
+manifests and inventories large CSV trees one file at a time so the work remains
+within the Mac mini's 16 GB memory.

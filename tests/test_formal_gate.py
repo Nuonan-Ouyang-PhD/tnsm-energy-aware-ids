@@ -28,6 +28,7 @@ class FormalGateTests(unittest.TestCase):
 
     def test_gate_passes_only_when_enabled_and_complete(self):
         root = self.make_repo(enabled=True)
+        (root / "SOURCE_COMMIT").write_text("a" * 40 + "\n", encoding="utf-8")
         for relative in FORMAL_REQUIRED_PATHS:
             path = root / relative
             path.parent.mkdir(parents=True, exist_ok=True)
@@ -38,4 +39,3 @@ class FormalGateTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

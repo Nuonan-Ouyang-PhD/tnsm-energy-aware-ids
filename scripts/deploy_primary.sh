@@ -9,6 +9,12 @@ target="${pi_user}@${pi_host}"
 
 "$repo_root/scripts/bootstrap_mac.sh"
 
+source_commit="$(git -C "$repo_root" rev-parse --verify HEAD)"
+if [[ ! "$source_commit" =~ ^[0-9a-f]{40}$ ]]; then
+  echo "Could not resolve a 40-character Git source revision." >&2
+  exit 2
+fi
+
 if ! command -v rsync >/dev/null 2>&1; then
   echo "rsync is required on the Mac mini." >&2
   exit 2
@@ -27,6 +33,9 @@ if ! rsync -az \
   echo "  sudo apt update && sudo apt install -y rsync" >&2
   exit 2
 fi
+
+printf '%s\n' "$source_commit" | \
+  ssh "$target" "cd '$remote_dir' && tee SOURCE_COMMIT >/dev/null"
 
 ssh "$target" "cd '$remote_dir' && ./scripts/bootstrap_pi.sh"
 ssh "$target" "cd '$remote_dir' && PYTHONPATH=src .venv/bin/python -m tnsm_exp preflight"

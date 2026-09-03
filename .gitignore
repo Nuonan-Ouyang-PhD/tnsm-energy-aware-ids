@@ -7,4 +7,7 @@ data/processed/
 artifacts/preflight/
 artifacts/reports/
 collected/
+SOURCE_COMMIT
+datasets/incoming/
+datasets/extracted/
 

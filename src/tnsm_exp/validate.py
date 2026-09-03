@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import re
 from pathlib import Path
 from typing import Any
 
@@ -47,8 +48,15 @@ def validate_smoke(run_dir: Path, expected_windows: int, temperature_limit_c: fl
     )
     start_throttle = manifest["start_host_snapshot"].get("throttled_hex")
     end_throttle = manifest["end_host_snapshot"].get("throttled_hex")
+    source_commit = manifest.get("source_commit")
     checks = [
         verdict("paper_eligible_false", manifest.get("paper_eligible") is False, manifest.get("paper_eligible"), "false"),
+        verdict(
+            "source_commit_present",
+            isinstance(source_commit, str) and re.fullmatch(r"[0-9a-f]{40}", source_commit) is not None,
+            source_commit,
+            "40-character lowercase Git commit",
+        ),
         verdict("event_count", len(events) == expected_windows, len(events), str(expected_windows)),
         verdict("telemetry_count", len(telemetry) == expected_windows, len(telemetry), str(expected_windows)),
         verdict(
@@ -94,10 +102,19 @@ FORMAL_REQUIRED_PATHS = [
 
 
 def formal_gate(repo_root: Path) -> dict[str, Any]:
+    from .util import git_commit
+
     protocol = read_json(repo_root / "config" / "protocol.json")
     formal_enabled = protocol.get("formal", {}).get("enabled") is True
+    source_commit = git_commit(repo_root)
     missing = [relative for relative in FORMAL_REQUIRED_PATHS if not (repo_root / relative).is_file()]
     checks = [
+        verdict(
+            "source_revision_available",
+            isinstance(source_commit, str) and re.fullmatch(r"[0-9a-f]{40}", source_commit) is not None,
+            source_commit,
+            "40-character lowercase Git commit",
+        ),
         verdict("formal_enabled", formal_enabled, formal_enabled, "true after protocol freeze"),
         verdict("required_artifacts", not missing, missing, "none missing"),
     ]

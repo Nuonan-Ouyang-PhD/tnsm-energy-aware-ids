@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "datasets": {
+    "ton_iot": {
+      "display_name": "TON-IoT",
+      "official_page": "https://research.unsw.edu.au/projects/toniot-datasets",
+      "access_method": "Manual download from the UNSW SharePoint link on the official page",
+      "selected_scope": "Processed and train/test network-traffic CSV material only; exclude operating-system and sensor telemetry datasets",
+      "license_note": "UNSW states free use for academic research in perpetuity and requires citation of the dataset papers",
+      "label_source": "CSV column"
+    },
+    "ciciot2023": {
+      "display_name": "CICIoT2023",
+      "official_page": "https://www.unb.ca/cic/datasets/iotdataset-2023.html",
+      "access_method": "Complete the CIC download form linked from the official UNB page, then download the CSV directory",
+      "selected_scope": "Extracted-feature CSV directory only; do not download PCAP for the present feature-replay experiment",
+      "license_note": "Use is subject to the terms displayed by CIC/UNB at download time; retain a dated copy of those terms",
+      "label_source": "CSV Label column"
+    },
+    "n_baiot": {
+      "display_name": "N-BaIoT",
+      "official_page": "https://archive.ics.uci.edu/dataset/442/detection%2Bof%2Biot%2Bbotnet%2Battacks%2Bn%2Bbaiot",
+      "official_doi": "10.24432/C5RC8J",
+      "access_method": "Download the 1.7 GB archive from the UCI dataset page",
+      "selected_scope": "All nine device directories and their benign, Mirai, and BASHLITE traffic files",
+      "license_note": "CC BY 4.0 as stated by the UCI Machine Learning Repository",
+      "label_source": "Directory and filename"
+    }
+  }
+}
+

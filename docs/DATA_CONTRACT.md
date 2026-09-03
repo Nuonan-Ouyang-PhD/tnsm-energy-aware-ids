@@ -10,6 +10,10 @@ Every run receives a unique directory and must preserve the following layers.
 | External power | Meter-native samples with its own timestamp, voltage, current, power, and cumulative energy |
 | Validation | Machine-readable pass/fail checks and reasons |
 
+`source_commit` is mandatory even when the target device has no Git executable.
+The Mac orchestrator resolves the revision and transfers it as deployment
+metadata before the run begins.
+
 Formal raw files are append-only evidence. Corrections create derived files and
 must not overwrite originals. The run manifest must contain SHA-256 hashes for
 all registered inputs and outputs before analysis.
@@ -17,4 +21,3 @@ all registered inputs and outputs before analysis.
 The current smoke workload is a deterministic SHA-256 diagnostic. It is not IDS
 inference, does not estimate accuracy or energy savings, and cannot be cited as
 a paper result.
-

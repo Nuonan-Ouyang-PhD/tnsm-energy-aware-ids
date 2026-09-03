@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tnsm-energy-aware-ids"
-version = "0.1.0"
+version = "0.2.0"
 description = "Auditable experiment harness for an energy-aware IDS scheduler"
 requires-python = ">=3.11"
 license = {text = "MIT"}
@@ -14,4 +14,3 @@ tnsm-exp = "tnsm_exp.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
-

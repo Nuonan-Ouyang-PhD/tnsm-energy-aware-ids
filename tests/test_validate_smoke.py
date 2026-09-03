@@ -52,6 +52,7 @@ class SmokeValidationTests(unittest.TestCase):
                 {
                     "run_id": "fixture",
                     "paper_eligible": False,
+                    "source_commit": "a" * 40,
                     "start_host_snapshot": {"throttled_hex": "0x0"},
                     "end_host_snapshot": {"throttled_hex": "0x0"},
                 }
@@ -70,7 +71,16 @@ class SmokeValidationTests(unittest.TestCase):
             result = validate_smoke(self.create_run(Path(temporary), 61.0), 2, 60.0)
         self.assertFalse(result["passed"])
 
+    def test_missing_source_revision_fails(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            run_dir = self.create_run(Path(temporary))
+            manifest_path = run_dir / "manifest.json"
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            manifest["source_commit"] = None
+            manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+            result = validate_smoke(run_dir, 2, 60.0)
+        self.assertFalse(result["passed"])
+
 
 if __name__ == "__main__":
     unittest.main()
-

@@ -27,7 +27,8 @@ Run 30 one-second windows across four deterministic workload tiers while
 sampling device telemetry. The validator requires all event rows, increasing
 monotonic timestamps, temperature no higher than 60 °C, no active undervoltage,
 frequency-capping, throttling, or soft-temperature flags, and clean start/end
-throttle status.
+throttle status. It also requires the exact 40-character Git commit resolved on
+the Mac and transferred to the Pi; Git does not need to be installed on the Pi.
 
 ## Gate D: formal experiment lock
 
@@ -41,4 +42,3 @@ Formal execution remains disabled until all of these are present:
 
 Formal design and sample-size decisions will be frozen only after the dataset,
 models, scheduler policies, and actual meter/export format are known.
-

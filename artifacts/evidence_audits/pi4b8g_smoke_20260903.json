@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "kind": "independent_smoke_evidence_audit",
+  "audit_date_utc": "2026-09-03",
+  "device_id": "pi4b8g",
+  "run_id": "SMOKE_pi4b8g_20260903T061342Z",
+  "paper_eligible": false,
+  "input_artifacts": {
+    "pi4b8g-smoke-evidence.zip": {
+      "sha256": "3215a0cc6a76c4cba92d8b350455ba331f23f491e6f190daf16559bfbd580eac"
+    },
+    "terminal_output_full.txt": {
+      "sha256": "792cd5b4dbdb881ee64c7372340216ee3c27ae86bb3c4a1ff927263561352f63"
+    }
+  },
+  "verified": {
+    "zip_integrity": true,
+    "preflight_passed": true,
+    "preflight_check_count": 9,
+    "smoke_validation_passed_under_v0_1": true,
+    "smoke_check_count_under_v0_1": 12,
+    "event_rows": 30,
+    "telemetry_rows": 30,
+    "max_temperature_c": 34.076,
+    "deadline_misses": 0,
+    "registered_file_hashes_match": true,
+    "registered_file_sizes_match": true
+  },
+  "provenance_defect": {
+    "source_commit_observed": null,
+    "cause": "Git was unavailable on the Pi and v0.1 did not transfer the Mac-resolved revision into SOURCE_COMMIT",
+    "impact": "Diagnostic hardware health conclusions remain valid, but this run is not acceptable as a provenance-complete template for formal experiments",
+    "corrective_action": "v0.2 transfers the Mac-resolved 40-character commit and validates it as an additional hard gate"
+  },
+  "disposition": "retain_as_ineligible_diagnostic_and_rerun_with_corrected_harness"
+}
+
