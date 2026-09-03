@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "kind": "label_ontology",
+  "status": "proposed",
+  "freeze_conditions": [
+    "TON-IoT type unique-value inventory completed (read-only pass)",
+    "Official field/statistics documents of all three datasets reviewed",
+    "TON-IoT label semantics re-verified against official description"
+  ],
+  "binary_label": {
+    "values": ["benign", "attack"],
+    "role": "the only mandatory cross-dataset unified label",
+    "derivation": {
+      "ton_iot": {
+        "source": "label column",
+        "rule": "0 -> benign, 1 -> attack (semantics to be re-verified against official docs before freeze)",
+        "mapping_status": "proposed"
+      },
+      "ciciot2023": {
+        "source": "category directory name",
+        "rule": "Benign_Final -> benign; the other 33 categories -> attack",
+        "mapping_status": "proposed"
+      },
+      "n_baiot": {
+        "source": "file location",
+        "rule": "benign_traffic.csv -> benign; gafgyt_attacks_extracted/ and mirai_attacks_extracted/ contents -> attack",
+        "special_case": "root-level demonstrate_structure.csv is zero-row and never enters any pipeline, so it receives no label",
+        "mapping_status": "proposed"
+      }
+    }
+  },
+  "canonical_family": {
+    "role": "conservative standardized family for within-dataset multiclass and genuinely-shared cross-dataset comparison",
+    "absent_families": {
+      "value": "not_available",
+      "rule": "statement of coverage, never a negative class; families are never forced into an 'other' bucket for alignment"
+    },
+    "fixed_decisions": [
+      {
+        "source_family": "gafgyt",
+        "canonical_family": "bashlite",
+        "subtypes_kept_as_source_subtype": ["combo", "junk", "scan", "tcp", "udp"],
+        "rule": "Gafgyt tcp/udp are NOT re-labelled as ddos; Gafgyt scan is NOT merged into recon; malware family and behavior type are different axes. A separate behavior_tag may be added later if evidence supports it but never replaces canonical_family."
+      }
+    ],
+    "candidate_families": ["benign", "ddos", "dos", "mirai", "recon", "bashlite", "web_attack"],
+    "note": "Final family assignments are NOT frozen until the TON-IoT type inventory is complete and official documents are reviewed.",
+    "mapping_status": "proposed"
+  },
+  "source_subtype": {
+    "role": "official original labels, verbatim; never a cross-dataset unified task",
+    "per_dataset": {
+      "ton_iot": "type column value, verbatim",
+      "ciciot2023": "category directory name, verbatim (34 values)",
+      "n_baiot": "family directory + CSV filename, verbatim, stored as source_family and source_subtype"
+    }
+  },
+  "grouping_metadata": {
+    "role": "provenance and group-aware splits only; never model features",
+    "columns": ["dataset_id", "device_id", "capture_id", "source_file", "source_row"],
+    "notes": {
+      "device_id": "N-BaIoT only; derivable from path",
+      "capture_id": "CICIoT2023: filename stem (e.g. DDoS-ACK_Fragmentation12); N-BaIoT: device+family+subtype triple; TON-IoT: not available in the directory release"
+    }
+  },
+  "verified_dataset_facts": {
+    "ton_iot": {
+      "files": 1,
+      "rows": 211043,
+      "columns": 44,
+      "label_location": "label column (0/1) + type column (attack subtype string)"
+    },
+    "ciciot2023": {
+      "files": 309,
+      "raw_rows": 46776700,
+      "category_directories": 34,
+      "attack_rows_raw": 45678509,
+      "benign_rows": 1098191,
+      "quality_exceptions": {
+        "truncated_final_lines": 3,
+        "files": [
+          "CSV/DoS-UDP_Flood/DoS-UDP_Flood7.pcap.csv",
+          "CSV/DoS-UDP_Flood/DoS-UDP_Flood8.pcap.csv",
+          "CSV/DoS-UDP_Flood/DoS-UDP_Flood9.pcap.csv"
+        ],
+        "rows_after_deterministic_exclusion": {
+          "attack": 45678506,
+          "benign": 1098191,
+          "total": 46776697
+        }
+      },
+      "largest_class": {"name": "DDoS-ICMP_Flood", "rows": 7200501},
+      "smallest_class": {"name": "Uploading_Attack", "rows": 1252},
+      "class_imbalance_ratio": 5751.2
+    },
+    "n_baiot": {
+      "files": 90,
+      "data_files": 89,
+      "benign_files": 9,
+      "gafgyt_files": 45,
+      "mirai_files": 35,
+      "rows": 7062606,
+      "columns": 115,
+      "identical_header_across_files": true,
+      "malformed_rows": 0,
+      "special_case": {
+        "file": "demonstrate_structure.csv",
+        "location": "root of the extracted tree, not inside any device directory",
+        "bytes": 1776,
+        "data_rows": 0,
+        "disposition": "retained in frozen inventory as shipped; never enters training, evaluation, or label assignment"
+      }
+    }
+  }
+}

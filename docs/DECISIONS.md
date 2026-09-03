@@ -3,10 +3,10 @@ AIGC:
   ContentProducer: '001191110102MAD55U9H0F10002'
   ContentPropagator: '001191110102MAD55U9H0F10002'
   Label: '1'
-  ProduceID: 'b9af588a-803c-4c7e-91da-63f293669683'
-  PropagateID: 'b9af588a-803c-4c7e-91da-63f293669683'
-  ReservedCode1: '6f4fdea3-b907-4c49-aeed-feb6b009ac26'
-  ReservedCode2: '6f4fdea3-b907-4c49-aeed-feb6b009ac26'
+  ProduceID: '50632b19-e001-4707-a994-2036e93f2921'
+  PropagateID: '50632b19-e001-4707-a994-2036e93f2921'
+  ReservedCode1: '08e62b74-9801-46cf-8533-321193e34341'
+  ReservedCode2: '08e62b74-9801-46cf-8533-321193e34341'
 ---
 
 # Experiment decisions
@@ -110,5 +110,34 @@ AIGC:
     this freeze the acquisition stage of all three datasets (TON-IoT,
     CICIoT2023, N-BaIoT) is complete. Feature-mapping design reads only the
     inventory manifests (no large data copies) given limited disk space.
+14. Label ontology and feature direction: `binary_label` (benign/attack)
+    is the only mandatory cross-dataset unified label. `canonical_family`
+    is a conservative standardized family layer where absent families are
+    recorded as `not_available` (a coverage statement, never a negative
+    class; no forcing into an `other` bucket). `source_subtype` preserves
+    official labels verbatim and is never a cross-dataset task. Gafgyt maps
+    to `canonical_family = bashlite` with combo/junk/scan/tcp/udp kept as
+    source subtypes; Gafgyt tcp/udp are not re-labelled DDoS and Gafgyt
+    scan is not merged into Recon (family and behavior are different
+    axes). Feature direction: dataset-native feature sets are primary
+    (TON-IoT max 42 candidates after excluding label/type, CICIoT2023 39,
+    N-BaIoT 115), a strictly audited semantic core is secondary with no
+    assumed target size; pairwise cores are permitted and an honestly
+    reported empty three-way core is acceptable. TON-IoT leakage
+    exclusions: label, type, src_ip, dst_ip, dns_query, ssl_subject,
+    ssl_issuer, http_uri, http_user_agent, weird_addl are permanently
+    excluded; src_port/dst_port only as predefined port classes; the ten
+    listed categorical fields are native-only with train-split-fitted
+    encoders; IP/device/file/capture identifiers may be used for
+    group-aware splits but never as model features. CICIoT2023 verified
+    counts: 45,678,509 attack + 1,098,191 benign raw rows; after
+    excluding the three registered truncated lines, 45,678,506 attack +
+    1,098,191 benign; largest/smallest class ratio approximately 5,751:1.
+    The root-level zero-row `demonstrate_structure.csv` never enters
+    training. All label/feature mappings currently carry status
+    `proposed`; freeze requires the official field-document review and the
+    TON-IoT `type` value inventory. Protocol documents:
+    docs/LABEL_ONTOLOGY.md, docs/FEATURE_MAPPING_PROTOCOL.md,
+    config/label_ontology.json, config/feature_policy.json.
 
 > AI生成
