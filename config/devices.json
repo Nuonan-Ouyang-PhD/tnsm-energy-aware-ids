@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "primary_device_id": "pi4b8g",
+  "devices": [
+    {
+      "device_id": "pi4b8g",
+      "role": "primary",
+      "hostname": "pi4b8g",
+      "ssh_user": "pi",
+      "ssh_host": "pi4b8g.local",
+      "hardware": "Raspberry Pi 4 Model B Rev 1.5",
+      "memory_gib_nominal": 8,
+      "formal_experiment_enabled": true
+    },
+    {
+      "device_id": "pi4b",
+      "role": "secondary_portability",
+      "hostname": "pi4b",
+      "ssh_user": "pi",
+      "ssh_host": "pi4b.local",
+      "hardware": "Raspberry Pi 4 Model B",
+      "memory_gib_nominal": 4,
+      "formal_experiment_enabled": false
+    },
+    {
+      "device_id": "pi3bplus",
+      "role": "secondary_portability",
+      "hostname": "pi3bplus",
+      "ssh_user": "pi",
+      "ssh_host": "pi3bplus.local",
+      "hardware": "Raspberry Pi 3 Model B Plus",
+      "memory_gib_nominal": 1,
+      "formal_experiment_enabled": false
+    },
+    {
+      "device_id": "pi5",
+      "role": "reserved_do_not_touch",
+      "hostname": "pi5",
+      "ssh_user": "pi5",
+      "ssh_host": "pi5.local",
+      "hardware": "Raspberry Pi 5",
+      "formal_experiment_enabled": false,
+      "note": "Reserved while HORIZON00 is running"
+    }
+  ]
+}
+

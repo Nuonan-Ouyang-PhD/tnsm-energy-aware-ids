@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "primary_device_id": "pi4b8g",
+  "smoke": {
+    "windows": 30,
+    "window_seconds": 1.0,
+    "temperature_limit_c": 60.0,
+    "paper_eligible": false
+  },
+  "formal": {
+    "enabled": false,
+    "paper_eligible": true,
+    "required_random_seeds": [11, 23, 37, 53, 71, 89, 107, 131, 157, 191],
+    "warmup_minutes": 10,
+    "cooldown_target_c": 45.0,
+    "required_power_meter_count": 1,
+    "execution_mode": "sequential_one_device_at_a_time"
+  }
+}

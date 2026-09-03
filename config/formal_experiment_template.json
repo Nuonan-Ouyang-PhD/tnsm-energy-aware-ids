@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "status": "draft_not_authorized_for_collection",
+  "primary_device_id": "pi4b8g",
+  "execution_mode": "sequential_one_device_at_a_time",
+  "window_seconds": 1,
+  "samples_per_window": 100,
+  "stationary": {
+    "datasets": ["TON-IoT", "CIC-IoT2023", "N-BaIoT"],
+    "seeds": 10,
+    "windows_per_seed": 200
+  },
+  "controlled_drift": {
+    "datasets": ["TON-IoT", "CIC-IoT2023"],
+    "seeds": 10,
+    "phases": [
+      {"id": "P1", "windows": 100, "attack_ratio": 0.05, "load_multiplier": 0.85, "queue_utilization": 0.20},
+      {"id": "P2", "windows": 100, "attack_ratio": 0.35, "load_multiplier": 1.00, "queue_utilization": 0.425},
+      {"id": "P3", "windows": 120, "attack_ratio": 0.70, "load_multiplier": 1.12, "queue_utilization": 0.605},
+      {"id": "P4", "windows": 100, "attack_ratio": 0.40, "load_multiplier": 1.35, "queue_utilization": 0.95},
+      {"id": "P5", "windows": 80, "attack_ratio": 0.10, "load_multiplier": 0.90, "queue_utilization": 0.275}
+    ]
+  },
+  "physical_primary": {
+    "dataset": "TON-IoT",
+    "paired_blocks": 10,
+    "methods": ["Static-MedRF", "CFSM", "Tabular-Q", "DQN"],
+    "run_seconds": 500,
+    "samples_per_run": 50000,
+    "method_order": "randomized_with_preregistered_seed",
+    "external_power_sample_hz": 1,
+    "device_telemetry_sample_hz": 1,
+    "cooldown_target_c": 45.0
+  },
+  "static_profile": {
+    "idle_runs": 3,
+    "idle_seconds": 1800,
+    "model_runs_each": 3,
+    "model_run_seconds": 1800,
+    "models": ["TinyDT", "LightLR", "MedRF", "HeavyMLP"]
+  }
+}
+
