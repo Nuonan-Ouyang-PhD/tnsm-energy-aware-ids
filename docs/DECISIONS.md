@@ -3,10 +3,10 @@ AIGC:
   ContentProducer: '001191110102MAD55U9H0F10002'
   ContentPropagator: '001191110102MAD55U9H0F10002'
   Label: '1'
-  ProduceID: '9c5e18c2-17b7-46db-abdc-1ef77a8105e9'
-  PropagateID: '9c5e18c2-17b7-46db-abdc-1ef77a8105e9'
-  ReservedCode1: '6f4955e0-4a61-40ae-9b55-2b7966743c03'
-  ReservedCode2: '6f4955e0-4a61-40ae-9b55-2b7966743c03'
+  ProduceID: '5b4b5c3c-f07e-483e-878d-334aa9990f96'
+  PropagateID: '5b4b5c3c-f07e-483e-878d-334aa9990f96'
+  ReservedCode1: '5e2698fa-0b4b-44f1-9682-9a335b98a429'
+  ReservedCode2: '5e2698fa-0b4b-44f1-9682-9a335b98a429'
 ---
 
 # Experiment decisions
@@ -60,7 +60,8 @@ AIGC:
     (`artifacts/datasets/quality_exceptions/ciciot2023_*.json`) with their
     physical line numbers, byte lengths, and line hashes, and will be excluded
     deterministically by those registered positions during preprocessing. The
-    3 rows out of 46,776,700 total rows (6.4e-5 %) do not affect any
-    statistics at the reported precision.
+    three malformed rows constitute 6.413e-6% of the 46,776,700 inventoried
+    rows. After deterministic exclusion, 46,776,697 structurally valid rows
+    remain before subsequent preprocessing.
 
 > AI生成
