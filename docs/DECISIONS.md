@@ -3,10 +3,10 @@ AIGC:
   ContentProducer: '001191110102MAD55U9H0F10002'
   ContentPropagator: '001191110102MAD55U9H0F10002'
   Label: '1'
-  ProduceID: 'e6d25675-e443-4a74-9b86-799d988b28e6'
-  PropagateID: 'e6d25675-e443-4a74-9b86-799d988b28e6'
-  ReservedCode1: 'e9218b3c-9312-4565-ab42-fd514a16932b'
-  ReservedCode2: 'e9218b3c-9312-4565-ab42-fd514a16932b'
+  ProduceID: 'b9af588a-803c-4c7e-91da-63f293669683'
+  PropagateID: 'b9af588a-803c-4c7e-91da-63f293669683'
+  ReservedCode1: '6f4fdea3-b907-4c49-aeed-feb6b009ac26'
+  ReservedCode2: '6f4fdea3-b907-4c49-aeed-feb6b009ac26'
 ---
 
 # Experiment decisions
@@ -94,5 +94,21 @@ AIGC:
     `.temp/` (agent scratch space, also gitignored). Staged, modified, or
     deleted tracked files, and untracked sources/docs/config anywhere else,
     always block.
+13. N-BaIoT is frozen as `N-BAIOT-20260904-V1-FROZEN` after independent
+    verification by the author. Frozen evidence: evidence ZIP
+    `n_baiot_evidence.zip` (SHA-256 `6cd97c52100b3ced8e2ebf182868fa7016152
+    cb7aa0595e1c27dbb4b5bf50750`, 9,746 bytes, exactly the two latest
+    manifests), acquisition JSON SHA-256 `a99de209873c43f2ae9cf538fbe610f4
+    484b45d0ae452f24bf814dd12704799c`, inventory JSON SHA-256
+    `9ffdf7e9245470fc4f066b8fb6d8ebae03e0194e7698e5fde87b13a7f2fe30da`,
+    official ZIP hash `64929678b081d8e579a8d7c488cf11cc588403f282d5fb065b41
+    56edbd55de9b`, protocol source commit `1638f6985134d802b6c1c8faa30ec33a
+    12f82ea1`. Verified: 90 CSVs = 89 data files + 1 zero-row structure
+    example; 7,062,606 rows; 115 columns; 0 malformed rows; one identical
+    header across all 90 files; no duplicate paths or hashes; 9 benign + 45
+    Gafgyt + 35 Mirai; the Ennio/Samsung no-Mirai structure preserved. With
+    this freeze the acquisition stage of all three datasets (TON-IoT,
+    CICIoT2023, N-BaIoT) is complete. Feature-mapping design reads only the
+    inventory manifests (no large data copies) given limited disk space.
 
 > AI生成
