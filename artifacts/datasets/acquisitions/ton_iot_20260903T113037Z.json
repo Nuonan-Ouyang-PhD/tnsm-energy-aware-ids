@@ -1,0 +1,44 @@
+{
+  "access_method": "Manual download from the UNSW SharePoint link on the official page",
+  "created_at_utc": "2026-09-03T11:30:37.476Z",
+  "dataset_id": "ton_iot",
+  "display_name": "TON-IoT",
+  "file_count": 5,
+  "files": [
+    {
+      "bytes": 146319,
+      "relative_path": "Network Features-Description.pdf",
+      "sha256": "b1f63453029855e084290a2f79554eaa7e3b85f8d53fb0ea4605966ef25ebe3b"
+    },
+    {
+      "bytes": 17734,
+      "relative_path": "Network Features-Description.xlsx",
+      "sha256": "92908edb6490c583ef66838a5beae1b278bf9e12d98354d773fb1584024d8c36"
+    },
+    {
+      "bytes": 94931,
+      "relative_path": "Statistics of Network Records.pdf",
+      "sha256": "4a98908fa5b2c9b22380522e30dc9fe89ec8245676622426d7160fcefab06b3e"
+    },
+    {
+      "bytes": 108425,
+      "relative_path": "Statistics of Network Records.xlsx",
+      "sha256": "19f960dc6e24dec4b10c488fee6a119fceeb526ba215c5b708467ba1a4873a54"
+    },
+    {
+      "bytes": 29902775,
+      "relative_path": "train_test_network.csv",
+      "sha256": "26ddc513552de36de6428b2e578efaed2b57504c716dfba847cc0109a64e1974"
+    }
+  ],
+  "ignored_non_dataset_files": [],
+  "input_name": "ton_iot",
+  "kind": "official_dataset_acquisition",
+  "license_note": "UNSW states free use for academic research in perpetuity and requires citation of the dataset papers",
+  "official_page": "https://research.unsw.edu.au/projects/toniot-datasets",
+  "paper_eligible": false,
+  "schema_version": 1,
+  "selected_scope": "TON-IoT train/test network subset only (train_test_network.csv), with the official Network Features-Description and Statistics documents; exclude Processed_Network_dataset, SecurityEvents_Network_datasets ground-truth files, raw network logs, operating-system datasets, and sensor telemetry datasets.",
+  "source_commit": "07561a5f7cc0c61dfb70d7118601f8a22d90dfb7",
+  "total_bytes": 30270184
+}
