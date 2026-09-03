@@ -7,10 +7,23 @@ import os
 from pathlib import Path
 from typing import Any, Iterator, TextIO
 
-from .util import compact_utc_now, git_commit, read_json, sha256_file, utc_now, write_json
+from .util import compact_utc_now, git_commit, read_json, sha256_file, utc_now, worktree_is_dirty, write_json
 
 
 IGNORED_MAC_FILES = {".DS_Store"}
+
+
+class DirtyWorktreeError(RuntimeError):
+    """Raised when evidence manifests would reference a commit that does
+    not contain the protocol actually being followed."""
+
+
+def require_clean_worktree(repo_root: Path) -> None:
+    if worktree_is_dirty(repo_root):
+        raise DirtyWorktreeError(
+            "Git worktree is dirty; commit the protocol/code changes first so "
+            "manifest source_commit references a commit that contains them."
+        )
 
 
 def dataset_catalog(repo_root: Path) -> dict[str, Any]:
@@ -65,6 +78,7 @@ def register_acquisition(
     output_path: Path | None = None,
 ) -> tuple[Path, dict[str, Any]]:
     input_path = input_path.resolve()
+    require_clean_worktree(repo_root)
     metadata = validate_dataset_id(repo_root, dataset_id)
     files, ignored = iter_files(input_path)
     if not files:
@@ -136,6 +150,7 @@ def inventory_csv_tree(
     output_path: Path | None = None,
 ) -> tuple[Path, dict[str, Any]]:
     input_path = input_path.resolve()
+    require_clean_worktree(repo_root)
     metadata = validate_dataset_id(repo_root, dataset_id)
     paths = list(csv_paths(input_path))
     if not paths:

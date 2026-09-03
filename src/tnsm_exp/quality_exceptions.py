@@ -5,7 +5,13 @@ import hashlib
 from pathlib import Path
 from typing import Any
 
-from .dataset_registry import csv_paths, open_csv_text, relative_name, validate_dataset_id
+from .dataset_registry import (
+    csv_paths,
+    open_csv_text,
+    relative_name,
+    require_clean_worktree,
+    validate_dataset_id,
+)
 from .util import compact_utc_now, git_commit, sha256_file, utc_now, write_json
 
 
@@ -60,6 +66,7 @@ def register_quality_exceptions(
     deterministic exclusion during preprocessing.
     """
     input_path = input_path.resolve()
+    require_clean_worktree(repo_root)
     metadata = validate_dataset_id(repo_root, dataset_id)
     exceptions: list[dict[str, Any]] = []
     files_scanned = 0

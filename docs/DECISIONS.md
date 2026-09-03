@@ -3,10 +3,10 @@ AIGC:
   ContentProducer: '001191110102MAD55U9H0F10002'
   ContentPropagator: '001191110102MAD55U9H0F10002'
   Label: '1'
-  ProduceID: '5b4b5c3c-f07e-483e-878d-334aa9990f96'
-  PropagateID: '5b4b5c3c-f07e-483e-878d-334aa9990f96'
-  ReservedCode1: '5e2698fa-0b4b-44f1-9682-9a335b98a429'
-  ReservedCode2: '5e2698fa-0b4b-44f1-9682-9a335b98a429'
+  ProduceID: 'e6d25675-e443-4a74-9b86-799d988b28e6'
+  PropagateID: 'e6d25675-e443-4a74-9b86-799d988b28e6'
+  ReservedCode1: 'e9218b3c-9312-4565-ab42-fd514a16932b'
+  ReservedCode2: 'e9218b3c-9312-4565-ab42-fd514a16932b'
 ---
 
 # Experiment decisions
@@ -63,5 +63,36 @@ AIGC:
     three malformed rows constitute 6.413e-6% of the 46,776,700 inventoried
     rows. After deterministic exclusion, 46,776,697 structurally valid rows
     remain before subsequent preprocessing.
+11. N-BaIoT is acquired as the official UCI ZIP (all nine device
+    directories, CC BY 4.0, DOI 10.24432/C5RC8J). The inventory covers 90
+    CSVs: 89 data files (9 benign + 45 Gafgyt/BASHLITE + 35 Mirai) plus one
+    header-only `demonstrate_structure.csv` (1,776 bytes, zero data rows)
+    shipped by the authors purely to document the 115-column layout. The
+    zero-row demo file is retained in the inventory as shipped; it
+    contributes no rows. Ennio_Doorbell and Samsung_SNH_1011_N_Webcam have
+    no Mirai archive in the official release (7 of 9 devices carry both
+    botnet families). Attack captures ship as RAR archives inside the ZIP:
+    the official ZIP stays unchanged in `datasets/incoming/n_baiot/`, a copy
+    is extracted to `datasets/extracted/n_baiot/`, the RARs are retained
+    unchanged in the extracted device directories, and their CSV contents
+    are unpacked into `<device>/<archive>_extracted/` copies. Because the
+    first N-BaIoT manifests were generated against a commit that did not
+    yet contain this RAR protocol text, all evidence commands now refuse a
+    dirty worktree so manifests can only point at commits that actually
+    contain the protocol being followed (see DECISIONS.md #12 for the
+    gate); the first manifests remain as superseded diagnostic records.
+12. The evidence commands (`dataset-register`, `dataset-inventory`,
+    `dataset-quality-exceptions`) fail closed when the git worktree is
+    dirty: uncommitted protocol text or code must never be referenced by a
+    manifest `source_commit`, because the commit would not contain the
+    protocol actually followed. Protocol changes are committed first and
+    manifests are regenerated only after `git status` reports a clean
+    worktree. Two narrow exemptions keep the gate usable without weakening
+    it: untracked files under `artifacts/` (evidence manifests are the
+    output of these very commands, so a fresh acquisition manifest must not
+    block the immediately following inventory run) and untracked files under
+    `.temp/` (agent scratch space, also gitignored). Staged, modified, or
+    deleted tracked files, and untracked sources/docs/config anywhere else,
+    always block.
 
 > AI生成

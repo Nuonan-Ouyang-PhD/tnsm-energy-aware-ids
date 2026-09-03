@@ -3,10 +3,10 @@ AIGC:
   ContentProducer: '001191110102MAD55U9H0F10002'
   ContentPropagator: '001191110102MAD55U9H0F10002'
   Label: '1'
-  ProduceID: '31d0c646-0920-4096-b434-e5af683fc890'
-  PropagateID: '31d0c646-0920-4096-b434-e5af683fc890'
-  ReservedCode1: '2e63d2dd-9b87-4b04-a5d3-856f3dc64f50'
-  ReservedCode2: '2e63d2dd-9b87-4b04-a5d3-856f3dc64f50'
+  ProduceID: '3daa765a-b145-4539-9547-b25672c39789'
+  PropagateID: '3daa765a-b145-4539-9547-b25672c39789'
+  ReservedCode1: '05f1489b-98fc-4993-ab50-76f96f62ec6a'
+  ReservedCode2: '05f1489b-98fc-4993-ab50-76f96f62ec6a'
 ---
 
 # Official dataset acquisition and hash freeze
@@ -73,9 +73,10 @@ Inside the official ZIP, each device directory carries one plain
 `benign_traffic.csv` plus the attack captures packed as RAR archives
 (`mirai_attacks.rar`, `gafgyt_attacks.rar`; Ennio_Doorbell and
 Samsung_SNH_1011_N_Webcam ship only the gafgyt archive officially). The
-original ZIP and RAR archives stay unchanged in `datasets/incoming/`; the
-RAR contents are unpacked into per-archive copies under
-`datasets/extracted/n_baiot/<device>/<archive>_extracted/` for inventory.
+official UCI ZIP remains unchanged in `datasets/incoming/n_baiot/`. A copy
+is extracted under `datasets/extracted/n_baiot/`. The RAR archives found
+inside the extracted device directories are retained unchanged there, and
+their CSV contents are unpacked under `<device>/<archive>_extracted/`.
 Attack labels derive from the archive subdirectory and CSV filename
 (e.g., `mirai_attacks/ack.csv` -> Mirai ack).
 
@@ -91,6 +92,14 @@ PYTHONPATH=src .venv/bin/python -m tnsm_exp dataset-register n_baiot datasets/in
 
 Each command creates a timestamped, non-overwriting manifest under
 `artifacts/datasets/acquisitions/`. Empty files and symlinks are rejected.
+
+All three evidence commands (`dataset-register`, `dataset-inventory`,
+`dataset-quality-exceptions`) refuse to run when the git worktree is dirty
+or the HEAD commit is not fully committed: manifests record `source_commit`,
+so any uncommitted protocol text or code would produce evidence pointing at
+a commit that does not actually contain the protocol being followed. Commit
+the protocol first, verify `git status` is clean, then generate the
+manifests.
 
 ## 4. Inventory extracted CSVs
 
