@@ -5,7 +5,8 @@
       "display_name": "TON-IoT",
       "official_page": "https://research.unsw.edu.au/projects/toniot-datasets",
       "access_method": "Manual download from the UNSW SharePoint link on the official page",
-      "selected_scope": "Processed and train/test network-traffic CSV material only; exclude operating-system and sensor telemetry datasets",
+      "selected_scope": "Train/test network-traffic CSV (train_test_network.csv) plus its official network feature-description and statistics documents; exclude operating-system and sensor telemetry datasets, raw PCAP, and the SecurityEvents GroundTruth CSVs (they correspond to the full Processed/Raw dataset, not this subset; see DECISIONS.md #8)",
+      "ground_truth": "not_applicable_to_selected_subset",
       "license_note": "UNSW states free use for academic research in perpetuity and requires citation of the dataset papers",
       "label_source": "CSV column"
     },
