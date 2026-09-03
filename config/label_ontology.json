@@ -91,7 +91,8 @@
       },
       "largest_class": {"name": "DDoS-ICMP_Flood", "rows": 7200501},
       "smallest_class": {"name": "Uploading_Attack", "rows": 1252},
-      "class_imbalance_ratio": 5751.2
+      "source_class_max_to_min_ratio": 5751.198882,
+      "binary_attack_to_benign_ratio": 41.594321
     },
     "n_baiot": {
       "files": 90,

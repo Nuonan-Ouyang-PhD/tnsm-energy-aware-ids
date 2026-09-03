@@ -3,10 +3,10 @@ AIGC:
   ContentProducer: '001191110102MAD55U9H0F10002'
   ContentPropagator: '001191110102MAD55U9H0F10002'
   Label: '1'
-  ProduceID: 'e53655da-1cf4-46a9-9572-4c8e5bf653bf'
-  PropagateID: 'e53655da-1cf4-46a9-9572-4c8e5bf653bf'
-  ReservedCode1: 'e0957560-3135-4338-9c01-dadc0027f458'
-  ReservedCode2: 'e0957560-3135-4338-9c01-dadc0027f458'
+  ProduceID: '6d15bb47-11df-4247-8051-a408fad02285'
+  PropagateID: '6d15bb47-11df-4247-8051-a408fad02285'
+  ReservedCode1: '9e0a60fa-533a-4943-86af-fcd24cdec6a4'
+  ReservedCode2: '9e0a60fa-533a-4943-86af-fcd24cdec6a4'
 ---
 
 # Label ontology
@@ -97,9 +97,11 @@ be used to construct group-aware splits, but never as model features.
   directories; attack rows 45,678,509, benign rows 1,098,191. Three
   truncated final lines (one each in `DoS-UDP_Flood7/8/9.pcap.csv`) are
   registered quality exceptions; after deterministic exclusion:
-  45,678,506 attack + 1,098,191 benign = 46,776,697 rows. Largest class
-  DDoS-ICMP_Flood (7,200,501 rows) vs smallest Uploading_Attack (1,252
-  rows) is a ratio of approximately 5,751:1.
+  45,678,506 attack + 1,098,191 benign = 46,776,697 rows. Two distinct
+  ratios must not be conflated: the binary attack:benign ratio is
+  45,678,509 / 1,098,191 ≈ 41.594:1, while the largest/smallest source
+  class ratio is DDoS-ICMP_Flood (7,200,501 rows) vs Uploading_Attack
+  (1,252 rows) ≈ 5,751.2:1.
 - N-BaIoT: 90 CSVs = 89 data files (9 benign + 45 gafgyt + 35 mirai) +
   1 zero-row `demonstrate_structure.csv`; 7,062,606 rows, 115 columns,
   one identical header across all files, 0 malformed rows.

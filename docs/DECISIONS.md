@@ -3,10 +3,10 @@ AIGC:
   ContentProducer: '001191110102MAD55U9H0F10002'
   ContentPropagator: '001191110102MAD55U9H0F10002'
   Label: '1'
-  ProduceID: '50632b19-e001-4707-a994-2036e93f2921'
-  PropagateID: '50632b19-e001-4707-a994-2036e93f2921'
-  ReservedCode1: '08e62b74-9801-46cf-8533-321193e34341'
-  ReservedCode2: '08e62b74-9801-46cf-8533-321193e34341'
+  ProduceID: '685b7a68-7901-4c31-9f1d-4bb797cfe37a'
+  PropagateID: '685b7a68-7901-4c31-9f1d-4bb797cfe37a'
+  ReservedCode1: '2ad18102-1642-40e6-aa15-113d89f699fa'
+  ReservedCode2: '2ad18102-1642-40e6-aa15-113d89f699fa'
 ---
 
 # Experiment decisions
@@ -132,7 +132,10 @@ AIGC:
     group-aware splits but never as model features. CICIoT2023 verified
     counts: 45,678,509 attack + 1,098,191 benign raw rows; after
     excluding the three registered truncated lines, 45,678,506 attack +
-    1,098,191 benign; largest/smallest class ratio approximately 5,751:1.
+    1,098,191 benign; after excluding the three registered truncated
+    lines, 45,678,506 attack + 1,098,191 benign. Two ratios are recorded
+    separately and must not be conflated: binary attack:benign ≈
+    41.594:1; largest/smallest source class ≈ 5,751.2:1.
     The root-level zero-row `demonstrate_structure.csv` never enters
     training. All label/feature mappings currently carry status
     `proposed`; freeze requires the official field-document review and the
