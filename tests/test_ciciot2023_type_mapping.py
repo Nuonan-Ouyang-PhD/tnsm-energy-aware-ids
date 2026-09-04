@@ -324,6 +324,90 @@ class Ciciot2023TypeMappingTests(unittest.TestCase):
         self.assertEqual(self.entries["VulnerabilityScan"]["canonical_family"], "recon")
         self.assertEqual(self.entries["MITM-ArpSpoofing"]["canonical_family"], "spoofing")
         self.assertEqual(self.entries["DictionaryBruteForce"]["canonical_family"], "brute_force")
+    # ----- v2 evidence-package revision (Rev 1) guard tests -----
+
+    def test_no_aigc_watermarks_in_published_docs(self):
+        """The published docs and config must not carry AIGC watermark
+        blocks or trailing generated-content markers (workspace-injection
+        artifacts are not evidence content)."""
+        for rel in ("docs/DECISIONS.md", "docs/LABEL_ONTOLOGY.md"):
+            text = (REPO_ROOT / rel).read_text(encoding="utf-8")
+            self.assertNotIn("AIGC:", text, f"{rel}: AIGC watermark block present")
+            self.assertNotIn("AI生成", text, f"{rel}: generated-content marker present")
+        for rel in ("config/label_ontology.json", "references/dataset_docs/registry.json"):
+            text = (REPO_ROOT / rel).read_text(encoding="utf-8")
+            self.assertNotIn("AI生成", text, f"{rel}: generated-content marker present")
+            self.assertNotIn("AIGC:", text, f"{rel}: AIGC watermark present")
+
+    def test_dictionary_brute_force_is_single_attack_name(self):
+        """The README Brute Force item is ONE attack name wrapped by page
+        layout, not two attack names; the old split wording must be gone
+        from every published surface."""
+        desc = self.mapping["description"]
+        rationale = self.entries["DictionaryBruteForce"]["rationale"]
+        md = (REPO_ROOT / "docs" / "LABEL_ONTOLOGY.md").read_text(encoding="utf-8")
+        registry = json.loads(
+            (REPO_ROOT / "references" / "dataset_docs" / "registry.json").read_text(encoding="utf-8")
+        )
+        reg_text = json.dumps(registry)
+
+        new_markers = [
+            ("description", "single attack name 'Dictionary Brute Force'" in desc),
+            ("description", "wrapped across two lines" in desc),
+            ("rationale", "single attack name 'Dictionary Brute Force'" in rationale),
+            ("LABEL_ONTOLOGY.md", "single attack name" in md),
+        ]
+        for surface, ok in new_markers:
+            self.assertTrue(ok, f"{surface}: single-name wording missing")
+        old_markers = [
+            ("description", "names 'Dictionary' and 'Brute Force'" in desc),
+            ("description", "two attack names" in desc),
+            ("rationale", "two attack names" in rationale),
+            ("LABEL_ONTOLOGY.md", "two attack names" in md),
+            ("LABEL_ONTOLOGY.md", "are both carried by the single" in md),
+            ("registry.json", "(Dictionary, Brute Force)" in reg_text),
+        ]
+        for surface, present in old_markers:
+            self.assertFalse(present, f"{surface}: old split wording still present")
+        # the mapping result itself is unchanged
+        self.assertEqual(self.entries["DictionaryBruteForce"]["canonical_family"], "brute_force")
+        self.assertEqual(self.entries["DictionaryBruteForce"]["semantic_disposition"], "exact")
+
+    def test_mitm_alternative_recorded_as_rejected(self):
+        """The mitm family alternative was considered and rejected under
+        DECISIONS.md #17; it must no longer be described as open."""
+        rationale = self.entries["MITM-ArpSpoofing"]["rationale"]
+        self.assertIn("considered and rejected", rationale)
+        self.assertIn("#17", rationale)
+        self.assertNotIn("remains open", rationale)
+        md = (REPO_ROOT / "docs" / "LABEL_ONTOLOGY.md").read_text(encoding="utf-8")
+        self.assertNotIn("stays open", md)
+        self.assertIn("considered and rejected", md)
+        # mapping result unchanged
+        self.assertEqual(self.entries["MITM-ArpSpoofing"]["canonical_family"], "spoofing")
+        self.assertEqual(self.entries["MITM-ArpSpoofing"]["semantic_disposition"], "exact")
+
+    def test_registry_panels_carry_sha256_matching_files(self):
+        """Each of the 7 README page-2 panel entries in registry.json must
+        carry a sha256 equal to the SHA-256 of the actual PNG file."""
+        import hashlib
+        registry = json.loads(
+            (REPO_ROOT / "references" / "dataset_docs" / "registry.json").read_text(encoding="utf-8")
+        )
+        panels = registry["in_tree_frozen_docs_not_copied"]["ciciot2023_evidence_extraction"]
+        panel_entries = [p for p in panels if "readme_p2_panels" in p.get("file", "")]
+        self.assertEqual(len(panel_entries), 7)
+        for entry in panel_entries:
+            self.assertIn("sha256", entry, f"{entry['file']}: sha256 missing")
+            png = REPO_ROOT / entry["file"]
+            digest = hashlib.sha256(png.read_bytes()).hexdigest()
+            self.assertEqual(
+                entry["sha256"], digest,
+                f"{entry['file']}: registry sha256 does not match the actual file",
+            )
+
+
+
 
 
 class OntologyWideDisciplineTests(unittest.TestCase):
@@ -367,7 +451,6 @@ class OntologyWideDisciplineTests(unittest.TestCase):
         self.assertIn("decision_status", entry)
         self.assertEqual(entry["semantic_disposition"], "exact")
         self.assertEqual(entry["decision_status"], "proposed")
-
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,14 +1,3 @@
----
-AIGC:
-  ContentProducer: '001191110102MAD55U9H0F10002'
-  ContentPropagator: '001191110102MAD55U9H0F10002'
-  Label: '1'
-  ProduceID: '64eae561-402b-4b5c-ab3c-220b4de69384'
-  PropagateID: '64eae561-402b-4b5c-ab3c-220b4de69384'
-  ReservedCode1: 'c7e48416-cd3e-4db5-b28b-39d3e05752d9'
-  ReservedCode2: 'c7e48416-cd3e-4db5-b28b-39d3e05752d9'
----
-
 # Label ontology
 
 This document defines the label schema shared by all three datasets
@@ -138,9 +127,10 @@ enumeration baseline is the **frozen inventory directories plus
 README.pdf**, not the UNB page detail lists.
 
 Naming reconciliation: normalization covers case, spacing,
-underscores and hyphens; the Brute Force README names `Dictionary`
-and `Brute Force` are both carried by the single
-`DictionaryBruteForce` directory; `VulnerabilityScan` lacks the
+underscores and hyphens; the README lists the single attack name
+`Dictionary Brute Force` (one name wrapped across two lines by
+page layout), carried by the single `DictionaryBruteForce`
+directory; `VulnerabilityScan` lacks the
 `Recon-` prefix but its official category is Recon;
 `Backdoor_Malware`'s directory name conflicts with its official
 Web-based category.
@@ -155,8 +145,18 @@ Web-based category.
 | `SqlInjection`, `CommandInjection`, `Uploading_Attack`, `XSS`, `BrowserHijacking` | Web-based | `web_attack` | exact | Official Web-based category → normalized `web_attack`. |
 | `Backdoor_Malware` | Web-based | `web_attack` | exact | Official Web-based category; disclosure: directory name contains `Backdoor`, mapping targets `web_attack` NOT `backdoor`; category axis takes precedence. |
 | `DictionaryBruteForce` | Brute Force | `brute_force` | exact | v2 (v1's password path REJECTED): separate brute_force family, exact on the official category axis. TON-IoT password ≠ CICIoT2023 brute_force recorded; comparison candidate in the frozen TON-IoT password rationale superseded by DECISIONS.md #17, NOT established. |
-| `DNS_Spoofing`, `MITM-ArpSpoofing` | Spoofing | `spoofing` | exact | Official Spoofing category → new normalized `spoofing` family. MITM-ArpSpoofing disclosure: `MITM-` prefix vs official Spoofing category; spoofing selected, mitm alternative stays open; consequence: TON-IoT mitm has no CICIoT2023 member. |
+| `DNS_Spoofing`, `MITM-ArpSpoofing` | Spoofing | `spoofing` | exact | Official Spoofing category → new normalized `spoofing` family. MITM-ArpSpoofing disclosure: `MITM-` prefix vs official Spoofing category; spoofing selected, mitm alternative considered and rejected under DECISIONS.md #17; consequence: TON-IoT mitm has no CICIoT2023 member. |
 | `Mirai-greeth_flood`, `Mirai-greip_flood`, `Mirai-udpplain` | Mirai | `mirai` | exact | Official Mirai category; `mirai` keeps the botnet-malware name; family presence in N-BaIoT (mirai_attacks_extracted/) recorded as presence only, subject to separate freezes. |
+
+v2 evidence-package revision (Rev 1): injected watermark
+artifacts stripped from this file and DECISIONS.md; the Brute Force README item
+corrected to the single attack name `Dictionary Brute Force`
+(wrapped across two lines by page layout, not two names); the
+`MITM-ArpSpoofing` mitm alternative now recorded as considered and
+rejected under DECISIONS.md #17 (not open); the seven README.pdf
+page-2 panel PNGs now carry SHA-256 entries in `registry.json`. The
+v2 mapping remains entirely `proposed`; nothing is frozen in this
+revision.
 
 Coverage invariant: `Benign_Final → benign` as the only benign
 source; all 33 attack directories map to attack families; the
@@ -240,5 +240,3 @@ mapping stages complete; the ontology root status therefore remains
 `proposed`.
 
 Data materialization, splitting, and training remain forbidden.
-
-> AI生成

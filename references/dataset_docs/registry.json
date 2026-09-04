@@ -60,30 +60,37 @@
     "ciciot2023_evidence_extraction": [
       {
         "file": "references/dataset_docs/ciciot2023/readme_p2_panels/readme_p2_0.png",
+        "sha256": "680b4ca826153c66b88b5c28d76b7eb780be2583b9e82324bdb06c9632094846",
         "note": "README.pdf page-2 DDoS panel (12 attacks incl. ICMP Fragmentation), visually extracted for the type-mapping proposal"
       },
       {
         "file": "references/dataset_docs/ciciot2023/readme_p2_panels/readme_p2_1.png",
+        "sha256": "4d201bdec18ee03736647dccfc21edbacfe2dcef28f1da0c030442b818cb9aef",
         "note": "README.pdf page-2 DoS panel (4 attacks)"
       },
       {
         "file": "references/dataset_docs/ciciot2023/readme_p2_panels/readme_p2_2.png",
+        "sha256": "8ef5d124782a4e94b7db99aa9f45acac81bd9ae66868ae04bd51a02bbe40f732",
         "note": "README.pdf page-2 Recon panel (5 attacks)"
       },
       {
         "file": "references/dataset_docs/ciciot2023/readme_p2_panels/readme_p2_3.png",
+        "sha256": "be658659a7d6507cf7a67c88760d269bf3e2d0d40f8ce9245b933471f70963e9",
         "note": "README.pdf page-2 Web-based panel (6 attacks)"
       },
       {
         "file": "references/dataset_docs/ciciot2023/readme_p2_panels/readme_p2_4.png",
-        "note": "README.pdf page-2 Brute Force panel (Dictionary, Brute Force)"
+        "sha256": "5ef8e8d6dad3923c1620e91b889f876b31ba3dcbe6c06f64ff95223aca78ffa2",
+        "note": "README.pdf page-2 Brute Force panel (single attack name 'Dictionary Brute Force')"
       },
       {
         "file": "references/dataset_docs/ciciot2023/readme_p2_panels/readme_p2_5.png",
+        "sha256": "cf9210525184cf2e1d93909b4afb4ee255148c907060e510b2b546b5688d31e1",
         "note": "README.pdf page-2 Spoofing panel (ARP, DNS)"
       },
       {
         "file": "references/dataset_docs/ciciot2023/readme_p2_panels/readme_p2_6.png",
+        "sha256": "ecdadabcf894255ddcb2fb7ca7989fe8f358f9d39e9d7233a4ed6587d27fa401",
         "note": "README.pdf page-2 Mirai panel (3 attacks)"
       }
     ]

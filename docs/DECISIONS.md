@@ -1,14 +1,3 @@
----
-AIGC:
-  ContentProducer: '001191110102MAD55U9H0F10002'
-  ContentPropagator: '001191110102MAD55U9H0F10002'
-  Label: '1'
-  ProduceID: '19460740-ca7d-45ef-bf25-00c769e26841'
-  PropagateID: '19460740-ca7d-45ef-bf25-00c769e26841'
-  ReservedCode1: '21219608-cd82-451f-9303-dba4ce167d68'
-  ReservedCode2: '21219608-cd82-451f-9303-dba4ce167d68'
----
-
 # Experiment decisions
 
 1. All old tables, plots, and validation CSVs are historical drafting material,
@@ -232,6 +221,21 @@ AIGC:
     decision_status=proposed; data materialization, splitting, and
     training remain forbidden until the v2 freeze.
 
-    > AI生成
 
-> AI生成
+    v2 evidence-package revision (Rev 1), per user verification of the
+    v2 package: (1) the injected watermark metadata blocks and
+    trailing machine-generated marker lines were stripped from
+    DECISIONS.md and LABEL_ONTOLOGY.md (they were
+    workspace-injection artifacts, not content); (2) the README Brute
+    Force item is a single attack name "Dictionary Brute Force"
+    (wrapped across two lines by page layout), not two attack names -
+    the earlier "Dictionary and Brute Force" split wording was
+    corrected in label_ontology.json, LABEL_ONTOLOGY.md and
+    registry.json (the DictionaryBruteForce -> brute_force exact
+    mapping itself is unchanged); (3) the MITM-ArpSpoofing rationale
+    no longer describes the mitm family alternative as open - it was
+    considered and rejected under this decision #17; (4) registry.json
+    now carries the SHA-256 of each of the seven README.pdf page-2
+    panel PNGs, and guard tests lock the new wording and hashes. The
+    v2 mapping remains entirely decision_status=proposed; no freeze
+    action is taken in this revision.
