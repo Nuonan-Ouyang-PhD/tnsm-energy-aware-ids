@@ -3,10 +3,10 @@ AIGC:
   ContentProducer: '001191110102MAD55U9H0F10002'
   ContentPropagator: '001191110102MAD55U9H0F10002'
   Label: '1'
-  ProduceID: '15cdf436-e000-4d77-8f05-79a84632c441'
-  PropagateID: '15cdf436-e000-4d77-8f05-79a84632c441'
-  ReservedCode1: 'da73c92c-ba3a-4f7c-9bbc-2d4eb3000fcf'
-  ReservedCode2: 'da73c92c-ba3a-4f7c-9bbc-2d4eb3000fcf'
+  ProduceID: '6f051d4c-7dd7-4166-a034-b3bfc8097c03'
+  PropagateID: '6f051d4c-7dd7-4166-a034-b3bfc8097c03'
+  ReservedCode1: 'f30e7ee8-1552-4d80-9cfc-86780afbe7c0'
+  ReservedCode2: 'f30e7ee8-1552-4d80-9cfc-86780afbe7c0'
 ---
 
 # Label ontology
@@ -48,9 +48,9 @@ datasets that genuinely share a family. Absent families are recorded as
 - `not_available` is a statement about coverage, not a negative class.
 - `not_available` rows must never be treated as negatives, and families
   must never be forced into an `other` bucket for the sake of alignment.
-Current proposed families: `benign`, `backdoor`, `ddos`, `dos`,
-`injection`, `mirai`, `password`, `ransomware`, `recon`, `web_attack`,
-`mitm`.
+Current proposed families (12): `benign`, `backdoor`, `bashlite`,
+`ddos`, `dos`, `injection`, `mirai`, `password`, `ransomware`,
+`recon`, `web_attack`, `mitm`.
 
 Fixed decisions already made:
 
@@ -69,15 +69,15 @@ All entries carry `decision_status = proposed`; none are frozen yet.
 | source_type | canonical_family | semantic_disposition | rationale |
 |---|---|---|---|
 | `normal` | `benign` | exact | Coverage invariant: all label=0 rows have type=normal and vice versa (census confirmed zero exceptions). Not one of the 9 attack classes. |
-| `backdoor` | `backdoor` | exact | Distinct attack class: covert channel / unauthorized remote access. Expanded as independent family. |
-| `ddos` | `ddos` | exact | Distributed Denial-of-Service. CICIoT2023 also has DDoS category; genuine cross-dataset comparison possible. |
-| `dos` | `dos` | exact | Single-source Denial-of-Service. Semantically distinct from DDoS. Both TON-IoT and CICIoT2023 carry DoS separately. |
-| `injection` | `injection` | exact | SQL/code/command injection targeting data/code integrity. Not subsumable under web_attack (can occur on non-HTTP channels). Expanded as independent family. |
-| `password` | `password` | exact | Brute-force/credential stuffing targeting authentication. Not subsumable under backdoor (different phase: credential cracking vs established covert access). Expanded as independent family. |
-| `ransomware` | `ransomware` | exact | Encryption/extortion payload. Distinct network signature. Expanded as independent family. |
-| `scanning` | `recon` | derived | Scanning is the behavioral manifestation of reconnaissance. Derived mapping (source_type name differs from canonical_family name). Does NOT merge Gafgyt scan into recon (different axis). |
-| `xss` | `web_attack` | derived | XSS is a web-application-layer attack. Derived mapping (specific XSS → broader web_attack). CICIoT2023 also has Web-based category. |
-| `mitm` | `mitm` | exact | Man-in-the-Middle: traffic interception/relay. 1,043 rows (natural imbalance, not error). Expanded as independent family. |
+| `backdoor` | `backdoor` | exact | Identity-preserving mapping: the official TON-IoT source label is retained without semantic broadening. Detailed attack mechanisms are not inferred from the selected dataset documentation. |
+| `ddos` | `ddos` | exact | Identity-preserving mapping. CICIoT2023 also carries a DDoS category; candidate for cross-dataset family comparison, subject to separate CICIoT2023 mapping freeze and subtype-coverage audit. |
+| `dos` | `dos` | exact | Identity-preserving mapping. CICIoT2023 also carries a DoS category; candidate for cross-dataset family comparison, subject to separate CICIoT2023 mapping freeze and subtype-coverage audit. |
+| `injection` | `injection` | exact | Identity-preserving mapping: the official TON-IoT source label is retained without semantic broadening. Detailed attack mechanisms are not inferred from the selected dataset documentation. |
+| `password` | `password` | exact | Identity-preserving mapping. CICIoT2023 carries a BruteForce category; candidate for cross-dataset family comparison, subject to separate CICIoT2023 mapping freeze and subtype-coverage audit. |
+| `ransomware` | `ransomware` | exact | Identity-preserving mapping: the official TON-IoT source label is retained without semantic broadening. Detailed attack mechanisms are not inferred from the selected dataset documentation. |
+| `scanning` | `recon` | derived | Scanning maps to recon (source_type name differs from canonical_family name). The UNB CICIoT2023 official taxonomy (https://www.unb.ca/cic/datasets/iotdataset-2023.html) places Port/OS/Vulnerability Scan under Recon. Does NOT merge Gafgyt scan into recon (different axis). Candidate for cross-dataset family comparison, subject to separate CICIoT2023 mapping freeze and subtype-coverage audit. |
+| `xss` | `web_attack` | derived | XSS maps to web_attack (specific to broader family). The UNB CICIoT2023 official taxonomy (https://www.unb.ca/cic/datasets/iotdataset-2023.html) places XSS under the Web-based category. Candidate for cross-dataset family comparison, subject to separate CICIoT2023 mapping freeze and subtype-coverage audit. |
+| `mitm` | `mitm` | exact | Identity-preserving mapping. 1,043 rows (natural imbalance, not error); no other dataset in this study carries an mitm family, so no cross-dataset claim is made. |
 
 Coverage invariant: `normal → benign` must hold for all rows. Evidence:
 TON-IoT label census (`TON-IOT-LABEL-CENSUS-20260903-V1-VERIFIED`):

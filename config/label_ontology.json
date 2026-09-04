@@ -47,7 +47,7 @@
         "rule": "Gafgyt tcp/udp are NOT re-labelled as ddos; Gafgyt scan is NOT merged into recon; malware family and behavior type are different axes. A separate behavior_tag may be added later if evidence supports it but never replaces canonical_family."
       }
     ],
-    "candidate_families": ["benign", "backdoor", "ddos", "dos", "injection", "mirai", "password", "ransomware", "recon", "web_attack", "mitm"],
+    "candidate_families": ["benign", "backdoor", "bashlite", "ddos", "dos", "injection", "mirai", "password", "ransomware", "recon", "web_attack", "mitm"],
     "note": "Final family assignments are NOT frozen until the TON-IoT type inventory is complete and official documents are reviewed.",
     "ton_iot_type_mapping": {
       "description": "Mapping of the 9 TON-IoT attack type values plus normal to canonical_family. All entries carry decision_status=proposed; none are frozen yet.",
@@ -66,7 +66,7 @@
           "semantic_disposition": "exact",
           "decision_status": "proposed",
           "evidence_source": "Network Features-Description.pdf row 46 lists backdoor as an attack category; Statistics of Network Records.pdf lists 20,000 backdoor rows in train/test",
-          "rationale": "Backdoor is a distinct attack class with unique semantics (covert channel / unauthorized remote access). No existing candidate family subsumes it; expanding the family list rather than forcing it into another bucket."
+          "rationale": "Identity-preserving mapping: the official TON-IoT source label is retained without semantic broadening. Detailed attack mechanisms are not inferred from the selected dataset documentation."
         },
         {
           "source_type": "ddos",
@@ -74,7 +74,7 @@
           "semantic_disposition": "exact",
           "decision_status": "proposed",
           "evidence_source": "Network Features-Description.pdf row 46 lists DDoS as an attack category; Statistics of Network Records.pdf lists 20,000 ddos rows in train/test",
-          "rationale": "Distributed Denial-of-Service is a well-established attack family distinct from single-source DoS by the distributed source characteristic. CICIoT2023 also has a DDoS category, enabling genuine cross-dataset comparison at this family level."
+          "rationale": "Identity-preserving mapping: the official TON-IoT source label is retained without semantic broadening. Detailed attack mechanisms are not inferred from the selected dataset documentation. CICIoT2023 also carries a DDoS category; candidate for cross-dataset family comparison, subject to separate CICIoT2023 mapping freeze and subtype-coverage audit."
         },
         {
           "source_type": "dos",
@@ -82,7 +82,7 @@
           "semantic_disposition": "exact",
           "decision_status": "proposed",
           "evidence_source": "Network Features-Description.pdf row 46 lists DoS as an attack category; Statistics of Network Records.pdf lists 20,000 dos rows in train/test",
-          "rationale": "Denial-of-Service from a single source is semantically distinct from DDoS (distributed). Both TON-IoT and CICIoT2023 carry DoS as a separate category; keeping them separate preserves this distinction."
+          "rationale": "Identity-preserving mapping: the official TON-IoT source label is retained without semantic broadening. Detailed attack mechanisms are not inferred from the selected dataset documentation. CICIoT2023 also carries a DoS category; candidate for cross-dataset family comparison, subject to separate CICIoT2023 mapping freeze and subtype-coverage audit."
         },
         {
           "source_type": "injection",
@@ -90,7 +90,7 @@
           "semantic_disposition": "exact",
           "decision_status": "proposed",
           "evidence_source": "Network Features-Description.pdf row 46 lists injection as an attack category; Statistics of Network Records.pdf lists 20,000 injection rows in train/test",
-          "rationale": "Injection attacks (SQL injection, code injection, command injection) form a distinct technical family targeting data/code integrity. Not subsumable under web_attack because injection can occur on non-HTTP channels. Expanded as an independent family."
+          "rationale": "Identity-preserving mapping: the official TON-IoT source label is retained without semantic broadening. Detailed attack mechanisms are not inferred from the selected dataset documentation."
         },
         {
           "source_type": "password",
@@ -98,7 +98,7 @@
           "semantic_disposition": "exact",
           "decision_status": "proposed",
           "evidence_source": "Network Features-Description.pdf row 46 lists password as an attack category; Statistics of Network Records.pdf lists 20,000 password rows in train/test",
-          "rationale": "Password attacks (brute-force, credential stuffing, password guessing) are a distinct attack family targeting authentication. Not subsumable under backdoor (which implies established covert access, not the credential-cracking phase). Expanded as an independent family."
+          "rationale": "Identity-preserving mapping: the official TON-IoT source label is retained without semantic broadening. Detailed attack mechanisms are not inferred from the selected dataset documentation. CICIoT2023 carries a BruteForce category; candidate for cross-dataset family comparison, subject to separate CICIoT2023 mapping freeze and subtype-coverage audit."
         },
         {
           "source_type": "ransomware",
@@ -106,23 +106,23 @@
           "semantic_disposition": "exact",
           "decision_status": "proposed",
           "evidence_source": "Network Features-Description.pdf row 46 lists ransomware as an attack category; Statistics of Network Records.pdf lists 20,000 ransomware rows in train/test",
-          "rationale": "Ransomware is a distinct attack family characterized by encryption/extortion payload behavior. Its network-level signature differs from other attack families. Expanded as an independent family; not subsumable under any existing candidate."
+          "rationale": "Identity-preserving mapping: the official TON-IoT source label is retained without semantic broadening. Detailed attack mechanisms are not inferred from the selected dataset documentation."
         },
         {
           "source_type": "scanning",
           "canonical_family": "recon",
           "semantic_disposition": "derived",
           "decision_status": "proposed",
-          "evidence_source": "Network Features-Description.pdf row 46 lists scanning as an attack category; Statistics of Network Records.pdf lists 20,000 scanning rows in train/test",
-          "rationale": "Scanning is a reconnaissance activity (probing for open ports, services, vulnerabilities). Mapped to canonical_family=recon because scanning is the behavioral manifestation of reconnaissance. This is a derived mapping (source_type name differs from canonical_family name); the semantic link is well-established in IDS literature. Note: this does NOT merge Gafgyt scan into recon — that is a malware family subtype on a different axis."
+          "evidence_source": "Network Features-Description.pdf row 46 lists scanning as an attack category; Statistics of Network Records.pdf lists 20,000 scanning rows in train/test; UNB CICIoT2023 official taxonomy (https://www.unb.ca/cic/datasets/iotdataset-2023.html) places Port Scan, OS Scan, Host Discovery, Ping Sweep, and Vulnerability Scan under the Recon category",
+          "rationale": "Scanning maps to canonical_family=recon as a derived mapping (source_type name differs from canonical_family name). The UNB CICIoT2023 official taxonomy explicitly places Port/OS/Vulnerability Scan under Recon, supporting scanning as a reconnaissance activity. Note: this does NOT merge Gafgyt scan into recon — that is a malware family subtype on a different axis. Candidate for cross-dataset family comparison, subject to separate CICIoT2023 mapping freeze and subtype-coverage audit."
         },
         {
           "source_type": "xss",
           "canonical_family": "web_attack",
           "semantic_disposition": "derived",
           "decision_status": "proposed",
-          "evidence_source": "Network Features-Description.pdf row 46 lists xss as an attack category; Statistics of Network Records.pdf lists 20,000 xss rows in train/test",
-          "rationale": "Cross-Site Scripting (XSS) is a web-application-layer attack. Mapped to canonical_family=web_attack as a broader family that encompasses XSS and other web-based exploits. This is a derived mapping (specific XSS -> general web_attack). CICIoT2023 also has a Web-based category, enabling potential cross-dataset comparison at this family level."
+          "evidence_source": "Network Features-Description.pdf row 46 lists xss as an attack category; Statistics of Network Records.pdf lists 20,000 xss rows in train/test; UNB CICIoT2023 official taxonomy (https://www.unb.ca/cic/datasets/iotdataset-2023.html) places Cross-Site Scripting (XSS) under the Web-based category",
+          "rationale": "XSS maps to canonical_family=web_attack as a derived mapping (specific XSS to broader web_attack). The UNB CICIoT2023 official taxonomy places XSS under the Web-based category, supporting this family placement. Candidate for cross-dataset family comparison, subject to separate CICIoT2023 mapping freeze and subtype-coverage audit."
         },
         {
           "source_type": "mitm",
@@ -130,7 +130,7 @@
           "semantic_disposition": "exact",
           "decision_status": "proposed",
           "evidence_source": "Network Features-Description.pdf row 46 lists attack categories including normal, DoS, DDoS and backdoor attacks; Statistics of Network Records.pdf lists 1,043 mitm rows in train/test",
-          "rationale": "Man-in-the-Middle (MITM) is a distinct attack family involving traffic interception/relay. It is not subsumable under any existing candidate family. The 1,043-row count is a natural imbalance point (the only attack class below 20,000), not an error. Expanded as an independent family."
+          "rationale": "Identity-preserving mapping: the official TON-IoT source label is retained without semantic broadening. Detailed attack mechanisms are not inferred from the selected dataset documentation. The 1,043-row count is a natural imbalance point (the only attack class below 20,000), not an error; no other dataset in this study carries an mitm family, so no cross-dataset claim is made."
         }
       ],
       "coverage_invariant": {
@@ -140,7 +140,7 @@
     },
     "semantic_disposition_values": ["exact", "derived", "unresolved", "rejected"],
     "decision_status_values": ["proposed", "frozen"],
-    "mapping_status": "proposed"
+    "decision_status": "proposed"
   },
   "source_subtype": {
     "role": "official original labels, verbatim; never a cross-dataset unified task",
