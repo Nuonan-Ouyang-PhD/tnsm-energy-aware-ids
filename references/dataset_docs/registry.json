@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "kind": "dataset_reference_docs_registry",
+  "purpose": "Registry of supplementary official documentation consulted during the field-semantics review. These files live outside the frozen datasets/incoming/ trees on purpose: adding files there would change the frozen acquisition scope.",
+  "paper_eligible": false,
+  "entries": [
+    {
+      "dataset_id": "n_baiot",
+      "file": "uci_dataset_page_2026-09-04.html",
+      "url": "https://archive.ics.uci.edu/dataset/442/detection%2Bof%2Biot%2Bbotnet%2Battacks%2Bn%2Bbaiot",
+      "fetched_at_utc": "2026-09-04T00:00:39Z",
+      "sha256": "e0b79978d166b601ce1e8480625d8ad9fe40b328ad92d66f8eebde9730b5d57f",
+      "content": "Official UCI dataset page snapshot: dataset description, additional variable information (stream aggregation prefixes H/HH/HpHp/HH_jit, time-frame decay L5/L3/L1, statistics weight/mean/std/radius/magnitude/cov/pcc), file listing, DOI 10.24432/C5RC8J, CC BY 4.0 license, citation",
+      "usage": "Primary N-BaIoT feature-semantics source; the frozen incoming ZIP contains no feature description"
+    }
+  ],
+  "in_tree_frozen_docs_not_copied": {
+    "ton_iot": [
+      {
+        "file": "datasets/incoming/ton_iot/Network Features-Description.pdf",
+        "note": "46-feature official description (ts..type), already inside the frozen acquisition manifest"
+      },
+      {
+        "file": "datasets/incoming/ton_iot/Statistics of Network Records.pdf",
+        "note": "official per-feature statistics, already inside the frozen acquisition manifest"
+      }
+    ],
+    "ciciot2023": [
+      {
+        "file": "datasets/incoming/ciciot2023/README.pdf",
+        "note": "feature table and attack taxonomy embedded as images; already inside the frozen acquisition manifest"
+      },
+      {
+        "file": "datasets/incoming/ciciot2023/CSV-README.pdf",
+        "note": "CSV release structure note; already inside the frozen acquisition manifest"
+      }
+    ]
+  }
+}

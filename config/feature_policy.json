@@ -87,21 +87,39 @@
       {
         "canonical_concept": "total_transferred_bytes",
         "candidates": {
-          "ton_iot": "src_bytes + dst_bytes (per-connection totals)",
-          "ciciot2023": "Tot sum (window aggregate, per official field definition)"
+          "ton_iot": "src_bytes + dst_bytes (TCP payload bytes per connection, per official description)",
+          "ciciot2023": "Tot sum (summation of packet lengths in flow, per official feature table)"
         },
-        "mapping_status": "proposed",
-        "gate_note": "connection totals vs window statistics must be resolved against official field definitions before any status is assigned"
+        "mapping_status": "unresolved",
+        "gate_note": "REVIEW OUTCOME 2026-09-04: different physical quantities (TCP payload bytes vs packet lengths including headers) and different aggregation objects (connection vs flow); mapping rejected in narrow form, unresolved in broad form; see docs/FIELD_SEMANTICS_REVIEW.md"
       },
       {
         "canonical_concept": "decayed_window_statistics",
         "candidates": {
           "n_baiot": "all L5/L3/L1/L0.1/L0.01 windowed statistics"
         },
-        "mapping_status": "proposed",
-        "gate_note": "decayed-window statistics must not be passed off as plain flow totals; the time-window gate applies"
+        "mapping_status": "rejected",
+        "gate_note": "REVIEW OUTCOME 2026-09-04: damped-window stream statistics have no counterpart in the other two released CSVs; N-BaIoT participates in no pairwise core; see docs/FIELD_SEMANTICS_REVIEW.md"
       }
-    ]
+    ],
+    "review_outcome_2026_09_04": {
+      "three_way_core": "EMPTY - no concept passes the seven gates in all three datasets; honest outcome, not a failure",
+      "pairwise_cores": {
+        "ton_iot__ciciot2023": {
+          "protocol_indicators": "derived (proposed; requires TON-IoT proto value enumeration first)",
+          "packet_count": "unresolved (connection vs flow aggregation object unconfirmed)"
+        },
+        "ton_iot__n_baiot": "EMPTY (structural: per-connection logs vs damped-window stream statistics)",
+        "ciciot2023__n_baiot": "EMPTY (structural: whole-flow aggregates vs damped-window stream statistics)"
+      },
+      "open_points": [
+        "N-BaIoT MI_dir_* (15 features) is not defined on the UCI page; consult the introductory paper (Meidan et al. 2018) before any use in semantics",
+        "CICIoT2023 IAT per-row aggregate (mean/max/last) is undocumented; treat as unresolved",
+        "CICIoT2023 Variance direction phrasing ('incoming / outgoing') is ambiguous in the official table",
+        "official README feature table lists names (ts, flow duration, Srate, Drate, urg coun, Magnitue, Radius, Covariance, Weight) that are absent from the released 39-column CSV header; the frozen header is authoritative"
+      ],
+      "review_record": "docs/FIELD_SEMANTICS_REVIEW.md"
+    }
   },
   "paper_positioning": "the scheduler adapts to heterogeneous detectors over heterogeneous feature spaces; the paper must not claim a universal 44-dimensional representation",
   "freeze_conditions": [
