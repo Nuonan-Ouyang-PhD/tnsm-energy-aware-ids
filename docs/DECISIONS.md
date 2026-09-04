@@ -309,3 +309,37 @@
     v1 proposal evidence package is pending. Data materialization,
     splitting, and training remain forbidden until the N-BaIoT mapping
     freeze and the root-level ontology freeze decision.
+
+
+    v1 Rev 1, per user verification of the v1 evidence package
+    (N_BAIOT_TYPE_MAPPING_EVIDENCE_V1.zip, SHA-256 951b62458350493f
+    d01042d9a518a759a09dd8fddb628912180408fc04c7a9e3): the 11 mappings
+    passed substantive verification (ZIP hash/size/CRC/permissions,
+    in-package tests 85/85, per-entry file and row counts recomputed
+    against the frozen inventory, Meidan et al. 2018 pp.4-5 support for
+    all ten attack subtypes, Table 3 support for the 7-device Mirai
+    coverage, ontology JSON identical to the CICIoT2023 frozen baseline
+    apart from the two intended additions, TON-IoT/CICIoT2023/fixed
+    decisions untouched, root still proposed, registry 3 source + 7
+    panel hashes all matching, published-surface watermark markers
+    zero, #20 not existing, materialization/split/training ban intact).
+    One documentation-consistency defect was found and is fixed in this
+    revision: the `source_subtype` definition section of
+    LABEL_ONTOLOGY.md previously cited the family directories as
+    `mirai_attacks`/`gafgyt_attacks`, whereas the frozen inventory and
+    the mapping keys use `mirai_attacks_extracted`/
+    `gafgyt_attacks_extracted`; that section claims the directory names
+    are carried verbatim, so the names are corrected to the actual
+    directory names and a guard test now locks the definition. Two
+    delivery-summary counting corrections are recorded (not package
+    defects): MANIFEST verifies 18/18 (19 ordinary files include the
+    MANIFEST itself, which by design does not hash itself), and the
+    registry carries 3 source entries + 7 panels, not 4 + 7. For the
+    future #20 freeze record: Meidan et al. 2018 Table 3 itself shows
+    Ennio_Doorbell and Samsung_SNH_1011_N_Webcam without Mirai, so the
+    freeze record should state that the paper's general text is
+    made concrete by Table 3 and the frozen directories as Mirai 7/9
+    devices, rather than registering an unconditional
+    paper-vs-data-tree contradiction. No mapping, semantic_disposition,
+    evidence, or rationale is changed in this revision; the 11 entries
+    remain decision_status=proposed.

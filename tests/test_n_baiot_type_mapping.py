@@ -417,6 +417,56 @@ class OntologyWideNBaiotDisciplineTests(unittest.TestCase):
                 f"binary_label.{dataset}: decision_status is not proposed",
             )
 
+    def test_source_subtype_definition_uses_actual_directory_names(self):
+        """v1 Rev 1 guard: the `source_subtype` definition section in
+        LABEL_ONTOLOGY.md must cite the ACTUAL family directory names from
+        the frozen inventory (mirai_attacks_extracted /
+        gafgyt_attacks_extracted); the v1 package wrongly cited
+        mirai_attacks / gafgyt_attacks, contradicting the verbatim claim."""
+        md = LABEL_ONTOLOGY_MD_PATH.read_text(encoding="utf-8")
+        # the correct names in the definition section
+        self.assertIn(
+            "(`mirai_attacks_extracted`/`gafgyt_attacks_extracted`)",
+            md,
+        )
+        # the old wrong names must be gone from the definition section
+        self.assertNotIn("(`mirai_attacks`/`gafgyt_attacks`)", md)
+
+    def test_config_source_subtype_definition_consistent_with_inventory(self):
+        """The config source_subtype role and the frozen inventory family
+        directories must agree: the mapping keys use the extracted-tree
+        directory names, and the definition section describes verbatim
+        carry-over."""
+        ontology = load_label_ontology()
+        definition = ontology["source_subtype"]["per_dataset"]["n_baiot"]
+        self.assertIn("family directory", definition)
+        self.assertIn("verbatim", definition)
+        # every mapping entry source_family must be an actual directory
+        # name present in the frozen inventory
+        fams_in_inv = set()
+        for f in load_inventory()["files"]:
+            parts = f["relative_path"].split("/")
+            if len(parts) == 3:
+                fams_in_inv.add(parts[1])
+        for pair in EXPECTED_PAIRS:
+            if pair[0] == "benign":
+                continue
+            self.assertIn(pair[0], fams_in_inv, pair)
+
+    def test_package_counting_facts_v1r1(self):
+        """v1 Rev 1 recorded counting facts: MANIFEST verifies 18/18 (the
+        19 ordinary files include the MANIFEST itself, which does not hash
+        itself), and the registry carries 3 source entries + 7 panels."""
+        decisions = DECISIONS_PATH.read_text(encoding="utf-8")
+        self.assertIn("18/18", decisions)
+        self.assertIn("3 source entries + 7 panels", decisions)
+        registry = json.loads(
+            (REPO_ROOT / "references" / "dataset_docs" / "registry.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(len(registry["entries"]), 3)
+        panels = registry["in_tree_frozen_docs_not_copied"]["ciciot2023_evidence_extraction"]
+        self.assertEqual(len(panels), 7)
+
     def test_n_baiot_mapped_families_do_not_equal_ton_families(self):
         """N-BaIoT maps only to benign/bashlite/mirai; TON-IoT has no
         bashlite or mirai family, so no unconditioned cross-dataset family

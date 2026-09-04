@@ -247,7 +247,8 @@ frozen, the ontology root status and
 
 - TON-IoT: the `type` column value, verbatim.
 - CICIoT2023: the category directory name, verbatim (34 values).
-- N-BaIoT: the family directory (`mirai_attacks`/`gafgyt_attacks`) plus
+- N-BaIoT: the family directory
+  (`mirai_attacks_extracted`/`gafgyt_attacks_extracted`) plus
   CSV filename (e.g. `ack`, `combo`, `scan`), verbatim, stored separately
   (`source_family` and `source_subtype`).
 
