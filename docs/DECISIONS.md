@@ -281,3 +281,31 @@
     mapping proposal (mirai_attacks_extracted/ and
     gafgyt_attacks_extracted/ subtypes), then the root-level
     ontology freeze decision.
+
+
+19. N-BaIoT family/subtype mapping proposed as
+    N-BAIOT-TYPE-MAPPING-20260904-V1-PROPOSED. Basis: Meidan et al. 2018
+    (references/dataset_docs/n_baiot/meidan2018_arxiv_v1_2026-09-04.pdf,
+    SHA-256 1fa5bc4d4d2a12c2e93b18c4d876bd83ab7f456797934fcc71c92db754811964)
+    pages 4-5 "Attacks executed" enumeration plus the frozen inventory
+    n_baiot_20260903T224404Z.json (label_source: Directory and filename; 89
+    data files = 9 benign + 45 gafgyt + 35 mirai, 7,062,606 rows; the
+    root-level demonstrate_structure.csv is zero-row and receives no label).
+    All 11 (source_family, source_subtype) entries carry
+    decision_status=proposed, 11 exact / 0 derived: benign_traffic ->
+    benign (9 files / 555,932 rows); gafgyt combo/junk/scan/tcp/udp ->
+    bashlite (5 subtypes x 9 files); mirai ack/scan/syn/udp/udpplain ->
+    mirai (5 subtypes x 7 files). The proposal extends the frozen
+    gafgyt->bashlite fixed_decision to the 5 gafgyt subtypes; the
+    fixed_decision itself is NOT modified. Mirai entry rationales record
+    the CICIoT2023 frozen Mirai category (3 subtypes) as presence-only;
+    any cross-dataset mirai family comparison remains conditional on the
+    N-BaIoT mapping freeze and a subtype-coverage audit. Device coverage
+    disclosure: gafgyt files span 9 devices, mirai files span 7 devices
+    (Ennio_Doorbell and Samsung_SNH_1011_N_Webcam have no mirai files).
+    The TON-IoT and CICIoT2023 frozen entries are NOT modified. The
+    ontology root status and canonical_family.decision_status both remain
+    proposed. Nothing is frozen in this record: user verification of the
+    v1 proposal evidence package is pending. Data materialization,
+    splitting, and training remain forbidden until the N-BaIoT mapping
+    freeze and the root-level ontology freeze decision.

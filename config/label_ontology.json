@@ -29,6 +29,7 @@
         "source": "file location",
         "rule": "benign_traffic.csv -> benign; gafgyt_attacks_extracted/ and mirai_attacks_extracted/ contents -> attack",
         "special_case": "root-level demonstrate_structure.csv is zero-row and never enters any pipeline, so it receives no label",
+        "evidence_source": "frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename): 89 data files (9 benign_traffic.csv + 45 gafgyt + 35 mirai) + 1 zero-row demonstrate_structure.csv; frozen CSVs carry no label column (115 aggregated statistics columns), so the file location is the sole label carrier",
         "semantic_disposition": "exact",
         "decision_status": "proposed"
       }
@@ -455,6 +456,114 @@
       "coverage_invariant": {
         "rule": "Benign_Final -> benign must hold as the only benign source; all 33 attack category directories map to attack families; a directory-level audit requires every one of the 34 names to appear exactly once in this mapping",
         "evidence_source": "frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename): 34 distinct category directories (309 files); Benign_Final = 4 files, 1,098,191 rows matching DECISIONS.md #12 verified benign counts; frozen CSV files carry no label column (39 feature columns), so the directory name is the sole label carrier"
+      }
+    },
+    "n_baiot_type_mapping": {
+      "description": "Mapping of the N-BaIoT source families and subtypes to canonical_family. All 11 entries carry decision_status=proposed (proposed as N-BAIOT-TYPE-MAPPING-20260904-V1-PROPOSED; nothing is frozen in this proposal; the gafgyt->bashlite family decision is already frozen as a fixed_decision, and this proposal extends that frozen family decision to the 5 gafgyt subtypes). Evidence basis: Meidan et al. 2018 (references/dataset_docs/n_baiot/meidan2018_arxiv_v1_2026-09-04.pdf, SHA-256 1fa5bc4d4d2a12c2e93b18c4d876bd83ab7f456797934fcc71c92db754811964) pages 4-5 'Attacks executed' enumeration (5 BASHLITE attacks: Scan, Junk, UDP, TCP, COMBO; 5 Mirai attacks: Scan, Ack, Syn, UDP, UDPplain) plus frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename). The N-BaIoT frozen CSVs carry no label column (115 aggregated statistics columns), so the file location is the sole label carrier.",
+      "entries": [
+        {
+          "source_family": "benign",
+          "source_subtype": "benign_traffic",
+          "canonical_family": "benign",
+          "semantic_disposition": "exact",
+          "decision_status": "proposed",
+          "evidence_source": "UCI page snapshot uci_dataset_page_2026-09-04.html (SHA-256 e0b79978d166b601ce1e8480625d8ad9fe40b328ad92d66f8eebde9730b5d57f): 'real traffic data, gathered from 9 commercial IoT devices authentically infected by Mirai and BASHLITE' (benign = pre-infection captures); frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename): 9 files (one benign_traffic.csv per device), 555,932 rows",
+          "rationale": "Coverage invariant: benign_traffic.csv is the only benign source in the tree. Identity-preserving mapping: pre-infection (normal) traffic retains the benign family without semantic broadening; the benign label derives from file location per the binary_label derivation, and this entry applies the same location axis for the family axis. Detailed device characteristics are not inferred from the selected dataset documentation."
+        },
+        {
+          "source_family": "gafgyt_attacks_extracted",
+          "source_subtype": "combo",
+          "canonical_family": "bashlite",
+          "semantic_disposition": "exact",
+          "decision_status": "proposed",
+          "evidence_source": "Meidan et al. 2018 PDF p.5: 'COMBO: Sending spam data and opening a connection to a specified IP address and port'; frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename): 9 files, 515,156 rows",
+          "rationale": "COMBO is listed under BASHLITE Attacks (Meidan et al. 2018, p.5) and the gafgyt source family maps to canonical_family bashlite per the frozen fixed_decision (Meidan et al. 2018, p.4: 'BASHLITE (also known as Gafgyt, Q-Bot, Torlus, Lizard-Stresser, and Lizkebab)'). COMBO stays as source_subtype; the subtype does not replace or alter the frozen fixed_decision. The entry aligns with the frozen fixed_decision rather than conflicting with it."
+        },
+        {
+          "source_family": "gafgyt_attacks_extracted",
+          "source_subtype": "junk",
+          "canonical_family": "bashlite",
+          "semantic_disposition": "exact",
+          "decision_status": "proposed",
+          "evidence_source": "Meidan et al. 2018 PDF p.5: 'Junk: Sending spam data'; frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename): 9 files, 261,789 rows",
+          "rationale": "Junk is listed under BASHLITE Attacks (Meidan et al. 2018, p.5) and the gafgyt source family maps to canonical_family bashlite per the frozen fixed_decision (Meidan et al. 2018, p.4: 'BASHLITE (also known as Gafgyt, Q-Bot, Torlus, Lizard-Stresser, and Lizkebab)'). Junk stays as source_subtype; the subtype does not replace or alter the frozen fixed_decision. The entry aligns with the frozen fixed_decision rather than conflicting with it."
+        },
+        {
+          "source_family": "gafgyt_attacks_extracted",
+          "source_subtype": "scan",
+          "canonical_family": "bashlite",
+          "semantic_disposition": "exact",
+          "decision_status": "proposed",
+          "evidence_source": "Meidan et al. 2018 PDF p.4: 'Scan: Scanning the network for vulnerable devices'; frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename): 9 files, 255,111 rows",
+          "rationale": "Scan is listed under BASHLITE Attacks (Meidan et al. 2018, p.4) and the gafgyt source family maps to canonical_family bashlite per the frozen fixed_decision (Meidan et al. 2018, p.4: 'BASHLITE (also known as Gafgyt, Q-Bot, Torlus, Lizard-Stresser, and Lizkebab)'). Scan stays as source_subtype; the subtype does not replace or alter the frozen fixed_decision. The entry aligns with the frozen fixed_decision rather than conflicting with it."
+        },
+        {
+          "source_family": "gafgyt_attacks_extracted",
+          "source_subtype": "tcp",
+          "canonical_family": "bashlite",
+          "semantic_disposition": "exact",
+          "decision_status": "proposed",
+          "evidence_source": "Meidan et al. 2018 PDF p.5: 'TCP: TCP flooding'; frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename): 9 files, 859,850 rows",
+          "rationale": "TCP is listed under BASHLITE Attacks (Meidan et al. 2018, p.5) and the gafgyt source family maps to canonical_family bashlite per the frozen fixed_decision (Meidan et al. 2018, p.4: 'BASHLITE (also known as Gafgyt, Q-Bot, Torlus, Lizard-Stresser, and Lizkebab)'). TCP stays as source_subtype; the subtype does not replace or alter the frozen fixed_decision. The entry aligns with the frozen fixed_decision rather than conflicting with it."
+        },
+        {
+          "source_family": "gafgyt_attacks_extracted",
+          "source_subtype": "udp",
+          "canonical_family": "bashlite",
+          "semantic_disposition": "exact",
+          "decision_status": "proposed",
+          "evidence_source": "Meidan et al. 2018 PDF p.5: 'UDP: UDP flooding'; frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename): 9 files, 946,366 rows",
+          "rationale": "UDP is listed under BASHLITE Attacks (Meidan et al. 2018, p.5) and the gafgyt source family maps to canonical_family bashlite per the frozen fixed_decision (Meidan et al. 2018, p.4: 'BASHLITE (also known as Gafgyt, Q-Bot, Torlus, Lizard-Stresser, and Lizkebab)'). UDP stays as source_subtype; the subtype does not replace or alter the frozen fixed_decision. The entry aligns with the frozen fixed_decision rather than conflicting with it."
+        },
+        {
+          "source_family": "mirai_attacks_extracted",
+          "source_subtype": "ack",
+          "canonical_family": "mirai",
+          "semantic_disposition": "exact",
+          "decision_status": "proposed",
+          "evidence_source": "Meidan et al. 2018 PDF p.5: 'Ack: Ack flooding'; frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename): 7 files, 643,821 rows",
+          "rationale": "Ack is listed under Mirai Attacks (Meidan et al. 2018, p.5) and the mirai source family maps to canonical_family mirai, the official botnet family name. Ack stays as source_subtype. Identity-preserving mapping: the official Mirai family membership from the paper enumeration is retained without semantic broadening. CICIoT2023 carries a frozen Mirai category (3 subtypes), recorded as presence-only; any cross-dataset mirai family comparison remains conditional on the N-BaIoT mapping freeze and a subtype-coverage audit, subject to separate freezes."
+        },
+        {
+          "source_family": "mirai_attacks_extracted",
+          "source_subtype": "scan",
+          "canonical_family": "mirai",
+          "semantic_disposition": "exact",
+          "decision_status": "proposed",
+          "evidence_source": "Meidan et al. 2018 PDF p.5: 'Scan: Automatic scanning for vulnerable devices'; frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename): 7 files, 537,979 rows",
+          "rationale": "Scan is listed under Mirai Attacks (Meidan et al. 2018, p.5) and the mirai source family maps to canonical_family mirai, the official botnet family name. Scan stays as source_subtype. Identity-preserving mapping: the official Mirai family membership from the paper enumeration is retained without semantic broadening. CICIoT2023 carries a frozen Mirai category (3 subtypes), recorded as presence-only; any cross-dataset mirai family comparison remains conditional on the N-BaIoT mapping freeze and a subtype-coverage audit, subject to separate freezes."
+        },
+        {
+          "source_family": "mirai_attacks_extracted",
+          "source_subtype": "syn",
+          "canonical_family": "mirai",
+          "semantic_disposition": "exact",
+          "decision_status": "proposed",
+          "evidence_source": "Meidan et al. 2018 PDF p.5: 'Syn: Syn flooding'; frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename): 7 files, 733,299 rows",
+          "rationale": "Syn is listed under Mirai Attacks (Meidan et al. 2018, p.5) and the mirai source family maps to canonical_family mirai, the official botnet family name. Syn stays as source_subtype. Identity-preserving mapping: the official Mirai family membership from the paper enumeration is retained without semantic broadening. CICIoT2023 carries a frozen Mirai category (3 subtypes), recorded as presence-only; any cross-dataset mirai family comparison remains conditional on the N-BaIoT mapping freeze and a subtype-coverage audit, subject to separate freezes."
+        },
+        {
+          "source_family": "mirai_attacks_extracted",
+          "source_subtype": "udp",
+          "canonical_family": "mirai",
+          "semantic_disposition": "exact",
+          "decision_status": "proposed",
+          "evidence_source": "Meidan et al. 2018 PDF p.5: 'UDP: UDP flooding'; frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename): 7 files, 1,229,999 rows",
+          "rationale": "UDP is listed under Mirai Attacks (Meidan et al. 2018, p.5) and the mirai source family maps to canonical_family mirai, the official botnet family name. UDP stays as source_subtype. Identity-preserving mapping: the official Mirai family membership from the paper enumeration is retained without semantic broadening. CICIoT2023 carries a frozen Mirai category (3 subtypes), recorded as presence-only; any cross-dataset mirai family comparison remains conditional on the N-BaIoT mapping freeze and a subtype-coverage audit, subject to separate freezes."
+        },
+        {
+          "source_family": "mirai_attacks_extracted",
+          "source_subtype": "udpplain",
+          "canonical_family": "mirai",
+          "semantic_disposition": "exact",
+          "decision_status": "proposed",
+          "evidence_source": "Meidan et al. 2018 PDF p.5: 'UDPplain: UDP flooding with fewer options, optimized for higher PPS'; frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename): 7 files, 523,304 rows",
+          "rationale": "UDPplain is listed under Mirai Attacks (Meidan et al. 2018, p.5) and the mirai source family maps to canonical_family mirai, the official botnet family name. UDPplain stays as source_subtype. Identity-preserving mapping: the official Mirai family membership from the paper enumeration is retained without semantic broadening. CICIoT2023 carries a frozen Mirai category (3 subtypes), recorded as presence-only; any cross-dataset mirai family comparison remains conditional on the N-BaIoT mapping freeze and a subtype-coverage audit, subject to separate freezes."
+        }
+      ],
+      "coverage_invariant": {
+        "rule": "benign_traffic.csv -> benign must hold as the only benign source; all gafgyt_attacks_extracted/ and mirai_attacks_extracted/ contents map to attack families; a file-level audit requires every one of the 89 data files to be covered by exactly one (source_family, source_subtype) entry; the root-level demonstrate_structure.csv (zero rows) receives no label and is covered by the binary_label derivation special case",
+        "evidence_source": "frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename): 89 data files (9 benign + 45 gafgyt + 35 mirai) + 1 zero-row demonstrate_structure.csv, 7,062,606 rows total; gafgyt files span 9 devices, mirai files span 7 devices (Ennio_Doorbell and Samsung_SNH_1011_N_Webcam have no mirai files in the frozen tree)"
       }
     },
     "semantic_disposition_values": ["exact", "derived", "unresolved", "rejected"],

@@ -181,6 +181,68 @@ source; all 33 attack directories map to attack families; the
 comparison claims remain conditional on the other mapping freezes
 and subtype-coverage audits.
 
+### N-BaIoT family/subtype → canonical_family mapping table (PROPOSED)
+
+Proposed as `N-BAIOT-TYPE-MAPPING-20260904-V1-PROPOSED` (DECISIONS.md
+#19): all 11 entries carry `decision_status = proposed` — 11 exact / 0
+derived. Nothing is frozen in this proposal; user verification is
+pending. The gafgyt → bashlite family decision is already frozen as a
+fixed_decision (Meidan et al. 2018, p.4: "BASHLITE (also known as
+Gafgyt, Q-Bot, Torlus, Lizard-Stresser, and Lizkebab)"); this proposal
+extends that frozen family decision to the 5 gafgyt subtypes, it does
+not modify the fixed_decision.
+
+Evidence basis: Meidan et al. 2018 arXiv v1 PDF
+(`references/dataset_docs/n_baiot/meidan2018_arxiv_v1_2026-09-04.pdf`,
+SHA-256 `1fa5bc4d4d2a12c2e93b18c4d876bd83ab7f456797934fcc71c92db754811964`) pages 4-5 "Attacks executed"
+enumeration — 5 BASHLITE attacks (Scan, Junk, UDP, TCP, COMBO) and 5
+Mirai attacks (Scan, Ack, Syn, UDP, UDPplain) — plus the frozen
+inventory `n_baiot_20260903T224404Z.json` (label_source: Directory and filename). The
+N-BaIoT frozen CSVs carry no label column (115 aggregated statistics
+columns), so the file location is the sole label carrier.
+
+Naming reconciliation: the family directories are named
+`gafgyt_attacks_extracted/` and `mirai_attacks_extracted/` in the
+extracted tree; the paper uses BASHLITE and Gafgyt interchangeably
+(BASHLITE is the canonical malware name, Gafgyt an alias). The mapping
+targets the canonical family names (bashlite, mirai) while the source
+family directories and CSV filenames are retained verbatim as
+`source_family` / `source_subtype`.
+
+Device coverage disclosure: gafgyt files span 9 devices; mirai files
+span only 7 devices (Ennio_Doorbell and Samsung_SNH_1011_N_Webcam have
+no mirai files in the frozen tree). This asymmetry is recorded as
+presence-only and does not affect the mapping axis (file location).
+
+| source_family | source_subtype | canonical_family | semantic_disposition | rationale (abridged; full text in config) |
+|---|---|---|---|---|
+| benign | `benign_traffic` | `benign` | exact | Coverage invariant: the only benign source, 9 files / 555,932 rows, one benign_traffic.csv per device; identity-preserving. |
+| `gafgyt_attacks_extracted` | `combo` | `bashlite` | exact | COMBO listed under BASHLITE Attacks (p.5); aligns with the frozen gafgyt→bashlite fixed_decision; 9 files / 515,156 rows. |
+| `gafgyt_attacks_extracted` | `junk` | `bashlite` | exact | Junk listed under BASHLITE Attacks (p.5); aligns with the frozen gafgyt→bashlite fixed_decision; 9 files / 261,789 rows. |
+| `gafgyt_attacks_extracted` | `scan` | `bashlite` | exact | Scan listed under BASHLITE Attacks (p.4); aligns with the frozen gafgyt→bashlite fixed_decision; 9 files / 255,111 rows. |
+| `gafgyt_attacks_extracted` | `tcp` | `bashlite` | exact | TCP listed under BASHLITE Attacks (p.5); aligns with the frozen gafgyt→bashlite fixed_decision; 9 files / 859,850 rows. |
+| `gafgyt_attacks_extracted` | `udp` | `bashlite` | exact | UDP listed under BASHLITE Attacks (p.5); aligns with the frozen gafgyt→bashlite fixed_decision; 9 files / 946,366 rows. |
+| `mirai_attacks_extracted` | `ack` | `mirai` | exact | Ack listed under Mirai Attacks (p.5); 7 files / 643,821 rows. Cross-dataset note: CICIoT2023 carries a frozen Mirai category (3 subtypes); any cross-dataset mirai family comparison remains conditional on the N-BaIoT mapping freeze and a subtype-coverage audit. |
+| `mirai_attacks_extracted` | `scan` | `mirai` | exact | Scan listed under Mirai Attacks (p.5); 7 files / 537,979 rows. Cross-dataset note: CICIoT2023 carries a frozen Mirai category (3 subtypes); any cross-dataset mirai family comparison remains conditional on the N-BaIoT mapping freeze and a subtype-coverage audit. |
+| `mirai_attacks_extracted` | `syn` | `mirai` | exact | Syn listed under Mirai Attacks (p.5); 7 files / 733,299 rows. Cross-dataset note: CICIoT2023 carries a frozen Mirai category (3 subtypes); any cross-dataset mirai family comparison remains conditional on the N-BaIoT mapping freeze and a subtype-coverage audit. |
+| `mirai_attacks_extracted` | `udp` | `mirai` | exact | UDP listed under Mirai Attacks (p.5); 7 files / 1,229,999 rows. Cross-dataset note: CICIoT2023 carries a frozen Mirai category (3 subtypes); any cross-dataset mirai family comparison remains conditional on the N-BaIoT mapping freeze and a subtype-coverage audit. |
+| `mirai_attacks_extracted` | `udpplain` | `mirai` | exact | UDPplain listed under Mirai Attacks (p.5); 7 files / 523,304 rows. Cross-dataset note: CICIoT2023 carries a frozen Mirai category (3 subtypes); any cross-dataset mirai family comparison remains conditional on the N-BaIoT mapping freeze and a subtype-coverage audit. |
+
+Coverage invariant: `benign_traffic.csv → benign` as the only benign
+source; all `gafgyt_attacks_extracted/` and `mirai_attacks_extracted/`
+contents map to attack families; a file-level audit requires every one
+of the 89 data files to be covered by exactly one (source_family,
+source_subtype) entry; the root-level demonstrate_structure.csv (zero
+rows) receives no label and is covered by the binary_label derivation
+special case.
+
+The N-BaIoT mapping remains `proposed` until its own user verification
+and freeze. Cross-dataset family comparison claims involving N-BaIoT
+families remain conditional on the N-BaIoT mapping freeze and
+subtype-coverage audits. Because the N-BaIoT mapping is not yet
+frozen, the ontology root status and
+`canonical_family.decision_status` both remain `proposed`.
+
 ### `source_subtype` — official original label, verbatim
 
 - TON-IoT: the `type` column value, verbatim.
@@ -256,5 +318,10 @@ canonical_family mapping table in section 1 is frozen as
 `CICIOT2023-TYPE-MAPPING-20260904-V1-FROZEN` (DECISIONS.md #18). The
 N-BaIoT mapping remains `proposed` until its own mapping stage
 completes; the ontology root status therefore remains `proposed`.
+
+The N-BaIoT family/subtype → canonical_family mapping proposal
+(`N-BAIOT-TYPE-MAPPING-20260904-V1-PROPOSED`, DECISIONS.md #19) exists
+but remains `proposed` until its own user verification and freeze. The
+ontology root status therefore remains `proposed`.
 
 Data materialization, splitting, and training remain forbidden.
