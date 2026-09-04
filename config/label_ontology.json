@@ -53,13 +53,13 @@
     "candidate_families": ["benign", "backdoor", "bashlite", "ddos", "dos", "injection", "mirai", "password", "ransomware", "recon", "web_attack", "mitm"],
     "note": "Final family assignments are NOT frozen until the TON-IoT type inventory is complete and official documents are reviewed.",
     "ton_iot_type_mapping": {
-      "description": "Mapping of the 9 TON-IoT attack type values plus normal to canonical_family. All entries carry decision_status=proposed; none are frozen yet.",
+      "description": "Mapping of the 9 TON-IoT attack type values plus normal to canonical_family. All 10 entries carry decision_status=frozen as TON-IOT-TYPE-MAPPING-20260904-V1-FROZEN (frozen from evidence v3 ZIP f774457585db719bc223a89cc965aabef7019bec1f0f6209a0ce160e3a4eecc4, source commit b95e7bc).",
       "entries": [
         {
           "source_type": "normal",
           "canonical_family": "benign",
           "semantic_disposition": "exact",
-          "decision_status": "proposed",
+          "decision_status": "frozen",
           "evidence_source": "Network Features-Description.pdf row 45 (label=0 -> normal) + row 46 (type=normal); TON-IoT label census: 50,000 rows with label=0 and type=normal",
           "rationale": "Direct 1:1 mapping; verified invariant: all label=0 rows have type=normal and vice versa (census confirmed zero exceptions). This is a coverage invariant, not one of the 9 attack classes."
         },
@@ -67,7 +67,7 @@
           "source_type": "backdoor",
           "canonical_family": "backdoor",
           "semantic_disposition": "exact",
-          "decision_status": "proposed",
+          "decision_status": "frozen",
           "evidence_source": "Network Features-Description.pdf row 46 lists backdoor as an attack category; Statistics of Network Records.pdf lists 20,000 backdoor rows in train/test",
           "rationale": "Identity-preserving mapping: the official TON-IoT source label is retained without semantic broadening. Detailed attack mechanisms are not inferred from the selected dataset documentation."
         },
@@ -75,7 +75,7 @@
           "source_type": "ddos",
           "canonical_family": "ddos",
           "semantic_disposition": "exact",
-          "decision_status": "proposed",
+          "decision_status": "frozen",
           "evidence_source": "Network Features-Description.pdf row 46 lists DDoS as an attack category; Statistics of Network Records.pdf lists 20,000 ddos rows in train/test",
           "rationale": "Identity-preserving mapping: the official TON-IoT source label is retained without semantic broadening. Detailed attack mechanisms are not inferred from the selected dataset documentation. CICIoT2023 also carries a DDoS category; candidate for cross-dataset family comparison, subject to separate CICIoT2023 mapping freeze and subtype-coverage audit."
         },
@@ -83,7 +83,7 @@
           "source_type": "dos",
           "canonical_family": "dos",
           "semantic_disposition": "exact",
-          "decision_status": "proposed",
+          "decision_status": "frozen",
           "evidence_source": "Network Features-Description.pdf row 46 lists DoS as an attack category; Statistics of Network Records.pdf lists 20,000 dos rows in train/test",
           "rationale": "Identity-preserving mapping: the official TON-IoT source label is retained without semantic broadening. Detailed attack mechanisms are not inferred from the selected dataset documentation. CICIoT2023 also carries a DoS category; candidate for cross-dataset family comparison, subject to separate CICIoT2023 mapping freeze and subtype-coverage audit."
         },
@@ -91,7 +91,7 @@
           "source_type": "injection",
           "canonical_family": "injection",
           "semantic_disposition": "exact",
-          "decision_status": "proposed",
+          "decision_status": "frozen",
           "evidence_source": "Network Features-Description.pdf row 46 lists injection as an attack category; Statistics of Network Records.pdf lists 20,000 injection rows in train/test",
           "rationale": "Identity-preserving mapping: the official TON-IoT source label is retained without semantic broadening. Detailed attack mechanisms are not inferred from the selected dataset documentation."
         },
@@ -99,7 +99,7 @@
           "source_type": "password",
           "canonical_family": "password",
           "semantic_disposition": "exact",
-          "decision_status": "proposed",
+          "decision_status": "frozen",
           "evidence_source": "Network Features-Description.pdf row 46 lists password as an attack category; Statistics of Network Records.pdf lists 20,000 password rows in train/test",
           "rationale": "Identity-preserving mapping: the official TON-IoT source label is retained without semantic broadening. Detailed attack mechanisms are not inferred from the selected dataset documentation. CICIoT2023 carries a BruteForce category; candidate for cross-dataset family comparison, subject to separate CICIoT2023 mapping freeze and subtype-coverage audit."
         },
@@ -107,7 +107,7 @@
           "source_type": "ransomware",
           "canonical_family": "ransomware",
           "semantic_disposition": "exact",
-          "decision_status": "proposed",
+          "decision_status": "frozen",
           "evidence_source": "Network Features-Description.pdf row 46 lists ransomware as an attack category; Statistics of Network Records.pdf lists 20,000 ransomware rows in train/test",
           "rationale": "Identity-preserving mapping: the official TON-IoT source label is retained without semantic broadening. Detailed attack mechanisms are not inferred from the selected dataset documentation."
         },
@@ -115,7 +115,7 @@
           "source_type": "scanning",
           "canonical_family": "recon",
           "semantic_disposition": "derived",
-          "decision_status": "proposed",
+          "decision_status": "frozen",
           "evidence_source": "Network Features-Description.pdf row 46 lists scanning as an attack category; Statistics of Network Records.pdf lists 20,000 scanning rows in train/test; UNB CICIoT2023 official taxonomy (https://www.unb.ca/cic/datasets/iotdataset-2023.html) places Port Scan, OS Scan, Host Discovery, Ping Sweep, and Vulnerability Scan under the Recon category",
           "rationale": "Scanning maps to canonical_family=recon as a derived mapping (source_type name differs from canonical_family name). The UNB CICIoT2023 official taxonomy explicitly places Port/OS/Vulnerability Scan under Recon, supporting scanning as a reconnaissance activity. Note: this does NOT merge Gafgyt scan into recon — that is a malware family subtype on a different axis. Candidate for cross-dataset family comparison, subject to separate CICIoT2023 mapping freeze and subtype-coverage audit."
         },
@@ -123,7 +123,7 @@
           "source_type": "xss",
           "canonical_family": "web_attack",
           "semantic_disposition": "derived",
-          "decision_status": "proposed",
+          "decision_status": "frozen",
           "evidence_source": "Network Features-Description.pdf row 46 lists xss as an attack category; Statistics of Network Records.pdf lists 20,000 xss rows in train/test; UNB CICIoT2023 official taxonomy (https://www.unb.ca/cic/datasets/iotdataset-2023.html) places Cross-Site Scripting (XSS) under the Web-based category",
           "rationale": "XSS maps to canonical_family=web_attack as a derived mapping (specific XSS to broader web_attack). The UNB CICIoT2023 official taxonomy places XSS under the Web-based category, supporting this family placement. Candidate for cross-dataset family comparison, subject to separate CICIoT2023 mapping freeze and subtype-coverage audit."
         },
@@ -131,7 +131,7 @@
           "source_type": "mitm",
           "canonical_family": "mitm",
           "semantic_disposition": "exact",
-          "decision_status": "proposed",
+          "decision_status": "frozen",
           "evidence_source": "Network Features-Description.pdf row 46 lists attack categories including normal, DoS, DDoS and backdoor attacks; Statistics of Network Records.pdf lists 1,043 mitm rows in train/test",
           "rationale": "Identity-preserving mapping: the official TON-IoT source label is retained without semantic broadening. Detailed attack mechanisms are not inferred from the selected dataset documentation. The 1,043-row count is a natural imbalance point (the only attack class below 20,000), not an error. CICIoT2023 does carry a MITM-ArpSpoofing source subtype, but its official taxonomy places ARP spoofing under the Spoofing category; no cross-dataset MITM comparison is made until the CICIoT2023 mapping freeze."
         }

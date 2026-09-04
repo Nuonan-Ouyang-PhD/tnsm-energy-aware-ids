@@ -49,7 +49,8 @@ class TonIotTypeMappingTests(unittest.TestCase):
 
     def test_full_expected_mapping_table(self):
         """Every source_type must map to exactly the expected family
-        and disposition; anything else fails."""
+        and disposition; all 10 entries are FROZEN as
+        TON-IOT-TYPE-MAPPING-20260904-V1-FROZEN."""
         self.assertEqual(
             set(self.entries.keys()), set(EXPECTED_MAPPING.keys()),
             "entry set differs from the expected 10-entry table",
@@ -65,9 +66,37 @@ class TonIotTypeMappingTests(unittest.TestCase):
                 f"{source_type}: disposition is {entry['semantic_disposition']}, expected {disposition}",
             )
             self.assertEqual(
-                entry["decision_status"], "proposed",
-                f"{source_type}: decision_status is not proposed",
+                entry["decision_status"], "frozen",
+                f"{source_type}: decision_status is not frozen",
             )
+
+    def test_all_decision_statuses_are_frozen(self):
+        """All 10 TON-IoT mapping entries must carry
+        decision_status == "frozen" (TON-IOT-TYPE-MAPPING-20260904-V1-FROZEN)."""
+        self.assertEqual(len(self.mapping["entries"]), 10)
+        for entry in self.mapping["entries"]:
+            self.assertEqual(
+                entry["decision_status"], "frozen",
+                f"{entry['source_type']}: decision_status is not frozen",
+            )
+
+    def test_freeze_metadata_recorded_in_description(self):
+        """The mapping-level description must record the freeze
+        identifier, the evidence v3 ZIP SHA-256, and the source commit."""
+        description = self.mapping["description"]
+        self.assertIn(
+            "TON-IOT-TYPE-MAPPING-20260904-V1-FROZEN", description,
+            "description lacks the freeze identifier",
+        )
+        self.assertIn(
+            "f774457585db719bc223a89cc965aabef7019bec1f0f6209a0ce160e3a4eecc4",
+            description,
+            "description lacks the evidence v3 ZIP SHA-256",
+        )
+        self.assertIn(
+            "b95e7bc", description,
+            "description lacks the source commit",
+        )
 
     def test_all_nine_attack_types_present(self):
         for attack_type in EXPECTED_ATTACK_TYPES:
@@ -233,6 +262,15 @@ class OntologyWideKeyDisciplineTests(unittest.TestCase):
         self.assertIn("decision_status", cf)
         self.assertIn(cf["decision_status"], VALID_DECISION_STATUSES)
 
+    def test_ontology_root_and_canonical_family_remain_proposed(self):
+        """The freeze covers ONLY the 10 ton_iot_type_mapping entries;
+        the ontology root status and the canonical_family root
+        decision_status must remain "proposed" until the CICIoT2023 and
+        N-BaIoT mapping stages are frozen."""
+        ontology = load_label_ontology()
+        self.assertEqual(ontology["status"], "proposed")
+        self.assertEqual(ontology["canonical_family"]["decision_status"], "proposed")
+
     def test_binary_label_derivation_uses_dual_dimensions(self):
         derivation = load_label_ontology()["binary_label"]["derivation"]
         for dataset, entry in derivation.items():
@@ -241,6 +279,17 @@ class OntologyWideKeyDisciplineTests(unittest.TestCase):
             self.assertIn("decision_status", entry)
             self.assertIn(entry["semantic_disposition"], VALID_DISPOSITIONS)
             self.assertIn(entry["decision_status"], VALID_DECISION_STATUSES)
+
+    def test_binary_label_derivation_entries_remain_proposed(self):
+        """binary_label derivation entries are NOT covered by the
+        TON-IoT type-mapping freeze and must remain "proposed"."""
+        derivation = load_label_ontology()["binary_label"]["derivation"]
+        self.assertTrue(derivation)
+        for dataset, entry in derivation.items():
+            self.assertEqual(
+                entry["decision_status"], "proposed",
+                f"binary_label.{dataset}: decision_status is not proposed",
+            )
 
 
 if __name__ == "__main__":

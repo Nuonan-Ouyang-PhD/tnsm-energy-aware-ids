@@ -3,10 +3,10 @@ AIGC:
   ContentProducer: '001191110102MAD55U9H0F10002'
   ContentPropagator: '001191110102MAD55U9H0F10002'
   Label: '1'
-  ProduceID: 'fec54600-ab39-4a88-b817-a4aa7862ff3b'
-  PropagateID: 'fec54600-ab39-4a88-b817-a4aa7862ff3b'
-  ReservedCode1: 'c9441641-42e7-492a-8b8d-ac888fa99060'
-  ReservedCode2: 'c9441641-42e7-492a-8b8d-ac888fa99060'
+  ProduceID: 'acaaab64-aa12-45b1-8ad8-f9f4cb752cae'
+  PropagateID: 'acaaab64-aa12-45b1-8ad8-f9f4cb752cae'
+  ReservedCode1: '74a4c94a-dd80-48d4-9135-5bf16d2c7e4a'
+  ReservedCode2: '74a4c94a-dd80-48d4-9135-5bf16d2c7e4a'
 ---
 
 # Label ontology
@@ -65,9 +65,15 @@ Fixed decisions already made:
   later if evidence supports it, but it will never replace
   `canonical_family`.
 
-### TON-IoT type → canonical_family mapping table (proposed)
+### TON-IoT type → canonical_family mapping table (FROZEN)
 
-All entries carry `decision_status = proposed`; none are frozen yet.
+Frozen as `TON-IOT-TYPE-MAPPING-20260904-V1-FROZEN`: all 10 entries
+carry `decision_status = frozen` (frozen from evidence v3 ZIP
+SHA-256 `f774457585db719bc223a89cc965aabef7019bec1f0f6209a0ce160e3a4e
+ecc4`, source commit `b95e7bc`). No mapping, semantic_disposition,
+evidence, or rationale was changed by the freeze. The ontology root
+and `canonical_family.decision_status` remain `proposed` until the
+CICIoT2023 and N-BaIoT mappings are also frozen.
 
 | source_type | canonical_family | semantic_disposition | rationale |
 |---|---|---|---|
@@ -156,10 +162,12 @@ The family mapping table is NOT frozen yet. Before freezing
    description~~ DONE: Network Features-Description.pdf row 45 confirms
    0=normal, 1=attacks.
 
-All three freeze conditions are now satisfied. The TON-IoT type
-→ canonical_family mapping table in section 1 is the proposed mapping
-ready for author review and freeze. Until the author approves and
-freezes, every mapping carries `decision_status = "proposed"`.
+All three freeze conditions are satisfied. The TON-IoT type
+→ canonical_family mapping table in section 1 is frozen as
+`TON-IOT-TYPE-MAPPING-20260904-V1-FROZEN`. The ontology-level
+mappings for CICIoT2023 and N-BaIoT remain `proposed` until their own
+mapping stages complete; the ontology root status therefore remains
+`proposed`.
 
 Data materialization, splitting, and training remain forbidden.
 

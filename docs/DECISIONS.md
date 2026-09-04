@@ -3,10 +3,10 @@ AIGC:
   ContentProducer: '001191110102MAD55U9H0F10002'
   ContentPropagator: '001191110102MAD55U9H0F10002'
   Label: '1'
-  ProduceID: '3f565afc-23da-4199-abc8-018b7517a10f'
-  PropagateID: '3f565afc-23da-4199-abc8-018b7517a10f'
-  ReservedCode1: '15aa8c55-a051-43c2-9f46-4ad8065c4a4e'
-  ReservedCode2: '15aa8c55-a051-43c2-9f46-4ad8065c4a4e'
+  ProduceID: '8bc39e20-a629-416c-b9f7-dc2864141436'
+  PropagateID: '8bc39e20-a629-416c-b9f7-dc2864141436'
+  ReservedCode1: '19e009c9-b433-4e36-9e6a-06e8f2c35d72'
+  ReservedCode2: '19e009c9-b433-4e36-9e6a-06e8f2c35d72'
 ---
 
 # Experiment decisions
@@ -162,11 +162,32 @@ AIGC:
      dimensions: `semantic_disposition` (exact/derived/unresolved/
      rejected) and `decision_status` (proposed/frozen). Open points:
      CICIoT2023 IAT aggregate undocumented, Variance direction ambiguous,
-     README feature table vs frozen 39-column header mismatch (header
-     authoritative). `feature_policy.status` remains `proposed`:
-     the frozen item is the field-semantics review fact record, not the
-     cross-dataset mapping itself.
+    README feature table vs frozen 39-column header mismatch (header
+    authoritative). `feature_policy.status` remains `proposed`:
+    the frozen item is the field-semantics review fact record, not the
+    cross-dataset mapping itself.
 
-     > AI生成
+16. TON-IoT type mapping frozen as
+    `TON-IOT-TYPE-MAPPING-20260904-V1-FROZEN` after independent
+    verification by the author. Frozen evidence: evidence ZIP
+    `TON_IOT_TYPE_MAPPING_EVIDENCE_V3.zip` (SHA-256 `f774457585db719
+    bc223a89cc965aabef7019bec1f0f6209a0ce160e3a4eecc4`, 16,677 bytes),
+    source commit `b95e7bc`. All 10 ton_iot_type_mapping entries carry
+    `decision_status: frozen`: normal→benign (exact, coverage
+    invariant, not counted among the 9 attack classes); backdoor, ddos,
+    dos, injection, password, ransomware, mitm → same-named families
+    (exact); scanning→recon and xss→web_attack (derived, source_type
+    and family being different axes). No mapping, semantic_disposition,
+    evidence, or rationale was changed at freeze time; the freeze marks
+    verified facts only. The pre-existing fixed decision
+    gafgyt→bashlite (exact, Meidan et al. 2018 evidence) remains
+    frozen and is not affected. The ontology root `status` and the
+    `canonical_family.decision_status` root remain `proposed` until
+    the CICIoT2023 and N-BaIoT mapping stages are separately frozen.
+    Next stage: CICIoT2023 33 attack subtypes + Benign_Final →
+    canonical_family mapping, following the same field schema,
+    proposed-first workflow, and user verification before freeze.
+
+    > AI生成
 
 > AI生成
