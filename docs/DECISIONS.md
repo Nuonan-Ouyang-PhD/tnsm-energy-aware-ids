@@ -3,10 +3,10 @@ AIGC:
   ContentProducer: '001191110102MAD55U9H0F10002'
   ContentPropagator: '001191110102MAD55U9H0F10002'
   Label: '1'
-  ProduceID: '8bc39e20-a629-416c-b9f7-dc2864141436'
-  PropagateID: '8bc39e20-a629-416c-b9f7-dc2864141436'
-  ReservedCode1: '19e009c9-b433-4e36-9e6a-06e8f2c35d72'
-  ReservedCode2: '19e009c9-b433-4e36-9e6a-06e8f2c35d72'
+  ProduceID: '19460740-ca7d-45ef-bf25-00c769e26841'
+  PropagateID: '19460740-ca7d-45ef-bf25-00c769e26841'
+  ReservedCode1: '21219608-cd82-451f-9303-dba4ce167d68'
+  ReservedCode2: '21219608-cd82-451f-9303-dba4ce167d68'
 ---
 
 # Experiment decisions
@@ -187,6 +187,50 @@ AIGC:
     Next stage: CICIoT2023 33 attack subtypes + Benign_Final →
     canonical_family mapping, following the same field schema,
     proposed-first workflow, and user verification before freeze.
+
+17. CICIoT2023 type-mapping v1 user verification (four adjudications)
+    and v2 revision. The v1 evidence ZIP
+    `CICIOT2023_TYPE_MAPPING_EVIDENCE_V1.zip` (SHA-256 `4486874688c3
+    cda548f9f0bca59e59fc7e2a3549c3f3487e9b31fd2695029906`, 20,638
+    bytes, source commit `a56bbc8`) was independently verified by the
+    author: ZIP hash match, CRC pass, 34 directories closed against
+    the frozen inventory, per-class counts match 309 files /
+    46,776,700 rows, all 34 entries proposed, in-package tests 49/49
+    PASS. TON-IoT freeze (#16) separately confirmed valid. Four
+    adjudications on the v1 decision points: (1) spoofing family
+    ACCEPTED (UNB places ARP/DNS spoofing under Spoofing);
+    (2) MITM-ArpSpoofing→spoofing ACCEPTED as exact (official
+    category axis; consequence: the TON-IoT mitm family has no
+    CICIoT2023 member and the deferred cross-dataset MITM comparison
+    is not established); (3) DictionaryBruteForce→password REJECTED —
+    it would force the official Brute Force category into the
+    TON-IoT password family without cross-dataset equivalence
+    evidence; (4) Backdoor_Malware→web_attack ACCEPTED as exact (UNB
+    places Backdoor malware under Web-based). v2 revision applied
+    accordingly: new brute_force family (candidate_families 13 → 14);
+    DictionaryBruteForce→brute_force, exact; the CICIoT2023 mapping
+    becomes 34 exact / 0 derived. Explicitly recorded: TON-IoT
+    password is NOT equated with CICIoT2023 brute_force — no
+    sufficient evidence to establish a cross-dataset comparison
+    between these two families; the comparison-candidate phrase in
+    the frozen TON-IoT password rationale (#16, predates this
+    decision) is superseded here and recorded as NOT established.
+    The frozen TON-IoT entries themselves are NOT modified.
+    Official-source inconsistency recorded: the UNB page
+    (https://www.unb.ca/cic/datasets/iotdataset-2023.html, snapshot
+    `references/dataset_docs/ciciot2023/unb_iotdataset_page_2026-09-04.html`,
+    SHA-256 `99ae08c233d26aaa1c6cc5baa9eb6860587077cc2bc1097c63457bface422852`)
+    states 33 attacks but its own category detail lists enumerate
+    only 32 (the DDoS list omits DDoS-ICMP_Fragmentation); the frozen
+    dataset directories and README.pdf both contain that category,
+    so the formal enumeration baseline is the frozen inventory
+    directories plus README.pdf, not the UNB page detail lists. The
+    seven README.pdf page-2 classification panels are archived under
+    `references/dataset_docs/ciciot2023/readme_p2_panels/` with
+    SHA-256 in `registry.json`, so the classification evidence is
+    independently re-checkable. The v2 mapping remains entirely
+    decision_status=proposed; data materialization, splitting, and
+    training remain forbidden until the v2 freeze.
 
     > AI生成
 

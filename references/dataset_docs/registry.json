@@ -24,6 +24,16 @@
       "source_description": "open-access arXiv v1 PDF linked by UCI; related published-article DOI: 10.1109/MPRV.2018.03367731",
       "content": "N-BaIoT introductory paper: arXiv:1805.03409v1 preprint, 8-page PDF. Related published article: IEEE Pervasive Computing, vol. 17, no. 3, pp. 12-22, 2018, article 8490192, DOI: 10.1109/MPRV.2018.03367731. The arXiv v1 PDF itself carries an incorrect VOL. 13, NO. 9 header; that header is not used as final bibliographic metadata. Table 2 and the 'Feature extraction' section define 23 features per time scale over four aggregation objects (Source IP, Source MAC-IP, Channel, Socket), which resolves the MI_dir_* prefix by elimination: MI_dir = Source MAC-IP aggregation (weight=damped count; mean/variance=mean and variance of outbound-only packet sizes). The literal string 'MI_dir' does not appear in the paper text.",
       "usage": "Derived-evidence source for the N-BaIoT MI_dir_* semantic disposition; recorded as derived, not exact, because the prefix attribution is by elimination from group widths"
+    },
+    {
+      "dataset_id": "ciciot2023",
+      "file": "ciciot2023/unb_iotdataset_page_2026-09-04.html",
+      "url": "https://www.unb.ca/cic/datasets/iotdataset-2023.html",
+      "fetched_at_utc": "2026-09-04T06:55:22Z",
+      "size_bytes": 108656,
+      "sha256": "99ae08c233d26aaa1c6cc5baa9eb6860587077cc2bc1097c63457bface422852",
+      "content": "Official UNB CICIoT2023 dataset page snapshot: states 33 attacks in 7 categories (DDoS, DoS, Recon, Web-based, Brute Force, Spoofing, Mirai) and places Backdoor malware under Web-based, ARP/DNS spoofing under Spoofing, Dictionary brute force under Brute Force. The page's own category detail lists enumerate 32 attacks: the DDoS list has 11 entries and omits DDoS-ICMP_Fragmentation, which IS present in the frozen dataset directories and in README.pdf. The formal enumeration baseline is the frozen inventory directories plus README.pdf; the 32/33 page discrepancy is recorded here as an official-source inconsistency.",
+      "usage": "Official classification source for the CICIoT2023 type-mapping proposal; also records the UNB page 32/33 enumeration inconsistency and the resolution baseline (frozen directories + README.pdf)"
     }
   ],
   "in_tree_frozen_docs_not_copied": {
@@ -45,6 +55,36 @@
       {
         "file": "datasets/incoming/ciciot2023/CSV-README.pdf",
         "note": "CSV release structure note; already inside the frozen acquisition manifest"
+      }
+    ],
+    "ciciot2023_evidence_extraction": [
+      {
+        "file": "references/dataset_docs/ciciot2023/readme_p2_panels/readme_p2_0.png",
+        "note": "README.pdf page-2 DDoS panel (12 attacks incl. ICMP Fragmentation), visually extracted for the type-mapping proposal"
+      },
+      {
+        "file": "references/dataset_docs/ciciot2023/readme_p2_panels/readme_p2_1.png",
+        "note": "README.pdf page-2 DoS panel (4 attacks)"
+      },
+      {
+        "file": "references/dataset_docs/ciciot2023/readme_p2_panels/readme_p2_2.png",
+        "note": "README.pdf page-2 Recon panel (5 attacks)"
+      },
+      {
+        "file": "references/dataset_docs/ciciot2023/readme_p2_panels/readme_p2_3.png",
+        "note": "README.pdf page-2 Web-based panel (6 attacks)"
+      },
+      {
+        "file": "references/dataset_docs/ciciot2023/readme_p2_panels/readme_p2_4.png",
+        "note": "README.pdf page-2 Brute Force panel (Dictionary, Brute Force)"
+      },
+      {
+        "file": "references/dataset_docs/ciciot2023/readme_p2_panels/readme_p2_5.png",
+        "note": "README.pdf page-2 Spoofing panel (ARP, DNS)"
+      },
+      {
+        "file": "references/dataset_docs/ciciot2023/readme_p2_panels/readme_p2_6.png",
+        "note": "README.pdf page-2 Mirai panel (3 attacks)"
       }
     ]
   }

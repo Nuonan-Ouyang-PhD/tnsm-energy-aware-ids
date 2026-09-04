@@ -63,7 +63,7 @@ EXPECTED_MAPPING = {
     "DDoS-UDP_Flood":          ("DDoS",        "ddos",       "exact"),
     "DDoS-UDP_Fragmentation":  ("DDoS",        "ddos",       "exact"),
     "DNS_Spoofing":            ("Spoofing",    "spoofing",   "exact"),
-    "DictionaryBruteForce":    ("Brute Force", "password",   "derived"),
+    "DictionaryBruteForce":    ("Brute Force", "brute_force", "exact"),
     "DoS-HTTP_Flood":          ("DoS",         "dos",        "exact"),
     "DoS-SYN_Flood":           ("DoS",         "dos",        "exact"),
     "DoS-TCP_Flood":           ("DoS",         "dos",        "exact"),
@@ -139,17 +139,60 @@ class Ciciot2023TypeMappingTests(unittest.TestCase):
         for name in EXPECTED_DIRECTORIES:
             self.assertIn(name, self.entries, f"missing directory {name}")
 
-    def test_exactly_one_derived_entry(self):
+    def test_exactly_zero_derived_entries(self):
         dispositions = [e["semantic_disposition"] for e in self.mapping["entries"]]
-        self.assertEqual(dispositions.count("derived"), 1)
-        self.assertEqual(dispositions.count("exact"), 33)
+        self.assertEqual(dispositions.count("derived"), 0)
+        self.assertEqual(dispositions.count("exact"), 34)
 
-    def test_dictionarybruteforce_is_the_derived_entry(self):
+    def test_dictionarybruteforce_is_brute_force_exact(self):
         entry = self.entries["DictionaryBruteForce"]
-        self.assertEqual(entry["semantic_disposition"], "derived")
-        self.assertEqual(entry["canonical_family"], "password")
+        self.assertEqual(entry["canonical_family"], "brute_force")
+        self.assertEqual(entry["semantic_disposition"], "exact")
         rationale = entry["rationale"]
-        self.assertIn("brute_force", rationale, "alternative path not disclosed")
+        self.assertIn("REJECTED by the reviewer", rationale)
+        self.assertIn("NOT equated with CICIoT2023 brute_force", rationale)
+        self.assertIn("DECISIONS.md #17", rationale)
+
+    def test_ton_iot_password_not_equated_with_ciciot_brute_force(self):
+        """Guard: no CICIoT2023 entry may claim equivalence between the
+        TON-IoT password family and the CICIoT2023 brute_force family;
+        the comparison-candidate phrase in the frozen TON-IoT password
+        rationale is superseded by DECISIONS.md #17 and NOT established."""
+        for entry in self.mapping["entries"]:
+            rationale = entry["rationale"]
+            if "brute_force" in rationale:
+                self.assertIn(
+                    "NOT equated with CICIoT2023 brute_force", rationale,
+                    f"{entry['source_type']}: brute_force mentioned without the "
+                    "non-equivalence statement",
+                )
+                self.assertNotIn(
+                    "genuine cross-dataset comparison", rationale,
+                    f"{entry['source_type']} claims genuine cross-dataset comparison",
+                )
+
+    def test_unb_page_inconsistency_disclosed(self):
+        """The UNB page states 33 attacks but its detail lists enumerate
+        32 (DDoS omits DDoS-ICMP_Fragmentation); the enumeration baseline
+        must be the frozen directories + README.pdf, and the
+        DDoS-ICMP_Fragmentation entry must still be present."""
+        desc = self.mapping["description"]
+        self.assertIn("32", desc)
+        self.assertIn("DDoS-ICMP_Fragmentation", desc)
+        self.assertIn("frozen inventory directories plus README.pdf", desc)
+        self.assertIn("DDoS-ICMP_Fragmentation", self.entries)
+        self.assertEqual(
+            self.entries["DDoS-ICMP_Fragmentation"]["canonical_family"], "ddos",
+        )
+
+    def test_description_cites_unb_snapshot_and_panels(self):
+        desc = self.mapping["description"]
+        self.assertIn(
+            "99ae08c233d26aaa1c6cc5baa9eb6860587077cc2bc1097c63457bface422852", desc,
+            "description lacks the UNB page snapshot SHA-256",
+        )
+        self.assertIn("readme_p2_panels", desc)
+        self.assertIn("registry.json", desc)
 
     def test_benign_final_is_the_only_benign_source(self):
         benign_entries = [
@@ -221,10 +264,11 @@ class Ciciot2023TypeMappingTests(unittest.TestCase):
 
     def test_description_declares_proposal_stage(self):
         desc = self.mapping["description"]
-        self.assertIn("PROPOSAL", desc)
+        self.assertIn("v2 PROPOSAL", desc)
         self.assertIn("nothing is frozen", desc)
-        self.assertIn("12 -> 13", desc)
+        self.assertIn("13 -> 14", desc)
         self.assertIn(README_SHA, desc)
+        self.assertIn("0 derived", desc)
 
     def test_mapping_decision_status_root_remains_proposed(self):
         self.assertEqual(self.mapping.get("decision_status", "proposed"), "proposed")
@@ -238,10 +282,11 @@ class Ciciot2023TypeMappingTests(unittest.TestCase):
                 f"TON-IoT freeze regression at {entry['source_type']}",
             )
 
-    def test_candidate_families_extended_to_thirteen(self):
+    def test_candidate_families_extended_to_fourteen(self):
         candidates = self.ontology["canonical_family"]["candidate_families"]
-        self.assertEqual(len(candidates), 13)
+        self.assertEqual(len(candidates), 14)
         self.assertIn("spoofing", candidates)
+        self.assertIn("brute_force", candidates)
 
     def test_mapped_families_subset_of_candidates(self):
         candidates = set(self.ontology["canonical_family"]["candidate_families"])
@@ -273,11 +318,12 @@ class Ciciot2023TypeMappingTests(unittest.TestCase):
 
     def test_official_category_axis_beats_directory_name(self):
         """The four name-vs-category conflicts must all resolve to the
-        official category axis."""
+        official category axis (v2: DictionaryBruteForce -> brute_force
+        per user verification of v1)."""
         self.assertEqual(self.entries["Backdoor_Malware"]["canonical_family"], "web_attack")
         self.assertEqual(self.entries["VulnerabilityScan"]["canonical_family"], "recon")
         self.assertEqual(self.entries["MITM-ArpSpoofing"]["canonical_family"], "spoofing")
-        self.assertEqual(self.entries["DictionaryBruteForce"]["canonical_family"], "password")
+        self.assertEqual(self.entries["DictionaryBruteForce"]["canonical_family"], "brute_force")
 
 
 class OntologyWideDisciplineTests(unittest.TestCase):
