@@ -3,10 +3,10 @@ AIGC:
   ContentProducer: '001191110102MAD55U9H0F10002'
   ContentPropagator: '001191110102MAD55U9H0F10002'
   Label: '1'
-  ProduceID: '6d15bb47-11df-4247-8051-a408fad02285'
-  PropagateID: '6d15bb47-11df-4247-8051-a408fad02285'
-  ReservedCode1: '9e0a60fa-533a-4943-86af-fcd24cdec6a4'
-  ReservedCode2: '9e0a60fa-533a-4943-86af-fcd24cdec6a4'
+  ProduceID: 'dc9dbd01-e88f-4dc5-b15a-bcecf97d927a'
+  PropagateID: 'dc9dbd01-e88f-4dc5-b15a-bcecf97d927a'
+  ReservedCode1: '6a7e686a-4a6e-4b29-b518-3a8ef15c82bb'
+  ReservedCode2: '6a7e686a-4a6e-4b29-b518-3a8ef15c82bb'
 ---
 
 # Label ontology
@@ -81,7 +81,7 @@ splits. They must never enter model features:
 - `device_id` (N-BaIoT only; also derivable from path for N-BaIoT)
 - `capture_id` (CICIoT2023: derived from the filename stem, e.g.
   `DDoS-ACK_Fragmentation12`; N-BaIoT: the device + family + subtype
-  triple; TON-IoT: not available in the directory release)
+  triple; TON-IoT: not available in the selected train_test_network.csv)
 - `source_file` (relative path of the CSV within the extracted tree)
 - `source_row` (1-based data row index within the source file, excluding
   header)

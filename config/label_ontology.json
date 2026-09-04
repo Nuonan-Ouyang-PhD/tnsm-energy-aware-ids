@@ -60,7 +60,7 @@
     "columns": ["dataset_id", "device_id", "capture_id", "source_file", "source_row"],
     "notes": {
       "device_id": "N-BaIoT only; derivable from path",
-      "capture_id": "CICIoT2023: filename stem (e.g. DDoS-ACK_Fragmentation12); N-BaIoT: device+family+subtype triple; TON-IoT: not available in the directory release"
+      "capture_id": "CICIoT2023: filename stem (e.g. DDoS-ACK_Fragmentation12); N-BaIoT: device+family+subtype triple; TON-IoT: not available in the selected train_test_network.csv"
     }
   },
   "verified_dataset_facts": {
