@@ -3,10 +3,10 @@ AIGC:
   ContentProducer: '001191110102MAD55U9H0F10002'
   ContentPropagator: '001191110102MAD55U9H0F10002'
   Label: '1'
-  ProduceID: 'f135079f-dc0c-4130-b537-809453dd0e7b'
-  PropagateID: 'f135079f-dc0c-4130-b537-809453dd0e7b'
-  ReservedCode1: '054b996b-3c70-4fb1-9163-cb0fd3755bca'
-  ReservedCode2: '054b996b-3c70-4fb1-9163-cb0fd3755bca'
+  ProduceID: '32bfcb43-be16-477f-83cf-d38643080811'
+  PropagateID: '32bfcb43-be16-477f-83cf-d38643080811'
+  ReservedCode1: 'df396d11-ce66-4bff-8e2f-307afab7751d'
+  ReservedCode2: 'df396d11-ce66-4bff-8e2f-307afab7751d'
 ---
 
 # Field semantics review record
@@ -24,11 +24,7 @@ Sources reviewed (all official):
   (46-row feature table) and `Statistics of Network Records.pdf`.
 - CICIoT2023: `datasets/incoming/ciciot2023/README.pdf` (feature table
   and attack taxonomy embedded as images) and `CSV-README.pdf`.
-- N-BaIoT: UCI dataset page snapshot
-  `references/dataset_docs/n_baiot/uci_dataset_page_2026-09-04.html`
-  (SHA-256 `e0b79978d166b601ce1e8480625d8ad9fe40b328ad92d66f8eebde9730
-  b5d57f`, fetched 2026-09-04T00:00:39Z); the frozen ZIP contains no
-  feature description.
+- N-BaIoT: UCI dataset page snapshot\n  `references/dataset_docs/n_baiot/uci_dataset_page_2026-09-04.html`\n  (SHA-256 `e0b79978d166b601ce1e8480625d8ad9fe40b328ad92d66f8eebde9730\n  b5d57f`, fetched 2026-09-04T00:00:39Z) and the introductory paper\n  Meidan et al. 2018\n  `references/dataset_docs/n_baiot/meidan2018_arxiv_v1_2026-09-04.pdf`\n  (open-access arXiv v1 PDF linked by UCI; related published-article\n  DOI: 10.1109/MPRV.2018.03367731; SHA-256 `1fa5bc4d4d2a12c2e93b18c4\n  d876bd83ab7f456797934fcc71c92db754811964`, fetched\n  2026-09-04T01:08:47Z); the frozen ZIP contains no feature\n  description.
 
 ## 1. TON-IoT field semantics (46 features per official table)
 
@@ -108,12 +104,11 @@ Information")
     to the packet's destination host.
   - `HH_jit`: jitter of the traffic host->destination.
   - `HpHp`: stats summarizing recent traffic host+port -> host+port.
-  - `MI_dir`: (implied by header) channel-direction stream statistics;
-    the UCI text explicitly defines H/HH/HpHp/HH_jit but does not
-    explicitly define `MI_dir` — recorded as an unresolved semantic
-    point.
+  - `MI_dir`: damped-window statistics aggregated by Source MAC-IP\n    (derived by elimination from Meidan et al. 2018 group widths; see\n    Section 5); `weight` = damped count, `mean`/`variance` = mean and\n    variance of outbound-only packet sizes; disposition `derived`,\n    decision `proposed`.
 - Time frames: `L5, L3, L1, ...` are decay factors (damped window);
-    how much recent history the statistics capture.
+    how much recent history the statistics capture. L1 is damped-window
+    statistics with decay factor λ=1; this is not a literal fixed
+    one-second window.
 - Statistics: `weight` (number of items observed in recent history),
   `mean`, `std`, `radius` (root squared sum of the two streams'
   variances), `magnitude` (root squared sum of the two streams' means),
@@ -146,8 +141,8 @@ never justify a mapping.
 | 2 | `packet_count` | `src_pkts+dst_pkts` (per-connection directional packet counts) | `Number` (packets in flow) | none (weight is damped-window item count, not a flow total) | **unresolved** — connection vs flow aggregation unproven identical; N-BaIoT weight is windowed, rejected for three-way |
 | 3 | `flow_duration` | `duration` (last − first packet time, per connection) | none in the 39-column header (`flow duration` appears in the official table but NOT in the released CSV header) | none | **rejected as three-way** — only TON-IoT carries a duration column in the released data |
 | 4 | `tcp_flag_indicators` | none (conn_state is a state string, not flags) | `fin/syn/rst/psh/ack/ece/cwr_flag_number` + `*_count` (per flow) | none | **rejected as three-way** — no TON-IoT flag-count columns in the released CSV |
-| 5 | `protocol_indicators` | `proto` (categorical: tcp/udp/icmp...) | `TCP`, `UDP`, `ICMP`, `IGMP`, `IPv`, `LLC`, `ARP`, `DHCP` (0/1) | none | **derived (pairwise, proposed)** — derivable by one-hot of `proto`; formula reproducible; but value sets differ (proto values observed in TON-IoT must be enumerated first — currently unknown beyond documentation) |
-| 6 | `packet_length_statistics` | none in released CSV | `Min/Max/AVG/Std/Tot sum/Variance` (packet lengths in flow) | `HH_*_mean/std/magnitude/radius/cov/pcc` at L1 (1-second damped window) | **rejected** — CICIoT2023 aggregates over the whole flow; N-BaIoT aggregates over a damped window with stream decomposition; window and stream semantics differ. Cannot be equated without inventing semantics |
+| 5 | `protocol_indicators` | `proto` (categorical: tcp/udp/icmp...) | `TCP`, `UDP`, `ICMP`, `IGMP`, `IPv`, `LLC`, `ARP`, `DHCP` (0/1) | none | **derived (pairwise; decision_status=proposed)** — derivable by one-hot of `proto`; formula reproducible; but value sets differ (proto values observed in TON-IoT must be enumerated first — currently unknown beyond documentation) |
+| 6 | `packet_length_statistics` | none in released CSV | `Min/Max/AVG/Std/Tot sum/Variance` (packet lengths in flow) | `HH_*_mean/std/magnitude/radius/cov/pcc` at L1 (damped-window statistics with decay factor λ=1; this is not a literal fixed one-second window) | **rejected** — CICIoT2023 aggregates over the whole flow; N-BaIoT aggregates over a damped window with stream decomposition; window and stream semantics differ. Cannot be equated without inventing semantics |
 | 7 | `inter_arrival_time` | none in released CSV | `IAT` (time difference with previous packet; aggregate unspecified in official docs) | `HH_jit_*` (jitter of host->dest stream, damped window) | **rejected/unresolved** — IAT's per-row aggregate is undocumented; HH_jit is a damped-window stream statistic; different objects |
 | 8 | `bytes_per_packet_ratio` | derivable (`(src_bytes+dst_bytes)/(src_pkts+dst_pkts)`) | derivable (`Tot sum/Number`) | none comparable | **unresolved** — derived on both sides but numerator semantics differ (payload bytes vs packet lengths incl. headers); unit mismatch unresolved |
 | 9 | `src_bytes+dst_bytes` vs `Tot sum` (narrow form of #1) | payload bytes of TCP sequence numbers | summation of packets lengths in flow | — | **rejected** — payload bytes (TCP payload) vs packet lengths (link/IP packet length) are different physical quantities; converting requires header-size assumptions not documented |
@@ -170,25 +165,44 @@ any shared feature representation. The scheduler-adaptation claim
 (heterogeneous detectors over heterogeneous feature spaces) is fully
 consistent with an empty three-way core.
 
-## 5. N-BaIoT `MI_dir` open point
+## 5. N-BaIoT `MI_dir` resolution (derived evidence)
 
 The UCI page defines H, HH, HH_jit, HpHp but not `MI_dir` (the first
 prefix of 115 columns, 15 features: MI_dir_L5/L3/L1/L0.1/L0.01 ×
-weight/mean/variance). The introductory paper (Meidan et al., IEEE
-Pervasive Computing 2018) presumably defines it; until the paper text
-is consulted, `MI_dir_*` semantics are recorded as `unresolved`.
-Suggested follow-up: obtain the introductory paper (open access via
-IEEE page listed on UCI) and record it in
-`references/dataset_docs/n_baiot/` with URL/date/SHA-256.
+weight/mean/variance). This point is now resolved by the introductory
+paper (Meidan et al. 2018):
+
+- Evidence: `references/dataset_docs/n_baiot/meidan2018_arxiv_v1_2026-09-04.pdf`
+  (open-access arXiv v1 PDF linked by UCI; related published-article
+  DOI: 10.1109/MPRV.2018.03367731; SHA-256 `1fa5bc4d...811964`,
+  fetched 2026-09-04T01:08:47Z).
+- Meidan et al. Table 2 and the "Feature extraction" section define 23
+  features per time scale, covering four aggregation objects: Source
+  IP, Source MAC-IP, Channel, Socket. The literal string `MI_dir` does
+  not appear anywhere in the paper text.
+- Matching the frozen 115-column header by group width:
+  `H` = 3 features → Source IP; `HH` = 7 → Channel; `HH_jit` = 3 →
+  Channel jitter; `HpHp` = 7 → Socket; leaving `MI_dir` = the remaining
+  3 → Source MAC-IP.
+- Conclusion: `MI_dir_*` are damped-window statistics aggregated by
+  Source MAC-IP; `weight` = damped count, `mean`/`variance` = mean and
+  variance of outbound-only packet sizes.
+- Disposition: `semantic_disposition = derived`,
+  `decision_status = proposed`. NOT `exact`, because the prefix
+  attribution is by elimination from group widths, not a verbatim
+  definition in the paper. Remains subject to the ontology freeze.
 
 ## 6. Status summary
 
-- All cross-dataset mappings: `proposed` (none frozen).
+- All cross-dataset mappings: `decision_status = proposed` (none
+  frozen); per-mapping semantic dispositions are `exact / derived /
+  unresolved / rejected` as recorded above.
 - Field semantics per dataset (what each native column means): recorded
   above from official documents; the per-dataset native feature sets
   are unchanged.
 - No preprocessing, splitting, training, or data materialization
   occurred in this review; inputs were the three frozen inventories,
-  the four in-tree official documents, and one UCI page snapshot.
+  the four in-tree official documents, the UCI page snapshot, and the
+  Meidan et al. 2018 arXiv v1 PDF.
 
 > AI生成

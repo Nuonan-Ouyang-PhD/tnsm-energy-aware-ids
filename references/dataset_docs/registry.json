@@ -6,12 +6,24 @@
   "entries": [
     {
       "dataset_id": "n_baiot",
-      "file": "uci_dataset_page_2026-09-04.html",
+      "file": "n_baiot/uci_dataset_page_2026-09-04.html",
       "url": "https://archive.ics.uci.edu/dataset/442/detection%2Bof%2Biot%2Bbotnet%2Battacks%2Bn%2Bbaiot",
       "fetched_at_utc": "2026-09-04T00:00:39Z",
       "sha256": "e0b79978d166b601ce1e8480625d8ad9fe40b328ad92d66f8eebde9730b5d57f",
       "content": "Official UCI dataset page snapshot: dataset description, additional variable information (stream aggregation prefixes H/HH/HpHp/HH_jit, time-frame decay L5/L3/L1, statistics weight/mean/std/radius/magnitude/cov/pcc), file listing, DOI 10.24432/C5RC8J, CC BY 4.0 license, citation",
       "usage": "Primary N-BaIoT feature-semantics source; the frozen incoming ZIP contains no feature description"
+    },
+    {
+      "dataset_id": "n_baiot",
+      "file": "n_baiot/meidan2018_arxiv_v1_2026-09-04.pdf",
+      "url": "https://arxiv.org/pdf/1805.03409v1",
+      "fetched_at_utc": "2026-09-04T01:08:47Z",
+      "size_bytes": 2461627,
+      "sha256": "1fa5bc4d4d2a12c2e93b18c4d876bd83ab7f456797934fcc71c92db754811964",
+      "arxiv_version": "v1 (arXiv:1805.03409v1; server confirms filename 1805.03409v1.pdf; HTTP 200)",
+      "source_description": "open-access arXiv v1 PDF linked by UCI; related published-article DOI: 10.1109/MPRV.2018.03367731",
+      "content": "N-BaIoT introductory paper: Meidan et al., 'N-BaIoT: Network-based Detection of IoT Botnet Attacks Using Deep Autoencoders', IEEE Pervasive Computing, VOL. 13, NO. 9, JULY-SEPTEMBER 2018, 8 pages. Table 2 and the 'Feature extraction' section define 23 features per time scale over four aggregation objects (Source IP, Source MAC-IP, Channel, Socket), which resolves the MI_dir_* prefix by elimination: MI_dir = Source MAC-IP aggregation (weight=damped count; mean/variance=mean and variance of outbound-only packet sizes). The literal string 'MI_dir' does not appear in the paper text.",
+      "usage": "Derived-evidence source for the N-BaIoT MI_dir_* semantic disposition; recorded as derived, not exact, because the prefix attribution is by elimination from group widths"
     }
   ],
   "in_tree_frozen_docs_not_copied": {
