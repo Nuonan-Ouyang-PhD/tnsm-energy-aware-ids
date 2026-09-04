@@ -127,11 +127,41 @@ class TonIotTypeMappingTests(unittest.TestCase):
         self.assertEqual(len(set(candidates)), 12, "duplicates in candidate_families")
         self.assertIn("bashlite", candidates)
 
-    def test_bashlite_fixed_decision_present(self):
-        decisions = self.ontology["canonical_family"]["fixed_decisions"]
-        self.assertTrue(
-            any(d["canonical_family"] == "bashlite" for d in decisions)
+    def test_mitm_rationale_acknowledges_ciciot2023_mitm_arp_spoofing(self):
+        """The mitm rationale must not claim 'no other dataset carries
+        mitm' (CICIoT2023 ships MITM-ArpSpoofing); it must instead defer
+        cross-dataset comparison to the CICIoT2023 mapping freeze."""
+        rationale = self.entries["mitm"]["rationale"]
+        self.assertNotIn(
+            "no other dataset in this study carries an mitm family", rationale,
         )
+        self.assertIn("MITM-ArpSpoofing", rationale)
+        self.assertIn("Spoofing category", rationale)
+        self.assertIn("until the CICIoT2023 mapping freeze", rationale)
+
+    def test_fixed_decisions_carry_dual_dimensions(self):
+        """Each fixed decision must carry semantic_disposition and
+        decision_status with valid enum values, plus a non-empty
+        evidence_source (regression guard for the gafgyt -> bashlite
+        entry that once lacked all three)."""
+        decisions = self.ontology["canonical_family"]["fixed_decisions"]
+        self.assertTrue(decisions)
+        for decision in decisions:
+            for field in ("semantic_disposition", "decision_status", "evidence_source"):
+                self.assertIn(field, decision, f"{decision.get('source_family')} lacks {field}")
+            self.assertIn(decision["semantic_disposition"], VALID_DISPOSITIONS)
+            self.assertIn(decision["decision_status"], VALID_DECISION_STATUSES)
+            self.assertTrue(decision["evidence_source"].strip())
+
+    def test_bashlite_decision_is_exact_frozen_with_meidan_evidence(self):
+        decisions = self.ontology["canonical_family"]["fixed_decisions"]
+        bashlite = [d for d in decisions if d["canonical_family"] == "bashlite"]
+        self.assertEqual(len(bashlite), 1)
+        entry = bashlite[0]
+        self.assertEqual(entry["semantic_disposition"], "exact")
+        self.assertEqual(entry["decision_status"], "frozen")
+        self.assertIn("Meidan", entry["evidence_source"])
+        self.assertIn("also known as Gafgyt", entry["evidence_source"])
 
     def test_derived_entries_cite_ciciot2023_taxonomy(self):
         """The two derived mappings must cite the UNB CICIoT2023

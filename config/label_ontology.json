@@ -44,7 +44,10 @@
         "source_family": "gafgyt",
         "canonical_family": "bashlite",
         "subtypes_kept_as_source_subtype": ["combo", "junk", "scan", "tcp", "udp"],
-        "rule": "Gafgyt tcp/udp are NOT re-labelled as ddos; Gafgyt scan is NOT merged into recon; malware family and behavior type are different axes. A separate behavior_tag may be added later if evidence supports it but never replaces canonical_family."
+        "rule": "Gafgyt tcp/udp are NOT re-labelled as ddos; Gafgyt scan is NOT merged into recon; malware family and behavior type are different axes. A separate behavior_tag may be added later if evidence supports it but never replaces canonical_family.",
+        "semantic_disposition": "exact",
+        "decision_status": "frozen",
+        "evidence_source": "Meidan et al. 2018 (references/dataset_docs/n_baiot/meidan2018_arxiv_v1_2026-09-04.pdf, p.4): 'BASHLITE (also known as Gafgyt, Q-Bot, Torlus, Lizard-Stresser, and Lizkebab)'"
       }
     ],
     "candidate_families": ["benign", "backdoor", "bashlite", "ddos", "dos", "injection", "mirai", "password", "ransomware", "recon", "web_attack", "mitm"],
@@ -130,7 +133,7 @@
           "semantic_disposition": "exact",
           "decision_status": "proposed",
           "evidence_source": "Network Features-Description.pdf row 46 lists attack categories including normal, DoS, DDoS and backdoor attacks; Statistics of Network Records.pdf lists 1,043 mitm rows in train/test",
-          "rationale": "Identity-preserving mapping: the official TON-IoT source label is retained without semantic broadening. Detailed attack mechanisms are not inferred from the selected dataset documentation. The 1,043-row count is a natural imbalance point (the only attack class below 20,000), not an error; no other dataset in this study carries an mitm family, so no cross-dataset claim is made."
+          "rationale": "Identity-preserving mapping: the official TON-IoT source label is retained without semantic broadening. Detailed attack mechanisms are not inferred from the selected dataset documentation. The 1,043-row count is a natural imbalance point (the only attack class below 20,000), not an error. CICIoT2023 does carry a MITM-ArpSpoofing source subtype, but its official taxonomy places ARP spoofing under the Spoofing category; no cross-dataset MITM comparison is made until the CICIoT2023 mapping freeze."
         }
       ],
       "coverage_invariant": {

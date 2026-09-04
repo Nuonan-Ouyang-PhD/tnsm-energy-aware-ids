@@ -3,10 +3,10 @@ AIGC:
   ContentProducer: '001191110102MAD55U9H0F10002'
   ContentPropagator: '001191110102MAD55U9H0F10002'
   Label: '1'
-  ProduceID: '6f051d4c-7dd7-4166-a034-b3bfc8097c03'
-  PropagateID: '6f051d4c-7dd7-4166-a034-b3bfc8097c03'
-  ReservedCode1: 'f30e7ee8-1552-4d80-9cfc-86780afbe7c0'
-  ReservedCode2: 'f30e7ee8-1552-4d80-9cfc-86780afbe7c0'
+  ProduceID: 'fec54600-ab39-4a88-b817-a4aa7862ff3b'
+  PropagateID: 'fec54600-ab39-4a88-b817-a4aa7862ff3b'
+  ReservedCode1: 'c9441641-42e7-492a-8b8d-ac888fa99060'
+  ReservedCode2: 'c9441641-42e7-492a-8b8d-ac888fa99060'
 ---
 
 # Label ontology
@@ -54,8 +54,11 @@ Current proposed families (12): `benign`, `backdoor`, `bashlite`,
 
 Fixed decisions already made:
 
-- `source_family = gafgyt` maps to `canonical_family = bashlite`. The
-  subtypes `combo/junk/scan/tcp/udp` stay as `source_subtype`.
+- `source_family = gafgyt` maps to `canonical_family = bashlite`
+  (semantic_disposition = exact, decision_status = frozen).
+  Evidence: Meidan et al. 2018, p.4: "BASHLITE (also known as Gafgyt,
+  Q-Bot, Torlus, Lizard-Stresser, and Lizkebab)". The subtypes
+  `combo/junk/scan/tcp/udp` stay as `source_subtype`.
 - Gafgyt `tcp/udp` subtypes are NOT re-labelled as `ddos`, and Gafgyt
   `scan` is NOT merged into `recon`: malware family and behavior type
   are different ontological axes. A separate `behavior_tag` may be added
@@ -77,7 +80,7 @@ All entries carry `decision_status = proposed`; none are frozen yet.
 | `ransomware` | `ransomware` | exact | Identity-preserving mapping: the official TON-IoT source label is retained without semantic broadening. Detailed attack mechanisms are not inferred from the selected dataset documentation. |
 | `scanning` | `recon` | derived | Scanning maps to recon (source_type name differs from canonical_family name). The UNB CICIoT2023 official taxonomy (https://www.unb.ca/cic/datasets/iotdataset-2023.html) places Port/OS/Vulnerability Scan under Recon. Does NOT merge Gafgyt scan into recon (different axis). Candidate for cross-dataset family comparison, subject to separate CICIoT2023 mapping freeze and subtype-coverage audit. |
 | `xss` | `web_attack` | derived | XSS maps to web_attack (specific to broader family). The UNB CICIoT2023 official taxonomy (https://www.unb.ca/cic/datasets/iotdataset-2023.html) places XSS under the Web-based category. Candidate for cross-dataset family comparison, subject to separate CICIoT2023 mapping freeze and subtype-coverage audit. |
-| `mitm` | `mitm` | exact | Identity-preserving mapping. 1,043 rows (natural imbalance, not error); no other dataset in this study carries an mitm family, so no cross-dataset claim is made. |
+| `mitm` | `mitm` | exact | Identity-preserving mapping. 1,043 rows (natural imbalance, not error). CICIoT2023 carries a MITM-ArpSpoofing source subtype, but its official taxonomy places ARP spoofing under Spoofing; no cross-dataset MITM comparison until the CICIoT2023 mapping freeze. |
 
 Coverage invariant: `normal → benign` must hold for all rows. Evidence:
 TON-IoT label census (`TON-IOT-LABEL-CENSUS-20260903-V1-VERIFIED`):
