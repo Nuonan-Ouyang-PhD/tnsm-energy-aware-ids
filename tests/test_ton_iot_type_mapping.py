@@ -150,11 +150,14 @@ class TonIotTypeMappingTests(unittest.TestCase):
                 "missing from candidate_families",
             )
 
-    def test_candidate_family_count_is_twelve(self):
+    def test_candidate_family_count_is_thirteen(self):
+        """candidate_families extends 12 -> 13 when the (proposed)
+        CICIoT2023 mapping introduces the spoofing family."""
         candidates = self.ontology["canonical_family"]["candidate_families"]
-        self.assertEqual(len(candidates), 12)
-        self.assertEqual(len(set(candidates)), 12, "duplicates in candidate_families")
+        self.assertEqual(len(candidates), 13)
+        self.assertEqual(len(set(candidates)), 13, "duplicates in candidate_families")
         self.assertIn("bashlite", candidates)
+        self.assertIn("spoofing", candidates)
 
     def test_mitm_rationale_acknowledges_ciciot2023_mitm_arp_spoofing(self):
         """The mitm rationale must not claim 'no other dataset carries

@@ -1,0 +1,327 @@
+import json
+import unittest
+from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+LABEL_ONTOLOGY_PATH = REPO_ROOT / "config" / "label_ontology.json"
+
+# The 34 CICIoT2023 category directory names, from frozen inventory
+# ciciot2023_20260903T142539Z.json (label_source: Directory and filename).
+EXPECTED_DIRECTORIES = [
+    "Backdoor_Malware",
+    "Benign_Final",
+    "BrowserHijacking",
+    "CommandInjection",
+    "DDoS-ACK_Fragmentation",
+    "DDoS-HTTP_Flood",
+    "DDoS-ICMP_Flood",
+    "DDoS-ICMP_Fragmentation",
+    "DDoS-PSHACK_FLOOD",
+    "DDoS-RSTFINFLOOD",
+    "DDoS-SYN_Flood",
+    "DDoS-SlowLoris",
+    "DDoS-SynonymousIP_Flood",
+    "DDoS-TCP_Flood",
+    "DDoS-UDP_Flood",
+    "DDoS-UDP_Fragmentation",
+    "DNS_Spoofing",
+    "DictionaryBruteForce",
+    "DoS-HTTP_Flood",
+    "DoS-SYN_Flood",
+    "DoS-TCP_Flood",
+    "DoS-UDP_Flood",
+    "MITM-ArpSpoofing",
+    "Mirai-greeth_flood",
+    "Mirai-greip_flood",
+    "Mirai-udpplain",
+    "Recon-HostDiscovery",
+    "Recon-OSScan",
+    "Recon-PingSweep",
+    "Recon-PortScan",
+    "SqlInjection",
+    "Uploading_Attack",
+    "VulnerabilityScan",
+    "XSS",
+]
+
+# Complete expected mapping table: directory -> (official_category,
+# canonical_family, semantic_disposition). Locks the entire proposal so a
+# wrong assignment (e.g. Backdoor_Malware -> backdoor) fails even though
+# both names are individually valid families.
+EXPECTED_MAPPING = {
+    "Benign_Final":            ("benign",      "benign",     "exact"),
+    "DDoS-ACK_Fragmentation":  ("DDoS",        "ddos",       "exact"),
+    "DDoS-HTTP_Flood":         ("DDoS",        "ddos",       "exact"),
+    "DDoS-ICMP_Flood":         ("DDoS",        "ddos",       "exact"),
+    "DDoS-ICMP_Fragmentation": ("DDoS",        "ddos",       "exact"),
+    "DDoS-PSHACK_FLOOD":       ("DDoS",        "ddos",       "exact"),
+    "DDoS-RSTFINFLOOD":        ("DDoS",        "ddos",       "exact"),
+    "DDoS-SYN_Flood":          ("DDoS",        "ddos",       "exact"),
+    "DDoS-SlowLoris":          ("DDoS",        "ddos",       "exact"),
+    "DDoS-SynonymousIP_Flood": ("DDoS",        "ddos",       "exact"),
+    "DDoS-TCP_Flood":          ("DDoS",        "ddos",       "exact"),
+    "DDoS-UDP_Flood":          ("DDoS",        "ddos",       "exact"),
+    "DDoS-UDP_Fragmentation":  ("DDoS",        "ddos",       "exact"),
+    "DNS_Spoofing":            ("Spoofing",    "spoofing",   "exact"),
+    "DictionaryBruteForce":    ("Brute Force", "password",   "derived"),
+    "DoS-HTTP_Flood":          ("DoS",         "dos",        "exact"),
+    "DoS-SYN_Flood":           ("DoS",         "dos",        "exact"),
+    "DoS-TCP_Flood":           ("DoS",         "dos",        "exact"),
+    "DoS-UDP_Flood":           ("DoS",         "dos",        "exact"),
+    "MITM-ArpSpoofing":        ("Spoofing",    "spoofing",   "exact"),
+    "Mirai-greeth_flood":      ("Mirai",       "mirai",      "exact"),
+    "Mirai-greip_flood":       ("Mirai",       "mirai",      "exact"),
+    "Mirai-udpplain":          ("Mirai",       "mirai",      "exact"),
+    "Recon-HostDiscovery":     ("Recon",       "recon",      "exact"),
+    "Recon-OSScan":            ("Recon",       "recon",      "exact"),
+    "Recon-PingSweep":         ("Recon",       "recon",      "exact"),
+    "Recon-PortScan":          ("Recon",       "recon",      "exact"),
+    "SqlInjection":            ("Web-based",   "web_attack", "exact"),
+    "Uploading_Attack":        ("Web-based",   "web_attack", "exact"),
+    "VulnerabilityScan":       ("Recon",       "recon",      "exact"),
+    "XSS":                     ("Web-based",   "web_attack", "exact"),
+    "Backdoor_Malware":        ("Web-based",   "web_attack", "exact"),
+    "BrowserHijacking":        ("Web-based",   "web_attack", "exact"),
+    "CommandInjection":        ("Web-based",   "web_attack", "exact"),
+}
+
+VALID_DISPOSITIONS = ["exact", "derived", "unresolved", "rejected"]
+VALID_DECISION_STATUSES = ["proposed", "frozen"]
+README_SHA = "0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92"
+INVENTORY_NAME = "ciciot2023_20260903T142539Z.json"
+
+
+def load_label_ontology():
+    with LABEL_ONTOLOGY_PATH.open(encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+class Ciciot2023TypeMappingTests(unittest.TestCase):
+    """Tests for the CICIoT2023 34 category directories ->
+    canonical_family mapping PROPOSAL (nothing frozen yet)."""
+
+    def setUp(self):
+        self.ontology = load_label_ontology()
+        self.mapping = self.ontology["canonical_family"]["ciciot2023_type_mapping"]
+        self.entries = {
+            e["source_type"]: e for e in self.mapping["entries"]
+        }
+
+    def test_full_expected_mapping_table(self):
+        """Every directory must map to exactly the expected official
+        category, family, and disposition; all 34 entries stay
+        decision_status == proposed (proposal stage)."""
+        self.assertEqual(
+            set(self.entries.keys()), set(EXPECTED_MAPPING.keys()),
+            "entry set differs from the expected 34-directory table",
+        )
+        for source_type, (cat, family, disposition) in EXPECTED_MAPPING.items():
+            entry = self.entries[source_type]
+            self.assertEqual(
+                entry["official_category"], cat,
+                f"{source_type}: official_category is {entry.get('official_category')}, expected {cat}",
+            )
+            self.assertEqual(
+                entry["canonical_family"], family,
+                f"{source_type}: family is {entry['canonical_family']}, expected {family}",
+            )
+            self.assertEqual(
+                entry["semantic_disposition"], disposition,
+                f"{source_type}: disposition is {entry['semantic_disposition']}, expected {disposition}",
+            )
+            self.assertEqual(
+                entry["decision_status"], "proposed",
+                f"{source_type}: decision_status is not proposed",
+            )
+
+    def test_all_34_directories_present(self):
+        self.assertEqual(len(EXPECTED_DIRECTORIES), 34)
+        for name in EXPECTED_DIRECTORIES:
+            self.assertIn(name, self.entries, f"missing directory {name}")
+
+    def test_exactly_one_derived_entry(self):
+        dispositions = [e["semantic_disposition"] for e in self.mapping["entries"]]
+        self.assertEqual(dispositions.count("derived"), 1)
+        self.assertEqual(dispositions.count("exact"), 33)
+
+    def test_dictionarybruteforce_is_the_derived_entry(self):
+        entry = self.entries["DictionaryBruteForce"]
+        self.assertEqual(entry["semantic_disposition"], "derived")
+        self.assertEqual(entry["canonical_family"], "password")
+        rationale = entry["rationale"]
+        self.assertIn("brute_force", rationale, "alternative path not disclosed")
+
+    def test_benign_final_is_the_only_benign_source(self):
+        benign_entries = [
+            name for name, e in self.entries.items()
+            if e["canonical_family"] == "benign"
+        ]
+        self.assertEqual(benign_entries, ["Benign_Final"])
+
+    def test_benign_final_coverage_invariant_text(self):
+        entry = self.entries["Benign_Final"]
+        self.assertIn("coverage invariant", entry["rationale"].lower())
+        self.assertIn("1,098,191", entry["rationale"])
+
+    def test_backdoor_malware_discloses_name_conflict(self):
+        rationale = self.entries["Backdoor_Malware"]["rationale"]
+        self.assertIn("Web-based", rationale)
+        self.assertIn("NOT the backdoor family", rationale)
+
+    def test_mitm_arp_spoofing_discloses_alternative(self):
+        rationale = self.entries["MITM-ArpSpoofing"]["rationale"]
+        self.assertIn("Spoofing", rationale)
+        self.assertIn("mitm family", rationale, "alternative not disclosed")
+        self.assertIn("no CICIoT2023 member", rationale)
+
+    def test_vulnerability_scan_discloses_missing_prefix(self):
+        rationale = self.entries["VulnerabilityScan"]["rationale"]
+        self.assertIn("Recon", rationale)
+        self.assertIn("prefix", rationale)
+
+    def test_dos_udp_flood_records_quality_exceptions(self):
+        rationale = self.entries["DoS-UDP_Flood"]["rationale"]
+        self.assertIn("DoS-UDP_Flood7/8/9", rationale)
+        self.assertIn("ciciot2023_20260903T142232Z", rationale)
+
+    def test_mirai_entries_record_n_baiot_family_presence(self):
+        for name in ("Mirai-greeth_flood", "Mirai-greip_flood", "Mirai-udpplain"):
+            rationale = self.entries[name]["rationale"]
+            self.assertIn("mirai_attacks_extracted", rationale)
+            self.assertIn(
+                "subject to separate mapping freezes", rationale,
+                f"{name}: N-BaIoT family presence not conditional",
+            )
+
+    def test_every_entry_has_required_fields(self):
+        required = [
+            "source_type", "official_category", "canonical_family",
+            "semantic_disposition", "decision_status", "evidence_source",
+            "rationale",
+        ]
+        for entry in self.mapping["entries"]:
+            for field in required:
+                self.assertIn(field, entry, f"missing {field} in {entry['source_type']}")
+
+    def test_evidence_and_rationale_nonempty(self):
+        for entry in self.mapping["entries"]:
+            self.assertTrue(entry["evidence_source"].strip())
+            self.assertTrue(entry["rationale"].strip())
+
+    def test_evidence_cites_readme_and_inventory(self):
+        for entry in self.mapping["entries"]:
+            self.assertIn(
+                README_SHA, entry["evidence_source"],
+                f"{entry['source_type']} evidence lacks the README.pdf SHA-256",
+            )
+            self.assertIn(
+                INVENTORY_NAME, entry["evidence_source"],
+                f"{entry['source_type']} evidence lacks the frozen inventory",
+            )
+
+    def test_description_declares_proposal_stage(self):
+        desc = self.mapping["description"]
+        self.assertIn("PROPOSAL", desc)
+        self.assertIn("nothing is frozen", desc)
+        self.assertIn("12 -> 13", desc)
+        self.assertIn(README_SHA, desc)
+
+    def test_mapping_decision_status_root_remains_proposed(self):
+        self.assertEqual(self.mapping.get("decision_status", "proposed"), "proposed")
+
+    def test_ton_iot_freeze_untouched_by_ciciot_stage(self):
+        ton = self.ontology["canonical_family"]["ton_iot_type_mapping"]
+        self.assertEqual(len(ton["entries"]), 10)
+        for entry in ton["entries"]:
+            self.assertEqual(
+                entry["decision_status"], "frozen",
+                f"TON-IoT freeze regression at {entry['source_type']}",
+            )
+
+    def test_candidate_families_extended_to_thirteen(self):
+        candidates = self.ontology["canonical_family"]["candidate_families"]
+        self.assertEqual(len(candidates), 13)
+        self.assertIn("spoofing", candidates)
+
+    def test_mapped_families_subset_of_candidates(self):
+        candidates = set(self.ontology["canonical_family"]["candidate_families"])
+        for entry in self.mapping["entries"]:
+            self.assertIn(
+                entry["canonical_family"], candidates,
+                f"family {entry['canonical_family']} not in candidate_families",
+            )
+
+    def test_coverage_invariant_recorded(self):
+        inv = self.mapping["coverage_invariant"]
+        self.assertIn("rule", inv)
+        self.assertIn("evidence_source", inv)
+        self.assertIn(INVENTORY_NAME, inv["evidence_source"])
+        self.assertIn("no label column", inv["evidence_source"])
+
+    def test_cross_dataset_claims_are_conditional(self):
+        for entry in self.mapping["entries"]:
+            rationale = entry["rationale"]
+            if "cross-dataset family comparison" in rationale:
+                self.assertIn(
+                    "subject to separate", rationale,
+                    f"{entry['source_type']} cross-dataset claim is not conditional",
+                )
+            self.assertNotIn(
+                "genuine cross-dataset comparison", rationale,
+                f"{entry['source_type']} claims genuine cross-dataset comparison",
+            )
+
+    def test_official_category_axis_beats_directory_name(self):
+        """The four name-vs-category conflicts must all resolve to the
+        official category axis."""
+        self.assertEqual(self.entries["Backdoor_Malware"]["canonical_family"], "web_attack")
+        self.assertEqual(self.entries["VulnerabilityScan"]["canonical_family"], "recon")
+        self.assertEqual(self.entries["MITM-ArpSpoofing"]["canonical_family"], "spoofing")
+        self.assertEqual(self.entries["DictionaryBruteForce"]["canonical_family"], "password")
+
+
+class OntologyWideDisciplineTests(unittest.TestCase):
+    """Ontology-wide guards extended to the CICIoT2023 stage."""
+
+    def test_no_mapping_status_key_anywhere(self):
+        def walk(node, path=""):
+            if isinstance(node, dict):
+                for key, value in node.items():
+                    location = f"{path}.{key}" if path else key
+                    self.assertNotEqual(
+                        key, "mapping_status",
+                        f"legacy key mapping_status found at {location}",
+                    )
+                    walk(value, location)
+            elif isinstance(node, list):
+                for index, item in enumerate(node):
+                    walk(item, f"{path}[{index}]")
+
+        walk(load_label_ontology())
+
+    def test_ontology_root_and_canonical_family_remain_proposed(self):
+        ontology = load_label_ontology()
+        self.assertEqual(ontology["status"], "proposed")
+        self.assertEqual(ontology["canonical_family"]["decision_status"], "proposed")
+
+    def test_binary_label_derivation_entries_remain_proposed(self):
+        derivation = load_label_ontology()["binary_label"]["derivation"]
+        for dataset, entry in derivation.items():
+            self.assertEqual(
+                entry["decision_status"], "proposed",
+                f"binary_label.{dataset}: decision_status is not proposed",
+            )
+
+    def test_binary_label_ciciot2023_derivation_has_evidence(self):
+        entry = load_label_ontology()["binary_label"]["derivation"]["ciciot2023"]
+        self.assertIn("evidence_source", entry)
+        self.assertIn(INVENTORY_NAME, entry["evidence_source"])
+        self.assertIn("no label column", entry["evidence_source"])
+        self.assertIn("semantic_disposition", entry)
+        self.assertIn("decision_status", entry)
+        self.assertEqual(entry["semantic_disposition"], "exact")
+        self.assertEqual(entry["decision_status"], "proposed")
+
+
+if __name__ == "__main__":
+    unittest.main()

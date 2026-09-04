@@ -3,10 +3,10 @@ AIGC:
   ContentProducer: '001191110102MAD55U9H0F10002'
   ContentPropagator: '001191110102MAD55U9H0F10002'
   Label: '1'
-  ProduceID: 'acaaab64-aa12-45b1-8ad8-f9f4cb752cae'
-  PropagateID: 'acaaab64-aa12-45b1-8ad8-f9f4cb752cae'
-  ReservedCode1: '74a4c94a-dd80-48d4-9135-5bf16d2c7e4a'
-  ReservedCode2: '74a4c94a-dd80-48d4-9135-5bf16d2c7e4a'
+  ProduceID: '4bcf1e2b-db51-4d7b-bb38-6162cd3fc89d'
+  PropagateID: '4bcf1e2b-db51-4d7b-bb38-6162cd3fc89d'
+  ReservedCode1: '6bda215d-4909-4922-aadd-c0922fdda9d3'
+  ReservedCode2: '6bda215d-4909-4922-aadd-c0922fdda9d3'
 ---
 
 # Label ontology
@@ -48,9 +48,11 @@ datasets that genuinely share a family. Absent families are recorded as
 - `not_available` is a statement about coverage, not a negative class.
 - `not_available` rows must never be treated as negatives, and families
   must never be forced into an `other` bucket for the sake of alignment.
-Current proposed families (12): `benign`, `backdoor`, `bashlite`,
+Current proposed families (13): `benign`, `backdoor`, `bashlite`,
 `ddos`, `dos`, `injection`, `mirai`, `password`, `ransomware`,
-`recon`, `web_attack`, `mitm`.
+`recon`, `web_attack`, `mitm`, `spoofing`. (The `spoofing` family is
+proposed by the CICIoT2023 mapping stage below; candidate_families
+extends 12 → 13, pending user verification.)
 
 Fixed decisions already made:
 
@@ -93,6 +95,64 @@ TON-IoT label census (`TON-IOT-LABEL-CENSUS-20260903-V1-VERIFIED`):
 50,000 label=0 rows all have type=normal; 161,043 label=1 rows all
 have type in {backdoor, ddos, dos, injection, password, ransomware,
 scanning, xss, mitm}; zero exceptions.
+
+### CICIoT2023 category → canonical_family mapping table (PROPOSED,
+awaiting user item-by-item verification)
+
+Proposal stage: all 34 entries carry `decision_status = proposed`;
+nothing is frozen. Evidence basis: the official `README.pdf`
+(SHA-256 `0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbd
+bee92`) page-2 "Attacks Executed" classification table (7 category
+panels visually extracted and reconciled against the frozen
+inventory) plus frozen inventory `ciciot2023_20260903T142539Z.json`
+(`label_source: Directory and filename`; the frozen CSVs carry no
+label column, so the directory name is the sole label carrier).
+Naming reconciliation: normalization covers case, spacing,
+underscores and hyphens; the Brute Force README names `Dictionary`
+and `Brute Force` are both carried by the single
+`DictionaryBruteForce` directory; `VulnerabilityScan` lacks the
+`Recon-` prefix but its official category is Recon;
+`Backdoor_Malware`'s directory name conflicts with its official
+Web-based category.
+
+Key decision points surfaced for user review:
+
+1. **New `spoofing` family** (candidate_families 12 → 13): absorbs
+   `DNS_Spoofing` and `MITM-ArpSpoofing` on the official category
+   axis (exact on that axis).
+2. **`MITM-ArpSpoofing` → `spoofing`** (not `mitm`): official
+   category axis takes precedence over the directory-name `MITM-`
+   prefix. Consequence if accepted: the TON-IoT `mitm` family has no
+   CICIoT2023 member, so the deferred cross-dataset MITM comparison
+   is not established.
+3. **`DictionaryBruteForce` → `password`** (derived; the only
+   non-exact entry): selected over a separate `brute_force` family
+   because `password` is the closest existing semantic match and the
+   frozen TON-IoT `password` entry already names the CICIoT2023
+   BruteForce category as a comparison candidate. The `brute_force`
+   alternative stays open for the reviewer.
+4. **`Backdoor_Malware` → `web_attack`** (exact on the official
+   category axis, NOT `backdoor`): the official Web-based category
+   takes precedence over the directory-name `Backdoor` substring.
+
+| source_type (directory name, verbatim) | official_category | canonical_family | semantic_disposition | rationale (abridged; full text in config) |
+|---|---|---|---|---|
+| `Benign_Final` | benign | `benign` | exact | Official benign directory; coverage invariant: the only benign source, 4 files / 1,098,191 rows matching DECISIONS.md #12. |
+| `DDoS-ACK_Fragmentation` … `DDoS-UDP_Fragmentation` (12 entries) | DDoS | `ddos` | exact | Official DDoS category → normalized `ddos`. |
+| `DoS-HTTP_Flood`, `DoS-SYN_Flood`, `DoS-TCP_Flood`, `DoS-UDP_Flood` | DoS | `dos` | exact | Official DoS category → normalized `dos`. DoS-UDP_Flood rationale records the 3 registered truncated-line exceptions (DoS-UDP_Flood7/8/9) as row-count-only, not label-relevant. |
+| `Recon-HostDiscovery`, `Recon-OSScan`, `Recon-PingSweep`, `Recon-PortScan` | Recon | `recon` | exact | Official Recon category → normalized `recon`. |
+| `VulnerabilityScan` | Recon | `recon` | exact | Official Recon category; disclosure: no `Recon-` prefix in the directory name; category axis governs. |
+| `SqlInjection`, `CommandInjection`, `Uploading_Attack`, `XSS`, `BrowserHijacking` | Web-based | `web_attack` | exact | Official Web-based category → normalized `web_attack`. |
+| `Backdoor_Malware` | Web-based | `web_attack` | exact | Official Web-based category; disclosure: directory name contains `Backdoor`, mapping targets `web_attack` NOT `backdoor`; category axis takes precedence. |
+| `DictionaryBruteForce` | Brute Force | `password` | **derived** | Only non-exact entry: single directory carries both README names (Dictionary, Brute Force). Selected path: password family (closest semantic match; TON-IoT password entry already names BruteForce as comparison candidate). Alternative (separate `brute_force` family) stays open. |
+| `DNS_Spoofing`, `MITM-ArpSpoofing` | Spoofing | `spoofing` | exact | Official Spoofing category → new normalized `spoofing` family. MITM-ArpSpoofing disclosure: `MITM-` prefix vs official Spoofing category; spoofing selected, mitm alternative stays open; consequence: TON-IoT mitm has no CICIoT2023 member. |
+| `Mirai-greeth_flood`, `Mirai-greip_flood`, `Mirai-udpplain` | Mirai | `mirai` | exact | Official Mirai category; `mirai` keeps the botnet-malware name; family presence in N-BaIoT (mirai_attacks_extracted/) recorded as presence only, subject to separate freezes. |
+
+Coverage invariant: `Benign_Final → benign` as the only benign
+source; all 33 attack directories map to attack families; the
+34 directory names each appear exactly once. Cross-dataset family
+comparison claims remain conditional on the other mapping freezes
+and subtype-coverage audits.
 
 ### `source_subtype` — official original label, verbatim
 
