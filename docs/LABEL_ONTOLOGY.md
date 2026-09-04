@@ -3,10 +3,10 @@ AIGC:
   ContentProducer: '001191110102MAD55U9H0F10002'
   ContentPropagator: '001191110102MAD55U9H0F10002'
   Label: '1'
-  ProduceID: 'dc9dbd01-e88f-4dc5-b15a-bcecf97d927a'
-  PropagateID: 'dc9dbd01-e88f-4dc5-b15a-bcecf97d927a'
-  ReservedCode1: '6a7e686a-4a6e-4b29-b518-3a8ef15c82bb'
-  ReservedCode2: '6a7e686a-4a6e-4b29-b518-3a8ef15c82bb'
+  ProduceID: '15cdf436-e000-4d77-8f05-79a84632c441'
+  PropagateID: '15cdf436-e000-4d77-8f05-79a84632c441'
+  ReservedCode1: 'da73c92c-ba3a-4f7c-9bbc-2d4eb3000fcf'
+  ReservedCode2: 'da73c92c-ba3a-4f7c-9bbc-2d4eb3000fcf'
 ---
 
 # Label ontology
@@ -48,19 +48,42 @@ datasets that genuinely share a family. Absent families are recorded as
 - `not_available` is a statement about coverage, not a negative class.
 - `not_available` rows must never be treated as negatives, and families
   must never be forced into an `other` bucket for the sake of alignment.
-
-Current proposed families (to be finalized after the TON-IoT `type`
-inventory): `benign`, `ddos`, `dos`, `mirai`, `recon`, `bashlite`,
-`web_attack`, and others as the TON-IoT inventory requires.
+Current proposed families: `benign`, `backdoor`, `ddos`, `dos`,
+`injection`, `mirai`, `password`, `ransomware`, `recon`, `web_attack`,
+`mitm`.
 
 Fixed decisions already made:
 
 - `source_family = gafgyt` maps to `canonical_family = bashlite`. The
   subtypes `combo/junk/scan/tcp/udp` stay as `source_subtype`.
 - Gafgyt `tcp/udp` subtypes are NOT re-labelled as `ddos`, and Gafgyt
-  `scan` is NOT merged into `recon`: malware family and behavior type are
-  different ontological axes. A separate `behavior_tag` may be added later
-  if evidence supports it, but it will never replace `canonical_family`.
+  `scan` is NOT merged into `recon`: malware family and behavior type
+  are different ontological axes. A separate `behavior_tag` may be added
+  later if evidence supports it, but it will never replace
+  `canonical_family`.
+
+### TON-IoT type → canonical_family mapping table (proposed)
+
+All entries carry `decision_status = proposed`; none are frozen yet.
+
+| source_type | canonical_family | semantic_disposition | rationale |
+|---|---|---|---|
+| `normal` | `benign` | exact | Coverage invariant: all label=0 rows have type=normal and vice versa (census confirmed zero exceptions). Not one of the 9 attack classes. |
+| `backdoor` | `backdoor` | exact | Distinct attack class: covert channel / unauthorized remote access. Expanded as independent family. |
+| `ddos` | `ddos` | exact | Distributed Denial-of-Service. CICIoT2023 also has DDoS category; genuine cross-dataset comparison possible. |
+| `dos` | `dos` | exact | Single-source Denial-of-Service. Semantically distinct from DDoS. Both TON-IoT and CICIoT2023 carry DoS separately. |
+| `injection` | `injection` | exact | SQL/code/command injection targeting data/code integrity. Not subsumable under web_attack (can occur on non-HTTP channels). Expanded as independent family. |
+| `password` | `password` | exact | Brute-force/credential stuffing targeting authentication. Not subsumable under backdoor (different phase: credential cracking vs established covert access). Expanded as independent family. |
+| `ransomware` | `ransomware` | exact | Encryption/extortion payload. Distinct network signature. Expanded as independent family. |
+| `scanning` | `recon` | derived | Scanning is the behavioral manifestation of reconnaissance. Derived mapping (source_type name differs from canonical_family name). Does NOT merge Gafgyt scan into recon (different axis). |
+| `xss` | `web_attack` | derived | XSS is a web-application-layer attack. Derived mapping (specific XSS → broader web_attack). CICIoT2023 also has Web-based category. |
+| `mitm` | `mitm` | exact | Man-in-the-Middle: traffic interception/relay. 1,043 rows (natural imbalance, not error). Expanded as independent family. |
+
+Coverage invariant: `normal → benign` must hold for all rows. Evidence:
+TON-IoT label census (`TON-IOT-LABEL-CENSUS-20260903-V1-VERIFIED`):
+50,000 label=0 rows all have type=normal; 161,043 label=1 rows all
+have type in {backdoor, ddos, dos, injection, password, ransomware,
+scanning, xss, mitm}; zero exceptions.
 
 ### `source_subtype` — official original label, verbatim
 
@@ -122,15 +145,19 @@ be used to construct group-aware splits, but never as model features.
 The family mapping table is NOT frozen yet. Before freezing
 `canonical_family` assignments:
 
-1. Complete the TON-IoT `type` unique-value inventory (value counts, from
-   the raw CSV — a read-only pass, no data copies).
-2. Review the official field/statistics documents of all three datasets
-   (TON-IoT Network Features-Description; CICIoT2023 field definitions;
-   N-BaIoT feature description) against every proposed mapping.
-3. Re-verify the TON-IoT `label` semantics against the official
-   description (which value is attack).
+1. ~~Complete the TON-IoT `type` unique-value inventory~~ DONE:
+   `TON-IOT-LABEL-CENSUS-20260903-V1-VERIFIED`.
+2. ~~Review the official field/statistics documents of all three
+   datasets~~ DONE: `FIELD-SEMANTICS-REVIEW-20260904-V1-FROZEN`.
+3. ~~Re-verify the TON-IoT `label` semantics against the official
+   description~~ DONE: Network Features-Description.pdf row 45 confirms
+   0=normal, 1=attacks.
 
-Until then, every mapping in `config/label_ontology.json` carries
-`mapping_status: "proposed"`.
+All three freeze conditions are now satisfied. The TON-IoT type
+→ canonical_family mapping table in section 1 is the proposed mapping
+ready for author review and freeze. Until the author approves and
+freezes, every mapping carries `decision_status = "proposed"`.
+
+Data materialization, splitting, and training remain forbidden.
 
 > AI生成

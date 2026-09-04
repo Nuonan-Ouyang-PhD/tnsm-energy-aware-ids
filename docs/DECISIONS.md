@@ -3,10 +3,10 @@ AIGC:
   ContentProducer: '001191110102MAD55U9H0F10002'
   ContentPropagator: '001191110102MAD55U9H0F10002'
   Label: '1'
-  ProduceID: '685b7a68-7901-4c31-9f1d-4bb797cfe37a'
-  PropagateID: '685b7a68-7901-4c31-9f1d-4bb797cfe37a'
-  ReservedCode1: '2ad18102-1642-40e6-aa15-113d89f699fa'
-  ReservedCode2: '2ad18102-1642-40e6-aa15-113d89f699fa'
+  ProduceID: '3f565afc-23da-4199-abc8-018b7517a10f'
+  PropagateID: '3f565afc-23da-4199-abc8-018b7517a10f'
+  ReservedCode1: '15aa8c55-a051-43c2-9f46-4ad8065c4a4e'
+  ReservedCode2: '15aa8c55-a051-43c2-9f46-4ad8065c4a4e'
 ---
 
 # Experiment decisions
@@ -142,5 +142,31 @@ AIGC:
     TON-IoT `type` value inventory. Protocol documents:
     docs/LABEL_ONTOLOGY.md, docs/FEATURE_MAPPING_PROTOCOL.md,
     config/label_ontology.json, config/feature_policy.json.
+
+15. Field semantics review frozen as
+     `FIELD-SEMANTICS-REVIEW-20260904-V1-FROZEN` after independent
+     verification by the author. Frozen evidence: evidence ZIP
+     `FIELD_SEMANTICS_REVIEW_EVIDENCE_V3.zip` (SHA-256 `f2ede3e41f7477
+     d9bd3e916a57dacbc5a38d698a124ccd18b823f768dcb7f006`, 2,168,957
+     bytes), source commit `8181c8a`. Review outcomes: three-way
+     semantic core is EMPTY (no concept passes seven gates in all three
+     datasets); pairwise core limited to TON-IoT↔CICIoT2023
+     (protocol_indicators = derived/proposed, packet_count = unresolved/
+     proposed); N-BaIoT structurally incompatible with the other two
+     (damped-window stream statistics vs per-connection logs vs
+     whole-flow aggregates). N-BaIoT MI_dir_* resolved as derived
+     evidence: Source MAC-IP aggregation by elimination from Meidan et
+     al. 2018 group widths (arXiv:1805.03409v1; published as IEEE
+     Pervasive Computing vol. 17 no. 3 pp. 12-22, DOI
+     10.1109/MPRV.2018.03367731). Mapping status split into two
+     dimensions: `semantic_disposition` (exact/derived/unresolved/
+     rejected) and `decision_status` (proposed/frozen). Open points:
+     CICIoT2023 IAT aggregate undocumented, Variance direction ambiguous,
+     README feature table vs frozen 39-column header mismatch (header
+     authoritative). `feature_policy.status` remains `proposed`:
+     the frozen item is the field-semantics review fact record, not the
+     cross-dataset mapping itself.
+
+     > AI生成
 
 > AI生成
