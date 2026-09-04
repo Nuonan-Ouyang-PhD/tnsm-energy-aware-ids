@@ -228,7 +228,8 @@
     DECISIONS.md and LABEL_ONTOLOGY.md (they were
     workspace-injection artifacts, not content); (2) the README Brute
     Force item is a single attack name "Dictionary Brute Force"
-    (wrapped across two lines by page layout), not two attack names -
+    (rendered across three lines by the PDF page layout), not two
+    attack names -
     the earlier "Dictionary and Brute Force" split wording was
     corrected in label_ontology.json, LABEL_ONTOLOGY.md and
     registry.json (the DictionaryBruteForce -> brute_force exact

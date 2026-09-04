@@ -128,9 +128,9 @@ README.pdf**, not the UNB page detail lists.
 
 Naming reconciliation: normalization covers case, spacing,
 underscores and hyphens; the README lists the single attack name
-`Dictionary Brute Force` (one name wrapped across two lines by
-page layout), carried by the single `DictionaryBruteForce`
-directory; `VulnerabilityScan` lacks the
+`Dictionary Brute Force` (one name rendered across three lines
+by the PDF page layout), carried by the single
+`DictionaryBruteForce` directory; `VulnerabilityScan` lacks the
 `Recon-` prefix but its official category is Recon;
 `Backdoor_Malware`'s directory name conflicts with its official
 Web-based category.
@@ -151,7 +151,8 @@ Web-based category.
 v2 evidence-package revision (Rev 1): injected watermark
 artifacts stripped from this file and DECISIONS.md; the Brute Force README item
 corrected to the single attack name `Dictionary Brute Force`
-(wrapped across two lines by page layout, not two names); the
+(rendered across three lines by the PDF page layout, not two
+names); the
 `MITM-ArpSpoofing` mitm alternative now recorded as considered and
 rejected under DECISIONS.md #17 (not open); the seven README.pdf
 page-2 panel PNGs now carry SHA-256 entries in `registry.json`. The

@@ -340,9 +340,9 @@ class Ciciot2023TypeMappingTests(unittest.TestCase):
             self.assertNotIn("AIGC:", text, f"{rel}: AIGC watermark present")
 
     def test_dictionary_brute_force_is_single_attack_name(self):
-        """The README Brute Force item is ONE attack name wrapped by page
-        layout, not two attack names; the old split wording must be gone
-        from every published surface."""
+        """The README Brute Force item is ONE attack name rendered across
+        three lines by the PDF page layout, not two attack names; the
+        old split wording must be gone from every published surface."""
         desc = self.mapping["description"]
         rationale = self.entries["DictionaryBruteForce"]["rationale"]
         md = (REPO_ROOT / "docs" / "LABEL_ONTOLOGY.md").read_text(encoding="utf-8")
@@ -353,9 +353,12 @@ class Ciciot2023TypeMappingTests(unittest.TestCase):
 
         new_markers = [
             ("description", "single attack name 'Dictionary Brute Force'" in desc),
-            ("description", "wrapped across two lines" in desc),
+            ("description", "rendered across three lines" in desc),
+            ("description", "PDF page layout" in desc),
             ("rationale", "single attack name 'Dictionary Brute Force'" in rationale),
+            ("rationale", "rendered across three lines" in rationale),
             ("LABEL_ONTOLOGY.md", "single attack name" in md),
+            ("LABEL_ONTOLOGY.md", "rendered across three lines" in md),
         ]
         for surface, ok in new_markers:
             self.assertTrue(ok, f"{surface}: single-name wording missing")
@@ -365,6 +368,7 @@ class Ciciot2023TypeMappingTests(unittest.TestCase):
             ("rationale", "two attack names" in rationale),
             ("LABEL_ONTOLOGY.md", "two attack names" in md),
             ("LABEL_ONTOLOGY.md", "are both carried by the single" in md),
+            ("LABEL_ONTOLOGY.md", "wrapped across two lines" in md),
             ("registry.json", "(Dictionary, Brute Force)" in reg_text),
         ]
         for surface, present in old_markers:
