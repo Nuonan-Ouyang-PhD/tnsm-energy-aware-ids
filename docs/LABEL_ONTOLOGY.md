@@ -85,11 +85,17 @@ TON-IoT label census (`TON-IOT-LABEL-CENSUS-20260903-V1-VERIFIED`):
 have type in {backdoor, ddos, dos, injection, password, ransomware,
 scanning, xss, mitm}; zero exceptions.
 
-### CICIoT2023 category → canonical_family mapping table (v2 PROPOSED,
-awaiting user verification of the v2 revision)
+### CICIoT2023 category → canonical_family mapping table (FROZEN)
 
-v2 proposal stage: all 34 entries carry `decision_status = proposed`,
-**34 exact / 0 derived**; nothing is frozen. Evidence basis: the
+Frozen as `CICIOT2023-TYPE-MAPPING-20260904-V1-FROZEN` (per
+DECISIONS.md #18, on explicit user authorization after V2R2
+verification): all 34 entries carry `decision_status = frozen`,
+**34 exact / 0 derived**. Frozen from evidence V2R2 ZIP SHA-256
+`f8529ea2c721057ce205b862ff37bb3a4cbcb1c8d5524d30cc0b28f93f3d447b`,
+source commit `93e8350`. The freeze changed only decision_status
+values and the description freeze metadata; no mapping,
+official_category, semantic_disposition, evidence, or rationale was
+altered. Evidence basis: the
 official `README.pdf` (SHA-256 `0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbd
 bee92`) page-2 "Attacks Executed" classification table (7 category
 panels visually extracted, archived under
@@ -158,6 +164,16 @@ rejected under DECISIONS.md #17 (not open); the seven README.pdf
 page-2 panel PNGs now carry SHA-256 entries in `registry.json`. The
 v2 mapping remains entirely `proposed`; nothing is frozen in this
 revision.
+
+v2 Rev 2 (commit `93e8350`): pure-copy revision - the line-count
+wording corrected to "rendered across three lines by the PDF page
+layout" (the panel PNG shows Dictionary / Brute / Force on three
+lines); no other change.
+
+Freeze (DECISIONS.md #18, on explicit user authorization after V2R2
+user verification): all 34 entries now carry `decision_status =
+frozen` as `CICIOT2023-TYPE-MAPPING-20260904-V1-FROZEN`; only
+decision_status values and the description freeze metadata changed.
 
 Coverage invariant: `Benign_Final → benign` as the only benign
 source; all 33 attack directories map to attack families; the
@@ -235,9 +251,10 @@ The family mapping table is NOT frozen yet. Before freezing
 
 All three freeze conditions are satisfied. The TON-IoT type
 → canonical_family mapping table in section 1 is frozen as
-`TON-IOT-TYPE-MAPPING-20260904-V1-FROZEN`. The ontology-level
-mappings for CICIoT2023 and N-BaIoT remain `proposed` until their own
-mapping stages complete; the ontology root status therefore remains
-`proposed`.
+`TON-IOT-TYPE-MAPPING-20260904-V1-FROZEN`. The CICIoT2023 category →
+canonical_family mapping table in section 1 is frozen as
+`CICIOT2023-TYPE-MAPPING-20260904-V1-FROZEN` (DECISIONS.md #18). The
+N-BaIoT mapping remains `proposed` until its own mapping stage
+completes; the ontology root status therefore remains `proposed`.
 
 Data materialization, splitting, and training remain forbidden.

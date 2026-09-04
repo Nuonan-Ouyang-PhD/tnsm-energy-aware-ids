@@ -109,8 +109,8 @@ class Ciciot2023TypeMappingTests(unittest.TestCase):
 
     def test_full_expected_mapping_table(self):
         """Every directory must map to exactly the expected official
-        category, family, and disposition; all 34 entries stay
-        decision_status == proposed (proposal stage)."""
+        category, family, and disposition; all 34 entries now carry
+        decision_status == frozen (CICIOT2023-TYPE-MAPPING-20260904-V1-FROZEN)."""
         self.assertEqual(
             set(self.entries.keys()), set(EXPECTED_MAPPING.keys()),
             "entry set differs from the expected 34-directory table",
@@ -130,8 +130,8 @@ class Ciciot2023TypeMappingTests(unittest.TestCase):
                 f"{source_type}: disposition is {entry['semantic_disposition']}, expected {disposition}",
             )
             self.assertEqual(
-                entry["decision_status"], "proposed",
-                f"{source_type}: decision_status is not proposed",
+                entry["decision_status"], "frozen",
+                f"{source_type}: decision_status is not frozen",
             )
 
     def test_all_34_directories_present(self):
@@ -262,15 +262,22 @@ class Ciciot2023TypeMappingTests(unittest.TestCase):
                 f"{entry['source_type']} evidence lacks the frozen inventory",
             )
 
-    def test_description_declares_proposal_stage(self):
+    def test_description_declares_freeze_stage(self):
+        """The mapping-level description must record the freeze metadata
+        (V2R2 evidence ZIP hash, source commit, freeze id)."""
         desc = self.mapping["description"]
-        self.assertIn("v2 PROPOSAL", desc)
-        self.assertIn("nothing is frozen", desc)
+        self.assertIn("CICIOT2023-TYPE-MAPPING-20260904-V1-FROZEN", desc)
+        self.assertIn("f8529ea2c721057ce205b862ff37bb3a4cbcb1c8d5524d30cc0b28f93f3d447b", desc)
+        self.assertIn("93e8350", desc)
+        self.assertIn("DECISIONS.md #18", desc)
         self.assertIn("13 -> 14", desc)
         self.assertIn(README_SHA, desc)
         self.assertIn("0 derived", desc)
+        self.assertIn("no mapping, semantic_disposition, evidence, or rationale", desc)
 
     def test_mapping_decision_status_root_remains_proposed(self):
+        """The ontology root and canonical_family.decision_status stay
+        proposed until the N-BaIoT mapping is frozen."""
         self.assertEqual(self.mapping.get("decision_status", "proposed"), "proposed")
 
     def test_ton_iot_freeze_untouched_by_ciciot_stage(self):

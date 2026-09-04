@@ -240,3 +240,44 @@
     panel PNGs, and guard tests lock the new wording and hashes. The
     v2 mapping remains entirely decision_status=proposed; no freeze
     action is taken in this revision.
+
+
+18. CICIoT2023 type mapping FROZEN as
+    CICIOT2023-TYPE-MAPPING-20260904-V1-FROZEN. Freeze basis: the v2
+    evidence package went through user verification in three rounds
+    (v2 → Rev 1 → Rev 2). Rev 1 (commit `1e26a56`) fixed four
+    package-level issues (injected watermark artifacts stripped;
+    Dictionary Brute Force single-attack-name wording; mitm
+    alternative closed as considered and rejected under #17; seven
+    panel SHA-256 entries added to registry.json). Rev 2 (commit
+    `93e8350`) corrected the line-count wording to "rendered across
+    three lines by the PDF page layout" (verified against the panel
+    PNG; the attack name renders as Dictionary / Brute / Force on
+    three lines). The Rev 2 evidence ZIP
+    `CICIOT2023_TYPE_MAPPING_EVIDENCE_V2R2.zip` (SHA-256 `f8529ea2
+    c721057ce205b862ff37bb3a4cbcb1c8d5524d30cc0b28f93f3d447b`,
+    4,454,486 bytes, 25 entries, source commit `93e8350`) passed the
+    user's independent verification: MANIFEST 16/16, in-package tests
+    56/56 (33+23), old wording zero hits, new wording exactly 5,
+    injected-watermark markers zero, 34 proposed / 0 frozen before
+    freeze, TON-IoT
+    10 frozen untouched, #18 not yet existing. On explicit user
+    authorization, all 34 CICIoT2023 mapping entries now carry
+    decision_status=frozen: 34 exact / 0 derived (12 ddos, 6
+    web_attack incl. Backdoor_Malware, 5 recon, 4 dos, 3 mirai, 2
+    spoofing, 1 brute_force, 1 benign). The freeze changed only
+    decision_status values and the description freeze metadata; no
+    mapping, official_category, semantic_disposition, evidence, or
+    rationale was altered. Cross-dataset constraints carried forward:
+    TON-IoT password is NOT equated with CICIoT2023 brute_force
+    (#17); the TON-IoT mitm family has no CICIoT2023 member (MITM-
+    ArpSpoofing → spoofing, rejected alternative recorded); family
+    presence in N-BaIoT (mirai) remains presence-only until its own
+    freeze. The TON-IoT frozen entries are NOT modified. Because the
+    N-BaIoT mapping is not yet frozen, the ontology root status and
+    canonical_family.decision_status both remain `proposed`. Data
+    materialization, splitting, and training remain forbidden until
+    the ontology-level freeze is complete. Next stage: N-BaIoT type
+    mapping proposal (mirai_attacks_extracted/ and
+    gafgyt_attacks_extracted/ subtypes), then the root-level
+    ontology freeze decision.
