@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "kind": "proto_value_census",
+  "dataset_id": "ton_iot",
+  "created_at_utc": "2026-09-05T11:08:40Z",
+  "authorization": "One-off read-only audit exception authorized by the user on 2026-09-05 for the #23 proposal pre-condition; NOT a lift of the materialization/splitting/training gates",
+  "source": {
+    "inventory": "artifacts/datasets/inventories/ton_iot_20260903T113048Z.json",
+    "relative_path": "train_test_network.csv",
+    "sha256": "26ddc513552de36de6428b2e578efaed2b57504c716dfba847cc0109a64e1974",
+    "column": "proto",
+    "column_index": 4,
+    "column_count": 44
+  },
+  "script": {
+    "version": "ton_iot_proto_census v1 (2026-09-05, #23 audit exception)",
+    "mode": "read-only single-column census; csv module, utf-8-sig, no row export, no encoder, no split, no training",
+    "repo_head": "4e1841eed20e85484e5cc9d71de0a7e11c90184a"
+  },
+  "total_rows": 211043,
+  "proto_value_counts": {
+    "icmp": 281,
+    "tcp": 168747,
+    "udp": 42015
+  },
+  "value_profiles": {
+    "icmp": {
+      "count": 281,
+      "has_leading_or_trailing_whitespace": false,
+      "is_empty_after_strip": false,
+      "lowercase_variant_differs": false,
+      "stripped_variant_differs": false
+    },
+    "tcp": {
+      "count": 168747,
+      "has_leading_or_trailing_whitespace": false,
+      "is_empty_after_strip": false,
+      "lowercase_variant_differs": false,
+      "stripped_variant_differs": false
+    },
+    "udp": {
+      "count": 42015,
+      "has_leading_or_trailing_whitespace": false,
+      "is_empty_after_strip": false,
+      "lowercase_variant_differs": false,
+      "stripped_variant_differs": false
+    }
+  },
+  "anomalies": {
+    "empty_string": 0,
+    "whitespace_only": 0,
+    "placeholder_like_values": {},
+    "row_field_count_mismatch": 0,
+    "parse_errors": 0
+  },
+  "reconciliation": {
+    "inventory_row_count": 211043,
+    "census_row_count": 211043,
+    "row_count_match": true,
+    "field_mismatch_rows": 0,
+    "sum_of_value_counts": 211043,
+    "sum_equals_row_count": true,
+    "distinct_raw_values": 3
+  },
+  "normalization_candidates": {
+    "icmp": {
+      "strip_needed": false,
+      "lowercase_needed": false
+    },
+    "tcp": {
+      "strip_needed": false,
+      "lowercase_needed": false
+    },
+    "udp": {
+      "strip_needed": false,
+      "lowercase_needed": false
+    }
+  },
+  "normalization_status": "proposed",
+  "notes": [
+    "Raw observed values are recorded verbatim; no strip/lowercase/merge was applied.",
+    "This census is audit evidence for the #23 proposal only; it must NOT be used as an all-data encoder vocabulary. The existing rule (category encoders fitted on the training split only) stands unchanged.",
+    "All normalization mappings remain proposals until the feature/label protocol freeze."
+  ],
+  "paper_eligible": false
+}

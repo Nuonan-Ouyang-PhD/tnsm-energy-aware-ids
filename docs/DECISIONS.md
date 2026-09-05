@@ -575,3 +575,147 @@
     wording checks) were added. The materialization/splitting/training
     ban is NOT lifted by this revision; the next stage
     (feature/label protocol freeze proposal) is NOT yet authorized.
+
+23. FEATURE/LABEL PROTOCOL FREEZE PROPOSED as
+    FEATURE-POLICY-20260905-V1-PROPOSED. This record is a proposal
+    for review only; no status is flipped and no config byte changes
+    in this record. The authorization to prepare a proposal explicitly
+    does NOT include executing the #24 freeze, changing the live
+    config/feature_policy.json, touching the frozen
+    config/label_ontology.json, or lifting the
+    materialization/splitting/training gates.
+
+    Input state (machine-verified on the proposal commit): the
+    label-ontology chain is complete and frozen at all levels (#16,
+    #18, #20, #22 with Rev 1; label_ontology.json SHA-256
+    `8a055e2e34bc8d70f62909f52441915589c310659d6ce3e427a2704820926fab`,
+    recursive census 61 frozen + 0 proposed); config/feature_policy.json
+    remains `proposed` (SHA-256
+    `2a903a4a0dd54e4307b7dce24599c39ce62b378b4cd8a95f8a633ffedb321b47`,
+    byte-identical since b017f8f); its data_handling gates read
+    "forbidden before protocol freeze" for materialization, splitting,
+    and training.
+
+    AUDIT EXCEPTION (one-off, user-authorized 2026-09-05, recorded
+    here): a read-only TON-IoT `proto` value census was executed as a
+    #23 proposal pre-condition. Scope: read the frozen
+    train_test_network.csv (inventory ton_iot_20260903T113048Z, source
+    SHA-256
+    `26ddc513552de36de6428b2e578efaed2b57504c716dfba847cc0109a64e1974`,
+    re-verified before and after the run) and count the raw `proto`
+    column values verbatim. No row export, no feature matrix, no
+    encoder fitting, no split, no training. Result
+    (artifacts/datasets/proto_census/ton_iot_proto_20260905T110840Z.json,
+    SHA-256
+    `89f06e9c3913e2d429be6021ff42f907727f36e69cebf5bc5639b9793e689830`):
+    exactly 3 distinct raw values - tcp 168747, udp 42015, icmp 281;
+    zero empty/whitespace/placeholder values, zero field-count
+    mismatches; row reconciliation 211043 = 211043 against the frozen
+    inventory; both config files verified unchanged during the run.
+    This census is AUDIT EVIDENCE ONLY: the observed value set must
+    NOT be used as an all-data encoder vocabulary; the standing rule
+    (category encoders fitted on the training split only) is
+    unchanged, and this census does NOT lift the data-handling gates.
+
+    PROPOSED FREEZE SCOPE (what a future #24 freeze would change,
+    subject to separate explicit authorization; frozen
+    decision_status means "the review decision of this version is
+    locked", NOT that the mapping is admitted):
+
+    (a) Four structured status fields, proposed -> frozen:
+        `status` (policy root);
+        `semantic_core.candidate_examples[0].decision_status`
+        (total_transferred_bytes);
+        `semantic_core.candidate_examples[1].decision_status`
+        (decayed_window_statistics);
+        `semantic_core.review_outcome_2026_09_04.resolved_points[0].
+        decision_status` (MI_dir resolution).
+
+        Semantic dispositions stay AS-IS and are NOT flips:
+        total_transferred_bytes keeps `unresolved` (not admitted to
+        the harmonised core in this version; must not be used as an
+        equivalence feature); decayed_window_statistics keeps
+        `rejected` (the REJECTION is of the cross-dataset mapping,
+        not a deletion of N-BaIoT native features); MI_dir keeps
+        `derived` (the existing elimination-based interpretation is
+        locked; it must not be re-described as a verbatim official
+        definition, and it gains no cross-dataset comparability).
+
+    (b) Evidence completion (additions, not status flips): each of
+        the four records above gains an `evidence_source` array
+        citing the specific official documents with path, SHA-256,
+        and anchor (page/table/section), per the STRICT reading of
+        freeze condition 3 ("each mapping's evidence_source cites the
+        specific official document"). Internal FIELD_SEMANTICS_REVIEW
+        .md may remain in the review chain but does not substitute
+        for the official-source citation. For `unresolved` records
+        the evidence documents WHAT was consulted and WHICH gate
+        stays unconfirmed (no fabricated equivalence support); for
+        `rejected` records the evidence documents the rejection
+        reason and its applicability scope (this version's released
+        CSVs, not a claim about all future versions); for `derived`
+        records the evidence supports the derivation and its
+        boundaries.
+
+    (c) The two string-embedded candidate records
+        (`protocol_indicators`, `packet_count` in
+        review_outcome pairwise_cores) get NEW TARGET WORDING that
+        separates the historical review state from this version's
+        decision:
+        - protocol_indicators: after the proto census and the
+          seven-gate check, EXACTLY the subset {tcp, udp} is proposed
+          for admission as pairwise ton_iot__ciciot2023 mappings
+          (both official documents define them as transport-layer
+          protocols; 0/1 unit; per-record aggregation; whole-record
+          window; directionless; formula reproducible as one-hot of
+          proto). icmp stays `unresolved`: TON-IoT officially defines
+          proto as "Transport layer protocols of flow connections"
+          (Network Features-Description.pdf p.1 row 6) while CICIoT2023
+          officially defines ICMP as "the network layer protocol"
+          (README.pdf p.1 feature table row 32); value-set coincidence
+          does not prove semantic equivalence; not admitted this
+          version. The remaining CICIoT2023 protocol columns
+          (DHCP/ARP/IGMP/IPv/LLC and the application-layer set) have
+          NO proposed TON-IoT counterpart; no correspondence is
+          invented to fill the eight columns and no unknown value is
+          interpreted as all-zero indicators.
+        - packet_count: stays `unresolved` (connection vs flow
+          aggregation object still unconfirmed); not admitted this
+          version.
+        If #24 later converts these into structured mapping records,
+        the final status-path enumeration MUST be re-derived from the
+        resulting config; the "four structured fields" list applies to
+        the current schema only.
+
+    (d) Data-handling gate target values (to take effect ONLY at
+        #24, under its own separate authorization, and only after the
+        #24 changes land): materialization/splitting/training each
+        change from "forbidden before protocol freeze" to
+        "permitted after protocol freeze (#24), subject to the
+        label-ontology chain, the feature/label protocol freeze, and
+        the standing experimental discipline (no split changes after
+        formal experiments start; encoder fitting on the training
+        split only; deterministic rotation and order-invariance
+        gates)". Each gate change is individually authorized at #24;
+        the proposal does not bundle them, and the gates stay
+        forbidden until then.
+
+    Items deliberately OUT OF SCOPE for #24:
+    config/label_ontology.json (frozen, byte-identical); the frozen
+    dataset-level mapping tables and fixed_decisions; the semantic
+    dispositions (exact/derived/unresolved/rejected axis); the
+    audit_gates, mapping_record_fields, and policy texts
+    (direction/paper_positioning/empty-core honesty); the proto
+    census artifacts (audit evidence, immutable);
+    ton_iot_exclusions and primary_native_feature_sets (native sets
+    are unchanged by the freeze - only status and evidence fields
+    change).
+
+    PROPOSED FREEZE ID: FEATURE-POLICY-20260905-V1-FROZEN (to be
+    applied by #24 only on explicit user authorization after this
+    proposal's evidence package passes user verification).
+
+    Nothing is frozen in this record: user review of this proposal is
+    pending. The materialization/splitting/training ban is NOT
+    lifted, and #24 execution requires separate explicit
+    authorization.
