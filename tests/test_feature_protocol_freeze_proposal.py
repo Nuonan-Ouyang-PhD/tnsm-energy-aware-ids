@@ -32,10 +32,26 @@ Rev 1 invariants additionally asserted here:
   - FEATURE_MAPPING_PROTOCOL.md uses the dual-axis wording
     (semantic_disposition x decision_status), carries a 6.1 Rev 1
     staging addendum, and DECISIONS.md records the Rev 1 outcome;
+
+Rev 2 invariants additionally asserted here (F23-02 A/B/C):
+  - the committed target artifact is a complete would-be-effective
+    configuration whose bytes are reproducible from the live
+    baseline by the archived generator script, and the live config
+    is still byte-identical to the baseline (nothing applied);
+  - simulating the application in an independent temporary copy
+    yields exactly 4 structured status flips with dispositions
+    unchanged, the MI_dir array rules (element [0] byte-equal),
+    zero actual admissions, the two string rewordings, and gate
+    objects with 6 standalone structured preconditions each;
+  - the Rev 2 target specification binds admission_set /
+    freeze_metadata verbatim to the target artifact root keys and
+    records the 30-check outcome evidence;
 """
 
 import hashlib
+import importlib.util
 import json
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -121,6 +137,62 @@ REGISTRY_PATH = REPO_ROOT / "references" / "dataset_docs" / "registry.json"
 REVIEW_PACKAGE_SHA = (
     "1fdee7efa3ab11dc528c04c8e303086d0d45b69a5e26b310fae4abb46da8af6b"
 )
+
+# --- Rev 2 (2026-09-05) constants ---------------------------------
+TARGET_ARTIFACT_PATH = (
+    REPO_ROOT / "artifacts" / "proposals"
+    / "feature_policy_freeze_target_v1r2.json"
+)
+TARGET_ARTIFACT_SHA = (
+    "e81a55c16f9439b0356295353e8b342de19d5c5606d868952592f913beda714b"
+)
+SPEC_PATH = (
+    REPO_ROOT / "artifacts" / "proposals"
+    / "feature_policy_freeze_target_spec_v1r2.json"
+)
+SPEC_SHA = (
+    "0fa8da404f78ed9b8258f3f4e35df64750ba86aa3f2bbe5cceeab0bb287af150"
+)
+TARGET_GENERATOR = (
+    REPO_ROOT / "scripts" / "audits"
+    / "build_feature_policy_target_v1r2.py"
+)
+TARGET_GENERATOR_SHA = (
+    "19e0de8b5092772d6aec650c1f87a8b86d0dd6ad713e6dafcd76c76c49f2353d"
+)
+TARGET_VERIFIER = (
+    REPO_ROOT / "scripts" / "audits"
+    / "verify_feature_policy_target_v1r2.py"
+)
+TARGET_VERIFIER_SHA = (
+    "53c0b9233b11131a983b30506766877849936efea25f1b0b0ffa0f2f0d5562ef"
+)
+TARGET_DIFF_ARTIFACT = (
+    REPO_ROOT / "artifacts" / "proposals"
+    / "feature_policy_target_v1r2_diff.json"
+)
+TARGET_DIFF_SHA = (
+    "8d52dc0066a26b8007536ca65b28f45708a095014530b2286596701ec1c77e60"
+)
+TARGET_LOG_ARTIFACT = (
+    REPO_ROOT / "artifacts" / "proposals"
+    / "feature_policy_target_v1r2_verify.log"
+)
+TARGET_LOG_SHA = (
+    "ef300f2a9d9ee5c47534c85f1e45b67514d14f7068248bc886f1cc5bf5f9cf84"
+)
+MI_DIR_ORIGINAL_STRING = (
+    "references/dataset_docs/n_baiot/"
+    "meidan2018_arxiv_v1_2026-09-04.pdf (SHA-256 "
+    "1fa5bc4d4d2a12c2e93b18c4d876bd83ab7f456797934fcc71c92db754811964)"
+)
+BASELINE_FLIP_PATHS = [
+    "status",
+    "semantic_core.candidate_examples[0].decision_status",
+    "semantic_core.candidate_examples[1].decision_status",
+    "semantic_core.review_outcome_2026_09_04.resolved_points[0]"
+    ".decision_status",
+]
 
 EXPECTED_PROPOSED_PATHS = {
     "status",
@@ -472,9 +544,13 @@ class Rev1ZeroAdmissionDraftTests(unittest.TestCase):
             )
             self.assertTrue(gate["target"].startswith("permitted after"))
             self.assertIn("#24", gate["target"])
+            # Rev 1 historical shape: the draft carries authorization
+            # text but NO standalone structured preconditions - this
+            # is exactly the recorded gap the Rev 2 target spec and
+            # target artifact close (verified there and in the
+            # simulated-application tests, without any fallback)
+            self.assertNotIn("preconditions", gate)
             self.assertTrue(gate["authorization"].strip())
-            self.assertTrue(gate.get("precondition", "").strip()
-                            or gate["authorization"].strip())
 
     def test_zero_admission_set(self):
         admission = self.draft["admission_set_this_version"]
@@ -660,6 +736,289 @@ class Rev1DocumentationTests(unittest.TestCase):
         )
         # configs still byte-identical per the record
         self.assertIn("`2a903a4a...21b47` / `8a055e2e...6fab`", md)
+
+
+class Rev2TargetArtifactTests(unittest.TestCase):
+    """F23-02 A/B/C: the committed would-be-effective target
+    configuration exists, reproduces from the live baseline via the
+    archived generator, and the live config is still untouched."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.target = json.loads(
+            TARGET_ARTIFACT_PATH.read_text(encoding="utf-8")
+        )
+
+    def test_target_artifact_sha(self):
+        self.assertEqual(
+            sha256_file(TARGET_ARTIFACT_PATH), TARGET_ARTIFACT_SHA
+        )
+
+    def test_target_is_a_complete_feature_policy(self):
+        baseline = json.loads(
+            FEATURE_POLICY_PATH.read_text(encoding="utf-8")
+        )
+        for key in baseline:
+            self.assertIn(key, self.target)
+        self.assertEqual(self.target["kind"], "feature_policy")
+        self.assertEqual(self.target["status"], "frozen")
+        self.assertIn("admission_set_this_version", self.target)
+        self.assertIn("freeze_metadata", self.target)
+
+    def test_scripts_archived_and_hashes_recorded(self):
+        self.assertEqual(sha256_file(TARGET_GENERATOR),
+                         TARGET_GENERATOR_SHA)
+        self.assertEqual(sha256_file(TARGET_VERIFIER),
+                         TARGET_VERIFIER_SHA)
+        self.assertEqual(sha256_file(TARGET_DIFF_ARTIFACT),
+                         TARGET_DIFF_SHA)
+        self.assertEqual(sha256_file(TARGET_LOG_ARTIFACT),
+                         TARGET_LOG_SHA)
+
+    def test_generator_rebuild_is_byte_identical(self):
+        spec = importlib.util.spec_from_file_location(
+            "fp_target_builder_test", TARGET_GENERATOR)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        baseline_text = FEATURE_POLICY_PATH.read_text(
+            encoding="utf-8")
+        rebuilt, applied = module.build_target_text(baseline_text)
+        target_bytes = TARGET_ARTIFACT_PATH.read_bytes()
+        self.assertEqual(rebuilt.encode("utf-8"), target_bytes)
+        self.assertEqual(
+            applied,
+            ["op7_root_additions", "op6_gate_targets",
+             "op5_status_flip_4", "op4_pi_pc_wording",
+             "op3_flip3_decay", "op2_flip2_bytes",
+             "op1_root_flip"],
+        )
+
+    def test_verification_artifacts_record_all_green(self):
+        diff = json.loads(
+            TARGET_DIFF_ARTIFACT.read_text(encoding="utf-8")
+        )
+        self.assertTrue(diff["all_pass"])
+        self.assertEqual(len(diff["checks"]), 30)
+        for name, outcome in diff["checks"].items():
+            self.assertTrue(outcome["pass"], name)
+        log = TARGET_LOG_ARTIFACT.read_text(encoding="utf-8")
+        self.assertNotIn("[FAIL]", log)
+        self.assertIn("[PASS] status_census_exactly_four_frozen_no_"
+                      "proposed", log)
+        self.assertIn("[PASS] mi_dir_first_element_byte_equal_"
+                      "original", log)
+
+    def test_live_config_still_baseline_while_target_committed(self):
+        # nothing applied at proposal time
+        self.assertEqual(sha256_file(FEATURE_POLICY_PATH),
+                         FEATURE_POLICY_SHA)
+
+
+class Rev2SimulatedApplicationTests(unittest.TestCase):
+    """The guards the review demanded: simulate the application in an
+    independent temporary copy and verify the RESULTING configuration,
+    not the plan text."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.baseline = json.loads(
+            FEATURE_POLICY_PATH.read_text(encoding="utf-8")
+        )
+        # simulate: install the committed target bytes over a copy
+        cls.applied = json.loads(
+            TARGET_ARTIFACT_PATH.read_text(encoding="utf-8")
+        )
+
+    def test_exactly_four_structured_status_flips(self):
+        def census(node, path=""):
+            hits = []
+            if isinstance(node, dict):
+                for k, v in node.items():
+                    child = f"{path}.{k}" if path else k
+                    if k in ("status", "decision_status") and \
+                            isinstance(v, str):
+                        hits.append((child, v))
+                    hits.extend(census(v, child))
+            elif isinstance(node, list):
+                for i, v in enumerate(node):
+                    hits.extend(census(v, f"{path}[{i}]"))
+            return hits
+
+        after = census(self.applied)
+        self.assertEqual(len(after), 4)
+        self.assertEqual(
+            set(after),
+            {("status", "frozen"),
+             ("semantic_core.candidate_examples[0].decision_status",
+              "frozen"),
+             ("semantic_core.candidate_examples[1].decision_status",
+              "frozen"),
+             ("semantic_core.review_outcome_2026_09_04"
+              ".resolved_points[0].decision_status", "frozen")},
+        )
+
+    def test_dispositions_unchanged_in_applied(self):
+        self.assertEqual(
+            self.applied["semantic_core"]["candidate_examples"][0]
+            ["semantic_disposition"], "unresolved")
+        self.assertEqual(
+            self.applied["semantic_core"]["candidate_examples"][1]
+            ["semantic_disposition"], "rejected")
+        self.assertEqual(
+            self.applied["semantic_core"]["review_outcome_2026_09_04"]
+            ["resolved_points"][0]["semantic_disposition"], "derived")
+
+    def test_mi_dir_array_rules_in_applied(self):
+        point = self.applied["semantic_core"][
+            "review_outcome_2026_09_04"]["resolved_points"][0]
+        old = self.baseline["semantic_core"][
+            "review_outcome_2026_09_04"]["resolved_points"][0]
+        self.assertIsInstance(old["evidence_source"], str)
+        self.assertIsInstance(point["evidence_source"], list)
+        self.assertEqual(
+            point["evidence_source"][0], MI_DIR_ORIGINAL_STRING)
+        self.assertEqual(
+            point["evidence_source"][0], old["evidence_source"])
+        self.assertEqual(len(point["evidence_source"]), 3)
+        self.assertEqual(point["resolution"], old["resolution"])
+
+    def test_zero_admissions_in_applied(self):
+        adm = self.applied["admission_set_this_version"]
+        self.assertEqual(adm["admitted_mapping_count"], 0)
+        self.assertEqual(adm["three_way_core"], "EMPTY")
+        for core in adm["pairwise_cores"].values():
+            self.assertIn("EMPTY", core)
+        fm = self.applied["freeze_metadata"]
+        self.assertEqual(fm["freeze_id"], PREDICTED_FREEZE_ID)
+
+    def test_protocol_columns_reworded_not_structured(self):
+        core = self.applied["semantic_core"][
+            "review_outcome_2026_09_04"]["pairwise_cores"][
+            "ton_iot__ciciot2023"]
+        self.assertIsInstance(core["protocol_indicators"], str)
+        self.assertIn(
+            "semantic_disposition=unresolved",
+            core["protocol_indicators"])
+        self.assertNotIn(
+            "semantic_disposition=derived",
+            core["protocol_indicators"])
+        self.assertIn("NOTHING is admitted",
+                      core["protocol_indicators"])
+        self.assertIsInstance(core["packet_count"], str)
+        self.assertIn("semantic_disposition=unresolved",
+                      core["packet_count"])
+        self.assertNotIn("decision_status",
+                         {k for k in core.keys()
+                          if k != "protocol_indicators"
+                          and k != "packet_count"})
+
+    def test_gates_structured_preconditions_in_applied(self):
+        for gate in ("materialization", "splitting", "training"):
+            old = self.baseline["data_handling"][gate]
+            new = self.applied["data_handling"][gate]
+            self.assertIsInstance(old, str)
+            self.assertIsInstance(new, dict)
+            self.assertEqual(new["current"],
+                             "forbidden before protocol freeze")
+            self.assertTrue(new["target"].startswith("permitted after"))
+            self.assertIsInstance(new["preconditions"], list)
+            self.assertEqual(len(new["preconditions"]), 6)
+            self.assertTrue(new["preconditions"][0].startswith(
+                "feature_policy.json root status is frozen"))
+            self.assertTrue(new["preconditions"][-1].startswith(
+                "separate explicit user authorization"))
+            self.assertTrue(new["authorization"].strip())
+
+
+class Rev2TargetSpecificationTests(unittest.TestCase):
+    """The Rev 2 specification binds the previously open choices to
+    the committed target artifact and records the verification."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.spec = json.loads(
+            SPEC_PATH.read_text(encoding="utf-8")
+        )
+        cls.target = json.loads(
+            TARGET_ARTIFACT_PATH.read_text(encoding="utf-8")
+        )
+
+    def test_spec_sha_and_state(self):
+        self.assertEqual(sha256_file(SPEC_PATH), SPEC_SHA)
+        self.assertEqual(self.spec["status"], "TARGET_NOT_APPLIED")
+        self.assertEqual(
+            self.spec["kind"],
+            "feature_policy_freeze_target_specification")
+        self.assertEqual(
+            self.spec["decision_record"], "DECISIONS.md #23 Rev 2")
+
+    def test_bindings_match_target_artifact_verbatim(self):
+        self.assertEqual(
+            self.spec["admission_set_this_version"],
+            self.target["admission_set_this_version"])
+        self.assertEqual(
+            self.spec["freeze_metadata"],
+            self.target["freeze_metadata"])
+        bindings = self.spec["target_config_state"]["bindings"]
+        self.assertTrue(bindings["admission_set_this_version"]
+                        ["not_left_to_24"])
+        self.assertTrue(bindings["freeze_metadata"]["not_left_to_24"])
+
+    def test_spec_targets_match_target_artifact(self):
+        tcs = self.spec["target_config_state"]
+        # MI_dir evidence array equals the applied target's array
+        mi = [
+            t for t in tcs["evidence_source_targets"]
+            if "(MI_dir)" in t["record"]
+        ][0]
+        applied_mi = self.target["semantic_core"][
+            "review_outcome_2026_09_04"]["resolved_points"][0]
+        self.assertEqual(mi["target_value"],
+                         applied_mi["evidence_source"])
+        self.assertEqual(mi["target_value"][0],
+                         MI_DIR_ORIGINAL_STRING)
+        # string targets byte-equal
+        core = self.target["semantic_core"][
+            "review_outcome_2026_09_04"]["pairwise_cores"][
+            "ton_iot__ciciot2023"]
+        for w in tcs["string_target_wording"]:
+            if w["path"].endswith("protocol_indicators"):
+                self.assertEqual(w["exact_target"],
+                                 core["protocol_indicators"])
+            if w["path"].endswith("packet_count"):
+                self.assertEqual(w["exact_target"],
+                                 core["packet_count"])
+        # gate preconditions byte-equal
+        for g in tcs["data_handling_gate_targets"]:
+            self.assertEqual(
+                g["preconditions"],
+                self.target["data_handling"][g["gate"]]
+                ["preconditions"])
+
+    def test_outcome_evidence_recorded(self):
+        oe = self.spec["outcome_evidence"]
+        self.assertEqual(oe["checks_total"], 30)
+        self.assertEqual(oe["checks_failed"], [])
+        self.assertFalse(oe["live_config_touched"])
+        self.assertIn("verify_feature_policy_target_v1r2.py",
+                      oe["verification_script"])
+
+
+class Rev2FmpRestorationTests(unittest.TestCase):
+    """The non-blocking Rev 2 fix: the V1 historical sentence before
+    section 6.1 is complete again (ends with 'own authorization.')."""
+
+    def test_fmp_truncated_sentence_restored(self):
+        md = FMP_PATH.read_text(encoding="utf-8")
+        self.assertIn(
+            "materialization/splitting/training ban - that requires "
+            "#24 and its\nown authorization.",
+            md,
+        )
+        # no truncation remains
+        self.assertNotIn("#24 and its\n\n### 6.1", md)
+        # the historical watermark tail is still the last line
+        self.assertTrue(md.endswith("> AI生成\n"))
 
 
 if __name__ == "__main__":

@@ -831,3 +831,93 @@
     nothing is frozen; the materialization/splitting/training ban
     is NOT lifted; #24 execution still requires separate explicit
     user authorization.
+    Rev 2 (2026-09-05, target-configuration revision closing F23-02),
+    per user independent review of the V1R1 evidence package
+    FEATURE_PROTOCOL_FREEZE_PROPOSAL_EVIDENCE_V1R1.zip (SHA-256
+    `1c94c84f8f1b3d13aa09aab7674e5dba37a619aa7d8ae2d3a0ff06e5c7403de8`,
+    3,226,214 bytes, 51 entries = 33 files + 18 directories; package
+    integrity PASS, in-package tests 62/62, both live configs
+    verified byte-identical; F23-01 and F23-03 CLOSED; F23-02
+    remained open), delivered with the review package
+    FEATURE_PROTOCOL_23_REV1_INDEPENDENT_REVIEW.zip (SHA-256
+    `c81666ef904f099a03ef840960e7a3567268da9738eeb4681e5a777940641efd`).
+    The V1 and Rev 1 records above remain the historical staging
+    records; where they conflict with this revision, this revision
+    supersedes them. F23-02 is closed in three parts matching the
+    review's block categories:
+
+    (a) Category A (binding-point determinism) - the deliverable is
+        now a committed COMPLETE would-be-effective target
+        configuration, not a change plan:
+        artifacts/proposals/feature_policy_freeze_target_v1r2.json
+        (SHA-256
+        `e81a55c16f9439b0356295353e8b342de19d5c5606d868952592f913beda714b`),
+        generated deterministically from the live baseline bytes
+        (`2a903a4a...21b47`) by text-level replacements only, with
+        the generator archived as
+        scripts/audits/build_feature_policy_target_v1r2.py
+        (SHA-256
+        `19e0de8b5092772d6aec650c1f87a8b86d0dd6ad713e6dafcd76c76c49f2353d`).
+        admission_set_this_version and freeze_metadata are bound
+        verbatim as two new root keys of the target config; the
+        accompanying specification artifacts/proposals/
+        feature_policy_freeze_target_spec_v1r2.json (SHA-256
+        `0fa8da404f78ed9b8258f3f4e35df64750ba86aa3f2bbe5cceeab0bb287af150`)
+        declares the bindings (target_config_state.bindings,
+        not_left_to_24 = true) and fixes the application
+        preconditions and method (baseline re-verify -> byte
+        install -> hash record -> verification green). Nothing is
+        left for the applier to choose.
+
+    (b) Category B (MI_dir consistency) - in the target config the
+        MI_dir resolved point's evidence_source becomes an ARRAY:
+        element [0] is the existing string BYTE-EQUAL (not merely a
+        prefix); element [1] adds the Meidan Table 2 / 'Feature
+        extraction' section anchor; element [2] adds the UCI page
+        variable-information anchor; the resolution text is
+        unchanged. The Rev 1 draft's internally inconsistent
+        action / existing_value_kept / target_value trio is
+        corrected in the Rev 2 specification: the array choice is
+        confirmed, the keep-claim is scoped to element [0] exactly,
+        and the spec target_value equals the committed target
+        array.
+
+    (c) Category C (guards over the applied result) - the archived
+        verifier scripts/audits/verify_feature_policy_target_v1r2.py
+        (SHA-256
+        `53c0b9233b11131a983b30506766877849936efea25f1b0b0ffa0f2f0d5562ef`)
+        applies the seven text-level operations to the baseline in
+        memory, byte-compares the result against the committed
+        target artifact, and runs 30 checks, all green: EXACTLY 4
+        structured status flips (recursive census after
+        application: 4 frozen, 0 proposed, nothing else);
+        semantic_dispositions unchanged (unresolved / rejected /
+        derived); MI_dir type str -> list with element [0]
+        byte-equal; zero actual admissions (admitted_mapping_count
+        = 0, every core EMPTY); the two protocol strings reworded
+        (unresolved/proposed, no "derived" wording, no new
+        structured status fields); gate objects with 6 standalone
+        structured preconditions each (no authorization fallback);
+        unique binding points; leaf-level added/changed/removed
+        accounting with zero unexpected changes. Artifacts:
+        artifacts/proposals/feature_policy_target_v1r2_diff.json
+        (SHA-256
+        `8d52dc0066a26b8007536ca65b28f45708a095014530b2286596701ec1c77e60`)
+        and feature_policy_target_v1r2_verify.log (SHA-256
+        `ef300f2a9d9ee5c47534c85f1e45b67514d14f7068248bc886f1cc5bf5f9cf84`).
+        Guard tests now SIMULATE the application and assert the
+        resulting configuration (Rev 2 test classes), and the Rev 1
+        authorization-fallback assertion is removed.
+
+    Non-blocking same-round fix: the FEATURE_MAPPING_PROTOCOL.md V1
+    historical sentence truncated by the Rev 1 section 6.1
+    insertion is restored ("...that requires #24 and its own
+    authorization.").
+
+    Rev 2 scope: proposal artifacts, archived scripts, guard tests,
+    and documentation ONLY. Both live config files stay
+    byte-identical (`2a903a4a...21b47` / `8a055e2e...6fab`); the
+    target bytes are a PROPOSAL artifact and are NOT installed;
+    nothing is frozen; the materialization/splitting/training ban
+    is NOT lifted; #24 execution still requires separate explicit
+    user authorization.

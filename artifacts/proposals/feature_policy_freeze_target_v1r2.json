@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "kind": "feature_policy",
+  "status": "frozen",
+  "direction": "dataset-native feature sets are primary; a strictly audited harmonised semantic core is secondary; no feature is invented to recover the old manuscript's 44-feature claim",
+  "primary_native_feature_sets": {
+    "ton_iot": {
+      "candidate_columns_total": 44,
+      "minus_label_columns": ["label", "type"],
+      "max_candidate_predictor_columns": 42,
+      "then": "leakage exclusion per ton_iot_exclusions",
+      "columns": [
+        "src_ip", "src_port", "dst_ip", "dst_port", "proto", "service", "duration",
+        "src_bytes", "dst_bytes", "conn_state", "missed_bytes", "src_pkts",
+        "src_ip_bytes", "dst_pkts", "dst_ip_bytes", "dns_query", "dns_qclass",
+        "dns_qtype", "dns_rcode", "dns_AA", "dns_RD", "dns_RA", "dns_rejected",
+        "ssl_version", "ssl_cipher", "ssl_resumed", "ssl_established", "ssl_subject",
+        "ssl_issuer", "http_trans_depth", "http_method", "http_uri", "http_version",
+        "http_request_body_len", "http_response_body_len", "http_status_code",
+        "http_user_agent", "http_orig_mime_types", "http_resp_mime_types",
+        "weird_name", "weird_addl", "weird_notice"
+      ]
+    },
+    "ciciot2023": {
+      "candidate_features": 39,
+      "label_location": "not a column; derived from category directory name",
+      "columns": [
+        "Header_Length", "Protocol Type", "Time_To_Live", "Rate", "fin_flag_number",
+        "syn_flag_number", "rst_flag_number", "psh_flag_number", "ack_flag_number",
+        "ece_flag_number", "cwr_flag_number", "ack_count", "syn_count", "fin_count",
+        "rst_count", "HTTP", "HTTPS", "DNS", "Telnet", "SMTP", "SSH", "IRC", "TCP",
+        "UDP", "DHCP", "ARP", "ICMP", "IGMP", "IPv", "LLC", "Tot sum", "Min", "Max",
+        "AVG", "Std", "Tot size", "IAT", "Number", "Variance"
+      ]
+    },
+    "n_baiot": {
+      "candidate_features": 115,
+      "label_location": "not a column; derived from file location (device + family + filename)",
+      "structure": "MI_dir_* / H_* / HH_* / HH_jit_* / HpHp_* x windows L5/L3/L1/L0.1/L0.01 x weight/mean/variance/std/magnitude/radius/covariance/pcc",
+      "special_case": "demonstrate_structure.csv is zero-row and never enters training"
+    },
+    "shared_experimental_controls": "same model families, same training budgets, same evaluation rules, same scheduling algorithm; input dimensions may differ; headline comparisons are within-dataset"
+  },
+  "ton_iot_exclusions": {
+    "permanent": {
+      "columns": [
+        "label", "type", "src_ip", "dst_ip", "dns_query", "ssl_subject", "ssl_issuer",
+        "http_uri", "http_user_agent", "weird_addl"
+      ],
+      "rationale": "label leakage (label, type); entity identifiers with memorization risk (src_ip, dst_ip); free-text fields that can memorize capture-specific artifacts"
+    },
+    "port_columns": {
+      "columns": ["src_port", "dst_port"],
+      "rule": "never raw numeric values; if kept at all, converted to a predefined port class (well_known/registered/dynamic) with the mapping fixed before any split"
+    },
+    "categorical_native_only": {
+      "columns": [
+        "proto", "service", "conn_state", "ssl_version", "ssl_cipher", "http_method",
+        "http_version", "http_orig_mime_types", "http_resp_mime_types", "weird_name"
+      ],
+      "rule": "permitted only in the TON-IoT native model; category encoders fitted on the training split only"
+    },
+    "split_only_metadata": "IP, device, file, and capture identifiers may be used for group-aware splits, never as model features"
+  },
+  "semantic_core": {
+    "role": "secondary; harmonised semantic core admitted only per-mapping through the audit gates",
+    "audit_gates": [
+      "physical/statistical meaning is the same",
+      "units are identical or an explicit conversion is defined",
+      "aggregation object is the same (packet/flow/connection)",
+      "time window is the same",
+      "directionality is the same",
+      "the derivation formula is reproducible",
+      "the official field documentation supports the mapping"
+    ],
+    "mapping_record_fields": [
+      "canonical_concept", "dataset_column", "derivation_formula", "unit",
+      "aggregation_level", "time_window", "directionality", "missing_value_policy",
+      "evidence_source", "semantic_disposition", "decision_status"
+    ],
+    "semantic_disposition_values": ["exact", "derived", "unresolved", "rejected"],
+    "decision_status_values": ["proposed", "frozen"],
+    "pairwise_cores_permitted": true,
+    "three_way_core_rule": "only mappings passing the gates in all three datasets enter the three-way core",
+    "empty_core_policy": "if the three-way core is empty or too small to be meaningful, that is reported honestly; no alignment is forced",
+    "target_size_policy": "the number of core features is an outcome of the audit, not a precondition; no target size is assumed",
+    "candidate_examples": [
+      {
+        "canonical_concept": "total_transferred_bytes",
+        "candidates": {
+          "ton_iot": "src_bytes + dst_bytes (TCP payload bytes per connection, per official description)",
+          "ciciot2023": "Tot sum (summation of packet lengths in flow, per official feature table)"
+        },
+        "semantic_disposition": "unresolved",
+        "decision_status": "frozen",
+        "evidence_source": [
+          "datasets/incoming/ton_iot/Network Features-Description.pdf (SHA-256 b1f63453029855e084290a2f79554eaa7e3b85f8d53fb0ea4605966ef25ebe3b) p.1 rows 9-10: src_bytes/dst_bytes are payload bytes of TCP sequence numbers (per-connection quantities); consulted as the TON-IoT side definition",
+          "datasets/incoming/ciciot2023/README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) p.1 47-row table row 35 'Tot sum: Summation of packets lengths in flow' and p.1 39-row window table row 30 'Tot Sum: Total packet length within the aggregated packets (window)'; consulted as the CICIoT2023 side definition; the two tables also differ from each other (flow vs window)"
+        ],
+        "gate_note": "REVIEW OUTCOME 2026-09-04: different physical quantities (TCP payload bytes vs packet lengths including headers) and different aggregation objects (connection vs flow); mapping rejected in narrow form, unresolved in broad form; see docs/FIELD_SEMANTICS_REVIEW.md"
+      },
+      {
+        "canonical_concept": "decayed_window_statistics",
+        "candidates": {
+          "n_baiot": "all L5/L3/L1/L0.1/L0.01 windowed statistics"
+        },
+        "semantic_disposition": "rejected",
+        "decision_status": "frozen",
+        "evidence_source": [
+          "references/dataset_docs/n_baiot/meidan2018_arxiv_v1_2026-09-04.pdf (SHA-256 1fa5bc4d4d2a12c2e93b18c4d876bd83ab7f456797934fcc71c92db754811964) Table 2 + 'Feature extraction' section: 23 features per time scale over four aggregation objects (Source IP, Source MAC-IP, Channel, Socket) with decay factors L5/L3/L1/L0.1/L0.01",
+          "references/dataset_docs/n_baiot/uci_dataset_page_2026-09-04.html (SHA-256 e0b79978d166b601ce1e8480625d8ad9fe40b328ad92d66f8eebde9730b5d57f) variable information: same decay/statistics scheme; the released CSVs of TON-IoT and CICIoT2023 contain no damped-window stream statistics columns"
+        ],
+        "gate_note": "REVIEW OUTCOME 2026-09-04: damped-window stream statistics have no counterpart in the other two released CSVs; N-BaIoT participates in no pairwise core; see docs/FIELD_SEMANTICS_REVIEW.md"
+      }
+    ],
+    "review_outcome_2026_09_04": {
+      "three_way_core": "EMPTY - no concept passes the seven gates in all three datasets; honest outcome, not a failure",
+      "pairwise_cores": {
+        "ton_iot__ciciot2023": {
+          "protocol_indicators": "semantic_disposition=unresolved, decision_status=proposed; REVISED 2026-09-05 (#23 Rev 1) after independent review F23-01: dataset-native is the mainline this version and NOTHING is admitted to the pairwise core - the core stays EMPTY. tcp and udp remain CANDIDATES for a future evidence-complete review (both sides' official docs describe transport-layer protocol semantics for them, and the observed TON-IoT proto value set is tcp 168747 / udp 42015 / icmp 281 per proto census v1+v2), but the admission claim is WITHDRAWN: the official CICIoT2023 page-1 documentation is internally inconsistent about the protocol columns (47-row indicator-style table vs 39-row 'Average no. of ... packets in the window' table), so gates 3, 4, and 7 are unconfirmed for the released CSV; 'per-record aggregation' and 'whole-record window' phrasing is container language, not a definition of the measured object. icmp likewise stays unresolved: the earlier transport-vs-network-layer wording difference is NOT a proven semantic incompatibility (Zeek conn logs cover TCP/UDP/ICMP in one record type); the correct statement is that current evidence is insufficient for admission, not that incompatibility is proven. Evidence: datasets/incoming/ton_iot/Network Features-Description.pdf p.1 row 6; datasets/incoming/ciciot2023/README.pdf p.1 47-row table rows 28/29/32 and 39-row table rows 23/24/27 (archived PNGs in references/dataset_docs/ciciot2023/readme_p1_feature_table/). The remaining CICIoT2023 protocol columns (DHCP/ARP/IGMP/IPv/LLC and the application-layer set) still have no proposed TON-IoT counterpart; no correspondence is invented and no unknown value is interpreted as all-zero indicators. Excluding ICMP from cross-dataset MAPPING does not delete the 281 ICMP samples or the native proto feature.",
+          "packet_count": "semantic_disposition=unresolved, decision_status=proposed; connection vs flow aggregation object still unconfirmed for the released CSV; not admitted this version. Evidence: datasets/incoming/ton_iot/Network Features-Description.pdf p.1 rows 13/15 (per-connection directional packet counts) vs datasets/incoming/ciciot2023/README.pdf p.1 row 42 ('Number: The number of packets in the flow'); the README's two conflicting page-1 tables leave the released column's semantics undocumented."
+        },
+        "ton_iot__n_baiot": "EMPTY (structural: per-connection logs vs damped-window stream statistics)",
+        "ciciot2023__n_baiot": "EMPTY (structural: whole-flow aggregates vs damped-window stream statistics)"
+      },
+      "open_points": [
+        "CICIoT2023 IAT per-row aggregate (mean/max/last) is undocumented; treat as unresolved",
+        "CICIoT2023 Variance direction phrasing ('incoming / outgoing') is ambiguous in the official table",
+        "official README feature table lists names (ts, flow duration, Srate, Drate, urg coun, Magnitue, Radius, Covariance, Weight) that are absent from the released 39-column CSV header; the frozen header is authoritative"
+      ],
+      "resolved_points": [
+        {
+          "point": "N-BaIoT MI_dir_* (15 features) not defined on the UCI page",
+          "resolution": "RESOLVED as derived evidence 2026-09-04: Meidan et al. 2018 Table 2 and the 'Feature extraction' section define 23 features per time scale over four aggregation objects (Source IP, Source MAC-IP, Channel, Socket). Matching the frozen 115-column header by group width: H=3 (Source IP), HH=7 (Channel), HH_jit=3 (Channel jitter), HpHp=7 (Socket), leaving MI_dir=3 (Source MAC-IP). Therefore MI_dir_* are damped-window statistics aggregated by Source MAC-IP: weight = damped count, mean/variance = mean and variance of outbound-only packet sizes. The paper never uses the literal string 'MI_dir', so the prefix attribution is by elimination, not verbatim definition.",
+          "semantic_disposition": "derived",
+          "decision_status": "frozen",
+          "evidence_source": [
+            "references/dataset_docs/n_baiot/meidan2018_arxiv_v1_2026-09-04.pdf (SHA-256 1fa5bc4d4d2a12c2e93b18c4d876bd83ab7f456797934fcc71c92db754811964)",
+            "Table 2 and the 'Feature extraction' section of the same PDF: 23 features per time scale over the four aggregation objects (Source IP, Source MAC-IP, Channel, Socket); MI_dir attributed to Source MAC-IP by elimination from the frozen 115-column group widths",
+            "references/dataset_docs/n_baiot/uci_dataset_page_2026-09-04.html (SHA-256 e0b79978d166b601ce1e8480625d8ad9fe40b328ad92d66f8eebde9730b5d57f) variable information section: defines the stream aggregation prefixes and decay factors L5/L3/L1/L0.1/L0.01 but NOT MI_dir (the gap this resolution fills)"
+          ]
+        }
+      ],
+      "review_record": "docs/FIELD_SEMANTICS_REVIEW.md"
+    }
+  },
+  "paper_positioning": "the scheduler adapts to heterogeneous detectors over heterogeneous feature spaces; the paper must not claim a universal 44-dimensional representation",
+  "freeze_conditions": [
+    "official field/statistics documents of all three datasets reviewed",
+    "TON-IoT type value inventory completed (read-only pass)",
+    "each mapping's evidence_source cites the specific official document"
+  ],
+  "data_handling": {
+    "materialization": {
+      "current": "forbidden before protocol freeze",
+      "target": "permitted after protocol freeze (#24), subject to the label-ontology chain, the feature/label protocol freeze, and the standing experimental discipline (no split changes after formal experiments start; encoder fitting on the training split only; deterministic rotation and order-invariance gates)",
+      "preconditions": [
+        "feature_policy.json root status is frozen AND freeze_metadata is present in the same applied config",
+        "label_ontology.json is frozen (SHA-256 8a055e2e...6fab class) and byte-identical to its frozen state",
+        "config matches the recorded target SHA for this exact freeze (feature_policy_freeze_target_v1r2.json)",
+        "the four structured flips and all per-record evidence targets applied exactly (application verification script green)",
+        "zero actual admissions this version (admission_set_this_version.admitted_mapping_count == 0)",
+        "separate explicit user authorization for THIS gate obtained and recorded in DECISIONS.md"
+      ],
+      "authorization": "individually authorized at #24 only; stays forbidden until then"
+    },
+    "splitting": {
+      "current": "forbidden before protocol freeze",
+      "target": "permitted after protocol freeze (#24), subject to the label-ontology chain, the feature/label protocol freeze, and the standing experimental discipline (no split changes after formal experiments start; encoder fitting on the training split only; deterministic rotation and order-invariance gates)",
+      "preconditions": [
+        "feature_policy.json root status is frozen AND freeze_metadata is present in the same applied config",
+        "label_ontology.json is frozen (SHA-256 8a055e2e...6fab class) and byte-identical to its frozen state",
+        "config matches the recorded target SHA for this exact freeze (feature_policy_freeze_target_v1r2.json)",
+        "the four structured flips and all per-record evidence targets applied exactly (application verification script green)",
+        "zero actual admissions this version (admission_set_this_version.admitted_mapping_count == 0)",
+        "separate explicit user authorization for THIS gate obtained and recorded in DECISIONS.md"
+      ],
+      "authorization": "individually authorized at #24 only; stays forbidden until then"
+    },
+    "training": {
+      "current": "forbidden before protocol freeze",
+      "target": "permitted after protocol freeze (#24), subject to the label-ontology chain, the feature/label protocol freeze, and the standing experimental discipline (no split changes after formal experiments start; encoder fitting on the training split only; deterministic rotation and order-invariance gates)",
+      "preconditions": [
+        "feature_policy.json root status is frozen AND freeze_metadata is present in the same applied config",
+        "label_ontology.json is frozen (SHA-256 8a055e2e...6fab class) and byte-identical to its frozen state",
+        "config matches the recorded target SHA for this exact freeze (feature_policy_freeze_target_v1r2.json)",
+        "the four structured flips and all per-record evidence targets applied exactly (application verification script green)",
+        "zero actual admissions this version (admission_set_this_version.admitted_mapping_count == 0)",
+        "separate explicit user authorization for THIS gate obtained and recorded in DECISIONS.md"
+      ],
+      "authorization": "individually authorized at #24 only; stays forbidden until then"
+    },
+    "disk_budget_note": "design work reads inventory JSONs and small documents only; no data copies are created"
+  },
+  "admission_set_this_version": {
+    "three_way_core": "EMPTY",
+    "pairwise_cores": {
+      "ton_iot__ciciot2023": "EMPTY (protocol_indicators unresolved/candidate; packet_count unresolved)",
+      "ton_iot__n_baiot": "EMPTY (structural)",
+      "ciciot2023__n_baiot": "EMPTY (structural)"
+    },
+    "admitted_mapping_count": 0,
+    "admitted_mapping_note": "ZERO ADMISSIONS is the deliberate Rev 1 outcome per the user's Rev-1 verdict: dataset-native is the mainline; tcp/udp are retained candidates; an empty pairwise core is reported honestly and no alignment is forced. The freeze (decision_status=frozen) locks THIS review decision; frozen never means admitted.",
+    "future_admission_path": "A future version may admit specific mappings only with: (1) a complete seven-gate audit record per mapping including aggregation_level, time_window, directionality, missing_value_policy, both-side formulas, and per-gate anchored evidence; (2) resolution of the official-source internal inconsistency (which README table corresponds to the released 39-column CSV), or a documented decision on which description governs with justification; (3) separate explicit user authorization."
+  },
+  "freeze_metadata": {
+    "freeze_id": "FEATURE-POLICY-20260905-V1-FROZEN",
+    "applied_by": "#24 only, under its own separate explicit user authorization",
+    "proposal_id": "FEATURE-POLICY-20260905-V1-PROPOSED (DECISIONS.md #23, superseded in part by #23 Rev 1)",
+    "frozen_semantics": "decision_status=frozen locks the review decision of this version; it does not assert any mapping holds, does not resolve the unresolved, does not bar a future evidence-based version, and does not lift the materialization/splitting/training gates by itself (the gate target values take effect only as part of the same #24 change, each individually authorized)",
+    "out_of_scope": [
+      "config/label_ontology.json (frozen, byte-identical 8a055e2e...)",
+      "frozen dataset-level mapping tables and fixed_decisions",
+      "audit_gates, mapping_record_fields, and policy texts (direction/paper_positioning/empty-core honesty)",
+      "proto census artifacts (audit evidence, immutable; v1+v2)",
+      "ton_iot_exclusions and primary_native_feature_sets (native sets unchanged; only status and evidence fields change)"
+    ]
+  }
+}

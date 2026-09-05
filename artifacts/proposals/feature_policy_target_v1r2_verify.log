@@ -1,0 +1,38 @@
+[PASS] baseline_unchanged - 2a903a4a0dd54e4307b7dce24599c39ce62b378b4cd8a95f8a633ffedb321b47
+[PASS] target_artifact_sha - e81a55c16f9439b0356295353e8b342de19d5c5606d868952592f913beda714b
+[PASS] rebuild_from_generator_byte_identical - ops=['op7_root_additions', 'op6_gate_targets', 'op5_status_flip_4', 'op4_pi_pc_wording', 'op3_flip3_decay', 'op2_flip2_bytes', 'op1_root_flip']
+[PASS] flip::status - proposed -> frozen
+[PASS] flip::semantic_core.candidate_examples[0].decision_status - proposed -> frozen
+[PASS] flip::semantic_core.candidate_examples[1].decision_status - proposed -> frozen
+[PASS] flip::semantic_core.review_outcome_2026_09_04.resolved_points[0].decision_status - proposed -> frozen
+[PASS] status_census_exactly_four_frozen_no_proposed - census=[('semantic_core.candidate_examples[0].decision_status', 'frozen'), ('semantic_core.candidate_examples[1].decision_status', 'frozen'), ('semantic_core.review_outcome_2026_09_04.resolved_points[0].decision_status', 'frozen'), ('status', 'frozen')]
+[PASS] disposition_unchanged::semantic_core.candidate_examples[0].semantic_disposition - unresolved
+[PASS] disposition_unchanged::semantic_core.candidate_examples[1].semantic_disposition - rejected
+[PASS] disposition_unchanged::semantic_core.review_outcome_2026_09_04.resolved_points[0].semantic_disposition - derived
+[PASS] mi_dir_type_string_to_array - str -> list[3]
+[PASS] mi_dir_first_element_byte_equal_original - byte-equal
+[PASS] mi_dir_array_has_three_elements - len=3
+[PASS] mi_dir_resolution_text_unchanged - 663 chars
+[PASS] admission_set_zero - count=0, all cores EMPTY
+[PASS] admission_set_bound_in_target_config - root-level key added by the target bytes
+[PASS] freeze_metadata_bound_in_target_config - FEATURE-POLICY-20260905-V1-FROZEN
+[PASS] protocol_indicators_string_unresolved_no_derived - string retained, unresolved/proposed, zero admission
+[PASS] packet_count_string_unresolved - string retained, unresolved
+[PASS] pi_pc_gain_no_new_status_fields - final 4-path enumeration stays final
+[PASS] gate_structured::materialization - str -> dict with 6 precondition fields
+[PASS] gate_structured::splitting - str -> dict with 6 precondition fields
+[PASS] gate_structured::training - str -> dict with 6 precondition fields
+[PASS] gate_targets_deterministic_and_identical - materialization == splitting == training
+[PASS] removed_leaves_only_the_4_type_conversions - removed=['data_handling.materialization', 'data_handling.splitting', 'data_handling.training', 'semantic_core.review_outcome_2026_09_04.resolved_points[0].evidence_source'] unexpected=[]
+[PASS] added_leaves_exactly_as_enumerated - unexpected=[]
+[PASS] changed_leaves_exactly_the_6_expected - changed=['semantic_core.candidate_examples[0].decision_status', 'semantic_core.candidate_examples[1].decision_status', 'semantic_core.review_outcome_2026_09_04.pairwise_cores.ton_iot__ciciot2023.packet_count', 'semantic_core.review_outcome_2026_09_04.pairwise_cores.ton_iot__ciciot2023.protocol_indicators', 'semantic_core.review_outcome_2026_09_04.resolved_points[0].decision_status', 'status'] unexpected=[]
+[PASS] changed_leaves_complete - 4 flips + 2 string rewordings
+
+unified diff hunk headers:
+  @@ -1,7 +1,7 @@
+  @@ -92,7 +92,11 @@
+  @@ -101,7 +105,11 @@
+  @@ -109,8 +117,8 @@
+  @@ -125,8 +133,12 @@
+  @@ -139,9 +151,69 @@
+[PASS] label_ontology_still_frozen - 8a055e2e34bc8d70f62909f52441915589c310659d6ce3e427a2704820926fab

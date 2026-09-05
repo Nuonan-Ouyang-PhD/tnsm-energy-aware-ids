@@ -233,6 +233,7 @@ freeze scope (label_ontology.json, frozen mapping tables, semantic
 dispositions, audit gates, native feature sets) is touched by this
 proposal, and the freeze alone does not lift the
 materialization/splitting/training ban - that requires #24 and its
+own authorization.
 
 ### 6.1 Rev 1 staging addendum (2026-09-05, zero-admission revision)
 
@@ -329,5 +330,35 @@ All statuses and both config files are UNCHANGED at Rev 1 time.
 Nothing outside the Rev 1 documentation scope is touched, the
 materialization/splitting/training ban is NOT lifted, and #24
 execution still requires separate explicit user authorization.
+
+### 6.2 Rev 2 staging addendum (2026-09-05, target-configuration revision)
+
+Rev 2 closes finding F23-02 per the user's review of the V1R1
+evidence package (FEATURE_PROTOCOL_23_REV1_INDEPENDENT_REVIEW.zip,
+SHA-256 `c81666ef...41efd`): the deliverable changes from a change
+plan to a committed complete would-be-effective target
+configuration. The target bytes
+(artifacts/proposals/feature_policy_freeze_target_v1r2.json,
+SHA-256 `e81a55c1...714b`) are generated from the live baseline by
+text-level replacements only (generator archived as
+scripts/audits/build_feature_policy_target_v1r2.py) and carry: the
+4 structured status flips; the two string rewordings; the MI_dir
+evidence_source as an array with element [0] byte-equal to the
+existing string; admission_set_this_version and freeze_metadata as
+new root keys (binding points fixed now); and the three
+data-handling gate targets as objects whose "preconditions" are
+standalone structured fields (6 each, no authorization fallback).
+The archived verifier
+(scripts/audits/verify_feature_policy_target_v1r2.py) applies the
+operations in memory, byte-compares against the committed target,
+and passes 30 checks (diff/log artifacts committed alongside);
+guard tests simulate the application and assert the resulting
+configuration. The V1 sentence truncated by the 6.1 insertion
+above is restored. The specification
+(artifacts/proposals/feature_policy_freeze_target_spec_v1r2.json)
+declares the bindings and application preconditions. Both live
+config files stay byte-identical and the target bytes are NOT
+installed at proposal time; #24 remains unauthorized and the
+materialization/splitting/training ban is NOT lifted.
 
 > AI生成
