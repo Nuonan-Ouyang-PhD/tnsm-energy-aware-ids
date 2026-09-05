@@ -312,8 +312,10 @@ be used to construct group-aware splits, but never as model features.
 
 ## 5. Freeze conditions
 
-The family mapping table is NOT frozen yet. Before freezing
-`canonical_family` assignments:
+All three dataset-level family mapping tables are now frozen. The
+ontology root status and `canonical_family.decision_status` remain
+`proposed` and require a separate root-level ontology freeze decision.
+Before that root-level decision, the completed conditions were:
 
 1. ~~Complete the TON-IoT `type` unique-value inventory~~ DONE:
    `TON-IOT-LABEL-CENSUS-20260903-V1-VERIFIED`.

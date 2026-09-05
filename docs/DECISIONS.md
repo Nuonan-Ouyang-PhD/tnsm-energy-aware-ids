@@ -381,3 +381,28 @@
     materialization, splitting, and training remain forbidden until the
     root-level ontology freeze is complete. Next stage: the root-level
     ontology freeze decision (separate authorization).
+
+    Rev 1, per user re-verification of the FREEZE evidence package
+    (N_BAIOT_TYPE_MAPPING_FREEZE_EVIDENCE.zip, SHA-256 bdfe11ade28b
+    575be103e958ca00501c11f8bf79a87dd9180abfdb11aa607a12, 2,533,191
+    bytes, 31 entries, source commit `a2682f8`; user-verified ZIP
+    hash/size/CRC/permissions, MANIFEST 18/18, in-package tests 91/91,
+    V1R1 -> FREEZE diff exactly 4 content files, 11/11 mappings
+    zero-diff apart from decision_status): the freeze itself is
+    confirmed valid and unchanged - all 11 frozen decision_status
+    values, the mapping content, semantic dispositions, evidence, and
+    rationales are untouched; the ontology root status and
+    canonical_family.decision_status remain proposed; the
+    materialization/splitting/training ban stays in force. The only
+    change in this revision is documentation hygiene: section 5 of
+    LABEL_ONTOLOGY.md still opened with the historical proposal-stage
+    sentence "The family mapping table is NOT frozen yet.", which
+    contradicted the frozen dataset-level tables declared in the same
+    section (35 in-package tests had no guard on that sentence, so the
+    91/91 pass could not catch it); the sentence is removed and
+    replaced with an explicit statement that all three dataset-level
+    family mapping tables are frozen while the ontology root status and
+    canonical_family.decision_status remain proposed and require a
+    separate root-level ontology freeze decision, and a guard test now
+    locks the corrected wording. config/label_ontology.json is NOT
+    changed in this revision.

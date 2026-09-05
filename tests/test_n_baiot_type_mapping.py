@@ -367,6 +367,25 @@ class NBaiotTypeMappingTests(unittest.TestCase):
         self.assertIn("canonical_family.decision_status all remain `proposed`", md)
         self.assertIn("forbidden until the\n    root-level ontology freeze", md)
 
+    def test_label_ontology_md_section5_has_no_stale_proposal_residue(self):
+        """Freeze Rev 1 guard: the section-5 historical proposal-stage
+        opener (written before any dataset-level table was frozen) must
+        not contradict the frozen tables declared in the same section."""
+        md = LABEL_ONTOLOGY_MD_PATH.read_text(encoding="utf-8")
+        self.assertNotIn(
+            "The family mapping table is NOT frozen yet.", md,
+            "stale proposal-stage sentence still present in section 5",
+        )
+        self.assertIn(
+            "All three dataset-level family mapping tables are now frozen.", md
+        )
+        self.assertIn(
+            "require a separate root-level ontology freeze decision", md
+        )
+        # the condition history list and closing ban survive
+        self.assertIn("All three freeze conditions are satisfied.", md)
+        self.assertIn("Data materialization, splitting, and training remain forbidden.", md)
+
     # ----- published-surface hygiene ---------------------------------------
 
     def test_no_aigc_watermarks_in_published_docs(self):
