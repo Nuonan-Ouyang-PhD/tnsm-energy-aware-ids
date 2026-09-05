@@ -181,16 +181,20 @@ source; all 33 attack directories map to attack families; the
 comparison claims remain conditional on the other mapping freezes
 and subtype-coverage audits.
 
-### N-BaIoT family/subtype → canonical_family mapping table (PROPOSED)
+### N-BaIoT family/subtype → canonical_family mapping table (FROZEN)
 
-Proposed as `N-BAIOT-TYPE-MAPPING-20260904-V1-PROPOSED` (DECISIONS.md
-#19): all 11 entries carry `decision_status = proposed` — 11 exact / 0
-derived. Nothing is frozen in this proposal; user verification is
-pending. The gafgyt → bashlite family decision is already frozen as a
-fixed_decision (Meidan et al. 2018, p.4: "BASHLITE (also known as
-Gafgyt, Q-Bot, Torlus, Lizard-Stresser, and Lizkebab)"); this proposal
-extends that frozen family decision to the 5 gafgyt subtypes, it does
-not modify the fixed_decision.
+Frozen as `N-BAIOT-TYPE-MAPPING-20260905-V1-FROZEN` (per DECISIONS.md
+#20, on explicit user authorization after V1R1 verification): all 11
+entries carry `decision_status = frozen` — 11 exact / 0 derived. The 11
+entries were proposed as `N-BAIOT-TYPE-MAPPING-20260904-V1-PROPOSED`
+(DECISIONS.md #19) and are frozen without any mapping change. Frozen
+from evidence V1R1 ZIP SHA-256
+`480e15c672d5673f0d4eb82cf9f4da34cf53be9e516737f9981354459b632501`,
+source commit `33b076c`. The gafgyt → bashlite family decision remains
+frozen as a fixed_decision (Meidan et al. 2018, p.4: "BASHLITE (also
+known as Gafgyt, Q-Bot, Torlus, Lizard-Stresser, and Lizkebab)"); this
+mapping extends that frozen family decision to the 5 gafgyt subtypes,
+it does not modify the fixed_decision.
 
 Evidence basis: Meidan et al. 2018 arXiv v1 PDF
 (`references/dataset_docs/n_baiot/meidan2018_arxiv_v1_2026-09-04.pdf`,
@@ -228,6 +232,13 @@ presence-only and does not affect the mapping axis (file location).
 | `mirai_attacks_extracted` | `udp` | `mirai` | exact | UDP listed under Mirai Attacks (p.5); 7 files / 1,229,999 rows. Cross-dataset note: CICIoT2023 carries a frozen Mirai category (3 subtypes); any cross-dataset mirai family comparison remains conditional on the N-BaIoT mapping freeze and a subtype-coverage audit. |
 | `mirai_attacks_extracted` | `udpplain` | `mirai` | exact | UDPplain listed under Mirai Attacks (p.5); 7 files / 523,304 rows. Cross-dataset note: CICIoT2023 carries a frozen Mirai category (3 subtypes); any cross-dataset mirai family comparison remains conditional on the N-BaIoT mapping freeze and a subtype-coverage audit. |
 
+Freeze (DECISIONS.md #20, on explicit user authorization after V1R1
+user verification): all 11 entries now carry `decision_status = frozen`
+as `N-BAIOT-TYPE-MAPPING-20260905-V1-FROZEN`; only decision_status
+values and the description freeze metadata changed. Mirai coverage is
+recorded as 7/9 devices (Meidan et al. 2018 Table 3 and the frozen
+directory structure concretize the paper's general text).
+
 Coverage invariant: `benign_traffic.csv → benign` as the only benign
 source; all `gafgyt_attacks_extracted/` and `mirai_attacks_extracted/`
 contents map to attack families; a file-level audit requires every one
@@ -236,12 +247,12 @@ source_subtype) entry; the root-level demonstrate_structure.csv (zero
 rows) receives no label and is covered by the binary_label derivation
 special case.
 
-The N-BaIoT mapping remains `proposed` until its own user verification
-and freeze. Cross-dataset family comparison claims involving N-BaIoT
-families remain conditional on the N-BaIoT mapping freeze and
-subtype-coverage audits. Because the N-BaIoT mapping is not yet
-frozen, the ontology root status and
-`canonical_family.decision_status` both remain `proposed`.
+With the N-BaIoT mapping frozen (DECISIONS.md #20), all three datasets'
+type mappings are frozen at the table level; cross-dataset family
+comparison claims involving N-BaIoT families remain conditional on
+subtype-coverage audits. The ontology root status and
+`canonical_family.decision_status` still remain `proposed` until the
+separate root-level ontology freeze decision.
 
 ### `source_subtype` — official original label, verbatim
 
@@ -317,12 +328,11 @@ All three freeze conditions are satisfied. The TON-IoT type
 `TON-IOT-TYPE-MAPPING-20260904-V1-FROZEN`. The CICIoT2023 category →
 canonical_family mapping table in section 1 is frozen as
 `CICIOT2023-TYPE-MAPPING-20260904-V1-FROZEN` (DECISIONS.md #18). The
-N-BaIoT mapping remains `proposed` until its own mapping stage
-completes; the ontology root status therefore remains `proposed`.
+N-BaIoT family/subtype mapping table in section 1 is frozen as
+`N-BAIOT-TYPE-MAPPING-20260905-V1-FROZEN` (DECISIONS.md #20).
 
-The N-BaIoT family/subtype → canonical_family mapping proposal
-(`N-BAIOT-TYPE-MAPPING-20260904-V1-PROPOSED`, DECISIONS.md #19) exists
-but remains `proposed` until its own user verification and freeze. The
-ontology root status therefore remains `proposed`.
+All three dataset-level mapping tables are frozen; the ontology root
+status and `canonical_family.decision_status` remain `proposed` until
+the separate root-level ontology freeze decision.
 
 Data materialization, splitting, and training remain forbidden.

@@ -47,6 +47,7 @@ EXPECTED_MAPPING = {
 }
 
 MEIDAN_SHA = "1fa5bc4d4d2a12c2e93b18c4d876bd83ab7f456797934fcc71c92db754811964"
+V1R1_ZIP_SHA = "480e15c672d5673f0d4eb82cf9f4da34cf53be9e516737f9981354459b632501"
 UCI_SHA = "e0b79978d166b601ce1e8480625d8ad9fe40b328ad92d66f8eebde9730b5d57f"
 INVENTORY_NAME = "n_baiot_20260903T224404Z.json"
 
@@ -66,7 +67,7 @@ def load_inventory():
 
 class NBaiotTypeMappingTests(unittest.TestCase):
     """Tests for the N-BaIoT (source_family, source_subtype) ->
-    canonical_family mapping PROPOSAL (nothing frozen yet)."""
+    canonical_family mapping FROZEN as N-BAIOT-TYPE-MAPPING-20260905-V1-FROZEN."""
 
     def setUp(self):
         self.ontology = load_label_ontology()
@@ -78,8 +79,8 @@ class NBaiotTypeMappingTests(unittest.TestCase):
 
     def test_full_expected_mapping_table(self):
         """Every (family, subtype) pair must map to exactly the expected
-        canonical family and disposition; all 11 entries must carry
-        decision_status == proposed (N-BAIOT-TYPE-MAPPING-20260904-V1-PROPOSED)."""
+        canonical family and disposition; all 11 entries now carry
+        decision_status == frozen (N-BAIOT-TYPE-MAPPING-20260905-V1-FROZEN)."""
         self.assertEqual(
             set(self.entries.keys()), set(EXPECTED_MAPPING.keys()),
             "entry set differs from the expected 11-pair table",
@@ -95,8 +96,8 @@ class NBaiotTypeMappingTests(unittest.TestCase):
                 f"{pair}: disposition is {entry['semantic_disposition']}, expected {disposition}",
             )
             self.assertEqual(
-                entry["decision_status"], "proposed",
-                f"{pair}: decision_status is not proposed",
+                entry["decision_status"], "frozen",
+                f"{pair}: decision_status is not frozen",
             )
 
     def test_all_11_pairs_present(self):
@@ -258,10 +259,16 @@ class NBaiotTypeMappingTests(unittest.TestCase):
 
     # ----- description and coverage invariant ------------------------------
 
-    def test_description_declares_proposal_stage(self):
+    def test_description_declares_freeze_stage(self):
+        """The mapping-level description must record the freeze metadata
+        (V1R1 evidence ZIP hash, source commit, freeze id)."""
         desc = self.mapping["description"]
-        self.assertIn("N-BAIOT-TYPE-MAPPING-20260904-V1-PROPOSED", desc)
-        self.assertIn("decision_status=proposed", desc)
+        self.assertIn("FROZEN as N-BAIOT-TYPE-MAPPING-20260905-V1-FROZEN", desc)
+        self.assertIn("DECISIONS.md #20", desc)
+        self.assertIn(V1R1_ZIP_SHA, desc)
+        self.assertIn("source commit 33b076c", desc)
+        self.assertIn("decision_status=frozen as N-BAIOT-TYPE-MAPPING-20260905-V1-FROZEN", desc)
+        self.assertIn("N-BAIOT-TYPE-MAPPING-20260904-V1-PROPOSED", desc)  # provenance
         self.assertIn("Meidan et al. 2018", desc)
         self.assertIn(MEIDAN_SHA, desc)
         self.assertIn(INVENTORY_NAME, desc)
@@ -269,6 +276,7 @@ class NBaiotTypeMappingTests(unittest.TestCase):
         # the frozen fixed_decision relationship must be declared
         self.assertIn("frozen as a fixed_decision", desc)
         self.assertIn("extends that frozen family decision", desc)
+        self.assertIn("no mapping, semantic_disposition, evidence, or rationale", desc)
 
     def test_coverage_invariant_recorded(self):
         cov = self.mapping["coverage_invariant"]
@@ -320,26 +328,44 @@ class NBaiotTypeMappingTests(unittest.TestCase):
 
     # ----- documentation surfaces -------------------------------------------
 
-    def test_label_ontology_md_declares_n_baiot_proposal(self):
+    def test_label_ontology_md_declares_n_baiot_frozen(self):
         md = LABEL_ONTOLOGY_MD_PATH.read_text(encoding="utf-8")
-        self.assertIn("N-BAIOT-TYPE-MAPPING-20260904-V1-PROPOSED", md)
-        self.assertIn("N-BaIoT family/subtype → canonical_family mapping table (PROPOSED)", md)
+        self.assertIn("N-BAIOT-TYPE-MAPPING-20260905-V1-FROZEN", md)
+        self.assertIn("N-BaIoT family/subtype → canonical_family mapping table (FROZEN)", md)
+        # the proposal id survives only as provenance in the stage paragraph
+        self.assertIn(
+            "proposed as `N-BAIOT-TYPE-MAPPING-20260904-V1-PROPOSED`", md
+        )
         # 11 data rows in the MD table (1 header + 1 separator + 11 rows)
         self.assertIn("| `gafgyt_attacks_extracted` | `combo` | `bashlite` | exact |", md)
         self.assertIn("| `mirai_attacks_extracted` | `udpplain` | `mirai` | exact |", md)
-        self.assertIn("N-BAIOT-TYPE-MAPPING-20260904-V1-PROPOSED", md)
+        self.assertIn(V1R1_ZIP_SHA, md)
+        self.assertIn("source commit `33b076c`", md)
 
     def test_decisions_md_records_decision_19(self):
+        """#19 and its Rev 1 record stay untouched as history; the live
+        freeze record is #20."""
         md = DECISIONS_PATH.read_text(encoding="utf-8")
         self.assertIn("19. N-BaIoT family/subtype mapping proposed as", md)
         self.assertIn("N-BAIOT-TYPE-MAPPING-20260904-V1-PROPOSED", md)
         self.assertIn("11 exact / 0 derived", md)
-        self.assertIn("user verification of the", md)
-        self.assertIn("v1 proposal evidence package is pending", md)
-        # nothing frozen
         self.assertIn("Nothing is frozen in this record", md)
-        # and #18 must still be intact
         self.assertIn("18. CICIoT2023 type mapping FROZEN as", md)
+
+    def test_decisions_md_records_decision_20_freeze(self):
+        md = DECISIONS_PATH.read_text(encoding="utf-8")
+        self.assertIn("20. N-BaIoT family/subtype mapping FROZEN as", md)
+        self.assertIn("N-BAIOT-TYPE-MAPPING-20260905-V1-FROZEN", md)
+        self.assertIn(V1R1_ZIP_SHA, md)
+        self.assertIn("2,531,489 bytes, 31 entries", md)
+        self.assertIn("source commit `33b076c`", md)
+        self.assertIn("On explicit user authorization", md)
+        self.assertIn("11 exact /\n    0 derived", md)
+        self.assertIn("Mirai coverage is recorded as 7/9 devices", md)
+        self.assertIn("not an unconditional\n    paper-vs-data-tree contradiction", md)
+        self.assertIn("no\n    mapping, semantic_disposition, evidence, or rationale was altered", md)
+        self.assertIn("canonical_family.decision_status all remain `proposed`", md)
+        self.assertIn("forbidden until the\n    root-level ontology freeze", md)
 
     # ----- published-surface hygiene ---------------------------------------
 
@@ -394,6 +420,38 @@ class OntologyWideNBaiotDisciplineTests(unittest.TestCase):
             self.assertEqual(e["decision_status"], "frozen")
         for e in ciciot:
             self.assertEqual(e["decision_status"], "frozen")
+
+    def test_status_partition_after_n_baiot_freeze(self):
+        """After #20: 10 TON + 34 CIC + 11 N-BaIoT entries frozen; the
+        ontology root and canonical_family.decision_status stay proposed
+        pending the root-level freeze; binary_label.derivation stays
+        proposed."""
+        ont = self.ontology
+        for block, count in (
+            ("ton_iot_type_mapping", 10),
+            ("ciciot2023_type_mapping", 34),
+            ("n_baiot_type_mapping", 11),
+        ):
+            entries = ont["canonical_family"][block]["entries"]
+            self.assertEqual(len(entries), count)
+            self.assertTrue(all(e["decision_status"] == "frozen" for e in entries), block)
+        self.assertEqual(ont["status"], "proposed")
+        self.assertEqual(ont["canonical_family"]["decision_status"], "proposed")
+        for dataset, entry in ont["binary_label"]["derivation"].items():
+            self.assertEqual(entry["decision_status"], "proposed", dataset)
+
+    def test_n_baiot_freeze_metadata_declared(self):
+        """The freeze id, V1R1 ZIP hash, and source commit must be
+        declared on all three published surfaces."""
+        desc = self.ontology["canonical_family"]["n_baiot_type_mapping"]["description"]
+        self.assertIn("N-BAIOT-TYPE-MAPPING-20260905-V1-FROZEN", desc)
+        self.assertIn(V1R1_ZIP_SHA, desc)
+        md = LABEL_ONTOLOGY_MD_PATH.read_text(encoding="utf-8")
+        self.assertIn("N-BAIOT-TYPE-MAPPING-20260905-V1-FROZEN", md)
+        self.assertIn(V1R1_ZIP_SHA, md)
+        dec = DECISIONS_PATH.read_text(encoding="utf-8")
+        self.assertIn("N-BAIOT-TYPE-MAPPING-20260905-V1-FROZEN", dec)
+        self.assertIn(V1R1_ZIP_SHA, dec)
 
     def test_mapped_families_subset_of_candidates(self):
         families = {e["canonical_family"] for e in

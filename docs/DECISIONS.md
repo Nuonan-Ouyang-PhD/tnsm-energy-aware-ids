@@ -343,3 +343,41 @@
     paper-vs-data-tree contradiction. No mapping, semantic_disposition,
     evidence, or rationale is changed in this revision; the 11 entries
     remain decision_status=proposed.
+
+20. N-BaIoT family/subtype mapping FROZEN as
+    N-BAIOT-TYPE-MAPPING-20260905-V1-FROZEN. Freeze basis: the v1
+    evidence package went through user verification in two rounds
+    (v1 -> Rev 1). Rev 1 (commit `33b076c`) fixed the `source_subtype`
+    definition section directory names (mirai_attacks_extracted /
+    gafgyt_attacks_extracted) and added 3 guard tests; counting facts
+    (MANIFEST 18/18, registry 3 source entries + 7 panels) and the
+    Table 3 wording guidance were recorded in #19 Rev 1. The Rev 1
+    evidence ZIP `N_BAIOT_TYPE_MAPPING_EVIDENCE_V1R1.zip` (SHA-256
+    `480e15c672d5673f0d4eb82cf9f4da34cf53be9e516737f9981354459b632501`,
+    2,531,489 bytes, 31 entries, source commit `33b076c`) passed the
+    user's independent verification: ZIP hash/size/CRC/permissions
+    (19 files 644 + 12 dirs 755), MANIFEST 18/18 (19 ordinary files
+    include the MANIFEST itself, which does not hash itself), in-package
+    tests 88/88 (32+23+33), V1 -> V1R1 diff exactly 3 content files,
+    ontology JSON byte-identical to the CICIoT2023 freeze baseline apart
+    from the two intended additions, registry 3 source + 7 panels
+    matching, root still proposed, #20 not existing, materialization/
+    split/training ban intact. On explicit user authorization, all 11
+    N-BaIoT mapping entries now carry decision_status=frozen: 11 exact /
+    0 derived (benign_traffic -> benign, 9 files / 555,932 rows; gafgyt
+    combo/junk/scan/tcp/udp -> bashlite, 9 files each; mirai
+    ack/scan/syn/udp/udpplain -> mirai, 7 files each; 7,062,606 rows
+    total). Mirai coverage is recorded as 7/9 devices: Meidan et al.
+    2018 Table 3 and the frozen directory structure make the paper's
+    general text concrete as Mirai 7/9 devices, not an unconditional
+    paper-vs-data-tree contradiction (Table 3 shows Ennio_Doorbell and
+    Samsung_SNH_1011_N_Webcam without Mirai). The freeze changed only
+    decision_status values and the description freeze metadata; no
+    mapping, semantic_disposition, evidence, or rationale was altered.
+    The TON-IoT (10 frozen) and CICIoT2023 (34 frozen) entries and the
+    frozen gafgyt->bashlite fixed_decision are NOT modified.
+    binary_label.derivation entries and the ontology root status and
+    canonical_family.decision_status all remain `proposed`. Data
+    materialization, splitting, and training remain forbidden until the
+    root-level ontology freeze is complete. Next stage: the root-level
+    ontology freeze decision (separate authorization).
