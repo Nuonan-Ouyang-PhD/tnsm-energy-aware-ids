@@ -449,3 +449,46 @@
     (feature_policy) completes its own separate decision chain - the
     ontology root freeze alone does not authorize them. Nothing is
     frozen in this record: user review of this proposal is pending.
+
+    Rev 1 (proposal-consistency lock, per user review of the proposal
+    evidence package ROOT_ONTOLOGY_FREEZE_PROPOSAL_EVIDENCE_V1.zip,
+    SHA-256
+    `3da7642fb1a08d7aee987298af01e6bd7eb5b2dbf3b727d05c68c994b14c284a`,
+    2,541,134 bytes, 21 files + 12 dirs, MANIFEST 20/20 OK, in-package
+    tests 100/100; user independent recursive census of
+    config/label_ontology.json: 61 status/decision_status fields =
+    56 frozen + exactly 5 proposed). The proposal staging stands;
+    nothing is frozen in this revision and config is NOT changed
+    (both config files byte-identical to b017f8f/b59082a). This
+    revision locks the #22 execution wording so that "exactly" is
+    unambiguous: (1) the future #22 freeze is EXACTLY 5 status flips
+    (the earlier conversation-level "six statuses" phrasing was an
+    arithmetic slip; the package texts enumerate the correct five
+    objects), the five proposal-time proposed paths recursively
+    enumerated over the whole config: `status` (ontology root),
+    `canonical_family.decision_status`,
+    `binary_label.derivation.ton_iot.decision_status`,
+    `binary_label.derivation.ciciot2023.decision_status`, and
+    `binary_label.derivation.n_baiot.decision_status` (56 frozen +
+    5 proposed = 61 total, no more, no less); (2) the #22 freeze is
+    pre-authorized to update the `canonical_family.note` field from
+    the proposal-stage sentence "Final family assignments are NOT
+    frozen until the TON-IoT type inventory is complete and official
+    documents are reviewed." to the frozen-state sentence "Final
+    family assignments are frozen under
+    LABEL-ONTOLOGY-ROOT-20260905-V1-FROZEN after completion of the
+    required inventory and official-document reviews." - this is
+    freeze-state metadata housekeeping only: no family assignment, no
+    mapping entry, no rationale, no evidence changes; (3) the
+    predetermined freeze id is LABEL-ONTOLOGY-ROOT-20260905-V1-FROZEN;
+    (4) the #22 provenance must record at least: the proposal source
+    commit `b59082a`, the proposal evidence SHA-256
+    `3da7642fb1a08d7aee987298af01e6bd7eb5b2dbf3b727d05c68c994b14c284a`,
+    the final N-BaIoT clean freeze evidence SHA-256
+    `1912365fe8a20f478a367dc844f3067c6d7fac176e71a5e9505a21c38fae3d3c`,
+    and the DECISIONS.md #22 record. A guard test now recursively
+    enumerates every status/decision_status field and asserts the
+    proposal-time proposed set is exactly those 5 paths. The
+    materialization/splitting/training ban is NOT lifted by this
+    revision nor by the #22 freeze alone; #22 execution still
+    requires separate explicit user authorization.

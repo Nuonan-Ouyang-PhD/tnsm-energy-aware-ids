@@ -361,3 +361,28 @@ outside the freeze axis. Data materialization, splitting, and training
 remain forbidden; their gate is the feature/label protocol freeze chain
 (`config/feature_policy.json` data_handling), not this ontology root
 freeze alone.
+
+Rev 1 (proposal-consistency lock, per user review of
+ROOT_ONTOLOGY_FREEZE_PROPOSAL_EVIDENCE_V1.zip): the future #22 freeze
+is EXACTLY 5 status flips. A recursive census of every `status` and
+`decision_status` field in config/label_ontology.json at proposal
+time finds 56 frozen and exactly 5 proposed - the ontology root
+`status`, `canonical_family.decision_status`, and the three
+`binary_label.derivation.*.decision_status` entries; no more, no
+less. The predetermined freeze id is
+LABEL-ONTOLOGY-ROOT-20260905-V1-FROZEN. The #22 freeze is also
+pre-authorized to update the `canonical_family.note` sentence from
+its proposal-stage wording ("Final family assignments are NOT frozen
+until the TON-IoT type inventory is complete and official documents
+are reviewed.") to the frozen-state wording ("Final family
+assignments are frozen under LABEL-ONTOLOGY-ROOT-20260905-V1-FROZEN
+after completion of the required inventory and official-document
+reviews.") - freeze-state metadata housekeeping only, changing no
+family assignment. The #22 provenance must record the proposal
+source commit `b59082a`, the proposal evidence SHA-256
+`3da7642fb1a08d7aee987298af01e6bd7eb5b2dbf3b727d05c68c994b14c284a`,
+and the final N-BaIoT clean freeze evidence SHA-256
+`1912365fe8a20f478a367dc844f3067c6d7fac176e71a5e9505a21c38fae3d3c`,
+under DECISIONS.md #22. #22 execution still requires separate
+explicit user authorization; data materialization, splitting, and
+training remain forbidden.
