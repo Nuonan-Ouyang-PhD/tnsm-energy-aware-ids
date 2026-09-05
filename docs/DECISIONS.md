@@ -921,3 +921,82 @@
     nothing is frozen; the materialization/splitting/training ban
     is NOT lifted; #24 execution still requires separate explicit
     user authorization.
+
+    Rev 3 (2026-09-06, post-install verification remediation; final
+    part of F23-02), per user independent review of the V1R2
+    evidence package FEATURE_PROTOCOL_FREEZE_PROPOSAL_EVIDENCE_V1R2.zip
+    (SHA-256
+    `6319b1be2fd65f73d81121f02687c127315e89653399d031a7673ae4a982b77c`,
+    3,263,669 bytes, 57 entries = 39 files + 18 directories; package
+    integrity PASS, in-package tests 79/79, deterministic replay
+    byte-identical, both live configs verified byte-identical; the
+    target configuration content, field bindings, MI_dir rules, zero
+    admissions, and generator replay all PASSED), delivered with the
+    review package FEATURE_PROTOCOL_23_REV2_INDEPENDENT_REVIEW.zip
+    (SHA-256
+    `b5b4bdeb9e57951f4090e9ab9d07956d820d02b9291723f319ed54dd0e1dd11e`).
+    The review's single blocking finding: the Rev 2 specification's
+    step 4 ("run verify_feature_policy_target_v1r2.py against the
+    applied file") is not executable - that verifier hardcodes the
+    live config/feature_policy.json as the OLD baseline and re-applies
+    the baseline-to-target text replacements, so once the target
+    bytes are installed it fails (independently reproduced in an
+    isolated copy: "op op7_root_additions: anchor count 0 != 1").
+    This is a verification-phase/input-path defect only; the target
+    bytes, both live configs, the census artifacts, and all accepted
+    semantic decisions are UNCHANGED.
+
+    Rev 3 fix (exactly the authorized scope - verifier/procedure/
+    tests and consequent hash references; the target JSON is NOT
+    regenerated):
+
+    (a) New post-install verification entry point
+        scripts/audits/verify_installed_feature_policy_v1r3.py
+        (SHA-256 recorded in the V1R3 evidence package). It keeps
+        three strictly distinct inputs per the review: --baseline
+        (a PRESERVED snapshot of the old 2a903a4a... file), --target
+        (the immutable committed artifact e81a55c1...714b, byte-
+        compared, never rebuilt), and --applied (the ACTUAL installed
+        file), plus --label-ontology (8a055e2e...) and --spec. It
+        never re-applies baseline-to-target replacements; it
+        byte-compares the installed file against the pinned target,
+        then inspects the applied state (4 frozen flips, ontology 61
+        frozen, dispositions unchanged, MI_dir array with element [0]
+        byte-equal, zero admissions, spec bindings verbatim, gate
+        objects fail-closed with 6 preconditions and separate
+        authorization). 32 checks; exit 0 = installed bytes/state
+        verified and NOT execution authorization; run is read-only
+        (all inputs re-read and compared unchanged at exit).
+
+    (b) The specification's target_config_state.application field
+        now prescribes the two-phase procedure: PRE-INSTALL (live
+        config still hashes to 2a903a4a...): re-verify baseline
+        hashes, then run the Rev 2 pre-install verifier (30 checks)
+        - which must never be invoked after installation; INSTALL:
+        install the target bytes verbatim and re-hash (must equal
+        e81a55c1...714b); POST-INSTALL: run the new entry point
+        against the actual installed file. Only the application
+        string changed in the spec (one JSON line; git diff
+        verified); the spec SHA therefore moves to
+        `5746dde431fcce1557cc46d5ae6b810310a3f1276e9e1e5e7e279949e881844d`.
+
+    (c) Guard tests extend 52 -> 58 in the #23 module (full suite
+        218): the new Rev3PostInstallVerificationTests class ACTUALLY
+        INVOKES the post-install CLI as a subprocess against a real
+        temporary installed path - correctly installed target passes
+        (all_pass, no failures, no authorization granted); the
+        uninstalled baseline is rejected; tampered admission count,
+        tampered MI_dir element [0], and a removed gate authorization
+        precondition are each rejected with nonzero exit; and the
+        class documents WHY the phase split exists by asserting the
+        Rev 2 pre-install verifier FAILS on an installed config in an
+        isolated temporary copy.
+
+    Rev 3 scope: the new post-install verifier script, the spec
+    application-field revision, guard tests, and documentation ONLY.
+    The Rev 2 target bytes (e81a55c1...714b) are NOT modified, the
+    pre-install generator/verifier are NOT modified, both live config
+    files stay byte-identical (`2a903a4a...21b47` / `8a055e2e...6fab`),
+    the target bytes are NOT installed, nothing is frozen, and the
+    materialization/splitting/training ban is NOT lifted; #24
+    execution still requires separate explicit user authorization.

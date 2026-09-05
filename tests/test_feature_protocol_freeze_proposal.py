@@ -51,6 +51,9 @@ Rev 2 invariants additionally asserted here (F23-02 A/B/C):
 import hashlib
 import importlib.util
 import json
+import shutil
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -151,7 +154,11 @@ SPEC_PATH = (
     / "feature_policy_freeze_target_spec_v1r2.json"
 )
 SPEC_SHA = (
-    "0fa8da404f78ed9b8258f3f4e35df64750ba86aa3f2bbe5cceeab0bb287af150"
+    # Rev 3 (2026-09-06): the application field was updated to the
+    # two-phase pre-install/post-install procedure per the Rev 2
+    # independent review; every other byte is unchanged (verified
+    # by git diff: exactly one line changed).
+    "5746dde431fcce1557cc46d5ae6b810310a3f1276e9e1e5e7e279949e881844d"
 )
 TARGET_GENERATOR = (
     REPO_ROOT / "scripts" / "audits"
@@ -180,6 +187,11 @@ TARGET_LOG_ARTIFACT = (
 )
 TARGET_LOG_SHA = (
     "ef300f2a9d9ee5c47534c85f1e45b67514d14f7068248bc886f1cc5bf5f9cf84"
+)
+# --- Rev 3 (2026-09-06) constants ---------------------------------
+POSTINSTALL_VERIFIER = (
+    REPO_ROOT / "scripts" / "audits"
+    / "verify_installed_feature_policy_v1r3.py"
 )
 MI_DIR_ORIGINAL_STRING = (
     "references/dataset_docs/n_baiot/"
@@ -1002,6 +1014,142 @@ class Rev2TargetSpecificationTests(unittest.TestCase):
         self.assertFalse(oe["live_config_touched"])
         self.assertIn("verify_feature_policy_target_v1r2.py",
                       oe["verification_script"])
+
+
+class Rev3PostInstallVerificationTests(unittest.TestCase):
+    """The Rev 3 remediation of the Rev 2 review's blocking finding:
+    the post-install verification entry point is ACTUALLY INVOKED as
+    a CLI against a real installed file path in a temporary copy,
+    covering correct installation, the uninstalled state, and tamper
+    rejection. The pre-install verifier (Rev 2) is asserted to FAIL
+    on an installed config - that failure is what motivates the
+    phase separation."""
+
+    def _run_postinstall(self, applied_path):
+        import subprocess
+        proc = subprocess.run(
+            [sys.executable, str(POSTINSTALL_VERIFIER),
+             "--baseline", str(FEATURE_POLICY_PATH),
+             "--target", str(TARGET_ARTIFACT_PATH),
+             "--applied", str(applied_path),
+             "--label-ontology", str(LABEL_ONTOLOGY_PATH),
+             "--spec", str(SPEC_PATH)],
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+            text=True, timeout=120,
+        )
+        payload = None
+        try:
+            payload = json.loads(proc.stdout)
+        except ValueError:
+            pass
+        return proc.returncode, payload
+
+    def _installed_copy(self, directory):
+        tmp = Path(directory) / "installed_config"
+        tmp.mkdir(parents=True, exist_ok=True)
+        applied = tmp / "feature_policy.json"
+        shutil.copyfile(TARGET_ARTIFACT_PATH, applied)
+        return applied
+
+    def test_correctly_installed_target_passes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            applied = self._installed_copy(directory)
+            code, payload = self._run_postinstall(applied)
+        self.assertEqual(code, 0)
+        self.assertIsNotNone(payload)
+        self.assertTrue(payload["all_pass"])
+        self.assertEqual(payload["failures"], [])
+        self.assertFalse(payload["authorization_granted"])
+        self.assertFalse(payload["data_gates_unlocked"])
+
+    def test_uninstalled_baseline_rejected(self):
+        # applied == the live (old, uninstalled) baseline
+        code, payload = self._run_postinstall(FEATURE_POLICY_PATH)
+        self.assertNotEqual(code, 0)
+        self.assertIsNotNone(payload)
+        self.assertFalse(payload["all_pass"])
+        failures = set(payload["failures"])
+        self.assertIn("applied_sha256_equals_target", failures)
+        self.assertIn("applied_exactly_four_frozen", failures)
+
+    def test_tampered_admission_count_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            applied = self._installed_copy(directory)
+            obj = json.loads(applied.read_text(encoding="utf-8"))
+            obj["admission_set_this_version"][
+                "admitted_mapping_count"] = 1
+            applied.write_text(json.dumps(obj, indent=2),
+                               encoding="utf-8")
+            code, payload = self._run_postinstall(applied)
+        self.assertNotEqual(code, 0)
+        self.assertFalse(payload["all_pass"])
+        failures = set(payload["failures"])
+        self.assertIn("zero_admission_all_cores_empty", failures)
+
+    def test_tampered_mi_dir_first_element_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            applied = self._installed_copy(directory)
+            obj = json.loads(applied.read_text(encoding="utf-8"))
+            obj["semantic_core"]["review_outcome_2026_09_04"][
+                "resolved_points"][0]["evidence_source"][0] += " X"
+            applied.write_text(json.dumps(obj, indent=2),
+                               encoding="utf-8")
+            code, payload = self._run_postinstall(applied)
+        self.assertNotEqual(code, 0)
+        failures = set(payload["failures"])
+        self.assertIn("mi_dir_first_element_byte_equal_original",
+                      failures)
+
+    def test_tampered_gate_preconditions_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            applied = self._installed_copy(directory)
+            obj = json.loads(applied.read_text(encoding="utf-8"))
+            obj["data_handling"]["training"]["preconditions"] = \
+                obj["data_handling"]["training"][
+                    "preconditions"][:5]
+            applied.write_text(json.dumps(obj, indent=2),
+                               encoding="utf-8")
+            code, payload = self._run_postinstall(applied)
+        self.assertNotEqual(code, 0)
+        failures = set(payload["failures"])
+        self.assertIn("gate_exact_spec_binding::training", failures)
+        self.assertIn(
+            "gate_still_requires_authorization::training", failures)
+
+    def test_preinstall_verifier_fails_on_installed_config(self):
+        """The exact defect the Rev 2 review reproduced: the Rev 2
+        verifier hardcodes the live config as the OLD baseline, so
+        after installation it cannot run. This documents WHY the
+        post-install entry point exists."""
+        import subprocess
+        import importlib.util
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "config").mkdir()
+            shutil.copyfile(FEATURE_POLICY_PATH,
+                            root / "config" / "label_ontology.json")
+            shutil.copyfile(TARGET_ARTIFACT_PATH,
+                            root / "config" / "feature_policy.json")
+            (root / "artifacts" / "proposals").mkdir(parents=True)
+            shutil.copyfile(TARGET_ARTIFACT_PATH, root / "artifacts"
+                            / "proposals" / "feature_policy_freeze"
+                            "_target_v1r2.json")
+            (root / "scripts" / "audits").mkdir(parents=True)
+            shutil.copyfile(TARGET_GENERATOR, root / "scripts"
+                            / "audits" / "build_feature_policy"
+                            "_target_v1r2.py")
+            shutil.copyfile(TARGET_VERIFIER, root / "scripts"
+                            / "audits" / "verify_feature_policy"
+                            "_target_v1r2.py")
+            proc = subprocess.run(
+                [sys.executable, str(
+                    root / "scripts" / "audits"
+                    / "verify_feature_policy_target_v1r2.py")],
+                stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                text=True, timeout=120, cwd=root,
+            )
+        self.assertNotEqual(proc.returncode, 0)
+        self.assertIn("anchor count", proc.stdout)
 
 
 class Rev2FmpRestorationTests(unittest.TestCase):

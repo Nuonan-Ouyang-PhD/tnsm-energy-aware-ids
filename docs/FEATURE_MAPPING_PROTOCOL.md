@@ -361,4 +361,42 @@ config files stay byte-identical and the target bytes are NOT
 installed at proposal time; #24 remains unauthorized and the
 materialization/splitting/training ban is NOT lifted.
 
+### 6.3 Rev 3 staging addendum (2026-09-06, post-install
+verification split)
+
+The user's independent review of the V1R2 evidence package
+(FEATURE_PROTOCOL_23_REV2_INDEPENDENT_REVIEW.zip, SHA-256
+`b5b4bdeb...dd11e`) confirmed the Rev 2 target configuration
+content and found ONE blocking execution defect: the prescribed
+step "run verify_feature_policy_target_v1r2.py against the applied
+file" cannot succeed after installation, because that verifier
+hardcodes the live config as the OLD baseline and re-applies the
+baseline-to-target replacements (independently reproduced: "op
+op7_root_additions: anchor count 0 != 1"). Rev 3 separates the two
+verification phases without touching the target bytes
+(`e81a55c1...714b`, unchanged) or either live config:
+
+- PRE-INSTALL (live config still `2a903a4a...21b47`):
+  scripts/audits/verify_feature_policy_target_v1r2.py (the Rev 2
+  verifier, 30 checks) - never to be invoked after installation.
+- POST-INSTALL (the applied file contains the target bytes): the
+  NEW read-only entry point
+  scripts/audits/verify_installed_feature_policy_v1r3.py, which
+  takes a preserved baseline snapshot, the immutable target
+  artifact, the actual installed file, the frozen label ontology,
+  and the specification as five distinct inputs; byte-compares the
+  installed file against the pinned target; and inspects the
+  applied state (4 frozen flips, dispositions unchanged, MI_dir
+  element [0] byte-equal, zero admissions, spec bindings verbatim,
+  gates fail-closed). 32 checks, exit 0 = verified state, not
+  execution authorization.
+
+The specification's application field now prescribes this exact
+two-phase procedure (the only spec change; spec SHA moves to
+`5746dde4...1844d`). Guard tests (module 58, full suite 218)
+invoke the post-install CLI for real: a correctly installed target
+passes; the uninstalled baseline and tampered installations are
+rejected. #24 remains unauthorized; the
+materialization/splitting/training ban is NOT lifted.
+
 > AI生成
