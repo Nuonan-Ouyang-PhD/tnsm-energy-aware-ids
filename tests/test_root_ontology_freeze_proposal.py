@@ -354,5 +354,79 @@ class RootFreezeRecordTests(unittest.TestCase):
         self.assertEqual(handling["training"], "forbidden before protocol freeze")
 
 
+class RootFreezeRev1DocumentationConsistencyTests(unittest.TestCase):
+    """#22 Rev 1 (documentation-consistency fix, per user independent
+    re-verification of the V1 freeze evidence package): two stale
+    current-status passages in LABEL_ONTOLOGY.md were corrected.
+    These guards check the two target passages with WHITESPACE
+    NORMALIZATION (so markdown line wrapping cannot cause spurious
+    failures) and do NOT run a global word ban over historical
+    records."""
+
+    FREEZE_ID = "LABEL-ONTOLOGY-ROOT-20260905-V1-FROZEN"
+
+    @staticmethod
+    def _normalized(md):
+        return " ".join(md.split())
+
+    def _family_list_passage(self):
+        md = LABEL_ONTOLOGY_MD_PATH.read_text(encoding="utf-8")
+        start = md.index("Current ")
+        end = md.index("Fixed decisions already made:")
+        return self._normalized(md[start:end])
+
+    def test_family_list_passage_states_frozen_status(self):
+        """DOC-01: the canonical_family current-family list must say
+        'Current frozen families (14)' (not 'Current proposed
+        families'), keep the 14 names and their order, and state that
+        spoofing and brute_force are now frozen under the #22 freeze
+        id (not 'both pending final freeze')."""
+        passage = self._family_list_passage()
+        self.assertIn("Current frozen families (14):", passage)
+        self.assertNotIn("Current proposed families", passage)
+        self.assertNotIn("pending final freeze", passage)
+        # the 14 family names, in order
+        self.assertIn(
+            "`benign`, `backdoor`, `bashlite`, `brute_force`, `ddos`, "
+            "`dos`, `injection`, `mirai`, `password`, `ransomware`, "
+            "`recon`, `web_attack`, `mitm`, `spoofing`",
+            passage,
+        )
+        # historical provenance kept + frozen status stated
+        self.assertIn("proposed by the CICIoT2023 v1 mapping", passage)
+        self.assertIn("`brute_force` adopted at v2", passage)
+        self.assertIn(
+            f"both are now frozen under `{self.FREEZE_ID}` "
+            "(DECISIONS.md #22)",
+            passage,
+        )
+
+    def test_ton_intro_passage_time_qualifies_proposed_state(self):
+        """DOC-02: the TON-IoT table intro must not describe the root
+        as currently proposed; the historical proposed state is kept
+        with an explicit time qualifier (at the TON-IoT mapping freeze,
+        DECISIONS.md #16) and the subsequent root-level freeze
+        (DECISIONS.md #22) is stated. The mapping table that follows
+        stays untouched (first header row unchanged)."""
+        md = LABEL_ONTOLOGY_MD_PATH.read_text(encoding="utf-8")
+        start = md.index("### TON-IoT type")
+        end = md.index("| source_type |")
+        passage = self._normalized(md[start:end])
+        self.assertIn(
+            "At the time of the TON-IoT mapping freeze "
+            "(DECISIONS.md #16), the ontology root and "
+            "`canonical_family.decision_status` remained `proposed`.",
+            passage,
+        )
+        self.assertIn(
+            f"They were subsequently frozen under `{self.FREEZE_ID}` "
+            "(DECISIONS.md #22).",
+            passage,
+        )
+        # the unqualified present-tense claim must be gone
+        self.assertNotIn("remain `proposed` until the", passage)
+        self.assertNotIn("mappings are also frozen", passage)
+
+
 if __name__ == "__main__":
     unittest.main()

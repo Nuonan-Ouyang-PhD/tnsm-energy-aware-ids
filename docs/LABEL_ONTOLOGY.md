@@ -40,11 +40,12 @@ datasets that genuinely share a family. Absent families are recorded as
 - `not_available` is a statement about coverage, not a negative class.
 - `not_available` rows must never be treated as negatives, and families
   must never be forced into an `other` bucket for the sake of alignment.
-Current proposed families (14): `benign`, `backdoor`, `bashlite`,
+Current frozen families (14): `benign`, `backdoor`, `bashlite`,
 `brute_force`, `ddos`, `dos`, `injection`, `mirai`, `password`,
 `ransomware`, `recon`, `web_attack`, `mitm`, `spoofing`. (`spoofing`
 proposed by the CICIoT2023 v1 mapping; `brute_force` adopted at v2
-per user verification — both pending final freeze.)
+per user verification — both are now frozen under
+`LABEL-ONTOLOGY-ROOT-20260905-V1-FROZEN` (DECISIONS.md #22).)
 
 Fixed decisions already made:
 
@@ -65,9 +66,10 @@ Frozen as `TON-IOT-TYPE-MAPPING-20260904-V1-FROZEN`: all 10 entries
 carry `decision_status = frozen` (frozen from evidence v3 ZIP
 SHA-256 `f774457585db719bc223a89cc965aabef7019bec1f0f6209a0ce160e3a4e
 ecc4`, source commit `b95e7bc`). No mapping, semantic_disposition,
-evidence, or rationale was changed by the freeze. The ontology root
-and `canonical_family.decision_status` remain `proposed` until the
-CICIoT2023 and N-BaIoT mappings are also frozen.
+evidence, or rationale was changed by the freeze. At the time of
+the TON-IoT mapping freeze (DECISIONS.md #16), the ontology root
+and `canonical_family.decision_status` remained `proposed`. They
+were subsequently frozen under `LABEL-ONTOLOGY-ROOT-20260905-V1-FROZEN` (DECISIONS.md #22).
 
 | source_type | canonical_family | semantic_disposition | rationale |
 |---|---|---|---|

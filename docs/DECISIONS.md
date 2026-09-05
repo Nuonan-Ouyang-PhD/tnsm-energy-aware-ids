@@ -541,3 +541,37 @@
     (pre-freeze
     `86cc9a246346f26d414260f9adf56235fca5d6185918ce404a71bea9945db8ee`);
     this DECISIONS.md #22 record.
+
+
+    Rev 1 (documentation-consistency fix, per user independent
+    re-verification of ROOT_ONTOLOGY_FREEZE_EVIDENCE_V1.zip): the user
+    confirmed the freeze configuration itself valid (ZIP SHA-256
+    `13eb06bb5e8c4b0ae10b84239444ced965e2e13d4fd33ed0d83963614fbde74e`,
+    MANIFEST 20/20 OK, in-package tests 110/110 OK, exactly 5 status
+    flips + the pre-authorized note update, feature_policy.json
+    byte-identical with all three data-handling bans verbatim), and
+    identified two stale current-status passages in
+    docs/LABEL_ONTOLOGY.md: (1) the canonical_family current-family
+    list still read "Current proposed families (14)" and "both pending
+    final freeze." - now "Current frozen families (14)" with the
+    closing statement that both `spoofing` and `brute_force` are now
+    frozen under LABEL-ONTOLOGY-ROOT-20260905-V1-FROZEN (DECISIONS.md
+    #22); the 14 family names and their order are untouched; (2) the
+    TON-IoT table intro read "The ontology root and
+    `canonical_family.decision_status` remain `proposed` until the
+    CICIoT2023 and N-BaIoT mappings are also frozen." without a time
+    qualifier - now explicitly scoped to the TON-IoT mapping freeze
+    time (DECISIONS.md #16) with the subsequent root-level freeze
+    (DECISIONS.md #22) stated; the mapping table, rationale, and
+    evidence are untouched. This revision changes documentation only:
+    no config file, no status field, no mapping, no rationale, no
+    evidence, and no ban was altered; config/label_ontology.json stays
+    byte-identical to the frozen SHA-256
+    `8a055e2e34bc8d70f62909f52441915589c310659d6ce3e427a2704820926fab`
+    and config/feature_policy.json stays byte-identical to
+    `2a903a4a0dd54e4307b7dce24599c39ce62b378b4cd8a95f8a633ffedb321b47`
+    (status `proposed`, three "forbidden before protocol freeze" gates
+    verbatim). Two guard tests (whitespace-normalized current-status
+    wording checks) were added. The materialization/splitting/training
+    ban is NOT lifted by this revision; the next stage
+    (feature/label protocol freeze proposal) is NOT yet authorized.
