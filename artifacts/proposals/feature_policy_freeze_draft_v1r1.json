@@ -1,0 +1,295 @@
+{
+  "schema_version": 1,
+  "kind": "feature_policy_freeze_draft",
+  "draft_id": "FEATURE-POLICY-20260905-V1-FROZEN (draft; would take effect only at #24)",
+  "decision_record": "DECISIONS.md #23 Rev 1",
+  "supersedes_proposal_section": "DECISIONS.md #23 (V1) items (a)-(d) and FEATURE_MAPPING_PROTOCOL.md section 6, to the extent they conflict with this draft; the V1 record remains the historical staging record of the original proposal",
+  "created_at_utc": "2026-09-05T12:30:00Z",
+  "status": "DRAFT_NOT_APPLIED",
+
+  "purpose": "Standalone would-be-effective draft of the complete feature_policy.json freeze change, prepared per the independent review of the #23 V1 evidence package (finding F23-02: 'Rev 1 should provide an unapplied patch or standalone would-be JSON'). Applying this draft is EXCLUSIVELY a #24 action requiring separate explicit user authorization. Nothing in the live config changes at proposal time.",
+
+  "provenance": {
+    "review_trigger": {
+      "package": "FEATURE_PROTOCOL_23_INDEPENDENT_REVIEW.zip",
+      "sha256": "1fdee7efa3ab11dc528c04c8e303086d0d45b69a5e26b310fae4abb46da8af6b",
+      "review_outcome_findings_addressed": ["F23-01", "F23-02", "F23-03"]
+    },
+    "live_config_baseline": {
+      "feature_policy_sha256": "2a903a4a0dd54e4307b7dce24599c39ce62b378b4cd8a95f8a633ffedb321b47",
+      "label_ontology_sha256": "8a055e2e34bc8d70f62909f52441915589c310659d6ce3e427a2704820926fab",
+      "note": "This draft is written against the live feature_policy.json bytes at the #23 V1 commit 1bdd7f6; any #24 application must re-verify the live file still hashes to this value immediately before patching."
+    },
+    "v1_proposal_package": {
+      "zip": "FEATURE_PROTOCOL_FREEZE_PROPOSAL_EVIDENCE_V1.zip",
+      "sha256": "0e66ffb8537e08d6cba28092a6da92f1d2ef924727baff862a898330c63f3fc1",
+      "user_verdict": "package integrity PASS; proposal admission evidence NOT established; Rev 1 required"
+    },
+    "proto_census_v2": {
+      "artifact": "artifacts/datasets/proto_census/ton_iot_proto_v2_20260905T121644Z.json",
+      "sha256": "dfffd40c42fea9608679257c3c4a6014e42bbb7029b6849c6e5a0a4cde9f44b7",
+      "role": "F23-03 remediation: one user-authorized read-only verification pass over the same frozen CSV, with explicit before/after digests; counts identical to v1"
+    }
+  },
+
+  "review_driven_revisions_vs_v1": [
+    {
+      "finding": "F23-01",
+      "v1_claim": "EXACTLY the subset {tcp, udp} is proposed for admission ... seven gates pass",
+      "revision": "ZERO admissions this version. The tcp/udp transport-layer match is NOT upgraded into a seven-gate pass: the official CICIoT2023 page-1 documentation is internally inconsistent about the protocol columns (a 47-row indicator-style table vs a 39-row window-aggregate table), and per-record aggregation / whole-record window language does not prove identical aggregation object and time window (gates 3 and 4). tcp/udp remain candidates retained for a future evidence-complete review; the pairwise ton_iot__ciciot2023 core stays EMPTY this version.",
+      "reason": "Review: 'record is container language, not a definition of the measured object'; terminology differences also cannot prove ICMP incompatibility, so the ICMP exclusion is restated as insufficient-evidence, not layer-wording incompatibility."
+    },
+    {
+      "finding": "F23-02",
+      "v1_claim": "'each of the four records above gains an evidence_source array' (future promise) and 'the two string-embedded candidates get new target wording' with admission claims",
+      "revision": "This standalone draft enumerates, per RECORD (6 records: policy root note, two candidate_examples, MI_dir resolved point, protocol_indicators, packet_count), the complete target evidence_source values with path/SHA/page anchors, and the complete target wording of the two string fields. The structured-vs-string choice for protocol_indicators/packet_count is made HERE (strings retained), so #24 has no open design decision.",
+      "reason": "Review: evidence completion must be delivered per mapping record, not promised; the final status-path enumeration must be fixed now."
+    },
+    {
+      "finding": "F23-03",
+      "v1_claim": "census re-verified before and after the run (log evidence insufficient)",
+      "revision": "Not a config change; remediated by the separate v2 verification pass artifact (see provenance) and by archiving the v1 script bytes. Recorded here because the V1 audit-exception wording in DECISIONS.md #23 stands corrected by them.",
+      "reason": "Review: only one CSV digest line existed in the v1 log and the script was uncommitted."
+    }
+  ],
+
+  "official_source_evidence_registry": {
+    "note": "All paths relative to repo root. Every anchor below was re-read from the named file at the named SHA on 2026-09-05 during Rev 1 drafting.",
+    "sources": [
+      {
+        "id": "ton_featdesc",
+        "path": "datasets/incoming/ton_iot/Network Features-Description.pdf",
+        "sha256": "b1f63453029855e084290a2f79554eaa7e3b85f8d53fb0ea4605966ef25ebe3b",
+        "location": "frozen acquisition manifest ton_iot_20260903T113048Z.json (in-tree official doc)",
+        "anchors_used": [
+          {"anchor": "p.1, Connection activity table, row 6", "field": "proto", "text": "Transport layer protocols of flow connections"},
+          {"anchor": "p.1, Connection activity table, row 8", "field": "duration", "text": "The time of the packet connections, which is estimated by subtracting 'time of last packet seen' and 'time of first packet seen'"},
+          {"anchor": "p.1, Connection activity table, rows 9-10", "field": "src_bytes/dst_bytes", "text": "payload bytes of TCP sequence numbers (originated / responded)"},
+          {"anchor": "p.1, Statistical activity table, rows 13-16", "field": "src_pkts/dst_pkts (+ IP bytes)", "text": "Number of original/destination packets estimated from source/destination systems"}
+        ]
+      },
+      {
+        "id": "ton_stats",
+        "path": "datasets/incoming/ton_iot/Statistics of Network Records.pdf",
+        "sha256": "4a98908fa5b2c9b22380522e30dc9fe89ec8245676622426d7160fcefab06b3e",
+        "location": "frozen acquisition manifest ton_iot_20260903T113048Z.json (in-tree official doc)",
+        "anchors_used": [
+          {"anchor": "p.1, tables", "field": "type distribution", "text": "row/type counts only; contains NO field-semantics content (cross-check only, not used for any mapping claim)"}
+        ]
+      },
+      {
+        "id": "cic_readme_47row",
+        "path": "datasets/incoming/ciciot2023/README.pdf",
+        "sha256": "0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92",
+        "location": "frozen acquisition manifest ciciot2023_20260903T142539Z.json (in-tree official doc); page-1 47-row feature table archived as references/dataset_docs/ciciot2023/readme_p1_feature_table/readme_p1_feature_table_47row.png (SHA-256 6327fa2b7bace407f2fc48adf3268282c0ea323ae26aa717b42a486417037902)",
+        "anchors_used": [
+          {"anchor": "p.1, 47-row feature table, row 28", "field": "TCP", "text": "Indicates if the transport layer protocol is TCP"},
+          {"anchor": "p.1, 47-row feature table, row 29", "field": "UDP", "text": "Indicates if the transport layer protocol is UDP"},
+          {"anchor": "p.1, 47-row feature table, row 32", "field": "ICMP", "text": "Indicates if the network layer protocol is ICMP"},
+          {"anchor": "p.1, 47-row feature table, row 35", "field": "Tot sum", "text": "Summation of packets lengths in flow"}
+        ]
+      },
+      {
+        "id": "cic_readme_39row",
+        "path": "datasets/incoming/ciciot2023/README.pdf",
+        "sha256": "0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92",
+        "location": "same README.pdf; page-1 39-row window-aggregate feature table archived as references/dataset_docs/ciciot2023/readme_p1_feature_table/readme_p1_window_table_39row.png (SHA-256 cc88ca2f654aa7be64c69721b25968b6244107c63c1e7aa7a32311b6f258a1ad; embedded six times byte-identically as images x16-x21)",
+        "anchors_used": [
+          {"anchor": "p.1, 39-row window table, row 23", "field": "TCP", "text": "Average no. of TCP packets in the window"},
+          {"anchor": "p.1, 39-row window table, row 24", "field": "UDP", "text": "Average no. of UDP packets in the window"},
+          {"anchor": "p.1, 39-row window table, row 27", "field": "ICMP", "text": "Average no. of ICMP packets in the window"},
+          {"anchor": "p.1, 39-row window table, row 30", "field": "Tot Sum", "text": "Total packet length within the aggregated packets (window)"}
+        ]
+      },
+      {
+        "id": "n_baiot_meidan",
+        "path": "references/dataset_docs/n_baiot/meidan2018_arxiv_v1_2026-09-04.pdf",
+        "sha256": "1fa5bc4d4d2a12c2e93b18c4d876bd83ab7f456797934fcc71c92db754811964",
+        "location": "references/dataset_docs registry entry (open-access arXiv v1 linked by UCI)",
+        "anchors_used": [
+          {"anchor": "Table 2 and 'Feature extraction' section", "field": "23 features x 4 aggregation objects", "text": "defines H/HH/HH_jit/HpHp aggregation objects (Source IP, Source MAC-IP, Channel, Socket); literal string 'MI_dir' never appears - MI_dir attributed to Source MAC-IP by elimination from frozen 115-column group widths"}
+        ]
+      },
+      {
+        "id": "n_baiot_uci",
+        "path": "references/dataset_docs/n_baiot/uci_dataset_page_2026-09-04.html",
+        "sha256": "e0b79978d166b601ce1e8480625d8ad9fe40b328ad92d66f8eebde9730b5d57f",
+        "location": "references/dataset_docs registry entry",
+        "anchors_used": [
+          {"anchor": "variable information section", "field": "N-BaIoT prefixes/decay/statistics", "text": "stream aggregation prefixes and decay factors L5/L3/L1/L0.1/L0.01; MI_dir_* NOT defined on the page (the resolved point)"}
+        ]
+      }
+    ]
+  },
+
+  "official_source_internal_inconsistencies": [
+    {
+      "id": "cic_p1_two_feature_tables",
+      "sources": ["cic_readme_47row", "cic_readme_39row"],
+      "statement": "README.pdf page 1 embeds two different feature tables. The 47-row table describes TCP/UDP as per-flow protocol indicators ('Indicates if the transport layer protocol is TCP/UDP') and ICMP as the network-layer indicator; the 39-row table describes TCP/UDP/ICMP as window aggregates ('Average no. of TCP/UDP/ICMP packets in the window'). Both descriptions attach to the same-named columns of the released CSV; the official documentation does not state which table corresponds to the released 39-column header.",
+      "consequence": "Gate 7 (official documentation supports the mapping) is NOT satisfiable for any CICIoT2023 protocol-column mapping this version: the official source contradicts itself on the columns' semantics, and the released-CSV correspondence of either table is undocumented. This inconsistency is recorded here and in registry.json; no correspondence is invented to resolve it."
+    },
+    {
+      "id": "unb_page_32_33",
+      "statement": "Carried over from #15: the UNB page enumerates 32 attacks vs README.pdf's 33; baseline is frozen directories + README.pdf. (Type-mapping domain, listed here for completeness; no effect on feature mapping.)"
+    }
+  ],
+
+  "target_config_state": {
+    "file": "config/feature_policy.json",
+    "application": "text-level replacements only (no json.dump re-serialization; key order, indentation, and all untouched bytes preserved). At #24 the live file must first be re-verified against the baseline SHA, then exactly the listed replacements applied, then the result hashed and recorded.",
+
+    "status_flips": [
+      {
+        "path": "status",
+        "current": "proposed",
+        "target": "frozen",
+        "kind": "status_flip",
+        "note": "root policy status"
+      },
+      {
+        "path": "semantic_core.candidate_examples[0].decision_status",
+        "current": "proposed",
+        "target": "frozen",
+        "kind": "status_flip",
+        "note": "total_transferred_bytes; semantic_disposition stays unresolved"
+      },
+      {
+        "path": "semantic_core.candidate_examples[1].decision_status",
+        "current": "proposed",
+        "target": "frozen",
+        "kind": "status_flip",
+        "note": "decayed_window_statistics; semantic_disposition stays rejected"
+      },
+      {
+        "path": "semantic_core.review_outcome_2026_09_04.resolved_points[0].decision_status",
+        "current": "proposed",
+        "target": "frozen",
+        "kind": "status_flip",
+        "note": "MI_dir resolution; semantic_disposition stays derived"
+      }
+    ],
+
+    "final_status_path_enumeration": [
+      "status",
+      "semantic_core.candidate_examples[0].decision_status",
+      "semantic_core.candidate_examples[1].decision_status",
+      "semantic_core.review_outcome_2026_09_04.resolved_points[0].decision_status"
+    ],
+    "final_status_path_note": "The two protocol_indicators/packet_count records REMAIN STRING-EMBEDDED inside review_outcome_2026_09_04.pairwise_cores.ton_iot__ciciot2023 (see string_target_wording below). They gain NO new structured status fields in this version; the four-path enumeration above is therefore final for the resulting config, and no status path is left open to #24 improvisation.",
+
+    "evidence_source_targets": [
+      {
+        "record": "status (policy root)",
+        "action": "no new key needed on the root; documented here for completeness so every affected record carries explicit evidence attribution",
+        "target_value": [
+          "DECISIONS.md #23 Rev 1 and the triggering review package FEATURE_PROTOCOL_23_INDEPENDENT_REVIEW.zip (SHA-256 1fdee7efa3ab11dc528c04c8e303086d0d45b69a5e26b310fae4abb46da8af6b): the policy's freeze_conditions are satisfied at Rev 1 time - official documents reviewed (see official_source_evidence_registry), the TON-IoT type value inventory was completed read-only earlier in the #16/#18/#20 chain, and per-record evidence is enumerated in this draft",
+          "config/feature_policy.json freeze_conditions array (unchanged by this freeze): the three conditions this root freeze closes out"
+        ],
+        "gate_status_note": "The root freeze locks the policy document state itself; it carries no mapping semantics, admits nothing, and by itself lifts no data-handling gate."
+      },
+      {
+        "record": "semantic_core.candidate_examples[0] (total_transferred_bytes)",
+        "action": "add key",
+        "target_value": [
+          "datasets/incoming/ton_iot/Network Features-Description.pdf (SHA-256 b1f63453029855e084290a2f79554eaa7e3b85f8d53fb0ea4605966ef25ebe3b) p.1 rows 9-10: src_bytes/dst_bytes are payload bytes of TCP sequence numbers (per-connection quantities); consulted as the TON-IoT side definition",
+          "datasets/incoming/ciciot2023/README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) p.1 47-row table row 35 'Tot sum: Summation of packets lengths in flow' and p.1 39-row window table row 30 'Tot Sum: Total packet length within the aggregated packets (window)'; consulted as the CICIoT2023 side definition; the two tables also differ from each other (flow vs window)"
+        ],
+        "gate_status_note": "UNCONFIRMED GATES: gate 3 (aggregation object: per-connection payload bytes vs per-flow packet-length sums, directionally merged) and gate 4 (whole connection vs whole flow window, documented only by the two divergent tables). Evidence documents what was consulted and why the mapping stays unresolved; it is NOT equivalence support."
+      },
+      {
+        "record": "semantic_core.candidate_examples[1] (decayed_window_statistics)",
+        "action": "add key",
+        "target_value": [
+          "references/dataset_docs/n_baiot/meidan2018_arxiv_v1_2026-09-04.pdf (SHA-256 1fa5bc4d4d2a12c2e93b18c4d876bd83ab7f456797934fcc71c92db754811964) Table 2 + 'Feature extraction' section: 23 features per time scale over four aggregation objects (Source IP, Source MAC-IP, Channel, Socket) with decay factors L5/L3/L1/L0.1/L0.01",
+          "references/dataset_docs/n_baiot/uci_dataset_page_2026-09-04.html (SHA-256 e0b79978d166b601ce1e8480625d8ad9fe40b328ad92d66f8eebde9730b5d57f) variable information: same decay/statistics scheme; the released CSVs of TON-IoT and CICIoT2023 contain no damped-window stream statistics columns"
+        ],
+        "gate_status_note": "REJECTION SCOPE: the rejection is of the CROSS-DATASET MAPPING for this version's released CSVs (no counterpart columns exist on either other side), grounded in the structural difference between damped-window stream statistics and per-connection logs / whole-flow aggregates. It is NOT a deletion of N-BaIoT native features and NOT a claim about future dataset versions."
+      },
+      {
+        "record": "semantic_core.review_outcome_2026_09_04.resolved_points[0] (MI_dir)",
+        "action": "replace key (string -> object with evidence array, preserving the existing resolution text verbatim)",
+        "existing_value_kept": "evidence_source currently holds a single string; the target keeps that string as the first array element",
+        "target_value": [
+          "references/dataset_docs/n_baiot/meidan2018_arxiv_v1_2026-09-04.pdf (SHA-256 1fa5bc4d4d2a12c2e93b18c4d876bd83ab7f456797934fcc71c92db754811964) Table 2 and 'Feature extraction' section: 23 features per time scale over Source IP / Source MAC-IP / Channel / Socket; MI_dir attributed to Source MAC-IP by elimination from frozen group widths",
+          "references/dataset_docs/n_baiot/uci_dataset_page_2026-09-04.html (SHA-256 e0b79978d166b601ce1e8480625d8ad9fe40b328ad92d66f8eebde9730b5d57f) variable information section: defines H/HH/HH_jit/HpHp but NOT MI_dir (the gap this resolution fills)"
+        ],
+        "gate_status_note": "DERIVATION BOUNDARY: the interpretation is by-elimination, not a verbatim official definition ('MI_dir' never appears in the paper); it locks the N-BaIoT-internal reading only and confers NO cross-dataset comparability."
+      },
+      {
+        "record": "semantic_core.review_outcome_2026_09_04.pairwise_cores.ton_iot__ciciot2023.protocol_indicators (string-embedded)",
+        "action": "embedded in new string wording below",
+        "target_value": "covered by the new field string; the evidence is the two CICIoT2023 page-1 tables (conflicting) and the TON-IoT proto description",
+        "gate_status_note": "UNCONFIRMED GATES: gate 3 and gate 4 (aggregation object / time window of the released CSV's protocol columns) plus gate 7 (official documentation contradicts itself). See the official-source internal inconsistency record cic_p1_two_feature_tables."
+      },
+      {
+        "record": "semantic_core.review_outcome_2026_09_04.pairwise_cores.ton_iot__ciciot2023.packet_count (string-embedded)",
+        "action": "embedded in new string wording below",
+        "target_value": "covered by the new field string; evidence: TON-IoT p.1 rows 13/15 (per-connection directional packet counts) vs CICIoT2023 p.1 row 42 'Number: The number of packets in the flow' (47-row table)",
+        "gate_status_note": "UNCONFIRMED GATES: gate 3 (per-connection directional counts vs per-flow total; the two CICIoT2023 tables do not settle the released column's semantics)."
+      }
+    ],
+
+    "string_target_wording": [
+      {
+        "path": "semantic_core.review_outcome_2026_09_04.pairwise_cores.ton_iot__ciciot2023.protocol_indicators",
+        "format": "string retained (NOT converted to a structured record this version; decision made here so #24 has no open design choice)",
+        "exact_target": "semantic_disposition=unresolved, decision_status=proposed; REVISED 2026-09-05 (#23 Rev 1) after independent review F23-01: dataset-native is the mainline this version and NOTHING is admitted to the pairwise core - the core stays EMPTY. tcp and udp remain CANDIDATES for a future evidence-complete review (both sides' official docs describe transport-layer protocol semantics for them, and the observed TON-IoT proto value set is tcp 168747 / udp 42015 / icmp 281 per proto census v1+v2), but the admission claim is WITHDRAWN: the official CICIoT2023 page-1 documentation is internally inconsistent about the protocol columns (47-row indicator-style table vs 39-row 'Average no. of ... packets in the window' table), so gates 3, 4, and 7 are unconfirmed for the released CSV; 'per-record aggregation' and 'whole-record window' phrasing is container language, not a definition of the measured object. icmp likewise stays unresolved: the earlier transport-vs-network-layer wording difference is NOT a proven semantic incompatibility (Zeek conn logs cover TCP/UDP/ICMP in one record type); the correct statement is that current evidence is insufficient for admission, not that incompatibility is proven. Evidence: datasets/incoming/ton_iot/Network Features-Description.pdf p.1 row 6; datasets/incoming/ciciot2023/README.pdf p.1 47-row table rows 28/29/32 and 39-row table rows 23/24/27 (archived PNGs in references/dataset_docs/ciciot2023/readme_p1_feature_table/). The remaining CICIoT2023 protocol columns (DHCP/ARP/IGMP/IPv/LLC and the application-layer set) still have no proposed TON-IoT counterpart; no correspondence is invented and no unknown value is interpreted as all-zero indicators. Excluding ICMP from cross-dataset MAPPING does not delete the 281 ICMP samples or the native proto feature.",
+        "delta_vs_v1": "replaces the V1 wording that claimed 'EXACTLY the subset {tcp, udp} ... seven gates pass'; semantic_disposition also moves from the V1 'derived' label to 'unresolved' IN THE DRAFT TARGET, because a disposition of derived would assert the one-hot derivation is established, which the withdrawn admission claim no longer supports. The historical V1 wording remains recorded in DECISIONS.md #23 as the superseded proposal state."
+      },
+      {
+        "path": "semantic_core.review_outcome_2026_09_04.pairwise_cores.ton_iot__ciciot2023.packet_count",
+        "format": "string retained",
+        "exact_target": "semantic_disposition=unresolved, decision_status=proposed; connection vs flow aggregation object still unconfirmed for the released CSV; not admitted this version. Evidence: datasets/incoming/ton_iot/Network Features-Description.pdf p.1 rows 13/15 (per-connection directional packet counts) vs datasets/incoming/ciciot2023/README.pdf p.1 row 42 ('Number: The number of packets in the flow'); the README's two conflicting page-1 tables leave the released column's semantics undocumented.",
+        "delta_vs_v1": "unchanged disposition; evidence anchor added per F23-02."
+      }
+    ],
+
+    "data_handling_gate_targets": [
+      {
+        "gate": "materialization",
+        "current": "forbidden before protocol freeze",
+        "target": "permitted after protocol freeze (#24), subject to the label-ontology chain, the feature/label protocol freeze, and the standing experimental discipline (no split changes after formal experiments start; encoder fitting on the training split only; deterministic rotation and order-invariance gates)",
+        "authorization": "individually authorized at #24 only; stays forbidden until then"
+      },
+      {
+        "gate": "splitting",
+        "current": "forbidden before protocol freeze",
+        "target": "permitted after protocol freeze (#24), subject to the label-ontology chain, the feature/label protocol freeze, and the standing experimental discipline (no split changes after formal experiments start; encoder fitting on the training split only; deterministic rotation and order-invariance gates)",
+        "authorization": "individually authorized at #24 only; stays forbidden until then"
+      },
+      {
+        "gate": "training",
+        "current": "forbidden before protocol freeze",
+        "target": "permitted after protocol freeze (#24), subject to the label-ontology chain, the feature/label protocol freeze, and the standing experimental discipline (no split changes after formal experiments start; encoder fitting on the training split only; deterministic rotation and order-invariance gates)",
+        "authorization": "individually authorized at #24 only; stays forbidden until then"
+      }
+    ]
+  },
+
+  "admission_set_this_version": {
+    "three_way_core": "EMPTY",
+    "pairwise_cores": {
+      "ton_iot__ciciot2023": "EMPTY (protocol_indicators unresolved/candidate; packet_count unresolved)",
+      "ton_iot__n_baiot": "EMPTY (structural)",
+      "ciciot2023__n_baiot": "EMPTY (structural)"
+    },
+    "admitted_mapping_count": 0,
+    "admitted_mapping_note": "ZERO ADMISSIONS is the deliberate Rev 1 outcome per the user's Rev-1 verdict: dataset-native is the mainline; tcp/udp are retained candidates; an empty pairwise core is reported honestly and no alignment is forced. The freeze (decision_status=frozen) locks THIS review decision; frozen never means admitted.",
+    "future_admission_path": "A future version may admit specific mappings only with: (1) a complete seven-gate audit record per mapping including aggregation_level, time_window, directionality, missing_value_policy, both-side formulas, and per-gate anchored evidence; (2) resolution of the official-source internal inconsistency (which README table corresponds to the released 39-column CSV), or a documented decision on which description governs with justification; (3) separate explicit user authorization."
+  },
+
+  "freeze_metadata": {
+    "freeze_id": "FEATURE-POLICY-20260905-V1-FROZEN",
+    "applied_by": "#24 only, under its own separate explicit user authorization",
+    "proposal_id": "FEATURE-POLICY-20260905-V1-PROPOSED (DECISIONS.md #23, superseded in part by #23 Rev 1)",
+    "frozen_semantics": "decision_status=frozen locks the review decision of this version; it does not assert any mapping holds, does not resolve the unresolved, does not bar a future evidence-based version, and does not lift the materialization/splitting/training gates by itself (the gate target values take effect only as part of the same #24 change, each individually authorized)",
+    "out_of_scope": [
+      "config/label_ontology.json (frozen, byte-identical 8a055e2e...)",
+      "frozen dataset-level mapping tables and fixed_decisions",
+      "audit_gates, mapping_record_fields, and policy texts (direction/paper_positioning/empty-core honesty)",
+      "proto census artifacts (audit evidence, immutable; v1+v2)",
+      "ton_iot_exclusions and primary_native_feature_sets (native sets unchanged; only status and evidence fields change)"
+    ]
+  }
+}

@@ -118,7 +118,14 @@ time_window
 directionality
 missing_value_policy
 evidence_source
-mapping_status: exact / derived / rejected
+semantic_disposition: exact / derived / unresolved / rejected
+decision_status: proposed / frozen
+
+These are two independent axes. semantic_disposition records the
+substantive mapping outcome; decision_status records only whether
+the review decision for this version is locked. Freezing
+(decision_status=frozen) locks the recorded disposition; it never
+converts unresolved/rejected into admitted mappings.
 ```
 
 Worked examples of why gates matter:
@@ -147,8 +154,11 @@ the paper must not claim a universal 44-dimensional representation.
 
 ## 5. Freeze conditions
 
-Before any mapping in `config/feature_policy.json` moves from `proposed`
-to `exact` / `derived` / `rejected`:
+Before any mapping in `config/feature_policy.json` moves from
+`decision_status: proposed` to `decision_status: frozen` (with its
+`semantic_disposition` - exact / derived / unresolved / rejected -
+set per the review outcome; frozen locks the disposition, it never
+means admitted):
 
 1. Review the official field/statistics documents of all three datasets.
 2. Complete the TON-IoT `type` value inventory (read-only pass).
@@ -223,6 +233,101 @@ freeze scope (label_ontology.json, frozen mapping tables, semantic
 dispositions, audit gates, native feature sets) is touched by this
 proposal, and the freeze alone does not lift the
 materialization/splitting/training ban - that requires #24 and its
-own authorization.
+
+### 6.1 Rev 1 staging addendum (2026-09-05, zero-admission revision)
+
+Rev 1 is triggered by the user's independent review of
+FEATURE_PROTOCOL_FREEZE_PROPOSAL_EVIDENCE_V1.zip (SHA-256
+`0e66ffb8537e08d6cba28092a6da92f1d2ef924727baff862a898330c63f3fc1`,
+2,554,527 bytes, 40 zip entries = 26 files + 14 directories; review
+package FEATURE_PROTOCOL_23_INDEPENDENT_REVIEW.zip, SHA-256
+`1fdee7efa3ab11dc528c04c8e303086d0d45b69a5e26b310fae4abb46da8af6b`).
+The reviewer confirmed package integrity PASS (MANIFEST 25/25 files,
+in-package tests 46/46 under an independent Python) and returned three
+findings: F23-01 (insufficient admission evidence), F23-02 (an
+independent ready-to-effect draft is required), F23-03 (the census
+script and a v2 verification pass must be archived). Rev 1 changes
+THIS DOCUMENTATION ONLY; both config files stay byte-identical
+(feature_policy `2a903a4a...21b47`, label_ontology `8a055e2e...6fab`)
+and #24 execution remains unauthorized.
+
+F23-01 - admission withdrawn to zero (supersedes the V1 item-3
+wording above; the V1 text is retained as the historical staging
+record):
+
+1. protocol_indicators is demoted from a proposed {tcp, udp} subset
+   admission to CANDIDATE retention, and this version admits NOTHING
+   into any cross-dataset core: the three-way core and every pairwise
+   core are EMPTY, admitted_mapping_count = 0, and dataset-native is
+   the mainline. The empty pairwise core is reported honestly; no
+   alignment is forced.
+2. Ground: the official CICIoT2023 README.pdf page 1 embeds TWO
+   feature tables with CONFLICTING protocol semantics - a 47-row
+   indicator-style table ("Indicates if the transport layer protocol
+   is TCP" / "... is UDP"; "Indicates if the network layer protocol
+   is ICMP"; Tot sum = "Summation of packets lengths in flow",
+   archived as readme_p1_feature_table_47row.png, SHA-256
+   `6327fa2b...037902`) and a 39-row window-aggregation table
+   ("Average no. of TCP/UDP/ICMP packets in the window"; Tot Sum =
+   "Total packet length within the aggregated packets (window)",
+   archived as readme_p1_window_table_39row.png, six byte-identical
+   embedded copies x16-x21, one archived, SHA-256 `cc88ca2f...8a1ad`).
+   The official documentation does not state which table describes
+   the released 39-column CSV, so the aggregation-level and
+   time-window gates (gates 3/4) cannot be assessed for the protocol
+   columns and gate 7 is not satisfied this version. The two tables
+   are recorded in registry.json as an official-source internal
+   inconsistency. A "per-record aggregation"/"whole-record window"
+   phrase describes the container, not the aggregation object and
+   time window, and does not prove gates 3/4.
+3. ICMP correction: the V1 exclusion reasoning (transport-layer vs
+   network-layer wording) is NOT a sufficient exclusion proof - the
+   same Zeek conn.log documentation describes proto as the transport
+   layer while explicitly covering TCP/UDP/ICMP. The corrected
+   disposition is "current evidence is insufficient; not admitted
+   this version". This correction concerns the mapping wording only:
+   the 281 ICMP samples and the native proto features are NOT
+   deleted, and the TON-IoT census remains untouched.
+4. In the future #24 draft targets, protocol_indicators carries
+   semantic_disposition=unresolved (not derived - the V1 admission
+   claim is withdrawn, so "derived" no longer holds) with
+   decision_status=proposed; packet_count stays unresolved;
+   total_transferred_bytes stays unresolved; decayed_window_statistics
+   stays rejected; MI_dir stays derived.
+
+F23-02 - the independent ready-to-effect draft is
+artifacts/proposals/feature_policy_freeze_draft_v1r1.json: one-pass
+targets for exactly 4 status flips; per-record evidence attribution
+for all 6 affected records (policy root status, the two
+candidate_examples, the MI_dir resolved point, protocol_indicators,
+packet_count); the complete target wording for the two
+string-embedded candidates; structured-vs-string decided now (the
+two candidates stay string-embedded this version); the three
+data-handling gate targets each with a unique target value,
+authorization, and pre-condition; freeze ID
+FEATURE-POLICY-20260905-V1-FROZEN with provenance. Guard tests
+verify the actual admission set of the draft (zero admissions),
+not just its note text.
+
+F23-03 - audit tooling archived: the v1 census script is stored as
+scripts/audits/ton_iot_proto_census_v1.py (SHA-256
+`98cb2942...496cc`) and the v2 source as
+scripts/audits/ton_iot_proto_census_v2.py (SHA-256
+`490495d9...0d787`). The user authorized ONE additional read-only
+verification pass over the SAME frozen CSV; the v2 artifacts are new
+timestamped files (ton_iot_proto_v2_20260905T121644Z.json, SHA-256
+`dfffd40c...f44b7`, and .log, SHA-256 `aa45633f...01fbfd`), the
+source CSV hash was checked before and after the run (both equal to
+the frozen inventory value `26ddc513...e1974`), no old artifact or
+log was modified, and no claim is back-filled into old logs. v2
+reproduces v1 exactly: tcp 168747 / udp 42015 / icmp 281, rows
+211043 = 211043, zero anomalies, counts_identical_to_v1 = true,
+exit_status OK. The v2 pass is audit evidence only and must not
+become an all-data encoder vocabulary.
+
+All statuses and both config files are UNCHANGED at Rev 1 time.
+Nothing outside the Rev 1 documentation scope is touched, the
+materialization/splitting/training ban is NOT lifted, and #24
+execution still requires separate explicit user authorization.
 
 > AI生成

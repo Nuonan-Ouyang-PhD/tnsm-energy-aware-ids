@@ -1,5 +1,6 @@
 """Guard tests for the #23 feature/label protocol freeze PROPOSAL
-(FEATURE-POLICY-20260905-V1-PROPOSED, DECISIONS.md #23).
+(FEATURE-POLICY-20260905-V1-PROPOSED, DECISIONS.md #23) and its Rev 1
+zero-admission revision (DECISIONS.md #23 Rev 1).
 
 Proposal-stage invariants asserted here:
   - the four structured status fields in config/feature_policy.json
@@ -13,10 +14,24 @@ Proposal-stage invariants asserted here:
     inventory, and records exactly the three raw values with no
     anomalies;
   - admission boundaries: unresolved/rejected dispositions must not
-    appear in any admitted-mapping set; the admitted protocol
-    indicator subset is exactly {tcp, udp} per the proposal wording;
+    appear in any admitted-mapping set; the V1 proposal wording (kept
+    as the historical staging record) is still present in DECISIONS.md;
   - DECISIONS.md #23 and the FEATURE_MAPPING_PROTOCOL.md section 6
     staging record exist with the required scope statements.
+
+Rev 1 invariants additionally asserted here:
+  - the zero-admission draft JSON exists with exactly 4 status flips,
+    6 per-record evidence targets, 2 complete string targets, 3 gate
+    targets, and an EMPTY admission set (admitted_mapping_count 0);
+  - the v2 census verification pass artifacts reproduce v1 exactly
+    with before/after source-hash invariance, and the v1/v2 census
+    scripts are archived in scripts/audits/;
+  - the two conflicting CICIoT2023 README page-1 feature tables are
+    archived and registered as an official-source internal
+    inconsistency;
+  - FEATURE_MAPPING_PROTOCOL.md uses the dual-axis wording
+    (semantic_disposition x decision_status), carries a 6.1 Rev 1
+    staging addendum, and DECISIONS.md records the Rev 1 outcome;
 """
 
 import hashlib
@@ -49,6 +64,62 @@ LABEL_ONTOLOGY_SHA = (
 )
 CENSUS_SHA = (
     "89f06e9c3913e2d429be6021ff42f907727f36e69cebf5bc5639b9793e689830"
+)
+
+# --- Rev 1 (2026-09-05) constants ---------------------------------
+DRAFT_PATH = (
+    REPO_ROOT / "artifacts" / "proposals"
+    / "feature_policy_freeze_draft_v1r1.json"
+)
+DRAFT_SHA = (
+    "27ad0d1516cf6c1df7a5584eb3c49ba583873493d3e13ae5632e306fbc96464f"
+)
+CENSUS_V2_PATH = (
+    REPO_ROOT / "artifacts" / "datasets" / "proto_census"
+    / "ton_iot_proto_v2_20260905T121644Z.json"
+)
+CENSUS_V2_LOG_PATH = (
+    REPO_ROOT / "artifacts" / "datasets" / "proto_census"
+    / "ton_iot_proto_v2_20260905T121644Z.log"
+)
+CENSUS_V2_SHA = (
+    "dfffd40c42fea9608679257c3c4a6014e42bbb7029b6849c6e5a0a4cde9f44b7"
+)
+CENSUS_V2_LOG_SHA = (
+    "aa45633f063584af2d3e865191488e476d043074108c837a64129815b301fbfd"
+)
+CENSUS_V1_SCRIPT = (
+    REPO_ROOT / "scripts" / "audits" / "ton_iot_proto_census_v1.py"
+)
+CENSUS_V2_SCRIPT = (
+    REPO_ROOT / "scripts" / "audits" / "ton_iot_proto_census_v2.py"
+)
+CENSUS_V1_SCRIPT_SHA = (
+    "98cb29423e5ba5f1fa9880aea83604cff94760e8ada91bad347c5671cad496cc"
+)
+CENSUS_V2_SCRIPT_SHA = (
+    "490495d9f569de2db541a059b412e6022fd30782e7f166dab72a48bcf210d787"
+)
+CSV_SHA = (
+    "26ddc513552de36de6428b2e578efaed2b57504c716dfba847cc0109a64e1974"
+)
+P1_47ROW_PNG = (
+    REPO_ROOT / "references" / "dataset_docs" / "ciciot2023"
+    / "readme_p1_feature_table" / "readme_p1_feature_table_47row.png"
+)
+P1_39ROW_PNG = (
+    REPO_ROOT / "references" / "dataset_docs" / "ciciot2023"
+    / "readme_p1_feature_table" / "readme_p1_window_table_39row.png"
+)
+P1_47ROW_SHA = (
+    "6327fa2b7bace407f2fc48adf3268282c0ea323ae26aa717b42a486417037902"
+)
+P1_39ROW_SHA = (
+    "cc88ca2f654aa7be64c69721b25968b6244107c63c1e7aa7a32311b6f258a1ad"
+)
+REGISTRY_PATH = REPO_ROOT / "references" / "dataset_docs" / "registry.json"
+REVIEW_PACKAGE_SHA = (
+    "1fdee7efa3ab11dc528c04c8e303086d0d45b69a5e26b310fae4abb46da8af6b"
 )
 
 EXPECTED_PROPOSED_PATHS = {
@@ -191,8 +262,9 @@ class ProtoCensusArtifactTests(unittest.TestCase):
 
 class ProposalAdmissionBoundaryTests(unittest.TestCase):
     """Admission boundaries: unresolved/rejected records must not be
-    admitted; the admitted protocol-indicator subset is exactly the
-    {tcp, udp} subset; icmp stays unresolved."""
+    admitted; the V1 proposal wording (retained as the historical
+    staging record) stays present in DECISIONS.md; icmp stays
+    unresolved."""
 
     def test_unresolved_and_rejected_not_admitted(self):
         """No record with semantic_disposition unresolved or rejected
@@ -213,12 +285,18 @@ class ProposalAdmissionBoundaryTests(unittest.TestCase):
                 )
 
     def test_proposal_admits_exactly_tcp_udp_subset(self):
+        """V1 wording check on the HISTORICAL record: the V1 proposed
+        {tcp, udp} subset admission stays quoted in DECISIONS.md as
+        the historical staging record (Rev 1 supersedes but does not
+        erase it)."""
         md = DECISIONS_PATH.read_text(encoding="utf-8")
         self.assertIn("EXACTLY the subset {tcp, udp} is proposed", md)
         self.assertIn("icmp stays `unresolved`", md)
         self.assertIn("no correspondence is\n          invented", md)
         # the decision record must NOT claim the eight columns match
         self.assertNotIn("eight columns are equivalent", md)
+        # Rev 1 must record that the V1 admission wording is superseded
+        self.assertIn("this revision\n    supersedes it", md)
 
     def test_packet_count_stays_unresolved(self):
         md = DECISIONS_PATH.read_text(encoding="utf-8")
@@ -287,6 +365,301 @@ class ProposalRecordTests(unittest.TestCase):
         self.assertIn(
             "no data copies are created.\n\n## 6.", md
         )
+
+
+class Rev1ZeroAdmissionDraftTests(unittest.TestCase):
+    """F23-02: the independent ready-to-effect draft JSON exists with
+    exactly 4 status flips, 6 per-record evidence targets, complete
+    string targets, gate targets, and an EMPTY admission set."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.draft = json.loads(DRAFT_PATH.read_text(encoding="utf-8"))
+
+    def test_draft_sha_and_state(self):
+        self.assertEqual(sha256_file(DRAFT_PATH), DRAFT_SHA)
+        self.assertEqual(self.draft["status"], "DRAFT_NOT_APPLIED")
+        self.assertEqual(
+            self.draft["draft_id"],
+            "FEATURE-POLICY-20260905-V1-FROZEN (draft; would take "
+            "effect only at #24)",
+        )
+        self.assertEqual(
+            self.draft["provenance"]["review_trigger"]["sha256"],
+            REVIEW_PACKAGE_SHA,
+        )
+        self.assertEqual(
+            self.draft["provenance"]["review_trigger"]
+            ["review_outcome_findings_addressed"],
+            ["F23-01", "F23-02", "F23-03"],
+        )
+
+    def test_status_flips_exactly_four(self):
+        flips = self.draft["target_config_state"]["status_flips"]
+        self.assertEqual(len(flips), 4)
+        enumerated = self.draft["target_config_state"][
+            "final_status_path_enumeration"
+        ]
+        self.assertEqual(
+            [f["path"] for f in flips], enumerated
+        )
+        self.assertEqual(set(enumerated), EXPECTED_PROPOSED_PATHS)
+        for flip in flips:
+            self.assertEqual(flip["current"], "proposed")
+            self.assertEqual(flip["target"], "frozen")
+
+    def test_evidence_targets_cover_six_records(self):
+        targets = self.draft["target_config_state"][
+            "evidence_source_targets"
+        ]
+        self.assertEqual(len(targets), 6)
+        records = " ".join(t["record"] for t in targets)
+        for required in (
+            "status (policy root)",
+            "candidate_examples[0]",
+            "candidate_examples[1]",
+            "resolved_points[0]",
+            "protocol_indicators",
+            "packet_count",
+        ):
+            self.assertIn(required, records)
+
+    def test_string_targets_complete_and_structure_decided(self):
+        wording = self.draft["target_config_state"][
+            "string_target_wording"
+        ]
+        self.assertEqual(len(wording), 2)
+        by_path = {w["path"]: w for w in wording}
+        pi = [
+            path
+            for path in by_path
+            if path.endswith("protocol_indicators")
+        ]
+        pc = [path for path in by_path if path.endswith("packet_count")]
+        self.assertEqual(len(pi), 1)
+        self.assertEqual(len(pc), 1)
+        # structured-vs-string decided NOW: both stay string-embedded
+        self.assertIn(
+            "string retained", by_path[pi[0]]["format"]
+        )
+        self.assertIn("NOT converted", by_path[pi[0]]["format"])
+        # protocol_indicators target: unresolved/proposed, zero admission
+        self.assertIn(
+            "semantic_disposition=unresolved", by_path[pi[0]]["exact_target"]
+        )
+        self.assertIn(
+            "decision_status=proposed", by_path[pi[0]]["exact_target"]
+        )
+        self.assertIn(
+            "NOTHING is admitted", by_path[pi[0]]["exact_target"]
+        )
+        # packet_count stays unresolved
+        self.assertIn(
+            "semantic_disposition=unresolved", by_path[pc[0]]["exact_target"]
+        )
+
+    def test_gate_targets_unique_values_and_preconditions(self):
+        gates = self.draft["target_config_state"][
+            "data_handling_gate_targets"
+        ]
+        self.assertEqual(
+            {g["gate"] for g in gates},
+            {"materialization", "splitting", "training"},
+        )
+        for gate in gates:
+            self.assertEqual(
+                gate["current"], "forbidden before protocol freeze"
+            )
+            self.assertTrue(gate["target"].startswith("permitted after"))
+            self.assertIn("#24", gate["target"])
+            self.assertTrue(gate["authorization"].strip())
+            self.assertTrue(gate.get("precondition", "").strip()
+                            or gate["authorization"].strip())
+
+    def test_zero_admission_set(self):
+        admission = self.draft["admission_set_this_version"]
+        self.assertEqual(admission["admitted_mapping_count"], 0)
+        self.assertEqual(admission["three_way_core"], "EMPTY")
+        pairwise = admission["pairwise_cores"]
+        self.assertEqual(len(pairwise), 3)
+        for core in pairwise.values():
+            self.assertIn("EMPTY", core)
+        # frozen never means admitted
+        self.assertIn("frozen never means admitted",
+                      admission["admitted_mapping_note"])
+
+    def test_protocol_indicators_disposition_is_unresolved_not_derived(self):
+        wording = self.draft["target_config_state"][
+            "string_target_wording"
+        ]
+        pi = [w for w in wording
+              if w["path"].endswith("protocol_indicators")][0]
+        self.assertIn("semantic_disposition=unresolved",
+                      pi["exact_target"])
+        self.assertNotIn("semantic_disposition=derived",
+                         pi["exact_target"])
+
+
+class Rev1CensusVerificationTests(unittest.TestCase):
+    """F23-03: the v2 read-only verification pass over the SAME frozen
+    CSV reproduces v1 exactly; scripts are archived; the source CSV
+    hash is checked before and after the run."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.v2 = json.loads(
+            CENSUS_V2_PATH.read_text(encoding="utf-8")
+        )
+
+    def test_v2_artifact_hashes(self):
+        self.assertEqual(sha256_file(CENSUS_V2_PATH), CENSUS_V2_SHA)
+        self.assertEqual(
+            sha256_file(CENSUS_V2_LOG_PATH), CENSUS_V2_LOG_SHA
+        )
+
+    def test_v2_scripts_archived(self):
+        self.assertEqual(
+            sha256_file(CENSUS_V1_SCRIPT), CENSUS_V1_SCRIPT_SHA
+        )
+        self.assertEqual(
+            sha256_file(CENSUS_V2_SCRIPT), CENSUS_V2_SCRIPT_SHA
+        )
+
+    def test_v2_reproduces_v1_exactly(self):
+        ref = self.v2["v1_reference"]
+        self.assertTrue(ref["counts_identical_to_v1"])
+        self.assertTrue(ref["total_rows_identical_to_v1"])
+        self.assertEqual(
+            self.v2["proto_value_counts"], CENSUS_COUNTS
+        )
+        self.assertEqual(self.v2["total_rows"], CENSUS_TOTAL_ROWS)
+        self.assertTrue(self.v2["reconciliation"]["row_count_match"])
+        self.assertTrue(self.v2["reconciliation"]["sum_equals_row_count"])
+        self.assertEqual(self.v2["exit_status"], "OK")
+
+    def test_v2_source_hash_invariance_and_authorization(self):
+        source = self.v2["source"]
+        self.assertEqual(source["sha256_before"], CSV_SHA)
+        self.assertEqual(source["sha256_after"], CSV_SHA)
+        self.assertEqual(
+            source["sha256_inventory_expected"], CSV_SHA
+        )
+        self.assertIn("One additional read-only verification pass",
+                      self.v2["authorization"])
+        notes = " ".join(self.v2["notes"])
+        self.assertIn("No old artifact or log was modified", notes)
+        self.assertIn("must NOT be used as an all-data encoder", notes)
+
+
+class Rev1DocumentationTests(unittest.TestCase):
+    """Rev 1 documentation invariants: the two conflicting page-1
+    tables archived and registered, the dual-axis wording in
+    FEATURE_MAPPING_PROTOCOL.md, and the DECISIONS.md Rev 1 record."""
+
+    def test_p1_tables_archived(self):
+        self.assertEqual(sha256_file(P1_47ROW_PNG), P1_47ROW_SHA)
+        self.assertEqual(sha256_file(P1_39ROW_PNG), P1_39ROW_SHA)
+
+    def test_p1_tables_registered_as_inconsistency(self):
+        registry = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
+        entries = {
+            e["file"]: e for e in registry["entries"]
+            if e["dataset_id"] == "ciciot2023"
+            and e["file"].startswith("ciciot2023/readme_p1_feature_table/")
+        }
+        self.assertEqual(len(entries), 2)
+        for entry in entries.values():
+            self.assertEqual(entry["source_sha256"],
+                             "0f48daba395be03985f612ce706d33f1a25e4008"
+                             "cb94c3ad7b6f6332fbdbee92")
+        blob = json.dumps(registry, ensure_ascii=False)
+        self.assertIn("OFFICIAL-SOURCE INTERNAL INCONSISTENCY", blob)
+        self.assertIn("Average no. of TCP packets in the window", blob)
+        self.assertIn("Indicates if the transport layer protocol is TCP",
+                      blob)
+
+    def test_fmp_dual_axis_wording(self):
+        md = FMP_PATH.read_text(encoding="utf-8")
+        # single-axis field list is gone
+        self.assertNotIn("mapping_status", md)
+        self.assertIn(
+            "semantic_disposition: exact / derived / unresolved / rejected\n"
+            "decision_status: proposed / frozen",
+            md,
+        )
+        self.assertIn("decision_status: proposed / frozen", md)
+        self.assertIn("These are two independent axes", md)
+        self.assertIn(
+            "it never\nmeans admitted", md
+        )
+        # section 5 dual-axis freeze condition
+        self.assertIn(
+            "`decision_status: proposed` to `decision_status: frozen`",
+            md,
+        )
+
+    def test_fmp_rev1_addendum(self):
+        md = FMP_PATH.read_text(encoding="utf-8")
+        self.assertIn("### 6.1 Rev 1 staging addendum", md)
+        self.assertIn("CANDIDATE retention", md)
+        self.assertIn("admitted_mapping_count = 0", md)
+        self.assertIn("TWO\n   feature tables with CONFLICTING", md)
+        self.assertIn("is NOT a sufficient exclusion proof", md)
+        self.assertIn(
+            "current evidence is insufficient; not admitted\n"
+            "   this version",
+            md,
+        )
+        self.assertIn("readme_p1_feature_table_47row.png", md)
+        self.assertIn("readme_p1_window_table_39row.png", md)
+        self.assertIn(REVIEW_PACKAGE_SHA, md)
+        self.assertIn(
+            "281 ICMP samples and the native proto features are NOT\n"
+            "   deleted",
+            md,
+        )
+        # legacy watermark tail stays at end-of-file
+        self.assertTrue(md.rstrip().endswith("AI生成"))
+        # the exempted watermark stays the LAST line
+        self.assertTrue(md.endswith("> AI生成\n"))
+
+    def test_decisions_md_rev1_record(self):
+        md = DECISIONS_PATH.read_text(encoding="utf-8")
+        self.assertIn(
+            "Rev 1 (2026-09-05, zero-admission documentation revision)",
+            md,
+        )
+        self.assertIn("F23-01", md)
+        self.assertIn("F23-02", md)
+        self.assertIn("F23-03", md)
+        self.assertIn("admitted_mapping_count = 0", md)
+        self.assertIn(
+            "feature_policy_freeze_draft_v1r1.json", md
+        )
+        self.assertIn("ton_iot_proto_v2_20260905T121644Z.json", md)
+        self.assertIn(
+            "DEMOTED to candidate retention", md
+        )
+        self.assertIn(
+            "NOT a\n        sufficient exclusion proof", md
+        )
+        self.assertIn(
+            "current evidence insufficient; not admitted this version",
+            md,
+        )
+        # scope statements unchanged
+        self.assertIn(
+            "the materialization/splitting/training ban\n    is NOT "
+            "lifted",
+            md,
+        )
+        self.assertIn(
+            "#24 execution still requires separate explicit\n    "
+            "user authorization",
+            md,
+        )
+        # configs still byte-identical per the record
+        self.assertIn("`2a903a4a...21b47` / `8a055e2e...6fab`", md)
 
 
 if __name__ == "__main__":

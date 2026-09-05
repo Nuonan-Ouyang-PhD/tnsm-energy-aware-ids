@@ -1,0 +1,90 @@
+{
+  "schema_version": 2,
+  "kind": "proto_value_census_verification",
+  "dataset_id": "ton_iot",
+  "created_at_utc": "2026-09-05T12:16:44Z",
+  "authorization": "One additional read-only verification pass over the same frozen CSV, authorized by the user in the #23 Rev 1 scope (2026-09-05) following the independent review finding F23-03; NOT a lift of the materialization/splitting/training gates",
+  "source": {
+    "inventory": "artifacts/datasets/inventories/ton_iot_20260903T113048Z.json",
+    "relative_path": "train_test_network.csv",
+    "sha256_before": "26ddc513552de36de6428b2e578efaed2b57504c716dfba847cc0109a64e1974",
+    "sha256_after": "26ddc513552de36de6428b2e578efaed2b57504c716dfba847cc0109a64e1974",
+    "sha256_inventory_expected": "26ddc513552de36de6428b2e578efaed2b57504c716dfba847cc0109a64e1974",
+    "invariance_before_inventory_after": true,
+    "column": "proto",
+    "column_index": 4,
+    "column_count": 44
+  },
+  "script": {
+    "version": "ton_iot_proto_census v2 verification pass (2026-09-05, #23 Rev 1)",
+    "mode": "read-only single-column verification; csv module, utf-8-sig, no row export, no encoder, no split, no training",
+    "repo_head": "1bdd7f6543f4f921feceb269a33cce329ca54a2a",
+    "v1_script_archived": "scripts/audits/ton_iot_proto_census_v1.py",
+    "v1_script_sha256": "98cb29423e5ba5f1fa9880aea83604cff94760e8ada91bad347c5671cad496cc"
+  },
+  "header_digest_recipes": {
+    "header_first_line_raw_sha256": "049ba74ecfe7e52812e4967dab061128f6c297614a6765fdc6884b985f76dabd",
+    "header_first_line_eol_stripped_sha256": "9d7dd3578ca1c70d12e2d14e6a706acad3bbae9e2d1e35d6b99b94ec6521dbd1",
+    "header_first_line_bom_and_eol_stripped_sha256": "7e805360c24865b348c5dc558fa8ae5afe6b85e68d99cc7dcf7479931ffe61fd",
+    "header_joined_inventory_columns_sha256": "7e805360c24865b348c5dc558fa8ae5afe6b85e68d99cc7dcf7479931ffe61fd"
+  },
+  "header_recipe_note": "Each digest above is reproducible from the raw first-line bytes of the CSV under the named recipe. inventory.header_sha256 (024f793b...) is an opaque frozen value from the inventory generation code and is deliberately not reinterpreted here.",
+  "v1_reference": {
+    "artifact": "artifacts/datasets/proto_census/ton_iot_proto_20260905T110840Z.json",
+    "sha256": "89f06e9c3913e2d429be6021ff42f907727f36e69cebf5bc5639b9793e689830",
+    "counts_identical_to_v1": true,
+    "total_rows_identical_to_v1": true
+  },
+  "total_rows": 211043,
+  "proto_value_counts": {
+    "icmp": 281,
+    "tcp": 168747,
+    "udp": 42015
+  },
+  "value_profiles": {
+    "icmp": {
+      "count": 281,
+      "has_leading_or_trailing_whitespace": false,
+      "is_empty_after_strip": false,
+      "lowercase_variant_differs": false,
+      "stripped_variant_differs": false
+    },
+    "tcp": {
+      "count": 168747,
+      "has_leading_or_trailing_whitespace": false,
+      "is_empty_after_strip": false,
+      "lowercase_variant_differs": false,
+      "stripped_variant_differs": false
+    },
+    "udp": {
+      "count": 42015,
+      "has_leading_or_trailing_whitespace": false,
+      "is_empty_after_strip": false,
+      "lowercase_variant_differs": false,
+      "stripped_variant_differs": false
+    }
+  },
+  "anomalies": {
+    "empty_string": 0,
+    "whitespace_only": 0,
+    "placeholder_like_values": {},
+    "row_field_count_mismatch": 0,
+    "parse_errors": 0
+  },
+  "reconciliation": {
+    "inventory_row_count": 211043,
+    "v2_row_count": 211043,
+    "row_count_match": true,
+    "field_mismatch_rows": 0,
+    "sum_of_value_counts": 211043,
+    "sum_equals_row_count": true,
+    "distinct_raw_values": 3
+  },
+  "exit_status": "OK",
+  "notes": [
+    "Raw observed values are recorded verbatim; no strip/lowercase/merge was applied.",
+    "v2 is a verification pass of the v1 delivered aggregate over the same frozen CSV under the #23 Rev 1 authorization; it is audit evidence only and must NOT be used as an all-data encoder vocabulary. The existing rule (category encoders fitted on the training split only) stands unchanged.",
+    "No old artifact or log was modified; v2 artifacts are new timestamped files alongside the v1 ones."
+  ],
+  "paper_eligible": false
+}

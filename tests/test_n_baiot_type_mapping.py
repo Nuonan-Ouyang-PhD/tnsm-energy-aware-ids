@@ -535,16 +535,35 @@ class OntologyWideNBaiotDisciplineTests(unittest.TestCase):
     def test_package_counting_facts_v1r1(self):
         """v1 Rev 1 recorded counting facts: MANIFEST verifies 18/18 (the
         19 ordinary files include the MANIFEST itself, which does not hash
-        itself), and the registry carries 3 source entries + 7 panels."""
+        itself), and the registry carried 3 source entries + 7 panels at
+        that revision. The registry is append-only: the two CICIoT2023
+        README page-1 feature-table entries added by the #23 Rev 1
+        zero-admission revision (DECISIONS.md #23 Rev 1) come ON TOP of
+        the historical three source entries, which are still present
+        unchanged."""
         decisions = DECISIONS_PATH.read_text(encoding="utf-8")
         self.assertIn("18/18", decisions)
         self.assertIn("3 source entries + 7 panels", decisions)
         registry = json.loads(
             (REPO_ROOT / "references" / "dataset_docs" / "registry.json").read_text(encoding="utf-8")
         )
-        self.assertEqual(len(registry["entries"]), 3)
+        # historical three source entries still present (append-only)
+        files = [e["file"] for e in registry["entries"]]
+        for historical in (
+            "n_baiot/uci_dataset_page_2026-09-04.html",
+            "n_baiot/meidan2018_arxiv_v1_2026-09-04.pdf",
+            "ciciot2023/unb_iotdataset_page_2026-09-04.html",
+        ):
+            self.assertIn(historical, files)
+        # the two #23 Rev 1 page-1 feature-table additions
+        p1_tables = [
+            f for f in files
+            if f.startswith("ciciot2023/readme_p1_feature_table/")
+        ]
+        self.assertEqual(len(p1_tables), 2)
+        self.assertEqual(len(registry["entries"]), 5)
         panels = registry["in_tree_frozen_docs_not_copied"]["ciciot2023_evidence_extraction"]
-        self.assertEqual(len(panels), 7)
+        self.assertEqual(len(panels), 9)
 
     def test_n_baiot_mapped_families_do_not_equal_ton_families(self):
         """N-BaIoT maps only to benign/bashlite/mirai; TON-IoT has no
