@@ -406,3 +406,46 @@
     separate root-level ontology freeze decision, and a guard test now
     locks the corrected wording. config/label_ontology.json is NOT
     changed in this revision.
+
+21. ROOT-LEVEL ONTOLOGY FREEZE PROPOSED as
+    LABEL-ONTOLOGY-ROOT-20260905-V1-PROPOSED. This record is a proposal
+    for review only; no status is flipped in this record, and the
+    authorization to prepare a proposal explicitly does NOT include
+    flipping the ontology root status, canonical_family.decision_status,
+    or binary_label.derivation entries. Input state (all machine-verified
+    on the proposal commit): the three dataset-level family mapping
+    tables are frozen - TON-IoT 10 entries
+    (TON-IOT-TYPE-MAPPING-20260904-V1-FROZEN, #16), CICIoT2023 34
+    entries (CICIOT2023-TYPE-MAPPING-20260904-V1-FROZEN, #18), N-BaIoT
+    11 entries (N-BAIOT-TYPE-MAPPING-20260905-V1-FROZEN, #20, final
+    clean evidence N_BAIOT_TYPE_MAPPING_FREEZE_EVIDENCE_V1R1.zip SHA-256
+    `1912365fe8a20f478a367dc844f3067c6d7fac176e71a5e9505a21c38fae3d3c`,
+    with `a2682f8` as the freeze commit and `b017f8f` as its
+    documentation-consistency Rev 1); the gafgyt->bashlite
+    fixed_decision is frozen; the three root-level freeze_conditions in
+    config/label_ontology.json are all satisfied (TON-IoT type
+    inventory, field/statistics review #15, TON-IoT label semantics
+    re-verification). PROPOSED FREEZE SCOPE (what a future #22 freeze
+    would flip, subject to separate explicit authorization): (a)
+    ontology root `status` proposed -> frozen; (b)
+    `canonical_family.decision_status` proposed -> frozen; (c) the
+    three `binary_label.derivation.*.decision_status` entries proposed
+    -> frozen (ton_iot from the label column 0/1, ciciot2023 from the
+    category directory name, n_baiot from the file location - all
+    exact, all deterministic, each carrying evidence_source). Items
+    deliberately OUT OF SCOPE for the ontology root freeze:
+    `config/feature_policy.json` (status remains `proposed`; its
+    data_handling gates read "forbidden before protocol freeze", so the
+    materialization/splitting/training ban is controlled by the
+    FEATURE/label protocol freeze chain and is NOT lifted by an
+    ontology root freeze alone); the source_subtype verbatim
+    definitions (no decision_status axis; they are structural facts);
+    grouping_metadata and verified_dataset_facts (facts from frozen
+    inventories, not decisions). CONSEQUENCES IF LATER FROZEN: the
+    label ontology would be complete and immutable at all levels; any
+    change would require a new numbered decision superseding the frozen
+    state; per the standing chain, data materialization, splitting, and
+    training remain forbidden until the FEATURE protocol freeze
+    (feature_policy) completes its own separate decision chain - the
+    ontology root freeze alone does not authorize them. Nothing is
+    frozen in this record: user review of this proposal is pending.

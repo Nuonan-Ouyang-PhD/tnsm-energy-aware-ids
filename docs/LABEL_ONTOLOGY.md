@@ -338,3 +338,26 @@ status and `canonical_family.decision_status` remain `proposed` until
 the separate root-level ontology freeze decision.
 
 Data materialization, splitting, and training remain forbidden.
+
+## 6. Root-level ontology freeze proposal (staging record)
+
+The root-level freeze is PROPOSED as
+`LABEL-ONTOLOGY-ROOT-20260905-V1-PROPOSED` (DECISIONS.md #21). All
+statuses are UNCHANGED at proposal time: the ontology root `status`,
+`canonical_family.decision_status`, and the three
+`binary_label.derivation.*.decision_status` entries all remain
+`proposed`; the three dataset-level tables and the gafgyt->bashlite
+fixed_decision remain frozen; `feature_policy.status` remains
+`proposed`.
+
+If later authorized, the #22 freeze would flip exactly: the ontology
+root `status`, `canonical_family.decision_status`, and the three
+`binary_label.derivation.*.decision_status` entries (all to `frozen`),
+with freeze metadata recording the decision id, the final clean N-BaIoT
+freeze evidence hash, and the source commit. The verbatim
+`source_subtype` definitions, `grouping_metadata`, and
+`verified_dataset_facts` are structural facts, not decisions, and are
+outside the freeze axis. Data materialization, splitting, and training
+remain forbidden; their gate is the feature/label protocol freeze chain
+(`config/feature_policy.json` data_handling), not this ontology root
+freeze alone.
