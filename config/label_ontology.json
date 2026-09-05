@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "kind": "label_ontology",
-  "status": "proposed",
+  "status": "frozen",
   "freeze_conditions": [
     "TON-IoT type unique-value inventory completed (read-only pass)",
     "Official field/statistics documents of all three datasets reviewed",
@@ -16,14 +16,14 @@
         "rule": "0 -> benign, 1 -> attack",
         "evidence_source": "Network Features-Description.pdf row 45: 'Tag normal and attack records, where 0 indicates normal and 1 indicates attacks'",
         "semantic_disposition": "exact",
-        "decision_status": "proposed"
+        "decision_status": "frozen"
       },
       "ciciot2023": {
         "source": "category directory name",
         "rule": "Benign_Final -> benign; the other 33 categories -> attack",
         "evidence_source": "frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename): 4 Benign_Final files (1,098,191 rows) + 33 attack directories; frozen CSVs carry no label column, directory name is the sole label carrier",
         "semantic_disposition": "exact",
-        "decision_status": "proposed"
+        "decision_status": "frozen"
       },
       "n_baiot": {
         "source": "file location",
@@ -31,7 +31,7 @@
         "special_case": "root-level demonstrate_structure.csv is zero-row and never enters any pipeline, so it receives no label",
         "evidence_source": "frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename): 89 data files (9 benign_traffic.csv + 45 gafgyt + 35 mirai) + 1 zero-row demonstrate_structure.csv; frozen CSVs carry no label column (115 aggregated statistics columns), so the file location is the sole label carrier",
         "semantic_disposition": "exact",
-        "decision_status": "proposed"
+        "decision_status": "frozen"
       }
     }
   },
@@ -53,7 +53,7 @@
       }
     ],
     "candidate_families": ["benign", "backdoor", "bashlite", "brute_force", "ddos", "dos", "injection", "mirai", "password", "ransomware", "recon", "web_attack", "mitm", "spoofing"],
-    "note": "Final family assignments are NOT frozen until the TON-IoT type inventory is complete and official documents are reviewed.",
+    "note": "Final family assignments are frozen under LABEL-ONTOLOGY-ROOT-20260905-V1-FROZEN after completion of the required inventory and official-document reviews.",
     "ton_iot_type_mapping": {
       "description": "Mapping of the 9 TON-IoT attack type values plus normal to canonical_family. All 10 entries carry decision_status=frozen as TON-IOT-TYPE-MAPPING-20260904-V1-FROZEN (frozen from evidence v3 ZIP f774457585db719bc223a89cc965aabef7019bec1f0f6209a0ce160e3a4eecc4, source commit b95e7bc).",
       "entries": [
@@ -568,7 +568,7 @@
     },
     "semantic_disposition_values": ["exact", "derived", "unresolved", "rejected"],
     "decision_status_values": ["proposed", "frozen"],
-    "decision_status": "proposed"
+    "decision_status": "frozen"
   },
   "source_subtype": {
     "role": "official original labels, verbatim; never a cross-dataset unified task",

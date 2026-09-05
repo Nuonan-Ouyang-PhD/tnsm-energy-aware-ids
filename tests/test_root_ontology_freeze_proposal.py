@@ -45,22 +45,23 @@ def load_label_ontology():
 
 
 class RootFreezeProposalInputStateTests(unittest.TestCase):
-    """Lock the CURRENT (proposal-time) state that #21 declares as its
-    inputs. These tests assert proposed statuses NOW; a future #22
-    freeze commit must REVERSE these assertions deliberately."""
+    """After the #22 freeze (LABEL-ONTOLOGY-ROOT-20260905-V1-FROZEN,
+    applied on explicit user authorization), the former proposal-time
+    inputs are frozen: these tests assert the frozen root axes and the
+    unchanged out-of-scope items."""
 
     def setUp(self):
         self.ontology = load_label_ontology()
 
-    def test_root_and_axes_all_proposed_at_proposal_time(self):
-        self.assertEqual(self.ontology["status"], "proposed")
+    def test_root_and_axes_all_frozen_after_22(self):
+        self.assertEqual(self.ontology["status"], "frozen")
         self.assertEqual(
-            self.ontology["canonical_family"]["decision_status"], "proposed"
+            self.ontology["canonical_family"]["decision_status"], "frozen"
         )
         for dataset in ("ton_iot", "ciciot2023", "n_baiot"):
             self.assertEqual(
                 self.ontology["binary_label"]["derivation"][dataset]["decision_status"],
-                "proposed",
+                "frozen",
                 dataset,
             )
 
@@ -127,16 +128,16 @@ class RootFreezeProposalRecordTests(unittest.TestCase):
         self.assertIn("outside the freeze axis", md)
         self.assertIn("not this ontology root\nfreeze alone", md)
 
-    def test_proposal_changes_no_status(self):
-        """Machine assertion that the proposal itself flipped nothing:
-        every status field still reads the pre-proposal values."""
+    def test_proposal_flipped_exactly_the_scoped_statuses(self):
+        """After #22: the proposal-stage statuses were flipped by the
+        authorized freeze to exactly the scoped frozen set."""
         ontology = load_label_ontology()
-        self.assertEqual(ontology["status"], "proposed")
-        self.assertEqual(ontology["canonical_family"]["decision_status"], "proposed")
+        self.assertEqual(ontology["status"], "frozen")
+        self.assertEqual(ontology["canonical_family"]["decision_status"], "frozen")
         for dataset in ("ton_iot", "ciciot2023", "n_baiot"):
             self.assertEqual(
                 ontology["binary_label"]["derivation"][dataset]["decision_status"],
-                "proposed",
+                "frozen",
             )
 
 
@@ -146,37 +147,39 @@ class RootFreezeProposalRev1Tests(unittest.TestCase):
     wording is pre-authorized, and the predetermined freeze id and
     provenance minimums are recorded. Nothing is frozen yet."""
 
-    def test_recursive_census_proposed_set_is_exactly_five(self):
-        """Recursive enumeration over the WHOLE label_ontology.json:
-        61 status/decision_status fields = 56 frozen + exactly 5
-        proposed, and the proposed paths are precisely the 5 the #22
-        freeze would flip - no more, no less. A future #22 freeze must
-        REVERSE the proposed half of this assertion deliberately."""
+    def test_recursive_census_frozen_set_is_exactly_all(self):
+        """REVERSED BY THE #22 FREEZE (user-authorized): before #22 the
+        census was 61 fields = 56 frozen + exactly 5 proposed. The #22
+        freeze flipped exactly the 5 enumerated proposed paths
+        (root status, canonical_family.decision_status, three
+        derivation entries) to frozen; the census now reads 61 frozen
+        + 0 proposed with no other value."""
         census = recursive_status_census(load_label_ontology())
-        proposed = {path for path, value in census if value == "proposed"}
         frozen = {path for path, value in census if value == "frozen"}
+        proposed = {path for path, value in census if value == "proposed"}
         other = [(p, v) for p, v in census if v not in ("frozen", "proposed")]
         self.assertEqual(len(census), 61)
-        self.assertEqual(len(frozen), 56)
+        self.assertEqual(len(frozen), 61)
         self.assertEqual(other, [])
-        self.assertEqual(
-            proposed,
+        self.assertEqual(proposed, set())
+        # the five flipped paths must be present among the frozen set
+        self.assertTrue(
             {
                 "status",
                 "canonical_family.decision_status",
                 "binary_label.derivation.ton_iot.decision_status",
                 "binary_label.derivation.ciciot2023.decision_status",
                 "binary_label.derivation.n_baiot.decision_status",
-            },
+            }.issubset(frozen)
         )
 
-    def test_canonical_family_note_is_proposal_stage_wording(self):
-        """The live note in config still carries the proposal-stage
-        sentence; the #22 freeze is pre-authorized to replace it with
-        the frozen-state sentence (metadata housekeeping only)."""
+    def test_canonical_family_note_is_frozen_state_wording(self):
+        """The pre-authorized #22 note update is applied: the live note
+        carries the frozen-state sentence (metadata housekeeping only,
+        no family assignment change)."""
         ontology = load_label_ontology()
-        self.assertEqual(ontology["canonical_family"]["note"], NOTE_CURRENT)
-        self.assertNotIn(ontology["canonical_family"]["note"], NOTE_FROZEN)
+        self.assertEqual(ontology["canonical_family"]["note"], NOTE_FROZEN)
+        self.assertNotEqual(ontology["canonical_family"]["note"], NOTE_CURRENT)
 
     def test_decisions_md_records_decision_21_rev1(self):
         md = DECISIONS_PATH.read_text(encoding="utf-8")
@@ -237,18 +240,118 @@ class RootFreezeProposalRev1Tests(unittest.TestCase):
         self.assertIn("separate\nexplicit user authorization", md)
         self.assertIn("training remain forbidden", md)
 
-    def test_rev1_config_untouched_statuswise(self):
-        """Rev 1 changed docs only; the recursive census must still
-        show the same 5 proposed paths (guards against any accidental
-        config edit during the Rev 1 script run)."""
+    def test_rev1_config_then_22_freeze_statuswise(self):
+        """Rev 1 changed docs only (census then: 5 proposed); the #22
+        freeze then flipped exactly those 5, so the census now reads
+        61 frozen + 0 proposed."""
         ontology = load_label_ontology()
-        self.assertEqual(ontology["status"], "proposed")
+        self.assertEqual(ontology["status"], "frozen")
         self.assertEqual(
-            ontology["canonical_family"]["decision_status"], "proposed"
+            ontology["canonical_family"]["decision_status"], "frozen"
         )
         census = recursive_status_census(ontology)
-        self.assertEqual(sum(1 for _, v in census if v == "proposed"), 5)
-        self.assertEqual(sum(1 for _, v in census if v == "frozen"), 56)
+        self.assertEqual(sum(1 for _, v in census if v == "proposed"), 0)
+        self.assertEqual(sum(1 for _, v in census if v == "frozen"), 61)
+
+
+class RootFreezeRecordTests(unittest.TestCase):
+    """The #22 freeze record: DECISIONS.md #22 and the LABEL_ONTOLOGY.md
+    frozen-state append must record the freeze id, the EXACTLY-5 scope,
+    the full provenance chain, and the surviving ban; the live config
+    must match the frozen bytes and the untouched feature policy."""
+
+    FROZEN_ONTOLOGY_SHA = (
+        "8a055e2e34bc8d70f62909f52441915589c310659d6ce3e427a2704820926fab"
+    )
+    PRE_FREEZE_ONTOLOGY_SHA = (
+        "86cc9a246346f26d414260f9adf56235fca5d6185918ce404a71bea9945db8ee"
+    )
+    POLICY_SHA = (
+        "2a903a4a0dd54e4307b7dce24599c39ce62b378b4cd8a95f8a633ffedb321b47"
+    )
+
+    def test_decisions_md_records_decision_22_freeze(self):
+        md = DECISIONS_PATH.read_text(encoding="utf-8")
+        self.assertIn("22. ROOT-LEVEL ONTOLOGY FROZEN as", md)
+        self.assertIn(PREDICTED_FREEZE_ID, md)
+        self.assertIn(
+            "EXACTLY 5 status/decision_status fields were flipped", md
+        )
+        self.assertIn("proposal source commit `b59082a`", md)
+        self.assertIn(PROPOSAL_V1_SHA, md)
+        self.assertIn(FREEZE_V1R1_SHA, md)
+        self.assertIn("source commit of the pre-freeze state `3aa8932`", md)
+        self.assertIn("61 frozen\n    + 0 proposed", md)
+        self.assertIn("this DECISIONS.md #22 record", md)
+        self.assertIn(
+            "the ban is NOT lifted by\n    an ontology root freeze alone", md
+        )
+
+    def test_decisions_md_records_frozen_and_pre_freeze_ontology_sha(self):
+        md = DECISIONS_PATH.read_text(encoding="utf-8")
+        self.assertIn(
+            "config/label_ontology.json SHA-256\n"
+            f"    `{self.FROZEN_ONTOLOGY_SHA}`\n"
+            "    (pre-freeze\n"
+            f"    `{self.PRE_FREEZE_ONTOLOGY_SHA}`);\n"
+            "    this DECISIONS.md #22 record.",
+            md,
+        )
+
+    def test_label_ontology_md_records_applied_freeze(self):
+        md = LABEL_ONTOLOGY_MD_PATH.read_text(encoding="utf-8")
+        self.assertIn(
+            "The #22 freeze is APPLIED as\n"
+            f"`{PREDICTED_FREEZE_ID}` on explicit user\n"
+            "authorization following the user's verification of this "
+            "proposal\nchain.",
+            md,
+        )
+        self.assertIn(
+            "Exactly the five enumerated status/decision_status fields\n"
+            "were flipped proposed -> frozen",
+            md,
+        )
+        self.assertIn(
+            "recursive census after the freeze reads 61 frozen + "
+            "0 proposed",
+            md,
+        )
+        self.assertIn(
+            "`config/feature_policy.json` remains `proposed` and "
+            "byte-identical",
+            md,
+        )
+        self.assertIn(
+            "data materialization, splitting, and\ntraining remain "
+            "forbidden until the feature/label protocol freeze",
+            md,
+        )
+
+    def test_live_config_matches_frozen_recorded_bytes(self):
+        import hashlib
+
+        digest = hashlib.sha256(
+            LABEL_ONTOLOGY_PATH.read_bytes()
+        ).hexdigest()
+        self.assertEqual(digest, self.FROZEN_ONTOLOGY_SHA)
+        ontology = load_label_ontology()
+        self.assertEqual(ontology["canonical_family"]["note"], NOTE_FROZEN)
+
+    def test_feature_policy_untouched_by_22(self):
+        import hashlib
+
+        digest = hashlib.sha256(
+            FEATURE_POLICY_PATH.read_bytes()
+        ).hexdigest()
+        self.assertEqual(digest, self.POLICY_SHA)
+        with FEATURE_POLICY_PATH.open(encoding="utf-8") as handle:
+            policy = json.load(handle)
+        self.assertEqual(policy["status"], "proposed")
+        handling = policy["data_handling"]
+        self.assertEqual(handling["materialization"], "forbidden before protocol freeze")
+        self.assertEqual(handling["splitting"], "forbidden before protocol freeze")
+        self.assertEqual(handling["training"], "forbidden before protocol freeze")
 
 
 if __name__ == "__main__":

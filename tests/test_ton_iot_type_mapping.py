@@ -12,7 +12,7 @@ EXPECTED_ATTACK_TYPES = [
 
 # Complete expected mapping table: source_type -> (canonical_family,
 # semantic_disposition). Every entry must also carry
-# decision_status == "proposed". This locks the entire mapping, so a
+# decision_status == "frozen" (ontology root #22). This locks the entire mapping, so a
 # wrong assignment (e.g. ddos -> ransomware) fails even when both names
 # are individually valid families.
 EXPECTED_MAPPING = {
@@ -267,14 +267,14 @@ class OntologyWideKeyDisciplineTests(unittest.TestCase):
         self.assertIn("decision_status", cf)
         self.assertIn(cf["decision_status"], VALID_DECISION_STATUSES)
 
-    def test_ontology_root_and_canonical_family_remain_proposed(self):
-        """The freeze covers ONLY the 10 ton_iot_type_mapping entries;
-        the ontology root status and the canonical_family root
-        decision_status must remain "proposed" until the CICIoT2023 and
-        N-BaIoT mapping stages are frozen."""
+    def test_ontology_root_and_canonical_family_frozen(self):
+        """After the root-level freeze #22
+        (LABEL-ONTOLOGY-ROOT-20260905-V1-FROZEN), the ontology root
+        status and the canonical_family root decision_status are
+        frozen, on top of the three frozen dataset-level tables."""
         ontology = load_label_ontology()
-        self.assertEqual(ontology["status"], "proposed")
-        self.assertEqual(ontology["canonical_family"]["decision_status"], "proposed")
+        self.assertEqual(ontology["status"], "frozen")
+        self.assertEqual(ontology["canonical_family"]["decision_status"], "frozen")
 
     def test_binary_label_derivation_uses_dual_dimensions(self):
         derivation = load_label_ontology()["binary_label"]["derivation"]
@@ -285,15 +285,15 @@ class OntologyWideKeyDisciplineTests(unittest.TestCase):
             self.assertIn(entry["semantic_disposition"], VALID_DISPOSITIONS)
             self.assertIn(entry["decision_status"], VALID_DECISION_STATUSES)
 
-    def test_binary_label_derivation_entries_remain_proposed(self):
-        """binary_label derivation entries are NOT covered by the
-        TON-IoT type-mapping freeze and must remain "proposed"."""
+    def test_binary_label_derivation_entries_frozen(self):
+        """After the root-level freeze #22, the binary_label derivation
+        entries are frozen together with the ontology root."""
         derivation = load_label_ontology()["binary_label"]["derivation"]
         self.assertTrue(derivation)
         for dataset, entry in derivation.items():
             self.assertEqual(
-                entry["decision_status"], "proposed",
-                f"binary_label.{dataset}: decision_status is not proposed",
+                entry["decision_status"], "frozen",
+                f"binary_label.{dataset}: decision_status is not frozen",
             )
 
 

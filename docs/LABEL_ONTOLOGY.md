@@ -3,9 +3,12 @@
 This document defines the label schema shared by all three datasets
 (TON-IoT, CICIoT2023, N-BaIoT). It is derived only from the three frozen
 inventory manifests; no preprocessing, splitting, or training has occurred.
-All mappings listed here carry status `proposed` until the official field
-definitions have been reviewed and the TON-IoT `type` value inventory is
-complete (see "Freeze conditions").
+All mappings listed here were frozen level by level through the
+numbered decisions in DECISIONS.md; the root-level freeze
+`LABEL-ONTOLOGY-ROOT-20260905-V1-FROZEN` (DECISIONS.md #22)
+completes the chain after the official field definitions were
+reviewed and the TON-IoT `type` value inventory was complete
+(see "Freeze conditions").
 
 ## 1. Three-layer label schema
 
@@ -250,9 +253,10 @@ special case.
 With the N-BaIoT mapping frozen (DECISIONS.md #20), all three datasets'
 type mappings are frozen at the table level; cross-dataset family
 comparison claims involving N-BaIoT families remain conditional on
-subtype-coverage audits. The ontology root status and
-`canonical_family.decision_status` still remain `proposed` until the
-separate root-level ontology freeze decision.
+subtype-coverage audits. The ontology root freeze
+`LABEL-ONTOLOGY-ROOT-20260905-V1-FROZEN` (DECISIONS.md #22) is
+applied, so the ontology root status and
+`canonical_family.decision_status` are frozen.
 
 ### `source_subtype` — official original label, verbatim
 
@@ -313,9 +317,10 @@ be used to construct group-aware splits, but never as model features.
 ## 5. Freeze conditions
 
 All three dataset-level family mapping tables are now frozen. The
-ontology root status and `canonical_family.decision_status` remain
-`proposed` and require a separate root-level ontology freeze decision.
-Before that root-level decision, the completed conditions were:
+root-level freeze `LABEL-ONTOLOGY-ROOT-20260905-V1-FROZEN` (DECISIONS.md
+#22) is applied: the ontology root status and
+`canonical_family.decision_status` are frozen. The root-level
+decision required the completed conditions:
 
 1. ~~Complete the TON-IoT `type` unique-value inventory~~ DONE:
    `TON-IOT-LABEL-CENSUS-20260903-V1-VERIFIED`.
@@ -333,9 +338,9 @@ canonical_family mapping table in section 1 is frozen as
 N-BaIoT family/subtype mapping table in section 1 is frozen as
 `N-BAIOT-TYPE-MAPPING-20260905-V1-FROZEN` (DECISIONS.md #20).
 
-All three dataset-level mapping tables are frozen; the ontology root
-status and `canonical_family.decision_status` remain `proposed` until
-the separate root-level ontology freeze decision.
+All three dataset-level mapping tables are frozen, and the ontology root
+status and `canonical_family.decision_status` are frozen under
+`LABEL-ONTOLOGY-ROOT-20260905-V1-FROZEN` (DECISIONS.md #22).
 
 Data materialization, splitting, and training remain forbidden.
 
@@ -386,3 +391,18 @@ and the final N-BaIoT clean freeze evidence SHA-256
 under DECISIONS.md #22. #22 execution still requires separate
 explicit user authorization; data materialization, splitting, and
 training remain forbidden.
+
+The #22 freeze is APPLIED as
+`LABEL-ONTOLOGY-ROOT-20260905-V1-FROZEN` on explicit user
+authorization following the user's verification of this proposal
+chain. Exactly the five enumerated status/decision_status fields
+were flipped proposed -> frozen, and the `canonical_family.note`
+was updated to the pre-authorized frozen-state sentence - changing
+no family assignment, mapping entry, rationale, or evidence. A
+recursive census after the freeze reads 61 frozen + 0 proposed.
+The `source_subtype` verbatim definitions, `grouping_metadata`,
+and `verified_dataset_facts` were not touched, and
+`config/feature_policy.json` remains `proposed` and byte-identical
+to the proposal commit; data materialization, splitting, and
+training remain forbidden until the feature/label protocol freeze
+chain completes its own decision.

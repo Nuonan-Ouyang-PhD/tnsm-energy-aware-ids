@@ -380,7 +380,9 @@ class NBaiotTypeMappingTests(unittest.TestCase):
             "All three dataset-level family mapping tables are now frozen.", md
         )
         self.assertIn(
-            "require a separate root-level ontology freeze decision", md
+            "The\nroot-level freeze "
+            "`LABEL-ONTOLOGY-ROOT-20260905-V1-FROZEN` (DECISIONS.md\n"
+            "#22) is applied", md
         )
         # the condition history list and closing ban survive
         self.assertIn("All three freeze conditions are satisfied.", md)
@@ -424,10 +426,10 @@ class OntologyWideNBaiotDisciplineTests(unittest.TestCase):
 
         walk(self.ontology)
 
-    def test_ontology_root_and_canonical_family_remain_proposed(self):
-        self.assertEqual(self.ontology["status"], "proposed")
+    def test_ontology_root_and_canonical_family_frozen(self):
+        self.assertEqual(self.ontology["status"], "frozen")
         self.assertEqual(
-            self.ontology["canonical_family"]["decision_status"], "proposed"
+            self.ontology["canonical_family"]["decision_status"], "frozen"
         )
 
     def test_ton_and_ciciot_frozen_entries_untouched_by_n_baiot_stage(self):
@@ -440,11 +442,11 @@ class OntologyWideNBaiotDisciplineTests(unittest.TestCase):
         for e in ciciot:
             self.assertEqual(e["decision_status"], "frozen")
 
-    def test_status_partition_after_n_baiot_freeze(self):
-        """After #20: 10 TON + 34 CIC + 11 N-BaIoT entries frozen; the
-        ontology root and canonical_family.decision_status stay proposed
-        pending the root-level freeze; binary_label.derivation stays
-        proposed."""
+    def test_status_partition_after_root_freeze(self):
+        """After #22: the ontology root and canonical_family and the
+        three binary_label.derivation entries are frozen on top of the
+        frozen dataset-level tables (10 TON + 34 CIC + 11 N-BaIoT
+        entries)."""
         ont = self.ontology
         for block, count in (
             ("ton_iot_type_mapping", 10),
@@ -454,10 +456,10 @@ class OntologyWideNBaiotDisciplineTests(unittest.TestCase):
             entries = ont["canonical_family"][block]["entries"]
             self.assertEqual(len(entries), count)
             self.assertTrue(all(e["decision_status"] == "frozen" for e in entries), block)
-        self.assertEqual(ont["status"], "proposed")
-        self.assertEqual(ont["canonical_family"]["decision_status"], "proposed")
+        self.assertEqual(ont["status"], "frozen")
+        self.assertEqual(ont["canonical_family"]["decision_status"], "frozen")
         for dataset, entry in ont["binary_label"]["derivation"].items():
-            self.assertEqual(entry["decision_status"], "proposed", dataset)
+            self.assertEqual(entry["decision_status"], "frozen", dataset)
 
     def test_n_baiot_freeze_metadata_declared(self):
         """The freeze id, V1R1 ZIP hash, and source commit must be
@@ -484,14 +486,14 @@ class OntologyWideNBaiotDisciplineTests(unittest.TestCase):
         self.assertIn("semantic_disposition", entry)
         self.assertIn("decision_status", entry)
         self.assertEqual(entry["semantic_disposition"], "exact")
-        self.assertEqual(entry["decision_status"], "proposed")
+        self.assertEqual(entry["decision_status"], "frozen")
 
-    def test_binary_label_derivation_entries_remain_proposed(self):
+    def test_binary_label_derivation_entries_frozen(self):
         derivation = self.ontology["binary_label"]["derivation"]
         for dataset, entry in derivation.items():
             self.assertEqual(
-                entry["decision_status"], "proposed",
-                f"binary_label.{dataset}: decision_status is not proposed",
+                entry["decision_status"], "frozen",
+                f"binary_label.{dataset}: decision_status is not frozen",
             )
 
     def test_source_subtype_definition_uses_actual_directory_names(self):

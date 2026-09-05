@@ -275,10 +275,11 @@ class Ciciot2023TypeMappingTests(unittest.TestCase):
         self.assertIn("0 derived", desc)
         self.assertIn("no mapping, semantic_disposition, evidence, or rationale", desc)
 
-    def test_mapping_decision_status_root_remains_proposed(self):
-        """The ontology root and canonical_family.decision_status stay
-        proposed until the N-BaIoT mapping is frozen."""
-        self.assertEqual(self.mapping.get("decision_status", "proposed"), "proposed")
+    def test_mapping_decision_status_untouched_by_root_freeze(self):
+        """The ciciot2023 mapping block itself carries no
+        decision_status; the #22 root freeze did not add one (it is
+        still not a status-bearing block)."""
+        self.assertNotIn("decision_status", self.mapping)
 
     def test_ton_iot_freeze_untouched_by_ciciot_stage(self):
         ton = self.ontology["canonical_family"]["ton_iot_type_mapping"]
@@ -440,17 +441,17 @@ class OntologyWideDisciplineTests(unittest.TestCase):
 
         walk(load_label_ontology())
 
-    def test_ontology_root_and_canonical_family_remain_proposed(self):
+    def test_ontology_root_and_canonical_family_frozen(self):
         ontology = load_label_ontology()
-        self.assertEqual(ontology["status"], "proposed")
-        self.assertEqual(ontology["canonical_family"]["decision_status"], "proposed")
+        self.assertEqual(ontology["status"], "frozen")
+        self.assertEqual(ontology["canonical_family"]["decision_status"], "frozen")
 
-    def test_binary_label_derivation_entries_remain_proposed(self):
+    def test_binary_label_derivation_entries_frozen(self):
         derivation = load_label_ontology()["binary_label"]["derivation"]
         for dataset, entry in derivation.items():
             self.assertEqual(
-                entry["decision_status"], "proposed",
-                f"binary_label.{dataset}: decision_status is not proposed",
+                entry["decision_status"], "frozen",
+                f"binary_label.{dataset}: decision_status is not frozen",
             )
 
     def test_binary_label_ciciot2023_derivation_has_evidence(self):
@@ -461,7 +462,7 @@ class OntologyWideDisciplineTests(unittest.TestCase):
         self.assertIn("semantic_disposition", entry)
         self.assertIn("decision_status", entry)
         self.assertEqual(entry["semantic_disposition"], "exact")
-        self.assertEqual(entry["decision_status"], "proposed")
+        self.assertEqual(entry["decision_status"], "frozen")
 
 if __name__ == "__main__":
     unittest.main()

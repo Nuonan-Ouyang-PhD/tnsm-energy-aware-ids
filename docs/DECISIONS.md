@@ -492,3 +492,52 @@
     materialization/splitting/training ban is NOT lifted by this
     revision nor by the #22 freeze alone; #22 execution still
     requires separate explicit user authorization.
+22. ROOT-LEVEL ONTOLOGY FROZEN as
+    LABEL-ONTOLOGY-ROOT-20260905-V1-FROZEN. On explicit user
+    authorization following the user's verification of the #21 proposal
+    chain (proposal V1 reviewed PASS, Rev 1 reviewed PASS and
+    formally authorized to execute #22), the root-level ontology
+    freeze is applied. EXACTLY 5 status/decision_status fields were flipped
+    proposed -> frozen, matching the Rev 1 locked scope with no
+    additional change: `status` (ontology root),
+    `canonical_family.decision_status`,
+    `binary_label.derivation.ton_iot.decision_status`,
+    `binary_label.derivation.ciciot2023.decision_status`, and
+    `binary_label.derivation.n_baiot.decision_status`. The
+    `canonical_family.note` was updated from the proposal-stage
+    sentence to the pre-authorized frozen-state sentence ("Final
+    family
+    assignments are frozen under
+    LABEL-ONTOLOGY-ROOT-20260905-V1-FROZEN after completion of the
+    required inventory and official-document reviews.") - freeze-state
+    metadata housekeeping only. A machine structural diff of the frozen
+    config against its pre-freeze state confirms no change beyond these
+    six field edits: no family assignment, no mapping entry, no
+    semantic_disposition, no evidence, no rationale, no
+    fixed_decisions, no source_subtype/grouping_metadata/
+    verified_dataset_facts changes. The three dataset-level tables and
+    the gafgyt->bashlite fixed_decision remain frozen with their #16,
+    #18, and #20 records unchanged as history. A recursive census of
+    every status/decision_status field after the freeze reads 61 frozen
+    + 0 proposed. `config/feature_policy.json` remains `proposed` and
+    byte-identical to the proposal commit; its data_handling gates read
+    "forbidden before protocol freeze", so data materialization,
+    splitting, and training remain forbidden - the ban is NOT lifted by
+    an ontology root freeze alone and requires the FEATURE/label
+    protocol freeze chain to complete its own separate decision
+    chain.
+
+    Provenance: proposal source commit `b59082a`;
+    proposal evidence SHA-256
+    `3da7642fb1a08d7aee987298af01e6bd7eb5b2dbf3b727d05c68c994b14c284a`
+    (ROOT_ONTOLOGY_FREEZE_PROPOSAL_EVIDENCE_V1.zip); final
+    N-BaIoT clean freeze evidence SHA-256
+    `1912365fe8a20f478a367dc844f3067c6d7fac176e71a5e9505a21c38fae3d3c`
+    (N_BAIOT_TYPE_MAPPING_FREEZE_EVIDENCE_V1R1.zip, user-verified PASS);
+    source commit of the pre-freeze state `3aa8932` (Rev 1
+    proposal-consistency lock); frozen
+    config/label_ontology.json SHA-256
+    `8a055e2e34bc8d70f62909f52441915589c310659d6ce3e427a2704820926fab`
+    (pre-freeze
+    `86cc9a246346f26d414260f9adf56235fca5d6185918ce404a71bea9945db8ee`);
+    this DECISIONS.md #22 record.
