@@ -1,0 +1,10 @@
+dataset,split,rows,benign,attack,numeric_missing_cells,row_ids_disjoint,feature_fingerprints_disjoint,saved_metric_recalculation
+ton_iot,train,138441,16357,122084,1054656,True,True,PASS
+ton_iot,validation,22842,8275,14567,153646,True,True,PASS
+ton_iot,test,22490,17129,5361,129026,True,True,PASS
+ciciot2023,train,200000,4330,195670,13,True,True,PASS
+ciciot2023,validation,76709,1623,75086,0,True,True,PASS
+ciciot2023,test,71145,3828,67317,6,True,True,PASS
+n_baiot,train,200000,15598,184402,0,True,True,PASS
+n_baiot,validation,87039,7370,79669,0,True,True,PASS
+n_baiot,test,83355,8467,74888,0,True,True,PASS

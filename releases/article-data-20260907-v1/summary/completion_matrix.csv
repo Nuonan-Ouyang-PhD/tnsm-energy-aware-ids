@@ -1,0 +1,8 @@
+experiment,status,observations,unit,notes
+Materialization,COMPLETE,54050346,rows,399 feature/label shard pairs; published output retained separately
+Classifier training and held-out evaluation,COMPLETE,12,models,3 datasets x 4 classifiers
+Controlled static replay,COMPLETE,50,traces,200 model evaluations; no physical energy measurement
+Raspberry Pi inference parity,COMPLETE,12,model-dataset checks,zero label disagreements
+Static physical power profiles,COMPLETE,15,30-minute profiles,3 idle + 3 repeats for each of 4 models
+Adaptive policy training/evaluation,NOT RUN,0,runs,"No CFSM, Tabular-Q, DQN or offline-oracle result exists"
+Paired adaptive physical campaign,NOT RUN,0,runs,Planned 40 x 500-second runs; must not be reported as measured
