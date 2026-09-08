@@ -1,0 +1,26 @@
+[script] ton_iot_proto_census v2 verification pass (2026-09-05, #23 Rev 1)
+[argv] .temp/proto_census_v2.py
+[git-head] 1bdd7f6543f4f921feceb269a33cce329ca54a2a
+[git-status] '?? scripts/audits/'
+[v1-script] scripts/audits/ton_iot_proto_census_v1.py sha256 98cb29423e5ba5f1fa9880aea83604cff94760e8ada91bad347c5671cad496cc
+[input] /Users/nuonanouyang/Downloads/tnsm-energy-aware-ids/datasets/incoming/ton_iot/train_test_network.csv
+[inventory] ton_iot_20260903T113048Z.json (ton_iot_20260903T113048Z frozen inventory)
+[csv-sha256-before] 26ddc513552de36de6428b2e578efaed2b57504c716dfba847cc0109a64e1974 == inventory (26ddc513552de36de6428b2e578efaed2b57504c716dfba847cc0109a64e1974)
+[expected-rows] 211043
+[config-before] feature_policy.json 2a903a4a... unchanged
+[config-before] label_ontology.json  8a055e2e... unchanged
+[header_first_line_raw_sha256] 049ba74ecfe7e52812e4967dab061128f6c297614a6765fdc6884b985f76dabd
+[header_first_line_eol_stripped_sha256] 9d7dd3578ca1c70d12e2d14e6a706acad3bbae9e2d1e35d6b99b94ec6521dbd1
+[header_first_line_bom_and_eol_stripped_sha256] 7e805360c24865b348c5dc558fa8ae5afe6b85e68d99cc7dcf7479931ffe61fd
+[header_joined_inventory_columns_sha256] 7e805360c24865b348c5dc558fa8ae5afe6b85e68d99cc7dcf7479931ffe61fd
+[header-recipe-note] inventory.header_sha256 (024f793b...) is an opaque frozen value from the inventory generation code; it is NOT recomputed or reinterpreted in this run.
+[header] 44 columns match frozen inventory; proto at index 4
+[rows] parsed 211043 data rows
+[v1-artifact] ton_iot_proto_20260905T110840Z.json sha256 89f06e9c3913e2d429be6021ff42f907727f36e69cebf5bc5639b9793e689830
+[v1-counts-identical] True
+[v1-rows-identical] True
+[csv-sha256-after] 26ddc513552de36de6428b2e578efaed2b57504c716dfba847cc0109a64e1974 == inventory (26ddc513552de36de6428b2e578efaed2b57504c716dfba847cc0109a64e1974)
+[csv-invariance] before == inventory == after (True)
+[config-after] feature_policy.json 2a903a4a... unchanged
+[config-after] label_ontology.json  8a055e2e... unchanged
+[exit-status] OK

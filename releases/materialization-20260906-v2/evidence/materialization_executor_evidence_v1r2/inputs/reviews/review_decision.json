@@ -1,0 +1,24 @@
+{
+  "request_archive": "MATERIALIZATION_EXECUTION_REQUEST_V1.zip",
+  "request_sha256": "55c3c6ee9d6e01fb764a650432b379ca41ca52b703dd33c9ec9cf17088271c63",
+  "archive_integrity": "PASS",
+  "manifest": "17/17 PASS",
+  "bundled_verifier": "114/114 PASS",
+  "bundled_tests": "7/7 PASS",
+  "frozen_input_reconciliation": "PASS (metadata-based; raw CSV not read)",
+  "application_status": "Implementation/review basis accepted; output contract needs explicit completion before operational sign-off",
+  "executor_development_with_synthetic_fixtures": "permitted; not a raw-data execution authorization",
+  "materialization_authorized": false,
+  "splitting_authorized": false,
+  "training_authorized": false,
+  "source_evidence_unchanged": true,
+  "known_operational_prerequisites": [
+    "Sufficient space on the reviewed destination and a fresh non-data disk check",
+    "Reviewed executor and synthetic expected-output/denial tests",
+    "Separate explicit materialization-only authorization binding finalized request/executor identities"
+  ],
+  "additional_scope": [
+    "Make output sidecar/missing metadata, ordinal and serialization choices explicit in the implementation evidence",
+    "Strengthen direct request-contract checks; do not change frozen configs or decided feature selection"
+  ]
+}

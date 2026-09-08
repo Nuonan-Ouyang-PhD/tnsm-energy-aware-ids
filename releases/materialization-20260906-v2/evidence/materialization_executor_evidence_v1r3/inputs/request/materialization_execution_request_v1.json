@@ -1,0 +1,308 @@
+{
+  "schema_version": 1,
+  "kind": "materialization_only_execution_request",
+  "request_id": "MATERIALIZATION-20260906-V1-PROPOSED",
+  "status": "prepared_not_authorized",
+  "prepared_at_utc": "2026-09-06T02:36:36Z",
+  "prepared_from_repository_commit": "ace00574f1aee2e8a4aa011ea828dbcef3f74c45",
+  "scope": {
+    "requested_operation": "materialization",
+    "materialization_only": true,
+    "splitting": "forbidden",
+    "training": "forbidden",
+    "sampling": "forbidden",
+    "balancing": "forbidden",
+    "model_fitting": "forbidden",
+    "encoder_fitting": "forbidden",
+    "semantic_core_construction": "forbidden",
+    "raw_input_mutation": "forbidden",
+    "frozen_config_mutation": "forbidden"
+  },
+  "authorization": {
+    "authorization_granted": false,
+    "data_gate_unlocked": false,
+    "required_before_any_raw_csv_is_opened": [
+      "independent acceptance of this exact request package",
+      "separate explicit user authorization for the materialization gate only",
+      "authorization recorded as a new append-only DECISIONS.md entry binding this request_id and the accepted request ZIP SHA-256",
+      "the fixed output root is absent and the storage preflight passes",
+      "the execution implementation and its guard tests are reviewed against this contract before use"
+    ],
+    "approval_does_not_cover": [
+      "splitting",
+      "training",
+      "model or encoder fitting",
+      "any new data acquisition",
+      "any change to config/feature_policy.json or config/label_ontology.json"
+    ]
+  },
+  "accepted_freeze_binding": {
+    "freeze_id": "FEATURE-POLICY-20260905-V1-FROZEN",
+    "freeze_zip": {
+      "file": "FEATURE_PROTOCOL_FREEZE_EVIDENCE_V1.zip",
+      "bytes": 3287042,
+      "sha256": "6df601a24049e6ce798f38a87ab6e9880abc33bca3564355e2f375349ad8939d"
+    },
+    "independent_acceptance_zip": {
+      "file": "FEATURE_PROTOCOL_24_INDEPENDENT_REVIEW.zip",
+      "bytes": 55392,
+      "sha256": "64feb94b5414f30cb426c52a20a8c373537d380708dd49d598c0aa8b32b2f86e",
+      "bundled_readme": "inputs/reviews/feature_protocol_24_independent_acceptance.md",
+      "bundled_readme_sha256": "c28c73112daae1126bb45094f1e4dd64df98d673018bbeca345ed914128d90c3"
+    },
+    "feature_policy": {
+      "file": "inputs/protocol/feature_policy.json",
+      "sha256": "e81a55c16f9439b0356295353e8b342de19d5c5606d868952592f913beda714b",
+      "required_status": "frozen"
+    },
+    "label_ontology": {
+      "file": "inputs/protocol/label_ontology.json",
+      "sha256": "8a055e2e34bc8d70f62909f52441915589c310659d6ce3e427a2704820926fab",
+      "required_status": "frozen"
+    }
+  },
+  "frozen_inputs": {
+    "identity_rule": "At execution, the CSV set, every relative path, byte size, file SHA-256, parsed header, and accepted row count must match the bundled inventory. Extra, missing, changed, duplicate-path, or duplicate-hash CSV input fails closed before output creation.",
+    "input_roots_are_runtime_paths": true,
+    "nominal_repository_relative_roots": {
+      "ton_iot": "datasets/incoming/ton_iot",
+      "ciciot2023": "datasets/extracted/ciciot2023",
+      "n_baiot": "datasets/extracted/n_baiot"
+    },
+    "datasets": {
+      "ton_iot": {
+        "inventory": "inputs/inventories/ton_iot_20260903T113048Z.json",
+        "inventory_sha256": "66179d1ba2601ff3175e90cbfb4ed21d28c859b5780258d5e36dd8bb2303c55a",
+        "source_commit": "07561a5f7cc0c61dfb70d7118601f8a22d90dfb7",
+        "csv_files": 1,
+        "source_bytes": 29902775,
+        "raw_rows": 211043,
+        "accepted_rows": 211043,
+        "columns": 44,
+        "label_census": "inputs/censuses/ton_iot_20260903T233742Z.json",
+        "label_census_sha256": "128fe883208eef10cd2f41bf8c5ee73bf518cb61b5d95c86cff40214565edfa0"
+      },
+      "ciciot2023": {
+        "inventory": "inputs/inventories/ciciot2023_20260903T142539Z.json",
+        "inventory_sha256": "d31472b21836eb5a5cfa9535e1f29d58c0a4a1f136586938172a3e77bbe2f45f",
+        "source_commit": "b57df93cd268f01945cb560cbc72ac78213af692",
+        "csv_files": 309,
+        "source_bytes": 8943771319,
+        "raw_rows": 46776700,
+        "accepted_rows": 46776697,
+        "columns": 39,
+        "quality_exception_manifest": "inputs/quality_exceptions/ciciot2023_20260903T142617Z.json",
+        "quality_exception_manifest_sha256": "36ef134ff6117867c51888749434f2d02efc59ec4ad6e93e94371f08d59e5bae",
+        "registered_excluded_rows": 3,
+        "acquisition_manifest": "inputs/acquisitions/ciciot2023_20260903T142351Z.json",
+        "acquisition_manifest_sha256": "eec07c71d736c004fd0c64dff567495cfa38aec1330a059222ef15c435574f7c",
+        "source_evidence_zip": {
+          "file": "ciciot2023_evidence.zip",
+          "bytes": 22391,
+          "sha256": "7f63dbf3ce5b006a8dc36ad1d060f45a7a94fabedbcba8c1393038e3fc4f793a"
+        }
+      },
+      "n_baiot": {
+        "inventory": "inputs/inventories/n_baiot_20260903T224404Z.json",
+        "inventory_sha256": "9ffdf7e9245470fc4f066b8fb6d8ebae03e0194e7698e5fde87b13a7f2fe30da",
+        "source_commit": "1638f6985134d802b6c1c8faa30ec33a12f82ea1",
+        "csv_files": 90,
+        "data_files": 89,
+        "source_bytes": 8140825610,
+        "raw_rows": 7062606,
+        "accepted_rows": 7062606,
+        "columns": 115,
+        "non_data_file": {
+          "relative_path": "demonstrate_structure.csv",
+          "bytes": 1776,
+          "rows": 0,
+          "sha256": "7ef0a9e20164c601b8f79311174a32758e5a3bd4e8bb525627369af8cf3fcb6f",
+          "disposition": "inventory-only; no output shard and no label"
+        }
+      }
+    },
+    "totals": {
+      "inventoried_csv_files": 400,
+      "materialized_data_shards": 399,
+      "source_bytes": 17114499704,
+      "raw_rows": 54050349,
+      "accepted_rows": 54050346,
+      "registered_excluded_rows": 3
+    }
+  },
+  "output": {
+    "root": "/Users/nuonanouyang/Documents/ChatGPT/TNSM-materialized/FEATURE-POLICY-20260905-V1-FROZEN/MATERIALIZATION-20260906-V1",
+    "root_must_be_absent_before_execution": true,
+    "overwrite": "forbidden",
+    "same_filesystem_atomic_publish": true,
+    "staging_root": "/Users/nuonanouyang/Documents/ChatGPT/TNSM-materialized/FEATURE-POLICY-20260905-V1-FROZEN/.MATERIALIZATION-20260906-V1.staging",
+    "layout": {
+      "features": "datasets/<dataset_id>/features/<four_digit_ordinal>-<first_16_source_sha256>.csv",
+      "labels": "datasets/<dataset_id>/labels/<four_digit_ordinal>-<first_16_source_sha256>.csv",
+      "lineage": "datasets/<dataset_id>/lineage/shards.jsonl",
+      "dataset_manifest": "datasets/<dataset_id>/manifest.json",
+      "root_manifest": "MANIFEST_SHA256.txt"
+    },
+    "feature_and_label_files": {
+      "encoding": "UTF-8 strict",
+      "newline": "LF",
+      "dialect": "RFC 4180 compatible comma-delimited CSV; quote character double quote; minimal deterministic quoting",
+      "ordering": "inventory relative_path bytewise ascending; source data-row order unchanged",
+      "compression": "none",
+      "timestamps_in_deterministic_tree": "forbidden"
+    }
+  },
+  "disk_budget": {
+    "source_bytes_read_only_not_copied": 17114499704,
+    "hard_output_cap_bytes": 25671749556,
+    "hard_output_cap_formula": "ceil(1.5 * source_bytes)",
+    "scratch_and_validation_reserve_bytes": 1073741824,
+    "minimum_free_bytes_before_execution": 26745491380,
+    "largest_source_shard_bytes": 315304260,
+    "preparation_time_observation": {
+      "observed_at_utc": "2026-09-06T02:36:36Z",
+      "filesystem": "/System/Volumes/Data",
+      "available_bytes": 6572945408,
+      "minimum_free_bytes": 26745491380,
+      "shortfall_bytes": 20172545972,
+      "passes": false,
+      "meaning": "Observation only; it blocks authorization/execution at this location now and must be rerun immediately before any authorized execution."
+    },
+    "on_cap_exceeded": "abort, remove only the named staging root, publish nothing, retain a failure record outside the deterministic output root"
+  },
+  "deterministic_materialization_contract": {
+    "common": [
+      "Stream one source CSV at a time; never shuffle, sample, balance, impute, scale, normalize, encode, or fit anything.",
+      "Require parsed header equality with the inventory column list in its original order.",
+      "Treat every feature cell as its original CSV text value; do not trim whitespace, change case, parse-and-reformat numbers, or replace missing tokens.",
+      "Canonical CSV serialization may change quoting and line endings only; it must not change parsed cell values.",
+      "Write feature and label sidecars with identical accepted-row counts and identical source order.",
+      "No cross-dataset concatenation and no harmonised semantic core are produced."
+    ],
+    "ton_iot": {
+      "feature_columns_rule": "Inventory order minus the twelve unique excluded columns listed below.",
+      "excluded_feature_columns": [
+        "label",
+        "type",
+        "src_ip",
+        "dst_ip",
+        "dns_query",
+        "ssl_subject",
+        "ssl_issuer",
+        "http_uri",
+        "http_user_agent",
+        "weird_addl",
+        "src_port",
+        "dst_port"
+      ],
+      "output_feature_count": 32,
+      "port_decision": "Drop src_port and dst_port. Do not materialize raw numeric ports and do not invent a port-class mapping in this version.",
+      "categorical_decision": "Preserve the ten permitted native categorical columns verbatim. Do not fit or apply an encoder before splitting.",
+      "binary_label": "label value 0 -> benign; label value 1 -> attack; any other value fails closed",
+      "source_subtype": "type value verbatim",
+      "canonical_family": "exact lookup by type in the frozen ontology; missing or duplicate mapping fails closed"
+    },
+    "ciciot2023": {
+      "feature_columns_rule": "All 39 inventoried columns in inventory order; no added, removed, renamed, encoded, or harmonised feature.",
+      "quality_exception_rule": "Exclude only the three rows whose source file SHA-256, relative path, physical line, raw-line SHA-256, expected and observed field counts all match the bundled quality-exception manifest. Any mismatch fails closed.",
+      "binary_label": "Category directory Benign_Final -> benign; every other frozen one of the 34 mapped categories -> attack",
+      "source_subtype": "category directory name verbatim",
+      "canonical_family": "exact lookup by category directory in the frozen ontology",
+      "capture_id": "filename with the terminal .pcap.csv removed; metadata only"
+    },
+    "n_baiot": {
+      "feature_columns_rule": "All 115 inventoried columns in inventory order; no added, removed, renamed, encoded, or harmonised feature.",
+      "special_case": "demonstrate_structure.csv remains inventory evidence only and produces no output shard or label.",
+      "binary_label": "benign_traffic.csv -> benign; CSVs under gafgyt_attacks_extracted or mirai_attacks_extracted -> attack; any other path fails closed",
+      "device_id": "first path component; metadata only",
+      "source_family_and_subtype": "benign/benign_traffic for benign; otherwise family directory verbatim and CSV filename stem verbatim",
+      "canonical_family": "exact lookup by source_family and source_subtype in the frozen ontology",
+      "capture_id": "device_id + source_family + source_subtype tuple; metadata only"
+    },
+    "label_sidecar_columns": [
+      "binary_label",
+      "canonical_family",
+      "source_family",
+      "source_subtype"
+    ]
+  },
+  "row_level_provenance": {
+    "model_input_boundary": "All provenance is outside feature CSVs and is forbidden as model input.",
+    "shard_ledger_fields": [
+      "dataset_id",
+      "shard_ordinal",
+      "source_file",
+      "source_file_sha256",
+      "source_file_bytes",
+      "source_header_sha256",
+      "source_rows_inventoried",
+      "source_rows_excluded",
+      "source_rows_accepted",
+      "device_id",
+      "capture_id",
+      "features_file",
+      "features_sha256",
+      "labels_file",
+      "labels_sha256"
+    ],
+    "row_mapping": "For each shard, output data row k (1-based, excluding header) maps to the kth non-excluded source data row. In this version every exclusion is a registered final CICIoT2023 row, so accepted output row k maps directly to source_row k. The ledger records the exact excluded physical/source row positions.",
+    "source_row_definition": "1-based data record index after the source header",
+    "file_order": "inventory relative_path bytewise ascending",
+    "shard_id": "four-digit file ordinal plus first 16 hexadecimal characters of the frozen source-file SHA-256",
+    "no_row_identifier_in_features": true
+  },
+  "validation": {
+    "preflight": [
+      "authorization record passes before any raw CSV is opened",
+      "live feature policy and ontology match the accepted SHA-256 values and frozen statuses",
+      "all three inventory and required census/quality-exception artifacts match their pinned SHA-256 values",
+      "source CSV sets and every inventoried identity field match exactly",
+      "output and staging roots do not exist and do not overlap any source root",
+      "free bytes at the output filesystem meet the minimum",
+      "materialization is the only authorized operation"
+    ],
+    "postconditions": [
+      "399 feature shards and 399 label shards are present; the zero-row N-BaIoT structure file has no shard",
+      "accepted rows are exactly TON-IoT 211043, CICIoT2023 46776697, N-BaIoT 7062606, total 54050346",
+      "every feature/label pair has identical row count and deterministic shard identity",
+      "feature counts are exactly TON-IoT 32, CICIoT2023 39, N-BaIoT 115",
+      "TON-IoT binary/subtype counts match the bundled frozen census",
+      "CICIoT2023 and N-BaIoT per-source counts and label derivations reconcile to their frozen inventories and ontology mappings",
+      "exactly three registered CICIoT2023 malformed final rows are excluded and no other row is dropped",
+      "all output files have SHA-256 entries with exact manifest coverage and no duplicate paths",
+      "a streaming per-shard replay produces byte-identical feature and label hashes using at most one-shard scratch space",
+      "source CSVs, input manifests, frozen configs, and the request package remain byte-identical before and after"
+    ],
+    "publication_rule": "Publish by one same-filesystem atomic rename only after every postcondition passes. A verifier exit other than zero prohibits publication."
+  },
+  "failure_handling": {
+    "fail_closed": true,
+    "source_writes": "never",
+    "partial_publish": "forbidden",
+    "cleanup_scope": "Only the exact staging root named in this request may be removed after identity and path containment checks.",
+    "existing_output": "abort without modification",
+    "input_or_schema_mismatch": "abort before publication; do not repair or normalize the input",
+    "unexpected_label_or_path": "abort before publication; require a new reviewed request version",
+    "disk_exhaustion_or_budget_breach": "abort, remove only staging, leave final root absent",
+    "interrupt": "abort, remove only staging, leave final root absent",
+    "failure_record": "Record phase, check, exception class, and hashes already observed; never include raw row contents or secrets.",
+    "retry": "No automatic retry. Diagnose, issue a new reviewable request revision if the contract changes, and obtain fresh explicit authorization."
+  },
+  "implementation_boundary": {
+    "executor_included": false,
+    "reason": "This package is the materialization-only execution application and deterministic contract. An executor must be implemented and reviewed against it but must not be run before separate authorization.",
+    "permitted_pre_authorization_actions": [
+      "review this package",
+      "run the package-only verifier and synthetic tests",
+      "provision or select sufficient storage",
+      "prepare an executor that cannot read raw CSVs without a separate authorization record"
+    ],
+    "forbidden_pre_authorization_actions": [
+      "open or hash raw CSVs for execution preflight",
+      "create the output or staging root",
+      "materialize any row",
+      "split any row",
+      "fit any transform or model"
+    ]
+  }
+}

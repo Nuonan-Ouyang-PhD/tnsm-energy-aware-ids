@@ -1,0 +1,228 @@
+{
+  "kind": "feature_policy_target_v1r2_application_verification",
+  "baseline_sha256": "2a903a4a0dd54e4307b7dce24599c39ce62b378b4cd8a95f8a633ffedb321b47",
+  "target_artifact_sha256": "e81a55c16f9439b0356295353e8b342de19d5c5606d868952592f913beda714b",
+  "generator_script": "scripts/audits/build_feature_policy_target_v1r2.py",
+  "application_operations_in_order": [
+    "op7_root_additions",
+    "op6_gate_targets",
+    "op5_status_flip_4",
+    "op4_pi_pc_wording",
+    "op3_flip3_decay",
+    "op2_flip2_bytes",
+    "op1_root_flip"
+  ],
+  "status_flip_report": [
+    {
+      "path": "status",
+      "before": "proposed",
+      "after": "frozen"
+    },
+    {
+      "path": "semantic_core.candidate_examples[0].decision_status",
+      "before": "proposed",
+      "after": "frozen"
+    },
+    {
+      "path": "semantic_core.candidate_examples[1].decision_status",
+      "before": "proposed",
+      "after": "frozen"
+    },
+    {
+      "path": "semantic_core.review_outcome_2026_09_04.resolved_points[0].decision_status",
+      "before": "proposed",
+      "after": "frozen"
+    }
+  ],
+  "leaf_accounting": {
+    "removed": [
+      "data_handling.materialization",
+      "data_handling.splitting",
+      "data_handling.training",
+      "semantic_core.review_outcome_2026_09_04.resolved_points[0].evidence_source"
+    ],
+    "added": [
+      "admission_set_this_version.admitted_mapping_count",
+      "admission_set_this_version.admitted_mapping_note",
+      "admission_set_this_version.future_admission_path",
+      "admission_set_this_version.pairwise_cores.ciciot2023__n_baiot",
+      "admission_set_this_version.pairwise_cores.ton_iot__ciciot2023",
+      "admission_set_this_version.pairwise_cores.ton_iot__n_baiot",
+      "admission_set_this_version.three_way_core",
+      "data_handling.materialization.authorization",
+      "data_handling.materialization.current",
+      "data_handling.materialization.preconditions[0]",
+      "data_handling.materialization.preconditions[1]",
+      "data_handling.materialization.preconditions[2]",
+      "data_handling.materialization.preconditions[3]",
+      "data_handling.materialization.preconditions[4]",
+      "data_handling.materialization.preconditions[5]",
+      "data_handling.materialization.target",
+      "data_handling.splitting.authorization",
+      "data_handling.splitting.current",
+      "data_handling.splitting.preconditions[0]",
+      "data_handling.splitting.preconditions[1]",
+      "data_handling.splitting.preconditions[2]",
+      "data_handling.splitting.preconditions[3]",
+      "data_handling.splitting.preconditions[4]",
+      "data_handling.splitting.preconditions[5]",
+      "data_handling.splitting.target",
+      "data_handling.training.authorization",
+      "data_handling.training.current",
+      "data_handling.training.preconditions[0]",
+      "data_handling.training.preconditions[1]",
+      "data_handling.training.preconditions[2]",
+      "data_handling.training.preconditions[3]",
+      "data_handling.training.preconditions[4]",
+      "data_handling.training.preconditions[5]",
+      "data_handling.training.target",
+      "freeze_metadata.applied_by",
+      "freeze_metadata.freeze_id",
+      "freeze_metadata.frozen_semantics",
+      "freeze_metadata.out_of_scope[0]",
+      "freeze_metadata.out_of_scope[1]",
+      "freeze_metadata.out_of_scope[2]",
+      "freeze_metadata.out_of_scope[3]",
+      "freeze_metadata.out_of_scope[4]",
+      "freeze_metadata.proposal_id",
+      "semantic_core.candidate_examples[0].evidence_source[0]",
+      "semantic_core.candidate_examples[0].evidence_source[1]",
+      "semantic_core.candidate_examples[1].evidence_source[0]",
+      "semantic_core.candidate_examples[1].evidence_source[1]",
+      "semantic_core.review_outcome_2026_09_04.resolved_points[0].evidence_source[0]",
+      "semantic_core.review_outcome_2026_09_04.resolved_points[0].evidence_source[1]",
+      "semantic_core.review_outcome_2026_09_04.resolved_points[0].evidence_source[2]"
+    ],
+    "value_changed": [
+      "semantic_core.candidate_examples[0].decision_status",
+      "semantic_core.candidate_examples[1].decision_status",
+      "semantic_core.review_outcome_2026_09_04.pairwise_cores.ton_iot__ciciot2023.packet_count",
+      "semantic_core.review_outcome_2026_09_04.pairwise_cores.ton_iot__ciciot2023.protocol_indicators",
+      "semantic_core.review_outcome_2026_09_04.resolved_points[0].decision_status",
+      "status"
+    ]
+  },
+  "checks": {
+    "baseline_unchanged": {
+      "pass": true,
+      "detail": "2a903a4a0dd54e4307b7dce24599c39ce62b378b4cd8a95f8a633ffedb321b47"
+    },
+    "target_artifact_sha": {
+      "pass": true,
+      "detail": "e81a55c16f9439b0356295353e8b342de19d5c5606d868952592f913beda714b"
+    },
+    "rebuild_from_generator_byte_identical": {
+      "pass": true,
+      "detail": "ops=['op7_root_additions', 'op6_gate_targets', 'op5_status_flip_4', 'op4_pi_pc_wording', 'op3_flip3_decay', 'op2_flip2_bytes', 'op1_root_flip']"
+    },
+    "flip::status": {
+      "pass": true,
+      "detail": "proposed -> frozen"
+    },
+    "flip::semantic_core.candidate_examples[0].decision_status": {
+      "pass": true,
+      "detail": "proposed -> frozen"
+    },
+    "flip::semantic_core.candidate_examples[1].decision_status": {
+      "pass": true,
+      "detail": "proposed -> frozen"
+    },
+    "flip::semantic_core.review_outcome_2026_09_04.resolved_points[0].decision_status": {
+      "pass": true,
+      "detail": "proposed -> frozen"
+    },
+    "status_census_exactly_four_frozen_no_proposed": {
+      "pass": true,
+      "detail": "census=[('semantic_core.candidate_examples[0].decision_status', 'frozen'), ('semantic_core.candidate_examples[1].decision_status', 'frozen'), ('semantic_core.review_outcome_2026_09_04.resolved_points[0].decision_status', 'frozen'), ('status', 'frozen')]"
+    },
+    "disposition_unchanged::semantic_core.candidate_examples[0].semantic_disposition": {
+      "pass": true,
+      "detail": "unresolved"
+    },
+    "disposition_unchanged::semantic_core.candidate_examples[1].semantic_disposition": {
+      "pass": true,
+      "detail": "rejected"
+    },
+    "disposition_unchanged::semantic_core.review_outcome_2026_09_04.resolved_points[0].semantic_disposition": {
+      "pass": true,
+      "detail": "derived"
+    },
+    "mi_dir_type_string_to_array": {
+      "pass": true,
+      "detail": "str -> list[3]"
+    },
+    "mi_dir_first_element_byte_equal_original": {
+      "pass": true,
+      "detail": "byte-equal"
+    },
+    "mi_dir_array_has_three_elements": {
+      "pass": true,
+      "detail": "len=3"
+    },
+    "mi_dir_resolution_text_unchanged": {
+      "pass": true,
+      "detail": "663 chars"
+    },
+    "admission_set_zero": {
+      "pass": true,
+      "detail": "count=0, all cores EMPTY"
+    },
+    "admission_set_bound_in_target_config": {
+      "pass": true,
+      "detail": "root-level key added by the target bytes"
+    },
+    "freeze_metadata_bound_in_target_config": {
+      "pass": true,
+      "detail": "FEATURE-POLICY-20260905-V1-FROZEN"
+    },
+    "protocol_indicators_string_unresolved_no_derived": {
+      "pass": true,
+      "detail": "string retained, unresolved/proposed, zero admission"
+    },
+    "packet_count_string_unresolved": {
+      "pass": true,
+      "detail": "string retained, unresolved"
+    },
+    "pi_pc_gain_no_new_status_fields": {
+      "pass": true,
+      "detail": "final 4-path enumeration stays final"
+    },
+    "gate_structured::materialization": {
+      "pass": true,
+      "detail": "str -> dict with 6 precondition fields"
+    },
+    "gate_structured::splitting": {
+      "pass": true,
+      "detail": "str -> dict with 6 precondition fields"
+    },
+    "gate_structured::training": {
+      "pass": true,
+      "detail": "str -> dict with 6 precondition fields"
+    },
+    "gate_targets_deterministic_and_identical": {
+      "pass": true,
+      "detail": "materialization == splitting == training"
+    },
+    "removed_leaves_only_the_4_type_conversions": {
+      "pass": true,
+      "detail": "removed=['data_handling.materialization', 'data_handling.splitting', 'data_handling.training', 'semantic_core.review_outcome_2026_09_04.resolved_points[0].evidence_source'] unexpected=[]"
+    },
+    "added_leaves_exactly_as_enumerated": {
+      "pass": true,
+      "detail": "unexpected=[]"
+    },
+    "changed_leaves_exactly_the_6_expected": {
+      "pass": true,
+      "detail": "changed=['semantic_core.candidate_examples[0].decision_status', 'semantic_core.candidate_examples[1].decision_status', 'semantic_core.review_outcome_2026_09_04.pairwise_cores.ton_iot__ciciot2023.packet_count', 'semantic_core.review_outcome_2026_09_04.pairwise_cores.ton_iot__ciciot2023.protocol_indicators', 'semantic_core.review_outcome_2026_09_04.resolved_points[0].decision_status', 'status'] unexpected=[]"
+    },
+    "changed_leaves_complete": {
+      "pass": true,
+      "detail": "4 flips + 2 string rewordings"
+    },
+    "label_ontology_still_frozen": {
+      "pass": true,
+      "detail": "8a055e2e34bc8d70f62909f52441915589c310659d6ce3e427a2704820926fab"
+    }
+  },
+  "all_pass": true
+}

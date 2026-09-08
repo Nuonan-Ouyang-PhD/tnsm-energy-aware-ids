@@ -1,0 +1,66 @@
+{
+  "header_identity": {
+    "before": null,
+    "after": {
+      "inventory_sha256_recipe": "sha256(U+001F.join(parsed_header_columns).encode(UTF-8))",
+      "bom_handling": "consume one leading UTF-8 BOM only at physical line 1",
+      "raw_bytes_identity": "full source SHA-256 remains mandatory including BOM and line endings"
+    }
+  },
+  "contract_id": {
+    "before": "MATERIALIZATION-EXECUTOR-20260906-V1R2-REBIND1-PROPOSED",
+    "after": "MATERIALIZATION-EXECUTOR-20260906-V1R3"
+  },
+  "runtime_evidence_binding": {
+    "before": {
+      "archive_root": "materialization_rebind_evidence_v1",
+      "manifest": "MANIFEST_SHA256.txt",
+      "contract_local_path": "contract/materialization_contract_v1r2.json",
+      "executor_local_path": "scripts/materialize_dataset_native_v1r2.py",
+      "required_local_files": [
+        "contract/materialization_contract_v1r2.json",
+        "scripts/materialize_dataset_native_v1r2.py",
+        "inputs/protocol/feature_policy.json",
+        "inputs/protocol/label_ontology.json",
+        "inputs/inventories/ton_iot_20260903T113048Z.json",
+        "inputs/inventories/ciciot2023_20260903T142539Z.json",
+        "inputs/inventories/n_baiot_20260903T224404Z.json",
+        "inputs/censuses/ton_iot_20260903T233742Z.json",
+        "inputs/quality_exceptions/ciciot2023_20260903T142617Z.json",
+        "inputs/request/materialization_execution_request_v1.json"
+      ],
+      "local_dependencies": "none; executor imports only the Python standard library",
+      "archive_validation": "no extraction; reject duplicate, unsafe, encrypted, symlink, non-regular, over-limit, CRC-failing, or MANIFEST-inconsistent members",
+      "maximum_member_uncompressed_bytes": 67108864,
+      "maximum_archive_uncompressed_bytes": 268435456,
+      "authoritative_contract": "parse the byte-identical contract member from the authorization-bound evidence ZIP once and execute that immutable in-memory value",
+      "source_access_gate": "all required local runtime files must be byte-identical to their MANIFEST-bound archive members before any source-root inspection or source CSV open",
+      "system_boundary": "self-checking detects accidental or external working-copy drift; it does not claim to defeat an executor deliberately modified to bypass its own checks; Python standard-library bytes are outside this evidence ZIP"
+    },
+    "after": {
+      "archive_root": "materialization_executor_evidence_v1r3",
+      "manifest": "MANIFEST_SHA256.txt",
+      "contract_local_path": "contract/materialization_contract_v1r2.json",
+      "executor_local_path": "scripts/materialize_dataset_native_v1r2.py",
+      "required_local_files": [
+        "contract/materialization_contract_v1r2.json",
+        "scripts/materialize_dataset_native_v1r2.py",
+        "inputs/protocol/feature_policy.json",
+        "inputs/protocol/label_ontology.json",
+        "inputs/inventories/ton_iot_20260903T113048Z.json",
+        "inputs/inventories/ciciot2023_20260903T142539Z.json",
+        "inputs/inventories/n_baiot_20260903T224404Z.json",
+        "inputs/censuses/ton_iot_20260903T233742Z.json",
+        "inputs/quality_exceptions/ciciot2023_20260903T142617Z.json",
+        "inputs/request/materialization_execution_request_v1.json"
+      ],
+      "local_dependencies": "none; executor imports only the Python standard library",
+      "archive_validation": "no extraction; reject duplicate, unsafe, encrypted, symlink, non-regular, over-limit, CRC-failing, or MANIFEST-inconsistent members",
+      "maximum_member_uncompressed_bytes": 67108864,
+      "maximum_archive_uncompressed_bytes": 268435456,
+      "authoritative_contract": "parse the byte-identical contract member from the authorization-bound evidence ZIP once and execute that immutable in-memory value",
+      "source_access_gate": "all required local runtime files must be byte-identical to their MANIFEST-bound archive members before any source-root inspection or source CSV open",
+      "system_boundary": "self-checking detects accidental or external working-copy drift; it does not claim to defeat an executor deliberately modified to bypass its own checks; Python standard-library bytes are outside this evidence ZIP"
+    }
+  }
+}

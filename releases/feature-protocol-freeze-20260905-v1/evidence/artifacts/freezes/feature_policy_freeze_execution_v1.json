@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "kind": "feature_policy_freeze_execution_record",
+  "decision": "DECISIONS.md #24",
+  "execution_id": "FEATURE-POLICY-20260905-V1-FROZEN/#24/2026-09-05T23:58:15Z",
+  "freeze_id": "FEATURE-POLICY-20260905-V1-FROZEN",
+  "source_commit": "c33113e7ca6a7d6edd9bf0a50d809ecadfb39a66",
+  "freeze_application_commit": "1989a9eb91dcc62ac77cf9f7bca3908b77050da0",
+  "authorized_proposal_package": {
+    "file": "FEATURE_PROTOCOL_FREEZE_PROPOSAL_EVIDENCE_V1R3.zip",
+    "sha256": "313e03a0fe702c11bc028adf16349d6aacfd211cf95b11aea5192b576e6a1d39",
+    "size_bytes": 3271836
+  },
+  "authorization_review": {
+    "file": "FEATURE_PROTOCOL_23_REV3_INDEPENDENT_REVIEW.zip",
+    "sha256": "806cf43ccb9c6f0781c16cc6be5a645c9e51de112ccf9a09c83de1c24e148cb0",
+    "decision": "#23 Rev 3 PASS; #24 configuration freeze authorized; materialization, splitting, and training not authorized"
+  },
+  "executed_at_utc": "2026-09-05T23:58:15Z",
+  "executed_at_local": "2026-09-06T09:58:15+10:00 Australia/Melbourne",
+  "before": {
+    "feature_policy_sha256": "2a903a4a0dd54e4307b7dce24599c39ce62b378b4cd8a95f8a633ffedb321b47",
+    "label_ontology_sha256": "8a055e2e34bc8d70f62909f52441915589c310659d6ce3e427a2704820926fab"
+  },
+  "installation": {
+    "source": "artifacts/proposals/feature_policy_freeze_target_v1r2.json",
+    "destination": "config/feature_policy.json",
+    "method": "verbatim byte copy",
+    "target_sha256": "e81a55c16f9439b0356295353e8b342de19d5c5606d868952592f913beda714b",
+    "installed_sha256": "e81a55c16f9439b0356295353e8b342de19d5c5606d868952592f913beda714b",
+    "byte_equal": true
+  },
+  "verification": {
+    "pre_install": "artifacts/freezes/feature_policy_freeze_preinstall_v1.json",
+    "pre_install_checks": "30/30",
+    "post_install": "artifacts/freezes/feature_policy_freeze_postinstall_v1.json",
+    "post_install_checks": "36/36"
+  },
+  "result": {
+    "feature_policy_status": "frozen",
+    "structured_status_census": {
+      "frozen": 4,
+      "proposed": 0
+    },
+    "admitted_mapping_count": 0,
+    "three_way_core": "EMPTY",
+    "pairwise_cores_all_empty": true,
+    "label_ontology_sha256": "8a055e2e34bc8d70f62909f52441915589c310659d6ce3e427a2704820926fab"
+  },
+  "authorization_granted_by_verification": false,
+  "data_gates_unlocked": false,
+  "operations_not_authorized_or_run": [
+    "materialization",
+    "splitting",
+    "training"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "pid": 54887,
+  "command": [
+    "/usr/bin/caffeinate",
+    "-i",
+    "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - \u6587\u7ae0\u91cd\u6784/physical_campaign_v1/.venv/bin/python",
+    "-B",
+    "-u",
+    "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - \u6587\u7ae0\u91cd\u6784/physical_campaign_v1/controller.py"
+  ],
+  "utc": "2026-09-06T13:23:23.003929+00:00",
+  "scope": "15 sequential static profiles; stop on first invalid run"
+}

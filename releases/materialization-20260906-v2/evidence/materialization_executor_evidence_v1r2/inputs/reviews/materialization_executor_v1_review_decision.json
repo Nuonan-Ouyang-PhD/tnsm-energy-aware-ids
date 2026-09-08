@@ -1,0 +1,21 @@
+{
+  "verdict": "REVISION_REQUIRED_BEFORE_EXECUTOR_ACCEPTANCE",
+  "approved_baselines_unchanged": true,
+  "package_integrity": "PASS",
+  "unit_tests": "20/20 (13 executor + 7 evidence checks)",
+  "package_verifier": "149/149",
+  "manifest": "42/42",
+  "blocking_execution_boundaries": [
+    "E01_runtime_contract_code_evidence_binding",
+    "E02_replay_storage_accounting",
+    "E03_all_input_validation_and_exact_no_LF_exceptions",
+    "E04_no_clobber_publish_and_staging_ownership"
+  ],
+  "raw_csv_read": false,
+  "production_output_created": false,
+  "materialization_authorized": false,
+  "splitting_authorized": false,
+  "training_authorized": false,
+  "git_ancestry_independently_checked": false,
+  "audit_inputs_unchanged_after_all_tests": true
+}

@@ -1,0 +1,12 @@
+{"dataset": "ton_iot", "model": "TinyDT", "max_abs_error": 2.0533191924521077e-08, "disagreements": 0, "median_batch_ms": 0.2448475}
+{"dataset": "ton_iot", "model": "LightLR", "max_abs_error": 2.967336132364551e-08, "disagreements": 0, "median_batch_ms": 0.330559}
+{"dataset": "ton_iot", "model": "MedRF", "max_abs_error": 2.975237578528578e-08, "disagreements": 0, "median_batch_ms": 26.2879565}
+{"dataset": "ton_iot", "model": "HeavyMLP", "max_abs_error": 1.1920928955078125e-07, "disagreements": 0, "median_batch_ms": 1.5922935}
+{"dataset": "ciciot2023", "model": "TinyDT", "max_abs_error": 2.790004649533273e-08, "disagreements": 0, "median_batch_ms": 0.232255}
+{"dataset": "ciciot2023", "model": "LightLR", "max_abs_error": 2.9798059575369962e-08, "disagreements": 0, "median_batch_ms": 0.299938}
+{"dataset": "ciciot2023", "model": "MedRF", "max_abs_error": 2.9758610464725166e-08, "disagreements": 0, "median_batch_ms": 26.036045}
+{"dataset": "ciciot2023", "model": "HeavyMLP", "max_abs_error": 1.1920928955078125e-07, "disagreements": 0, "median_batch_ms": 1.540739}
+{"dataset": "n_baiot", "model": "TinyDT", "max_abs_error": 1.1920928910669204e-08, "disagreements": 0, "median_batch_ms": 0.2557265}
+{"dataset": "n_baiot", "model": "LightLR", "max_abs_error": 2.9797427636424345e-08, "disagreements": 0, "median_batch_ms": 0.3612435}
+{"dataset": "n_baiot", "model": "MedRF", "max_abs_error": 2.965088663486881e-08, "disagreements": 0, "median_batch_ms": 26.243421}
+{"dataset": "n_baiot", "model": "HeavyMLP", "max_abs_error": 2.9802322387695312e-08, "disagreements": 0, "median_batch_ms": 1.6570055}

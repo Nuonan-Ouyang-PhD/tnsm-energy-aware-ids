@@ -1,0 +1,474 @@
+{
+  "schema_version": 1,
+  "config_id": "TNSM-ADAPTIVE-SCHEDULER-20260907-V1",
+  "decision_date": "2026-09-07",
+  "timezone": "Australia/Melbourne",
+  "status": "design_fixed_software_infrastructure_only_no_policy_or_formal_test_result",
+  "authority_and_provenance": {
+    "next_stage_task": {
+      "path": "/Users/nuonanouyang/Downloads/TNSM_NEXT_STAGE_CODEX_TASK.md",
+      "sha256": "68c763271641b33b0e46f0f425ccb3a18852f2ce89b8ccd5a3e81c18c2119775"
+    },
+    "reproduction_matrix": {
+      "requested_repository_path": "docs/REPRODUCTION_MATRIX.md",
+      "requested_path_present_in_current_reconstructed_workspace": false,
+      "resolved_traceable_source_path": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Downloads/tnsm-energy-aware-ids/docs/REPRODUCTION_MATRIX.md",
+      "sha256": "272f7b60a525fc3386c2168b59863f42f7176653fc9f2d18b2a71c85930e1a27"
+    },
+    "policy_prerequisites": {
+      "path": "tnsm_experiments_v1/policy_prerequisites.md",
+      "sha256": "46ece6dc8ce1131f5bcc7276c022e711809e8091d72a4d4b3bb05b60c3df0479"
+    },
+    "software_plan": {
+      "path": "tnsm_experiments_v1/PLAN.md",
+      "sha256": "512d07bee5ef80f8d51a6fd06a05895bec56ca3b192140117697729047678f7c"
+    },
+    "historical_method_source": {
+      "path": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Downloads/TNSM_revised_manuscript_source_reference_checked_with_template_response (1)/main.tex",
+      "sha256": "797306ae7ec238f7be8c8f0a89c20fde0a60b927f62ae47e9e7d59ac594fa129",
+      "allowed_use": "method parameter provenance only",
+      "excluded_use": "historical Pi 3 hardware and historical result tables are not evidence"
+    },
+    "article_data_baseline": {
+      "archive": "TNSM_ARTICLE_DATA_20260907_V1.zip",
+      "sha256": "c135da2db921dc442b4fbea7bd2596aaef8f1eda2f553945d400168d77375c74",
+      "physical_static_aggregates_member": "TNSM_ARTICLE_DATA_20260907_V1/summary/physical_static_aggregates.csv",
+      "physical_static_aggregates_sha256": "0e96aa497ee57ba3da72a3575d6f65951dde44b311b5c73ca843ca308658b111",
+      "pi_inference_parity_member": "TNSM_ARTICLE_DATA_20260907_V1/summary/pi_inference_parity.csv",
+      "pi_inference_parity_sha256": "624582aa893991078701aa414bf40a1aca5534091c2d288b6c3c2325820f6121",
+      "completion_matrix_member": "TNSM_ARTICLE_DATA_20260907_V1/summary/completion_matrix.csv",
+      "completion_matrix_sha256": "9cdbdaceedfb19e7bd522ccfb9b792a10b3fc5caad77990914428d086715141c"
+    },
+    "adaptive_stage_inputs": {
+      "authorization_path": "adaptive_scheduler_v1/AUTHORIZATION.md",
+      "authorization_sha256": "0d7cdcd9c1ec495d10edeffb5076560f587fdb8bf33dca34b8145663d94c3085",
+      "plan_path": "adaptive_scheduler_v1/PLAN.md",
+      "plan_sha256": "142d4386e8c749e2aea5ca5044ab905a0b21c25d182b716a3eaa8de05faa681f",
+      "policy_input_builder_path": "adaptive_scheduler_v1/prepare_policy_inputs.py",
+      "policy_input_builder_sha256": "6348430d4edec24162d553b198322f3ab9caec24619ef5e791e7ef938206c7d9",
+      "policy_input_manifest_path": "adaptive_scheduler_v1/policy_inputs/manifest.json",
+      "policy_input_manifest_sha256_at_configuration": "50f5733f16514b719fc6112ca61545064a6a9d191cc1f89e059226c6cd7ab947",
+      "cost_registry_path": "adaptive_scheduler_v1/cost_registry/cost_registry.json",
+      "cost_registry_sha256_at_configuration": "9cbef9063c5b802af6100a82efb940321b3a7f2bd11acf9e14186752efb26e10"
+    }
+  },
+  "experiment_scope": {
+    "primary_device": "pi4b8g",
+    "primary_physical_dataset": "ton_iot",
+    "software_datasets": [
+      "ton_iot",
+      "ciciot2023",
+      "n_baiot"
+    ],
+    "window_seconds": 1,
+    "samples_per_window": 100,
+    "formal_test_trace_seeds": [
+      11,
+      23,
+      37,
+      53,
+      71,
+      89,
+      107,
+      131,
+      157,
+      191
+    ],
+    "formal_test_seeds_are_reserved_from_training_and_model_selection": true,
+    "physical_paired_blocks": 10,
+    "physical_methods": [
+      "Static-MedRF",
+      "CFSM",
+      "Tabular-Q",
+      "DQN"
+    ],
+    "formal_physical_runs": 40,
+    "formal_test_or_physical_execution_authorized_by_this_config": false
+  },
+  "actions": {
+    "ordered_light_to_heavy": [
+      "TinyDT",
+      "LightLR",
+      "MedRF",
+      "HeavyMLP"
+    ],
+    "selection_semantics": "one and only one classifier is selected for the entire 100-sample window",
+    "switch_boundary": "between windows only",
+    "residency": "all four frozen classifiers remain resident; selection does not load, unload, refit, or update a classifier",
+    "prediction_threshold": 0.5,
+    "counterfactual_prediction_visibility": "training and explicitly nondeployable offline reference only; online policy receives only the selected model output after action commitment"
+  },
+  "online_state": {
+    "ordered_fields": [
+      "smoothed_temperature_c",
+      "lagged_selected_model_threat",
+      "predecision_queue_utilization",
+      "lagged_arrival_rate_ratio",
+      "previous_action"
+    ],
+    "strict_timeline": "construct state, commit action, run selected model, record outcome, then expose only its summary to the next window",
+    "temperature": {
+      "source": "current kernel temperature sampled before action commitment",
+      "smoothing_lambda": 0.9,
+      "formula": "T_t = 0.9*T_(t-1) + 0.1*raw_T_t",
+      "first_window_initialization": "raw_T_0",
+      "bins_c_low_medium_high": [
+        45.0,
+        70.0
+      ]
+    },
+    "threat": {
+      "source": "arithmetic mean attack probability produced by the single selected classifier in completed window t-1",
+      "lag_windows": 1,
+      "clip": [
+        0.0,
+        1.0
+      ],
+      "first_window_value": 0.5,
+      "bins_low_medium_high": [
+        0.3333333333333333,
+        0.7
+      ]
+    },
+    "queue": {
+      "source": "queue depth sampled before action commitment divided by declared queue capacity",
+      "clip": [
+        0.0,
+        1.0
+      ],
+      "bins_low_medium_high": [
+        0.3333333333333333,
+        0.6666666666666666
+      ]
+    },
+    "network_load": {
+      "source": "arrivals observed during completed window t-1 divided by 100 nominal arrivals",
+      "lag_windows": 1,
+      "clip_ratio": [
+        0.0,
+        2.0
+      ],
+      "first_window_ratio": 1.0,
+      "bins_ratio_low_medium_high": [
+        0.9,
+        1.1
+      ]
+    },
+    "previous_action": {
+      "source": "action committed for completed window t-1",
+      "first_window_value": "TinyDT"
+    },
+    "discrete_state_cardinality": 324,
+    "state_index_order": "temperature, threat, queue, load, previous_action; row-major with previous_action fastest",
+    "forbidden_before_action": [
+      "current_window_labels",
+      "test_labels",
+      "current_window_phase_id",
+      "future_phase_id",
+      "current_window_selected_model_predictions",
+      "current_window_counterfactual_predictions",
+      "cached_predictions_from_unselected_models",
+      "post_action_latency",
+      "post_action_power",
+      "post_action_temperature"
+    ]
+  },
+  "cfsm": {
+    "algorithm_id": "CFSM",
+    "learned": false,
+    "temperature_warning_c": 70.0,
+    "threat_threshold": 0.7,
+    "cooldown_full_windows_after_switch": 2,
+    "initial_action": "TinyDT",
+    "rules_in_priority_order": [
+      "if smoothed_temperature_c >= 70 and current action is not TinyDT, step exactly one rank lighter; this safety transition bypasses cooldown and resets cooldown",
+      "otherwise, if cooldown remains, hold current action for this full window and decrement cooldown",
+      "otherwise, if lagged_selected_model_threat < 0.7, step exactly one rank lighter",
+      "otherwise step exactly one rank heavier",
+      "at TinyDT or HeavyMLP, a step beyond the action set becomes hold"
+    ],
+    "queue_and_load_use": "logged and available to RL policies but deliberately not used by this historically thresholded CFSM baseline",
+    "cooldown_semantics": "a switch at t forces holds at t+1 and t+2 unless the thermal safety rule requires another lighter step; earliest ordinary switch is t+3"
+  },
+  "reward": {
+    "formula": "0.5*detection - 0.2*power - 0.2*latency - 0.1*positive_thermal_increment",
+    "weights": {
+      "detection": 0.5,
+      "power": 0.2,
+      "latency": 0.2,
+      "positive_thermal_increment": 0.1
+    },
+    "detection_component": {
+      "metric": "balanced_accuracy",
+      "definition": "unweighted mean recall over ground-truth classes present in the window",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "label_access": "train labels for fitting reward; validation labels for checkpoint selection; test labels posthoc only after the frozen schedule is complete"
+    },
+    "power_component": {
+      "normalization": "clip((watts - 2.347219335926574) / (2.3970255355431793 - 2.347219335926574), 0, 1)",
+      "lower_watts": 2.347219335926574,
+      "upper_watts": 2.3970255355431793,
+      "scope": "TON-IoT Pi4B all-models-resident 100-row-per-second static profiles only",
+      "allowed_origins": [
+        "measured_current_window",
+        "ton_static_profile_lookup_proxy",
+        "synthetic_unit_test"
+      ]
+    },
+    "latency_component": {
+      "normalization": "clip((batch_ms - 1.2979595) / (30.952759333333333 - 1.2979595), 0, 1)",
+      "lower_batch_ms": 1.2979595,
+      "upper_batch_ms": 30.952759333333333,
+      "scope": "encoded 100-row inference batch; preprocessing and end-to-end network latency excluded"
+    },
+    "thermal_component": {
+      "normalization": "clip(max(0, post_temperature_c - predecision_smoothed_temperature_c) / 1.0C, 0, 1)",
+      "positive_increment_scale_c": 1.0,
+      "negative_increment_rewarded": false
+    },
+    "switch_penalty": "none in V1 because same-runtime switch cost has not been measured; switch count remains a reported metric",
+    "test_reward_use": "posthoc reporting only; never an online update or checkpoint-selection signal"
+  },
+  "resource_cost_registry": {
+    "status": "measured_static_profiles_available_with_scope_limits; same-runtime switch and first-batch response pending",
+    "device": "Raspberry Pi 4B 8GB pi4b8g",
+    "dataset": "ton_iot",
+    "batch_size": 100,
+    "cadence": "one batch per second",
+    "model_residency": "all four models loaded throughout idle and active runs",
+    "measurement_point": "uncalibrated POWER-Z KM003C USB load-side whole-Pi input",
+    "repeats_per_profile": 3,
+    "idle_mean_watts": 2.3354647303293112,
+    "models": {
+      "TinyDT": {
+        "mean_watts": 2.353131742819268,
+        "mean_increment_vs_matched_idle_watts": 0.01766701248995739,
+        "mean_batch_latency_ms_median": 1.2979595000000002,
+        "mean_max_temperature_c": 35.37466666666666
+      },
+      "LightLR": {
+        "mean_watts": 2.347219335926574,
+        "mean_increment_vs_matched_idle_watts": 0.01175460559726312,
+        "mean_batch_latency_ms_median": 1.5444198333333334,
+        "mean_max_temperature_c": 34.400666666666666
+      },
+      "MedRF": {
+        "mean_watts": 2.3970255355431793,
+        "mean_increment_vs_matched_idle_watts": 0.061560805213868676,
+        "mean_batch_latency_ms_median": 30.952759333333333,
+        "mean_max_temperature_c": 34.562999999999995
+      },
+      "HeavyMLP": {
+        "mean_watts": 2.3666875896596538,
+        "mean_increment_vs_matched_idle_watts": 0.031222859330343116,
+        "mean_batch_latency_ms_median": 4.417835833333334,
+        "mean_max_temperature_c": 35.537
+      }
+    },
+    "measurement_limitations": [
+      "static profile means are not current-window measured energy",
+      "power differences are small and some confidence intervals overlap",
+      "TON-IoT power is not measured CIC-IoT2023 or N-BaIoT power",
+      "Pi parity tight-loop timings are a different cadence and are not substituted into this registry",
+      "switch latency and first-batch response for the final scheduler runtime remain unmeasured"
+    ],
+    "non_ton_power_status": "unavailable_not_proxy_by_default",
+    "switch_latency_status": "pending_same_runtime_measurement",
+    "first_batch_response_status": "pending_same_runtime_measurement"
+  },
+  "tabular_q": {
+    "algorithm_id": "Tabular-Q",
+    "alpha": 0.1,
+    "gamma": 0.9,
+    "episodes": 1000,
+    "epsilon_start": 1.0,
+    "epsilon_end": 0.01,
+    "epsilon_schedule": "linear inclusive from episode 0 to episode 999",
+    "q_initialization": 0.0,
+    "tie_break": "first action in ordered_light_to_heavy",
+    "evaluation_updates": false
+  },
+  "dqn": {
+    "algorithm_id": "DQN",
+    "episodes": 1000,
+    "gamma": 0.9,
+    "epsilon_start": 1.0,
+    "epsilon_end": 0.01,
+    "epsilon_schedule": "linear inclusive from episode 0 to episode 999",
+    "input_encoding": "one-hot discrete state index of length 324",
+    "hidden_layers": [
+      64,
+      64
+    ],
+    "activation": "ReLU",
+    "output_actions": 4,
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "batch_size": 32,
+    "replay_capacity": 10000,
+    "replay_warmup_transitions": 320,
+    "gradient_steps_per_transition": 1,
+    "target_update": "hard copy every 250 optimizer steps",
+    "target_update_steps": 250,
+    "loss": "SmoothL1Loss",
+    "gradient_norm_clip": 10.0,
+    "device": "cpu",
+    "deterministic_algorithms": true,
+    "evaluation_updates": false
+  },
+  "training_and_selection": {
+    "policy_initialization_seed": 20260907,
+    "training_trace_seeds": [
+      211,
+      223,
+      227,
+      229,
+      233,
+      239,
+      241,
+      251,
+      257,
+      263
+    ],
+    "validation_trace_seeds": [
+      401,
+      409,
+      419,
+      421,
+      431
+    ],
+    "q_or_network_updates_partition": "train",
+    "normalization_and_empirical_calibration_partition": "calibration",
+    "checkpoint_selection_partition": "validation",
+    "formal_evaluation_partition": "test",
+    "checkpoint_interval_episodes": 25,
+    "selection_primary": "highest mean validation episode return",
+    "selection_tie_breaks": [
+      "higher validation balanced accuracy",
+      "lower validation mean power component",
+      "lower validation mean latency component",
+      "fewer validation switches",
+      "earlier training episode"
+    ],
+    "test_data_forbidden_during": [
+      "training",
+      "reward or state normalization",
+      "hyperparameter tuning",
+      "checkpoint selection",
+      "threshold changes",
+      "split changes"
+    ],
+    "formal_test_policy_update": false
+  },
+  "software_trace_adapter": {
+    "format": "compact NPZ produced by adaptive_scheduler_v1/prepare_policy_inputs.py",
+    "current_supported_dataset": "ton_iot",
+    "rows_per_trace": 50000,
+    "windows_per_trace": 500,
+    "samples_per_window": 100,
+    "model_probability_order": [
+      "TinyDT",
+      "LightLR",
+      "MedRF",
+      "HeavyMLP"
+    ],
+    "analysis_only_phase_ids": "member is never read by the online state adapter or policy; it is not converted into queue, load, threat, or temperature",
+    "optional_online_members": [
+      "predecision_temperature_c",
+      "predecision_queue_depth_samples",
+      "queue_capacity_samples",
+      "arrivals_in_window"
+    ],
+    "missing_online_member_behavior": {
+      "predecision_temperature_c": 35.0,
+      "predecision_queue_depth_samples": 0,
+      "queue_capacity_samples": 100,
+      "arrivals_in_window": 100,
+      "origin": "neutral_software_adapter_values_fixed_2026_09_07_not_measured_window_telemetry",
+      "thermal_response": "none; post temperature equals predecision temperature",
+      "claim_boundary": "policy training with these neutral values cannot support a thermal-response, queue-adaptation, or load-adaptation result"
+    },
+    "training_cost_origin": "ton_static_profile_lookup_proxy",
+    "test_online_loading": "model probabilities and online members only; labels are not accessed until the frozen schedule completes",
+    "formal_physical_runtime": "must replace adapter values with live predecision telemetry and selected-model post-action outcomes"
+  },
+  "offline_label_reference": {
+    "algorithm_id": "LI-PerWindow-Utility-Reference",
+    "display_name": "Label-Informed Per-Window Utility Reference",
+    "deployable": false,
+    "oracle": false,
+    "globally_optimal": false,
+    "future_information": false,
+    "definition": "after the complete window and its labels are available, score all four model outcomes with the fixed scalar reward and select the maximum independently for that window",
+    "optimization_horizon": "one window",
+    "ignored_dynamics": [
+      "future windows",
+      "cumulative thermal state",
+      "cooldown",
+      "switch latency because it is unmeasured"
+    ],
+    "tie_break": "first action in ordered_light_to_heavy",
+    "separation": "runs only as a distinct posthoc command and cannot emit a deployable policy artifact"
+  },
+  "logging": {
+    "format": "append-only UTF-8 JSON Lines",
+    "event_types": [
+      "window_decision",
+      "window_outcome",
+      "window_posthoc",
+      "offline_reference_window"
+    ],
+    "decision_event_written_before_inference": true,
+    "required_decision_content": [
+      "run and trace identity",
+      "partition and window index",
+      "all decision-available raw and encoded state",
+      "state source window indices",
+      "previous and selected action",
+      "switch and cooldown state",
+      "policy and config identities"
+    ],
+    "required_outcome_content": [
+      "selected-model prediction count, attack count, probability mean and digest",
+      "prediction artifact reference when present",
+      "latency and exact origin",
+      "temperature before and after",
+      "power value and exact measured/proxy/synthetic origin",
+      "reward components only where labels are legally available",
+      "switch event and failure state"
+    ],
+    "test_labels": "written only in separate window_posthoc events after the complete frozen schedule",
+    "simulated_cost_label": "never named measured energy or measured current-window power"
+  },
+  "failure_rules": {
+    "reject_nonfinite_state_or_cost": true,
+    "reject_out_of_order_windows": true,
+    "reject_partition_role_mismatch": true,
+    "reject_labels_in_test_online_trace": true,
+    "reject_test_evaluation_of_unfrozen_policy": true,
+    "reject_policy_config_hash_mismatch": true,
+    "reject_unknown_cost_origin": true,
+    "no_automatic_retry": true,
+    "preserve_partial_append_only_logs": true,
+    "physical_temperature_abort_at_or_above_c": 70.0,
+    "physical_throttle_or_telemetry_failure_invalidates_run": true
+  },
+  "explicit_design_choices_made_2026_09_07": [
+    "numeric low/medium/high state-bin boundaries",
+    "selected-model mean attack probability as the lagged threat aggregation",
+    "initial state values and state-index ordering",
+    "full CFSM priority, one-rank transitions, cooldown and thermal-override semantics",
+    "balanced accuracy as the detection reward component",
+    "power, latency and positive-thermal normalization equations",
+    "absence of an unmeasured switch penalty",
+    "Tabular-Q linear epsilon schedule and deterministic tie break",
+    "DQN second hidden layer, one-hot input, optimizer, replay capacity, warmup, loss, target update and gradient clipping",
+    "training seeds 211/223/227/229/233/239/241/251/257/263 and validation seeds 401/409/419/421/431, already used by the dated train/validation-only policy-input preparation, plus the checkpoint-selection criterion",
+    "neutral, label-independent fallback online observations for compact policy NPZ files that lack telemetry; phase IDs remain unread and the resulting adaptation limits must be disclosed",
+    "Label-Informed Per-Window Utility Reference name and one-step non-oracle definition",
+    "three-event per-window logging protocol"
+  ]
+}

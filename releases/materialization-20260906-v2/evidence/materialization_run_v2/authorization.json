@@ -1,0 +1,35 @@
+{
+  "contract_id": "MATERIALIZATION-EXECUTOR-20260906-V1R3",
+  "request_zip_sha256": "55c3c6ee9d6e01fb764a650432b379ca41ca52b703dd33c9ec9cf17088271c63",
+  "executor_evidence_zip_sha256": "6701586ac840ddf8d3d13b8c39b5e2aca600d83cd27d415d473bbadb6e67569e",
+  "evidence_archive_root": "materialization_executor_evidence_v1r3",
+  "evidence_manifest_sha256": "c1efc0847080172c01c4447a8677151dab72de58259581aeb432f7b72ab31d4f",
+  "contract_sha256": "c5c5e0395d3ba61afada3e001d1458129c98cdb45c969c26ceb21703e2fe764d",
+  "executor_sha256": "0f1d620ad8c64e4385055cbf1c135b787883e9c929ce6f3d91431765565444c6",
+  "output_root": "/Volumes/RESEARCH_DATA/TNSM-MATERIALIZATION-20260906-V1",
+  "staging_root": "/Volumes/RESEARCH_DATA/.TNSM-MATERIALIZATION-20260906-V1.staging",
+  "source_roots": {
+    "ton_iot": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Downloads/tnsm-energy-aware-ids/datasets/incoming/ton_iot",
+    "ciciot2023": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Downloads/tnsm-energy-aware-ids/datasets/extracted/ciciot2023",
+    "n_baiot": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Downloads/tnsm-energy-aware-ids/datasets/extracted/n_baiot"
+  },
+  "volume_uuid": "FBCBD1E6-330C-452B-AD79-EF7F74B6464B",
+  "superseding_user_instruction": "继续 你直接完成全部所有的实验不需要经过我",
+  "new_runtime_review": "local 32-test regression passed; no claim of external V1R3 review",
+  "kind": "materialization_execution_authorization",
+  "authorization_id": "MATERIALIZATION-20260906-V1R3-BROAD-AUTHORIZED",
+  "authorized_by_user": true,
+  "recorded_at_utc": "2026-09-06T11:33:54.904303+00:00",
+  "operations": {
+    "materialization": true,
+    "splitting": false,
+    "training": false,
+    "encoder_fitting": false,
+    "model_fitting": false
+  },
+  "final_request_zip_sha256": "b123293dfe331d59393688d07c799c1fdb42f0df2367ef919c2f949843bff655",
+  "final_review_zip_sha256": "963847b182ec9b7d28e731abc2f1f920269e10b72ad0ea59edb31b89db9e5663",
+  "user_approval_text_sha256": "b63f8d7c2d6ff7c76eddd153ddedaff72fb24ee4d3675d6556df7cdfe46a6912",
+  "approval_text_format": "User text transcribed with tables/HTML spacing normalized; attached independent review retained separately",
+  "decisions_path": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Downloads/tnsm-energy-aware-ids/docs/DECISIONS.md"
+}

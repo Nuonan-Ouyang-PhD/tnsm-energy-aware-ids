@@ -1,0 +1,1627 @@
+{
+  "schema_version": 1,
+  "registry_id": "TNSM-RESOURCE-COST-REGISTRY-20260907-V1",
+  "created_date": "2026-09-07",
+  "scope": "Derived registry of already recorded static power and Pi encoded-input timing; no new measurement and no adaptive-policy result",
+  "status_vocabulary": {
+    "measured": "directly observed in the cited existing run/report",
+    "derived": "computed only from cited measured values",
+    "unmeasured": "no suitable existing observation; numeric value remains null",
+    "proxy": "measured under a different cadence/residency and not interchangeable"
+  },
+  "source_evidence": {
+    "article_archive": {
+      "file": "TNSM_ARTICLE_DATA_20260907_V1.zip",
+      "sha256": "c135da2db921dc442b4fbea7bd2596aaef8f1eda2f553945d400168d77375c74",
+      "manifest_sha256": "5492855ddd90ee4eebc52924318f7d0f9cc43a10009732aef0e8aef7570cc945",
+      "physical_profiles_member": {
+        "path": "summary/physical_static_profiles.csv",
+        "sha256": "80ed6c127ad28b2543b22aacdf83da8d15cac1d9cdcbf99d466b0700da1e337c"
+      },
+      "physical_aggregates_member": {
+        "path": "summary/physical_static_aggregates.csv",
+        "sha256": "0e96aa497ee57ba3da72a3575d6f65951dde44b311b5c73ca843ca308658b111"
+      },
+      "pi_inference_report_member": {
+        "path": "raw/software/execution/pi_inference_report.json",
+        "sha256": "ac644a865dc02b2f97624dd0993d3a3cf3d830e16311eebe45514c5eb70a007a"
+      },
+      "pi_readonly_snapshot_member": {
+        "path": "raw/software/execution/pi_readonly_snapshot.json",
+        "sha256": "bd2ddc207192daa1589508864158d49aee7eb4d4450f051ed2e9026c229f39e3"
+      },
+      "physical_input_manifest_sha256": {
+        "v1": "7c8eeaa6365a3f68d6f659f757ccf0e219223ffe9df811acccb2abd24f4d5222",
+        "v2": "7c8eeaa6365a3f68d6f659f757ccf0e219223ffe9df811acccb2abd24f4d5222",
+        "v3": "c6235745330b8672219375164afc508c2ac6043ae3656dc492ed9b43c03f4200"
+      }
+    },
+    "software_evidence_archive": {
+      "file": "TNSM_SOFTWARE_EXPERIMENT_EVIDENCE_V1.zip",
+      "sha256": "38c90b995d58e63c3c2149de99a6dde0dcd8f968322fb87dbcf960ccb34e4318",
+      "pi_input_manifest_member": "pi_check_bundle/inputs_manifest.json",
+      "pi_input_manifest_sha256": "0840fdad15ee5f3fa0e3cd7de3d726d2f48a8d0002c9267346091baaf3f4016a"
+    }
+  },
+  "device": {
+    "hardware_model": "Raspberry Pi 4 Model B Rev 1.5",
+    "architecture": "aarch64",
+    "memory_total_bytes": 8199643136,
+    "cpu_count": 4,
+    "inference_cpu_thread_limit": 2,
+    "meter": "POWER-Z KM003C serial 075356, HW 2.4, FW 2.0.6",
+    "measurement_point": "Pi USB input/load side; not AC wall",
+    "instrument_limit": "uncalibrated meter, user-accepted approximately 5.4 V supply, one Pi; no ambient thermometer"
+  },
+  "cadence_separation": {
+    "physical_static": "TON-IoT only; one 100-row encoded batch each second for 1800 seconds; all four models resident; 1 Hz meter and telemetry",
+    "pi_tight_loop": "all three datasets; each model timed sequentially for 1000 consecutive 100-row calls after 20 warmups; no meter and no one-second pacing",
+    "forbidden_combination": "Do not multiply or otherwise combine the two rhythms into energy per batch without a separately justified calibration."
+  },
+  "resident_physical_inputs": {
+    "status": "measured",
+    "files": {
+      "inputs/HeavyMLP.pt": "2999008343be15af0374bc647af6764e010bebc841b953b0307a10ebbc26b8a0",
+      "inputs/LightLR.joblib": "a6cafb1426058f0268dd9da065fa3848b95c0a5531b3ec5c1b65987e5ca5268f",
+      "inputs/MedRF.joblib": "35bc9b8674c5ae3b7c163ab29d7fd3d3abfe61dfaa1d26323530f9d14a2b2688",
+      "inputs/TinyDT.joblib": "9941090e54203557d63b2f6117622bcba3535019796f7dfefb955293d085c2f2",
+      "inputs/train_X.npy": "c2fbc447d43d57cdbd1631b9a15cd6840f6b640643ad3a36b5a755e6335a14e7",
+      "inputs/train_ids.npy": "334db307ef8823344854935a236400ff2622fbe7d9b711f5e586f54b19637951",
+      "inputs/train_predictions.npy": "c2dbf2857151968458524354b9def8898e90d7a4722a084f78b4dd594d36c995"
+    },
+    "canonical_mapping_sha256": "804bac9db72b06fde88ecd439e6cf72739897038d7031f91b9efb87aecd82498",
+    "note": "The common model/data hashes are identical across v1/v2/v3; only the transport/control worker revision changed."
+  },
+  "physical_segments": [
+    {
+      "run_id": "r1-0-idle",
+      "repetition": 1,
+      "profile": "idle",
+      "source_version": "v1",
+      "status": "PASS",
+      "batch_size_rows": 100,
+      "active_rows_per_second": 0,
+      "duration_seconds": 1800.0012253335,
+      "power_samples": 1801,
+      "telemetry_windows": 1800,
+      "energy_joules": 4220.600871135055,
+      "mean_watts": 2.3447766655564757,
+      "voltage_min": 5.376285,
+      "voltage_max": 5.401776,
+      "temperature_min_c": 28.719,
+      "temperature_max_c": 33.589,
+      "inference_batch_ms_median": 0.006185,
+      "inference_batch_ms_p95": 0.007537,
+      "power_sha256": "f7d9d7559c4ec52e5069c4565f9f61b377233235a86b68e05b2989ab933bca2e",
+      "telemetry_sha256": "531e30becac9e8ba53069c2b6e83d3feb07bc4c5468aa0ca3c0efa6ff165c637",
+      "summary_sha256": "9dcd550e976f2557941912b0484bfef6db26d83964e91736ab40e9809aa9c394",
+      "source_member_prefix": "raw/physical/v1/execution/r1-0-idle",
+      "evidence_status": "measured",
+      "telemetry_summary_status": "derived"
+    },
+    {
+      "run_id": "r1-1-TinyDT",
+      "repetition": 1,
+      "profile": "TinyDT",
+      "source_version": "v1",
+      "status": "PASS",
+      "batch_size_rows": 100,
+      "active_rows_per_second": 100,
+      "duration_seconds": 1799.9974727709998,
+      "power_samples": 1801,
+      "telemetry_windows": 1800,
+      "energy_joules": 4228.854083689684,
+      "mean_watts": 2.3493666783762697,
+      "voltage_min": 5.381616,
+      "voltage_max": 5.401055,
+      "temperature_min_c": 29.206,
+      "temperature_max_c": 33.589,
+      "inference_batch_ms_median": 1.3054425,
+      "inference_batch_ms_p95": 1.3358694500000001,
+      "power_sha256": "c244c1f2bd7bb7761af9084777167f84c4ef3fac2383b8cf2323eb7dbd9be96b",
+      "telemetry_sha256": "b8d1f9e23398221ab8a58d063579b811f14f93d1dfe70fe1f7f7b67d7fcc5fd4",
+      "summary_sha256": "a0d4379f95954816788c60f000ed7c47e30dad33207777db9a00e5b09eaa6a52",
+      "source_member_prefix": "raw/physical/v1/execution/r1-1-TinyDT",
+      "evidence_status": "measured",
+      "telemetry_summary_status": "derived"
+    },
+    {
+      "run_id": "r1-2-HeavyMLP",
+      "repetition": 1,
+      "profile": "HeavyMLP",
+      "source_version": "v1",
+      "status": "PASS",
+      "batch_size_rows": 100,
+      "active_rows_per_second": 100,
+      "duration_seconds": 1800.0042718120003,
+      "power_samples": 1801,
+      "telemetry_windows": 1800,
+      "energy_joules": 4257.805978459568,
+      "mean_watts": 2.3654421520752202,
+      "voltage_min": 5.379047,
+      "voltage_max": 5.39791,
+      "temperature_min_c": 29.206,
+      "temperature_max_c": 34.076,
+      "inference_batch_ms_median": 4.4669445,
+      "inference_batch_ms_p95": 4.61302365,
+      "power_sha256": "c4ef3069acbd14c1ae9705fe8c918e827973927f50f6241d4832cbc73654c864",
+      "telemetry_sha256": "766ea35c47ec758dd942cd429422fe00166135890f43abc673213de9dad4e400",
+      "summary_sha256": "cfb88d9d7bdf41bea5376ff4e46e8ea9fde04f34256a6d42a66f0aa1af649ca5",
+      "source_member_prefix": "raw/physical/v1/execution/r1-2-HeavyMLP",
+      "evidence_status": "measured",
+      "telemetry_summary_status": "derived"
+    },
+    {
+      "run_id": "r1-3-LightLR",
+      "repetition": 1,
+      "profile": "LightLR",
+      "source_version": "v1",
+      "status": "PASS",
+      "batch_size_rows": 100,
+      "active_rows_per_second": 100,
+      "duration_seconds": 1799.9953512289994,
+      "power_samples": 1801,
+      "telemetry_windows": 1800,
+      "energy_joules": 4224.380253912407,
+      "mean_watts": 2.346883980021442,
+      "voltage_min": 5.372501,
+      "voltage_max": 5.398136,
+      "temperature_min_c": 29.206,
+      "temperature_max_c": 35.05,
+      "inference_batch_ms_median": 1.5433135,
+      "inference_batch_ms_p95": 1.5781671499999999,
+      "power_sha256": "d800a08b8d19d62d7f2e6365916250e47ed5920cf373a076a6efb1b41efdcb12",
+      "telemetry_sha256": "57e233039ab4af680d92b98560138452f6b62dc642ddfc237b43c99e00aa44a3",
+      "summary_sha256": "540c634d58499b277c051f2f42a024fdae7baf4bfd9f6f1eb2a6ce54a40c8d21",
+      "source_member_prefix": "raw/physical/v1/execution/r1-3-LightLR",
+      "evidence_status": "measured",
+      "telemetry_summary_status": "derived"
+    },
+    {
+      "run_id": "r1-4-MedRF",
+      "repetition": 1,
+      "profile": "MedRF",
+      "source_version": "v1",
+      "status": "PASS",
+      "batch_size_rows": 100,
+      "active_rows_per_second": 100,
+      "duration_seconds": 1800.0016978334988,
+      "power_samples": 1801,
+      "telemetry_windows": 1800,
+      "energy_joules": 4306.795870256884,
+      "mean_watts": 2.392662115508329,
+      "voltage_min": 5.378985,
+      "voltage_max": 5.397613,
+      "temperature_min_c": 29.206,
+      "temperature_max_c": 34.076,
+      "inference_batch_ms_median": 30.9725425,
+      "inference_batch_ms_p95": 38.331110200000005,
+      "power_sha256": "03b29e67406a669f9a33bb18d19ba300e4a3172f1f86d38e68f5c952deff923a",
+      "telemetry_sha256": "1f0548fa0c24695114fcbcc012102b06131b850b054a93f9a445e7e866ecad4b",
+      "summary_sha256": "f51c25284f10f5f8e14758c0bd6334756b690d27f440d46cde48081c7b96263b",
+      "source_member_prefix": "raw/physical/v1/execution/r1-4-MedRF",
+      "evidence_status": "measured",
+      "telemetry_summary_status": "derived"
+    },
+    {
+      "run_id": "r2-0-idle",
+      "repetition": 2,
+      "profile": "idle",
+      "source_version": "v1",
+      "status": "PASS",
+      "batch_size_rows": 100,
+      "active_rows_per_second": 0,
+      "duration_seconds": 1799.9938021874987,
+      "power_samples": 1801,
+      "telemetry_windows": 1800,
+      "energy_joules": 4194.96032383762,
+      "mean_watts": 2.330541537831721,
+      "voltage_min": 5.379143,
+      "voltage_max": 5.398276,
+      "temperature_min_c": 28.719,
+      "temperature_max_c": 34.563,
+      "inference_batch_ms_median": 0.00624,
+      "inference_batch_ms_p95": 0.007722,
+      "power_sha256": "cf315a923ee4d418385d989e54e871a6faf6dd928fb2aa26e054a93881580f39",
+      "telemetry_sha256": "f59ed8e3ddc6f168f49f865d9a5da4b8e11f535dd8923538d06469af7d313567",
+      "summary_sha256": "064ab05580dfefe7d67f9f72745ebd6bf141c508551c04778bd3c4d1ecf74441",
+      "source_member_prefix": "raw/physical/v1/execution/r2-0-idle",
+      "evidence_status": "measured",
+      "telemetry_summary_status": "derived"
+    },
+    {
+      "run_id": "r2-1-MedRF",
+      "repetition": 2,
+      "profile": "MedRF",
+      "source_version": "v1",
+      "status": "PASS",
+      "batch_size_rows": 100,
+      "active_rows_per_second": 100,
+      "duration_seconds": 1799.9955494994992,
+      "power_samples": 1801,
+      "telemetry_windows": 1800,
+      "energy_joules": 4317.743683201059,
+      "mean_watts": 2.3987524215832847,
+      "voltage_min": 5.369272,
+      "voltage_max": 5.397528,
+      "temperature_min_c": 29.693,
+      "temperature_max_c": 34.076,
+      "inference_batch_ms_median": 31.1621445,
+      "inference_batch_ms_p95": 38.39958135,
+      "power_sha256": "ddb7ca59ced624af9ed461d7ebfc04e3780450eaef94e5adbfd99e2f14a3edca",
+      "telemetry_sha256": "f7c5f18cb809f49057cd8831867c8a8d097cebadbfc7f58cb35391e245257706",
+      "summary_sha256": "6b31d6d3462e9682d50f61135563c2c210caf4e83f7536e815cbba6c66f71087",
+      "source_member_prefix": "raw/physical/v1/execution/r2-1-MedRF",
+      "evidence_status": "measured",
+      "telemetry_summary_status": "derived"
+    },
+    {
+      "run_id": "r2-2-LightLR",
+      "repetition": 2,
+      "profile": "LightLR",
+      "source_version": "v1",
+      "status": "PASS",
+      "batch_size_rows": 100,
+      "active_rows_per_second": 100,
+      "duration_seconds": 1800.0062847289992,
+      "power_samples": 1801,
+      "telemetry_windows": 1800,
+      "energy_joules": 4226.905934130734,
+      "mean_watts": 2.3482728754844975,
+      "voltage_min": 5.379705,
+      "voltage_max": 5.398226,
+      "temperature_min_c": 29.206,
+      "temperature_max_c": 34.076,
+      "inference_batch_ms_median": 1.546537,
+      "inference_batch_ms_p95": 1.58082615,
+      "power_sha256": "75ad1607e2f0bb52066387aaad5b690cf86d17e607107e1ef89960fdae102e2a",
+      "telemetry_sha256": "b6b2aed34a131473dadd8b9189ace0748ce9c18ad3016ad6a8c5bcbc7c49bdab",
+      "summary_sha256": "4561fd431c0d2252c38bc11baf29eb23429c98634fb3624d9123f03ed5e4641d",
+      "source_member_prefix": "raw/physical/v1/execution/r2-2-LightLR",
+      "evidence_status": "measured",
+      "telemetry_summary_status": "derived"
+    },
+    {
+      "run_id": "r2-3-HeavyMLP",
+      "repetition": 2,
+      "profile": "HeavyMLP",
+      "source_version": "v1",
+      "status": "PASS",
+      "batch_size_rows": 100,
+      "active_rows_per_second": 100,
+      "duration_seconds": 1799.9978031460014,
+      "power_samples": 1801,
+      "telemetry_windows": 1800,
+      "energy_joules": 4248.28360985484,
+      "mean_watts": 2.3601604415459683,
+      "voltage_min": 5.379275,
+      "voltage_max": 5.398122,
+      "temperature_min_c": 29.206,
+      "temperature_max_c": 36.024,
+      "inference_batch_ms_median": 4.2960485,
+      "inference_batch_ms_p95": 4.3776212,
+      "power_sha256": "e9a49887f3697a5b401c0ac99f370fa197f073e1ce6aed8565184666d2783577",
+      "telemetry_sha256": "3993be8a3ecd14dee8526a04d0902b3b47a68fe7fe082dcdc3cf9903343ff376",
+      "summary_sha256": "5c1b7f6ef2fe2a53f003bc929f679f8a435eac1fd42e9db22654ab6acbe620cd",
+      "source_member_prefix": "raw/physical/v1/execution/r2-3-HeavyMLP",
+      "evidence_status": "measured",
+      "telemetry_summary_status": "derived"
+    },
+    {
+      "run_id": "r2-4-TinyDT",
+      "repetition": 2,
+      "profile": "TinyDT",
+      "source_version": "v2",
+      "status": "PASS",
+      "batch_size_rows": 100,
+      "active_rows_per_second": 100,
+      "duration_seconds": 1800.0052020205,
+      "power_samples": 1801,
+      "telemetry_windows": 1800,
+      "energy_joules": 4244.017541367621,
+      "mean_watts": 2.35778070896891,
+      "voltage_min": 5.368777,
+      "voltage_max": 5.395189,
+      "temperature_min_c": 29.693,
+      "temperature_max_c": 34.563,
+      "inference_batch_ms_median": 1.297365,
+      "inference_batch_ms_p95": 1.3299496000000002,
+      "power_sha256": "62ac2ccb7bbdf2f047bf2a89715729e9c0a032eb109032fd89cd19bbb3502ad7",
+      "telemetry_sha256": "1a8321356cb9f7fad896400861685fb60e90200e263659bb0309292796d2670b",
+      "summary_sha256": "31df216a48b12a52dee6687742fd4ca4c55f7cdf00ee102eff0dee5ae9538fb7",
+      "source_member_prefix": "raw/physical/v2/execution/r2-4-TinyDT",
+      "evidence_status": "measured",
+      "telemetry_summary_status": "derived"
+    },
+    {
+      "run_id": "r3-0-idle",
+      "repetition": 3,
+      "profile": "idle",
+      "source_version": "v2",
+      "status": "PASS",
+      "batch_size_rows": 100,
+      "active_rows_per_second": 0,
+      "duration_seconds": 1799.9947123955,
+      "power_samples": 1801,
+      "telemetry_windows": 1800,
+      "energy_joules": 4195.924451871643,
+      "mean_watts": 2.331075987599736,
+      "voltage_min": 5.375301,
+      "voltage_max": 5.395431,
+      "temperature_min_c": 29.693,
+      "temperature_max_c": 34.563,
+      "inference_batch_ms_median": 0.005759,
+      "inference_batch_ms_p95": 0.0072789,
+      "power_sha256": "95c47a196b853befb1ad52200a2de15f656d4fccbf55ffac145778f5753bc5ba",
+      "telemetry_sha256": "f5718d9ab36fd787632440d754b168ac607b19bbc3a80df537d3f2d4a13fcdd9",
+      "summary_sha256": "201bad4fedc6172131f1abdc2a7e9108dddf431109ba47196ea542d7c1781c6b",
+      "source_member_prefix": "raw/physical/v2/execution/r3-0-idle",
+      "evidence_status": "measured",
+      "telemetry_summary_status": "derived"
+    },
+    {
+      "run_id": "r3-1-LightLR",
+      "repetition": 3,
+      "profile": "LightLR",
+      "source_version": "v3",
+      "status": "PASS",
+      "batch_size_rows": 100,
+      "active_rows_per_second": 100,
+      "duration_seconds": 1800.0008563954998,
+      "power_samples": 1801,
+      "telemetry_windows": 1800,
+      "energy_joules": 4223.704083625837,
+      "mean_watts": 2.346501152273783,
+      "voltage_min": 5.388848,
+      "voltage_max": 5.395238,
+      "temperature_min_c": 30.18,
+      "temperature_max_c": 34.076,
+      "inference_batch_ms_median": 1.543409,
+      "inference_batch_ms_p95": 1.57689775,
+      "power_sha256": "67b30589b30fa06a2a55957f98a1cd4e8ec2eb8c4dd44f088d9d734fdc367d83",
+      "telemetry_sha256": "a6af13a5e5f3a000a3a387c9eae3c1282c3d09b9598023a123920424243e67de",
+      "summary_sha256": "04d22ec3abbe9d37b6dda3d0a9e27151efb640618a6d3285716d6465e36b28e1",
+      "source_member_prefix": "raw/physical/v3/execution/r3-1-LightLR",
+      "evidence_status": "measured",
+      "telemetry_summary_status": "derived"
+    },
+    {
+      "run_id": "r3-2-MedRF",
+      "repetition": 3,
+      "profile": "MedRF",
+      "source_version": "v3",
+      "status": "PASS",
+      "batch_size_rows": 100,
+      "active_rows_per_second": 100,
+      "duration_seconds": 1799.9982820834998,
+      "power_samples": 1801,
+      "telemetry_windows": 1800,
+      "energy_joules": 4319.387602749201,
+      "mean_watts": 2.399662069537925,
+      "voltage_min": 5.363144,
+      "voltage_max": 5.39474,
+      "temperature_min_c": 31.154,
+      "temperature_max_c": 35.537,
+      "inference_batch_ms_median": 30.723591,
+      "inference_batch_ms_p95": 38.2806263,
+      "power_sha256": "6d86065c404a89c9a01ab95127c51c679bfac78cef1756281c501f5e0ba7b935",
+      "telemetry_sha256": "2fc2ebb7bc951cd52d2a5cb740e57e002b01a20770ae439aa92a5a44328e601f",
+      "summary_sha256": "ec1b67e50b23ef56d4af3e6b1685f1ed7149fc73169d326f83a1fb7f4c45d5e9",
+      "source_member_prefix": "raw/physical/v3/execution/r3-2-MedRF",
+      "evidence_status": "measured",
+      "telemetry_summary_status": "derived"
+    },
+    {
+      "run_id": "r3-3-HeavyMLP",
+      "repetition": 3,
+      "profile": "HeavyMLP",
+      "source_version": "v3",
+      "status": "PASS",
+      "batch_size_rows": 100,
+      "active_rows_per_second": 100,
+      "duration_seconds": 1799.9996294994994,
+      "power_samples": 1801,
+      "telemetry_windows": 1800,
+      "energy_joules": 4274.027435905309,
+      "mean_watts": 2.3744601753577737,
+      "voltage_min": 5.375916,
+      "voltage_max": 5.395171,
+      "temperature_min_c": 31.154,
+      "temperature_max_c": 36.511,
+      "inference_batch_ms_median": 4.4905145,
+      "inference_batch_ms_p95": 4.6518315999999995,
+      "power_sha256": "a6725fe33a2b3ac4e93c88cb85e8ef33741ca643e129d6610b701c56cba8188e",
+      "telemetry_sha256": "05555096f6c6f76bd6682744d93c05bc1f65df5e7981763c5d6d0f35ce829698",
+      "summary_sha256": "dfb64dbb506a8a002e82557c2a08046ac379faae48a446ad16c1c979a2a654cd",
+      "source_member_prefix": "raw/physical/v3/execution/r3-3-HeavyMLP",
+      "evidence_status": "measured",
+      "telemetry_summary_status": "derived"
+    },
+    {
+      "run_id": "r3-4-TinyDT",
+      "repetition": 3,
+      "profile": "TinyDT",
+      "source_version": "v3",
+      "status": "PASS",
+      "batch_size_rows": 100,
+      "active_rows_per_second": 100,
+      "duration_seconds": 1800.0003150414996,
+      "power_samples": 1801,
+      "telemetry_windows": 1800,
+      "energy_joules": 4234.046855058413,
+      "mean_watts": 2.3522478411126255,
+      "voltage_min": 5.375292,
+      "voltage_max": 5.395065,
+      "temperature_min_c": 32.128,
+      "temperature_max_c": 37.972,
+      "inference_batch_ms_median": 1.291071,
+      "inference_batch_ms_p95": 1.3205603,
+      "power_sha256": "21a9ad1568638116170990fca50736589318a18f83e45139c8df5abf8e0f67b5",
+      "telemetry_sha256": "1d6034b9076bfe45a2604f13736e352fc56c0faf7c219e2c8327a85ad0d5932c",
+      "summary_sha256": "a4d02a53338f10f03b66e51de6d5d147275adabbfa301e0c97ef6df6ecf23629",
+      "source_member_prefix": "raw/physical/v3/execution/r3-4-TinyDT",
+      "evidence_status": "measured",
+      "telemetry_summary_status": "derived"
+    }
+  ],
+  "entries": [
+    {
+      "entry_id": "ton_iot/idle",
+      "dataset": "ton_iot",
+      "model": "idle",
+      "device": "Raspberry Pi 4 Model B Rev 1.5, 8 GB, aarch64",
+      "artifact": null,
+      "preprocessing": {
+        "archive_member": "raw/software/results/ton_iot/preprocessor.joblib",
+        "sha256": "473ccd54d23827da468f02c12e8766e8c7c795f11d04435477fc662f6f0e1c47",
+        "execution_status": "not executed; no inference batch was invoked"
+      },
+      "inputs": {
+        "pi_check_X_sha256": null,
+        "pi_reference_predictions_sha256": null,
+        "physical_train_X_sha256": "c2fbc447d43d57cdbd1631b9a15cd6840f6b640643ad3a36b5a755e6335a14e7",
+        "resident_input_bundle_sha256": "804bac9db72b06fde88ecd439e6cf72739897038d7031f91b9efb87aecd82498"
+      },
+      "batch_size_rows": 100,
+      "physical_active_rows_per_second": 0,
+      "physical_cadence": "measured for 1800 seconds at 1 Hz with no inference calls; batch size 100 remained the configured active-profile unit",
+      "pi_timing_cadence": "not measured for idle",
+      "target_scheduler_residency_semantics": "all four TON models stay loaded; idle and action switches do not load or unload a model",
+      "scheduler_residency_evidence_status": "measured",
+      "power_residency_semantics": "TinyDT, LightLR, MedRF, and HeavyMLP were all loaded, parity-checked, and warmed; telemetry and control remained active, but no model was invoked inside each second",
+      "pi_timing_residency_semantics": "not applicable to idle",
+      "power_measurement_point": "POWER-Z KM003C at the Pi USB input/load side, sampled at 1 Hz; not AC-wall power",
+      "latency_measurement_point": "unmeasured for idle; no predict call was made",
+      "power": {
+        "evidence_status": "measured",
+        "aggregate_status": "derived",
+        "repeats": 3,
+        "mean_watts": 2.3354647303293112,
+        "sd_watts": 0.008068798695891265,
+        "ci95_low_watts": 2.3154207231996247,
+        "ci95_high_watts": 2.355508737458998,
+        "mean_energy_joules_30min": 4203.828548948106,
+        "increment_status": "derived",
+        "mean_increment_watts": 0.0,
+        "increment_sd_watts": 0.0,
+        "increment_ci95_low_watts": 0.0,
+        "increment_ci95_high_watts": 0.0,
+        "scope": "uncalibrated USB meter; user-accepted above-label 5 V supply; whole Pi load-side power"
+      },
+      "scheduled_1hz_latency": {
+        "status": "unmeasured",
+        "source_status": "unmeasured",
+        "repeats": null,
+        "mean_of_run_medians_ms": null,
+        "sd_of_run_medians_ms": null,
+        "ci95_low_ms": null,
+        "ci95_high_ms": null,
+        "cadence": null
+      },
+      "tight_loop_latency": {
+        "status": "unmeasured",
+        "batch_ms_median": null,
+        "batch_ms_p95": null,
+        "timing_loops": null,
+        "warmup_loops": null,
+        "rows_checked": null,
+        "maximum_probability_error": null,
+        "label_disagreements": null,
+        "scheduler_applicability": "unmeasured",
+        "applicability_note": "No idle predict-call timing exists."
+      },
+      "temperature": {
+        "observation_status": "measured",
+        "static_min_c": 28.719,
+        "static_max_c": 34.563,
+        "response_status": "unmeasured",
+        "response_note": "Instrumented idle temperatures are not a calibrated response curve."
+      },
+      "gaps": {
+        "energy_per_batch_status": "unmeasured",
+        "energy_per_batch_note": "Idle has no inference batch.",
+        "switch_latency_status": "unmeasured",
+        "switch_latency_ms": null,
+        "first_batch_latency_status": "unmeasured",
+        "first_batch_latency_ms": null
+      },
+      "uncertainty": {
+        "summary": "Power: n=3 sequential instrumented-idle profiles, sample SD and two-sided Student-t 95% CI (df=2); single Pi and uncalibrated meter. No inference-latency uncertainty applies."
+      }
+    },
+    {
+      "entry_id": "ton_iot/TinyDT",
+      "dataset": "ton_iot",
+      "model": "TinyDT",
+      "device": "Raspberry Pi 4 Model B Rev 1.5, 8 GB, aarch64",
+      "artifact": {
+        "archive_member": "raw/software/results/ton_iot/TinyDT.joblib",
+        "sha256": "9941090e54203557d63b2f6117622bcba3535019796f7dfefb955293d085c2f2"
+      },
+      "preprocessing": {
+        "archive_member": "raw/software/results/ton_iot/preprocessor.joblib",
+        "sha256": "473ccd54d23827da468f02c12e8766e8c7c795f11d04435477fc662f6f0e1c47",
+        "execution_status": "not executed inside either timing or static power window; inputs were already encoded"
+      },
+      "inputs": {
+        "pi_check_X_sha256": "08232c16879ac49befd73d08a7aab3aa31846c6e85ae3f2caace0dda2948af4a",
+        "pi_reference_predictions_sha256": "e62493fd08c2010ff86c390360588af332d0ae620e2bf92be2457d60e1d975fe",
+        "physical_train_X_sha256": "c2fbc447d43d57cdbd1631b9a15cd6840f6b640643ad3a36b5a755e6335a14e7",
+        "resident_input_bundle_sha256": "804bac9db72b06fde88ecd439e6cf72739897038d7031f91b9efb87aecd82498"
+      },
+      "batch_size_rows": 100,
+      "physical_active_rows_per_second": 100,
+      "physical_cadence": "measured: 1800 seconds; one successive 100-row encoded TON batch per second after all four models were loaded and warmed",
+      "pi_timing_cadence": "measured in a tight loop: 20 warmups then 1000 consecutive 100-row encoded-input predict calls; no one-second pacing",
+      "target_scheduler_residency_semantics": "all four dataset-specific models stay loaded; an action switch selects an already resident model and does not load or unload it",
+      "scheduler_residency_evidence_status": "measured",
+      "power_residency_semantics": "measured with TinyDT, LightLR, MedRF, and HeavyMLP all resident and warmed; only the named model was invoked each second",
+      "pi_timing_residency_semantics": "models were loaded and timed sequentially; the Pi timing report does not measure all-four-resident switching",
+      "power_measurement_point": "POWER-Z KM003C at the Pi USB input/load side, sampled at 1 Hz; not AC-wall power",
+      "latency_measurement_point": "inside the model predict call on the Pi CPU over an encoded in-memory 100-row batch; excludes preprocessing, file/network I/O, packet capture, feature extraction, and end-to-end IDS delay",
+      "power": {
+        "evidence_status": "measured",
+        "aggregate_status": "derived",
+        "repeats": 3,
+        "mean_watts": 2.353131742819268,
+        "sd_watts": 0.004276089261664858,
+        "ci95_low_watts": 2.3425093482251844,
+        "ci95_high_watts": 2.363754137413352,
+        "mean_energy_joules_30min": 4235.639493371906,
+        "increment_status": "derived",
+        "mean_increment_watts": 0.01766701248995739,
+        "increment_sd_watts": 0.01172429213507677,
+        "increment_ci95_low_watts": -0.011457743747383606,
+        "increment_ci95_high_watts": 0.046791768727298386,
+        "scope": "uncalibrated USB meter; user-accepted above-label 5 V supply; whole Pi load-side power"
+      },
+      "scheduled_1hz_latency": {
+        "status": "derived",
+        "source_status": "measured",
+        "repeats": 3,
+        "mean_of_run_medians_ms": 1.2979595000000002,
+        "sd_of_run_medians_ms": 0.007204170719104306,
+        "ci95_low_ms": 1.2800633478341594,
+        "ci95_high_ms": 1.3158556521658409,
+        "cadence": "one selected-model batch of 100 encoded rows per second"
+      },
+      "tight_loop_latency": {
+        "status": "measured",
+        "batch_ms_median": 0.2448475,
+        "batch_ms_p95": 0.3041795,
+        "timing_loops": 1000,
+        "warmup_loops": 20,
+        "rows_checked": 10000,
+        "maximum_probability_error": 2.0533191924521077e-08,
+        "label_disagreements": 0,
+        "scheduler_applicability": "proxy",
+        "applicability_note": "The value is measured, but using it as a scheduler cost is a proxy because the tight-loop cadence/residency differs from the one-batch-per-second static workload and future switching."
+      },
+      "temperature": {
+        "observation_status": "measured",
+        "static_min_c": 29.206,
+        "static_max_c": 37.972,
+        "response_status": "unmeasured",
+        "response_note": "Observed light-load temperatures are not a calibrated thermal response curve and do not establish hot-condition safety."
+      },
+      "gaps": {
+        "energy_per_batch_status": "unmeasured",
+        "energy_per_batch_note": "Not computed by multiplying static power and tight-loop latency because that would mix incompatible cadences.",
+        "switch_latency_status": "unmeasured",
+        "switch_latency_ms": null,
+        "first_batch_latency_status": "unmeasured",
+        "first_batch_latency_ms": null
+      },
+      "uncertainty": {
+        "summary": "Power and matched-idle increment: n=3 sequential profiles, sample SD and two-sided Student-t 95% CI (df=2); single Pi and uncalibrated meter. Scheduled latency: same n=3 treatment of run medians. Tight-loop latency: empirical median/p95 from one 1000-call session only."
+      }
+    },
+    {
+      "entry_id": "ton_iot/LightLR",
+      "dataset": "ton_iot",
+      "model": "LightLR",
+      "device": "Raspberry Pi 4 Model B Rev 1.5, 8 GB, aarch64",
+      "artifact": {
+        "archive_member": "raw/software/results/ton_iot/LightLR.joblib",
+        "sha256": "a6cafb1426058f0268dd9da065fa3848b95c0a5531b3ec5c1b65987e5ca5268f"
+      },
+      "preprocessing": {
+        "archive_member": "raw/software/results/ton_iot/preprocessor.joblib",
+        "sha256": "473ccd54d23827da468f02c12e8766e8c7c795f11d04435477fc662f6f0e1c47",
+        "execution_status": "not executed inside either timing or static power window; inputs were already encoded"
+      },
+      "inputs": {
+        "pi_check_X_sha256": "08232c16879ac49befd73d08a7aab3aa31846c6e85ae3f2caace0dda2948af4a",
+        "pi_reference_predictions_sha256": "e62493fd08c2010ff86c390360588af332d0ae620e2bf92be2457d60e1d975fe",
+        "physical_train_X_sha256": "c2fbc447d43d57cdbd1631b9a15cd6840f6b640643ad3a36b5a755e6335a14e7",
+        "resident_input_bundle_sha256": "804bac9db72b06fde88ecd439e6cf72739897038d7031f91b9efb87aecd82498"
+      },
+      "batch_size_rows": 100,
+      "physical_active_rows_per_second": 100,
+      "physical_cadence": "measured: 1800 seconds; one successive 100-row encoded TON batch per second after all four models were loaded and warmed",
+      "pi_timing_cadence": "measured in a tight loop: 20 warmups then 1000 consecutive 100-row encoded-input predict calls; no one-second pacing",
+      "target_scheduler_residency_semantics": "all four dataset-specific models stay loaded; an action switch selects an already resident model and does not load or unload it",
+      "scheduler_residency_evidence_status": "measured",
+      "power_residency_semantics": "measured with TinyDT, LightLR, MedRF, and HeavyMLP all resident and warmed; only the named model was invoked each second",
+      "pi_timing_residency_semantics": "models were loaded and timed sequentially; the Pi timing report does not measure all-four-resident switching",
+      "power_measurement_point": "POWER-Z KM003C at the Pi USB input/load side, sampled at 1 Hz; not AC-wall power",
+      "latency_measurement_point": "inside the model predict call on the Pi CPU over an encoded in-memory 100-row batch; excludes preprocessing, file/network I/O, packet capture, feature extraction, and end-to-end IDS delay",
+      "power": {
+        "evidence_status": "measured",
+        "aggregate_status": "derived",
+        "repeats": 3,
+        "mean_watts": 2.347219335926574,
+        "sd_watts": 0.0009322545098719117,
+        "ci95_low_watts": 2.344903487341571,
+        "ci95_high_watts": 2.349535184511577,
+        "mean_energy_joules_30min": 4224.9967572229925,
+        "increment_status": "derived",
+        "mean_increment_watts": 0.01175460559726312,
+        "increment_sd_watts": 0.008433995381515652,
+        "increment_ci95_low_watts": -0.00919660039142105,
+        "increment_ci95_high_watts": 0.03270581158594729,
+        "scope": "uncalibrated USB meter; user-accepted above-label 5 V supply; whole Pi load-side power"
+      },
+      "scheduled_1hz_latency": {
+        "status": "derived",
+        "source_status": "measured",
+        "repeats": 3,
+        "mean_of_run_medians_ms": 1.5444198333333334,
+        "sd_of_run_medians_ms": 0.0018341417838687944,
+        "ci95_low_ms": 1.5398635725591685,
+        "ci95_high_ms": 1.5489760941074984,
+        "cadence": "one selected-model batch of 100 encoded rows per second"
+      },
+      "tight_loop_latency": {
+        "status": "measured",
+        "batch_ms_median": 0.330559,
+        "batch_ms_p95": 0.39766270000000004,
+        "timing_loops": 1000,
+        "warmup_loops": 20,
+        "rows_checked": 10000,
+        "maximum_probability_error": 2.967336132364551e-08,
+        "label_disagreements": 0,
+        "scheduler_applicability": "proxy",
+        "applicability_note": "The value is measured, but using it as a scheduler cost is a proxy because the tight-loop cadence/residency differs from the one-batch-per-second static workload and future switching."
+      },
+      "temperature": {
+        "observation_status": "measured",
+        "static_min_c": 29.206,
+        "static_max_c": 35.05,
+        "response_status": "unmeasured",
+        "response_note": "Observed light-load temperatures are not a calibrated thermal response curve and do not establish hot-condition safety."
+      },
+      "gaps": {
+        "energy_per_batch_status": "unmeasured",
+        "energy_per_batch_note": "Not computed by multiplying static power and tight-loop latency because that would mix incompatible cadences.",
+        "switch_latency_status": "unmeasured",
+        "switch_latency_ms": null,
+        "first_batch_latency_status": "unmeasured",
+        "first_batch_latency_ms": null
+      },
+      "uncertainty": {
+        "summary": "Power and matched-idle increment: n=3 sequential profiles, sample SD and two-sided Student-t 95% CI (df=2); single Pi and uncalibrated meter. Scheduled latency: same n=3 treatment of run medians. Tight-loop latency: empirical median/p95 from one 1000-call session only."
+      }
+    },
+    {
+      "entry_id": "ton_iot/MedRF",
+      "dataset": "ton_iot",
+      "model": "MedRF",
+      "device": "Raspberry Pi 4 Model B Rev 1.5, 8 GB, aarch64",
+      "artifact": {
+        "archive_member": "raw/software/results/ton_iot/MedRF.joblib",
+        "sha256": "35bc9b8674c5ae3b7c163ab29d7fd3d3abfe61dfaa1d26323530f9d14a2b2688"
+      },
+      "preprocessing": {
+        "archive_member": "raw/software/results/ton_iot/preprocessor.joblib",
+        "sha256": "473ccd54d23827da468f02c12e8766e8c7c795f11d04435477fc662f6f0e1c47",
+        "execution_status": "not executed inside either timing or static power window; inputs were already encoded"
+      },
+      "inputs": {
+        "pi_check_X_sha256": "08232c16879ac49befd73d08a7aab3aa31846c6e85ae3f2caace0dda2948af4a",
+        "pi_reference_predictions_sha256": "e62493fd08c2010ff86c390360588af332d0ae620e2bf92be2457d60e1d975fe",
+        "physical_train_X_sha256": "c2fbc447d43d57cdbd1631b9a15cd6840f6b640643ad3a36b5a755e6335a14e7",
+        "resident_input_bundle_sha256": "804bac9db72b06fde88ecd439e6cf72739897038d7031f91b9efb87aecd82498"
+      },
+      "batch_size_rows": 100,
+      "physical_active_rows_per_second": 100,
+      "physical_cadence": "measured: 1800 seconds; one successive 100-row encoded TON batch per second after all four models were loaded and warmed",
+      "pi_timing_cadence": "measured in a tight loop: 20 warmups then 1000 consecutive 100-row encoded-input predict calls; no one-second pacing",
+      "target_scheduler_residency_semantics": "all four dataset-specific models stay loaded; an action switch selects an already resident model and does not load or unload it",
+      "scheduler_residency_evidence_status": "measured",
+      "power_residency_semantics": "measured with TinyDT, LightLR, MedRF, and HeavyMLP all resident and warmed; only the named model was invoked each second",
+      "pi_timing_residency_semantics": "models were loaded and timed sequentially; the Pi timing report does not measure all-four-resident switching",
+      "power_measurement_point": "POWER-Z KM003C at the Pi USB input/load side, sampled at 1 Hz; not AC-wall power",
+      "latency_measurement_point": "inside the model predict call on the Pi CPU over an encoded in-memory 100-row batch; excludes preprocessing, file/network I/O, packet capture, feature extraction, and end-to-end IDS delay",
+      "power": {
+        "evidence_status": "measured",
+        "aggregate_status": "derived",
+        "repeats": 3,
+        "mean_watts": 2.3970255355431793,
+        "sd_watts": 0.003806105706722535,
+        "ci95_low_watts": 2.3875706448218708,
+        "ci95_high_watts": 2.406480426264488,
+        "mean_energy_joules_30min": 4314.6423854023815,
+        "increment_status": "derived",
+        "mean_increment_watts": 0.061560805213868676,
+        "increment_sd_watts": 0.01184469077589433,
+        "increment_ci95_low_watts": 0.032136962172418834,
+        "increment_ci95_high_watts": 0.09098464825531852,
+        "scope": "uncalibrated USB meter; user-accepted above-label 5 V supply; whole Pi load-side power"
+      },
+      "scheduled_1hz_latency": {
+        "status": "derived",
+        "source_status": "measured",
+        "repeats": 3,
+        "mean_of_run_medians_ms": 30.952759333333333,
+        "sd_of_run_medians_ms": 0.21994504621173805,
+        "ci95_low_ms": 30.406385549506968,
+        "ci95_high_ms": 31.499133117159698,
+        "cadence": "one selected-model batch of 100 encoded rows per second"
+      },
+      "tight_loop_latency": {
+        "status": "measured",
+        "batch_ms_median": 26.2879565,
+        "batch_ms_p95": 27.407827,
+        "timing_loops": 1000,
+        "warmup_loops": 20,
+        "rows_checked": 10000,
+        "maximum_probability_error": 2.975237578528578e-08,
+        "label_disagreements": 0,
+        "scheduler_applicability": "proxy",
+        "applicability_note": "The value is measured, but using it as a scheduler cost is a proxy because the tight-loop cadence/residency differs from the one-batch-per-second static workload and future switching."
+      },
+      "temperature": {
+        "observation_status": "measured",
+        "static_min_c": 29.206,
+        "static_max_c": 35.537,
+        "response_status": "unmeasured",
+        "response_note": "Observed light-load temperatures are not a calibrated thermal response curve and do not establish hot-condition safety."
+      },
+      "gaps": {
+        "energy_per_batch_status": "unmeasured",
+        "energy_per_batch_note": "Not computed by multiplying static power and tight-loop latency because that would mix incompatible cadences.",
+        "switch_latency_status": "unmeasured",
+        "switch_latency_ms": null,
+        "first_batch_latency_status": "unmeasured",
+        "first_batch_latency_ms": null
+      },
+      "uncertainty": {
+        "summary": "Power and matched-idle increment: n=3 sequential profiles, sample SD and two-sided Student-t 95% CI (df=2); single Pi and uncalibrated meter. Scheduled latency: same n=3 treatment of run medians. Tight-loop latency: empirical median/p95 from one 1000-call session only."
+      }
+    },
+    {
+      "entry_id": "ton_iot/HeavyMLP",
+      "dataset": "ton_iot",
+      "model": "HeavyMLP",
+      "device": "Raspberry Pi 4 Model B Rev 1.5, 8 GB, aarch64",
+      "artifact": {
+        "archive_member": "raw/software/results/ton_iot/HeavyMLP.pt",
+        "sha256": "2999008343be15af0374bc647af6764e010bebc841b953b0307a10ebbc26b8a0"
+      },
+      "preprocessing": {
+        "archive_member": "raw/software/results/ton_iot/preprocessor.joblib",
+        "sha256": "473ccd54d23827da468f02c12e8766e8c7c795f11d04435477fc662f6f0e1c47",
+        "execution_status": "not executed inside either timing or static power window; inputs were already encoded"
+      },
+      "inputs": {
+        "pi_check_X_sha256": "08232c16879ac49befd73d08a7aab3aa31846c6e85ae3f2caace0dda2948af4a",
+        "pi_reference_predictions_sha256": "e62493fd08c2010ff86c390360588af332d0ae620e2bf92be2457d60e1d975fe",
+        "physical_train_X_sha256": "c2fbc447d43d57cdbd1631b9a15cd6840f6b640643ad3a36b5a755e6335a14e7",
+        "resident_input_bundle_sha256": "804bac9db72b06fde88ecd439e6cf72739897038d7031f91b9efb87aecd82498"
+      },
+      "batch_size_rows": 100,
+      "physical_active_rows_per_second": 100,
+      "physical_cadence": "measured: 1800 seconds; one successive 100-row encoded TON batch per second after all four models were loaded and warmed",
+      "pi_timing_cadence": "measured in a tight loop: 20 warmups then 1000 consecutive 100-row encoded-input predict calls; no one-second pacing",
+      "target_scheduler_residency_semantics": "all four dataset-specific models stay loaded; an action switch selects an already resident model and does not load or unload it",
+      "scheduler_residency_evidence_status": "measured",
+      "power_residency_semantics": "measured with TinyDT, LightLR, MedRF, and HeavyMLP all resident and warmed; only the named model was invoked each second",
+      "pi_timing_residency_semantics": "models were loaded and timed sequentially; the Pi timing report does not measure all-four-resident switching",
+      "power_measurement_point": "POWER-Z KM003C at the Pi USB input/load side, sampled at 1 Hz; not AC-wall power",
+      "latency_measurement_point": "inside the model predict call on the Pi CPU over an encoded in-memory 100-row batch; excludes preprocessing, file/network I/O, packet capture, feature extraction, and end-to-end IDS delay",
+      "power": {
+        "evidence_status": "measured",
+        "aggregate_status": "derived",
+        "repeats": 3,
+        "mean_watts": 2.3666875896596538,
+        "sd_watts": 0.007230762951076654,
+        "ci95_low_watts": 2.348725378727529,
+        "ci95_high_watts": 2.3846498005917787,
+        "mean_energy_joules_30min": 4260.039008073239,
+        "increment_status": "derived",
+        "mean_increment_watts": 0.031222859330343116,
+        "increment_sd_watts": 0.011443965733689906,
+        "increment_ci95_low_watts": 0.002794472478310852,
+        "increment_ci95_high_watts": 0.059651246182375384,
+        "scope": "uncalibrated USB meter; user-accepted above-label 5 V supply; whole Pi load-side power"
+      },
+      "scheduled_1hz_latency": {
+        "status": "derived",
+        "source_status": "measured",
+        "repeats": 3,
+        "mean_of_run_medians_ms": 4.417835833333334,
+        "sd_of_run_medians_ms": 0.10612729217940729,
+        "ci95_low_ms": 4.154201024575299,
+        "ci95_high_ms": 4.681470642091369,
+        "cadence": "one selected-model batch of 100 encoded rows per second"
+      },
+      "tight_loop_latency": {
+        "status": "measured",
+        "batch_ms_median": 1.5922935,
+        "batch_ms_p95": 1.6725040999999998,
+        "timing_loops": 1000,
+        "warmup_loops": 20,
+        "rows_checked": 10000,
+        "maximum_probability_error": 1.1920928955078125e-07,
+        "label_disagreements": 0,
+        "scheduler_applicability": "proxy",
+        "applicability_note": "The value is measured, but using it as a scheduler cost is a proxy because the tight-loop cadence/residency differs from the one-batch-per-second static workload and future switching."
+      },
+      "temperature": {
+        "observation_status": "measured",
+        "static_min_c": 29.206,
+        "static_max_c": 36.511,
+        "response_status": "unmeasured",
+        "response_note": "Observed light-load temperatures are not a calibrated thermal response curve and do not establish hot-condition safety."
+      },
+      "gaps": {
+        "energy_per_batch_status": "unmeasured",
+        "energy_per_batch_note": "Not computed by multiplying static power and tight-loop latency because that would mix incompatible cadences.",
+        "switch_latency_status": "unmeasured",
+        "switch_latency_ms": null,
+        "first_batch_latency_status": "unmeasured",
+        "first_batch_latency_ms": null
+      },
+      "uncertainty": {
+        "summary": "Power and matched-idle increment: n=3 sequential profiles, sample SD and two-sided Student-t 95% CI (df=2); single Pi and uncalibrated meter. Scheduled latency: same n=3 treatment of run medians. Tight-loop latency: empirical median/p95 from one 1000-call session only."
+      }
+    },
+    {
+      "entry_id": "ciciot2023/TinyDT",
+      "dataset": "ciciot2023",
+      "model": "TinyDT",
+      "device": "Raspberry Pi 4 Model B Rev 1.5, 8 GB, aarch64",
+      "artifact": {
+        "archive_member": "raw/software/results/ciciot2023/TinyDT.joblib",
+        "sha256": "5196720e2ca9d91f5eea702e8e3619121aaaacfcc95748c149e775dd0ee240ec"
+      },
+      "preprocessing": {
+        "archive_member": "raw/software/results/ciciot2023/preprocessor.joblib",
+        "sha256": "562ae93cf3dd03bfe09c82262fe6c78142b08cf5c3e31f19ecd4251464371bb3",
+        "execution_status": "not executed inside either timing or static power window; inputs were already encoded"
+      },
+      "inputs": {
+        "pi_check_X_sha256": "90cf2cf9b516e6786c475ed60a8821c78205370ba9288edfa49bcf6aba856b40",
+        "pi_reference_predictions_sha256": "1f7c6b8231a8ac4fd0af3a2a9d04baa317457251444c5a3538c8d5ccdbce217b",
+        "physical_train_X_sha256": null,
+        "resident_input_bundle_sha256": null
+      },
+      "batch_size_rows": 100,
+      "physical_active_rows_per_second": null,
+      "physical_cadence": "unmeasured for this dataset",
+      "pi_timing_cadence": "measured in a tight loop: 20 warmups then 1000 consecutive 100-row encoded-input predict calls; no one-second pacing",
+      "target_scheduler_residency_semantics": "all four dataset-specific models stay loaded; an action switch selects an already resident model and does not load or unload it",
+      "scheduler_residency_evidence_status": "unmeasured",
+      "power_residency_semantics": "unmeasured for this dataset",
+      "pi_timing_residency_semantics": "models were loaded and timed sequentially; the Pi timing report does not measure all-four-resident switching",
+      "power_measurement_point": "unmeasured for this dataset; no measurement point applies",
+      "latency_measurement_point": "inside the model predict call on the Pi CPU over an encoded in-memory 100-row batch; excludes preprocessing, file/network I/O, packet capture, feature extraction, and end-to-end IDS delay",
+      "power": {
+        "evidence_status": "unmeasured",
+        "aggregate_status": "unmeasured",
+        "repeats": null,
+        "mean_watts": null,
+        "sd_watts": null,
+        "ci95_low_watts": null,
+        "ci95_high_watts": null,
+        "mean_energy_joules_30min": null,
+        "increment_status": "unmeasured",
+        "mean_increment_watts": null,
+        "increment_sd_watts": null,
+        "increment_ci95_low_watts": null,
+        "increment_ci95_high_watts": null,
+        "scope": null,
+        "note": "TON-IoT static power is not relabeled as this dataset's power."
+      },
+      "scheduled_1hz_latency": {
+        "status": "unmeasured",
+        "source_status": "unmeasured",
+        "repeats": null,
+        "mean_of_run_medians_ms": null,
+        "sd_of_run_medians_ms": null,
+        "ci95_low_ms": null,
+        "ci95_high_ms": null,
+        "cadence": null
+      },
+      "tight_loop_latency": {
+        "status": "measured",
+        "batch_ms_median": 0.232255,
+        "batch_ms_p95": 0.28893719999999995,
+        "timing_loops": 1000,
+        "warmup_loops": 20,
+        "rows_checked": 10000,
+        "maximum_probability_error": 2.790004649533273e-08,
+        "label_disagreements": 0,
+        "scheduler_applicability": "proxy",
+        "applicability_note": "The value is measured, but using it as a scheduler cost is a proxy because the tight-loop cadence/residency differs from the one-batch-per-second static workload and future switching."
+      },
+      "temperature": {
+        "observation_status": "unmeasured",
+        "static_min_c": null,
+        "static_max_c": null,
+        "response_status": "unmeasured",
+        "response_note": "No dataset-specific static power/thermal profile exists."
+      },
+      "gaps": {
+        "energy_per_batch_status": "unmeasured",
+        "energy_per_batch_note": "Not computed by multiplying static power and tight-loop latency because that would mix incompatible cadences.",
+        "switch_latency_status": "unmeasured",
+        "switch_latency_ms": null,
+        "first_batch_latency_status": "unmeasured",
+        "first_batch_latency_ms": null
+      },
+      "uncertainty": {
+        "summary": "No dataset-specific physical power, scheduled 1 Hz latency, or temperature-response uncertainty is available. Tight-loop latency has empirical median/p95 from one 1000-call session, with no independent-run confidence interval."
+      }
+    },
+    {
+      "entry_id": "ciciot2023/LightLR",
+      "dataset": "ciciot2023",
+      "model": "LightLR",
+      "device": "Raspberry Pi 4 Model B Rev 1.5, 8 GB, aarch64",
+      "artifact": {
+        "archive_member": "raw/software/results/ciciot2023/LightLR.joblib",
+        "sha256": "bddfc5f738a520115bff8b7b04a84d585ca61a518dbbd13ccd4871a432a66ae6"
+      },
+      "preprocessing": {
+        "archive_member": "raw/software/results/ciciot2023/preprocessor.joblib",
+        "sha256": "562ae93cf3dd03bfe09c82262fe6c78142b08cf5c3e31f19ecd4251464371bb3",
+        "execution_status": "not executed inside either timing or static power window; inputs were already encoded"
+      },
+      "inputs": {
+        "pi_check_X_sha256": "90cf2cf9b516e6786c475ed60a8821c78205370ba9288edfa49bcf6aba856b40",
+        "pi_reference_predictions_sha256": "1f7c6b8231a8ac4fd0af3a2a9d04baa317457251444c5a3538c8d5ccdbce217b",
+        "physical_train_X_sha256": null,
+        "resident_input_bundle_sha256": null
+      },
+      "batch_size_rows": 100,
+      "physical_active_rows_per_second": null,
+      "physical_cadence": "unmeasured for this dataset",
+      "pi_timing_cadence": "measured in a tight loop: 20 warmups then 1000 consecutive 100-row encoded-input predict calls; no one-second pacing",
+      "target_scheduler_residency_semantics": "all four dataset-specific models stay loaded; an action switch selects an already resident model and does not load or unload it",
+      "scheduler_residency_evidence_status": "unmeasured",
+      "power_residency_semantics": "unmeasured for this dataset",
+      "pi_timing_residency_semantics": "models were loaded and timed sequentially; the Pi timing report does not measure all-four-resident switching",
+      "power_measurement_point": "unmeasured for this dataset; no measurement point applies",
+      "latency_measurement_point": "inside the model predict call on the Pi CPU over an encoded in-memory 100-row batch; excludes preprocessing, file/network I/O, packet capture, feature extraction, and end-to-end IDS delay",
+      "power": {
+        "evidence_status": "unmeasured",
+        "aggregate_status": "unmeasured",
+        "repeats": null,
+        "mean_watts": null,
+        "sd_watts": null,
+        "ci95_low_watts": null,
+        "ci95_high_watts": null,
+        "mean_energy_joules_30min": null,
+        "increment_status": "unmeasured",
+        "mean_increment_watts": null,
+        "increment_sd_watts": null,
+        "increment_ci95_low_watts": null,
+        "increment_ci95_high_watts": null,
+        "scope": null,
+        "note": "TON-IoT static power is not relabeled as this dataset's power."
+      },
+      "scheduled_1hz_latency": {
+        "status": "unmeasured",
+        "source_status": "unmeasured",
+        "repeats": null,
+        "mean_of_run_medians_ms": null,
+        "sd_of_run_medians_ms": null,
+        "ci95_low_ms": null,
+        "ci95_high_ms": null,
+        "cadence": null
+      },
+      "tight_loop_latency": {
+        "status": "measured",
+        "batch_ms_median": 0.299938,
+        "batch_ms_p95": 0.35778025,
+        "timing_loops": 1000,
+        "warmup_loops": 20,
+        "rows_checked": 10000,
+        "maximum_probability_error": 2.9798059575369962e-08,
+        "label_disagreements": 0,
+        "scheduler_applicability": "proxy",
+        "applicability_note": "The value is measured, but using it as a scheduler cost is a proxy because the tight-loop cadence/residency differs from the one-batch-per-second static workload and future switching."
+      },
+      "temperature": {
+        "observation_status": "unmeasured",
+        "static_min_c": null,
+        "static_max_c": null,
+        "response_status": "unmeasured",
+        "response_note": "No dataset-specific static power/thermal profile exists."
+      },
+      "gaps": {
+        "energy_per_batch_status": "unmeasured",
+        "energy_per_batch_note": "Not computed by multiplying static power and tight-loop latency because that would mix incompatible cadences.",
+        "switch_latency_status": "unmeasured",
+        "switch_latency_ms": null,
+        "first_batch_latency_status": "unmeasured",
+        "first_batch_latency_ms": null
+      },
+      "uncertainty": {
+        "summary": "No dataset-specific physical power, scheduled 1 Hz latency, or temperature-response uncertainty is available. Tight-loop latency has empirical median/p95 from one 1000-call session, with no independent-run confidence interval."
+      }
+    },
+    {
+      "entry_id": "ciciot2023/MedRF",
+      "dataset": "ciciot2023",
+      "model": "MedRF",
+      "device": "Raspberry Pi 4 Model B Rev 1.5, 8 GB, aarch64",
+      "artifact": {
+        "archive_member": "raw/software/results/ciciot2023/MedRF.joblib",
+        "sha256": "8b82d1e1cf2c409afb49ff47b9353eb5b7e55901e1d60fa564a4e9e123183ec7"
+      },
+      "preprocessing": {
+        "archive_member": "raw/software/results/ciciot2023/preprocessor.joblib",
+        "sha256": "562ae93cf3dd03bfe09c82262fe6c78142b08cf5c3e31f19ecd4251464371bb3",
+        "execution_status": "not executed inside either timing or static power window; inputs were already encoded"
+      },
+      "inputs": {
+        "pi_check_X_sha256": "90cf2cf9b516e6786c475ed60a8821c78205370ba9288edfa49bcf6aba856b40",
+        "pi_reference_predictions_sha256": "1f7c6b8231a8ac4fd0af3a2a9d04baa317457251444c5a3538c8d5ccdbce217b",
+        "physical_train_X_sha256": null,
+        "resident_input_bundle_sha256": null
+      },
+      "batch_size_rows": 100,
+      "physical_active_rows_per_second": null,
+      "physical_cadence": "unmeasured for this dataset",
+      "pi_timing_cadence": "measured in a tight loop: 20 warmups then 1000 consecutive 100-row encoded-input predict calls; no one-second pacing",
+      "target_scheduler_residency_semantics": "all four dataset-specific models stay loaded; an action switch selects an already resident model and does not load or unload it",
+      "scheduler_residency_evidence_status": "unmeasured",
+      "power_residency_semantics": "unmeasured for this dataset",
+      "pi_timing_residency_semantics": "models were loaded and timed sequentially; the Pi timing report does not measure all-four-resident switching",
+      "power_measurement_point": "unmeasured for this dataset; no measurement point applies",
+      "latency_measurement_point": "inside the model predict call on the Pi CPU over an encoded in-memory 100-row batch; excludes preprocessing, file/network I/O, packet capture, feature extraction, and end-to-end IDS delay",
+      "power": {
+        "evidence_status": "unmeasured",
+        "aggregate_status": "unmeasured",
+        "repeats": null,
+        "mean_watts": null,
+        "sd_watts": null,
+        "ci95_low_watts": null,
+        "ci95_high_watts": null,
+        "mean_energy_joules_30min": null,
+        "increment_status": "unmeasured",
+        "mean_increment_watts": null,
+        "increment_sd_watts": null,
+        "increment_ci95_low_watts": null,
+        "increment_ci95_high_watts": null,
+        "scope": null,
+        "note": "TON-IoT static power is not relabeled as this dataset's power."
+      },
+      "scheduled_1hz_latency": {
+        "status": "unmeasured",
+        "source_status": "unmeasured",
+        "repeats": null,
+        "mean_of_run_medians_ms": null,
+        "sd_of_run_medians_ms": null,
+        "ci95_low_ms": null,
+        "ci95_high_ms": null,
+        "cadence": null
+      },
+      "tight_loop_latency": {
+        "status": "measured",
+        "batch_ms_median": 26.036045,
+        "batch_ms_p95": 27.82180985,
+        "timing_loops": 1000,
+        "warmup_loops": 20,
+        "rows_checked": 10000,
+        "maximum_probability_error": 2.9758610464725166e-08,
+        "label_disagreements": 0,
+        "scheduler_applicability": "proxy",
+        "applicability_note": "The value is measured, but using it as a scheduler cost is a proxy because the tight-loop cadence/residency differs from the one-batch-per-second static workload and future switching."
+      },
+      "temperature": {
+        "observation_status": "unmeasured",
+        "static_min_c": null,
+        "static_max_c": null,
+        "response_status": "unmeasured",
+        "response_note": "No dataset-specific static power/thermal profile exists."
+      },
+      "gaps": {
+        "energy_per_batch_status": "unmeasured",
+        "energy_per_batch_note": "Not computed by multiplying static power and tight-loop latency because that would mix incompatible cadences.",
+        "switch_latency_status": "unmeasured",
+        "switch_latency_ms": null,
+        "first_batch_latency_status": "unmeasured",
+        "first_batch_latency_ms": null
+      },
+      "uncertainty": {
+        "summary": "No dataset-specific physical power, scheduled 1 Hz latency, or temperature-response uncertainty is available. Tight-loop latency has empirical median/p95 from one 1000-call session, with no independent-run confidence interval."
+      }
+    },
+    {
+      "entry_id": "ciciot2023/HeavyMLP",
+      "dataset": "ciciot2023",
+      "model": "HeavyMLP",
+      "device": "Raspberry Pi 4 Model B Rev 1.5, 8 GB, aarch64",
+      "artifact": {
+        "archive_member": "raw/software/results/ciciot2023/HeavyMLP.pt",
+        "sha256": "95425ee50ae869a0a6f6dac5920e7a1c7696b5edcdc17e90935920867e6b086f"
+      },
+      "preprocessing": {
+        "archive_member": "raw/software/results/ciciot2023/preprocessor.joblib",
+        "sha256": "562ae93cf3dd03bfe09c82262fe6c78142b08cf5c3e31f19ecd4251464371bb3",
+        "execution_status": "not executed inside either timing or static power window; inputs were already encoded"
+      },
+      "inputs": {
+        "pi_check_X_sha256": "90cf2cf9b516e6786c475ed60a8821c78205370ba9288edfa49bcf6aba856b40",
+        "pi_reference_predictions_sha256": "1f7c6b8231a8ac4fd0af3a2a9d04baa317457251444c5a3538c8d5ccdbce217b",
+        "physical_train_X_sha256": null,
+        "resident_input_bundle_sha256": null
+      },
+      "batch_size_rows": 100,
+      "physical_active_rows_per_second": null,
+      "physical_cadence": "unmeasured for this dataset",
+      "pi_timing_cadence": "measured in a tight loop: 20 warmups then 1000 consecutive 100-row encoded-input predict calls; no one-second pacing",
+      "target_scheduler_residency_semantics": "all four dataset-specific models stay loaded; an action switch selects an already resident model and does not load or unload it",
+      "scheduler_residency_evidence_status": "unmeasured",
+      "power_residency_semantics": "unmeasured for this dataset",
+      "pi_timing_residency_semantics": "models were loaded and timed sequentially; the Pi timing report does not measure all-four-resident switching",
+      "power_measurement_point": "unmeasured for this dataset; no measurement point applies",
+      "latency_measurement_point": "inside the model predict call on the Pi CPU over an encoded in-memory 100-row batch; excludes preprocessing, file/network I/O, packet capture, feature extraction, and end-to-end IDS delay",
+      "power": {
+        "evidence_status": "unmeasured",
+        "aggregate_status": "unmeasured",
+        "repeats": null,
+        "mean_watts": null,
+        "sd_watts": null,
+        "ci95_low_watts": null,
+        "ci95_high_watts": null,
+        "mean_energy_joules_30min": null,
+        "increment_status": "unmeasured",
+        "mean_increment_watts": null,
+        "increment_sd_watts": null,
+        "increment_ci95_low_watts": null,
+        "increment_ci95_high_watts": null,
+        "scope": null,
+        "note": "TON-IoT static power is not relabeled as this dataset's power."
+      },
+      "scheduled_1hz_latency": {
+        "status": "unmeasured",
+        "source_status": "unmeasured",
+        "repeats": null,
+        "mean_of_run_medians_ms": null,
+        "sd_of_run_medians_ms": null,
+        "ci95_low_ms": null,
+        "ci95_high_ms": null,
+        "cadence": null
+      },
+      "tight_loop_latency": {
+        "status": "measured",
+        "batch_ms_median": 1.540739,
+        "batch_ms_p95": 1.6281133,
+        "timing_loops": 1000,
+        "warmup_loops": 20,
+        "rows_checked": 10000,
+        "maximum_probability_error": 1.1920928955078125e-07,
+        "label_disagreements": 0,
+        "scheduler_applicability": "proxy",
+        "applicability_note": "The value is measured, but using it as a scheduler cost is a proxy because the tight-loop cadence/residency differs from the one-batch-per-second static workload and future switching."
+      },
+      "temperature": {
+        "observation_status": "unmeasured",
+        "static_min_c": null,
+        "static_max_c": null,
+        "response_status": "unmeasured",
+        "response_note": "No dataset-specific static power/thermal profile exists."
+      },
+      "gaps": {
+        "energy_per_batch_status": "unmeasured",
+        "energy_per_batch_note": "Not computed by multiplying static power and tight-loop latency because that would mix incompatible cadences.",
+        "switch_latency_status": "unmeasured",
+        "switch_latency_ms": null,
+        "first_batch_latency_status": "unmeasured",
+        "first_batch_latency_ms": null
+      },
+      "uncertainty": {
+        "summary": "No dataset-specific physical power, scheduled 1 Hz latency, or temperature-response uncertainty is available. Tight-loop latency has empirical median/p95 from one 1000-call session, with no independent-run confidence interval."
+      }
+    },
+    {
+      "entry_id": "n_baiot/TinyDT",
+      "dataset": "n_baiot",
+      "model": "TinyDT",
+      "device": "Raspberry Pi 4 Model B Rev 1.5, 8 GB, aarch64",
+      "artifact": {
+        "archive_member": "raw/software/results/n_baiot/TinyDT.joblib",
+        "sha256": "0d34cfaa6dd93ffaf2914027490c992651a43440d3f5685a0c87418ab355b62f"
+      },
+      "preprocessing": {
+        "archive_member": "raw/software/results/n_baiot/preprocessor.joblib",
+        "sha256": "b20aab78ffd3a446244e347b5e37325e3185d83754dac33f7b6fe6950b2067b2",
+        "execution_status": "not executed inside either timing or static power window; inputs were already encoded"
+      },
+      "inputs": {
+        "pi_check_X_sha256": "5ce5f8cc653e25d935e650f82ca294303121e38da9ce4fb58b6ba9ae5d6f2f5f",
+        "pi_reference_predictions_sha256": "497276ae28f1d69c2521229718f9d3daa99f17c0d4bfa2cd0753a3006d961151",
+        "physical_train_X_sha256": null,
+        "resident_input_bundle_sha256": null
+      },
+      "batch_size_rows": 100,
+      "physical_active_rows_per_second": null,
+      "physical_cadence": "unmeasured for this dataset",
+      "pi_timing_cadence": "measured in a tight loop: 20 warmups then 1000 consecutive 100-row encoded-input predict calls; no one-second pacing",
+      "target_scheduler_residency_semantics": "all four dataset-specific models stay loaded; an action switch selects an already resident model and does not load or unload it",
+      "scheduler_residency_evidence_status": "unmeasured",
+      "power_residency_semantics": "unmeasured for this dataset",
+      "pi_timing_residency_semantics": "models were loaded and timed sequentially; the Pi timing report does not measure all-four-resident switching",
+      "power_measurement_point": "unmeasured for this dataset; no measurement point applies",
+      "latency_measurement_point": "inside the model predict call on the Pi CPU over an encoded in-memory 100-row batch; excludes preprocessing, file/network I/O, packet capture, feature extraction, and end-to-end IDS delay",
+      "power": {
+        "evidence_status": "unmeasured",
+        "aggregate_status": "unmeasured",
+        "repeats": null,
+        "mean_watts": null,
+        "sd_watts": null,
+        "ci95_low_watts": null,
+        "ci95_high_watts": null,
+        "mean_energy_joules_30min": null,
+        "increment_status": "unmeasured",
+        "mean_increment_watts": null,
+        "increment_sd_watts": null,
+        "increment_ci95_low_watts": null,
+        "increment_ci95_high_watts": null,
+        "scope": null,
+        "note": "TON-IoT static power is not relabeled as this dataset's power."
+      },
+      "scheduled_1hz_latency": {
+        "status": "unmeasured",
+        "source_status": "unmeasured",
+        "repeats": null,
+        "mean_of_run_medians_ms": null,
+        "sd_of_run_medians_ms": null,
+        "ci95_low_ms": null,
+        "ci95_high_ms": null,
+        "cadence": null
+      },
+      "tight_loop_latency": {
+        "status": "measured",
+        "batch_ms_median": 0.2557265,
+        "batch_ms_p95": 0.3141855,
+        "timing_loops": 1000,
+        "warmup_loops": 20,
+        "rows_checked": 10000,
+        "maximum_probability_error": 1.1920928910669204e-08,
+        "label_disagreements": 0,
+        "scheduler_applicability": "proxy",
+        "applicability_note": "The value is measured, but using it as a scheduler cost is a proxy because the tight-loop cadence/residency differs from the one-batch-per-second static workload and future switching."
+      },
+      "temperature": {
+        "observation_status": "unmeasured",
+        "static_min_c": null,
+        "static_max_c": null,
+        "response_status": "unmeasured",
+        "response_note": "No dataset-specific static power/thermal profile exists."
+      },
+      "gaps": {
+        "energy_per_batch_status": "unmeasured",
+        "energy_per_batch_note": "Not computed by multiplying static power and tight-loop latency because that would mix incompatible cadences.",
+        "switch_latency_status": "unmeasured",
+        "switch_latency_ms": null,
+        "first_batch_latency_status": "unmeasured",
+        "first_batch_latency_ms": null
+      },
+      "uncertainty": {
+        "summary": "No dataset-specific physical power, scheduled 1 Hz latency, or temperature-response uncertainty is available. Tight-loop latency has empirical median/p95 from one 1000-call session, with no independent-run confidence interval."
+      }
+    },
+    {
+      "entry_id": "n_baiot/LightLR",
+      "dataset": "n_baiot",
+      "model": "LightLR",
+      "device": "Raspberry Pi 4 Model B Rev 1.5, 8 GB, aarch64",
+      "artifact": {
+        "archive_member": "raw/software/results/n_baiot/LightLR.joblib",
+        "sha256": "1b678d6546b6929f91585525c6ace16e64e4eba8e8242e2dce48371a86968ad4"
+      },
+      "preprocessing": {
+        "archive_member": "raw/software/results/n_baiot/preprocessor.joblib",
+        "sha256": "b20aab78ffd3a446244e347b5e37325e3185d83754dac33f7b6fe6950b2067b2",
+        "execution_status": "not executed inside either timing or static power window; inputs were already encoded"
+      },
+      "inputs": {
+        "pi_check_X_sha256": "5ce5f8cc653e25d935e650f82ca294303121e38da9ce4fb58b6ba9ae5d6f2f5f",
+        "pi_reference_predictions_sha256": "497276ae28f1d69c2521229718f9d3daa99f17c0d4bfa2cd0753a3006d961151",
+        "physical_train_X_sha256": null,
+        "resident_input_bundle_sha256": null
+      },
+      "batch_size_rows": 100,
+      "physical_active_rows_per_second": null,
+      "physical_cadence": "unmeasured for this dataset",
+      "pi_timing_cadence": "measured in a tight loop: 20 warmups then 1000 consecutive 100-row encoded-input predict calls; no one-second pacing",
+      "target_scheduler_residency_semantics": "all four dataset-specific models stay loaded; an action switch selects an already resident model and does not load or unload it",
+      "scheduler_residency_evidence_status": "unmeasured",
+      "power_residency_semantics": "unmeasured for this dataset",
+      "pi_timing_residency_semantics": "models were loaded and timed sequentially; the Pi timing report does not measure all-four-resident switching",
+      "power_measurement_point": "unmeasured for this dataset; no measurement point applies",
+      "latency_measurement_point": "inside the model predict call on the Pi CPU over an encoded in-memory 100-row batch; excludes preprocessing, file/network I/O, packet capture, feature extraction, and end-to-end IDS delay",
+      "power": {
+        "evidence_status": "unmeasured",
+        "aggregate_status": "unmeasured",
+        "repeats": null,
+        "mean_watts": null,
+        "sd_watts": null,
+        "ci95_low_watts": null,
+        "ci95_high_watts": null,
+        "mean_energy_joules_30min": null,
+        "increment_status": "unmeasured",
+        "mean_increment_watts": null,
+        "increment_sd_watts": null,
+        "increment_ci95_low_watts": null,
+        "increment_ci95_high_watts": null,
+        "scope": null,
+        "note": "TON-IoT static power is not relabeled as this dataset's power."
+      },
+      "scheduled_1hz_latency": {
+        "status": "unmeasured",
+        "source_status": "unmeasured",
+        "repeats": null,
+        "mean_of_run_medians_ms": null,
+        "sd_of_run_medians_ms": null,
+        "ci95_low_ms": null,
+        "ci95_high_ms": null,
+        "cadence": null
+      },
+      "tight_loop_latency": {
+        "status": "measured",
+        "batch_ms_median": 0.3612435,
+        "batch_ms_p95": 0.42751184999999997,
+        "timing_loops": 1000,
+        "warmup_loops": 20,
+        "rows_checked": 10000,
+        "maximum_probability_error": 2.9797427636424345e-08,
+        "label_disagreements": 0,
+        "scheduler_applicability": "proxy",
+        "applicability_note": "The value is measured, but using it as a scheduler cost is a proxy because the tight-loop cadence/residency differs from the one-batch-per-second static workload and future switching."
+      },
+      "temperature": {
+        "observation_status": "unmeasured",
+        "static_min_c": null,
+        "static_max_c": null,
+        "response_status": "unmeasured",
+        "response_note": "No dataset-specific static power/thermal profile exists."
+      },
+      "gaps": {
+        "energy_per_batch_status": "unmeasured",
+        "energy_per_batch_note": "Not computed by multiplying static power and tight-loop latency because that would mix incompatible cadences.",
+        "switch_latency_status": "unmeasured",
+        "switch_latency_ms": null,
+        "first_batch_latency_status": "unmeasured",
+        "first_batch_latency_ms": null
+      },
+      "uncertainty": {
+        "summary": "No dataset-specific physical power, scheduled 1 Hz latency, or temperature-response uncertainty is available. Tight-loop latency has empirical median/p95 from one 1000-call session, with no independent-run confidence interval."
+      }
+    },
+    {
+      "entry_id": "n_baiot/MedRF",
+      "dataset": "n_baiot",
+      "model": "MedRF",
+      "device": "Raspberry Pi 4 Model B Rev 1.5, 8 GB, aarch64",
+      "artifact": {
+        "archive_member": "raw/software/results/n_baiot/MedRF.joblib",
+        "sha256": "b68458643587b30b97e4edd46f5624415fa695ddce510a128c1f2f5533503f69"
+      },
+      "preprocessing": {
+        "archive_member": "raw/software/results/n_baiot/preprocessor.joblib",
+        "sha256": "b20aab78ffd3a446244e347b5e37325e3185d83754dac33f7b6fe6950b2067b2",
+        "execution_status": "not executed inside either timing or static power window; inputs were already encoded"
+      },
+      "inputs": {
+        "pi_check_X_sha256": "5ce5f8cc653e25d935e650f82ca294303121e38da9ce4fb58b6ba9ae5d6f2f5f",
+        "pi_reference_predictions_sha256": "497276ae28f1d69c2521229718f9d3daa99f17c0d4bfa2cd0753a3006d961151",
+        "physical_train_X_sha256": null,
+        "resident_input_bundle_sha256": null
+      },
+      "batch_size_rows": 100,
+      "physical_active_rows_per_second": null,
+      "physical_cadence": "unmeasured for this dataset",
+      "pi_timing_cadence": "measured in a tight loop: 20 warmups then 1000 consecutive 100-row encoded-input predict calls; no one-second pacing",
+      "target_scheduler_residency_semantics": "all four dataset-specific models stay loaded; an action switch selects an already resident model and does not load or unload it",
+      "scheduler_residency_evidence_status": "unmeasured",
+      "power_residency_semantics": "unmeasured for this dataset",
+      "pi_timing_residency_semantics": "models were loaded and timed sequentially; the Pi timing report does not measure all-four-resident switching",
+      "power_measurement_point": "unmeasured for this dataset; no measurement point applies",
+      "latency_measurement_point": "inside the model predict call on the Pi CPU over an encoded in-memory 100-row batch; excludes preprocessing, file/network I/O, packet capture, feature extraction, and end-to-end IDS delay",
+      "power": {
+        "evidence_status": "unmeasured",
+        "aggregate_status": "unmeasured",
+        "repeats": null,
+        "mean_watts": null,
+        "sd_watts": null,
+        "ci95_low_watts": null,
+        "ci95_high_watts": null,
+        "mean_energy_joules_30min": null,
+        "increment_status": "unmeasured",
+        "mean_increment_watts": null,
+        "increment_sd_watts": null,
+        "increment_ci95_low_watts": null,
+        "increment_ci95_high_watts": null,
+        "scope": null,
+        "note": "TON-IoT static power is not relabeled as this dataset's power."
+      },
+      "scheduled_1hz_latency": {
+        "status": "unmeasured",
+        "source_status": "unmeasured",
+        "repeats": null,
+        "mean_of_run_medians_ms": null,
+        "sd_of_run_medians_ms": null,
+        "ci95_low_ms": null,
+        "ci95_high_ms": null,
+        "cadence": null
+      },
+      "tight_loop_latency": {
+        "status": "measured",
+        "batch_ms_median": 26.243421,
+        "batch_ms_p95": 27.3491562,
+        "timing_loops": 1000,
+        "warmup_loops": 20,
+        "rows_checked": 10000,
+        "maximum_probability_error": 2.965088663486881e-08,
+        "label_disagreements": 0,
+        "scheduler_applicability": "proxy",
+        "applicability_note": "The value is measured, but using it as a scheduler cost is a proxy because the tight-loop cadence/residency differs from the one-batch-per-second static workload and future switching."
+      },
+      "temperature": {
+        "observation_status": "unmeasured",
+        "static_min_c": null,
+        "static_max_c": null,
+        "response_status": "unmeasured",
+        "response_note": "No dataset-specific static power/thermal profile exists."
+      },
+      "gaps": {
+        "energy_per_batch_status": "unmeasured",
+        "energy_per_batch_note": "Not computed by multiplying static power and tight-loop latency because that would mix incompatible cadences.",
+        "switch_latency_status": "unmeasured",
+        "switch_latency_ms": null,
+        "first_batch_latency_status": "unmeasured",
+        "first_batch_latency_ms": null
+      },
+      "uncertainty": {
+        "summary": "No dataset-specific physical power, scheduled 1 Hz latency, or temperature-response uncertainty is available. Tight-loop latency has empirical median/p95 from one 1000-call session, with no independent-run confidence interval."
+      }
+    },
+    {
+      "entry_id": "n_baiot/HeavyMLP",
+      "dataset": "n_baiot",
+      "model": "HeavyMLP",
+      "device": "Raspberry Pi 4 Model B Rev 1.5, 8 GB, aarch64",
+      "artifact": {
+        "archive_member": "raw/software/results/n_baiot/HeavyMLP.pt",
+        "sha256": "170650085e9cd68e6a04657e8896a75e42916b8090ca646bc4cbc725141d923a"
+      },
+      "preprocessing": {
+        "archive_member": "raw/software/results/n_baiot/preprocessor.joblib",
+        "sha256": "b20aab78ffd3a446244e347b5e37325e3185d83754dac33f7b6fe6950b2067b2",
+        "execution_status": "not executed inside either timing or static power window; inputs were already encoded"
+      },
+      "inputs": {
+        "pi_check_X_sha256": "5ce5f8cc653e25d935e650f82ca294303121e38da9ce4fb58b6ba9ae5d6f2f5f",
+        "pi_reference_predictions_sha256": "497276ae28f1d69c2521229718f9d3daa99f17c0d4bfa2cd0753a3006d961151",
+        "physical_train_X_sha256": null,
+        "resident_input_bundle_sha256": null
+      },
+      "batch_size_rows": 100,
+      "physical_active_rows_per_second": null,
+      "physical_cadence": "unmeasured for this dataset",
+      "pi_timing_cadence": "measured in a tight loop: 20 warmups then 1000 consecutive 100-row encoded-input predict calls; no one-second pacing",
+      "target_scheduler_residency_semantics": "all four dataset-specific models stay loaded; an action switch selects an already resident model and does not load or unload it",
+      "scheduler_residency_evidence_status": "unmeasured",
+      "power_residency_semantics": "unmeasured for this dataset",
+      "pi_timing_residency_semantics": "models were loaded and timed sequentially; the Pi timing report does not measure all-four-resident switching",
+      "power_measurement_point": "unmeasured for this dataset; no measurement point applies",
+      "latency_measurement_point": "inside the model predict call on the Pi CPU over an encoded in-memory 100-row batch; excludes preprocessing, file/network I/O, packet capture, feature extraction, and end-to-end IDS delay",
+      "power": {
+        "evidence_status": "unmeasured",
+        "aggregate_status": "unmeasured",
+        "repeats": null,
+        "mean_watts": null,
+        "sd_watts": null,
+        "ci95_low_watts": null,
+        "ci95_high_watts": null,
+        "mean_energy_joules_30min": null,
+        "increment_status": "unmeasured",
+        "mean_increment_watts": null,
+        "increment_sd_watts": null,
+        "increment_ci95_low_watts": null,
+        "increment_ci95_high_watts": null,
+        "scope": null,
+        "note": "TON-IoT static power is not relabeled as this dataset's power."
+      },
+      "scheduled_1hz_latency": {
+        "status": "unmeasured",
+        "source_status": "unmeasured",
+        "repeats": null,
+        "mean_of_run_medians_ms": null,
+        "sd_of_run_medians_ms": null,
+        "ci95_low_ms": null,
+        "ci95_high_ms": null,
+        "cadence": null
+      },
+      "tight_loop_latency": {
+        "status": "measured",
+        "batch_ms_median": 1.6570055,
+        "batch_ms_p95": 1.7391973,
+        "timing_loops": 1000,
+        "warmup_loops": 20,
+        "rows_checked": 10000,
+        "maximum_probability_error": 2.9802322387695312e-08,
+        "label_disagreements": 0,
+        "scheduler_applicability": "proxy",
+        "applicability_note": "The value is measured, but using it as a scheduler cost is a proxy because the tight-loop cadence/residency differs from the one-batch-per-second static workload and future switching."
+      },
+      "temperature": {
+        "observation_status": "unmeasured",
+        "static_min_c": null,
+        "static_max_c": null,
+        "response_status": "unmeasured",
+        "response_note": "No dataset-specific static power/thermal profile exists."
+      },
+      "gaps": {
+        "energy_per_batch_status": "unmeasured",
+        "energy_per_batch_note": "Not computed by multiplying static power and tight-loop latency because that would mix incompatible cadences.",
+        "switch_latency_status": "unmeasured",
+        "switch_latency_ms": null,
+        "first_batch_latency_status": "unmeasured",
+        "first_batch_latency_ms": null
+      },
+      "uncertainty": {
+        "summary": "No dataset-specific physical power, scheduled 1 Hz latency, or temperature-response uncertainty is available. Tight-loop latency has empirical median/p95 from one 1000-call session, with no independent-run confidence interval."
+      }
+    }
+  ],
+  "known_gaps": [
+    {
+      "gap": "model_switch_latency",
+      "status": "unmeasured",
+      "requirement": "Measure action-to-action switching under the final all-four-resident scheduler semantics; do not insert cold load/unload cost."
+    },
+    {
+      "gap": "first_batch_latency",
+      "status": "unmeasured",
+      "requirement": "Measure the first batch after a scheduler action transition; existing reports used 20 warmup calls and cannot supply it."
+    },
+    {
+      "gap": "temperature_response",
+      "status": "unmeasured",
+      "requirement": "Calibrate only if required by the final scheduler; existing light-load temperature range does not prove a hot-condition response or safety."
+    },
+    {
+      "gap": "ciciot2023_and_n_baiot_power",
+      "status": "unmeasured",
+      "requirement": "Keep null unless dataset-specific physical measurement or an explicit, separately reviewed proxy assumption is introduced."
+    }
+  ]
+}

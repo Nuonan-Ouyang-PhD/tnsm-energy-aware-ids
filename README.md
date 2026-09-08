@@ -1,54 +1,71 @@
-# TNSM Energy-Aware IDS: Real-Experiment Rebuild
+# TNSM Energy-Aware IDS: Auditable Experiment Repository
 
-This repository rebuilds the paper experiments from auditable raw evidence.
-The first supported target is the Raspberry Pi 4 Model B 8 GB (`pi4b8g`).
+This repository contains the frozen protocol, deterministic materialization workflow,
+classification/static baselines, Raspberry Pi power measurements, the evidence-locked
+40-run adaptive scheduling study, and the P0/P1 strengthening analyses.
 
-## Current stage: v0.2 provenance smoke and dataset acquisition
+## Current verified state
 
-The current code deliberately produces **no paper-eligible result**. It checks
-the host, records telemetry, runs a deterministic diagnostic workload, and
-validates the resulting files. Formal runs remain locked until the official
-dataset, shared inference cache, trained-model registry, policy registry, and
-external power-logger configuration have all been registered.
+| Stage | Status |
+| --- | --- |
+| Label ontology and feature protocol | Frozen |
+| Materialization | Complete and validated |
+| 12 classification models and prediction cache | Complete |
+| Raspberry Pi parity and timing | Complete |
+| 15-segment static physical-power study | Complete |
+| Original adaptive physical study | 40/40 valid runs; evidence locked |
+| P0 exact executed-source recovery | Complete, 6/6 source hashes matched |
+| P1A Static-LightLR matched physical control | 40 valid runs in 10 paired blocks |
+| P1B isolated scheduler overhead | Corrected replacement 240/240 valid; original 240 retained as invalid history |
+| P1C multi-seed frozen-policy evaluation | 20/20 complete; no retraining |
+| P1D reward/state sensitivity | 85/85 valid |
+| P1E gamma/alpha sensitivity | 35/35 valid |
 
-Version 0.2 additionally requires every run to carry a 40-character source
-commit transferred from the Mac, even when Git is not installed on the Pi.
+The repository reports evidence and factual summaries. It does not infer superiority,
+equivalence, or statistical significance from these files alone.
 
-## From the Mac mini
+## Repository map
+
+- `config/` and `docs/`: active frozen protocol and decision history.
+- `src/tnsm_exp/`: acquisition, inventory, preflight, and validation tooling.
+- `experiments/classification_static_v1/`: classification, cache, Pi parity, and static replay code/logs.
+- `experiments/static_physical_v1/`: static physical-campaign controller and measurement code.
+- `experiments/adaptive_scheduler_v1/`: scheduler implementation, configuration, cost registry, analysis, and packaging scripts.
+- `releases/article-data-20260907-v1/`: the previously published article-data archive and browsable summaries.
+- `releases/adaptive-scheduler-20260907-v1/`: evidence-locked original adaptive-study archive.
+- `releases/p0-p1-strengthening-20260908-v1/`: P0/P1 final archive, registries, validators, and factual summaries.
+- `releases/materialization-20260906-v2/`: materialization request, executor review chain, rebind, failure preservation, and successful run evidence.
+- `releases/feature-protocol-freeze-20260905-v1/`: final feature-protocol freeze evidence.
+
+## Reconstructing large archives
+
+Large archives are split into GitHub-compatible parts. Reassemble them in lexical order:
 
 ```bash
-./scripts/check_primary.sh
-./scripts/deploy_primary.sh
+cat releases/adaptive-scheduler-20260907-v1/TNSM_ADAPTIVE_SCHEDULER_20260907_V1.zip.part-* \
+  > TNSM_ADAPTIVE_SCHEDULER_20260907_V1.zip
+
+cat releases/p0-p1-strengthening-20260908-v1/TNSM_P0_P1_STRENGTHENING_20260908_V1.zip.part-* \
+  > TNSM_P0_P1_STRENGTHENING_20260908_V1.zip
 ```
 
-The deployment command tests the Mac copy, copies the repository, runs a
-read-only Pi preflight, executes the 30-second smoke only if preflight passes,
-and copies the resulting evidence back under `collected/pi4b8g/`.
+Verify the reconstructed files against each release directory's
+`ARCHIVE_SHA256.txt`, then use the archive's root `MANIFEST_SHA256.txt` for
+content-level verification.
 
-The deployment target defaults to `pi@pi4b8g.local` and the remote directory
-defaults to `~/tnsm-energy-aware-ids`. Override them if needed:
+## Evidence boundaries
 
-```bash
-PI_HOST=192.168.1.50 PI_USER=pi ./scripts/deploy_primary.sh
-```
+- The physical power measurements apply to the recorded Raspberry Pi 4B and KM003C setup.
+- TON-IoT power measurements are not claimed as measured costs for CICIoT2023 or N-BaIoT.
+- Invalid and interrupted attempts remain preserved and are excluded according to their registries.
+- Test traces are descriptive after policy freeze and were not used for training or checkpoint selection.
+- Dataset splits, classifier thresholds, workloads, seeds, reward/state matrices, and gamma/alpha matrices remain frozen.
 
-If the Pi reports that `python3-venv` or `rsync` is missing, install only the
-named prerequisite and rerun the deployment. No third-party Python package is
-required for this stage.
-
-## Local verification
+## Basic checks
 
 ```bash
 make test
-make formal-gate
 ```
 
-`make formal-gate` is expected to exit with status 3 until the formal inputs
-exist. See `docs/PROTOCOL.md` and `docs/DATA_CONTRACT.md`.
-
-## Dataset stage
-
-After the corrected provenance smoke passes, follow
-`docs/DATASET_ACQUISITION.md`. The repository registers immutable SHA-256
-manifests and inventories large CSV trees one file at a time so the work remains
-within the Mac mini's 16 GB memory.
+The full final validator report is available at
+`releases/p0-p1-strengthening-20260908-v1/browsable/analysis/FINAL_VALIDATOR_REPORT.json`.

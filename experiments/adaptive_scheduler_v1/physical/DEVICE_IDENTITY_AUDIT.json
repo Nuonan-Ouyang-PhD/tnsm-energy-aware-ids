@@ -1,0 +1,10 @@
+{
+  "observed_at_utc": "2026-09-07T09:28:26Z",
+  "collection": "read-only SSH query while the formal controller was running",
+  "ssh_target": "pi@pi4b8g.local",
+  "hostname": "pi4b8g",
+  "model": "Raspberry Pi 4 Model B Rev 1.5",
+  "memory_kb": 8007464,
+  "cpu_serial": "100000005368e39d",
+  "limitation": "The already-running immutable runtime checked model and target hostname but did not emit memory or CPU serial in each ready event; this concurrent audit binds those extra identifiers to that controller target. Updated source checks and emits all identifiers for future reproduction."
+}

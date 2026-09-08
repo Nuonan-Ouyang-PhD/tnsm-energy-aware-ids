@@ -1,0 +1,141 @@
+{
+  "accepted_baseline": {
+    "filename": "TNSM_ARTICLE_DATA_20260907_V1.zip",
+    "nested_manifests_covered_by_old_root": [],
+    "root_manifest_entries": 371,
+    "root_manifest_exactly_covers_all_zip_content_except_itself": false,
+    "root_manifest_omissions_registered_in_source_hashes": [
+      "raw/materialization/MANIFEST_SHA256.txt",
+      "raw/materialization/materialization_run_v2/MANIFEST_SHA256.txt"
+    ],
+    "root_manifest_sha256": "5492855ddd90ee4eebc52924318f7d0f9cc43a10009732aef0e8aef7570cc945",
+    "sha256": "c135da2db921dc442b4fbea7bd2596aaef8f1eda2f553945d400168d77375c74"
+  },
+  "audit_sha256": "8f02f380457fe30164108f10fe1bb727c0f64008e28bdff2016fe322bbcabb3d",
+  "derivation_date": "2026-09-07",
+  "derived_manifest_contract": {
+    "content_files": [
+      "AUDIT.md",
+      "SOURCE_HASHES.csv",
+      "VALIDATION.json",
+      "encoded_overlap_sensitivity.csv",
+      "recompute_derived_summary.py",
+      "static_replay_aggregates_t95_recomputed.csv"
+    ],
+    "covers_every_derived_content_file": true,
+    "excludes_only_itself": true,
+    "higher_level_delivery_must_cover_this_nested_manifest": true
+  },
+  "encoded_overlap_posthoc": {
+    "ciciot2023": {
+      "cached_threshold_metrics_match_accepted_main": true,
+      "encoded_dimensions": 39,
+      "encoded_overlap_cross_label_conflicts": 0,
+      "encoded_unique_rows": {
+        "test": 69220,
+        "train": 170556,
+        "validation": 73919
+      },
+      "posthoc_novel_test_rows": 71121,
+      "preencoding_feature_fingerprints_disjoint": true,
+      "raw_row_ids_disjoint": true,
+      "test_rows_matching_train": 13,
+      "test_rows_matching_train_or_validation": 24,
+      "test_rows_matching_validation": 11,
+      "test_unique_vectors_matching_train_or_validation": 24,
+      "validation_rows_matching_train": 27
+    },
+    "n_baiot": {
+      "cached_threshold_metrics_match_accepted_main": true,
+      "encoded_dimensions": 115,
+      "encoded_overlap_cross_label_conflicts": 0,
+      "encoded_unique_rows": {
+        "test": 68641,
+        "train": 145347,
+        "validation": 64688
+      },
+      "posthoc_novel_test_rows": 68906,
+      "preencoding_feature_fingerprints_disjoint": true,
+      "raw_row_ids_disjoint": true,
+      "test_rows_matching_train": 14449,
+      "test_rows_matching_train_or_validation": 14449,
+      "test_rows_matching_validation": 14449,
+      "test_unique_vectors_matching_train_or_validation": 7,
+      "validation_rows_matching_train": 21832
+    },
+    "ton_iot": {
+      "cached_threshold_metrics_match_accepted_main": true,
+      "encoded_dimensions": 76,
+      "encoded_overlap_cross_label_conflicts": 0,
+      "encoded_unique_rows": {
+        "test": 10709,
+        "train": 62903,
+        "validation": 19839
+      },
+      "posthoc_novel_test_rows": 22490,
+      "preencoding_feature_fingerprints_disjoint": true,
+      "raw_row_ids_disjoint": true,
+      "test_rows_matching_train": 0,
+      "test_rows_matching_train_or_validation": 0,
+      "test_rows_matching_validation": 0,
+      "test_unique_vectors_matching_train_or_validation": 0,
+      "validation_rows_matching_train": 0
+    }
+  },
+  "generated_outputs": {
+    "SOURCE_HASHES.csv": {
+      "bytes": 13956,
+      "sha256": "6105fb840e25d6ac1d49623d67638617ab73bd62aafe0d045c1fd5f521c15c6e"
+    },
+    "encoded_overlap_sensitivity.csv": {
+      "bytes": 10455,
+      "sha256": "4e9a3984f8cac3678224e0e0870ae3747c91407edbf4e67b9793b288c13a4a28"
+    },
+    "static_replay_aggregates_t95_recomputed.csv": {
+      "bytes": 9612,
+      "sha256": "1cfa7f8791e66dae0762cc896d55088f80e91493191e5688a633c2d718d208ba"
+    }
+  },
+  "generator_sha256": "1aa6dbc9a99abb7e47a74d8811a949c0b6bed703b12c3b8b270ef3f727eb71ca",
+  "preintegration_exact_name_search": {
+    "exact_named_artifacts_found": 0,
+    "exact_requested_standalone_recomputation_code_found": false,
+    "files_examined": 57519,
+    "reusable_method_provenance_found": "accepted raw/software/audit_results.py Student-t implementation",
+    "roots": [
+      "workspace",
+      "Downloads",
+      ".codex/attachments"
+    ],
+    "zip_archives_examined": 139,
+    "zip_errors": 0
+  },
+  "scientific_boundaries": {
+    "accepted_splits_changed": false,
+    "classification_training_executed": false,
+    "encoded_overlap_is_posthoc_diagnostic": true,
+    "fixed_threshold": 0.5,
+    "main_results_replaced": false,
+    "materialization_executed": false,
+    "model_inference_executed": false,
+    "static_replay_executed": false,
+    "threshold_changed": false
+  },
+  "source_bindings": {
+    "all_used_workspace_copies_match_accepted_zip_and_root_manifest": true,
+    "records": 35,
+    "source_registry_sha256": "6105fb840e25d6ac1d49623d67638617ab73bd62aafe0d045c1fd5f521c15c6e"
+  },
+  "static_replay": {
+    "accepted_audit_f1_student_t_rows_match": true,
+    "aggregate_groups": 20,
+    "degrees_of_freedom": 9,
+    "input_metric_rows": 200,
+    "mean_and_sample_sd_match_original_aggregates": true,
+    "recomputed_nonzero_sd_interval_fields": 60,
+    "t_critical_0_975": 2.262157162854099,
+    "trace_seeds_per_group": 10,
+    "uncertainty_scope": "workload resampling only, conditional on one model seed and fixed split; not hardware or training uncertainty"
+  },
+  "status": "PASS"
+}

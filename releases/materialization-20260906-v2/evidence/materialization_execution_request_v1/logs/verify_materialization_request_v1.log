@@ -1,0 +1,118 @@
+[PASS] request package contains no raw CSV: observed=[] expected=[]
+[PASS] bundled input exists: inputs/acquisitions/ciciot2023_20260903T142351Z.json
+[PASS] bundled input SHA-256: inputs/acquisitions/ciciot2023_20260903T142351Z.json: observed='eec07c71d736c004fd0c64dff567495cfa38aec1330a059222ef15c435574f7c' expected='eec07c71d736c004fd0c64dff567495cfa38aec1330a059222ef15c435574f7c'
+[PASS] bundled input exists: inputs/censuses/ton_iot_20260903T233742Z.json
+[PASS] bundled input SHA-256: inputs/censuses/ton_iot_20260903T233742Z.json: observed='128fe883208eef10cd2f41bf8c5ee73bf518cb61b5d95c86cff40214565edfa0' expected='128fe883208eef10cd2f41bf8c5ee73bf518cb61b5d95c86cff40214565edfa0'
+[PASS] bundled input exists: inputs/inventories/ciciot2023_20260903T142539Z.json
+[PASS] bundled input SHA-256: inputs/inventories/ciciot2023_20260903T142539Z.json: observed='d31472b21836eb5a5cfa9535e1f29d58c0a4a1f136586938172a3e77bbe2f45f' expected='d31472b21836eb5a5cfa9535e1f29d58c0a4a1f136586938172a3e77bbe2f45f'
+[PASS] bundled input exists: inputs/inventories/n_baiot_20260903T224404Z.json
+[PASS] bundled input SHA-256: inputs/inventories/n_baiot_20260903T224404Z.json: observed='9ffdf7e9245470fc4f066b8fb6d8ebae03e0194e7698e5fde87b13a7f2fe30da' expected='9ffdf7e9245470fc4f066b8fb6d8ebae03e0194e7698e5fde87b13a7f2fe30da'
+[PASS] bundled input exists: inputs/inventories/ton_iot_20260903T113048Z.json
+[PASS] bundled input SHA-256: inputs/inventories/ton_iot_20260903T113048Z.json: observed='66179d1ba2601ff3175e90cbfb4ed21d28c859b5780258d5e36dd8bb2303c55a' expected='66179d1ba2601ff3175e90cbfb4ed21d28c859b5780258d5e36dd8bb2303c55a'
+[PASS] bundled input exists: inputs/protocol/feature_policy.json
+[PASS] bundled input SHA-256: inputs/protocol/feature_policy.json: observed='e81a55c16f9439b0356295353e8b342de19d5c5606d868952592f913beda714b' expected='e81a55c16f9439b0356295353e8b342de19d5c5606d868952592f913beda714b'
+[PASS] bundled input exists: inputs/protocol/label_ontology.json
+[PASS] bundled input SHA-256: inputs/protocol/label_ontology.json: observed='8a055e2e34bc8d70f62909f52441915589c310659d6ce3e427a2704820926fab' expected='8a055e2e34bc8d70f62909f52441915589c310659d6ce3e427a2704820926fab'
+[PASS] bundled input exists: inputs/quality_exceptions/ciciot2023_20260903T142617Z.json
+[PASS] bundled input SHA-256: inputs/quality_exceptions/ciciot2023_20260903T142617Z.json: observed='36ef134ff6117867c51888749434f2d02efc59ec4ad6e93e94371f08d59e5bae' expected='36ef134ff6117867c51888749434f2d02efc59ec4ad6e93e94371f08d59e5bae'
+[PASS] bundled input exists: inputs/reviews/feature_protocol_24_independent_acceptance.md
+[PASS] bundled input SHA-256: inputs/reviews/feature_protocol_24_independent_acceptance.md: observed='c28c73112daae1126bb45094f1e4dd64df98d673018bbeca345ed914128d90c3' expected='c28c73112daae1126bb45094f1e4dd64df98d673018bbeca345ed914128d90c3'
+[PASS] JSON parses with duplicate-key rejection: inputs/acquisitions/ciciot2023_20260903T142351Z.json
+[PASS] JSON parses with duplicate-key rejection: inputs/censuses/ton_iot_20260903T233742Z.json
+[PASS] JSON parses with duplicate-key rejection: inputs/inventories/ciciot2023_20260903T142539Z.json
+[PASS] JSON parses with duplicate-key rejection: inputs/inventories/n_baiot_20260903T224404Z.json
+[PASS] JSON parses with duplicate-key rejection: inputs/inventories/ton_iot_20260903T113048Z.json
+[PASS] JSON parses with duplicate-key rejection: inputs/protocol/feature_policy.json
+[PASS] JSON parses with duplicate-key rejection: inputs/protocol/label_ontology.json
+[PASS] JSON parses with duplicate-key rejection: inputs/quality_exceptions/ciciot2023_20260903T142617Z.json
+[PASS] JSON parses with duplicate-key rejection: proposal/materialization_execution_request_v1.json
+[PASS] request identity: observed='MATERIALIZATION-20260906-V1-PROPOSED' expected='MATERIALIZATION-20260906-V1-PROPOSED'
+[PASS] request status: observed='prepared_not_authorized' expected='prepared_not_authorized'
+[PASS] single requested operation: observed='materialization' expected='materialization'
+[PASS] materialization-only flag: observed=True expected=True
+[PASS] scope keeps splitting forbidden: observed='forbidden' expected='forbidden'
+[PASS] scope keeps training forbidden: observed='forbidden' expected='forbidden'
+[PASS] scope keeps sampling forbidden: observed='forbidden' expected='forbidden'
+[PASS] scope keeps balancing forbidden: observed='forbidden' expected='forbidden'
+[PASS] scope keeps model_fitting forbidden: observed='forbidden' expected='forbidden'
+[PASS] scope keeps encoder_fitting forbidden: observed='forbidden' expected='forbidden'
+[PASS] scope keeps semantic_core_construction forbidden: observed='forbidden' expected='forbidden'
+[PASS] scope keeps raw_input_mutation forbidden: observed='forbidden' expected='forbidden'
+[PASS] scope keeps frozen_config_mutation forbidden: observed='forbidden' expected='forbidden'
+[PASS] authorization remains false: observed=False expected=False
+[PASS] data gate remains locked: observed=False expected=False
+[PASS] no executor is represented as reviewed: observed=False expected=False
+[PASS] feature policy is frozen: observed='frozen' expected='frozen'
+[PASS] label ontology is frozen: observed='frozen' expected='frozen'
+[PASS] materialization current gate wording retained: observed='forbidden before protocol freeze' expected='forbidden before protocol freeze'
+[PASS] materialization retains separate authorization precondition
+[PASS] splitting current gate wording retained: observed='forbidden before protocol freeze' expected='forbidden before protocol freeze'
+[PASS] splitting retains separate authorization precondition
+[PASS] training current gate wording retained: observed='forbidden before protocol freeze' expected='forbidden before protocol freeze'
+[PASS] training retains separate authorization precondition
+[PASS] ton_iot inventory dataset_id: observed='ton_iot' expected='ton_iot'
+[PASS] ton_iot inventory file_count: observed=1 expected=1
+[PASS] ton_iot inventory member count: observed=1 expected=1
+[PASS] ton_iot inventory total_bytes: observed=29902775 expected=29902775
+[PASS] ton_iot per-file bytes reconcile: observed=29902775 expected=29902775
+[PASS] ton_iot inventory total_rows: observed=211043 expected=211043
+[PASS] ton_iot per-file rows reconcile: observed=211043 expected=211043
+[PASS] ton_iot relative paths unique: observed=1 expected=1
+[PASS] ton_iot source hashes unique: observed=1 expected=1
+[PASS] ton_iot column count fixed: observed={44} expected={44}
+[PASS] ton_iot parsed header fixed: observed=1 expected=1
+[PASS] ciciot2023 inventory dataset_id: observed='ciciot2023' expected='ciciot2023'
+[PASS] ciciot2023 inventory file_count: observed=309 expected=309
+[PASS] ciciot2023 inventory member count: observed=309 expected=309
+[PASS] ciciot2023 inventory total_bytes: observed=8943771319 expected=8943771319
+[PASS] ciciot2023 per-file bytes reconcile: observed=8943771319 expected=8943771319
+[PASS] ciciot2023 inventory total_rows: observed=46776700 expected=46776700
+[PASS] ciciot2023 per-file rows reconcile: observed=46776700 expected=46776700
+[PASS] ciciot2023 relative paths unique: observed=309 expected=309
+[PASS] ciciot2023 source hashes unique: observed=309 expected=309
+[PASS] ciciot2023 column count fixed: observed={39} expected={39}
+[PASS] ciciot2023 parsed header fixed: observed=1 expected=1
+[PASS] n_baiot inventory dataset_id: observed='n_baiot' expected='n_baiot'
+[PASS] n_baiot inventory file_count: observed=90 expected=90
+[PASS] n_baiot inventory member count: observed=90 expected=90
+[PASS] n_baiot inventory total_bytes: observed=8140825610 expected=8140825610
+[PASS] n_baiot per-file bytes reconcile: observed=8140825610 expected=8140825610
+[PASS] n_baiot inventory total_rows: observed=7062606 expected=7062606
+[PASS] n_baiot per-file rows reconcile: observed=7062606 expected=7062606
+[PASS] n_baiot relative paths unique: observed=90 expected=90
+[PASS] n_baiot source hashes unique: observed=90 expected=90
+[PASS] n_baiot column count fixed: observed={115} expected={115}
+[PASS] n_baiot parsed header fixed: observed=1 expected=1
+[PASS] TON-IoT rows are inventoried well formed: observed=True expected=True
+[PASS] CIC inventory exposes its registered malformed rows: observed=False expected=False
+[PASS] N-BaIoT rows are inventoried well formed: observed=True expected=True
+[PASS] CIC exception_count: observed=3 expected=3
+[PASS] CIC exception member count: observed=3 expected=3
+[PASS] CIC exact exception paths: observed={'CSV/DoS-UDP_Flood/DoS-UDP_Flood7.pcap.csv', 'CSV/DoS-UDP_Flood/DoS-UDP_Flood8.pcap.csv', 'CSV/DoS-UDP_Flood/DoS-UDP_Flood9.pcap.csv'} expected={'CSV/DoS-UDP_Flood/DoS-UDP_Flood7.pcap.csv', 'CSV/DoS-UDP_Flood/DoS-UDP_Flood8.pcap.csv', 'CSV/DoS-UDP_Flood/DoS-UDP_Flood9.pcap.csv'}
+[PASS] CIC exceptions bind exact inventoried files and final rows
+[PASS] N-BaIoT has one structure example: observed=1 expected=1
+[PASS] N-BaIoT structure example exact identity: observed=(1776, 0, '7ef0a9e20164c601b8f79311174a32758e5a3bd4e8bb525627369af8cf3fcb6f') expected=(1776, 0, '7ef0a9e20164c601b8f79311174a32758e5a3bd4e8bb525627369af8cf3fcb6f')
+[PASS] request aggregate input/output counts: observed={'inventoried_csv_files': 400, 'materialized_data_shards': 399, 'source_bytes': 17114499704, 'raw_rows': 54050349, 'accepted_rows': 54050346, 'registered_excluded_rows': 3} expected={'inventoried_csv_files': 400, 'materialized_data_shards': 399, 'source_bytes': 17114499704, 'raw_rows': 54050349, 'accepted_rows': 54050346, 'registered_excluded_rows': 3}
+[PASS] TON exclusions equal frozen permanent plus port columns: observed={'ssl_subject', 'dst_port', 'http_user_agent', 'label', 'http_uri', 'weird_addl', 'src_port', 'dns_query', 'ssl_issuer', 'type', 'dst_ip', 'src_ip'} expected={'ssl_subject', 'dst_port', 'http_user_agent', 'label', 'http_uri', 'weird_addl', 'src_port', 'dns_query', 'ssl_issuer', 'type', 'dst_ip', 'src_ip'}
+[PASS] TON output feature count: observed=32 expected=32
+[PASS] request declares TON 32 features: observed=32 expected=32
+[PASS] TON permitted categoricals stay native features
+[PASS] CIC 39-column inventory matches frozen native feature order: observed=['Header_Length', 'Protocol Type', 'Time_To_Live', 'Rate', 'fin_flag_number', 'syn_flag_number', 'rst_flag_number', 'psh_flag_number', 'ack_flag_number', 'ece_flag_number', 'cwr_flag_number', 'ack_count', 'syn_count', 'fin_count', 'rst_count', 'HTTP', 'HTTPS', 'DNS', 'Telnet', 'SMTP', 'SSH', 'IRC', 'TCP', 'UDP', 'DHCP', 'ARP', 'ICMP', 'IGMP', 'IPv', 'LLC', 'Tot sum', 'Min', 'Max', 'AVG', 'Std', 'Tot size', 'IAT', 'Number', 'Variance'] expected=['Header_Length', 'Protocol Type', 'Time_To_Live', 'Rate', 'fin_flag_number', 'syn_flag_number', 'rst_flag_number', 'psh_flag_number', 'ack_flag_number', 'ece_flag_number', 'cwr_flag_number', 'ack_count', 'syn_count', 'fin_count', 'rst_count', 'HTTP', 'HTTPS', 'DNS', 'Telnet', 'SMTP', 'SSH', 'IRC', 'TCP', 'UDP', 'DHCP', 'ARP', 'ICMP', 'IGMP', 'IPv', 'LLC', 'Tot sum', 'Min', 'Max', 'AVG', 'Std', 'Tot size', 'IAT', 'Number', 'Variance']
+[PASS] TON frozen type map covers census values: observed={'injection', 'password', 'normal', 'mitm', 'dos', 'xss', 'backdoor', 'ransomware', 'scanning', 'ddos'} expected={'injection', 'password', 'normal', 'mitm', 'dos', 'xss', 'backdoor', 'ransomware', 'scanning', 'ddos'}
+[PASS] TON census total rows: observed=211043 expected=211043
+[PASS] TON census label rows reconcile: observed=211043 expected=211043
+[PASS] CIC frozen map covers all and only inventoried categories: observed={'Mirai-greip_flood', 'DDoS-RSTFINFLOOD', 'DDoS-SynonymousIP_Flood', 'DDoS-UDP_Fragmentation', 'XSS', 'DictionaryBruteForce', 'Recon-PingSweep', 'DDoS-SlowLoris', 'DDoS-TCP_Flood', 'DoS-TCP_Flood', 'DoS-SYN_Flood', 'Recon-OSScan', 'Recon-PortScan', 'DDoS-ICMP_Fragmentation', 'Mirai-greeth_flood', 'Mirai-udpplain', 'CommandInjection', 'Benign_Final', 'DoS-HTTP_Flood', 'DDoS-HTTP_Flood', 'Backdoor_Malware', 'DDoS-PSHACK_FLOOD', 'BrowserHijacking', 'DDoS-ICMP_Flood', 'DDoS-SYN_Flood', 'VulnerabilityScan', 'MITM-ArpSpoofing', 'DDoS-UDP_Flood', 'DNS_Spoofing', 'DDoS-ACK_Fragmentation', 'SqlInjection', 'Recon-HostDiscovery', 'Uploading_Attack', 'DoS-UDP_Flood'} expected={'Mirai-greip_flood', 'DDoS-RSTFINFLOOD', 'DDoS-SynonymousIP_Flood', 'DDoS-UDP_Fragmentation', 'XSS', 'DictionaryBruteForce', 'Recon-PingSweep', 'DDoS-SlowLoris', 'DDoS-TCP_Flood', 'DoS-TCP_Flood', 'DoS-SYN_Flood', 'Recon-OSScan', 'Recon-PortScan', 'DDoS-ICMP_Fragmentation', 'Mirai-greeth_flood', 'Mirai-udpplain', 'CommandInjection', 'Benign_Final', 'DoS-HTTP_Flood', 'DDoS-HTTP_Flood', 'Backdoor_Malware', 'DDoS-PSHACK_FLOOD', 'BrowserHijacking', 'DDoS-ICMP_Flood', 'DDoS-SYN_Flood', 'VulnerabilityScan', 'MITM-ArpSpoofing', 'DDoS-UDP_Flood', 'DNS_Spoofing', 'DDoS-ACK_Fragmentation', 'SqlInjection', 'Recon-HostDiscovery', 'Uploading_Attack', 'DoS-UDP_Flood'}
+[PASS] CIC category count: observed=34 expected=34
+[PASS] N-BaIoT paths match frozen derivation grammar
+[PASS] N-BaIoT frozen map covers all and only inventoried labels: observed={('mirai_attacks_extracted', 'udp'), ('mirai_attacks_extracted', 'syn'), ('mirai_attacks_extracted', 'ack'), ('gafgyt_attacks_extracted', 'tcp'), ('gafgyt_attacks_extracted', 'junk'), ('mirai_attacks_extracted', 'udpplain'), ('gafgyt_attacks_extracted', 'scan'), ('mirai_attacks_extracted', 'scan'), ('benign', 'benign_traffic'), ('gafgyt_attacks_extracted', 'combo'), ('gafgyt_attacks_extracted', 'udp')} expected={('mirai_attacks_extracted', 'udp'), ('mirai_attacks_extracted', 'syn'), ('mirai_attacks_extracted', 'ack'), ('gafgyt_attacks_extracted', 'tcp'), ('gafgyt_attacks_extracted', 'junk'), ('mirai_attacks_extracted', 'udpplain'), ('gafgyt_attacks_extracted', 'scan'), ('mirai_attacks_extracted', 'scan'), ('benign', 'benign_traffic'), ('gafgyt_attacks_extracted', 'combo'), ('gafgyt_attacks_extracted', 'udp')}
+[PASS] hard output cap formula: observed=25671749556 expected=25671749556
+[PASS] minimum free-space formula: observed=26745491380 expected=26745491380
+[PASS] preparation storage observation blocks execution: observed=False expected=False
+[PASS] storage shortfall arithmetic: observed=20172545972 expected=20172545972
+[PASS] fixed output root is absolute
+[PASS] fixed staging root is absolute
+[PASS] output and staging roots share a filesystem parent
+SUMMARY 114/114 checks passed
+authorization_granted = false
+data_gate_unlocked   = false
+raw_csvs_opened      = false

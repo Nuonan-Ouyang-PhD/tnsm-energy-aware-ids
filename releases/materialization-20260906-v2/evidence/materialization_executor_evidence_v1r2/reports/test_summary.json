@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "unit_tests": {
+    "passed": 37,
+    "failed": 0,
+    "skipped": 0,
+    "executor_tests": 26,
+    "evidence_verifier_tests": 11
+  },
+  "package_verifier": {
+    "passed": 187,
+    "failed": 0
+  },
+  "fixture_csv_files": 22,
+  "authorization_granted": false,
+  "real_csvs_opened": false,
+  "real_output_created": false,
+  "materialization_run": false,
+  "splitting_run": false,
+  "training_run": false
+}

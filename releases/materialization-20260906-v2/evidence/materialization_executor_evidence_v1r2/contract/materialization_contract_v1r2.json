@@ -1,0 +1,449 @@
+{
+  "schema_version": 1,
+  "kind": "materialization_executor_contract",
+  "contract_id": "MATERIALIZATION-EXECUTOR-20260906-V1R2-PROPOSED",
+  "status": "implementation_complete_not_authorized",
+  "operation": "materialization",
+  "baseline_request": {
+    "request_id": "MATERIALIZATION-20260906-V1-PROPOSED",
+    "request_zip": "MATERIALIZATION_EXECUTION_REQUEST_V1.zip",
+    "request_zip_bytes": 78879,
+    "request_zip_sha256": "55c3c6ee9d6e01fb764a650432b379ca41ca52b703dd33c9ec9cf17088271c63",
+    "request_json": "inputs/request/materialization_execution_request_v1.json",
+    "request_json_sha256": "fbfc84dbf700dc4fd8f98ad9e33887fb75eb67cf6a49d9524fa69acbbe38dfcb"
+  },
+  "independent_review": {
+    "review_zip": "MATERIALIZATION_REQUEST_V1_INDEPENDENT_REVIEW.zip",
+    "review_zip_bytes": 73937,
+    "review_zip_sha256": "f62cfc6173039df4383d0697756e6fa630e51dab69967c8c75eafa0fe1bf2838",
+    "review_text": "inputs/reviews/materialization_request_v1_independent_review.md",
+    "review_text_sha256": "5b0e12ce7d61ff485caf447f658542f187ea40bd7749a5d013ec88037f2ff823",
+    "decision": "executor implementation and invented-fixture tests may proceed; real materialization remains unauthorized"
+  },
+  "revision_review": {
+    "review_zip": "MATERIALIZATION_EXECUTOR_V1_INDEPENDENT_REVIEW.zip",
+    "review_zip_bytes": 36784,
+    "review_zip_sha256": "c43965bc93d3fee587c03fb0ae94690f6a4562946ed363e8519a178ebbcad361",
+    "review_text": "inputs/reviews/materialization_executor_v1_independent_review.md",
+    "review_text_sha256": "f58d30f8e075bdbf2634661fd23aa8331ff4cf29aea9fbaba821eb2f1a8271bf",
+    "review_decision": "inputs/reviews/materialization_executor_v1_review_decision.json",
+    "review_decision_sha256": "f297365b77a4cc63ad20c7ea17e06860413891d1c303dde065ab9186d255ed4f",
+    "boundary_results": "inputs/reviews/materialization_executor_v1_boundary_probe_results.json",
+    "boundary_results_sha256": "4b6c60ad1bc0ae191a23034a207b41a0078e59ae58834d483e4cf433d7ed35f8",
+    "required_fixes": [
+      "E01_runtime_contract_code_evidence_binding",
+      "E02_replay_storage_accounting",
+      "E03_all_input_validation_and_exact_no_LF_exceptions",
+      "E04_no_clobber_publish_and_staging_ownership"
+    ]
+  },
+  "authorization": {
+    "granted": false,
+    "raw_csv_access_before_guard": "forbidden",
+    "actual_output_creation_before_guard": "forbidden",
+    "required_record_kind": "materialization_execution_authorization",
+    "required_operations": {
+      "materialization": true,
+      "splitting": false,
+      "training": false,
+      "encoder_fitting": false,
+      "model_fitting": false
+    },
+    "required_bindings": [
+      "authorization_id",
+      "contract_id",
+      "request_zip_sha256",
+      "executor_evidence_zip_sha256",
+      "evidence_archive_root",
+      "evidence_manifest_sha256",
+      "contract_sha256",
+      "executor_sha256",
+      "output_root",
+      "authorized_by_user=true",
+      "append-only DECISIONS.md entry containing all bindings"
+    ]
+  },
+  "runtime_evidence_binding": {
+    "archive_root": "materialization_executor_evidence_v1r2",
+    "manifest": "MANIFEST_SHA256.txt",
+    "contract_local_path": "contract/materialization_contract_v1r2.json",
+    "executor_local_path": "scripts/materialize_dataset_native_v1r2.py",
+    "required_local_files": [
+      "contract/materialization_contract_v1r2.json",
+      "scripts/materialize_dataset_native_v1r2.py",
+      "inputs/protocol/feature_policy.json",
+      "inputs/protocol/label_ontology.json",
+      "inputs/inventories/ton_iot_20260903T113048Z.json",
+      "inputs/inventories/ciciot2023_20260903T142539Z.json",
+      "inputs/inventories/n_baiot_20260903T224404Z.json",
+      "inputs/censuses/ton_iot_20260903T233742Z.json",
+      "inputs/quality_exceptions/ciciot2023_20260903T142617Z.json",
+      "inputs/request/materialization_execution_request_v1.json"
+    ],
+    "local_dependencies": "none; executor imports only the Python standard library",
+    "archive_validation": "no extraction; reject duplicate, unsafe, encrypted, symlink, non-regular, over-limit, CRC-failing, or MANIFEST-inconsistent members",
+    "maximum_member_uncompressed_bytes": 67108864,
+    "maximum_archive_uncompressed_bytes": 268435456,
+    "authoritative_contract": "parse the byte-identical contract member from the authorization-bound evidence ZIP once and execute that immutable in-memory value",
+    "source_access_gate": "all required local runtime files must be byte-identical to their MANIFEST-bound archive members before any source-root inspection or source CSV open",
+    "system_boundary": "self-checking detects accidental or external working-copy drift; it does not claim to defeat an executor deliberately modified to bypass its own checks; Python standard-library bytes are outside this evidence ZIP"
+  },
+  "input_binding": {
+    "feature_policy": {
+      "file": "inputs/protocol/feature_policy.json",
+      "sha256": "e81a55c16f9439b0356295353e8b342de19d5c5606d868952592f913beda714b",
+      "status": "frozen"
+    },
+    "label_ontology": {
+      "file": "inputs/protocol/label_ontology.json",
+      "sha256": "8a055e2e34bc8d70f62909f52441915589c310659d6ce3e427a2704820926fab",
+      "status": "frozen"
+    },
+    "inventories": {
+      "ton_iot": {
+        "file": "inputs/inventories/ton_iot_20260903T113048Z.json",
+        "sha256": "66179d1ba2601ff3175e90cbfb4ed21d28c859b5780258d5e36dd8bb2303c55a"
+      },
+      "ciciot2023": {
+        "file": "inputs/inventories/ciciot2023_20260903T142539Z.json",
+        "sha256": "d31472b21836eb5a5cfa9535e1f29d58c0a4a1f136586938172a3e77bbe2f45f"
+      },
+      "n_baiot": {
+        "file": "inputs/inventories/n_baiot_20260903T224404Z.json",
+        "sha256": "9ffdf7e9245470fc4f066b8fb6d8ebae03e0194e7698e5fde87b13a7f2fe30da"
+      }
+    },
+    "ton_label_census": {
+      "file": "inputs/censuses/ton_iot_20260903T233742Z.json",
+      "sha256": "128fe883208eef10cd2f41bf8c5ee73bf518cb61b5d95c86cff40214565edfa0"
+    },
+    "cic_quality_exceptions": {
+      "file": "inputs/quality_exceptions/ciciot2023_20260903T142617Z.json",
+      "sha256": "36ef134ff6117867c51888749434f2d02efc59ec4ad6e93e94371f08d59e5bae"
+    }
+  },
+  "output_binding": {
+    "binding_status": "inherited_internal_location_fails_space_check; rebind exact new-volume path before operational approval",
+    "root": "/Users/nuonanouyang/Documents/ChatGPT/TNSM-materialized/FEATURE-POLICY-20260905-V1-FROZEN/MATERIALIZATION-20260906-V1",
+    "staging_root": "/Users/nuonanouyang/Documents/ChatGPT/TNSM-materialized/FEATURE-POLICY-20260905-V1-FROZEN/.MATERIALIZATION-20260906-V1.staging",
+    "root_and_staging_must_be_distinct": true,
+    "same_parent_and_filesystem_required": true,
+    "output_parent_must_exist": true,
+    "root_must_be_absent": true,
+    "staging_must_be_absent": true,
+    "overwrite": "forbidden",
+    "publish": "Darwin renameatx_np with RENAME_EXCL; atomically fail if any destination entry exists; no unsafe fallback",
+    "publish_unsupported": "fail closed on ENOTSUP, EINVAL, ENOSYS, or unavailable renameatx_np",
+    "new_disk_note": "The user expects a new 1 TB disk. No volume name or mount path is assumed in V1R2. A changed root/staging pair requires a reviewed contract rebind and an on-volume no-clobber capability probe."
+  },
+  "storage": {
+    "source_bytes": 17114499704,
+    "hard_output_cap_bytes": 25671749556,
+    "scratch_reserve_bytes": 1073741824,
+    "minimum_free_bytes": 26745491380,
+    "current_location_observation_passes": false,
+    "checks": [
+      "free bytes at the nearest existing output parent before staging creation",
+      "hard cumulative output byte counter before every write",
+      "free bytes after every completed feature/label shard pair",
+      "hash-only streaming replay writes no files and retains no replay bytes",
+      "free bytes after every replayed shard and after each metadata/manifest phase",
+      "abort without publishing if any check fails"
+    ]
+  },
+  "ordering": {
+    "dataset_order": [
+      "ton_iot",
+      "ciciot2023",
+      "n_baiot"
+    ],
+    "input_preflight": "validate identity, bytes, SHA-256, header SHA-256, columns, row count, malformed-row count, and newline policy for all 400 inventoried CSV files before staging creation",
+    "data_file_filter": "after complete 400-file preflight confirms n_baiot/demonstrate_structure.csv is the one frozen zero-row, well-formed structure file, exclude it from rendering, sorting, and numbering; all other inventoried CSVs are data files",
+    "file_sort": "ascending lexicographic order of relative_path encoded as UTF-8 bytes",
+    "shard_ordinal_scope": "restart independently for each dataset",
+    "shard_ordinal_start": 1,
+    "shard_ordinal_format": "four decimal digits, zero padded",
+    "shard_id": "<ordinal>-<first 16 lowercase hex characters of source file SHA-256>",
+    "row_order": "source data-record order with only exact registered CIC malformed final rows removed"
+  },
+  "source_csv_reading": {
+    "record_boundary": "one physical line is one CSV record; normal records are LF-terminated",
+    "quoted_multiline_fields": "forbidden; fail during complete source preflight",
+    "parser": "RFC 4180-style comma delimiter and doubled double-quote escaping, with strict syntax rejection",
+    "line_numbering": "header is physical line 1; first data record is physical line 2",
+    "header_terminal_newline": "required without exception",
+    "normal_record_terminal_newline": "required, including an ordinary final record",
+    "only_terminal_newline_exception": "exactly the three frozen CIC malformed final physical lines whose quality-exception entries have ends_with_newline=false and whose complete registered file/line/raw-byte identities match",
+    "unregistered_missing_newline": "fail before staging creation",
+    "exception_expansion": "forbidden"
+  },
+  "csv_serialization": {
+    "encoding": "UTF-8",
+    "bom": false,
+    "newline": "LF",
+    "delimiter": ",",
+    "quote_character": "double_quote",
+    "quoting": "minimal",
+    "double_quote_escape": true,
+    "header_emitted_once": true,
+    "terminal_newline": true,
+    "cell_rule": "preserve parsed source text exactly; no trimming, case conversion, numeric parsing/reformatting, missing-value replacement, normalization, encoding, or fitting",
+    "empty_not_applicable_cell": "zero bytes between delimiters"
+  },
+  "json_serialization": {
+    "encoding": "UTF-8",
+    "bom": false,
+    "ensure_ascii": false,
+    "key_order": "schema order specified by this contract; insertion order is normative",
+    "separators": [
+      ",",
+      ":"
+    ],
+    "whitespace": "none outside string values",
+    "terminal_newline": true,
+    "jsonl": "one complete object per LF-terminated line"
+  },
+  "label_sidecar": {
+    "columns": [
+      "binary_label",
+      "canonical_family",
+      "source_family",
+      "source_subtype"
+    ],
+    "binary_label_values": [
+      "benign",
+      "attack"
+    ],
+    "ton_iot": {
+      "binary_label_map": {
+        "0": "benign",
+        "1": "attack"
+      },
+      "source_family": "",
+      "source_subtype": "type source cell verbatim"
+    },
+    "ciciot2023": {
+      "binary_label_map": {
+        "Benign_Final": "benign",
+        "*other_frozen_category": "attack"
+      },
+      "source_family": "",
+      "source_subtype": "category directory name verbatim"
+    },
+    "n_baiot": {
+      "binary_label_map": {
+        "benign_traffic.csv": "benign",
+        "gafgyt_attacks_extracted/*.csv": "attack",
+        "mirai_attacks_extracted/*.csv": "attack"
+      },
+      "source_family": "benign or family directory name verbatim",
+      "source_subtype": "benign_traffic or CSV filename stem verbatim"
+    }
+  },
+  "feature_contract": {
+    "ton_iot": {
+      "source_columns": 44,
+      "output_columns": 32,
+      "excluded": [
+        "label",
+        "type",
+        "src_ip",
+        "dst_ip",
+        "dns_query",
+        "ssl_subject",
+        "ssl_issuer",
+        "http_uri",
+        "http_user_agent",
+        "weird_addl",
+        "src_port",
+        "dst_port"
+      ]
+    },
+    "ciciot2023": {
+      "source_columns": 39,
+      "output_columns": 39,
+      "excluded": []
+    },
+    "n_baiot": {
+      "source_columns": 115,
+      "output_columns": 115,
+      "excluded": []
+    }
+  },
+  "metadata_representation": {
+    "ton_iot": {
+      "device_id": null,
+      "capture_id": null
+    },
+    "ciciot2023": {
+      "device_id": null,
+      "capture_id": "JSON string: filename after removing terminal .pcap.csv"
+    },
+    "n_baiot": {
+      "device_id": "JSON string: first path component",
+      "capture_id": {
+        "json_type": "array",
+        "length": 3,
+        "element_types": [
+          "string",
+          "string",
+          "string"
+        ],
+        "element_order": [
+          "device_id",
+          "source_family",
+          "source_subtype"
+        ]
+      }
+    }
+  },
+  "quality_exception_schema": {
+    "fields_in_order": [
+      "physical_line",
+      "source_row",
+      "raw_line_bytes",
+      "raw_line_sha256",
+      "observed_column_count",
+      "expected_column_count"
+    ],
+    "types": [
+      "integer",
+      "integer",
+      "integer",
+      "64-character lowercase hexadecimal string",
+      "integer",
+      "integer"
+    ],
+    "source_row_rule": "physical_line - 1 because the header is physical line 1",
+    "match_rule": "relative path, frozen source file hash/bytes, final physical line, raw line bytes/hash, and observed/expected column counts must all match; otherwise fail"
+  },
+  "shard_ledger": {
+    "path": "datasets/<dataset_id>/lineage/shards.jsonl",
+    "fields_in_order": [
+      "schema_version",
+      "dataset_id",
+      "shard_ordinal",
+      "shard_id",
+      "source_file",
+      "source_file_sha256",
+      "source_file_bytes",
+      "source_header_sha256",
+      "source_rows_inventoried",
+      "source_rows_excluded",
+      "source_rows_accepted",
+      "excluded_rows",
+      "device_id",
+      "capture_id",
+      "features_file",
+      "features_sha256",
+      "features_bytes",
+      "labels_file",
+      "labels_sha256",
+      "labels_bytes"
+    ],
+    "schema_version": 1,
+    "row_mapping": "output row k maps to the kth non-excluded source data row; all V1 exclusions are final rows, so accepted output row k equals source_row k"
+  },
+  "dataset_manifest": {
+    "path": "datasets/<dataset_id>/manifest.json",
+    "fields_in_order": [
+      "schema_version",
+      "contract_id",
+      "dataset_id",
+      "shard_count",
+      "source_files_inventoried",
+      "source_rows_inventoried",
+      "source_rows_excluded",
+      "rows_materialized",
+      "feature_count",
+      "feature_columns",
+      "label_columns",
+      "features_total_bytes",
+      "labels_total_bytes",
+      "ledger_file",
+      "ledger_sha256",
+      "ledger_bytes"
+    ],
+    "schema_version": 1
+  },
+  "run_identity": {
+    "path": "run_identity.json",
+    "fields_in_order": [
+      "schema_version",
+      "contract_id",
+      "freeze_id",
+      "feature_policy_sha256",
+      "label_ontology_sha256",
+      "request_zip_sha256",
+      "inventory_sha256"
+    ],
+    "timestamps": "forbidden in deterministic output tree"
+  },
+  "root_manifest": {
+    "path": "MANIFEST_SHA256.txt",
+    "line_format": "<64 lowercase hex SHA-256><two ASCII spaces><POSIX relative path><LF>",
+    "path_order": "UTF-8 bytewise ascending",
+    "coverage": "every regular file under output root except MANIFEST_SHA256.txt itself, exactly once",
+    "self_entry": false,
+    "dependency_order": [
+      "feature and label files",
+      "shard ledger",
+      "dataset manifest",
+      "run_identity.json",
+      "root MANIFEST"
+    ]
+  },
+  "failure_safety": {
+    "preexisting_output": "fail without modification",
+    "preexisting_staging": "fail without modification",
+    "staging_ownership": "create by parent directory descriptor with mode 0700 and retain parent/staging device and inode identity for the complete run",
+    "publish_source_identity": "immediately before publication, the configured parent and staging directory entries must still match the retained identities",
+    "automatic_failure_deletion": "forbidden because pathname recursive deletion cannot atomically condition removal on the retained inode",
+    "failure_retention": "preserve owned staging for audit and report its path/device/inode; no automatic retry",
+    "foreign_staging": "if the configured staging entry is missing or has another identity, do not delete or modify it; preserve and report both expected and observed identity",
+    "cleanup_containment": "no pathname rmtree is performed by the executor",
+    "partial_publish": "forbidden",
+    "automatic_retry": "forbidden",
+    "contract_change": "new reviewed revision and fresh authorization required"
+  },
+  "expected_real_output": {
+    "inventoried_csv_files": 400,
+    "feature_shards": 399,
+    "label_shards": 399,
+    "source_rows": 54050349,
+    "excluded_rows": 3,
+    "materialized_rows": 54050346,
+    "per_dataset": {
+      "ton_iot": {
+        "shards": 1,
+        "features": 32,
+        "rows": 211043,
+        "benign": 50000,
+        "attack": 161043
+      },
+      "ciciot2023": {
+        "shards": 309,
+        "features": 39,
+        "rows": 46776697,
+        "benign": 1098191,
+        "attack": 45678506
+      },
+      "n_baiot": {
+        "shards": 89,
+        "features": 115,
+        "rows": 7062606,
+        "benign": 555932,
+        "attack": 6506674
+      }
+    }
+  },
+  "explicitly_forbidden": [
+    "real CSV access during implementation or synthetic testing",
+    "real output or staging path creation before authorization",
+    "splitting",
+    "sampling or balancing",
+    "encoding or fitting",
+    "training",
+    "frozen config modification"
+  ]
+}

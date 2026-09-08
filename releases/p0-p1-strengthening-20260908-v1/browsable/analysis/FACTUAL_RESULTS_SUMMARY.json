@@ -1,0 +1,78 @@
+{
+  "scope": "factual machine-readable summary; no superiority/significance interpretation",
+  "p1a": {
+    "DQN": {
+      "runs": 10,
+      "mean_energy_j": 1196.3339343524965,
+      "mean_power_w": 2.392663222717704,
+      "mean_f1": 0.9704386431074035
+    },
+    "Tabular-Q": {
+      "runs": 10,
+      "mean_energy_j": 1192.264322715841,
+      "mean_power_w": 2.384527629989126,
+      "mean_f1": 0.9704386431074035
+    },
+    "Static-LightLR": {
+      "runs": 10,
+      "mean_energy_j": 1191.8088228375902,
+      "mean_power_w": 2.383618039648039,
+      "mean_f1": 0.9704386431074035
+    },
+    "Static-MedRF": {
+      "runs": 10,
+      "mean_energy_j": 1204.2793873878388,
+      "mean_power_w": 2.408559193455668,
+      "mean_f1": 0.9838638078329257
+    }
+  },
+  "p1b": {
+    "exhaustive_324": {
+      "Static-LightLR": {
+        "blocks": 30,
+        "mean_of_block_means_ns": 633.6872,
+        "sd_block_means_ns": 20.80553998318054
+      },
+      "CFSM": {
+        "blocks": 30,
+        "mean_of_block_means_ns": 6245.43486,
+        "sd_block_means_ns": 47.179785968463946
+      },
+      "Tabular-Q": {
+        "blocks": 30,
+        "mean_of_block_means_ns": 10442.795726666667,
+        "sd_block_means_ns": 62.286191278932804
+      },
+      "DQN": {
+        "blocks": 30,
+        "mean_of_block_means_ns": 1559645.4811333334,
+        "sd_block_means_ns": 17987.51664878172
+      }
+    },
+    "observed_support": {
+      "Static-LightLR": {
+        "blocks": 30,
+        "mean_of_block_means_ns": 738.6142966666666,
+        "sd_block_means_ns": 59.75943579775951
+      },
+      "CFSM": {
+        "blocks": 30,
+        "mean_of_block_means_ns": 6582.07282,
+        "sd_block_means_ns": 42.828753082362006
+      },
+      "Tabular-Q": {
+        "blocks": 30,
+        "mean_of_block_means_ns": 10796.234613333334,
+        "sd_block_means_ns": 85.7370357086683
+      },
+      "DQN": {
+        "blocks": 30,
+        "mean_of_block_means_ns": 1566897.0584333334,
+        "sd_block_means_ns": 16049.899531667648
+      }
+    }
+  },
+  "p1c_policies": 20,
+  "p1d_runs": 85,
+  "p1e_runs": 35
+}

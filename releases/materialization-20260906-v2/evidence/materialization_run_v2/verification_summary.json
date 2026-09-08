@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "event_counts": {
+    "preflight_start": 1,
+    "source_preflight_pass": 400,
+    "preflight_complete": 1,
+    "shard_rendered": 399,
+    "shard_replay_pass": 399,
+    "publication_complete": 1
+  },
+  "preflight_files": 400,
+  "source_rows": 54050349,
+  "excluded_rows": 3,
+  "accepted_rows": 54050346,
+  "shard_pairs": 399,
+  "output_files": 806,
+  "output_bytes": 18778579551,
+  "root_manifest_sha256": "d79caa7ed64d1e37c0599b12bbc0af925a1c469090dfab8f104dcd6ffb9dbd1e",
+  "verification_scope": "reconciled actual execution events and output metadata; executor verified all output hashes before native publication",
+  "splitting_in_materializer": false,
+  "training_in_materializer": false
+}

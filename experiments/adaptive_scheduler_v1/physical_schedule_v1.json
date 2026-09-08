@@ -1,0 +1,475 @@
+{
+  "campaign_id": "TNSM-ADAPTIVE-SCHEDULER-20260907-V1",
+  "status": "precommitted_before_policy_freeze_or_heldout_scheduler_evaluation",
+  "order_seed": 20260907,
+  "paired_block_count": 10,
+  "runs_per_block": 4,
+  "total_runs": 40,
+  "same_trace_within_block": true,
+  "policy_updates_during_runs": false,
+  "failed_run_rule": "stop campaign, retain invalid run, no automatic retry",
+  "blocks": [
+    {
+      "block": 1,
+      "trace_seed": 11,
+      "method_order": [
+        "Tabular-Q",
+        "DQN",
+        "Static-MedRF",
+        "CFSM"
+      ]
+    },
+    {
+      "block": 2,
+      "trace_seed": 23,
+      "method_order": [
+        "DQN",
+        "Static-MedRF",
+        "Tabular-Q",
+        "CFSM"
+      ]
+    },
+    {
+      "block": 3,
+      "trace_seed": 37,
+      "method_order": [
+        "Tabular-Q",
+        "Static-MedRF",
+        "CFSM",
+        "DQN"
+      ]
+    },
+    {
+      "block": 4,
+      "trace_seed": 53,
+      "method_order": [
+        "Tabular-Q",
+        "DQN",
+        "Static-MedRF",
+        "CFSM"
+      ]
+    },
+    {
+      "block": 5,
+      "trace_seed": 71,
+      "method_order": [
+        "Static-MedRF",
+        "CFSM",
+        "DQN",
+        "Tabular-Q"
+      ]
+    },
+    {
+      "block": 6,
+      "trace_seed": 89,
+      "method_order": [
+        "Tabular-Q",
+        "CFSM",
+        "DQN",
+        "Static-MedRF"
+      ]
+    },
+    {
+      "block": 7,
+      "trace_seed": 107,
+      "method_order": [
+        "CFSM",
+        "Tabular-Q",
+        "DQN",
+        "Static-MedRF"
+      ]
+    },
+    {
+      "block": 8,
+      "trace_seed": 131,
+      "method_order": [
+        "CFSM",
+        "DQN",
+        "Tabular-Q",
+        "Static-MedRF"
+      ]
+    },
+    {
+      "block": 9,
+      "trace_seed": 157,
+      "method_order": [
+        "Tabular-Q",
+        "DQN",
+        "Static-MedRF",
+        "CFSM"
+      ]
+    },
+    {
+      "block": 10,
+      "trace_seed": 191,
+      "method_order": [
+        "CFSM",
+        "Tabular-Q",
+        "Static-MedRF",
+        "DQN"
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "run_id": "b01-p1-Tabular-Q",
+      "block": 1,
+      "position": 1,
+      "trace_seed": 11,
+      "method": "Tabular-Q",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b01-p2-DQN",
+      "block": 1,
+      "position": 2,
+      "trace_seed": 11,
+      "method": "DQN",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b01-p3-Static-MedRF",
+      "block": 1,
+      "position": 3,
+      "trace_seed": 11,
+      "method": "Static-MedRF",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b01-p4-CFSM",
+      "block": 1,
+      "position": 4,
+      "trace_seed": 11,
+      "method": "CFSM",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b02-p1-DQN",
+      "block": 2,
+      "position": 1,
+      "trace_seed": 23,
+      "method": "DQN",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b02-p2-Static-MedRF",
+      "block": 2,
+      "position": 2,
+      "trace_seed": 23,
+      "method": "Static-MedRF",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b02-p3-Tabular-Q",
+      "block": 2,
+      "position": 3,
+      "trace_seed": 23,
+      "method": "Tabular-Q",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b02-p4-CFSM",
+      "block": 2,
+      "position": 4,
+      "trace_seed": 23,
+      "method": "CFSM",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b03-p1-Tabular-Q",
+      "block": 3,
+      "position": 1,
+      "trace_seed": 37,
+      "method": "Tabular-Q",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b03-p2-Static-MedRF",
+      "block": 3,
+      "position": 2,
+      "trace_seed": 37,
+      "method": "Static-MedRF",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b03-p3-CFSM",
+      "block": 3,
+      "position": 3,
+      "trace_seed": 37,
+      "method": "CFSM",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b03-p4-DQN",
+      "block": 3,
+      "position": 4,
+      "trace_seed": 37,
+      "method": "DQN",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b04-p1-Tabular-Q",
+      "block": 4,
+      "position": 1,
+      "trace_seed": 53,
+      "method": "Tabular-Q",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b04-p2-DQN",
+      "block": 4,
+      "position": 2,
+      "trace_seed": 53,
+      "method": "DQN",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b04-p3-Static-MedRF",
+      "block": 4,
+      "position": 3,
+      "trace_seed": 53,
+      "method": "Static-MedRF",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b04-p4-CFSM",
+      "block": 4,
+      "position": 4,
+      "trace_seed": 53,
+      "method": "CFSM",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b05-p1-Static-MedRF",
+      "block": 5,
+      "position": 1,
+      "trace_seed": 71,
+      "method": "Static-MedRF",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b05-p2-CFSM",
+      "block": 5,
+      "position": 2,
+      "trace_seed": 71,
+      "method": "CFSM",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b05-p3-DQN",
+      "block": 5,
+      "position": 3,
+      "trace_seed": 71,
+      "method": "DQN",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b05-p4-Tabular-Q",
+      "block": 5,
+      "position": 4,
+      "trace_seed": 71,
+      "method": "Tabular-Q",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b06-p1-Tabular-Q",
+      "block": 6,
+      "position": 1,
+      "trace_seed": 89,
+      "method": "Tabular-Q",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b06-p2-CFSM",
+      "block": 6,
+      "position": 2,
+      "trace_seed": 89,
+      "method": "CFSM",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b06-p3-DQN",
+      "block": 6,
+      "position": 3,
+      "trace_seed": 89,
+      "method": "DQN",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b06-p4-Static-MedRF",
+      "block": 6,
+      "position": 4,
+      "trace_seed": 89,
+      "method": "Static-MedRF",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b07-p1-CFSM",
+      "block": 7,
+      "position": 1,
+      "trace_seed": 107,
+      "method": "CFSM",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b07-p2-Tabular-Q",
+      "block": 7,
+      "position": 2,
+      "trace_seed": 107,
+      "method": "Tabular-Q",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b07-p3-DQN",
+      "block": 7,
+      "position": 3,
+      "trace_seed": 107,
+      "method": "DQN",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b07-p4-Static-MedRF",
+      "block": 7,
+      "position": 4,
+      "trace_seed": 107,
+      "method": "Static-MedRF",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b08-p1-CFSM",
+      "block": 8,
+      "position": 1,
+      "trace_seed": 131,
+      "method": "CFSM",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b08-p2-DQN",
+      "block": 8,
+      "position": 2,
+      "trace_seed": 131,
+      "method": "DQN",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b08-p3-Tabular-Q",
+      "block": 8,
+      "position": 3,
+      "trace_seed": 131,
+      "method": "Tabular-Q",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b08-p4-Static-MedRF",
+      "block": 8,
+      "position": 4,
+      "trace_seed": 131,
+      "method": "Static-MedRF",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b09-p1-Tabular-Q",
+      "block": 9,
+      "position": 1,
+      "trace_seed": 157,
+      "method": "Tabular-Q",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b09-p2-DQN",
+      "block": 9,
+      "position": 2,
+      "trace_seed": 157,
+      "method": "DQN",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b09-p3-Static-MedRF",
+      "block": 9,
+      "position": 3,
+      "trace_seed": 157,
+      "method": "Static-MedRF",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b09-p4-CFSM",
+      "block": 9,
+      "position": 4,
+      "trace_seed": 157,
+      "method": "CFSM",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b10-p1-CFSM",
+      "block": 10,
+      "position": 1,
+      "trace_seed": 191,
+      "method": "CFSM",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b10-p2-Tabular-Q",
+      "block": 10,
+      "position": 2,
+      "trace_seed": 191,
+      "method": "Tabular-Q",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b10-p3-Static-MedRF",
+      "block": 10,
+      "position": 3,
+      "trace_seed": 191,
+      "method": "Static-MedRF",
+      "seconds": 500,
+      "rows": 50000
+    },
+    {
+      "run_id": "b10-p4-DQN",
+      "block": 10,
+      "position": 4,
+      "trace_seed": 191,
+      "method": "DQN",
+      "seconds": 500,
+      "rows": 50000
+    }
+  ]
+}

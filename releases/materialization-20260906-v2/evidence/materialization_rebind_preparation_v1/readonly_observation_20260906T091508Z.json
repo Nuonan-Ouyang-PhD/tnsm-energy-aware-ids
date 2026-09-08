@@ -1,0 +1,113 @@
+{
+  "observed_at_utc": "2026-09-06T09:15:00.119293+00:00",
+  "status": "preparation_only_actual_volume_and_probe_pending",
+  "authorization": {
+    "materialization": false,
+    "splitting": false,
+    "training": false
+  },
+  "output_root": null,
+  "staging_root": null,
+  "native_new_volume_probe": "NOT_RUN",
+  "minimum_free_bytes_required": 26745491380,
+  "output_hard_limit_bytes": 25671749556,
+  "real_csv_access": false,
+  "formal_output_or_staging_created": false,
+  "review": {
+    "path": "/Users/nuonanouyang/Downloads/MATERIALIZATION_EXECUTOR_V1R2_INDEPENDENT_REVIEW.zip",
+    "sha256": "0366bcb46caac7a0afef9fc3a3fd2de42cc38b6e6644cf35adb4a96305823576",
+    "bytes": 65432,
+    "entries": 24,
+    "manifest_sha256": "33e4b231b9261ea269b6df9f574469a14d6cc6161d0714db1badd185efd5b800",
+    "manifest_verified_files": 23,
+    "crc_paths_duplicates_symlinks_and_manifest": "PASS"
+  },
+  "baseline": {
+    "path": "/Users/nuonanouyang/Documents/ChatGPT/TNSM - 文章重构/MATERIALIZATION_EXECUTOR_EVIDENCE_V1R2.zip",
+    "sha256": "760163ee757620422d0eb013b8c7574015a01b40326021c21c891a097dfd29df",
+    "bytes": 134672,
+    "entries": 71,
+    "manifest_sha256": "ef9aa5b5a892d44a5d82b24e2cb7e048573855384ba9b5ae731f0f01e8d1e738",
+    "manifest_verified_files": 46,
+    "crc_paths_duplicates_symlinks_and_manifest": "PASS"
+  },
+  "git_head_observed_only": "8024d7150ee02ebd875c3feee77bc6898ac52533",
+  "git_worktree_status": "not established; broad status checks did not finish and were terminated",
+  "external_physical_listing": {
+    "AllDisks": [],
+    "AllDisksAndPartitions": [],
+    "VolumesFromDisks": [],
+    "WholeDisks": []
+  },
+  "mounted_volumes": [
+    {
+      "listed_path": "/Volumes/Macintosh HD",
+      "DeviceIdentifier": "disk3s1s1",
+      "MountPoint": "/",
+      "VolumeName": "Macintosh HD",
+      "VolumeUUID": "0ACF3D20-32A9-49C7-BF1F-76A2B9926AB9",
+      "DiskUUID": "0ACF3D20-32A9-49C7-BF1F-76A2B9926AB9",
+      "TotalSize": 245107195904,
+      "VolumeSize": 0,
+      "VolumeFreeSpace": null,
+      "FilesystemType": "apfs",
+      "BusProtocol": "Apple Fabric",
+      "VirtualOrPhysical": null,
+      "Internal": true,
+      "Writable": false,
+      "ReadOnlyVolume": null
+    },
+    {
+      "listed_path": "/Volumes/POWERZ",
+      "DeviceIdentifier": "disk5s1",
+      "MountPoint": "/Volumes/POWERZ",
+      "VolumeName": "POWERZ",
+      "VolumeUUID": "6DF56CA0-F8B1-4600-86D1-6318C7EFD83A",
+      "DiskUUID": "6DF56CA0-F8B1-4600-86D1-6318C7EFD83A",
+      "TotalSize": 209866752,
+      "VolumeSize": 0,
+      "VolumeFreeSpace": null,
+      "FilesystemType": "apfs",
+      "BusProtocol": "Disk Image",
+      "VirtualOrPhysical": null,
+      "Internal": false,
+      "Writable": false,
+      "ReadOnlyVolume": null
+    },
+    {
+      "listed_path": "/Volumes/TeleAgent 2.3.1-arm64",
+      "DeviceIdentifier": "disk6s1",
+      "MountPoint": "/Volumes/TeleAgent 2.3.1-arm64",
+      "VolumeName": "TeleAgent 2.3.1-arm64",
+      "VolumeUUID": "1B44B3DE-33D3-35E8-AC3D-DCCF1B0855C3",
+      "DiskUUID": "BB57A61B-4082-43B9-A2DB-62ED74F58D66",
+      "TotalSize": 886788096,
+      "VolumeSize": 886788096,
+      "VolumeFreeSpace": null,
+      "FilesystemType": "hfs",
+      "BusProtocol": "Disk Image",
+      "VirtualOrPhysical": null,
+      "Internal": false,
+      "Writable": false,
+      "ReadOnlyVolume": null
+    },
+    {
+      "listed_path": "/Volumes/TencentMeeting_0300000000_3.45.10.412.publish.arm64",
+      "DeviceIdentifier": "disk7s1",
+      "MountPoint": "/Volumes/TencentMeeting_0300000000_3.45.10.412.publish.arm64",
+      "VolumeName": "TencentMeeting_0300000000_3.45.10.412.publish.arm64",
+      "VolumeUUID": "9A4BBAC4-95F7-3080-A447-8FF830BA514C",
+      "DiskUUID": "405470BB-942E-459D-9122-1E86BE5787F2",
+      "TotalSize": 508076032,
+      "VolumeSize": 508076032,
+      "VolumeFreeSpace": null,
+      "FilesystemType": "hfs",
+      "BusProtocol": "Disk Image",
+      "VirtualOrPhysical": null,
+      "Internal": false,
+      "Writable": false,
+      "ReadOnlyVolume": null
+    }
+  ],
+  "new_volume_binding": "UNSET; no volume is automatically selected by this collector"
+}

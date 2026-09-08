@@ -1,0 +1,191 @@
+[PASS] required evidence exists: inputs/censuses/ton_iot_20260903T233742Z.json
+[PASS] SHA-256: inputs/censuses/ton_iot_20260903T233742Z.json: observed='128fe883208eef10cd2f41bf8c5ee73bf518cb61b5d95c86cff40214565edfa0' expected='128fe883208eef10cd2f41bf8c5ee73bf518cb61b5d95c86cff40214565edfa0'
+[PASS] required evidence exists: inputs/inventories/ciciot2023_20260903T142539Z.json
+[PASS] SHA-256: inputs/inventories/ciciot2023_20260903T142539Z.json: observed='d31472b21836eb5a5cfa9535e1f29d58c0a4a1f136586938172a3e77bbe2f45f' expected='d31472b21836eb5a5cfa9535e1f29d58c0a4a1f136586938172a3e77bbe2f45f'
+[PASS] required evidence exists: inputs/inventories/n_baiot_20260903T224404Z.json
+[PASS] SHA-256: inputs/inventories/n_baiot_20260903T224404Z.json: observed='9ffdf7e9245470fc4f066b8fb6d8ebae03e0194e7698e5fde87b13a7f2fe30da' expected='9ffdf7e9245470fc4f066b8fb6d8ebae03e0194e7698e5fde87b13a7f2fe30da'
+[PASS] required evidence exists: inputs/inventories/ton_iot_20260903T113048Z.json
+[PASS] SHA-256: inputs/inventories/ton_iot_20260903T113048Z.json: observed='66179d1ba2601ff3175e90cbfb4ed21d28c859b5780258d5e36dd8bb2303c55a' expected='66179d1ba2601ff3175e90cbfb4ed21d28c859b5780258d5e36dd8bb2303c55a'
+[PASS] required evidence exists: inputs/protocol/feature_policy.json
+[PASS] SHA-256: inputs/protocol/feature_policy.json: observed='e81a55c16f9439b0356295353e8b342de19d5c5606d868952592f913beda714b' expected='e81a55c16f9439b0356295353e8b342de19d5c5606d868952592f913beda714b'
+[PASS] required evidence exists: inputs/protocol/label_ontology.json
+[PASS] SHA-256: inputs/protocol/label_ontology.json: observed='8a055e2e34bc8d70f62909f52441915589c310659d6ce3e427a2704820926fab' expected='8a055e2e34bc8d70f62909f52441915589c310659d6ce3e427a2704820926fab'
+[PASS] required evidence exists: inputs/quality_exceptions/ciciot2023_20260903T142617Z.json
+[PASS] SHA-256: inputs/quality_exceptions/ciciot2023_20260903T142617Z.json: observed='36ef134ff6117867c51888749434f2d02efc59ec4ad6e93e94371f08d59e5bae' expected='36ef134ff6117867c51888749434f2d02efc59ec4ad6e93e94371f08d59e5bae'
+[PASS] required evidence exists: inputs/request/materialization_execution_request_v1.json
+[PASS] SHA-256: inputs/request/materialization_execution_request_v1.json: observed='fbfc84dbf700dc4fd8f98ad9e33887fb75eb67cf6a49d9524fa69acbbe38dfcb' expected='fbfc84dbf700dc4fd8f98ad9e33887fb75eb67cf6a49d9524fa69acbbe38dfcb'
+[PASS] required evidence exists: inputs/reviews/materialization_request_v1_independent_review.md
+[PASS] SHA-256: inputs/reviews/materialization_request_v1_independent_review.md: observed='5b0e12ce7d61ff485caf447f658542f187ea40bd7749a5d013ec88037f2ff823' expected='5b0e12ce7d61ff485caf447f658542f187ea40bd7749a5d013ec88037f2ff823'
+[PASS] required evidence exists: inputs/reviews/review_decision.json
+[PASS] SHA-256: inputs/reviews/review_decision.json: observed='112dc2436cb314fa0a434f2886eb188bf7a086ca3238c1adb4e4b72ea76c55a5' expected='112dc2436cb314fa0a434f2886eb188bf7a086ca3238c1adb4e4b72ea76c55a5'
+[PASS] required evidence exists: inputs/reviews/materialization_executor_v1_independent_review.md
+[PASS] SHA-256: inputs/reviews/materialization_executor_v1_independent_review.md: observed='f58d30f8e075bdbf2634661fd23aa8331ff4cf29aea9fbaba821eb2f1a8271bf' expected='f58d30f8e075bdbf2634661fd23aa8331ff4cf29aea9fbaba821eb2f1a8271bf'
+[PASS] required evidence exists: inputs/reviews/materialization_executor_v1_review_decision.json
+[PASS] SHA-256: inputs/reviews/materialization_executor_v1_review_decision.json: observed='f297365b77a4cc63ad20c7ea17e06860413891d1c303dde065ab9186d255ed4f' expected='f297365b77a4cc63ad20c7ea17e06860413891d1c303dde065ab9186d255ed4f'
+[PASS] required evidence exists: inputs/reviews/materialization_executor_v1_boundary_probe_results.json
+[PASS] SHA-256: inputs/reviews/materialization_executor_v1_boundary_probe_results.json: observed='4b6c60ad1bc0ae191a23034a207b41a0078e59ae58834d483e4cf433d7ed35f8' expected='4b6c60ad1bc0ae191a23034a207b41a0078e59ae58834d483e4cf433d7ed35f8'
+[PASS] required evidence exists: tests/fixtures/expected/cic_attack7_features.csv
+[PASS] SHA-256: tests/fixtures/expected/cic_attack7_features.csv: observed='a800aa56b22a2a3f1271534ad2dbb1c151c3b92bc5fb05ef4a6597978928288a' expected='a800aa56b22a2a3f1271534ad2dbb1c151c3b92bc5fb05ef4a6597978928288a'
+[PASS] required evidence exists: tests/fixtures/expected/cic_attack7_labels.csv
+[PASS] SHA-256: tests/fixtures/expected/cic_attack7_labels.csv: observed='67137481e074ac6e2c6363005420c50c190f34238e5e4aa953bf271325ced513' expected='67137481e074ac6e2c6363005420c50c190f34238e5e4aa953bf271325ced513'
+[PASS] required evidence exists: tests/fixtures/expected/cic_attack8_features.csv
+[PASS] SHA-256: tests/fixtures/expected/cic_attack8_features.csv: observed='4fc66f783e5189c4ef5897f3057e75c363b20195cf8e61ba3c41874aba1a402b' expected='4fc66f783e5189c4ef5897f3057e75c363b20195cf8e61ba3c41874aba1a402b'
+[PASS] required evidence exists: tests/fixtures/expected/cic_attack8_labels.csv
+[PASS] SHA-256: tests/fixtures/expected/cic_attack8_labels.csv: observed='67137481e074ac6e2c6363005420c50c190f34238e5e4aa953bf271325ced513' expected='67137481e074ac6e2c6363005420c50c190f34238e5e4aa953bf271325ced513'
+[PASS] required evidence exists: tests/fixtures/expected/cic_attack9_features.csv
+[PASS] SHA-256: tests/fixtures/expected/cic_attack9_features.csv: observed='19610f7fb6343434218f5bcbdad31fc1bd88e2bcb9f16ee4b4de58d9602eafd0' expected='19610f7fb6343434218f5bcbdad31fc1bd88e2bcb9f16ee4b4de58d9602eafd0'
+[PASS] required evidence exists: tests/fixtures/expected/cic_attack9_labels.csv
+[PASS] SHA-256: tests/fixtures/expected/cic_attack9_labels.csv: observed='67137481e074ac6e2c6363005420c50c190f34238e5e4aa953bf271325ced513' expected='67137481e074ac6e2c6363005420c50c190f34238e5e4aa953bf271325ced513'
+[PASS] required evidence exists: tests/fixtures/expected/cic_benign_features.csv
+[PASS] SHA-256: tests/fixtures/expected/cic_benign_features.csv: observed='4ba0599c16897f072326948f15a257b8110505e72f81dbe630a2f3a204c8563f' expected='4ba0599c16897f072326948f15a257b8110505e72f81dbe630a2f3a204c8563f'
+[PASS] required evidence exists: tests/fixtures/expected/cic_benign_labels.csv
+[PASS] SHA-256: tests/fixtures/expected/cic_benign_labels.csv: observed='7b7c335b0359da26429d0e109abfe95076fe8796740660cf4c1577952aa2fc3a' expected='7b7c335b0359da26429d0e109abfe95076fe8796740660cf4c1577952aa2fc3a'
+[PASS] required evidence exists: tests/fixtures/expected/nb_attack_features.csv
+[PASS] SHA-256: tests/fixtures/expected/nb_attack_features.csv: observed='b082ee2ee52aa30d711ec4477def54f6d1f8287123ed61b812a686d1a3828858' expected='b082ee2ee52aa30d711ec4477def54f6d1f8287123ed61b812a686d1a3828858'
+[PASS] required evidence exists: tests/fixtures/expected/nb_attack_labels.csv
+[PASS] SHA-256: tests/fixtures/expected/nb_attack_labels.csv: observed='0040bf3118efca6b6cc23c08883710ff5b1f0ab8c6dc399076c6a5cf13ef31f0' expected='0040bf3118efca6b6cc23c08883710ff5b1f0ab8c6dc399076c6a5cf13ef31f0'
+[PASS] required evidence exists: tests/fixtures/expected/nb_benign_features.csv
+[PASS] SHA-256: tests/fixtures/expected/nb_benign_features.csv: observed='578101e1759d4119502a00a762f6860e459a37ca77ffa4e2c99908bebcd2061a' expected='578101e1759d4119502a00a762f6860e459a37ca77ffa4e2c99908bebcd2061a'
+[PASS] required evidence exists: tests/fixtures/expected/nb_benign_labels.csv
+[PASS] SHA-256: tests/fixtures/expected/nb_benign_labels.csv: observed='0dcefaedea9007e3254f077fc7ba9d2d4d3f1fa54bfc341caefb860d5fd461b9' expected='0dcefaedea9007e3254f077fc7ba9d2d4d3f1fa54bfc341caefb860d5fd461b9'
+[PASS] required evidence exists: tests/fixtures/expected/ton_features.csv
+[PASS] SHA-256: tests/fixtures/expected/ton_features.csv: observed='e4298ce1d010f37227f11fe576c9277e3673985ddaf4ece9af446fb20592c3e5' expected='e4298ce1d010f37227f11fe576c9277e3673985ddaf4ece9af446fb20592c3e5'
+[PASS] required evidence exists: tests/fixtures/expected/ton_labels.csv
+[PASS] SHA-256: tests/fixtures/expected/ton_labels.csv: observed='028a5b63de6322d79fd33c2ef493d0bdc6967a905530fe6a0eae7862e3e43427' expected='028a5b63de6322d79fd33c2ef493d0bdc6967a905530fe6a0eae7862e3e43427'
+[PASS] required evidence exists: tests/fixtures/source/ciciot2023/CSV/Benign_Final/Benign_Final1.pcap.csv
+[PASS] SHA-256: tests/fixtures/source/ciciot2023/CSV/Benign_Final/Benign_Final1.pcap.csv: observed='4ba0599c16897f072326948f15a257b8110505e72f81dbe630a2f3a204c8563f' expected='4ba0599c16897f072326948f15a257b8110505e72f81dbe630a2f3a204c8563f'
+[PASS] required evidence exists: tests/fixtures/source/ciciot2023/CSV/DoS-UDP_Flood/DoS-UDP_Flood7.pcap.csv
+[PASS] SHA-256: tests/fixtures/source/ciciot2023/CSV/DoS-UDP_Flood/DoS-UDP_Flood7.pcap.csv: observed='9c9353cb814213e6b873c53f8097db9f9a1a1378992a052ce4ba9e0c234267c2' expected='9c9353cb814213e6b873c53f8097db9f9a1a1378992a052ce4ba9e0c234267c2'
+[PASS] required evidence exists: tests/fixtures/source/ciciot2023/CSV/DoS-UDP_Flood/DoS-UDP_Flood8.pcap.csv
+[PASS] SHA-256: tests/fixtures/source/ciciot2023/CSV/DoS-UDP_Flood/DoS-UDP_Flood8.pcap.csv: observed='a891d194679f8548b8909447a757dbcdc9f7ced449aabfc6d1e521dbfb6f6b25' expected='a891d194679f8548b8909447a757dbcdc9f7ced449aabfc6d1e521dbfb6f6b25'
+[PASS] required evidence exists: tests/fixtures/source/ciciot2023/CSV/DoS-UDP_Flood/DoS-UDP_Flood9.pcap.csv
+[PASS] SHA-256: tests/fixtures/source/ciciot2023/CSV/DoS-UDP_Flood/DoS-UDP_Flood9.pcap.csv: observed='6da3f0ef4b8da74594f9e103cacbd3bb846535b63248b3145ecfa76f711bbb48' expected='6da3f0ef4b8da74594f9e103cacbd3bb846535b63248b3145ecfa76f711bbb48'
+[PASS] required evidence exists: tests/fixtures/source/n_baiot/CamA/benign_traffic.csv
+[PASS] SHA-256: tests/fixtures/source/n_baiot/CamA/benign_traffic.csv: observed='578101e1759d4119502a00a762f6860e459a37ca77ffa4e2c99908bebcd2061a' expected='578101e1759d4119502a00a762f6860e459a37ca77ffa4e2c99908bebcd2061a'
+[PASS] required evidence exists: tests/fixtures/source/n_baiot/CamA/mirai_attacks_extracted/ack.csv
+[PASS] SHA-256: tests/fixtures/source/n_baiot/CamA/mirai_attacks_extracted/ack.csv: observed='b082ee2ee52aa30d711ec4477def54f6d1f8287123ed61b812a686d1a3828858' expected='b082ee2ee52aa30d711ec4477def54f6d1f8287123ed61b812a686d1a3828858'
+[PASS] required evidence exists: tests/fixtures/source/n_baiot/demonstrate_structure.csv
+[PASS] SHA-256: tests/fixtures/source/n_baiot/demonstrate_structure.csv: observed='337d624a545de1d388be6bedaa89fdaf161c1e804b7d4cf21dba6e27f3384cee' expected='337d624a545de1d388be6bedaa89fdaf161c1e804b7d4cf21dba6e27f3384cee'
+[PASS] required evidence exists: tests/fixtures/source/ton_iot/train_test_network.csv
+[PASS] SHA-256: tests/fixtures/source/ton_iot/train_test_network.csv: observed='32191373d2cdc80893e77351c2ca83071389adb86c0abda9ead5b51400586cd7' expected='32191373d2cdc80893e77351c2ca83071389adb86c0abda9ead5b51400586cd7'
+[PASS] JSON parses with duplicate-key rejection: contract/materialization_contract_v1r2.json
+[PASS] JSON parses with duplicate-key rejection: inputs/censuses/ton_iot_20260903T233742Z.json
+[PASS] JSON parses with duplicate-key rejection: inputs/inventories/ciciot2023_20260903T142539Z.json
+[PASS] JSON parses with duplicate-key rejection: inputs/inventories/n_baiot_20260903T224404Z.json
+[PASS] JSON parses with duplicate-key rejection: inputs/inventories/ton_iot_20260903T113048Z.json
+[PASS] JSON parses with duplicate-key rejection: inputs/protocol/feature_policy.json
+[PASS] JSON parses with duplicate-key rejection: inputs/protocol/label_ontology.json
+[PASS] JSON parses with duplicate-key rejection: inputs/quality_exceptions/ciciot2023_20260903T142617Z.json
+[PASS] JSON parses with duplicate-key rejection: inputs/request/materialization_execution_request_v1.json
+[PASS] JSON parses with duplicate-key rejection: inputs/reviews/materialization_executor_v1_boundary_probe_results.json
+[PASS] JSON parses with duplicate-key rejection: inputs/reviews/materialization_executor_v1_review_decision.json
+[PASS] JSON parses with duplicate-key rejection: inputs/reviews/review_decision.json
+[PASS] JSON parses with duplicate-key rejection: reports/test_summary.json
+[PASS] contract kind: observed='materialization_executor_contract' expected='materialization_executor_contract'
+[PASS] contract status: observed='implementation_complete_not_authorized' expected='implementation_complete_not_authorized'
+[PASS] single operation: observed='materialization' expected='materialization'
+[PASS] V1R2 contract identity: observed='MATERIALIZATION-EXECUTOR-20260906-V1R2-PROPOSED' expected='MATERIALIZATION-EXECUTOR-20260906-V1R2-PROPOSED'
+[PASS] contract does not authorize execution: observed=False expected=False
+[PASS] review does not authorize materialization: observed=False expected=False
+[PASS] review does not authorize splitting: observed=False expected=False
+[PASS] review does not authorize training: observed=False expected=False
+[PASS] V1 independent-review verdict retained: observed='REVISION_REQUIRED_BEFORE_EXECUTOR_ACCEPTANCE' expected='REVISION_REQUIRED_BEFORE_EXECUTOR_ACCEPTANCE'
+[PASS] exact E01-E04 revision scope: observed=['E01_runtime_contract_code_evidence_binding', 'E02_replay_storage_accounting', 'E03_all_input_validation_and_exact_no_LF_exceptions', 'E04_no_clobber_publish_and_staging_ownership'] expected=['E01_runtime_contract_code_evidence_binding', 'E02_replay_storage_accounting', 'E03_all_input_validation_and_exact_no_LF_exceptions', 'E04_no_clobber_publish_and_staging_ownership']
+[PASS] revision review grants no data operation: observed=(False, False, False) expected=(False, False, False)
+[PASS] feature policy stays frozen: observed='frozen' expected='frozen'
+[PASS] label ontology stays frozen: observed='frozen' expected='frozen'
+[PASS] baseline request_id binding: observed='MATERIALIZATION-20260906-V1-PROPOSED' expected='MATERIALIZATION-20260906-V1-PROPOSED'
+[PASS] accepted request ZIP binding: observed='55c3c6ee9d6e01fb764a650432b379ca41ca52b703dd33c9ec9cf17088271c63' expected='55c3c6ee9d6e01fb764a650432b379ca41ca52b703dd33c9ec9cf17088271c63'
+[PASS] accepted request JSON binding: observed='fbfc84dbf700dc4fd8f98ad9e33887fb75eb67cf6a49d9524fa69acbbe38dfcb' expected='fbfc84dbf700dc4fd8f98ad9e33887fb75eb67cf6a49d9524fa69acbbe38dfcb'
+[PASS] independent review ZIP binding: observed='f62cfc6173039df4383d0697756e6fa630e51dab69967c8c75eafa0fe1bf2838' expected='f62cfc6173039df4383d0697756e6fa630e51dab69967c8c75eafa0fe1bf2838'
+[PASS] independent review text binding: observed='5b0e12ce7d61ff485caf447f658542f187ea40bd7749a5d013ec88037f2ff823' expected='5b0e12ce7d61ff485caf447f658542f187ea40bd7749a5d013ec88037f2ff823'
+[PASS] executor V1 independent-review ZIP binding: observed=(36784, 'c43965bc93d3fee587c03fb0ae94690f6a4562946ed363e8519a178ebbcad361') expected=(36784, 'c43965bc93d3fee587c03fb0ae94690f6a4562946ed363e8519a178ebbcad361')
+[PASS] executor revision review text binding: observed='f58d30f8e075bdbf2634661fd23aa8331ff4cf29aea9fbaba821eb2f1a8271bf' expected='f58d30f8e075bdbf2634661fd23aa8331ff4cf29aea9fbaba821eb2f1a8271bf'
+[PASS] executor revision decision binding: observed='f297365b77a4cc63ad20c7ea17e06860413891d1c303dde065ab9186d255ed4f' expected='f297365b77a4cc63ad20c7ea17e06860413891d1c303dde065ab9186d255ed4f'
+[PASS] executor boundary results binding: observed='4b6c60ad1bc0ae191a23034a207b41a0078e59ae58834d483e4cf433d7ed35f8' expected='4b6c60ad1bc0ae191a23034a207b41a0078e59ae58834d483e4cf433d7ed35f8'
+[PASS] ton_iot contract/request inventory hash: observed='66179d1ba2601ff3175e90cbfb4ed21d28c859b5780258d5e36dd8bb2303c55a' expected='66179d1ba2601ff3175e90cbfb4ed21d28c859b5780258d5e36dd8bb2303c55a'
+[PASS] ton_iot contract/actual inventory hash: observed='66179d1ba2601ff3175e90cbfb4ed21d28c859b5780258d5e36dd8bb2303c55a' expected='66179d1ba2601ff3175e90cbfb4ed21d28c859b5780258d5e36dd8bb2303c55a'
+[PASS] ciciot2023 contract/request inventory hash: observed='d31472b21836eb5a5cfa9535e1f29d58c0a4a1f136586938172a3e77bbe2f45f' expected='d31472b21836eb5a5cfa9535e1f29d58c0a4a1f136586938172a3e77bbe2f45f'
+[PASS] ciciot2023 contract/actual inventory hash: observed='d31472b21836eb5a5cfa9535e1f29d58c0a4a1f136586938172a3e77bbe2f45f' expected='d31472b21836eb5a5cfa9535e1f29d58c0a4a1f136586938172a3e77bbe2f45f'
+[PASS] n_baiot contract/request inventory hash: observed='9ffdf7e9245470fc4f066b8fb6d8ebae03e0194e7698e5fde87b13a7f2fe30da' expected='9ffdf7e9245470fc4f066b8fb6d8ebae03e0194e7698e5fde87b13a7f2fe30da'
+[PASS] n_baiot contract/actual inventory hash: observed='9ffdf7e9245470fc4f066b8fb6d8ebae03e0194e7698e5fde87b13a7f2fe30da' expected='9ffdf7e9245470fc4f066b8fb6d8ebae03e0194e7698e5fde87b13a7f2fe30da'
+[PASS] feature-policy contract/request binding: observed='e81a55c16f9439b0356295353e8b342de19d5c5606d868952592f913beda714b' expected='e81a55c16f9439b0356295353e8b342de19d5c5606d868952592f913beda714b'
+[PASS] ontology contract/request binding: observed='8a055e2e34bc8d70f62909f52441915589c310659d6ce3e427a2704820926fab' expected='8a055e2e34bc8d70f62909f52441915589c310659d6ce3e427a2704820926fab'
+[PASS] output root absolute
+[PASS] staging root absolute
+[PASS] output and staging roots are distinct
+[PASS] output and staging roots share parent: observed=PosixPath('/Users/nuonanouyang/Documents/ChatGPT/TNSM-materialized/FEATURE-POLICY-20260905-V1-FROZEN') expected=PosixPath('/Users/nuonanouyang/Documents/ChatGPT/TNSM-materialized/FEATURE-POLICY-20260905-V1-FROZEN')
+[PASS] staging safe sibling name: observed='.MATERIALIZATION-20260906-V1.staging' expected='.MATERIALIZATION-20260906-V1.staging'
+[PASS] V1R2 retains baseline output root pending new-volume rebind: observed='/Users/nuonanouyang/Documents/ChatGPT/TNSM-materialized/FEATURE-POLICY-20260905-V1-FROZEN/MATERIALIZATION-20260906-V1' expected='/Users/nuonanouyang/Documents/ChatGPT/TNSM-materialized/FEATURE-POLICY-20260905-V1-FROZEN/MATERIALIZATION-20260906-V1'
+[PASS] V1R2 retains baseline staging root pending rebind: observed='/Users/nuonanouyang/Documents/ChatGPT/TNSM-materialized/FEATURE-POLICY-20260905-V1-FROZEN/.MATERIALIZATION-20260906-V1.staging' expected='/Users/nuonanouyang/Documents/ChatGPT/TNSM-materialized/FEATURE-POLICY-20260905-V1-FROZEN/.MATERIALIZATION-20260906-V1.staging'
+[PASS] new-volume path is explicitly pending rebind
+[PASS] publication uses explicit atomic no-clobber primitive
+[PASS] no-clobber publication has no replacement fallback
+[PASS] unsupported target filesystem fails closed
+[PASS] approved evidence archive root: observed='materialization_executor_evidence_v1r2' expected='materialization_executor_evidence_v1r2'
+[PASS] runtime contract member binding: observed='contract/materialization_contract_v1r2.json' expected='contract/materialization_contract_v1r2.json'
+[PASS] runtime executor member binding: observed='scripts/materialize_dataset_native_v1r2.py' expected='scripts/materialize_dataset_native_v1r2.py'
+[PASS] complete runtime local-file binding: observed={'scripts/materialize_dataset_native_v1r2.py', 'inputs/inventories/n_baiot_20260903T224404Z.json', 'inputs/protocol/feature_policy.json', 'contract/materialization_contract_v1r2.json', 'inputs/censuses/ton_iot_20260903T233742Z.json', 'inputs/inventories/ton_iot_20260903T113048Z.json', 'inputs/protocol/label_ontology.json', 'inputs/request/materialization_execution_request_v1.json', 'inputs/inventories/ciciot2023_20260903T142539Z.json', 'inputs/quality_exceptions/ciciot2023_20260903T142617Z.json'} expected={'scripts/materialize_dataset_native_v1r2.py', 'inputs/inventories/n_baiot_20260903T224404Z.json', 'inputs/inventories/ciciot2023_20260903T142539Z.json', 'inputs/protocol/feature_policy.json', 'contract/materialization_contract_v1r2.json', 'inputs/inventories/ton_iot_20260903T113048Z.json', 'inputs/protocol/label_ontology.json', 'inputs/request/materialization_execution_request_v1.json', 'inputs/censuses/ton_iot_20260903T233742Z.json', 'inputs/quality_exceptions/ciciot2023_20260903T142617Z.json'}
+[PASS] no unbound local runtime dependency: observed='none; executor imports only the Python standard library' expected='none; executor imports only the Python standard library'
+[PASS] contract/code/input binding precedes source access
+[PASS] authorization records explicit runtime evidence hashes
+[PASS] source CSV record boundary is explicit: observed='one physical line is one CSV record; normal records are LF-terminated' expected='one physical line is one CSV record; normal records are LF-terminated'
+[PASS] quoted multiline source records fail closed
+[PASS] source header LF requirement is explicit: observed='required without exception' expected='required without exception'
+[PASS] only three fully bound CIC final rows may omit LF
+[PASS] unregistered missing LF fails before staging
+[PASS] automatic pathname deletion is forbidden
+[PASS] owned failed staging is retained and reported
+[PASS] foreign replacement is preserved
+[PASS] authorization schema is materialization-only: observed={'materialization': True, 'splitting': False, 'training': False, 'encoder_fitting': False, 'model_fitting': False} expected={'materialization': True, 'splitting': False, 'training': False, 'encoder_fitting': False, 'model_fitting': False}
+[PASS] complete label sidecar header: observed=['binary_label', 'canonical_family', 'source_family', 'source_subtype'] expected=['binary_label', 'canonical_family', 'source_family', 'source_subtype']
+[PASS] frozen binary label strings: observed=['benign', 'attack'] expected=['benign', 'attack']
+[PASS] TON binary rule direct assertion: observed={'0': 'benign', '1': 'attack'} expected={'0': 'benign', '1': 'attack'}
+[PASS] TON source_family empty CSV cell: observed='' expected=''
+[PASS] CIC source_family empty CSV cell: observed='' expected=''
+[PASS] TON unavailable JSON metadata is null: observed={'device_id': None, 'capture_id': None} expected={'device_id': None, 'capture_id': None}
+[PASS] CIC unavailable device_id is null: observed=None expected=None
+[PASS] N-BaIoT capture JSON type: observed='array' expected='array'
+[PASS] N-BaIoT capture array length: observed=3 expected=3
+[PASS] N-BaIoT capture array order: observed=['device_id', 'source_family', 'source_subtype'] expected=['device_id', 'source_family', 'source_subtype']
+[PASS] per-dataset ordinals: observed='restart independently for each dataset' expected='restart independently for each dataset'
+[PASS] one-based ordinals: observed=1 expected=1
+[PASS] ordinal formatting: observed='four decimal digits, zero padded' expected='four decimal digits, zero padded'
+[PASS] zero-row file excluded only after complete preflight
+[PASS] all inventoried files receive identity preflight
+[PASS] UTF-8 bytewise source ordering: observed='ascending lexicographic order of relative_path encoded as UTF-8 bytes' expected='ascending lexicographic order of relative_path encoded as UTF-8 bytes'
+[PASS] canonical CSV serialization: observed=('UTF-8', False, 'LF', 'minimal', True) expected=('UTF-8', False, 'LF', 'minimal', True)
+[PASS] empty CSV representation: observed='zero bytes between delimiters' expected='zero bytes between delimiters'
+[PASS] canonical JSON/JSONL serialization: observed=('UTF-8', False, False, [',', ':'], True) expected=('UTF-8', False, False, [',', ':'], True)
+[PASS] excluded-row schema exact fields: observed=['physical_line', 'source_row', 'raw_line_bytes', 'raw_line_sha256', 'observed_column_count', 'expected_column_count'] expected=['physical_line', 'source_row', 'raw_line_bytes', 'raw_line_sha256', 'observed_column_count', 'expected_column_count']
+[PASS] excluded source-row rule: observed='physical_line - 1 because the header is physical line 1' expected='physical_line - 1 because the header is physical line 1'
+[PASS] ledger schema exact fields: observed=['schema_version', 'dataset_id', 'shard_ordinal', 'shard_id', 'source_file', 'source_file_sha256', 'source_file_bytes', 'source_header_sha256', 'source_rows_inventoried', 'source_rows_excluded', 'source_rows_accepted', 'excluded_rows', 'device_id', 'capture_id', 'features_file', 'features_sha256', 'features_bytes', 'labels_file', 'labels_sha256', 'labels_bytes'] expected=['schema_version', 'dataset_id', 'shard_ordinal', 'shard_id', 'source_file', 'source_file_sha256', 'source_file_bytes', 'source_header_sha256', 'source_rows_inventoried', 'source_rows_excluded', 'source_rows_accepted', 'excluded_rows', 'device_id', 'capture_id', 'features_file', 'features_sha256', 'features_bytes', 'labels_file', 'labels_sha256', 'labels_bytes']
+[PASS] dataset manifest exact fields: observed=['schema_version', 'contract_id', 'dataset_id', 'shard_count', 'source_files_inventoried', 'source_rows_inventoried', 'source_rows_excluded', 'rows_materialized', 'feature_count', 'feature_columns', 'label_columns', 'features_total_bytes', 'labels_total_bytes', 'ledger_file', 'ledger_sha256', 'ledger_bytes'] expected=['schema_version', 'contract_id', 'dataset_id', 'shard_count', 'source_files_inventoried', 'source_rows_inventoried', 'source_rows_excluded', 'rows_materialized', 'feature_count', 'feature_columns', 'label_columns', 'features_total_bytes', 'labels_total_bytes', 'ledger_file', 'ledger_sha256', 'ledger_bytes']
+[PASS] root manifest self-exclusion: observed=False expected=False
+[PASS] root manifest exact coverage rule
+[PASS] acyclic hash dependency order: observed=['feature and label files', 'shard ledger', 'dataset manifest', 'run_identity.json', 'root MANIFEST'] expected=['feature and label files', 'shard ledger', 'dataset manifest', 'run_identity.json', 'root MANIFEST']
+[PASS] TON source/output feature counts: observed=(44, 32) expected=(44, 32)
+[PASS] TON exact frozen exclusions plus dropped ports: observed={'ssl_issuer', 'dst_port', 'label', 'http_user_agent', 'ssl_subject', 'http_uri', 'type', 'weird_addl', 'src_ip', 'dns_query', 'dst_ip', 'src_port'} expected={'ssl_issuer', 'dst_port', 'label', 'http_user_agent', 'ssl_subject', 'http_uri', 'type', 'weird_addl', 'src_ip', 'dns_query', 'dst_ip', 'src_port'}
+[PASS] CIC/N native feature counts: observed=(39, 39, 115, 115) expected=(39, 39, 115, 115)
+[PASS] real expected aggregate counts: observed=(400, 399, 399, 54050349, 3, 54050346) expected=(400, 399, 399, 54050349, 3, 54050346)
+[PASS] TON benign count: observed=50000 expected=50000
+[PASS] CIC accepted attack count: observed=45678506 expected=45678506
+[PASS] N-BaIoT attack count: observed=6506674 expected=6506674
+[PASS] inventories independently reconcile: observed=(400, 54050349, 17114499704) expected=(400, 54050349, 17114499704)
+[PASS] exact frozen exception count: observed=3 expected=3
+[PASS] all frozen exceptions are non-LF final rows: observed=[False, False, False] expected=[False, False, False]
+[PASS] hard output cap arithmetic: observed=25671749556 expected=25671749556
+[PASS] minimum free-space arithmetic: observed=26745491380 expected=26745491380
+[PASS] known internal location remains blocked: observed=False expected=False
+[PASS] all bundled CSVs are declared synthetic fixtures
+[PASS] exact synthetic CSV fixture count: observed=22 expected=22
+[PASS] no execution authorization record bundled
+[PASS] replay is hash-only and creates no replay directory
+[PASS] executor has no pathname recursive cleanup or replacing publish
+[PASS] Darwin atomic no-clobber implementation present
+[PASS] runtime evidence ZIP binding implementation present
+[PASS] executor accepts the exact contract shape
+SUMMARY 187/187 checks passed
+authorization_granted = false
+real_csvs_opened      = false
+real_output_created   = false

@@ -1,0 +1,12 @@
+{
+  "time": "2026-09-06T11:33:54.905364+00:00",
+  "approved_archives": {
+    "MATERIALIZATION_FINAL_REQUEST_V1.zip": "b123293dfe331d59393688d07c799c1fdb42f0df2367ef919c2f949843bff655",
+    "MATERIALIZATION_EXECUTOR_EVIDENCE_V1R3.zip": "6701586ac840ddf8d3d13b8c39b5e2aca600d83cd27d415d473bbadb6e67569e",
+    "MATERIALIZATION_EXECUTION_REQUEST_V1.zip": "55c3c6ee9d6e01fb764a650432b379ca41ca52b703dd33c9ec9cf17088271c63"
+  },
+  "decisions_before_sha256": "9e906760cfea76abceac536291ad75a9666643feae544e054b5dbbb98400dd1d",
+  "decisions_before_bytes": 70443,
+  "review_zip_sha256": "963847b182ec9b7d28e731abc2f1f920269e10b72ad0ea59edb31b89db9e5663",
+  "executor_path": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - 文章重构/materialization_executor_evidence_v1r3/scripts/materialize_dataset_native_v1r2.py"
+}

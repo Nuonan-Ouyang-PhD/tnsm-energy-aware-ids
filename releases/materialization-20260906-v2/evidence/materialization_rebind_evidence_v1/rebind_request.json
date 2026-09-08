@@ -1,0 +1,48 @@
+{
+  "kind": "output_volume_rebind_candidate",
+  "status": "pending_independent_review_and_user_authorization",
+  "baseline_zip_sha256": "760163ee757620422d0eb013b8c7574015a01b40326021c21c891a097dfd29df",
+  "accepted_review_zip_sha256": "0366bcb46caac7a0afef9fc3a3fd2de42cc38b6e6644cf35adb4a96305823576",
+  "contract_id": "MATERIALIZATION-EXECUTOR-20260906-V1R2-REBIND1-PROPOSED",
+  "contract_sha256": "992790a6953e445cce444b4532d9d45995f5bea4fb9788b3c4b9e910691a0332",
+  "executor_sha256": "ac9992005047bda7431abccafe8698d5b3b890efbf218605841730a5613b1c2c",
+  "evidence_archive_root": "materialization_rebind_evidence_v1",
+  "request_zip_sha256": "55c3c6ee9d6e01fb764a650432b379ca41ca52b703dd33c9ec9cf17088271c63",
+  "volume_uuid": "FBCBD1E6-330C-452B-AD79-EF7F74B6464B",
+  "mount_point": "/Volumes/RESEARCH_DATA",
+  "observed_at_utc": "2026-09-06T09:43:35.138384+00:00",
+  "volume_device": "disk9s1",
+  "physical_devices": [
+    "disk8"
+  ],
+  "filesystem": "apfs",
+  "encryption": true,
+  "writable": true,
+  "available_bytes_observed": 990744924160,
+  "volume_capacity_bytes": 1023999787008,
+  "minimum_free_bytes": 26745491380,
+  "output_hard_cap_bytes": 25671749556,
+  "output_root": "/Volumes/RESEARCH_DATA/TNSM-MATERIALIZATION-20260906-V1",
+  "staging_root": "/Volumes/RESEARCH_DATA/.TNSM-MATERIALIZATION-20260906-V1.staging",
+  "same_parent": true,
+  "parent_device": 16777248,
+  "parent_inode": 2,
+  "output_and_staging_absent_at_preparation": true,
+  "same_filesystem_scope": "both planned siblings resolve to the same existing parent; neither directory created",
+  "probe_report_sha256": "f47e58357d703c10206b65dfc50210aa32c668cdb22fcc2599df61ad0854c700",
+  "authorization_granted": false,
+  "authorized_operations_now": {
+    "materialization": false,
+    "splitting": false,
+    "training": false
+  },
+  "future_requested_operation_only": "materialization",
+  "source_binding_status": "frozen metadata unchanged; real source paths/CSVs not inspected; any source relocation requires an additional explicit reviewed source binding",
+  "before_execution": [
+    "independent rebind review accepted",
+    "verify mounted volume UUID and physical backing again; volatile disk numbers are observations, not persistent identity",
+    "repeat current free-space and output/staging absence checks",
+    "confirm exact separately authorized source roots without inferring them from this output-only rebind",
+    "explicit user materialization authorization bound to this final ZIP, manifest, contract, executor, request and output path and appended in DECISIONS.md"
+  ]
+}

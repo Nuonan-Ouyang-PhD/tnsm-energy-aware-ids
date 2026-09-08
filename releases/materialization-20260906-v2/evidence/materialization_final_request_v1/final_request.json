@@ -1,0 +1,69 @@
+{
+  "kind": "materialization_only_final_execution_request",
+  "status": "source_metadata_complete_pending_explicit_user_authorization",
+  "authorized_by_user": false,
+  "authorization_granted": false,
+  "authorization_id": null,
+  "contract_id": "MATERIALIZATION-EXECUTOR-20260906-V1R2-REBIND1-PROPOSED",
+  "request_zip_sha256": "55c3c6ee9d6e01fb764a650432b379ca41ca52b703dd33c9ec9cf17088271c63",
+  "executor_evidence_zip_sha256": "509074b8e52786118a5b338f8e9f1b86606b999508bd9273465280d01e76223e",
+  "evidence_archive_root": "materialization_rebind_evidence_v1",
+  "evidence_manifest_sha256": "db7f28d61e52cd656c7dea2d73a55fd0c35413243c103b2ac44f721b987f33a1",
+  "contract_sha256": "992790a6953e445cce444b4532d9d45995f5bea4fb9788b3c4b9e910691a0332",
+  "executor_sha256": "ac9992005047bda7431abccafe8698d5b3b890efbf218605841730a5613b1c2c",
+  "rebind_independent_review": {
+    "file": "MATERIALIZATION_REBIND_V1_INDEPENDENT_REVIEW.zip",
+    "sha256": "9fbf01f7c383bc4f9496e86a4c5411a3a00f3937a2d66d267e84474385b21dac",
+    "decision": "PASS; output rebind and native probe prerequisite accepted"
+  },
+  "source_roots": {
+    "ton_iot": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Downloads/tnsm-energy-aware-ids/datasets/incoming/ton_iot",
+    "ciciot2023": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Downloads/tnsm-energy-aware-ids/datasets/extracted/ciciot2023",
+    "n_baiot": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Downloads/tnsm-energy-aware-ids/datasets/extracted/n_baiot"
+  },
+  "source_migration_status": "existing logs report MOVED_VERIFIED_ORIGINAL_PATH_LINKED and final PASS; current 400 paths and stat sizes independently match",
+  "volume_uuid": "FBCBD1E6-330C-452B-AD79-EF7F74B6464B",
+  "output_root": "/Volumes/RESEARCH_DATA/TNSM-MATERIALIZATION-20260906-V1",
+  "staging_root": "/Volumes/RESEARCH_DATA/.TNSM-MATERIALIZATION-20260906-V1.staging",
+  "proposed_operations_if_separately_approved": {
+    "materialization": true,
+    "splitting": false,
+    "training": false,
+    "encoder_fitting": false,
+    "model_fitting": false
+  },
+  "operations_authorized_now": {
+    "materialization": false,
+    "splitting": false,
+    "training": false,
+    "encoder_fitting": false,
+    "model_fitting": false
+  },
+  "minimum_free_bytes": 26745491380,
+  "hard_output_cap_bytes": 25671749556,
+  "scratch_reserve_bytes": 1073741824,
+  "expected_inventoried_files": 400,
+  "expected_output_shards": 399,
+  "expected_output_rows": 54050346,
+  "registered_excluded_rows": 3,
+  "failure_policy": "refuse publication, preserve and report staging or foreign replacement, no automatic deletion or retry",
+  "real_csv_access_during_preparation": false,
+  "formal_output_or_staging_created": false,
+  "source_metadata_report_sha256": "5fcdc3c7067051be3c79f81f209ebc98df8593882a07a4a852e791faec032443",
+  "current_source_content_verification": "not performed; all 400 hashes/headers/row counts remain execution preflight",
+  "volume_observation": {
+    "volume_uuid": "FBCBD1E6-330C-452B-AD79-EF7F74B6464B",
+    "mount_point": "/Volumes/RESEARCH_DATA",
+    "filesystem": "apfs",
+    "writable": true,
+    "locked": false,
+    "available_bytes": 890136494080,
+    "formal_paths_absent": true,
+    "source_root_devices": {
+      "ton_iot": 16777248,
+      "ciciot2023": 16777248,
+      "n_baiot": 16777248
+    },
+    "output_parent_device": 16777248
+  }
+}

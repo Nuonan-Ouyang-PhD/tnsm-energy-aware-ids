@@ -1,0 +1,29 @@
+{
+  "started_at": "2026-09-06T11:34:14.668095+00:00",
+  "pid": 47339,
+  "command": [
+    "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "-B",
+    "-u",
+    "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - 文章重构/materialization_executor_evidence_v1r3/scripts/materialize_dataset_native_v1r2.py",
+    "--contract",
+    "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - 文章重构/materialization_executor_evidence_v1r3/contract/materialization_contract_v1r2.json",
+    "--execute",
+    "--authorization-record",
+    "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - 文章重构/materialization_run_v2/authorization.json",
+    "--request-zip",
+    "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - 文章重构/MATERIALIZATION_EXECUTION_REQUEST_V1.zip",
+    "--executor-evidence-zip",
+    "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - 文章重构/MATERIALIZATION_EXECUTOR_EVIDENCE_V1R3.zip",
+    "--decisions",
+    "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Downloads/tnsm-energy-aware-ids/docs/DECISIONS.md",
+    "--ton-root",
+    "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Downloads/tnsm-energy-aware-ids/datasets/incoming/ton_iot",
+    "--cic-root",
+    "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Downloads/tnsm-energy-aware-ids/datasets/extracted/ciciot2023",
+    "--nb-root",
+    "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Downloads/tnsm-energy-aware-ids/datasets/extracted/n_baiot"
+  ],
+  "sleep_prevention": "caffeinate -i",
+  "automatic_retry": false
+}

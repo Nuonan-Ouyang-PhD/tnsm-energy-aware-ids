@@ -1,0 +1,12 @@
+test_exact_package_passes_without_mutation (materialization_execution_request_v1.tests.test_materialization_request.MaterializationRequestVerifierTests) ... ok
+test_rejects_authorization_flip (materialization_execution_request_v1.tests.test_materialization_request.MaterializationRequestVerifierTests) ... ok
+test_rejects_cic_inventory_mutation (materialization_execution_request_v1.tests.test_materialization_request.MaterializationRequestVerifierTests) ... ok
+test_rejects_frozen_policy_mutation (materialization_execution_request_v1.tests.test_materialization_request.MaterializationRequestVerifierTests) ... ok
+test_rejects_quality_exception_mutation (materialization_execution_request_v1.tests.test_materialization_request.MaterializationRequestVerifierTests) ... ok
+test_rejects_raw_csv_in_request_package (materialization_execution_request_v1.tests.test_materialization_request.MaterializationRequestVerifierTests) ... ok
+test_rejects_splitting_scope (materialization_execution_request_v1.tests.test_materialization_request.MaterializationRequestVerifierTests) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.529s
+
+OK

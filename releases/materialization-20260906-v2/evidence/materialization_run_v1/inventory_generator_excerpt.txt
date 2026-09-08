@@ -1,0 +1,67 @@
+Source: /Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Downloads/tnsm-energy-aware-ids/src/tnsm_exp/dataset_registry.py
+SHA256: 05a9eac5f52686cefb2f6f0b0dbf34205af2cf46876bb4ba94688210aa38fa1e
+126:     if output_path.exists():
+127:         raise FileExistsError(f"Refusing to overwrite acquisition evidence: {output_path}")
+128:     write_json(output_path, result)
+129:     return output_path, result
+130: 
+131: 
+132: def open_csv_text(path: Path) -> TextIO:
+133:     if path.name.lower().endswith(".csv.gz"):
+134:         return gzip.open(path, mode="rt", encoding="utf-8-sig", newline="")
+135:     return path.open(mode="r", encoding="utf-8-sig", newline="")
+136: 
+137: 
+138: def csv_paths(input_path: Path) -> Iterator[Path]:
+139:     files, _ = iter_files(input_path)
+140:     for path in files:
+141:         lower = path.name.lower()
+142:         if lower.endswith(".csv") or lower.endswith(".csv.gz"):
+143:             yield path
+144: 
+145: 
+146: def inventory_csv_tree(
+147:     repo_root: Path,
+148:     dataset_id: str,
+149:     input_path: Path,
+150:     output_path: Path | None = None,
+151: ) -> tuple[Path, dict[str, Any]]:
+152:     input_path = input_path.resolve()
+153:     require_clean_worktree(repo_root)
+154:     metadata = validate_dataset_id(repo_root, dataset_id)
+155:     paths = list(csv_paths(input_path))
+156:     if not paths:
+157:         raise ValueError(f"No CSV or CSV.GZ files found under {input_path}")
+158:     records = []
+159:     for path in paths:
+160:         with open_csv_text(path) as handle:
+161:             reader = csv.reader(handle)
+162:             try:
+163:                 header = next(reader)
+164:             except StopIteration as exc:
+165:                 raise ValueError(f"CSV has no header: {path}") from exc
+166:             if not header or any(not name.strip() for name in header):
+167:                 raise ValueError(f"CSV has an empty column name: {path}")
+168:             if len(set(header)) != len(header):
+169:                 raise ValueError(f"CSV has duplicate column names: {path}")
+170:             row_count = 0
+171:             malformed_rows = 0
+172:             for row in reader:
+173:                 if not row:
+174:                     continue
+175:                 row_count += 1
+176:                 if len(row) != len(header):
+177:                     malformed_rows += 1
+178:         records.append(
+179:             {
+180:                 "relative_path": relative_name(path, input_path),
+181:                 "bytes": path.stat().st_size,
+182:                 "sha256": sha256_file(path),
+183:                 "row_count": row_count,
+184:                 "column_count": len(header),
+185:                 "columns": header,
+186:                 "header_sha256": hashlib.sha256("\x1f".join(header).encode()).hexdigest(),
+187:                 "malformed_rows": malformed_rows,
+188:             }
+189:         )
+190:     result = {

@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "scope": "policy train/validation preparation only; held-out test files not opened",
+  "classifier_threshold": 0.5,
+  "split_seed_unchanged": 11,
+  "train_trace_seeds": [
+    211,
+    223,
+    227,
+    229,
+    233,
+    239,
+    241,
+    251,
+    257,
+    263
+  ],
+  "validation_trace_seeds": [
+    401,
+    409,
+    419,
+    421,
+    431
+  ],
+  "rows_per_trace": 50000,
+  "source_sha256": {
+    "tnsm_experiments_v1/results/ton_iot/train_X.npy": "730280af6272cc766b53ce5b5cf92e6cfc218679a7a9782124540c51961c985c",
+    "tnsm_experiments_v1/results/ton_iot/train_pool.npz": "c87ebdab8ad1ba818702c5bc31d7b3f13b6921c3b3d97510a9f243dbfe351e2c",
+    "tnsm_experiments_v1/results/ton_iot/validation_predictions.npz": "a153c8b1823668569d88d4e7c822d9f31a438b89836a9b32d9403d4d6cef1b36",
+    "tnsm_experiments_v1/results/ton_iot/TinyDT.joblib": "9941090e54203557d63b2f6117622bcba3535019796f7dfefb955293d085c2f2",
+    "tnsm_experiments_v1/results/ton_iot/LightLR.joblib": "a6cafb1426058f0268dd9da065fa3848b95c0a5531b3ec5c1b65987e5ca5268f",
+    "tnsm_experiments_v1/results/ton_iot/MedRF.joblib": "35bc9b8674c5ae3b7c163ab29d7fd3d3abfe61dfaa1d26323530f9d14a2b2688",
+    "tnsm_experiments_v1/results/ton_iot/HeavyMLP.pt": "2999008343be15af0374bc647af6764e010bebc841b953b0307a10ebbc26b8a0",
+    "tnsm_experiments_v1/results/ton_iot/preprocessor.joblib": "473ccd54d23827da468f02c12e8766e8c7c795f11d04435477fc662f6f0e1c47",
+    "tnsm_experiments_v1/results/ton_iot/split_manifest.json": "54dc18ddc4d857c7c625ad9d3a3fa24fb575a3749d16860f42f4424c84d7e2b3"
+  },
+  "output_sha256": {
+    "ton_iot_train_predictions.npz": "7b0eade2a24e92f1b6030c1e7dde6b53ad6d7d5a7e856cd5e48a9fa98b473401",
+    "train_drift_211.npz": "a0efce2a8ce64c56c4d5a5c61d2f8ec50d46f78166263e91481fde7d7497b2ef",
+    "train_drift_223.npz": "a38a9d371fec014b0c27beb585a926633d486d04ab997dc9f42d3f0e85c5d629",
+    "train_drift_227.npz": "e635213e0cf9799b13f6a5d5916fcdcfdf5a1b3f5b98cc05338a84bec6bfe3db",
+    "train_drift_229.npz": "6c5b0ac5d475c9056103638ab6832c5290057a91ad76398ba0e06db43737ccb5",
+    "train_drift_233.npz": "fbe987cc242c17a729462c2f46a84359160ccd8273058555a2743d2a71d82401",
+    "train_drift_239.npz": "9cbf92780cbed608c09a430228af70dfe4c06a6fb28527f348c74e4e9df06f71",
+    "train_drift_241.npz": "1ac4283abbdab0439398fee30b4ed701fa26bb0dc98b97bc52a7264df9e892f8",
+    "train_drift_251.npz": "74be32dd4cf61a7326237014fed7b482f629d675323a89217ef1a309180ab8cb",
+    "train_drift_257.npz": "f5eea3807a2df8c0eab562367af3e248540c1e88b99c991e29d8f400fb6fb37d",
+    "train_drift_263.npz": "c3b81e495653db9d4e4d5ad37e1bf95a6d7c20532153e7efbfd9c3108f0fd6ca",
+    "validation_drift_401.npz": "0107b688f953ffc7c6e2ddba5118e5d47f72f51c951e9ff49984353ef0b88352",
+    "validation_drift_409.npz": "68281e67d5e2d7553540545388e7dc3d425911180f2f237405c2003aefc5310f",
+    "validation_drift_419.npz": "98ccee5e0eb2eb2fde96777a9afc473ae90ccee6a994fb49e03d39de30de5ab7",
+    "validation_drift_421.npz": "830b77354cd737e225503fc4f6f52218d7f4e161d5838899001c8cdce54a7bd4",
+    "validation_drift_431.npz": "7a0206e9be2ec6b3d8d25ec58fa6e372c6af852852a7f71a66e5e6d7cd45bb3e"
+  },
+  "phase_id_capability": "stored only for post-hoc diagnostics; forbidden to policy state"
+}

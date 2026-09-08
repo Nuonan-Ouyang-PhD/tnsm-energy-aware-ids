@@ -1,0 +1,57 @@
+{
+  "created_at_utc": "2026-09-03T14:26:17.847Z",
+  "dataset_id": "ciciot2023",
+  "display_name": "CICIoT2023",
+  "exception_count": 3,
+  "exceptions": [
+    {
+      "ends_with_newline": false,
+      "expected_column_count": 39,
+      "file_bytes": 35696059,
+      "file_sha256": "a7a073e44053713b18938cfad4a8bf762be774a1f5331dad1c0e7bba7e8628bd",
+      "first_40_bytes_hex": "382e302c31372c36342e302c31353235332e3132333836333535333731342c302e302c302e302c30",
+      "is_last_line": true,
+      "logical_row_count_in_file": 175920,
+      "observed_column_count_line_scan": 33,
+      "physical_line": 175921,
+      "raw_line_bytes": 138,
+      "raw_line_sha256": "d205eeff932f4ed7a8813160f40756c8a00eb8bf40dc63611e7fc925b84f27fc",
+      "relative_path": "CSV/DoS-UDP_Flood/DoS-UDP_Flood7.pcap.csv"
+    },
+    {
+      "ends_with_newline": false,
+      "expected_column_count": 39,
+      "file_bytes": 32624109,
+      "file_sha256": "8e24fee423564aa9622c12f6380570cb2c14331d3fcd703d9dfca102b3e7f7e1",
+      "first_40_bytes_hex": "382e31362c31372c37312e302c31343630392e3230393333343732363537362c302e302c302e3031",
+      "is_last_line": true,
+      "logical_row_count_in_file": 160835,
+      "observed_column_count_line_scan": 35,
+      "physical_line": 160836,
+      "raw_line_bytes": 172,
+      "raw_line_sha256": "97945d2b6270a44a5fb79e5e15c96469114120c75e45a637e9ad72e9f28c0eb9",
+      "relative_path": "CSV/DoS-UDP_Flood/DoS-UDP_Flood8.pcap.csv"
+    },
+    {
+      "ends_with_newline": false,
+      "expected_column_count": 39,
+      "file_bytes": 25251429,
+      "file_sha256": "eefba41ed734d8829e07a32e7189d77a11427f47b1b9653f94b1263cfbd42638",
+      "first_40_bytes_hex": "382e302c31372c36342e302c393830382e333639",
+      "is_last_line": true,
+      "logical_row_count_in_file": 125552,
+      "observed_column_count_line_scan": 4,
+      "physical_line": 125553,
+      "raw_line_bytes": 20,
+      "raw_line_sha256": "1b7a12fee37407fdad70db76484dd073fdf203be6495d14fde396d1c79e30232",
+      "relative_path": "CSV/DoS-UDP_Flood/DoS-UDP_Flood9.pcap.csv"
+    }
+  ],
+  "files_scanned": 309,
+  "input_name": "ciciot2023",
+  "kind": "dataset_quality_exceptions",
+  "paper_eligible": false,
+  "policy": "Malformed raw lines are kept unchanged in the official dataset files; they are excluded deterministically by their registered relative_path and physical_line during preprocessing.",
+  "schema_version": 1,
+  "source_commit": "b57df93cd268f01945cb560cbc72ac78213af692"
+}

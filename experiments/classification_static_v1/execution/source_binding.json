@@ -1,0 +1,10 @@
+{
+  "source_hashes": {
+    "test_classification_campaign.py": "2dc8a26a37083203878d1c32dc46d429aa8f1fa09fedd06d5bc3ddbedcc4c5af",
+    "classification_campaign.py": "bda1351be088086f6b3130e321a07c3fb141d449080c7962504e23b58a96e9ba",
+    "static_replay.py": "d998ce644378d8358024f9375653c51f350fe7ff3a8cb397c2f60bcb756858d8",
+    "PLAN.md": "512d07bee5ef80f8d51a6fd06a05895bec56ca3b192140117697729047678f7c",
+    "run_campaign.py": "39e8ca468c993b875b657e33ec792b447765fe77c0f95e5d3c1f29b7acf8d8b9"
+  },
+  "user_authorization": "继续 你直接完成全部所有的实验不需要经过我"
+}

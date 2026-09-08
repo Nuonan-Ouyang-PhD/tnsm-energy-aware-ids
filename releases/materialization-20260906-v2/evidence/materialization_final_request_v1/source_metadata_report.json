@@ -1,0 +1,2873 @@
+{
+  "observed_at_utc": "2026-09-06T10:17:30.208129+00:00",
+  "scope": "real CSV directory entries and lstat only; no CSV open/hash/header/row read",
+  "datasets": {
+    "ton_iot": {
+      "source_root": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Downloads/tnsm-energy-aware-ids/datasets/incoming/ton_iot",
+      "resolved_path": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Downloads/tnsm-energy-aware-ids/datasets/incoming/ton_iot",
+      "selected_copy": "complete external project tree; original Downloads path is a symlink entrance",
+      "inventory_sha256": "66179d1ba2601ff3175e90cbfb4ed21d28c859b5780258d5e36dd8bb2303c55a",
+      "csv_count": 1,
+      "source_bytes": 29902775,
+      "relative_path_set_matches": true,
+      "all_stat_sizes_match": true,
+      "symlink_entries": [],
+      "source_output_nonoverlap": true,
+      "files": {
+        "train_test_network.csv": {
+          "bytes": 29902775,
+          "device": 16777248,
+          "inode": 103610,
+          "mtime_ns": 1788418895431107109,
+          "mode": 420
+        }
+      },
+      "current_content_hash_and_row_checks": "not performed; reserved for separately authorized execution preflight"
+    },
+    "ciciot2023": {
+      "source_root": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Downloads/tnsm-energy-aware-ids/datasets/extracted/ciciot2023",
+      "resolved_path": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Downloads/tnsm-energy-aware-ids/datasets/extracted/ciciot2023",
+      "selected_copy": "complete external project tree; original Downloads path is a symlink entrance",
+      "inventory_sha256": "d31472b21836eb5a5cfa9535e1f29d58c0a4a1f136586938172a3e77bbe2f45f",
+      "csv_count": 309,
+      "source_bytes": 8943771319,
+      "relative_path_set_matches": true,
+      "all_stat_sizes_match": true,
+      "symlink_entries": [],
+      "source_output_nonoverlap": true,
+      "files": {
+        "CSV/DoS-UDP_Flood/DoS-UDP_Flood4.pcap.csv": {
+          "bytes": 26190903,
+          "device": 16777248,
+          "inode": 103681,
+          "mtime_ns": 1720216169000000000,
+          "mode": 511
+        },
+        "CSV/DoS-UDP_Flood/DoS-UDP_Flood5.pcap.csv": {
+          "bytes": 22634035,
+          "device": 16777248,
+          "inode": 103682,
+          "mtime_ns": 1720217284000000000,
+          "mode": 511
+        },
+        "CSV/DoS-UDP_Flood/DoS-UDP_Flood14.pcap.csv": {
+          "bytes": 49019219,
+          "device": 16777248,
+          "inode": 103683,
+          "mtime_ns": 1720204540000000000,
+          "mode": 511
+        },
+        "CSV/DoS-UDP_Flood/DoS-UDP_Flood15.pcap.csv": {
+          "bytes": 52351131,
+          "device": 16777248,
+          "inode": 108378,
+          "mtime_ns": 1720208544000000000,
+          "mode": 511
+        },
+        "CSV/DoS-UDP_Flood/DoS-UDP_Flood13.pcap.csv": {
+          "bytes": 51656437,
+          "device": 16777248,
+          "inode": 108379,
+          "mtime_ns": 1720200638000000000,
+          "mode": 511
+        },
+        "CSV/DoS-UDP_Flood/DoS-UDP_Flood12.pcap.csv": {
+          "bytes": 48098197,
+          "device": 16777248,
+          "inode": 103684,
+          "mtime_ns": 1720196649000000000,
+          "mode": 511
+        },
+        "CSV/DoS-UDP_Flood/DoS-UDP_Flood.pcap.csv": {
+          "bytes": 32359559,
+          "device": 16777248,
+          "inode": 103685,
+          "mtime_ns": 1720230782000000000,
+          "mode": 511
+        },
+        "CSV/DoS-UDP_Flood/DoS-UDP_Flood3.pcap.csv": {
+          "bytes": 21532413,
+          "device": 16777248,
+          "inode": 103686,
+          "mtime_ns": 1720214783000000000,
+          "mode": 511
+        },
+        "CSV/DoS-UDP_Flood/DoS-UDP_Flood2.pcap.csv": {
+          "bytes": 20474692,
+          "device": 16777248,
+          "inode": 103687,
+          "mtime_ns": 1720213719000000000,
+          "mode": 511
+        },
+        "CSV/DoS-UDP_Flood/DoS-UDP_Flood9.pcap.csv": {
+          "bytes": 25251429,
+          "device": 16777248,
+          "inode": 103688,
+          "mtime_ns": 1728399511000000000,
+          "mode": 511
+        },
+        "CSV/DoS-UDP_Flood/DoS-UDP_Flood8.pcap.csv": {
+          "bytes": 32624109,
+          "device": 16777248,
+          "inode": 103689,
+          "mtime_ns": 1728399512000000000,
+          "mode": 511
+        },
+        "CSV/DoS-UDP_Flood/DoS-UDP_Flood16.pcap.csv": {
+          "bytes": 34512977,
+          "device": 16777248,
+          "inode": 103690,
+          "mtime_ns": 1720211294000000000,
+          "mode": 511
+        },
+        "CSV/DoS-UDP_Flood/DoS-UDP_Flood7.pcap.csv": {
+          "bytes": 35696059,
+          "device": 16777248,
+          "inode": 103691,
+          "mtime_ns": 1728399512000000000,
+          "mode": 511
+        },
+        "CSV/DoS-UDP_Flood/DoS-UDP_Flood6.pcap.csv": {
+          "bytes": 23871639,
+          "device": 16777248,
+          "inode": 103692,
+          "mtime_ns": 1720218445000000000,
+          "mode": 511
+        },
+        "CSV/DoS-UDP_Flood/DoS-UDP_Flood1.pcap.csv": {
+          "bytes": 27576686,
+          "device": 16777248,
+          "inode": 103693,
+          "mtime_ns": 1720212740000000000,
+          "mode": 511
+        },
+        "CSV/DoS-UDP_Flood/DoS-UDP_Flood10.pcap.csv": {
+          "bytes": 51347895,
+          "device": 16777248,
+          "inode": 108380,
+          "mtime_ns": 1720188025000000000,
+          "mode": 511
+        },
+        "CSV/DoS-UDP_Flood/DoS-UDP_Flood11.pcap.csv": {
+          "bytes": 50201726,
+          "device": 16777248,
+          "inode": 108381,
+          "mtime_ns": 1720192807000000000,
+          "mode": 511
+        },
+        "CSV/CommandInjection/CommandInjection.pcap.csv": {
+          "bytes": 1107913,
+          "device": 16777248,
+          "inode": 103695,
+          "mtime_ns": 1720629506000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-RSTFINFLOOD/DDoS-RSTFINFlood4.pcap.csv": {
+          "bytes": 50870304,
+          "device": 16777248,
+          "inode": 108382,
+          "mtime_ns": 1719513596000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-RSTFINFLOOD/DDoS-RSTFINFlood5.pcap.csv": {
+          "bytes": 50999323,
+          "device": 16777248,
+          "inode": 108383,
+          "mtime_ns": 1719515795000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-RSTFINFLOOD/DDoS-RSTFINFlood3.pcap.csv": {
+          "bytes": 50543359,
+          "device": 16777248,
+          "inode": 108384,
+          "mtime_ns": 1719511404000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-RSTFINFLOOD/DDoS-RSTFINFlood2.pcap.csv": {
+          "bytes": 50519470,
+          "device": 16777248,
+          "inode": 108386,
+          "mtime_ns": 1719509220000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-RSTFINFLOOD/DDoS-RSTFINFlood9.pcap.csv": {
+          "bytes": 50632289,
+          "device": 16777248,
+          "inode": 108389,
+          "mtime_ns": 1719524410000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-RSTFINFLOOD/DDoS-RSTFINFlood8.pcap.csv": {
+          "bytes": 50612474,
+          "device": 16777248,
+          "inode": 108390,
+          "mtime_ns": 1719522224000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-RSTFINFLOOD/DDoS-RSTFINFlood11.pcap.csv": {
+          "bytes": 50492558,
+          "device": 16777248,
+          "inode": 108391,
+          "mtime_ns": 1719497774000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-RSTFINFLOOD/DDoS-RSTFINFlood10.pcap.csv": {
+          "bytes": 50812193,
+          "device": 16777248,
+          "inode": 108392,
+          "mtime_ns": 1719494918000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-RSTFINFLOOD/DDoS-RSTFINFlood15.pcap.csv": {
+          "bytes": 11732085,
+          "device": 16777248,
+          "inode": 103697,
+          "mtime_ns": 1719504864000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-RSTFINFLOOD/DDoS-RSTFINFlood14.pcap.csv": {
+          "bytes": 50771519,
+          "device": 16777248,
+          "inode": 108393,
+          "mtime_ns": 1719504341000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-RSTFINFLOOD/DDoS-RSTFINFlood7.pcap.csv": {
+          "bytes": 50532403,
+          "device": 16777248,
+          "inode": 108394,
+          "mtime_ns": 1719520030000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-RSTFINFLOOD/DDoS-RSTFINFlood6.pcap.csv": {
+          "bytes": 46125154,
+          "device": 16777248,
+          "inode": 103698,
+          "mtime_ns": 1719517848000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-RSTFINFLOOD/DDoS-RSTFINFlood12.pcap.csv": {
+          "bytes": 50536714,
+          "device": 16777248,
+          "inode": 108395,
+          "mtime_ns": 1719499959000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-RSTFINFLOOD/DDoS-RSTFINFlood13.pcap.csv": {
+          "bytes": 50720180,
+          "device": 16777248,
+          "inode": 108396,
+          "mtime_ns": 1719502150000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-RSTFINFLOOD/DDoS-RSTFINFlood1.pcap.csv": {
+          "bytes": 50257848,
+          "device": 16777248,
+          "inode": 108400,
+          "mtime_ns": 1719507045000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-RSTFINFLOOD/DDoS-RSTFINFlood.pcap.csv": {
+          "bytes": 50843571,
+          "device": 16777248,
+          "inode": 108401,
+          "mtime_ns": 1719526596000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Flood/DDoS-UDP_Flood7.pcap.csv": {
+          "bytes": 51907641,
+          "device": 16777248,
+          "inode": 108402,
+          "mtime_ns": 1720083370000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Flood/DDoS-UDP_Flood6.pcap.csv": {
+          "bytes": 51470254,
+          "device": 16777248,
+          "inode": 108403,
+          "mtime_ns": 1720079306000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Flood/DDoS-UDP_Flood10.pcap.csv": {
+          "bytes": 49931523,
+          "device": 16777248,
+          "inode": 103700,
+          "mtime_ns": 1720016158000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Flood/DDoS-UDP_Flood11.pcap.csv": {
+          "bytes": 50330292,
+          "device": 16777248,
+          "inode": 108404,
+          "mtime_ns": 1720020184000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Flood/DDoS-UDP_Flood.pcap.csv": {
+          "bytes": 50078606,
+          "device": 16777248,
+          "inode": 108405,
+          "mtime_ns": 1720095514000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Flood/DDoS-UDP_Flood1.pcap.csv": {
+          "bytes": 50050717,
+          "device": 16777248,
+          "inode": 108406,
+          "mtime_ns": 1720057836000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Flood/DDoS-UDP_Flood17.pcap.csv": {
+          "bytes": 50005983,
+          "device": 16777248,
+          "inode": 108407,
+          "mtime_ns": 1720045631000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Flood/DDoS-UDP_Flood16.pcap.csv": {
+          "bytes": 50246975,
+          "device": 16777248,
+          "inode": 108408,
+          "mtime_ns": 1720041581000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Flood/DDoS-UDP_Flood19.pcap.csv": {
+          "bytes": 50157093,
+          "device": 16777248,
+          "inode": 108412,
+          "mtime_ns": 1720053766000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Flood/DDoS-UDP_Flood18.pcap.csv": {
+          "bytes": 50262306,
+          "device": 16777248,
+          "inode": 108413,
+          "mtime_ns": 1720049694000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Flood/DDoS-UDP_Flood4.pcap.csv": {
+          "bytes": 49939911,
+          "device": 16777248,
+          "inode": 103701,
+          "mtime_ns": 1720071225000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Flood/DDoS-UDP_Flood5.pcap.csv": {
+          "bytes": 51930721,
+          "device": 16777248,
+          "inode": 108414,
+          "mtime_ns": 1720075270000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Flood/DDoS-UDP_Flood13.pcap.csv": {
+          "bytes": 50174989,
+          "device": 16777248,
+          "inode": 108415,
+          "mtime_ns": 1720028403000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Flood/DDoS-UDP_Flood12.pcap.csv": {
+          "bytes": 50059443,
+          "device": 16777248,
+          "inode": 108416,
+          "mtime_ns": 1720024336000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Flood/DDoS-UDP_Flood9.pcap.csv": {
+          "bytes": 50495757,
+          "device": 16777248,
+          "inode": 108417,
+          "mtime_ns": 1720091469000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Flood/DDoS-UDP_Flood8.pcap.csv": {
+          "bytes": 52049756,
+          "device": 16777248,
+          "inode": 108418,
+          "mtime_ns": 1720087430000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Flood/DDoS-UDP_Flood20.pcap.csv": {
+          "bytes": 14617665,
+          "device": 16777248,
+          "inode": 103702,
+          "mtime_ns": 1720059040000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Flood/DDoS-UDP_Flood3.pcap.csv": {
+          "bytes": 50333116,
+          "device": 16777248,
+          "inode": 108419,
+          "mtime_ns": 1720067164000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Flood/DDoS-UDP_Flood2.pcap.csv": {
+          "bytes": 50157205,
+          "device": 16777248,
+          "inode": 108423,
+          "mtime_ns": 1720063089000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Flood/DDoS-UDP_Flood14.pcap.csv": {
+          "bytes": 50665381,
+          "device": 16777248,
+          "inode": 108424,
+          "mtime_ns": 1720032473000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Flood/DDoS-UDP_Flood15.pcap.csv": {
+          "bytes": 50126206,
+          "device": 16777248,
+          "inode": 108425,
+          "mtime_ns": 1720036929000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SYN_Flood/DDoS-SYN_Flood1.pcap.csv": {
+          "bytes": 51023102,
+          "device": 16777248,
+          "inode": 108426,
+          "mtime_ns": 1721171510000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SYN_Flood/DDoS-SYN_Flood11.pcap.csv": {
+          "bytes": 50551155,
+          "device": 16777248,
+          "inode": 108427,
+          "mtime_ns": 1721161344000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SYN_Flood/DDoS-SYN_Flood10.pcap.csv": {
+          "bytes": 50881658,
+          "device": 16777248,
+          "inode": 108428,
+          "mtime_ns": 1721159125000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SYN_Flood/DDoS-SYN_Flood.pcap.csv": {
+          "bytes": 51108638,
+          "device": 16777248,
+          "inode": 108429,
+          "mtime_ns": 1721190913000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SYN_Flood/DDoS-SYN_Flood6.pcap.csv": {
+          "bytes": 50719359,
+          "device": 16777248,
+          "inode": 108430,
+          "mtime_ns": 1721182148000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SYN_Flood/DDoS-SYN_Flood7.pcap.csv": {
+          "bytes": 50413362,
+          "device": 16777248,
+          "inode": 108431,
+          "mtime_ns": 1721184346000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SYN_Flood/DDoS-SYN_Flood15.pcap.csv": {
+          "bytes": 26009693,
+          "device": 16777248,
+          "inode": 103704,
+          "mtime_ns": 1721169298000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SYN_Flood/DDoS-SYN_Flood14.pcap.csv": {
+          "bytes": 50380963,
+          "device": 16777248,
+          "inode": 108432,
+          "mtime_ns": 1721168165000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SYN_Flood/DDoS-SYN_Flood2.pcap.csv": {
+          "bytes": 50841893,
+          "device": 16777248,
+          "inode": 108433,
+          "mtime_ns": 1721173723000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SYN_Flood/DDoS-SYN_Flood3.pcap.csv": {
+          "bytes": 50687752,
+          "device": 16777248,
+          "inode": 108437,
+          "mtime_ns": 1721175935000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SYN_Flood/DDoS-SYN_Flood8.pcap.csv": {
+          "bytes": 50031206,
+          "device": 16777248,
+          "inode": 108438,
+          "mtime_ns": 1721186512000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SYN_Flood/DDoS-SYN_Flood9.pcap.csv": {
+          "bytes": 50601708,
+          "device": 16777248,
+          "inode": 108439,
+          "mtime_ns": 1721188710000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SYN_Flood/DDoS-SYN_Flood5.pcap.csv": {
+          "bytes": 50530644,
+          "device": 16777248,
+          "inode": 108440,
+          "mtime_ns": 1721179942000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SYN_Flood/DDoS-SYN_Flood4.pcap.csv": {
+          "bytes": 38728063,
+          "device": 16777248,
+          "inode": 103705,
+          "mtime_ns": 1721177736000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SYN_Flood/DDoS-SYN_Flood12.pcap.csv": {
+          "bytes": 50926355,
+          "device": 16777248,
+          "inode": 108441,
+          "mtime_ns": 1721163763000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SYN_Flood/DDoS-SYN_Flood13.pcap.csv": {
+          "bytes": 50869969,
+          "device": 16777248,
+          "inode": 108442,
+          "mtime_ns": 1721165984000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-udpplain/Mirai-udpplain4.pcap.csv": {
+          "bytes": 7247149,
+          "device": 16777248,
+          "inode": 103707,
+          "mtime_ns": 1720480056000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-udpplain/Mirai-udpplain5.pcap.csv": {
+          "bytes": 7421005,
+          "device": 16777248,
+          "inode": 103708,
+          "mtime_ns": 1720481690000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-udpplain/Mirai-udpplain.pcap.csv": {
+          "bytes": 7371385,
+          "device": 16777248,
+          "inode": 103709,
+          "mtime_ns": 1720490131000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-udpplain/Mirai-udpplain13.pcap.csv": {
+          "bytes": 7281461,
+          "device": 16777248,
+          "inode": 103710,
+          "mtime_ns": 1720455670000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-udpplain/Mirai-udpplain12.pcap.csv": {
+          "bytes": 7164413,
+          "device": 16777248,
+          "inode": 103711,
+          "mtime_ns": 1720453820000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-udpplain/Mirai-udpplain19.pcap.csv": {
+          "bytes": 7280257,
+          "device": 16777248,
+          "inode": 103712,
+          "mtime_ns": 1720466300000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-udpplain/Mirai-udpplain18.pcap.csv": {
+          "bytes": 7235592,
+          "device": 16777248,
+          "inode": 103713,
+          "mtime_ns": 1720464406000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-udpplain/Mirai-udpplain14.pcap.csv": {
+          "bytes": 7290682,
+          "device": 16777248,
+          "inode": 103714,
+          "mtime_ns": 1720457528000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-udpplain/Mirai-udpplain15.pcap.csv": {
+          "bytes": 7232466,
+          "device": 16777248,
+          "inode": 103715,
+          "mtime_ns": 1720459258000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-udpplain/Mirai-udpplain20.pcap.csv": {
+          "bytes": 7316309,
+          "device": 16777248,
+          "inode": 103716,
+          "mtime_ns": 1720469394000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-udpplain/Mirai-udpplain21.pcap.csv": {
+          "bytes": 7357220,
+          "device": 16777248,
+          "inode": 103717,
+          "mtime_ns": 1720471083000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-udpplain/Mirai-udpplain9.pcap.csv": {
+          "bytes": 7602368,
+          "device": 16777248,
+          "inode": 103718,
+          "mtime_ns": 1720488582000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-udpplain/Mirai-udpplain8.pcap.csv": {
+          "bytes": 7490189,
+          "device": 16777248,
+          "inode": 103719,
+          "mtime_ns": 1720486773000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-udpplain/Mirai-udpplain3.pcap.csv": {
+          "bytes": 7450169,
+          "device": 16777248,
+          "inode": 103720,
+          "mtime_ns": 1720478594000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-udpplain/Mirai-udpplain2.pcap.csv": {
+          "bytes": 7284688,
+          "device": 16777248,
+          "inode": 103721,
+          "mtime_ns": 1720476920000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-udpplain/Mirai-udpplain24.pcap.csv": {
+          "bytes": 2976645,
+          "device": 16777248,
+          "inode": 103722,
+          "mtime_ns": 1720475528000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-udpplain/Mirai-udpplain10.pcap.csv": {
+          "bytes": 7389468,
+          "device": 16777248,
+          "inode": 103723,
+          "mtime_ns": 1720450860000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-udpplain/Mirai-udpplain11.pcap.csv": {
+          "bytes": 7135480,
+          "device": 16777248,
+          "inode": 103724,
+          "mtime_ns": 1720452414000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-udpplain/Mirai-udpplain7.pcap.csv": {
+          "bytes": 7466803,
+          "device": 16777248,
+          "inode": 103725,
+          "mtime_ns": 1720485087000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-udpplain/Mirai-udpplain6.pcap.csv": {
+          "bytes": 7383877,
+          "device": 16777248,
+          "inode": 103726,
+          "mtime_ns": 1720483548000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-udpplain/Mirai-udpplain1.pcap.csv": {
+          "bytes": 7393619,
+          "device": 16777248,
+          "inode": 103727,
+          "mtime_ns": 1720467851000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-udpplain/Mirai-udpplain23.pcap.csv": {
+          "bytes": 7326904,
+          "device": 16777248,
+          "inode": 103728,
+          "mtime_ns": 1720474776000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-udpplain/Mirai-udpplain22.pcap.csv": {
+          "bytes": 7433323,
+          "device": 16777248,
+          "inode": 103729,
+          "mtime_ns": 1720473036000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-udpplain/Mirai-udpplain17.pcap.csv": {
+          "bytes": 7320218,
+          "device": 16777248,
+          "inode": 103730,
+          "mtime_ns": 1720462703000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-udpplain/Mirai-udpplain16.pcap.csv": {
+          "bytes": 7246882,
+          "device": 16777248,
+          "inode": 103731,
+          "mtime_ns": 1720460916000000000,
+          "mode": 511
+        },
+        "CSV/BrowserHijacking/BrowserHijacking.pcap.csv": {
+          "bytes": 1207500,
+          "device": 16777248,
+          "inode": 103733,
+          "mtime_ns": 1720629399000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-HTTP_Flood/DDoS-HTTP_Flood-.pcap.csv": {
+          "bytes": 6449785,
+          "device": 16777248,
+          "inode": 103735,
+          "mtime_ns": 1720791347000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood13.pcap.csv": {
+          "bytes": 7138032,
+          "device": 16777248,
+          "inode": 103737,
+          "mtime_ns": 1720529964000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood12.pcap.csv": {
+          "bytes": 7039185,
+          "device": 16777248,
+          "inode": 103738,
+          "mtime_ns": 1720529491000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood27.pcap.csv": {
+          "bytes": 6942289,
+          "device": 16777248,
+          "inode": 103739,
+          "mtime_ns": 1720537136000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood26.pcap.csv": {
+          "bytes": 7018295,
+          "device": 16777248,
+          "inode": 103740,
+          "mtime_ns": 1720536661000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood19.pcap.csv": {
+          "bytes": 6909182,
+          "device": 16777248,
+          "inode": 103741,
+          "mtime_ns": 1720532843000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood18.pcap.csv": {
+          "bytes": 6801605,
+          "device": 16777248,
+          "inode": 103742,
+          "mtime_ns": 1720532371000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood5.pcap.csv": {
+          "bytes": 6817261,
+          "device": 16777248,
+          "inode": 103743,
+          "mtime_ns": 1720539492000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood4.pcap.csv": {
+          "bytes": 6851691,
+          "device": 16777248,
+          "inode": 103744,
+          "mtime_ns": 1720539022000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood.pcap.csv": {
+          "bytes": 6743677,
+          "device": 16777248,
+          "inode": 103745,
+          "mtime_ns": 1720541875000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood2.pcap.csv": {
+          "bytes": 6808690,
+          "device": 16777248,
+          "inode": 103746,
+          "mtime_ns": 1720538082000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood3.pcap.csv": {
+          "bytes": 6804724,
+          "device": 16777248,
+          "inode": 103747,
+          "mtime_ns": 1720538552000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood8.pcap.csv": {
+          "bytes": 6865224,
+          "device": 16777248,
+          "inode": 103748,
+          "mtime_ns": 1720540915000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood9.pcap.csv": {
+          "bytes": 7251251,
+          "device": 16777248,
+          "inode": 103749,
+          "mtime_ns": 1720541394000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood14.pcap.csv": {
+          "bytes": 6772502,
+          "device": 16777248,
+          "inode": 103750,
+          "mtime_ns": 1720530436000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood15.pcap.csv": {
+          "bytes": 6899264,
+          "device": 16777248,
+          "inode": 103751,
+          "mtime_ns": 1720530914000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood20.pcap.csv": {
+          "bytes": 6953239,
+          "device": 16777248,
+          "inode": 103752,
+          "mtime_ns": 1720533796000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood21.pcap.csv": {
+          "bytes": 7086127,
+          "device": 16777248,
+          "inode": 103753,
+          "mtime_ns": 1720534279000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood6.pcap.csv": {
+          "bytes": 6888069,
+          "device": 16777248,
+          "inode": 103754,
+          "mtime_ns": 1720539969000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood7.pcap.csv": {
+          "bytes": 6889051,
+          "device": 16777248,
+          "inode": 103755,
+          "mtime_ns": 1720540445000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood24.pcap.csv": {
+          "bytes": 6753823,
+          "device": 16777248,
+          "inode": 103756,
+          "mtime_ns": 1720535700000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood25.pcap.csv": {
+          "bytes": 6800333,
+          "device": 16777248,
+          "inode": 103757,
+          "mtime_ns": 1720536175000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood10.pcap.csv": {
+          "bytes": 7106174,
+          "device": 16777248,
+          "inode": 103758,
+          "mtime_ns": 1720528546000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood11.pcap.csv": {
+          "bytes": 7097244,
+          "device": 16777248,
+          "inode": 103759,
+          "mtime_ns": 1720529022000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood23.pcap.csv": {
+          "bytes": 6952155,
+          "device": 16777248,
+          "inode": 103760,
+          "mtime_ns": 1720535229000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood22.pcap.csv": {
+          "bytes": 6991213,
+          "device": 16777248,
+          "inode": 103761,
+          "mtime_ns": 1720534751000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood28.pcap.csv": {
+          "bytes": 6916207,
+          "device": 16777248,
+          "inode": 103762,
+          "mtime_ns": 1720537612000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood17.pcap.csv": {
+          "bytes": 6796981,
+          "device": 16777248,
+          "inode": 103763,
+          "mtime_ns": 1720531892000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood16.pcap.csv": {
+          "bytes": 6861619,
+          "device": 16777248,
+          "inode": 103764,
+          "mtime_ns": 1720531417000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greeth_flood/Mirai-greeth_flood1.pcap.csv": {
+          "bytes": 6899287,
+          "device": 16777248,
+          "inode": 103765,
+          "mtime_ns": 1720533323000000000,
+          "mode": 511
+        },
+        "CSV/Recon-HostDiscovery/Recon-HostDiscovery.pcap.csv": {
+          "bytes": 26360058,
+          "device": 16777248,
+          "inode": 103767,
+          "mtime_ns": 1721236344000000000,
+          "mode": 511
+        },
+        "CSV/DoS-SYN_Flood/DoS-SYN_Flood2.pcap.csv": {
+          "bytes": 48877980,
+          "device": 16777248,
+          "inode": 103769,
+          "mtime_ns": 1720100544000000000,
+          "mode": 511
+        },
+        "CSV/DoS-SYN_Flood/DoS-SYN_Flood3.pcap.csv": {
+          "bytes": 49424756,
+          "device": 16777248,
+          "inode": 103771,
+          "mtime_ns": 1720102737000000000,
+          "mode": 511
+        },
+        "CSV/DoS-SYN_Flood/DoS-SYN_Flood.pcap.csv": {
+          "bytes": 50831729,
+          "device": 16777248,
+          "inode": 108443,
+          "mtime_ns": 1720113145000000000,
+          "mode": 511
+        },
+        "CSV/DoS-SYN_Flood/DoS-SYN_Flood5.pcap.csv": {
+          "bytes": 50831938,
+          "device": 16777248,
+          "inode": 108444,
+          "mtime_ns": 1720107089000000000,
+          "mode": 511
+        },
+        "CSV/DoS-SYN_Flood/DoS-SYN_Flood4.pcap.csv": {
+          "bytes": 49736589,
+          "device": 16777248,
+          "inode": 103772,
+          "mtime_ns": 1720104907000000000,
+          "mode": 511
+        },
+        "CSV/DoS-SYN_Flood/DoS-SYN_Flood1.pcap.csv": {
+          "bytes": 50601684,
+          "device": 16777248,
+          "inode": 108445,
+          "mtime_ns": 1720098372000000000,
+          "mode": 511
+        },
+        "CSV/DoS-SYN_Flood/DoS-SYN_Flood6.pcap.csv": {
+          "bytes": 50423128,
+          "device": 16777248,
+          "inode": 108449,
+          "mtime_ns": 1720109265000000000,
+          "mode": 511
+        },
+        "CSV/DoS-SYN_Flood/DoS-SYN_Flood7.pcap.csv": {
+          "bytes": 39878075,
+          "device": 16777248,
+          "inode": 103773,
+          "mtime_ns": 1720110973000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-PSHACK_FLOOD/DDoS-PSHACK_Flood12.pcap.csv": {
+          "bytes": 50065205,
+          "device": 16777248,
+          "inode": 108450,
+          "mtime_ns": 1719427537000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-PSHACK_FLOOD/DDoS-PSHACK_Flood13.pcap.csv": {
+          "bytes": 50212437,
+          "device": 16777248,
+          "inode": 108451,
+          "mtime_ns": 1719429740000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-PSHACK_FLOOD/DDoS-PSHACK_Flood7.pcap.csv": {
+          "bytes": 50450917,
+          "device": 16777248,
+          "inode": 108452,
+          "mtime_ns": 1719448025000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-PSHACK_FLOOD/DDoS-PSHACK_Flood6.pcap.csv": {
+          "bytes": 50555376,
+          "device": 16777248,
+          "inode": 108453,
+          "mtime_ns": 1719445823000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-PSHACK_FLOOD/DDoS-PSHACK_Flood1.pcap.csv": {
+          "bytes": 50173173,
+          "device": 16777248,
+          "inode": 108454,
+          "mtime_ns": 1719434800000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-PSHACK_FLOOD/DDoS-PSHACK_Flood15.pcap.csv": {
+          "bytes": 14866707,
+          "device": 16777248,
+          "inode": 103775,
+          "mtime_ns": 1719432593000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-PSHACK_FLOOD/DDoS-PSHACK_Flood14.pcap.csv": {
+          "bytes": 50253946,
+          "device": 16777248,
+          "inode": 108455,
+          "mtime_ns": 1719431942000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-PSHACK_FLOOD/DDoS-PSHACK_Flood4.pcap.csv": {
+          "bytes": 50498677,
+          "device": 16777248,
+          "inode": 108456,
+          "mtime_ns": 1719441408000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-PSHACK_FLOOD/DDoS-PSHACK_Flood5.pcap.csv": {
+          "bytes": 50544736,
+          "device": 16777248,
+          "inode": 108457,
+          "mtime_ns": 1719443613000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-PSHACK_FLOOD/DDoS-PSHACK_Flood.pcap.csv": {
+          "bytes": 50374556,
+          "device": 16777248,
+          "inode": 108461,
+          "mtime_ns": 1719454628000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-PSHACK_FLOOD/DDoS-PSHACK_Flood11.pcap.csv": {
+          "bytes": 50168393,
+          "device": 16777248,
+          "inode": 108462,
+          "mtime_ns": 1719425345000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-PSHACK_FLOOD/DDoS-PSHACK_Flood10.pcap.csv": {
+          "bytes": 50122091,
+          "device": 16777248,
+          "inode": 108463,
+          "mtime_ns": 1719423154000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-PSHACK_FLOOD/DDoS-PSHACK_Flood3.pcap.csv": {
+          "bytes": 50567791,
+          "device": 16777248,
+          "inode": 108464,
+          "mtime_ns": 1719439203000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-PSHACK_FLOOD/DDoS-PSHACK_Flood2.pcap.csv": {
+          "bytes": 50666840,
+          "device": 16777248,
+          "inode": 108465,
+          "mtime_ns": 1719436999000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-PSHACK_FLOOD/DDoS-PSHACK_Flood9.pcap.csv": {
+          "bytes": 49597219,
+          "device": 16777248,
+          "inode": 103776,
+          "mtime_ns": 1719452428000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-PSHACK_FLOOD/DDoS-PSHACK_Flood8.pcap.csv": {
+          "bytes": 50439194,
+          "device": 16777248,
+          "inode": 108466,
+          "mtime_ns": 1719450231000000000,
+          "mode": 511
+        },
+        "CSV/MITM-ArpSpoofing/MITM-ArpSpoofing.pcap.csv": {
+          "bytes": 50593720,
+          "device": 16777248,
+          "inode": 108467,
+          "mtime_ns": 1721145261000000000,
+          "mode": 511
+        },
+        "CSV/MITM-ArpSpoofing/MITM-ArpSpoofing1.pcap.csv": {
+          "bytes": 12312129,
+          "device": 16777248,
+          "inode": 103778,
+          "mtime_ns": 1721143840000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SlowLoris/DDoS-SlowLoris.pcap.csv": {
+          "bytes": 5224322,
+          "device": 16777248,
+          "inode": 103780,
+          "mtime_ns": 1720792009000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SynonymousIP_Flood/DDoS-SynonymousIP_Flood9.pcap.csv": {
+          "bytes": 49595474,
+          "device": 16777248,
+          "inode": 103782,
+          "mtime_ns": 1719604899000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SynonymousIP_Flood/DDoS-SynonymousIP_Flood8.pcap.csv": {
+          "bytes": 50410503,
+          "device": 16777248,
+          "inode": 108468,
+          "mtime_ns": 1719602709000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SynonymousIP_Flood/DDoS-SynonymousIP_Flood3.pcap.csv": {
+          "bytes": 50253134,
+          "device": 16777248,
+          "inode": 108469,
+          "mtime_ns": 1719591739000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SynonymousIP_Flood/DDoS-SynonymousIP_Flood2.pcap.csv": {
+          "bytes": 50276958,
+          "device": 16777248,
+          "inode": 108473,
+          "mtime_ns": 1719589539000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SynonymousIP_Flood/DDoS-SynonymousIP_Flood4.pcap.csv": {
+          "bytes": 50363699,
+          "device": 16777248,
+          "inode": 108474,
+          "mtime_ns": 1719593945000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SynonymousIP_Flood/DDoS-SynonymousIP_Flood5.pcap.csv": {
+          "bytes": 49573207,
+          "device": 16777248,
+          "inode": 103783,
+          "mtime_ns": 1719596134000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SynonymousIP_Flood/DDoS-SynonymousIP_Flood13.pcap.csv": {
+          "bytes": 23850442,
+          "device": 16777248,
+          "inode": 103784,
+          "mtime_ns": 1719585133000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SynonymousIP_Flood/DDoS-SynonymousIP_Flood12.pcap.csv": {
+          "bytes": 50266780,
+          "device": 16777248,
+          "inode": 108475,
+          "mtime_ns": 1719584087000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SynonymousIP_Flood/DDoS-SynonymousIP_Flood1.pcap.csv": {
+          "bytes": 50266850,
+          "device": 16777248,
+          "inode": 108476,
+          "mtime_ns": 1719587334000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SynonymousIP_Flood/DDoS-SynonymousIP_Flood.pcap.csv": {
+          "bytes": 50046999,
+          "device": 16777248,
+          "inode": 108477,
+          "mtime_ns": 1719607111000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SynonymousIP_Flood/DDoS-SynonymousIP_Flood7.pcap.csv": {
+          "bytes": 50414449,
+          "device": 16777248,
+          "inode": 108478,
+          "mtime_ns": 1719600506000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SynonymousIP_Flood/DDoS-SynonymousIP_Flood6.pcap.csv": {
+          "bytes": 49205678,
+          "device": 16777248,
+          "inode": 103785,
+          "mtime_ns": 1719598305000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SynonymousIP_Flood/DDoS-SynonymousIP_Flood10.pcap.csv": {
+          "bytes": 49796886,
+          "device": 16777248,
+          "inode": 103786,
+          "mtime_ns": 1719579683000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-SynonymousIP_Flood/DDoS-SynonymousIP_Flood11.pcap.csv": {
+          "bytes": 50313881,
+          "device": 16777248,
+          "inode": 108479,
+          "mtime_ns": 1719581882000000000,
+          "mode": 511
+        },
+        "CSV/XSS/XSS.pcap.csv": {
+          "bytes": 796883,
+          "device": 16777248,
+          "inode": 103789,
+          "mtime_ns": 1721239620000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greip_flood/Mirai-greip_flood18.pcap.csv": {
+          "bytes": 7045526,
+          "device": 16777248,
+          "inode": 103791,
+          "mtime_ns": 1720549314000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greip_flood/Mirai-greip_flood19.pcap.csv": {
+          "bytes": 7154894,
+          "device": 16777248,
+          "inode": 103794,
+          "mtime_ns": 1720549775000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greip_flood/Mirai-greip_flood4.pcap.csv": {
+          "bytes": 7392607,
+          "device": 16777248,
+          "inode": 103795,
+          "mtime_ns": 1720552240000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greip_flood/Mirai-greip_flood5.pcap.csv": {
+          "bytes": 7312382,
+          "device": 16777248,
+          "inode": 103796,
+          "mtime_ns": 1720552703000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greip_flood/Mirai-greip_flood12.pcap.csv": {
+          "bytes": 7134535,
+          "device": 16777248,
+          "inode": 103797,
+          "mtime_ns": 1720546525000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greip_flood/Mirai-greip_flood13.pcap.csv": {
+          "bytes": 7122045,
+          "device": 16777248,
+          "inode": 103798,
+          "mtime_ns": 1720546989000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greip_flood/Mirai-greip_flood21.pcap.csv": {
+          "bytes": 2422081,
+          "device": 16777248,
+          "inode": 103799,
+          "mtime_ns": 1720550855000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greip_flood/Mirai-greip_flood20.pcap.csv": {
+          "bytes": 7186283,
+          "device": 16777248,
+          "inode": 103800,
+          "mtime_ns": 1720550699000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greip_flood/Mirai-greip_flood9.pcap.csv": {
+          "bytes": 7131083,
+          "device": 16777248,
+          "inode": 103801,
+          "mtime_ns": 1720554642000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greip_flood/Mirai-greip_flood8.pcap.csv": {
+          "bytes": 7430602,
+          "device": 16777248,
+          "inode": 103802,
+          "mtime_ns": 1720554183000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greip_flood/Mirai-greip_flood3.pcap.csv": {
+          "bytes": 7183446,
+          "device": 16777248,
+          "inode": 103803,
+          "mtime_ns": 1720551774000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greip_flood/Mirai-greip_flood2.pcap.csv": {
+          "bytes": 6985338,
+          "device": 16777248,
+          "inode": 103804,
+          "mtime_ns": 1720551316000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greip_flood/Mirai-greip_flood15.pcap.csv": {
+          "bytes": 7138745,
+          "device": 16777248,
+          "inode": 103805,
+          "mtime_ns": 1720547903000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greip_flood/Mirai-greip_flood14.pcap.csv": {
+          "bytes": 7213409,
+          "device": 16777248,
+          "inode": 103806,
+          "mtime_ns": 1720547444000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greip_flood/Mirai-greip_flood7.pcap.csv": {
+          "bytes": 7369571,
+          "device": 16777248,
+          "inode": 103807,
+          "mtime_ns": 1720553645000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greip_flood/Mirai-greip_flood6.pcap.csv": {
+          "bytes": 7539798,
+          "device": 16777248,
+          "inode": 103808,
+          "mtime_ns": 1720553180000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greip_flood/Mirai-greip_flood11.pcap.csv": {
+          "bytes": 7012998,
+          "device": 16777248,
+          "inode": 103809,
+          "mtime_ns": 1720546064000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greip_flood/Mirai-greip_flood10.pcap.csv": {
+          "bytes": 7135338,
+          "device": 16777248,
+          "inode": 103810,
+          "mtime_ns": 1720545608000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greip_flood/Mirai-greip_flood.pcap.csv": {
+          "bytes": 7247302,
+          "device": 16777248,
+          "inode": 103811,
+          "mtime_ns": 1720555112000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greip_flood/Mirai-greip_flood1.pcap.csv": {
+          "bytes": 7176408,
+          "device": 16777248,
+          "inode": 103812,
+          "mtime_ns": 1720550243000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greip_flood/Mirai-greip_flood16.pcap.csv": {
+          "bytes": 6908251,
+          "device": 16777248,
+          "inode": 103813,
+          "mtime_ns": 1720548366000000000,
+          "mode": 511
+        },
+        "CSV/Mirai-greip_flood/Mirai-greip_flood17.pcap.csv": {
+          "bytes": 7416420,
+          "device": 16777248,
+          "inode": 103814,
+          "mtime_ns": 1720548831000000000,
+          "mode": 511
+        },
+        "CSV/DNS_Spoofing/DNS_Spoofing.pcap.csv": {
+          "bytes": 36833637,
+          "device": 16777248,
+          "inode": 103816,
+          "mtime_ns": 1720796387000000000,
+          "mode": 511
+        },
+        "CSV/Benign_Final/BenignTraffic.pcap.csv": {
+          "bytes": 75100977,
+          "device": 16777248,
+          "inode": 108480,
+          "mtime_ns": 1720623306000000000,
+          "mode": 511
+        },
+        "CSV/Benign_Final/BenignTraffic2.pcap.csv": {
+          "bytes": 64200745,
+          "device": 16777248,
+          "inode": 108484,
+          "mtime_ns": 1720621645000000000,
+          "mode": 511
+        },
+        "CSV/Benign_Final/BenignTraffic3.pcap.csv": {
+          "bytes": 26851364,
+          "device": 16777248,
+          "inode": 103818,
+          "mtime_ns": 1720622074000000000,
+          "mode": 511
+        },
+        "CSV/Benign_Final/BenignTraffic1.pcap.csv": {
+          "bytes": 61260813,
+          "device": 16777248,
+          "inode": 108485,
+          "mtime_ns": 1720620539000000000,
+          "mode": 511
+        },
+        "CSV/VulnerabilityScan/VulnerabilityScan.pcap.csv": {
+          "bytes": 77235466,
+          "device": 16777248,
+          "inode": 108486,
+          "mtime_ns": 1721239325000000000,
+          "mode": 511
+        },
+        "CSV/Uploading_Attack/Uploading_Attack.pcap.csv": {
+          "bytes": 260216,
+          "device": 16777248,
+          "inode": 103821,
+          "mtime_ns": 1721238156000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Fragmentation/DDoS-ICMP_Fragmentation15.pcap.csv": {
+          "bytes": 4858713,
+          "device": 16777248,
+          "inode": 103823,
+          "mtime_ns": 1719412547000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Fragmentation/DDoS-ICMP_Fragmentation14.pcap.csv": {
+          "bytes": 4997768,
+          "device": 16777248,
+          "inode": 103824,
+          "mtime_ns": 1719412363000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Fragmentation/DDoS-ICMP_Fragmentation8.pcap.csv": {
+          "bytes": 4937216,
+          "device": 16777248,
+          "inode": 103825,
+          "mtime_ns": 1719415072000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Fragmentation/DDoS-ICMP_Fragmentation9.pcap.csv": {
+          "bytes": 5153022,
+          "device": 16777248,
+          "inode": 103826,
+          "mtime_ns": 1719415313000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Fragmentation/DDoS-ICMP_Fragmentation2.pcap.csv": {
+          "bytes": 4982201,
+          "device": 16777248,
+          "inode": 103827,
+          "mtime_ns": 1719413869000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Fragmentation/DDoS-ICMP_Fragmentation3.pcap.csv": {
+          "bytes": 5183591,
+          "device": 16777248,
+          "inode": 103828,
+          "mtime_ns": 1719414082000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Fragmentation/DDoS-ICMP_Fragmentation12.pcap.csv": {
+          "bytes": 5065621,
+          "device": 16777248,
+          "inode": 103829,
+          "mtime_ns": 1719411992000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Fragmentation/DDoS-ICMP_Fragmentation13.pcap.csv": {
+          "bytes": 4969932,
+          "device": 16777248,
+          "inode": 103830,
+          "mtime_ns": 1719412175000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Fragmentation/DDoS-ICMP_Fragmentation5.pcap.csv": {
+          "bytes": 4929636,
+          "device": 16777248,
+          "inode": 103831,
+          "mtime_ns": 1719414493000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Fragmentation/DDoS-ICMP_Fragmentation4.pcap.csv": {
+          "bytes": 5233326,
+          "device": 16777248,
+          "inode": 103832,
+          "mtime_ns": 1719414299000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Fragmentation/DDoS-ICMP_Fragmentation18.pcap.csv": {
+          "bytes": 4940788,
+          "device": 16777248,
+          "inode": 103833,
+          "mtime_ns": 1719413313000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Fragmentation/DDoS-ICMP_Fragmentation19.pcap.csv": {
+          "bytes": 4362588,
+          "device": 16777248,
+          "inode": 103834,
+          "mtime_ns": 1719413484000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Fragmentation/DDoS-ICMP_Fragmentation1.pcap.csv": {
+          "bytes": 4982951,
+          "device": 16777248,
+          "inode": 103835,
+          "mtime_ns": 1719413681000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Fragmentation/DDoS-ICMP_Fragmentation16.pcap.csv": {
+          "bytes": 5077350,
+          "device": 16777248,
+          "inode": 103836,
+          "mtime_ns": 1719412765000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Fragmentation/DDoS-ICMP_Fragmentation17.pcap.csv": {
+          "bytes": 5593541,
+          "device": 16777248,
+          "inode": 103837,
+          "mtime_ns": 1719413108000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Fragmentation/DDoS-ICMP_Fragmentation6.pcap.csv": {
+          "bytes": 4897727,
+          "device": 16777248,
+          "inode": 103838,
+          "mtime_ns": 1719414683000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Fragmentation/DDoS-ICMP_Fragmentation7.pcap.csv": {
+          "bytes": 4998932,
+          "device": 16777248,
+          "inode": 103839,
+          "mtime_ns": 1719414884000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Fragmentation/DDoS-ICMP_Fragmentation.pcap.csv": {
+          "bytes": 4576351,
+          "device": 16777248,
+          "inode": 103840,
+          "mtime_ns": 1719415493000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Fragmentation/DDoS-ICMP_Fragmentation11.pcap.csv": {
+          "bytes": 4955238,
+          "device": 16777248,
+          "inode": 103841,
+          "mtime_ns": 1719411800000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Fragmentation/DDoS-ICMP_Fragmentation10.pcap.csv": {
+          "bytes": 5018987,
+          "device": 16777248,
+          "inode": 103842,
+          "mtime_ns": 1719419126000000000,
+          "mode": 511
+        },
+        "CSV/Recon-OSScan/Recon-OSScan.pcap.csv": {
+          "bytes": 19880307,
+          "device": 16777248,
+          "inode": 103844,
+          "mtime_ns": 1721237152000000000,
+          "mode": 511
+        },
+        "CSV/Backdoor_Malware/Backdoor_Malware.pcap.csv": {
+          "bytes": 664577,
+          "device": 16777248,
+          "inode": 103846,
+          "mtime_ns": 1720629169000000000,
+          "mode": 511
+        },
+        "CSV/SqlInjection/SqlInjection.pcap.csv": {
+          "bytes": 1087316,
+          "device": 16777248,
+          "inode": 103848,
+          "mtime_ns": 1721238051000000000,
+          "mode": 511
+        },
+        "CSV/DoS-HTTP_Flood/DoS-HTTP_Flood.pcap.csv": {
+          "bytes": 9039877,
+          "device": 16777248,
+          "inode": 103850,
+          "mtime_ns": 1721139441000000000,
+          "mode": 511
+        },
+        "CSV/DoS-HTTP_Flood/DoS-HTTP_Flood1.pcap.csv": {
+          "bytes": 6883853,
+          "device": 16777248,
+          "inode": 103851,
+          "mtime_ns": 1721138860000000000,
+          "mode": 511
+        },
+        "CSV/Recon-PingSweep/Recon-PingSweep.pcap.csv": {
+          "bytes": 466700,
+          "device": 16777248,
+          "inode": 103853,
+          "mtime_ns": 1721237613000000000,
+          "mode": 511
+        },
+        "CSV/DictionaryBruteForce/DictionaryBruteForce.pcap.csv": {
+          "bytes": 2704325,
+          "device": 16777248,
+          "inode": 103855,
+          "mtime_ns": 1720795618000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Flood/DDoS-ICMP_Flood20.pcap.csv": {
+          "bytes": 48926723,
+          "device": 16777248,
+          "inode": 103858,
+          "mtime_ns": 1719348180000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Flood/DDoS-ICMP_Flood21.pcap.csv": {
+          "bytes": 49445804,
+          "device": 16777248,
+          "inode": 103859,
+          "mtime_ns": 1719350235000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Flood/DDoS-ICMP_Flood5.pcap.csv": {
+          "bytes": 49339745,
+          "device": 16777248,
+          "inode": 103860,
+          "mtime_ns": 1719368673000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Flood/DDoS-ICMP_Flood4.pcap.csv": {
+          "bytes": 49808959,
+          "device": 16777248,
+          "inode": 103861,
+          "mtime_ns": 1719366618000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Flood/DDoS-ICMP_Flood14.pcap.csv": {
+          "bytes": 49230229,
+          "device": 16777248,
+          "inode": 103862,
+          "mtime_ns": 1719333901000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Flood/DDoS-ICMP_Flood15.pcap.csv": {
+          "bytes": 48726461,
+          "device": 16777248,
+          "inode": 103863,
+          "mtime_ns": 1719335932000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Flood/DDoS-ICMP_Flood26.pcap.csv": {
+          "bytes": 49230142,
+          "device": 16777248,
+          "inode": 103864,
+          "mtime_ns": 1719360520000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Flood/DDoS-ICMP_Flood2.pcap.csv": {
+          "bytes": 48959577,
+          "device": 16777248,
+          "inode": 103865,
+          "mtime_ns": 1719362551000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Flood/DDoS-ICMP_Flood3.pcap.csv": {
+          "bytes": 48556977,
+          "device": 16777248,
+          "inode": 103866,
+          "mtime_ns": 1719364569000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Flood/DDoS-ICMP_Flood19.pcap.csv": {
+          "bytes": 49463881,
+          "device": 16777248,
+          "inode": 103867,
+          "mtime_ns": 1719344074000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Flood/DDoS-ICMP_Flood18.pcap.csv": {
+          "bytes": 49173006,
+          "device": 16777248,
+          "inode": 103868,
+          "mtime_ns": 1719342023000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Flood/DDoS-ICMP_Flood8.pcap.csv": {
+          "bytes": 49495438,
+          "device": 16777248,
+          "inode": 103869,
+          "mtime_ns": 1719374839000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Flood/DDoS-ICMP_Flood9.pcap.csv": {
+          "bytes": 49409485,
+          "device": 16777248,
+          "inode": 103870,
+          "mtime_ns": 1719376897000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Flood/DDoS-ICMP_Flood13.pcap.csv": {
+          "bytes": 49140896,
+          "device": 16777248,
+          "inode": 103871,
+          "mtime_ns": 1719331855000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Flood/DDoS-ICMP_Flood12.pcap.csv": {
+          "bytes": 49442023,
+          "device": 16777248,
+          "inode": 103872,
+          "mtime_ns": 1719329884000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Flood/DDoS-ICMP_Flood17.pcap.csv": {
+          "bytes": 49070655,
+          "device": 16777248,
+          "inode": 103873,
+          "mtime_ns": 1719339968000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Flood/DDoS-ICMP_Flood16.pcap.csv": {
+          "bytes": 46172166,
+          "device": 16777248,
+          "inode": 103874,
+          "mtime_ns": 1719337919000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Flood/DDoS-ICMP_Flood6.pcap.csv": {
+          "bytes": 49112212,
+          "device": 16777248,
+          "inode": 103875,
+          "mtime_ns": 1719370736000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Flood/DDoS-ICMP_Flood7.pcap.csv": {
+          "bytes": 48900510,
+          "device": 16777248,
+          "inode": 103876,
+          "mtime_ns": 1719372785000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Flood/DDoS-ICMP_Flood23.pcap.csv": {
+          "bytes": 49153368,
+          "device": 16777248,
+          "inode": 103877,
+          "mtime_ns": 1719354367000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Flood/DDoS-ICMP_Flood22.pcap.csv": {
+          "bytes": 48942961,
+          "device": 16777248,
+          "inode": 103881,
+          "mtime_ns": 1719352306000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Flood/DDoS-ICMP_Flood.pcap.csv": {
+          "bytes": 49629237,
+          "device": 16777248,
+          "inode": 103882,
+          "mtime_ns": 1719378948000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Flood/DDoS-ICMP_Flood10.pcap.csv": {
+          "bytes": 49550267,
+          "device": 16777248,
+          "inode": 103883,
+          "mtime_ns": 1719325765000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Flood/DDoS-ICMP_Flood11.pcap.csv": {
+          "bytes": 49550761,
+          "device": 16777248,
+          "inode": 103884,
+          "mtime_ns": 1719327831000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Flood/DDoS-ICMP_Flood1.pcap.csv": {
+          "bytes": 49499929,
+          "device": 16777248,
+          "inode": 103885,
+          "mtime_ns": 1719346132000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Flood/DDoS-ICMP_Flood24.pcap.csv": {
+          "bytes": 48897469,
+          "device": 16777248,
+          "inode": 103886,
+          "mtime_ns": 1719356425000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ICMP_Flood/DDoS-ICMP_Flood25.pcap.csv": {
+          "bytes": 49439635,
+          "device": 16777248,
+          "inode": 103887,
+          "mtime_ns": 1719358465000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ACK_Fragmentation/DDoS-ACK_Fragmentation1.pcap.csv": {
+          "bytes": 4944205,
+          "device": 16777248,
+          "inode": 103889,
+          "mtime_ns": 1726512605000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ACK_Fragmentation/DDoS-ACK_Fragmentation.pcap.csv": {
+          "bytes": 5530254,
+          "device": 16777248,
+          "inode": 103890,
+          "mtime_ns": 1726514459000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ACK_Fragmentation/DDoS-ACK_Fragmentation12.pcap.csv": {
+          "bytes": 2099587,
+          "device": 16777248,
+          "inode": 103891,
+          "mtime_ns": 1726512412000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ACK_Fragmentation/DDoS-ACK_Fragmentation6.pcap.csv": {
+          "bytes": 4852412,
+          "device": 16777248,
+          "inode": 103892,
+          "mtime_ns": 1726513551000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ACK_Fragmentation/DDoS-ACK_Fragmentation7.pcap.csv": {
+          "bytes": 4898374,
+          "device": 16777248,
+          "inode": 103893,
+          "mtime_ns": 1726513738000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ACK_Fragmentation/DDoS-ACK_Fragmentation10.pcap.csv": {
+          "bytes": 5015945,
+          "device": 16777248,
+          "inode": 103894,
+          "mtime_ns": 1726512135000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ACK_Fragmentation/DDoS-ACK_Fragmentation11.pcap.csv": {
+          "bytes": 5008522,
+          "device": 16777248,
+          "inode": 103895,
+          "mtime_ns": 1726512328000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ACK_Fragmentation/DDoS-ACK_Fragmentation8.pcap.csv": {
+          "bytes": 4933846,
+          "device": 16777248,
+          "inode": 103896,
+          "mtime_ns": 1726513934000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ACK_Fragmentation/DDoS-ACK_Fragmentation9.pcap.csv": {
+          "bytes": 5734938,
+          "device": 16777248,
+          "inode": 103897,
+          "mtime_ns": 1726514195000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ACK_Fragmentation/DDoS-ACK_Fragmentation2.pcap.csv": {
+          "bytes": 4976425,
+          "device": 16777248,
+          "inode": 103898,
+          "mtime_ns": 1726512795000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ACK_Fragmentation/DDoS-ACK_Fragmentation3.pcap.csv": {
+          "bytes": 5035034,
+          "device": 16777248,
+          "inode": 103899,
+          "mtime_ns": 1726512996000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ACK_Fragmentation/DDoS-ACK_Fragmentation5.pcap.csv": {
+          "bytes": 4801947,
+          "device": 16777248,
+          "inode": 103900,
+          "mtime_ns": 1726513369000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-ACK_Fragmentation/DDoS-ACK_Fragmentation4.pcap.csv": {
+          "bytes": 4946356,
+          "device": 16777248,
+          "inode": 103901,
+          "mtime_ns": 1726513188000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-TCP_Flood/DDoS-TCP_Flood9.pcap.csv": {
+          "bytes": 49858930,
+          "device": 16777248,
+          "inode": 103903,
+          "mtime_ns": 1719959122000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-TCP_Flood/DDoS-TCP_Flood8.pcap.csv": {
+          "bytes": 50166032,
+          "device": 16777248,
+          "inode": 108487,
+          "mtime_ns": 1719956933000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-TCP_Flood/DDoS-TCP_Flood13.pcap.csv": {
+          "bytes": 50190203,
+          "device": 16777248,
+          "inode": 108488,
+          "mtime_ns": 1719932611000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-TCP_Flood/DDoS-TCP_Flood12.pcap.csv": {
+          "bytes": 50205770,
+          "device": 16777248,
+          "inode": 108489,
+          "mtime_ns": 1719930402000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-TCP_Flood/DDoS-TCP_Flood.pcap.csv": {
+          "bytes": 49564789,
+          "device": 16777248,
+          "inode": 103904,
+          "mtime_ns": 1719961311000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-TCP_Flood/DDoS-TCP_Flood3.pcap.csv": {
+          "bytes": 50156811,
+          "device": 16777248,
+          "inode": 108490,
+          "mtime_ns": 1719946581000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-TCP_Flood/DDoS-TCP_Flood2.pcap.csv": {
+          "bytes": 49969827,
+          "device": 16777248,
+          "inode": 103905,
+          "mtime_ns": 1719944378000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-TCP_Flood/DDoS-TCP_Flood14.pcap.csv": {
+          "bytes": 49762919,
+          "device": 16777248,
+          "inode": 103906,
+          "mtime_ns": 1719934801000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-TCP_Flood/DDoS-TCP_Flood15.pcap.csv": {
+          "bytes": 50166316,
+          "device": 16777248,
+          "inode": 108491,
+          "mtime_ns": 1719936997000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-TCP_Flood/DDoS-TCP_Flood4.pcap.csv": {
+          "bytes": 37236055,
+          "device": 16777248,
+          "inode": 103907,
+          "mtime_ns": 1719948410000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-TCP_Flood/DDoS-TCP_Flood5.pcap.csv": {
+          "bytes": 40739425,
+          "device": 16777248,
+          "inode": 103908,
+          "mtime_ns": 1719950343000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-TCP_Flood/DDoS-TCP_Flood1.pcap.csv": {
+          "bytes": 50150587,
+          "device": 16777248,
+          "inode": 108492,
+          "mtime_ns": 1719942165000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-TCP_Flood/DDoS-TCP_Flood10.pcap.csv": {
+          "bytes": 49634604,
+          "device": 16777248,
+          "inode": 103909,
+          "mtime_ns": 1719926026000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-TCP_Flood/DDoS-TCP_Flood11.pcap.csv": {
+          "bytes": 48625905,
+          "device": 16777248,
+          "inode": 103910,
+          "mtime_ns": 1719928185000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-TCP_Flood/DDoS-TCP_Flood7.pcap.csv": {
+          "bytes": 50308010,
+          "device": 16777248,
+          "inode": 108496,
+          "mtime_ns": 1719954727000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-TCP_Flood/DDoS-TCP_Flood6.pcap.csv": {
+          "bytes": 49392507,
+          "device": 16777248,
+          "inode": 103911,
+          "mtime_ns": 1719952517000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-TCP_Flood/DDoS-TCP_Flood17.pcap.csv": {
+          "bytes": 17415966,
+          "device": 16777248,
+          "inode": 103912,
+          "mtime_ns": 1719939962000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-TCP_Flood/DDoS-TCP_Flood16.pcap.csv": {
+          "bytes": 50291457,
+          "device": 16777248,
+          "inode": 108497,
+          "mtime_ns": 1719939200000000000,
+          "mode": 511
+        },
+        "CSV/Recon-PortScan/Recon-PortScan.pcap.csv": {
+          "bytes": 16412654,
+          "device": 16777248,
+          "inode": 103914,
+          "mtime_ns": 1721237848000000000,
+          "mode": 511
+        },
+        "CSV/DoS-TCP_Flood/DoS-TCP_Flood1.pcap.csv": {
+          "bytes": 47424362,
+          "device": 16777248,
+          "inode": 103916,
+          "mtime_ns": 1720123755000000000,
+          "mode": 511
+        },
+        "CSV/DoS-TCP_Flood/DoS-TCP_Flood.pcap.csv": {
+          "bytes": 48955460,
+          "device": 16777248,
+          "inode": 103917,
+          "mtime_ns": 1720143160000000000,
+          "mode": 511
+        },
+        "CSV/DoS-TCP_Flood/DoS-TCP_Flood10.pcap.csv": {
+          "bytes": 15663327,
+          "device": 16777248,
+          "inode": 103918,
+          "mtime_ns": 1720121646000000000,
+          "mode": 511
+        },
+        "CSV/DoS-TCP_Flood/DoS-TCP_Flood7.pcap.csv": {
+          "bytes": 49816215,
+          "device": 16777248,
+          "inode": 103919,
+          "mtime_ns": 1720136843000000000,
+          "mode": 511
+        },
+        "CSV/DoS-TCP_Flood/DoS-TCP_Flood6.pcap.csv": {
+          "bytes": 49340641,
+          "device": 16777248,
+          "inode": 103920,
+          "mtime_ns": 1720134661000000000,
+          "mode": 511
+        },
+        "CSV/DoS-TCP_Flood/DoS-TCP_Flood3.pcap.csv": {
+          "bytes": 50617348,
+          "device": 16777248,
+          "inode": 108498,
+          "mtime_ns": 1720128129000000000,
+          "mode": 511
+        },
+        "CSV/DoS-TCP_Flood/DoS-TCP_Flood2.pcap.csv": {
+          "bytes": 50081317,
+          "device": 16777248,
+          "inode": 108499,
+          "mtime_ns": 1720125942000000000,
+          "mode": 511
+        },
+        "CSV/DoS-TCP_Flood/DoS-TCP_Flood9.pcap.csv": {
+          "bytes": 44070211,
+          "device": 16777248,
+          "inode": 103924,
+          "mtime_ns": 1720140998000000000,
+          "mode": 511
+        },
+        "CSV/DoS-TCP_Flood/DoS-TCP_Flood8.pcap.csv": {
+          "bytes": 48951443,
+          "device": 16777248,
+          "inode": 103925,
+          "mtime_ns": 1720138992000000000,
+          "mode": 511
+        },
+        "CSV/DoS-TCP_Flood/DoS-TCP_Flood4.pcap.csv": {
+          "bytes": 50279393,
+          "device": 16777248,
+          "inode": 108500,
+          "mtime_ns": 1720130311000000000,
+          "mode": 511
+        },
+        "CSV/DoS-TCP_Flood/DoS-TCP_Flood5.pcap.csv": {
+          "bytes": 50147553,
+          "device": 16777248,
+          "inode": 108501,
+          "mtime_ns": 1720132489000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Fragmentation/DDoS-UDP_Fragmentation12.pcap.csv": {
+          "bytes": 3422745,
+          "device": 16777248,
+          "inode": 103927,
+          "mtime_ns": 1720792876000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Fragmentation/DDoS-UDP_Fragmentation1.pcap.csv": {
+          "bytes": 4940834,
+          "device": 16777248,
+          "inode": 103928,
+          "mtime_ns": 1720793129000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Fragmentation/DDoS-UDP_Fragmentation7.pcap.csv": {
+          "bytes": 4980427,
+          "device": 16777248,
+          "inode": 103929,
+          "mtime_ns": 1720794631000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Fragmentation/DDoS-UDP_Fragmentation6.pcap.csv": {
+          "bytes": 4865869,
+          "device": 16777248,
+          "inode": 103930,
+          "mtime_ns": 1720794362000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Fragmentation/DDoS-UDP_Fragmentation.pcap.csv": {
+          "bytes": 4955669,
+          "device": 16777248,
+          "inode": 103931,
+          "mtime_ns": 1720795373000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Fragmentation/DDoS-UDP_Fragmentation11.pcap.csv": {
+          "bytes": 5027497,
+          "device": 16777248,
+          "inode": 103932,
+          "mtime_ns": 1720792699000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Fragmentation/DDoS-UDP_Fragmentation10.pcap.csv": {
+          "bytes": 4897636,
+          "device": 16777248,
+          "inode": 103933,
+          "mtime_ns": 1720792452000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Fragmentation/DDoS-UDP_Fragmentation3.pcap.csv": {
+          "bytes": 5115153,
+          "device": 16777248,
+          "inode": 103934,
+          "mtime_ns": 1720793617000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Fragmentation/DDoS-UDP_Fragmentation2.pcap.csv": {
+          "bytes": 4890806,
+          "device": 16777248,
+          "inode": 103935,
+          "mtime_ns": 1720793362000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Fragmentation/DDoS-UDP_Fragmentation9.pcap.csv": {
+          "bytes": 4825124,
+          "device": 16777248,
+          "inode": 103936,
+          "mtime_ns": 1720795128000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Fragmentation/DDoS-UDP_Fragmentation8.pcap.csv": {
+          "bytes": 4963244,
+          "device": 16777248,
+          "inode": 103937,
+          "mtime_ns": 1720794886000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Fragmentation/DDoS-UDP_Fragmentation4.pcap.csv": {
+          "bytes": 4987718,
+          "device": 16777248,
+          "inode": 103938,
+          "mtime_ns": 1720793858000000000,
+          "mode": 511
+        },
+        "CSV/DDoS-UDP_Fragmentation/DDoS-UDP_Fragmentation5.pcap.csv": {
+          "bytes": 5110522,
+          "device": 16777248,
+          "inode": 103939,
+          "mtime_ns": 1720794118000000000,
+          "mode": 511
+        }
+      },
+      "current_content_hash_and_row_checks": "not performed; reserved for separately authorized execution preflight"
+    },
+    "n_baiot": {
+      "source_root": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Downloads/tnsm-energy-aware-ids/datasets/extracted/n_baiot",
+      "resolved_path": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Downloads/tnsm-energy-aware-ids/datasets/extracted/n_baiot",
+      "selected_copy": "complete external project tree; original Downloads path is a symlink entrance",
+      "inventory_sha256": "9ffdf7e9245470fc4f066b8fb6d8ebae03e0194e7698e5fde87b13a7f2fe30da",
+      "csv_count": 90,
+      "source_bytes": 8140825610,
+      "relative_path_set_matches": true,
+      "all_stat_sizes_match": true,
+      "symlink_entries": [],
+      "source_output_nonoverlap": true,
+      "files": {
+        "demonstrate_structure.csv": {
+          "bytes": 1776,
+          "device": 16777248,
+          "inode": 103659,
+          "mtime_ns": 1684794144000000000,
+          "mode": 448
+        },
+        "Ecobee_Thermostat/benign_traffic.csv": {
+          "bytes": 13953719,
+          "device": 16777248,
+          "inode": 103621,
+          "mtime_ns": 1684794144000000000,
+          "mode": 448
+        },
+        "Ecobee_Thermostat/mirai_attacks_extracted/syn.csv": {
+          "bytes": 161570382,
+          "device": 16777248,
+          "inode": 108250,
+          "mtime_ns": 1508214912000000000,
+          "mode": 420
+        },
+        "Ecobee_Thermostat/mirai_attacks_extracted/scan.csv": {
+          "bytes": 43078827,
+          "device": 16777248,
+          "inode": 103620,
+          "mtime_ns": 1508214810000000000,
+          "mode": 420
+        },
+        "Ecobee_Thermostat/mirai_attacks_extracted/udpplain.csv": {
+          "bytes": 138671843,
+          "device": 16777248,
+          "inode": 108251,
+          "mtime_ns": 1508215090000000000,
+          "mode": 420
+        },
+        "Ecobee_Thermostat/mirai_attacks_extracted/ack.csv": {
+          "bytes": 155635866,
+          "device": 16777248,
+          "inode": 108253,
+          "mtime_ns": 1508214790000000000,
+          "mode": 420
+        },
+        "Ecobee_Thermostat/mirai_attacks_extracted/udp.csv": {
+          "bytes": 207783110,
+          "device": 16777248,
+          "inode": 108257,
+          "mtime_ns": 1508215034000000000,
+          "mode": 420
+        },
+        "Ecobee_Thermostat/gafgyt_attacks_extracted/scan.csv": {
+          "bytes": 37108696,
+          "device": 16777248,
+          "inode": 103623,
+          "mtime_ns": 1508213000000000000,
+          "mode": 420
+        },
+        "Ecobee_Thermostat/gafgyt_attacks_extracted/tcp.csv": {
+          "bytes": 53485288,
+          "device": 16777248,
+          "inode": 108258,
+          "mtime_ns": 1508213058000000000,
+          "mode": 420
+        },
+        "Ecobee_Thermostat/gafgyt_attacks_extracted/udp.csv": {
+          "bytes": 58988910,
+          "device": 16777248,
+          "inode": 108259,
+          "mtime_ns": 1508213154000000000,
+          "mode": 420
+        },
+        "Ecobee_Thermostat/gafgyt_attacks_extracted/junk.csv": {
+          "bytes": 51673314,
+          "device": 16777248,
+          "inode": 108260,
+          "mtime_ns": 1508212948000000000,
+          "mode": 420
+        },
+        "Ecobee_Thermostat/gafgyt_attacks_extracted/combo.csv": {
+          "bytes": 94251568,
+          "device": 16777248,
+          "inode": 108261,
+          "mtime_ns": 1508211766000000000,
+          "mode": 420
+        },
+        "SimpleHome_XCS7_1002_WHT_Security_Camera/benign_traffic.csv": {
+          "bytes": 47616941,
+          "device": 16777248,
+          "inode": 103628,
+          "mtime_ns": 1684794144000000000,
+          "mode": 448
+        },
+        "SimpleHome_XCS7_1002_WHT_Security_Camera/mirai_attacks_extracted/syn.csv": {
+          "bytes": 173607186,
+          "device": 16777248,
+          "inode": 108267,
+          "mtime_ns": 1508214856000000000,
+          "mode": 420
+        },
+        "SimpleHome_XCS7_1002_WHT_Security_Camera/mirai_attacks_extracted/scan.csv": {
+          "bytes": 45823393,
+          "device": 16777248,
+          "inode": 103627,
+          "mtime_ns": 1508214796000000000,
+          "mode": 420
+        },
+        "SimpleHome_XCS7_1002_WHT_Security_Camera/mirai_attacks_extracted/udpplain.csv": {
+          "bytes": 124485105,
+          "device": 16777248,
+          "inode": 108268,
+          "mtime_ns": 1508215052000000000,
+          "mode": 420
+        },
+        "SimpleHome_XCS7_1002_WHT_Security_Camera/mirai_attacks_extracted/ack.csv": {
+          "bytes": 153189923,
+          "device": 16777248,
+          "inode": 108269,
+          "mtime_ns": 1508214702000000000,
+          "mode": 420
+        },
+        "SimpleHome_XCS7_1002_WHT_Security_Camera/mirai_attacks_extracted/udp.csv": {
+          "bytes": 208331925,
+          "device": 16777248,
+          "inode": 108271,
+          "mtime_ns": 1508214974000000000,
+          "mode": 420
+        },
+        "SimpleHome_XCS7_1002_WHT_Security_Camera/gafgyt_attacks_extracted/scan.csv": {
+          "bytes": 37511054,
+          "device": 16777248,
+          "inode": 103630,
+          "mtime_ns": 1508213030000000000,
+          "mode": 420
+        },
+        "SimpleHome_XCS7_1002_WHT_Security_Camera/gafgyt_attacks_extracted/tcp.csv": {
+          "bytes": 49995960,
+          "device": 16777248,
+          "inode": 103631,
+          "mtime_ns": 1508213122000000000,
+          "mode": 420
+        },
+        "SimpleHome_XCS7_1002_WHT_Security_Camera/gafgyt_attacks_extracted/udp.csv": {
+          "bytes": 58385654,
+          "device": 16777248,
+          "inode": 108274,
+          "mtime_ns": 1508213230000000000,
+          "mode": 420
+        },
+        "SimpleHome_XCS7_1002_WHT_Security_Camera/gafgyt_attacks_extracted/junk.csv": {
+          "bytes": 48585877,
+          "device": 16777248,
+          "inode": 103632,
+          "mtime_ns": 1508212984000000000,
+          "mode": 420
+        },
+        "SimpleHome_XCS7_1002_WHT_Security_Camera/gafgyt_attacks_extracted/combo.csv": {
+          "bytes": 96595924,
+          "device": 16777248,
+          "inode": 108275,
+          "mtime_ns": 1508211962000000000,
+          "mode": 420
+        },
+        "SimpleHome_XCS7_1003_WHT_Security_Camera/benign_traffic.csv": {
+          "bytes": 17632741,
+          "device": 16777248,
+          "inode": 103636,
+          "mtime_ns": 1684794145000000000,
+          "mode": 448
+        },
+        "SimpleHome_XCS7_1003_WHT_Security_Camera/mirai_attacks_extracted/syn.csv": {
+          "bytes": 169089092,
+          "device": 16777248,
+          "inode": 108278,
+          "mtime_ns": 1508214890000000000,
+          "mode": 420
+        },
+        "SimpleHome_XCS7_1003_WHT_Security_Camera/mirai_attacks_extracted/scan.csv": {
+          "bytes": 43554193,
+          "device": 16777248,
+          "inode": 103635,
+          "mtime_ns": 1508214804000000000,
+          "mode": 420
+        },
+        "SimpleHome_XCS7_1003_WHT_Security_Camera/mirai_attacks_extracted/udpplain.csv": {
+          "bytes": 133920179,
+          "device": 16777248,
+          "inode": 108282,
+          "mtime_ns": 1508215070000000000,
+          "mode": 420
+        },
+        "SimpleHome_XCS7_1003_WHT_Security_Camera/mirai_attacks_extracted/ack.csv": {
+          "bytes": 147187372,
+          "device": 16777248,
+          "inode": 108283,
+          "mtime_ns": 1508214746000000000,
+          "mode": 420
+        },
+        "SimpleHome_XCS7_1003_WHT_Security_Camera/mirai_attacks_extracted/udp.csv": {
+          "bytes": 215629797,
+          "device": 16777248,
+          "inode": 108284,
+          "mtime_ns": 1508215004000000000,
+          "mode": 420
+        },
+        "SimpleHome_XCS7_1003_WHT_Security_Camera/gafgyt_attacks_extracted/scan.csv": {
+          "bytes": 38455148,
+          "device": 16777248,
+          "inode": 103638,
+          "mtime_ns": 1508213034000000000,
+          "mode": 420
+        },
+        "SimpleHome_XCS7_1003_WHT_Security_Camera/gafgyt_attacks_extracted/tcp.csv": {
+          "bytes": 55203340,
+          "device": 16777248,
+          "inode": 108288,
+          "mtime_ns": 1508213132000000000,
+          "mode": 420
+        },
+        "SimpleHome_XCS7_1003_WHT_Security_Camera/gafgyt_attacks_extracted/udp.csv": {
+          "bytes": 57969199,
+          "device": 16777248,
+          "inode": 108289,
+          "mtime_ns": 1508213242000000000,
+          "mode": 420
+        },
+        "SimpleHome_XCS7_1003_WHT_Security_Camera/gafgyt_attacks_extracted/junk.csv": {
+          "bytes": 46573306,
+          "device": 16777248,
+          "inode": 103639,
+          "mtime_ns": 1508212990000000000,
+          "mode": 420
+        },
+        "SimpleHome_XCS7_1003_WHT_Security_Camera/gafgyt_attacks_extracted/combo.csv": {
+          "bytes": 105589038,
+          "device": 16777248,
+          "inode": 108290,
+          "mtime_ns": 1508211988000000000,
+          "mode": 420
+        },
+        "Samsung_SNH_1011_N_Webcam/benign_traffic.csv": {
+          "bytes": 54969458,
+          "device": 16777248,
+          "inode": 108292,
+          "mtime_ns": 1684794144000000000,
+          "mode": 448
+        },
+        "Samsung_SNH_1011_N_Webcam/gafgyt_attacks_extracted/scan.csv": {
+          "bytes": 37441442,
+          "device": 16777248,
+          "inode": 103642,
+          "mtime_ns": 1508213026000000000,
+          "mode": 420
+        },
+        "Samsung_SNH_1011_N_Webcam/gafgyt_attacks_extracted/tcp.csv": {
+          "bytes": 55038941,
+          "device": 16777248,
+          "inode": 108293,
+          "mtime_ns": 1508213114000000000,
+          "mode": 420
+        },
+        "Samsung_SNH_1011_N_Webcam/gafgyt_attacks_extracted/udp.csv": {
+          "bytes": 62265519,
+          "device": 16777248,
+          "inode": 108294,
+          "mtime_ns": 1508213220000000000,
+          "mode": 420
+        },
+        "Samsung_SNH_1011_N_Webcam/gafgyt_attacks_extracted/junk.csv": {
+          "bytes": 48261599,
+          "device": 16777248,
+          "inode": 103643,
+          "mtime_ns": 1508212978000000000,
+          "mode": 420
+        },
+        "Samsung_SNH_1011_N_Webcam/gafgyt_attacks_extracted/combo.csv": {
+          "bytes": 104015943,
+          "device": 16777248,
+          "inode": 108298,
+          "mtime_ns": 1508211936000000000,
+          "mode": 420
+        },
+        "Danmini_Doorbell/benign_traffic.csv": {
+          "bytes": 46537568,
+          "device": 16777248,
+          "inode": 103646,
+          "mtime_ns": 1684794142000000000,
+          "mode": 448
+        },
+        "Danmini_Doorbell/mirai_attacks_extracted/syn.csv": {
+          "bytes": 164633193,
+          "device": 16777248,
+          "inode": 108301,
+          "mtime_ns": 1508214208000000000,
+          "mode": 420
+        },
+        "Danmini_Doorbell/mirai_attacks_extracted/scan.csv": {
+          "bytes": 107510905,
+          "device": 16777248,
+          "inode": 108302,
+          "mtime_ns": 1508214134000000000,
+          "mode": 420
+        },
+        "Danmini_Doorbell/mirai_attacks_extracted/udpplain.csv": {
+          "bytes": 120365536,
+          "device": 16777248,
+          "inode": 108306,
+          "mtime_ns": 1508214398000000000,
+          "mode": 420
+        },
+        "Danmini_Doorbell/mirai_attacks_extracted/ack.csv": {
+          "bytes": 135498914,
+          "device": 16777248,
+          "inode": 108307,
+          "mtime_ns": 1508214084000000000,
+          "mode": 420
+        },
+        "Danmini_Doorbell/mirai_attacks_extracted/udp.csv": {
+          "bytes": 315304260,
+          "device": 16777248,
+          "inode": 108308,
+          "mtime_ns": 1508214346000000000,
+          "mode": 420
+        },
+        "Danmini_Doorbell/gafgyt_attacks_extracted/scan.csv": {
+          "bytes": 40177901,
+          "device": 16777248,
+          "inode": 103648,
+          "mtime_ns": 1508212996000000000,
+          "mode": 420
+        },
+        "Danmini_Doorbell/gafgyt_attacks_extracted/tcp.csv": {
+          "bytes": 51866227,
+          "device": 16777248,
+          "inode": 108312,
+          "mtime_ns": 1508213046000000000,
+          "mode": 420
+        },
+        "Danmini_Doorbell/gafgyt_attacks_extracted/udp.csv": {
+          "bytes": 59597256,
+          "device": 16777248,
+          "inode": 108313,
+          "mtime_ns": 1508213144000000000,
+          "mode": 420
+        },
+        "Danmini_Doorbell/gafgyt_attacks_extracted/junk.csv": {
+          "bytes": 49322665,
+          "device": 16777248,
+          "inode": 103649,
+          "mtime_ns": 1508212940000000000,
+          "mode": 420
+        },
+        "Danmini_Doorbell/gafgyt_attacks_extracted/combo.csv": {
+          "bytes": 105833909,
+          "device": 16777248,
+          "inode": 108314,
+          "mtime_ns": 1508211724000000000,
+          "mode": 420
+        },
+        "Philips_B120N10_Baby_Monitor/benign_traffic.csv": {
+          "bytes": 214374672,
+          "device": 16777248,
+          "inode": 108317,
+          "mtime_ns": 1684794141000000000,
+          "mode": 448
+        },
+        "Philips_B120N10_Baby_Monitor/mirai_attacks_extracted/syn.csv": {
+          "bytes": 158976651,
+          "device": 16777248,
+          "inode": 108321,
+          "mtime_ns": 1508214160000000000,
+          "mode": 420
+        },
+        "Philips_B120N10_Baby_Monitor/mirai_attacks_extracted/scan.csv": {
+          "bytes": 103452295,
+          "device": 16777248,
+          "inode": 108322,
+          "mtime_ns": 1508214100000000000,
+          "mode": 420
+        },
+        "Philips_B120N10_Baby_Monitor/mirai_attacks_extracted/udpplain.csv": {
+          "bytes": 118674570,
+          "device": 16777248,
+          "inode": 108323,
+          "mtime_ns": 1508214364000000000,
+          "mode": 420
+        },
+        "Philips_B120N10_Baby_Monitor/mirai_attacks_extracted/ack.csv": {
+          "bytes": 120882839,
+          "device": 16777248,
+          "inode": 108327,
+          "mtime_ns": 1508214044000000000,
+          "mode": 420
+        },
+        "Philips_B120N10_Baby_Monitor/mirai_attacks_extracted/udp.csv": {
+          "bytes": 287994126,
+          "device": 16777248,
+          "inode": 108328,
+          "mtime_ns": 1508214256000000000,
+          "mode": 420
+        },
+        "Philips_B120N10_Baby_Monitor/gafgyt_attacks_extracted/scan.csv": {
+          "bytes": 37535324,
+          "device": 16777248,
+          "inode": 103653,
+          "mtime_ns": 1508213012000000000,
+          "mode": 420
+        },
+        "Philips_B120N10_Baby_Monitor/gafgyt_attacks_extracted/tcp.csv": {
+          "bytes": 52113658,
+          "device": 16777248,
+          "inode": 108329,
+          "mtime_ns": 1508213080000000000,
+          "mode": 420
+        },
+        "Philips_B120N10_Baby_Monitor/gafgyt_attacks_extracted/udp.csv": {
+          "bytes": 59545509,
+          "device": 16777248,
+          "inode": 108333,
+          "mtime_ns": 1508213174000000000,
+          "mode": 420
+        },
+        "Philips_B120N10_Baby_Monitor/gafgyt_attacks_extracted/junk.csv": {
+          "bytes": 48260845,
+          "device": 16777248,
+          "inode": 103654,
+          "mtime_ns": 1508212960000000000,
+          "mode": 420
+        },
+        "Philips_B120N10_Baby_Monitor/gafgyt_attacks_extracted/combo.csv": {
+          "bytes": 103451636,
+          "device": 16777248,
+          "inode": 108334,
+          "mtime_ns": 1508211852000000000,
+          "mode": 420
+        },
+        "Ennio_Doorbell/benign_traffic.csv": {
+          "bytes": 37135498,
+          "device": 16777248,
+          "inode": 103656,
+          "mtime_ns": 1684794141000000000,
+          "mode": 448
+        },
+        "Ennio_Doorbell/gafgyt_attacks_extracted/scan.csv": {
+          "bytes": 37971404,
+          "device": 16777248,
+          "inode": 103658,
+          "mtime_ns": 1508213006000000000,
+          "mode": 420
+        },
+        "Ennio_Doorbell/gafgyt_attacks_extracted/tcp.csv": {
+          "bytes": 57149667,
+          "device": 16777248,
+          "inode": 108336,
+          "mtime_ns": 1508213068000000000,
+          "mode": 420
+        },
+        "Ennio_Doorbell/gafgyt_attacks_extracted/udp.csv": {
+          "bytes": 58507137,
+          "device": 16777248,
+          "inode": 108337,
+          "mtime_ns": 1508213164000000000,
+          "mode": 420
+        },
+        "Ennio_Doorbell/gafgyt_attacks_extracted/junk.csv": {
+          "bytes": 50828262,
+          "device": 16777248,
+          "inode": 108338,
+          "mtime_ns": 1508212954000000000,
+          "mode": 420
+        },
+        "Ennio_Doorbell/gafgyt_attacks_extracted/combo.csv": {
+          "bytes": 94030426,
+          "device": 16777248,
+          "inode": 108339,
+          "mtime_ns": 1508211810000000000,
+          "mode": 420
+        },
+        "Provision_PT_737E_Security_Camera/benign_traffic.csv": {
+          "bytes": 64576152,
+          "device": 16777248,
+          "inode": 108345,
+          "mtime_ns": 1684794144000000000,
+          "mode": 448
+        },
+        "Provision_PT_737E_Security_Camera/mirai_attacks_extracted/syn.csv": {
+          "bytes": 83285871,
+          "device": 16777248,
+          "inode": 108346,
+          "mtime_ns": 1508214484000000000,
+          "mode": 420
+        },
+        "Provision_PT_737E_Security_Camera/mirai_attacks_extracted/scan.csv": {
+          "bytes": 96028732,
+          "device": 16777248,
+          "inode": 108347,
+          "mtime_ns": 1508214444000000000,
+          "mode": 420
+        },
+        "Provision_PT_737E_Security_Camera/mirai_attacks_extracted/udpplain.csv": {
+          "bytes": 79817584,
+          "device": 16777248,
+          "inode": 108348,
+          "mtime_ns": 1508214630000000000,
+          "mode": 420
+        },
+        "Provision_PT_737E_Security_Camera/mirai_attacks_extracted/ack.csv": {
+          "bytes": 76849640,
+          "device": 16777248,
+          "inode": 108352,
+          "mtime_ns": 1508214410000000000,
+          "mode": 420
+        },
+        "Provision_PT_737E_Security_Camera/mirai_attacks_extracted/udp.csv": {
+          "bytes": 200357797,
+          "device": 16777248,
+          "inode": 108353,
+          "mtime_ns": 1508214542000000000,
+          "mode": 420
+        },
+        "Provision_PT_737E_Security_Camera/gafgyt_attacks_extracted/scan.csv": {
+          "bytes": 39580175,
+          "device": 16777248,
+          "inode": 103663,
+          "mtime_ns": 1508213016000000000,
+          "mode": 420
+        },
+        "Provision_PT_737E_Security_Camera/gafgyt_attacks_extracted/tcp.csv": {
+          "bytes": 58822798,
+          "device": 16777248,
+          "inode": 108354,
+          "mtime_ns": 1508213092000000000,
+          "mode": 420
+        },
+        "Provision_PT_737E_Security_Camera/gafgyt_attacks_extracted/udp.csv": {
+          "bytes": 58550975,
+          "device": 16777248,
+          "inode": 108355,
+          "mtime_ns": 1508213184000000000,
+          "mode": 420
+        },
+        "Provision_PT_737E_Security_Camera/gafgyt_attacks_extracted/junk.csv": {
+          "bytes": 52629481,
+          "device": 16777248,
+          "inode": 108356,
+          "mtime_ns": 1508212966000000000,
+          "mode": 420
+        },
+        "Provision_PT_737E_Security_Camera/gafgyt_attacks_extracted/combo.csv": {
+          "bytes": 109076363,
+          "device": 16777248,
+          "inode": 108357,
+          "mtime_ns": 1508211880000000000,
+          "mode": 420
+        },
+        "Provision_PT_838_Security_Camera/benign_traffic.csv": {
+          "bytes": 103620766,
+          "device": 16777248,
+          "inode": 108363,
+          "mtime_ns": 1684794144000000000,
+          "mode": 448
+        },
+        "Provision_PT_838_Security_Camera/mirai_attacks_extracted/syn.csv": {
+          "bytes": 78548822,
+          "device": 16777248,
+          "inode": 108364,
+          "mtime_ns": 1508214496000000000,
+          "mode": 420
+        },
+        "Provision_PT_838_Security_Camera/mirai_attacks_extracted/scan.csv": {
+          "bytes": 96333715,
+          "device": 16777248,
+          "inode": 108365,
+          "mtime_ns": 1508214460000000000,
+          "mode": 420
+        },
+        "Provision_PT_838_Security_Camera/mirai_attacks_extracted/udpplain.csv": {
+          "bytes": 75727146,
+          "device": 16777248,
+          "inode": 108366,
+          "mtime_ns": 1508214654000000000,
+          "mode": 420
+        },
+        "Provision_PT_838_Security_Camera/mirai_attacks_extracted/ack.csv": {
+          "bytes": 73553957,
+          "device": 16777248,
+          "inode": 108368,
+          "mtime_ns": 1508214420000000000,
+          "mode": 420
+        },
+        "Provision_PT_838_Security_Camera/mirai_attacks_extracted/udp.csv": {
+          "bytes": 203388721,
+          "device": 16777248,
+          "inode": 108371,
+          "mtime_ns": 1508214572000000000,
+          "mode": 420
+        },
+        "Provision_PT_838_Security_Camera/gafgyt_attacks_extracted/scan.csv": {
+          "bytes": 38452514,
+          "device": 16777248,
+          "inode": 103670,
+          "mtime_ns": 1508213020000000000,
+          "mode": 420
+        },
+        "Provision_PT_838_Security_Camera/gafgyt_attacks_extracted/tcp.csv": {
+          "bytes": 50316596,
+          "device": 16777248,
+          "inode": 108372,
+          "mtime_ns": 1508213102000000000,
+          "mode": 420
+        },
+        "Provision_PT_838_Security_Camera/gafgyt_attacks_extracted/udp.csv": {
+          "bytes": 58912912,
+          "device": 16777248,
+          "inode": 108373,
+          "mtime_ns": 1508213204000000000,
+          "mode": 420
+        },
+        "Provision_PT_838_Security_Camera/gafgyt_attacks_extracted/junk.csv": {
+          "bytes": 49536332,
+          "device": 16777248,
+          "inode": 103671,
+          "mtime_ns": 1508212974000000000,
+          "mode": 420
+        },
+        "Provision_PT_838_Security_Camera/gafgyt_attacks_extracted/combo.csv": {
+          "bytes": 102197160,
+          "device": 16777248,
+          "inode": 108374,
+          "mtime_ns": 1508211908000000000,
+          "mode": 420
+        }
+      },
+      "current_content_hash_and_row_checks": "not performed; reserved for separately authorized execution preflight"
+    }
+  },
+  "total_csv_count": 400,
+  "total_bytes": 17114499704,
+  "migration_status": "existing logs report MOVED_VERIFIED_ORIGINAL_PATH_LINKED and final PASS; current 400 paths and stat sizes independently match",
+  "original_project_entrance": {
+    "path": "/Users/nuonanouyang/Downloads/tnsm-energy-aware-ids",
+    "symlink_target": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Downloads/tnsm-energy-aware-ids"
+  },
+  "volume_refresh": {
+    "volume_uuid": "FBCBD1E6-330C-452B-AD79-EF7F74B6464B",
+    "mount_point": "/Volumes/RESEARCH_DATA",
+    "filesystem": "apfs",
+    "writable": true,
+    "locked": false,
+    "available_bytes": 890136494080,
+    "formal_paths_absent": true,
+    "source_root_devices": {
+      "ton_iot": 16777248,
+      "ciciot2023": 16777248,
+      "n_baiot": 16777248
+    },
+    "output_parent_device": 16777248
+  }
+}

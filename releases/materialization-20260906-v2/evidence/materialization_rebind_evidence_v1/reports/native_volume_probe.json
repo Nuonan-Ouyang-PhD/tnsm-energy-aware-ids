@@ -1,0 +1,929 @@
+{
+  "status": "PASS",
+  "platform": "macOS-15.3.1-arm64-arm-64bit",
+  "executor_sha256": "ac9992005047bda7431abccafe8698d5b3b890efbf218605841730a5613b1c2c",
+  "probe_root": "/Volumes/RESEARCH_DATA/.tnsm-rebind-probe-aefhmczg",
+  "before": {
+    "observed_at_utc": "2026-09-06T09:43:34.833594+00:00",
+    "volume": {
+      "AESHardware": false,
+      "APFSContainerFree": 990812286976,
+      "APFSContainerReference": "disk9",
+      "APFSContainerSize": 1023999787008,
+      "APFSPhysicalStores": [
+        {
+          "APFSPhysicalStore": "disk8s2"
+        }
+      ],
+      "APFSSnapshot": false,
+      "Bootable": true,
+      "BusProtocol": "PCI-Express",
+      "CanBeMadeBootable": false,
+      "CanBeMadeBootableRequiresDestroy": false,
+      "CapacityInUse": 32978116608,
+      "Content": "41504653-0000-11AA-AA11-00306543ECAC",
+      "DeviceBlockSize": 4096,
+      "DeviceIdentifier": "disk9s1",
+      "DeviceNode": "/dev/disk9s1",
+      "DeviceTreePath": "IODeviceTree:/arm-io@10F00000/apciec0@50000000/pcic0-bridge@0/pci-bridge@0/pci-bridge@0/pci1e4b,1608@0/IONVMeController",
+      "DiskUUID": "FBCBD1E6-330C-452B-AD79-EF7F74B6464B",
+      "Ejectable": true,
+      "EjectableMediaAutomaticUnderSoftwareControl": false,
+      "EjectableOnly": false,
+      "Encryption": true,
+      "EncryptionThisVolumeProper": true,
+      "FileVault": true,
+      "FilesystemName": "APFS",
+      "FilesystemType": "apfs",
+      "FilesystemUserVisibleName": "APFS",
+      "FreeSpace": 0,
+      "Fusion": false,
+      "GlobalPermissionsEnabled": false,
+      "IOKitSize": 1023999787008,
+      "IORegistryEntryName": "RESEARCH_DATA",
+      "Internal": false,
+      "Locked": false,
+      "MediaName": "",
+      "MediaType": "Generic",
+      "MountPoint": "/Volumes/RESEARCH_DATA",
+      "OSInternalMedia": false,
+      "ParentWholeDisk": "disk9",
+      "PartitionMapPartition": false,
+      "RAIDMaster": false,
+      "RAIDSlice": false,
+      "Removable": false,
+      "RemovableMedia": false,
+      "RemovableMediaOrExternalDevice": true,
+      "SMARTDeviceSpecificKeysMayVaryNotGuaranteed": {},
+      "SMARTStatus": "Not Supported",
+      "Sealed": "No",
+      "Size": 1023999787008,
+      "SolidState": true,
+      "SupportsGlobalPermissionsDisable": true,
+      "SystemImage": false,
+      "TotalSize": 1023999787008,
+      "VolumeAllocationBlockSize": 4096,
+      "VolumeName": "RESEARCH_DATA",
+      "VolumeSize": 0,
+      "VolumeUUID": "FBCBD1E6-330C-452B-AD79-EF7F74B6464B",
+      "WholeDisk": false,
+      "Writable": true,
+      "WritableMedia": true,
+      "WritableVolume": true
+    },
+    "physical_stores": [
+      {
+        "AESHardware": false,
+        "APFSContainerReference": "disk9",
+        "Bootable": true,
+        "BusProtocol": "PCI-Express",
+        "CanBeMadeBootable": false,
+        "CanBeMadeBootableRequiresDestroy": false,
+        "Content": "Apple_APFS",
+        "DeviceBlockSize": 512,
+        "DeviceIdentifier": "disk8s2",
+        "DeviceNode": "/dev/disk8s2",
+        "DeviceTreePath": "IODeviceTree:/arm-io@10F00000/apciec0@50000000/pcic0-bridge@0/pci-bridge@0/pci-bridge@0/pci1e4b,1608@0/IONVMeController",
+        "DiskUUID": "320D6A53-8623-4A04-9DBB-106837481D07",
+        "Ejectable": true,
+        "EjectableMediaAutomaticUnderSoftwareControl": false,
+        "EjectableOnly": false,
+        "FreeSpace": 0,
+        "Fusion": false,
+        "GlobalPermissionsEnabled": false,
+        "IOKitSize": 1023999787008,
+        "IORegistryEntryName": "Untitled 2",
+        "Internal": false,
+        "MediaName": "",
+        "MediaType": "Generic",
+        "MountPoint": "",
+        "OSInternalMedia": false,
+        "ParentWholeDisk": "disk8",
+        "PartitionMapPartition": true,
+        "PartitionMapPartitionOffset": 209735680,
+        "RAIDMaster": false,
+        "RAIDSlice": false,
+        "Removable": false,
+        "RemovableMedia": false,
+        "RemovableMediaOrExternalDevice": true,
+        "SMARTDeviceSpecificKeysMayVaryNotGuaranteed": {
+          "AVAILABLE_SPARE": 100,
+          "AVAILABLE_SPARE_THRESHOLD": 1,
+          "CONTROLLER_BUSY_TIME_0": 0,
+          "CONTROLLER_BUSY_TIME_1": 0,
+          "DATA_UNITS_READ_0": 45874,
+          "DATA_UNITS_READ_1": 0,
+          "DATA_UNITS_WRITTEN_0": 86773,
+          "DATA_UNITS_WRITTEN_1": 0,
+          "HOST_READ_COMMANDS_0": 361081,
+          "HOST_READ_COMMANDS_1": 0,
+          "HOST_WRITE_COMMANDS_0": 669563,
+          "HOST_WRITE_COMMANDS_1": 0,
+          "MEDIA_ERRORS_0": 0,
+          "MEDIA_ERRORS_1": 0,
+          "NUM_ERROR_INFO_LOG_ENTRIES_0": 0,
+          "NUM_ERROR_INFO_LOG_ENTRIES_1": 0,
+          "PERCENTAGE_USED": 0,
+          "POWER_CYCLES_0": 3,
+          "POWER_CYCLES_1": 0,
+          "POWER_ON_HOURS_0": 0,
+          "POWER_ON_HOURS_1": 0,
+          "TEMPERATURE": 311,
+          "UNSAFE_SHUTDOWNS_0": 3,
+          "UNSAFE_SHUTDOWNS_1": 0
+        },
+        "SMARTStatus": "Verified",
+        "Size": 1023999787008,
+        "SolidState": true,
+        "SupportsGlobalPermissionsDisable": false,
+        "SystemImage": false,
+        "TotalSize": 1023999787008,
+        "VolumeName": "",
+        "VolumeSize": 0,
+        "WholeDisk": false,
+        "Writable": true,
+        "WritableMedia": true,
+        "WritableVolume": false
+      }
+    ],
+    "physical_devices": [
+      {
+        "AESHardware": false,
+        "Bootable": false,
+        "BusProtocol": "PCI-Express",
+        "CanBeMadeBootable": false,
+        "CanBeMadeBootableRequiresDestroy": false,
+        "Content": "GUID_partition_scheme",
+        "DeviceBlockSize": 512,
+        "DeviceIdentifier": "disk8",
+        "DeviceNode": "/dev/disk8",
+        "DeviceTreePath": "IODeviceTree:/arm-io@10F00000/apciec0@50000000/pcic0-bridge@0/pci-bridge@0/pci-bridge@0/pci1e4b,1608@0/IONVMeController",
+        "Ejectable": true,
+        "EjectableMediaAutomaticUnderSoftwareControl": false,
+        "EjectableOnly": false,
+        "FreeSpace": 0,
+        "GlobalPermissionsEnabled": false,
+        "IOKitSize": 1024209543168,
+        "IORegistryEntryName": "SPCC M.2 PCIe SSD Media",
+        "Internal": false,
+        "LowLevelFormatSupported": false,
+        "MediaName": "SPCC M.2 PCIe SSD",
+        "MediaType": "Generic",
+        "MountPoint": "",
+        "OS9DriversInstalled": false,
+        "OSInternalMedia": false,
+        "ParentWholeDisk": "disk8",
+        "PartitionMapPartition": false,
+        "RAIDMaster": false,
+        "RAIDSlice": false,
+        "Removable": false,
+        "RemovableMedia": false,
+        "RemovableMediaOrExternalDevice": true,
+        "SMARTDeviceSpecificKeysMayVaryNotGuaranteed": {
+          "AVAILABLE_SPARE": 100,
+          "AVAILABLE_SPARE_THRESHOLD": 1,
+          "CONTROLLER_BUSY_TIME_0": 0,
+          "CONTROLLER_BUSY_TIME_1": 0,
+          "DATA_UNITS_READ_0": 45874,
+          "DATA_UNITS_READ_1": 0,
+          "DATA_UNITS_WRITTEN_0": 86872,
+          "DATA_UNITS_WRITTEN_1": 0,
+          "HOST_READ_COMMANDS_0": 361081,
+          "HOST_READ_COMMANDS_1": 0,
+          "HOST_WRITE_COMMANDS_0": 670336,
+          "HOST_WRITE_COMMANDS_1": 0,
+          "MEDIA_ERRORS_0": 0,
+          "MEDIA_ERRORS_1": 0,
+          "NUM_ERROR_INFO_LOG_ENTRIES_0": 0,
+          "NUM_ERROR_INFO_LOG_ENTRIES_1": 0,
+          "PERCENTAGE_USED": 0,
+          "POWER_CYCLES_0": 3,
+          "POWER_CYCLES_1": 0,
+          "POWER_ON_HOURS_0": 0,
+          "POWER_ON_HOURS_1": 0,
+          "TEMPERATURE": 311,
+          "UNSAFE_SHUTDOWNS_0": 3,
+          "UNSAFE_SHUTDOWNS_1": 0
+        },
+        "SMARTStatus": "Verified",
+        "Size": 1024209543168,
+        "SolidState": true,
+        "SupportsGlobalPermissionsDisable": false,
+        "SystemImage": false,
+        "TotalSize": 1024209543168,
+        "VirtualOrPhysical": "Physical",
+        "VolumeName": "",
+        "VolumeSize": 0,
+        "WholeDisk": true,
+        "Writable": true,
+        "WritableMedia": true,
+        "WritableVolume": false
+      }
+    ],
+    "statvfs_available_bytes": 990761746432,
+    "statvfs_total_bytes": 1023999787008,
+    "parent_device": 16777248,
+    "parent_inode": 2
+  },
+  "after": {
+    "observed_at_utc": "2026-09-06T09:43:35.138384+00:00",
+    "volume": {
+      "AESHardware": false,
+      "APFSContainerFree": 990761701376,
+      "APFSContainerReference": "disk9",
+      "APFSContainerSize": 1023999787008,
+      "APFSPhysicalStores": [
+        {
+          "APFSPhysicalStore": "disk8s2"
+        }
+      ],
+      "APFSSnapshot": false,
+      "Bootable": true,
+      "BusProtocol": "PCI-Express",
+      "CanBeMadeBootable": false,
+      "CanBeMadeBootableRequiresDestroy": false,
+      "CapacityInUse": 33028702208,
+      "Content": "41504653-0000-11AA-AA11-00306543ECAC",
+      "DeviceBlockSize": 4096,
+      "DeviceIdentifier": "disk9s1",
+      "DeviceNode": "/dev/disk9s1",
+      "DeviceTreePath": "IODeviceTree:/arm-io@10F00000/apciec0@50000000/pcic0-bridge@0/pci-bridge@0/pci-bridge@0/pci1e4b,1608@0/IONVMeController",
+      "DiskUUID": "FBCBD1E6-330C-452B-AD79-EF7F74B6464B",
+      "Ejectable": true,
+      "EjectableMediaAutomaticUnderSoftwareControl": false,
+      "EjectableOnly": false,
+      "Encryption": true,
+      "EncryptionThisVolumeProper": true,
+      "FileVault": true,
+      "FilesystemName": "APFS",
+      "FilesystemType": "apfs",
+      "FilesystemUserVisibleName": "APFS",
+      "FreeSpace": 0,
+      "Fusion": false,
+      "GlobalPermissionsEnabled": false,
+      "IOKitSize": 1023999787008,
+      "IORegistryEntryName": "RESEARCH_DATA",
+      "Internal": false,
+      "Locked": false,
+      "MediaName": "",
+      "MediaType": "Generic",
+      "MountPoint": "/Volumes/RESEARCH_DATA",
+      "OSInternalMedia": false,
+      "ParentWholeDisk": "disk9",
+      "PartitionMapPartition": false,
+      "RAIDMaster": false,
+      "RAIDSlice": false,
+      "Removable": false,
+      "RemovableMedia": false,
+      "RemovableMediaOrExternalDevice": true,
+      "SMARTDeviceSpecificKeysMayVaryNotGuaranteed": {
+        "AVAILABLE_SPARE": 100,
+        "AVAILABLE_SPARE_THRESHOLD": 1,
+        "CONTROLLER_BUSY_TIME_0": 0,
+        "CONTROLLER_BUSY_TIME_1": 0,
+        "DATA_UNITS_READ_0": 45874,
+        "DATA_UNITS_READ_1": 0,
+        "DATA_UNITS_WRITTEN_0": 86872,
+        "DATA_UNITS_WRITTEN_1": 0,
+        "HOST_READ_COMMANDS_0": 361081,
+        "HOST_READ_COMMANDS_1": 0,
+        "HOST_WRITE_COMMANDS_0": 670348,
+        "HOST_WRITE_COMMANDS_1": 0,
+        "MEDIA_ERRORS_0": 0,
+        "MEDIA_ERRORS_1": 0,
+        "NUM_ERROR_INFO_LOG_ENTRIES_0": 0,
+        "NUM_ERROR_INFO_LOG_ENTRIES_1": 0,
+        "PERCENTAGE_USED": 0,
+        "POWER_CYCLES_0": 3,
+        "POWER_CYCLES_1": 0,
+        "POWER_ON_HOURS_0": 0,
+        "POWER_ON_HOURS_1": 0,
+        "TEMPERATURE": 311,
+        "UNSAFE_SHUTDOWNS_0": 3,
+        "UNSAFE_SHUTDOWNS_1": 0
+      },
+      "SMARTStatus": "Verified",
+      "Sealed": "No",
+      "Size": 1023999787008,
+      "SolidState": true,
+      "SupportsGlobalPermissionsDisable": true,
+      "SystemImage": false,
+      "TotalSize": 1023999787008,
+      "VolumeAllocationBlockSize": 4096,
+      "VolumeName": "RESEARCH_DATA",
+      "VolumeSize": 0,
+      "VolumeUUID": "FBCBD1E6-330C-452B-AD79-EF7F74B6464B",
+      "WholeDisk": false,
+      "Writable": true,
+      "WritableMedia": true,
+      "WritableVolume": true
+    },
+    "physical_stores": [
+      {
+        "AESHardware": false,
+        "APFSContainerReference": "disk9",
+        "Bootable": true,
+        "BusProtocol": "PCI-Express",
+        "CanBeMadeBootable": false,
+        "CanBeMadeBootableRequiresDestroy": false,
+        "Content": "Apple_APFS",
+        "DeviceBlockSize": 512,
+        "DeviceIdentifier": "disk8s2",
+        "DeviceNode": "/dev/disk8s2",
+        "DeviceTreePath": "IODeviceTree:/arm-io@10F00000/apciec0@50000000/pcic0-bridge@0/pci-bridge@0/pci-bridge@0/pci1e4b,1608@0/IONVMeController",
+        "DiskUUID": "320D6A53-8623-4A04-9DBB-106837481D07",
+        "Ejectable": true,
+        "EjectableMediaAutomaticUnderSoftwareControl": false,
+        "EjectableOnly": false,
+        "FreeSpace": 0,
+        "Fusion": false,
+        "GlobalPermissionsEnabled": false,
+        "IOKitSize": 1023999787008,
+        "IORegistryEntryName": "Untitled 2",
+        "Internal": false,
+        "MediaName": "",
+        "MediaType": "Generic",
+        "MountPoint": "",
+        "OSInternalMedia": false,
+        "ParentWholeDisk": "disk8",
+        "PartitionMapPartition": true,
+        "PartitionMapPartitionOffset": 209735680,
+        "RAIDMaster": false,
+        "RAIDSlice": false,
+        "Removable": false,
+        "RemovableMedia": false,
+        "RemovableMediaOrExternalDevice": true,
+        "SMARTDeviceSpecificKeysMayVaryNotGuaranteed": {
+          "AVAILABLE_SPARE": 100,
+          "AVAILABLE_SPARE_THRESHOLD": 1,
+          "CONTROLLER_BUSY_TIME_0": 0,
+          "CONTROLLER_BUSY_TIME_1": 0,
+          "DATA_UNITS_READ_0": 45875,
+          "DATA_UNITS_READ_1": 0,
+          "DATA_UNITS_WRITTEN_0": 86872,
+          "DATA_UNITS_WRITTEN_1": 0,
+          "HOST_READ_COMMANDS_0": 361288,
+          "HOST_READ_COMMANDS_1": 0,
+          "HOST_WRITE_COMMANDS_0": 670348,
+          "HOST_WRITE_COMMANDS_1": 0,
+          "MEDIA_ERRORS_0": 0,
+          "MEDIA_ERRORS_1": 0,
+          "NUM_ERROR_INFO_LOG_ENTRIES_0": 0,
+          "NUM_ERROR_INFO_LOG_ENTRIES_1": 0,
+          "PERCENTAGE_USED": 0,
+          "POWER_CYCLES_0": 3,
+          "POWER_CYCLES_1": 0,
+          "POWER_ON_HOURS_0": 0,
+          "POWER_ON_HOURS_1": 0,
+          "TEMPERATURE": 311,
+          "UNSAFE_SHUTDOWNS_0": 3,
+          "UNSAFE_SHUTDOWNS_1": 0
+        },
+        "SMARTStatus": "Verified",
+        "Size": 1023999787008,
+        "SolidState": true,
+        "SupportsGlobalPermissionsDisable": false,
+        "SystemImage": false,
+        "TotalSize": 1023999787008,
+        "VolumeName": "",
+        "VolumeSize": 0,
+        "WholeDisk": false,
+        "Writable": true,
+        "WritableMedia": true,
+        "WritableVolume": false
+      }
+    ],
+    "physical_devices": [
+      {
+        "AESHardware": false,
+        "Bootable": false,
+        "BusProtocol": "PCI-Express",
+        "CanBeMadeBootable": false,
+        "CanBeMadeBootableRequiresDestroy": false,
+        "Content": "GUID_partition_scheme",
+        "DeviceBlockSize": 512,
+        "DeviceIdentifier": "disk8",
+        "DeviceNode": "/dev/disk8",
+        "DeviceTreePath": "IODeviceTree:/arm-io@10F00000/apciec0@50000000/pcic0-bridge@0/pci-bridge@0/pci-bridge@0/pci1e4b,1608@0/IONVMeController",
+        "Ejectable": true,
+        "EjectableMediaAutomaticUnderSoftwareControl": false,
+        "EjectableOnly": false,
+        "FreeSpace": 0,
+        "GlobalPermissionsEnabled": false,
+        "IOKitSize": 1024209543168,
+        "IORegistryEntryName": "SPCC M.2 PCIe SSD Media",
+        "Internal": false,
+        "LowLevelFormatSupported": false,
+        "MediaName": "SPCC M.2 PCIe SSD",
+        "MediaType": "Generic",
+        "MountPoint": "",
+        "OS9DriversInstalled": false,
+        "OSInternalMedia": false,
+        "ParentWholeDisk": "disk8",
+        "PartitionMapPartition": false,
+        "RAIDMaster": false,
+        "RAIDSlice": false,
+        "Removable": false,
+        "RemovableMedia": false,
+        "RemovableMediaOrExternalDevice": true,
+        "SMARTDeviceSpecificKeysMayVaryNotGuaranteed": {
+          "AVAILABLE_SPARE": 100,
+          "AVAILABLE_SPARE_THRESHOLD": 1,
+          "CONTROLLER_BUSY_TIME_0": 0,
+          "CONTROLLER_BUSY_TIME_1": 0,
+          "DATA_UNITS_READ_0": 45875,
+          "DATA_UNITS_READ_1": 0,
+          "DATA_UNITS_WRITTEN_0": 86872,
+          "DATA_UNITS_WRITTEN_1": 0,
+          "HOST_READ_COMMANDS_0": 361288,
+          "HOST_READ_COMMANDS_1": 0,
+          "HOST_WRITE_COMMANDS_0": 670348,
+          "HOST_WRITE_COMMANDS_1": 0,
+          "MEDIA_ERRORS_0": 0,
+          "MEDIA_ERRORS_1": 0,
+          "NUM_ERROR_INFO_LOG_ENTRIES_0": 0,
+          "NUM_ERROR_INFO_LOG_ENTRIES_1": 0,
+          "PERCENTAGE_USED": 0,
+          "POWER_CYCLES_0": 3,
+          "POWER_CYCLES_1": 0,
+          "POWER_ON_HOURS_0": 0,
+          "POWER_ON_HOURS_1": 0,
+          "TEMPERATURE": 311,
+          "UNSAFE_SHUTDOWNS_0": 3,
+          "UNSAFE_SHUTDOWNS_1": 0
+        },
+        "SMARTStatus": "Verified",
+        "Size": 1024209543168,
+        "SolidState": true,
+        "SupportsGlobalPermissionsDisable": false,
+        "SystemImage": false,
+        "TotalSize": 1024209543168,
+        "VirtualOrPhysical": "Physical",
+        "VolumeName": "",
+        "VolumeSize": 0,
+        "WholeDisk": true,
+        "Writable": true,
+        "WritableMedia": true,
+        "WritableVolume": false
+      }
+    ],
+    "statvfs_available_bytes": 990744924160,
+    "statvfs_total_bytes": 1023999787008,
+    "parent_device": 16777248,
+    "parent_inode": 2
+  },
+  "cases": [
+    {
+      "case": "absent",
+      "pass": true,
+      "rejection": null,
+      "syscall_mode": "native Darwin renameatx_np RENAME_EXCL",
+      "before": {
+        "device": 16777248,
+        "inode": 671,
+        "mode": 16877,
+        "children": {
+          ".candidate.staging": {
+            "device": 16777248,
+            "inode": 672,
+            "mode": 16832,
+            "children": {
+              "invented.txt": {
+                "device": 16777248,
+                "inode": 673,
+                "mode": 33188,
+                "sha256": "de81c4400cadc67b61be95649916cf77e2c3dd7e7031b8ada25dc62a012617ef",
+                "bytes": 37
+              }
+            }
+          }
+        }
+      },
+      "after": {
+        "device": 16777248,
+        "inode": 671,
+        "mode": 16877,
+        "children": {
+          "candidate": {
+            "device": 16777248,
+            "inode": 672,
+            "mode": 16832,
+            "children": {
+              "invented.txt": {
+                "device": 16777248,
+                "inode": 673,
+                "mode": 33188,
+                "sha256": "de81c4400cadc67b61be95649916cf77e2c3dd7e7031b8ada25dc62a012617ef",
+                "bytes": 37
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "case": "empty_directory",
+      "pass": true,
+      "rejection": "final output appeared before publication; no-clobber preserved it",
+      "syscall_mode": "native Darwin renameatx_np RENAME_EXCL",
+      "before": {
+        "device": 16777248,
+        "inode": 674,
+        "mode": 16877,
+        "children": {
+          ".candidate.staging": {
+            "device": 16777248,
+            "inode": 675,
+            "mode": 16832,
+            "children": {
+              "invented.txt": {
+                "device": 16777248,
+                "inode": 676,
+                "mode": 33188,
+                "sha256": "de81c4400cadc67b61be95649916cf77e2c3dd7e7031b8ada25dc62a012617ef",
+                "bytes": 37
+              }
+            }
+          },
+          "candidate": {
+            "device": 16777248,
+            "inode": 677,
+            "mode": 16877,
+            "children": {}
+          }
+        }
+      },
+      "after": {
+        "device": 16777248,
+        "inode": 674,
+        "mode": 16877,
+        "children": {
+          ".candidate.staging": {
+            "device": 16777248,
+            "inode": 675,
+            "mode": 16832,
+            "children": {
+              "invented.txt": {
+                "device": 16777248,
+                "inode": 676,
+                "mode": 33188,
+                "sha256": "de81c4400cadc67b61be95649916cf77e2c3dd7e7031b8ada25dc62a012617ef",
+                "bytes": 37
+              }
+            }
+          },
+          "candidate": {
+            "device": 16777248,
+            "inode": 677,
+            "mode": 16877,
+            "children": {}
+          }
+        }
+      }
+    },
+    {
+      "case": "nonempty_directory",
+      "pass": true,
+      "rejection": "final output appeared before publication; no-clobber preserved it",
+      "syscall_mode": "native Darwin renameatx_np RENAME_EXCL",
+      "before": {
+        "device": 16777248,
+        "inode": 678,
+        "mode": 16877,
+        "children": {
+          ".candidate.staging": {
+            "device": 16777248,
+            "inode": 679,
+            "mode": 16832,
+            "children": {
+              "invented.txt": {
+                "device": 16777248,
+                "inode": 680,
+                "mode": 33188,
+                "sha256": "de81c4400cadc67b61be95649916cf77e2c3dd7e7031b8ada25dc62a012617ef",
+                "bytes": 37
+              }
+            }
+          },
+          "candidate": {
+            "device": 16777248,
+            "inode": 681,
+            "mode": 16877,
+            "children": {
+              "foreign.txt": {
+                "device": 16777248,
+                "inode": 682,
+                "mode": 33188,
+                "sha256": "793aee47638c04fddd11d67d2d5897f0b5d2fbf21c1bcac4db501adeacb364a2",
+                "bytes": 34
+              }
+            }
+          }
+        }
+      },
+      "after": {
+        "device": 16777248,
+        "inode": 678,
+        "mode": 16877,
+        "children": {
+          ".candidate.staging": {
+            "device": 16777248,
+            "inode": 679,
+            "mode": 16832,
+            "children": {
+              "invented.txt": {
+                "device": 16777248,
+                "inode": 680,
+                "mode": 33188,
+                "sha256": "de81c4400cadc67b61be95649916cf77e2c3dd7e7031b8ada25dc62a012617ef",
+                "bytes": 37
+              }
+            }
+          },
+          "candidate": {
+            "device": 16777248,
+            "inode": 681,
+            "mode": 16877,
+            "children": {
+              "foreign.txt": {
+                "device": 16777248,
+                "inode": 682,
+                "mode": 33188,
+                "sha256": "793aee47638c04fddd11d67d2d5897f0b5d2fbf21c1bcac4db501adeacb364a2",
+                "bytes": 34
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "case": "file",
+      "pass": true,
+      "rejection": "final output appeared before publication; no-clobber preserved it",
+      "syscall_mode": "native Darwin renameatx_np RENAME_EXCL",
+      "before": {
+        "device": 16777248,
+        "inode": 683,
+        "mode": 16877,
+        "children": {
+          ".candidate.staging": {
+            "device": 16777248,
+            "inode": 684,
+            "mode": 16832,
+            "children": {
+              "invented.txt": {
+                "device": 16777248,
+                "inode": 685,
+                "mode": 33188,
+                "sha256": "de81c4400cadc67b61be95649916cf77e2c3dd7e7031b8ada25dc62a012617ef",
+                "bytes": 37
+              }
+            }
+          },
+          "candidate": {
+            "device": 16777248,
+            "inode": 686,
+            "mode": 33188,
+            "sha256": "fc7d6012cca63b47dfc61c6f9ab9d52f9b0cf722f659548fc3e977f34c3f2f46",
+            "bytes": 30
+          }
+        }
+      },
+      "after": {
+        "device": 16777248,
+        "inode": 683,
+        "mode": 16877,
+        "children": {
+          ".candidate.staging": {
+            "device": 16777248,
+            "inode": 684,
+            "mode": 16832,
+            "children": {
+              "invented.txt": {
+                "device": 16777248,
+                "inode": 685,
+                "mode": 33188,
+                "sha256": "de81c4400cadc67b61be95649916cf77e2c3dd7e7031b8ada25dc62a012617ef",
+                "bytes": 37
+              }
+            }
+          },
+          "candidate": {
+            "device": 16777248,
+            "inode": 686,
+            "mode": 33188,
+            "sha256": "fc7d6012cca63b47dfc61c6f9ab9d52f9b0cf722f659548fc3e977f34c3f2f46",
+            "bytes": 30
+          }
+        }
+      }
+    },
+    {
+      "case": "symlink",
+      "pass": true,
+      "rejection": "final output appeared before publication; no-clobber preserved it",
+      "syscall_mode": "native Darwin renameatx_np RENAME_EXCL",
+      "before": {
+        "device": 16777248,
+        "inode": 687,
+        "mode": 16877,
+        "children": {
+          ".candidate.staging": {
+            "device": 16777248,
+            "inode": 688,
+            "mode": 16832,
+            "children": {
+              "invented.txt": {
+                "device": 16777248,
+                "inode": 689,
+                "mode": 33188,
+                "sha256": "de81c4400cadc67b61be95649916cf77e2c3dd7e7031b8ada25dc62a012617ef",
+                "bytes": 37
+              }
+            }
+          },
+          "candidate": {
+            "device": 16777248,
+            "inode": 691,
+            "mode": 41453,
+            "symlink": "neighbor.txt"
+          },
+          "neighbor.txt": {
+            "device": 16777248,
+            "inode": 690,
+            "mode": 33188,
+            "sha256": "f6775c16c45e59e0bcfffb2b6210284e2b92b90fc47479785233705ff530815a",
+            "bytes": 26
+          }
+        }
+      },
+      "after": {
+        "device": 16777248,
+        "inode": 687,
+        "mode": 16877,
+        "children": {
+          ".candidate.staging": {
+            "device": 16777248,
+            "inode": 688,
+            "mode": 16832,
+            "children": {
+              "invented.txt": {
+                "device": 16777248,
+                "inode": 689,
+                "mode": 33188,
+                "sha256": "de81c4400cadc67b61be95649916cf77e2c3dd7e7031b8ada25dc62a012617ef",
+                "bytes": 37
+              }
+            }
+          },
+          "candidate": {
+            "device": 16777248,
+            "inode": 691,
+            "mode": 41453,
+            "symlink": "neighbor.txt"
+          },
+          "neighbor.txt": {
+            "device": 16777248,
+            "inode": 690,
+            "mode": 33188,
+            "sha256": "f6775c16c45e59e0bcfffb2b6210284e2b92b90fc47479785233705ff530815a",
+            "bytes": 26
+          }
+        }
+      }
+    },
+    {
+      "case": "replaced_staging",
+      "pass": true,
+      "rejection": "foreign staging identity preserved: expected=(16777248, 693) observed=(16777248, 695)",
+      "syscall_mode": "identity guard before syscall",
+      "before": {
+        "device": 16777248,
+        "inode": 692,
+        "mode": 16877,
+        "children": {
+          ".candidate.staging": {
+            "device": 16777248,
+            "inode": 695,
+            "mode": 16877,
+            "children": {
+              "foreign.txt": {
+                "device": 16777248,
+                "inode": 696,
+                "mode": 33188,
+                "sha256": "498ccfdd6bb087abad8e60cefcc98ec71f7c4c9356ab3345a56791aae6dce9e6",
+                "bytes": 21
+              }
+            }
+          },
+          "displaced-owned": {
+            "device": 16777248,
+            "inode": 693,
+            "mode": 16832,
+            "children": {
+              "invented.txt": {
+                "device": 16777248,
+                "inode": 694,
+                "mode": 33188,
+                "sha256": "de81c4400cadc67b61be95649916cf77e2c3dd7e7031b8ada25dc62a012617ef",
+                "bytes": 37
+              }
+            }
+          }
+        }
+      },
+      "after": {
+        "device": 16777248,
+        "inode": 692,
+        "mode": 16877,
+        "children": {
+          ".candidate.staging": {
+            "device": 16777248,
+            "inode": 695,
+            "mode": 16877,
+            "children": {
+              "foreign.txt": {
+                "device": 16777248,
+                "inode": 696,
+                "mode": 33188,
+                "sha256": "498ccfdd6bb087abad8e60cefcc98ec71f7c4c9356ab3345a56791aae6dce9e6",
+                "bytes": 21
+              }
+            }
+          },
+          "displaced-owned": {
+            "device": 16777248,
+            "inode": 693,
+            "mode": 16832,
+            "children": {
+              "invented.txt": {
+                "device": 16777248,
+                "inode": 694,
+                "mode": 33188,
+                "sha256": "de81c4400cadc67b61be95649916cf77e2c3dd7e7031b8ada25dc62a012617ef",
+                "bytes": 37
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "case": "injected_ENOTSUP",
+      "pass": true,
+      "rejection": "atomic no-clobber publish failed closed: Operation not supported",
+      "syscall_mode": "injected failure",
+      "before": {
+        "device": 16777248,
+        "inode": 697,
+        "mode": 16877,
+        "children": {
+          ".candidate.staging": {
+            "device": 16777248,
+            "inode": 698,
+            "mode": 16832,
+            "children": {
+              "invented.txt": {
+                "device": 16777248,
+                "inode": 699,
+                "mode": 33188,
+                "sha256": "de81c4400cadc67b61be95649916cf77e2c3dd7e7031b8ada25dc62a012617ef",
+                "bytes": 37
+              }
+            }
+          }
+        }
+      },
+      "after": {
+        "device": 16777248,
+        "inode": 697,
+        "mode": 16877,
+        "children": {
+          ".candidate.staging": {
+            "device": 16777248,
+            "inode": 698,
+            "mode": 16832,
+            "children": {
+              "invented.txt": {
+                "device": 16777248,
+                "inode": 699,
+                "mode": 33188,
+                "sha256": "de81c4400cadc67b61be95649916cf77e2c3dd7e7031b8ada25dc62a012617ef",
+                "bytes": 37
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "native_syscall_cases_passed": 5,
+  "guard_or_injected_cases_passed": 2,
+  "retained_regular_files": 11,
+  "retained_logical_bytes": 370,
+  "retention": "All artificial probe objects retained; no recursive cleanup",
+  "real_csv_access": false,
+  "formal_output_or_staging_created": false,
+  "authorization_granted": false
+}

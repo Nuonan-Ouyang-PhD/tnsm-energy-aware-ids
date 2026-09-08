@@ -1,0 +1,37 @@
+[
+  {
+    "path": "/contract_id",
+    "before": "MATERIALIZATION-EXECUTOR-20260906-V1R2-PROPOSED",
+    "after": "MATERIALIZATION-EXECUTOR-20260906-V1R2-REBIND1-PROPOSED"
+  },
+  {
+    "path": "/output_binding/binding_status",
+    "before": "inherited_internal_location_fails_space_check; rebind exact new-volume path before operational approval",
+    "after": "actual_new_volume_probed; rebind_candidate_pending_independent_review_and_separate_user_authorization"
+  },
+  {
+    "path": "/output_binding/new_disk_note",
+    "before": "The user expects a new 1 TB disk. No volume name or mount path is assumed in V1R2. A changed root/staging pair requires a reviewed contract rebind and an on-volume no-clobber capability probe.",
+    "after": "RESEARCH_DATA APFS encrypted volume; UUID FBCBD1E6-330C-452B-AD79-EF7F74B6464B; native RENAME_EXCL probe passed. Refresh UUID, mount identity, available space and path absence before any separately authorized execution."
+  },
+  {
+    "path": "/output_binding/root",
+    "before": "/Users/nuonanouyang/Documents/ChatGPT/TNSM-materialized/FEATURE-POLICY-20260905-V1-FROZEN/MATERIALIZATION-20260906-V1",
+    "after": "/Volumes/RESEARCH_DATA/TNSM-MATERIALIZATION-20260906-V1"
+  },
+  {
+    "path": "/output_binding/staging_root",
+    "before": "/Users/nuonanouyang/Documents/ChatGPT/TNSM-materialized/FEATURE-POLICY-20260905-V1-FROZEN/.MATERIALIZATION-20260906-V1.staging",
+    "after": "/Volumes/RESEARCH_DATA/.TNSM-MATERIALIZATION-20260906-V1.staging"
+  },
+  {
+    "path": "/runtime_evidence_binding/archive_root",
+    "before": "materialization_executor_evidence_v1r2",
+    "after": "materialization_rebind_evidence_v1"
+  },
+  {
+    "path": "/storage/current_location_observation_passes",
+    "before": false,
+    "after": true
+  }
+]

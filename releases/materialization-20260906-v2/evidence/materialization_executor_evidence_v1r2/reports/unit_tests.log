@@ -1,0 +1,42 @@
+test_atomic_publish_refuses_late_destination_without_replacement (tests.test_materializer_synthetic.MaterializerSyntheticTests) ... ok
+test_cli_positive_guard_and_synthetic_execution (tests.test_materializer_synthetic.MaterializerSyntheticTests) ... ok
+test_cli_refuses_before_source_access_without_authorization (tests.test_materializer_synthetic.MaterializerSyntheticTests) ... ok
+test_cli_rejects_contract_drift_before_source_access (tests.test_materializer_synthetic.MaterializerSyntheticTests) ... ok
+test_cli_rejects_contract_whitespace_drift_byte_for_byte (tests.test_materializer_synthetic.MaterializerSyntheticTests) ... ok
+test_cli_rejects_executor_drift_before_source_access (tests.test_materializer_synthetic.MaterializerSyntheticTests) ... ok
+test_cli_rejects_manifest_inconsistent_evidence_zip (tests.test_materializer_synthetic.MaterializerSyntheticTests) ... ok
+test_cli_rejects_runtime_input_drift_before_source_access (tests.test_materializer_synthetic.MaterializerSyntheticTests) ... ok
+test_exact_registered_cic_exceptions_are_non_lf_and_succeed (tests.test_materializer_synthetic.MaterializerSyntheticTests) ... ok
+test_existing_output_is_not_overwritten (tests.test_materializer_synthetic.MaterializerSyntheticTests) ... ok
+test_existing_staging_is_not_modified (tests.test_materializer_synthetic.MaterializerSyntheticTests) ... ok
+test_foreign_staging_identity_is_reported_without_deletion (tests.test_materializer_synthetic.MaterializerSyntheticTests) ... ok
+test_full_tree_is_reproducible_across_independent_runs (tests.test_materializer_synthetic.MaterializerSyntheticTests) ... ok
+test_hard_budget_breach_preserves_owned_staging (tests.test_materializer_synthetic.MaterializerSyntheticTests) ... ok
+test_hash_only_replay_has_no_disk_peak_or_replay_files (tests.test_materializer_synthetic.MaterializerSyntheticTests) ... ok
+test_injected_failure_preserves_owned_staging_and_neighbor (tests.test_materializer_synthetic.MaterializerSyntheticTests) ... ok
+test_insufficient_space_creates_nothing (tests.test_materializer_synthetic.MaterializerSyntheticTests) ... ok
+test_rebound_structure_file_must_still_have_zero_rows (tests.test_materializer_synthetic.MaterializerSyntheticTests) ... ok
+test_registered_exception_rebound_with_lf_is_rejected (tests.test_materializer_synthetic.MaterializerSyntheticTests) ... ok
+test_replaced_staging_and_displaced_owned_tree_are_preserved (tests.test_materializer_synthetic.MaterializerSyntheticTests) ... ok
+test_static_expected_outputs_and_metadata (tests.test_materializer_synthetic.MaterializerSyntheticTests) ... ok
+test_unexpected_label_preserves_owned_staging_for_audit (tests.test_materializer_synthetic.MaterializerSyntheticTests) ... ok
+test_unregistered_malformed_row_fails_before_staging (tests.test_materializer_synthetic.MaterializerSyntheticTests) ... ok
+test_unregistered_non_lf_normal_record_fails_before_staging (tests.test_materializer_synthetic.MaterializerSyntheticTests) ... ok
+test_wrong_source_identity_fails_before_staging (tests.test_materializer_synthetic.MaterializerSyntheticTests) ... ok
+test_zero_row_structure_identity_is_preflighted (tests.test_materializer_synthetic.MaterializerSyntheticTests) ... ok
+test_exact_evidence_passes_without_mutation (tests.test_executor_evidence.ExecutorEvidenceVerifierTests) ... ok
+test_rejects_authorization_flip (tests.test_executor_evidence.ExecutorEvidenceVerifierTests) ... ok
+test_rejects_automatic_failure_deletion (tests.test_executor_evidence.ExecutorEvidenceVerifierTests) ... ok
+test_rejects_frozen_config_mutation (tests.test_executor_evidence.ExecutorEvidenceVerifierTests) ... ok
+test_rejects_generalized_missing_lf_exception (tests.test_executor_evidence.ExecutorEvidenceVerifierTests) ... ok
+test_rejects_missing_runtime_executor_binding (tests.test_executor_evidence.ExecutorEvidenceVerifierTests) ... ok
+test_rejects_missing_source_subtype_sidecar_column (tests.test_executor_evidence.ExecutorEvidenceVerifierTests) ... ok
+test_rejects_nonexclusive_publish_contract (tests.test_executor_evidence.ExecutorEvidenceVerifierTests) ... ok
+test_rejects_output_equal_to_staging (tests.test_executor_evidence.ExecutorEvidenceVerifierTests) ... ok
+test_rejects_reversed_ton_binary_rule (tests.test_executor_evidence.ExecutorEvidenceVerifierTests) ... ok
+test_rejects_wrong_cic_inventory_binding (tests.test_executor_evidence.ExecutorEvidenceVerifierTests) ... ok
+
+----------------------------------------------------------------------
+Ran 37 tests in 66.462s
+
+OK

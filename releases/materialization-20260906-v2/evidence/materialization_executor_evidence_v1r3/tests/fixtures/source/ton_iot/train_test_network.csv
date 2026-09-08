@@ -1,0 +1,3 @@
+src_ip,src_port,dst_ip,dst_port,proto,duration,label,type
+10.0.0.1,80,10.0.0.2,443,"tcp,odd", 001.2300 ,0,normal
+10.0.0.3,1234,10.0.0.4,53,udp,,1,ddos

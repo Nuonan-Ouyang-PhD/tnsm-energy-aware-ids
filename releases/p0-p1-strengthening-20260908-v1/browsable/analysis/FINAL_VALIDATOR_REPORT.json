@@ -1,0 +1,84 @@
+{
+  "validator": "TNSM-P0-P1-FINAL-20260908-V1",
+  "validated_at_utc": "2026-09-08T08:56:43.406314+00:00",
+  "authorization_sha256": "71cab227402e284108e44a6f0881ae0b1eb27e3cade3a3895fd6d7405acf2a1e",
+  "status": "PASS",
+  "protocol_deviations": [
+    "Original P1B attempt invalidated after final validator found fixed-MedRF CFSM substitution and absent telemetry; corrected authorized replacement used for inference.",
+    "P1A Mac controller session disappeared during S09-p2 after 403/500 power samples; original retained and explicit user-authorized retry1 used as replacement.",
+    "P1D DQN equal-2017 session disappeared at episode 652; interrupted directory retained and explicit continuation reran the same frozen configuration from the start."
+  ],
+  "p0": {
+    "status": "PASS",
+    "executed_sources": 6,
+    "manifest_entries": 17
+  },
+  "p1a": {
+    "status": "PASS",
+    "valid_runs": 40,
+    "paired_blocks": 10,
+    "invalid_interrupted_attempts": 1,
+    "replacement_runs": 1
+  },
+  "p1b": {
+    "status": "PASS",
+    "invalid_historical_units": 240,
+    "valid_replacement_units": 240,
+    "cfsm_semantic_states": 5000,
+    "cfsm_semantic_mismatches": 0
+  },
+  "p1c": {
+    "status": "PASS",
+    "frozen_policies": 20,
+    "derived_evaluations": 20,
+    "retrained": 0
+  },
+  "p1d": {
+    "status": "PASS",
+    "runs": 85,
+    "test_leakage_flags": 0
+  },
+  "p1e": {
+    "status": "PASS",
+    "runs": 35,
+    "test_leakage_flags": 0
+  },
+  "attempt_counts": {
+    "p1a_supplementary_physical_runs": {
+      "attempted": 42,
+      "valid": 40,
+      "invalid": 2,
+      "replacement": 1
+    },
+    "p1b_benchmark_units": {
+      "attempted": 480,
+      "valid": 240,
+      "invalid": 240,
+      "replacement": 240
+    },
+    "p1c_frozen_policy_evaluations": {
+      "attempted": 20,
+      "valid": 20,
+      "invalid": 0,
+      "replacement": 0
+    },
+    "p1d_policy_runs": {
+      "attempted": 86,
+      "valid": 85,
+      "invalid": 1,
+      "replacement": 1
+    },
+    "p1e_policy_runs": {
+      "attempted": 35,
+      "valid": 35,
+      "invalid": 0,
+      "replacement": 0
+    }
+  },
+  "package_counts": {
+    "p1a_registry_rows": 42,
+    "p1b_valid_rows": 240,
+    "p1d_registry_rows": 85,
+    "p1e_registry_rows": 35
+  }
+}

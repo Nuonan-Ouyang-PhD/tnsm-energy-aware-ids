@@ -1,0 +1,13 @@
+[script] ton_iot_proto_census v1 (2026-09-05, #23 audit exception)
+[argv] .temp/ton_iot_proto_census.py
+[git-head] 4e1841eed20e85484e5cc9d71de0a7e11c90184a
+[git-clean] ''
+[input] /Users/nuonanouyang/Downloads/tnsm-energy-aware-ids/datasets/incoming/ton_iot/train_test_network.csv
+[inventory] ton_iot_20260903T113048Z.json (ton_iot_20260903T113048Z frozen inventory)
+[csv-sha256] 26ddc513552de36de6428b2e578efaed2b57504c716dfba847cc0109a64e1974 == inventory (26ddc513552de36de6428b2e578efaed2b57504c716dfba847cc0109a64e1974)
+[expected-rows] 211043
+[header] 44 columns match frozen inventory; proto at index 4
+[header-sha256-recomputed] 7e805360c24865b348c5dc558fa8ae5afe6b85e68d99cc7dcf7479931ffe61fd
+[rows] parsed 211043 data rows
+[invariance] feature_policy.json SHA unchanged (2a903a4a...)
+[invariance] label_ontology.json SHA unchanged (8a055e2e...)

@@ -1,0 +1,16 @@
+{
+  "frozen_header_sha256": "024f793b346cb855a35269b079a95db373cfad64e9ba2f448e5a8678660e2e20",
+  "computed_inventory_recipe_sha256": "024f793b346cb855a35269b079a95db373cfad64e9ba2f448e5a8678660e2e20",
+  "recipe": "sha256(U+001F.join(parsed BOM-less header columns).encode(UTF-8))",
+  "recipe_matches": true,
+  "raw_header_sha256": "049ba74ecfe7e52812e4967dab061128f6c297614a6765fdc6884b985f76dabd",
+  "actual_complete_file_sha256": "26ddc513552de36de6428b2e578efaed2b57504c716dfba847cc0109a64e1974",
+  "complete_file_matches_frozen": true,
+  "header_has_utf8_bom": true,
+  "header_ends_crlf": true,
+  "bom_stripped_parsed_columns_match": true,
+  "completed_real_preflight_files": 0,
+  "attempted_real_preflight_file": "ton_iot/train_test_network.csv",
+  "other_datasets_preflight_run": false,
+  "retry_performed": false
+}

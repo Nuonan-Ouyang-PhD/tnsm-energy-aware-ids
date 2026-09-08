@@ -1,0 +1,613 @@
+{
+  "status": "PASS",
+  "classifier_models": 12,
+  "shared_traces": 50,
+  "static_model_evaluations": 200,
+  "split_checks": [
+    {
+      "dataset": "ton_iot",
+      "cross_split_row_ids_disjoint": true,
+      "cross_split_feature_fingerprints_disjoint": true,
+      "saved_metric_recalculation": "PASS",
+      "counts": {
+        "train": {
+          "rows": 138441,
+          "benign": 16357,
+          "attack": 122084,
+          "numeric_missing_cells": 1054656
+        },
+        "validation": {
+          "rows": 22842,
+          "benign": 8275,
+          "attack": 14567,
+          "numeric_missing_cells": 153646
+        },
+        "test": {
+          "rows": 22490,
+          "benign": 17129,
+          "attack": 5361,
+          "numeric_missing_cells": 129026
+        }
+      },
+      "train_only_categories": []
+    },
+    {
+      "dataset": "ciciot2023",
+      "cross_split_row_ids_disjoint": true,
+      "cross_split_feature_fingerprints_disjoint": true,
+      "saved_metric_recalculation": "PASS",
+      "counts": {
+        "train": {
+          "rows": 200000,
+          "benign": 4330,
+          "attack": 195670,
+          "numeric_missing_cells": 13
+        },
+        "validation": {
+          "rows": 76709,
+          "benign": 1623,
+          "attack": 75086,
+          "numeric_missing_cells": 0
+        },
+        "test": {
+          "rows": 71145,
+          "benign": 3828,
+          "attack": 67317,
+          "numeric_missing_cells": 6
+        }
+      },
+      "train_only_categories": [
+        "Backdoor_Malware",
+        "BrowserHijacking",
+        "CommandInjection",
+        "DDoS-HTTP_Flood",
+        "DDoS-SlowLoris",
+        "DNS_Spoofing",
+        "DictionaryBruteForce",
+        "DoS-HTTP_Flood",
+        "MITM-ArpSpoofing",
+        "Recon-HostDiscovery",
+        "Recon-OSScan",
+        "Recon-PingSweep",
+        "Recon-PortScan",
+        "SqlInjection",
+        "Uploading_Attack",
+        "VulnerabilityScan",
+        "XSS"
+      ]
+    },
+    {
+      "dataset": "n_baiot",
+      "cross_split_row_ids_disjoint": true,
+      "cross_split_feature_fingerprints_disjoint": true,
+      "saved_metric_recalculation": "PASS",
+      "counts": {
+        "train": {
+          "rows": 200000,
+          "benign": 15598,
+          "attack": 184402,
+          "numeric_missing_cells": 0
+        },
+        "validation": {
+          "rows": 87039,
+          "benign": 7370,
+          "attack": 79669,
+          "numeric_missing_cells": 0
+        },
+        "test": {
+          "rows": 83355,
+          "benign": 8467,
+          "attack": 74888,
+          "numeric_missing_cells": 0
+        }
+      },
+      "train_only_categories": []
+    }
+  ],
+  "prediction_cache_quantization": [
+    {
+      "dataset": "ton_iot",
+      "split": "validation",
+      "model": "TinyDT",
+      "cache_dtype": "float32",
+      "roc_auc_delta": 0.0,
+      "average_precision_delta": 0.0,
+      "confusion_unchanged": true,
+      "cache_matches_serialized_model_after_float32_cast": true
+    },
+    {
+      "dataset": "ton_iot",
+      "split": "validation",
+      "model": "LightLR",
+      "cache_dtype": "float32",
+      "roc_auc_delta": -1.6591737672655427e-07,
+      "average_precision_delta": 0.00036254520417000613,
+      "confusion_unchanged": true,
+      "cache_matches_serialized_model_after_float32_cast": true
+    },
+    {
+      "dataset": "ton_iot",
+      "split": "validation",
+      "model": "MedRF",
+      "cache_dtype": "float32",
+      "roc_auc_delta": 0.0,
+      "average_precision_delta": 0.0,
+      "confusion_unchanged": true,
+      "cache_matches_serialized_model_after_float32_cast": true
+    },
+    {
+      "dataset": "ton_iot",
+      "split": "validation",
+      "model": "HeavyMLP",
+      "cache_dtype": "float32",
+      "roc_auc_delta": 0.0,
+      "average_precision_delta": 0.0,
+      "confusion_unchanged": true,
+      "cache_matches_serialized_model_after_float32_cast": true
+    },
+    {
+      "dataset": "ton_iot",
+      "split": "test",
+      "model": "TinyDT",
+      "cache_dtype": "float32",
+      "roc_auc_delta": 0.0,
+      "average_precision_delta": 0.0,
+      "confusion_unchanged": true,
+      "cache_matches_serialized_model_after_float32_cast": true
+    },
+    {
+      "dataset": "ton_iot",
+      "split": "test",
+      "model": "LightLR",
+      "cache_dtype": "float32",
+      "roc_auc_delta": -1.0889857127160951e-08,
+      "average_precision_delta": 0.00023395578344542756,
+      "confusion_unchanged": true,
+      "cache_matches_serialized_model_after_float32_cast": true
+    },
+    {
+      "dataset": "ton_iot",
+      "split": "test",
+      "model": "MedRF",
+      "cache_dtype": "float32",
+      "roc_auc_delta": 0.0,
+      "average_precision_delta": 0.0,
+      "confusion_unchanged": true,
+      "cache_matches_serialized_model_after_float32_cast": true
+    },
+    {
+      "dataset": "ton_iot",
+      "split": "test",
+      "model": "HeavyMLP",
+      "cache_dtype": "float32",
+      "roc_auc_delta": 0.0,
+      "average_precision_delta": 0.0,
+      "confusion_unchanged": true,
+      "cache_matches_serialized_model_after_float32_cast": true
+    },
+    {
+      "dataset": "ciciot2023",
+      "split": "validation",
+      "model": "TinyDT",
+      "cache_dtype": "float32",
+      "roc_auc_delta": 0.0,
+      "average_precision_delta": 0.0,
+      "confusion_unchanged": true,
+      "cache_matches_serialized_model_after_float32_cast": true
+    },
+    {
+      "dataset": "ciciot2023",
+      "split": "validation",
+      "model": "LightLR",
+      "cache_dtype": "float32",
+      "roc_auc_delta": 0.0,
+      "average_precision_delta": -1.1102230246251565e-16,
+      "confusion_unchanged": true,
+      "cache_matches_serialized_model_after_float32_cast": true
+    },
+    {
+      "dataset": "ciciot2023",
+      "split": "validation",
+      "model": "MedRF",
+      "cache_dtype": "float32",
+      "roc_auc_delta": 1.1102230246251565e-16,
+      "average_precision_delta": 0.0,
+      "confusion_unchanged": true,
+      "cache_matches_serialized_model_after_float32_cast": true
+    },
+    {
+      "dataset": "ciciot2023",
+      "split": "validation",
+      "model": "HeavyMLP",
+      "cache_dtype": "float32",
+      "roc_auc_delta": 0.0,
+      "average_precision_delta": 0.0,
+      "confusion_unchanged": true,
+      "cache_matches_serialized_model_after_float32_cast": true
+    },
+    {
+      "dataset": "ciciot2023",
+      "split": "test",
+      "model": "TinyDT",
+      "cache_dtype": "float32",
+      "roc_auc_delta": 0.0,
+      "average_precision_delta": 0.0,
+      "confusion_unchanged": true,
+      "cache_matches_serialized_model_after_float32_cast": true
+    },
+    {
+      "dataset": "ciciot2023",
+      "split": "test",
+      "model": "LightLR",
+      "cache_dtype": "float32",
+      "roc_auc_delta": -1.1102230246251565e-16,
+      "average_precision_delta": -1.1102230246251565e-16,
+      "confusion_unchanged": true,
+      "cache_matches_serialized_model_after_float32_cast": true
+    },
+    {
+      "dataset": "ciciot2023",
+      "split": "test",
+      "model": "MedRF",
+      "cache_dtype": "float32",
+      "roc_auc_delta": 0.0,
+      "average_precision_delta": -1.1102230246251565e-16,
+      "confusion_unchanged": true,
+      "cache_matches_serialized_model_after_float32_cast": true
+    },
+    {
+      "dataset": "ciciot2023",
+      "split": "test",
+      "model": "HeavyMLP",
+      "cache_dtype": "float32",
+      "roc_auc_delta": 0.0,
+      "average_precision_delta": 0.0,
+      "confusion_unchanged": true,
+      "cache_matches_serialized_model_after_float32_cast": true
+    },
+    {
+      "dataset": "n_baiot",
+      "split": "validation",
+      "model": "TinyDT",
+      "cache_dtype": "float32",
+      "roc_auc_delta": 0.0,
+      "average_precision_delta": 0.0,
+      "confusion_unchanged": true,
+      "cache_matches_serialized_model_after_float32_cast": true
+    },
+    {
+      "dataset": "n_baiot",
+      "split": "validation",
+      "model": "LightLR",
+      "cache_dtype": "float32",
+      "roc_auc_delta": 2.7181663587727556e-06,
+      "average_precision_delta": -1.6734434824527966e-06,
+      "confusion_unchanged": true,
+      "cache_matches_serialized_model_after_float32_cast": true
+    },
+    {
+      "dataset": "n_baiot",
+      "split": "validation",
+      "model": "MedRF",
+      "cache_dtype": "float32",
+      "roc_auc_delta": 1.1102230246251565e-16,
+      "average_precision_delta": 0.0,
+      "confusion_unchanged": true,
+      "cache_matches_serialized_model_after_float32_cast": true
+    },
+    {
+      "dataset": "n_baiot",
+      "split": "validation",
+      "model": "HeavyMLP",
+      "cache_dtype": "float32",
+      "roc_auc_delta": 0.0,
+      "average_precision_delta": 0.0,
+      "confusion_unchanged": true,
+      "cache_matches_serialized_model_after_float32_cast": true
+    },
+    {
+      "dataset": "n_baiot",
+      "split": "test",
+      "model": "TinyDT",
+      "cache_dtype": "float32",
+      "roc_auc_delta": 0.0,
+      "average_precision_delta": 0.0,
+      "confusion_unchanged": true,
+      "cache_matches_serialized_model_after_float32_cast": true
+    },
+    {
+      "dataset": "n_baiot",
+      "split": "test",
+      "model": "LightLR",
+      "cache_dtype": "float32",
+      "roc_auc_delta": -6.692644638672807e-05,
+      "average_precision_delta": -4.075646415235834e-05,
+      "confusion_unchanged": true,
+      "cache_matches_serialized_model_after_float32_cast": true
+    },
+    {
+      "dataset": "n_baiot",
+      "split": "test",
+      "model": "MedRF",
+      "cache_dtype": "float32",
+      "roc_auc_delta": -1.1102230246251565e-16,
+      "average_precision_delta": 0.0,
+      "confusion_unchanged": true,
+      "cache_matches_serialized_model_after_float32_cast": true
+    },
+    {
+      "dataset": "n_baiot",
+      "split": "test",
+      "model": "HeavyMLP",
+      "cache_dtype": "float32",
+      "roc_auc_delta": 0.0,
+      "average_precision_delta": 0.0,
+      "confusion_unchanged": true,
+      "cache_matches_serialized_model_after_float32_cast": true
+    }
+  ],
+  "static_replay_f1_aggregates": [
+    {
+      "dataset": "ton_iot",
+      "scenario": "stationary",
+      "model": "TinyDT",
+      "trace_seeds": 10,
+      "f1_mean": 0.479097692485096,
+      "f1_sd": 0.0010097450638549515,
+      "f1_mean_t95_interval": [
+        0.4783753643803797,
+        0.47982002058981227
+      ],
+      "interpretation": "workload resampling only, conditional on one model seed and fixed split; not hardware or training uncertainty"
+    },
+    {
+      "dataset": "ton_iot",
+      "scenario": "stationary",
+      "model": "LightLR",
+      "trace_seeds": 10,
+      "f1_mean": 0.961575125358323,
+      "f1_sd": 0.00048519985891212655,
+      "f1_mean_t95_interval": [
+        0.9612280342884657,
+        0.9619222164281803
+      ],
+      "interpretation": "workload resampling only, conditional on one model seed and fixed split; not hardware or training uncertainty"
+    },
+    {
+      "dataset": "ton_iot",
+      "scenario": "stationary",
+      "model": "MedRF",
+      "trace_seeds": 10,
+      "f1_mean": 0.9743915246415144,
+      "f1_sd": 0.0005982064458869903,
+      "f1_mean_t95_interval": [
+        0.9739635935292423,
+        0.9748194557537864
+      ],
+      "interpretation": "workload resampling only, conditional on one model seed and fixed split; not hardware or training uncertainty"
+    },
+    {
+      "dataset": "ton_iot",
+      "scenario": "stationary",
+      "model": "HeavyMLP",
+      "trace_seeds": 10,
+      "f1_mean": 0.9733419687607098,
+      "f1_sd": 0.0004343126453995467,
+      "f1_mean_t95_interval": [
+        0.9730312802104651,
+        0.9736526573109544
+      ],
+      "interpretation": "workload resampling only, conditional on one model seed and fixed split; not hardware or training uncertainty"
+    },
+    {
+      "dataset": "ton_iot",
+      "scenario": "drift",
+      "model": "TinyDT",
+      "trace_seeds": 10,
+      "f1_mean": 0.6067775477096782,
+      "f1_sd": 0.0010284360923939913,
+      "f1_mean_t95_interval": [
+        0.6060418488486164,
+        0.6075132465707399
+      ],
+      "interpretation": "workload resampling only, conditional on one model seed and fixed split; not hardware or training uncertainty"
+    },
+    {
+      "dataset": "ton_iot",
+      "scenario": "drift",
+      "model": "LightLR",
+      "trace_seeds": 10,
+      "f1_mean": 0.9704386431074032,
+      "f1_sd": 0.0007493697492157471,
+      "f1_mean_t95_interval": [
+        0.969902576282163,
+        0.9709747099326435
+      ],
+      "interpretation": "workload resampling only, conditional on one model seed and fixed split; not hardware or training uncertainty"
+    },
+    {
+      "dataset": "ton_iot",
+      "scenario": "drift",
+      "model": "MedRF",
+      "trace_seeds": 10,
+      "f1_mean": 0.9838638078329257,
+      "f1_sd": 0.0006350981211304381,
+      "f1_mean_t95_interval": [
+        0.9834094860059949,
+        0.9843181296598565
+      ],
+      "interpretation": "workload resampling only, conditional on one model seed and fixed split; not hardware or training uncertainty"
+    },
+    {
+      "dataset": "ton_iot",
+      "scenario": "drift",
+      "model": "HeavyMLP",
+      "trace_seeds": 10,
+      "f1_mean": 0.9822232852852405,
+      "f1_sd": 0.0008445164630909342,
+      "f1_mean_t95_interval": [
+        0.9816191546011476,
+        0.9828274159693334
+      ],
+      "interpretation": "workload resampling only, conditional on one model seed and fixed split; not hardware or training uncertainty"
+    },
+    {
+      "dataset": "ciciot2023",
+      "scenario": "stationary",
+      "model": "TinyDT",
+      "trace_seeds": 10,
+      "f1_mean": 0.9904154157250147,
+      "f1_sd": 0.0006560009268714924,
+      "f1_mean_t95_interval": [
+        0.9899461409316425,
+        0.9908846905183869
+      ],
+      "interpretation": "workload resampling only, conditional on one model seed and fixed split; not hardware or training uncertainty"
+    },
+    {
+      "dataset": "ciciot2023",
+      "scenario": "stationary",
+      "model": "LightLR",
+      "trace_seeds": 10,
+      "f1_mean": 0.9881202423329519,
+      "f1_sd": 0.0007461649261851244,
+      "f1_mean_t95_interval": [
+        0.9875864680999992,
+        0.9886540165659047
+      ],
+      "interpretation": "workload resampling only, conditional on one model seed and fixed split; not hardware or training uncertainty"
+    },
+    {
+      "dataset": "ciciot2023",
+      "scenario": "stationary",
+      "model": "MedRF",
+      "trace_seeds": 10,
+      "f1_mean": 0.9917021429664382,
+      "f1_sd": 0.0005851180736407512,
+      "f1_mean_t95_interval": [
+        0.9912835747116407,
+        0.9921207112212357
+      ],
+      "interpretation": "workload resampling only, conditional on one model seed and fixed split; not hardware or training uncertainty"
+    },
+    {
+      "dataset": "ciciot2023",
+      "scenario": "stationary",
+      "model": "HeavyMLP",
+      "trace_seeds": 10,
+      "f1_mean": 0.9931251282669296,
+      "f1_sd": 0.00041378493832555316,
+      "f1_mean_t95_interval": [
+        0.9928291243537044,
+        0.9934211321801547
+      ],
+      "interpretation": "workload resampling only, conditional on one model seed and fixed split; not hardware or training uncertainty"
+    },
+    {
+      "dataset": "ciciot2023",
+      "scenario": "drift",
+      "model": "TinyDT",
+      "trace_seeds": 10,
+      "f1_mean": 0.7541671545348712,
+      "f1_sd": 0.00098363107680334,
+      "f1_mean_t95_interval": [
+        0.7534635072511351,
+        0.7548708018186072
+      ],
+      "interpretation": "workload resampling only, conditional on one model seed and fixed split; not hardware or training uncertainty"
+    },
+    {
+      "dataset": "ciciot2023",
+      "scenario": "drift",
+      "model": "LightLR",
+      "trace_seeds": 10,
+      "f1_mean": 0.7103879147123595,
+      "f1_sd": 0.0017983910810578504,
+      "f1_mean_t95_interval": [
+        0.709101423232857,
+        0.7116744061918621
+      ],
+      "interpretation": "workload resampling only, conditional on one model seed and fixed split; not hardware or training uncertainty"
+    },
+    {
+      "dataset": "ciciot2023",
+      "scenario": "drift",
+      "model": "MedRF",
+      "trace_seeds": 10,
+      "f1_mean": 0.7777873131606596,
+      "f1_sd": 0.0010374763621458678,
+      "f1_mean_t95_interval": [
+        0.7770451472801989,
+        0.7785294790411204
+      ],
+      "interpretation": "workload resampling only, conditional on one model seed and fixed split; not hardware or training uncertainty"
+    },
+    {
+      "dataset": "ciciot2023",
+      "scenario": "drift",
+      "model": "HeavyMLP",
+      "trace_seeds": 10,
+      "f1_mean": 0.8090482692975384,
+      "f1_sd": 0.0018714144010201599,
+      "f1_mean_t95_interval": [
+        0.8077095400818025,
+        0.8103869985132742
+      ],
+      "interpretation": "workload resampling only, conditional on one model seed and fixed split; not hardware or training uncertainty"
+    },
+    {
+      "dataset": "n_baiot",
+      "scenario": "stationary",
+      "model": "TinyDT",
+      "trace_seeds": 10,
+      "f1_mean": 0.9984332271881845,
+      "f1_sd": 0.00015285704600040276,
+      "f1_mean_t95_interval": [
+        0.9983238798446992,
+        0.9985425745316698
+      ],
+      "interpretation": "workload resampling only, conditional on one model seed and fixed split; not hardware or training uncertainty"
+    },
+    {
+      "dataset": "n_baiot",
+      "scenario": "stationary",
+      "model": "LightLR",
+      "trace_seeds": 10,
+      "f1_mean": 0.9983582056684156,
+      "f1_sd": 9.861167480033479e-05,
+      "f1_mean_t95_interval": [
+        0.9982876631258361,
+        0.9984287482109951
+      ],
+      "interpretation": "workload resampling only, conditional on one model seed and fixed split; not hardware or training uncertainty"
+    },
+    {
+      "dataset": "n_baiot",
+      "scenario": "stationary",
+      "model": "MedRF",
+      "trace_seeds": 10,
+      "f1_mean": 0.999752477596328,
+      "f1_sd": 7.563083636410763e-05,
+      "f1_mean_t95_interval": [
+        0.9996983745552293,
+        0.9998065806374268
+      ],
+      "interpretation": "workload resampling only, conditional on one model seed and fixed split; not hardware or training uncertainty"
+    },
+    {
+      "dataset": "n_baiot",
+      "scenario": "stationary",
+      "model": "HeavyMLP",
+      "trace_seeds": 10,
+      "f1_mean": 0.9977125413851653,
+      "f1_sd": 0.00014208220695134728,
+      "f1_mean_t95_interval": [
+        0.9976109018972046,
+        0.997814180873126
+      ],
+      "interpretation": "workload resampling only, conditional on one model seed and fixed split; not hardware or training uncertainty"
+    }
+  ],
+  "physical_energy_measured": false,
+  "adaptive_policy_evaluated": false
+}

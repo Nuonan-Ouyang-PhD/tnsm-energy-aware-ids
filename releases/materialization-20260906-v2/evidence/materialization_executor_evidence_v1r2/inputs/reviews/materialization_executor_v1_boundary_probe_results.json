@@ -1,0 +1,67 @@
+{
+  "E01_contract_not_bound_to_reviewed_archive": {
+    "expected": "refuse unreviewed local contract before source access",
+    "positive_control_exit_code": 0,
+    "positive_control_ton_features": "proto,duration\n\"tcp,odd\", 001.2300 \nudp,\n",
+    "actual_exit_code": 0,
+    "reviewed_archive_intact": true,
+    "reviewed_contract_sha256": "e1da0cbdaac59f26fc5ebe84c83b3ac699edcb0138a2b22189d3ddc9845ea4bf",
+    "executed_contract_sha256": "eaa628721d9aa0ab2e8f769bad813ac9384aeabcb59beaea132950d90d0e1541",
+    "output_published": true,
+    "synthetic_ton_features": "src_ip,duration\n10.0.0.1, 001.2300 \n10.0.0.3,\n",
+    "source_script_identical": true
+  },
+  "E02_unmetered_replay_storage": {
+    "expected": "replay writes subject to budget and scratch-reserve enforcement",
+    "actual": "execution succeeded and published",
+    "output_published": true,
+    "hard_output_cap": 112191,
+    "scratch_reserve": 1024,
+    "simulated_capacity": 113215,
+    "max_simultaneous_staging_bytes": 202532,
+    "max_retained_replay_files": 8,
+    "simulated_free_reached_zero": true,
+    "minimum_free_value_seen_by_executor": 6316,
+    "reported_output_bytes": 112191,
+    "actual_final_output_bytes": 112191,
+    "note": "No actual disk exhaustion; supplied free-space model accounts for invented staged file sizes. Replay is unmetered and never calls free-space guard."
+  },
+  "E03_zero_row_input_not_verified": {
+    "expected": "reject changed inventoried zero-row structure file before staging",
+    "output_published": true,
+    "before_sha256": "337d624a545de1d388be6bedaa89fdaf161c1e804b7d4cf21dba6e27f3384cee",
+    "after_sha256": "3b8200940fa66bf56dbb87dbb49bbaba60048083b80e964ccde042ec85050d7e",
+    "now_has_data_row": true,
+    "actual_nb_inventoried_rows_reported": 3,
+    "metadata_updated": false
+  },
+  "E03_unregistered_non_lf_accepted": {
+    "expected": "reject unregistered non-LF terminal record per stated contract",
+    "output_published": true,
+    "source_has_terminal_lf": false,
+    "contract_rule": "required for every source record, including the final physical line"
+  },
+  "E03_registered_non_lf_control": {
+    "case": "three invented registered final-row exceptions changed to no-LF and identities freshly bound",
+    "output_published": true,
+    "excluded_rows": 3,
+    "note": "Parser accepts registered and unregistered missing-LF records alike; the contract must grant only precise registered exceptions."
+  },
+  "E04_publication_replaces_late_destination": {
+    "expected": "fail without replacing a destination created before publication",
+    "injection": "create empty destination after all renders, immediately before publication",
+    "output_published": true,
+    "preexisting_destination_inode": 1573632,
+    "final_inode": 1573560,
+    "existing_empty_directory_replaced": true
+  },
+  "E04_cleanup_missing_directory_identity": {
+    "expected": "cleanup refuses staging whose directory identity is not the created directory",
+    "error": "SYNTHETIC: replaced staging identity before failure",
+    "substitute_directory_deleted": true,
+    "foreign_sentinel_deleted": true,
+    "original_owned_staging_preserved": true,
+    "output_published": false,
+    "note": "Deliberate isolated race injection, not observed on the user machine."
+  }
+}

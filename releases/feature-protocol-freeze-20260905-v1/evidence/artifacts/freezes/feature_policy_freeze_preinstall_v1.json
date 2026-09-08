@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "kind": "feature_policy_freeze_preinstall_verification",
+  "decision": "DECISIONS.md #24",
+  "freeze_id": "FEATURE-POLICY-20260905-V1-FROZEN",
+  "executed_at_utc": "2026-09-05T23:57:25Z",
+  "executed_at_local": "2026-09-06T09:57:25+10:00 Australia/Melbourne",
+  "runtime": {
+    "python": "3.12.14",
+    "source": "Codex bundled workspace runtime"
+  },
+  "command": "python -B scripts/audits/verify_feature_policy_target_v1r2.py",
+  "phase": "pre_install",
+  "inputs": {
+    "live_feature_policy_sha256": "2a903a4a0dd54e4307b7dce24599c39ce62b378b4cd8a95f8a633ffedb321b47",
+    "preserved_baseline": "artifacts/freezes/feature_policy_pre_freeze_baseline.json",
+    "preserved_baseline_sha256": "2a903a4a0dd54e4307b7dce24599c39ce62b378b4cd8a95f8a633ffedb321b47",
+    "label_ontology_sha256": "8a055e2e34bc8d70f62909f52441915589c310659d6ce3e427a2704820926fab",
+    "target_sha256": "e81a55c16f9439b0356295353e8b342de19d5c5606d868952592f913beda714b"
+  },
+  "verifier": {
+    "script": "scripts/audits/verify_feature_policy_target_v1r2.py",
+    "script_sha256": "53c0b9233b11131a983b30506766877849936efea25f1b0b0ffa0f2f0d5562ef",
+    "exit_code": 0,
+    "all_pass": true,
+    "checks_total": 30,
+    "checks_failed": []
+  },
+  "generated_evidence": {
+    "diff_artifact": "artifacts/proposals/feature_policy_target_v1r2_diff.json",
+    "diff_artifact_sha256": "8d52dc0066a26b8007536ca65b28f45708a095014530b2286596701ec1c77e60",
+    "log_artifact": "artifacts/proposals/feature_policy_target_v1r2_verify.log",
+    "log_artifact_sha256": "ef300f2a9d9ee5c47534c85f1e45b67514d14f7068248bc886f1cc5bf5f9cf84"
+  },
+  "runtime_compatibility_note": "An initial invocation with Apple Python 3.9.6 reached Path.write_text(newline=...) after completing its in-memory checks and exited nonzero because that keyword is unavailable in Python 3.9. The live baseline and both existing evidence artifacts remained byte-identical. The accepted run above used the available bundled Python 3.12.14 and the unmodified approved verifier.",
+  "live_config_modified_by_verifier": false,
+  "authorization_granted_by_verifier": false,
+  "data_gates_unlocked": false
+}

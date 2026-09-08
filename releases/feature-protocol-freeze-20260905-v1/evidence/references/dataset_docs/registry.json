@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "kind": "dataset_reference_docs_registry",
+  "purpose": "Registry of supplementary official documentation consulted during the field-semantics review. These files live outside the frozen datasets/incoming/ trees on purpose: adding files there would change the frozen acquisition scope.",
+  "paper_eligible": false,
+  "entries": [
+    {
+      "dataset_id": "n_baiot",
+      "file": "n_baiot/uci_dataset_page_2026-09-04.html",
+      "url": "https://archive.ics.uci.edu/dataset/442/detection%2Bof%2Biot%2Bbotnet%2Battacks%2Bn%2Bbaiot",
+      "fetched_at_utc": "2026-09-04T00:00:39Z",
+      "sha256": "e0b79978d166b601ce1e8480625d8ad9fe40b328ad92d66f8eebde9730b5d57f",
+      "content": "Official UCI dataset page snapshot: dataset description, additional variable information (stream aggregation prefixes H/HH/HpHp/HH_jit, time-frame decay L5/L3/L1, statistics weight/mean/std/radius/magnitude/cov/pcc), file listing, DOI 10.24432/C5RC8J, CC BY 4.0 license, citation",
+      "usage": "Primary N-BaIoT feature-semantics source; the frozen incoming ZIP contains no feature description"
+    },
+    {
+      "dataset_id": "n_baiot",
+      "file": "n_baiot/meidan2018_arxiv_v1_2026-09-04.pdf",
+      "url": "https://arxiv.org/pdf/1805.03409v1",
+      "fetched_at_utc": "2026-09-04T01:08:47Z",
+      "size_bytes": 2461627,
+      "sha256": "1fa5bc4d4d2a12c2e93b18c4d876bd83ab7f456797934fcc71c92db754811964",
+      "arxiv_version": "v1 (arXiv:1805.03409v1; server confirms filename 1805.03409v1.pdf; HTTP 200)",
+      "source_description": "open-access arXiv v1 PDF linked by UCI; related published-article DOI: 10.1109/MPRV.2018.03367731",
+      "content": "N-BaIoT introductory paper: arXiv:1805.03409v1 preprint, 8-page PDF. Related published article: IEEE Pervasive Computing, vol. 17, no. 3, pp. 12-22, 2018, article 8490192, DOI: 10.1109/MPRV.2018.03367731. The arXiv v1 PDF itself carries an incorrect VOL. 13, NO. 9 header; that header is not used as final bibliographic metadata. Table 2 and the 'Feature extraction' section define 23 features per time scale over four aggregation objects (Source IP, Source MAC-IP, Channel, Socket), which resolves the MI_dir_* prefix by elimination: MI_dir = Source MAC-IP aggregation (weight=damped count; mean/variance=mean and variance of outbound-only packet sizes). The literal string 'MI_dir' does not appear in the paper text.",
+      "usage": "Derived-evidence source for the N-BaIoT MI_dir_* semantic disposition; recorded as derived, not exact, because the prefix attribution is by elimination from group widths"
+    },
+    {
+      "dataset_id": "ciciot2023",
+      "file": "ciciot2023/unb_iotdataset_page_2026-09-04.html",
+      "url": "https://www.unb.ca/cic/datasets/iotdataset-2023.html",
+      "fetched_at_utc": "2026-09-04T06:55:22Z",
+      "size_bytes": 108656,
+      "sha256": "99ae08c233d26aaa1c6cc5baa9eb6860587077cc2bc1097c63457bface422852",
+      "content": "Official UNB CICIoT2023 dataset page snapshot: states 33 attacks in 7 categories (DDoS, DoS, Recon, Web-based, Brute Force, Spoofing, Mirai) and places Backdoor malware under Web-based, ARP/DNS spoofing under Spoofing, Dictionary brute force under Brute Force. The page's own category detail lists enumerate 32 attacks: the DDoS list has 11 entries and omits DDoS-ICMP_Fragmentation, which IS present in the frozen dataset directories and in README.pdf. The formal enumeration baseline is the frozen inventory directories plus README.pdf; the 32/33 page discrepancy is recorded here as an official-source inconsistency.",
+      "usage": "Official classification source for the CICIoT2023 type-mapping proposal; also records the UNB page 32/33 enumeration inconsistency and the resolution baseline (frozen directories + README.pdf)"
+    },
+    {
+      "dataset_id": "ciciot2023",
+      "file": "ciciot2023/readme_p1_feature_table/readme_p1_feature_table_47row.png",
+      "source_file": "datasets/incoming/ciciot2023/README.pdf",
+      "source_sha256": "0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92",
+      "extracted_at_utc": "2026-09-05 (README.pdf page 1, embedded image x11.png; visual transcription cross-checked 2026-09-05)",
+      "sha256": "6327fa2b7bace407f2fc48adf3268282c0ea323ae26aa717b42a486417037902",
+      "content": "README.pdf page-1 47-row feature table (rows 1-47: ts, flow duration, Header Length, Protocol Type, Duration, Rate, Srate, Drate, flags 9-15, flag counts 16-20, HTTP/HTTPS/DNS/Telnet/SMTP/SSH/IRC 21-27, TCP/UDP 28-29, DHCP/ARP/ICMP/IPv/LLC 30-34, Tot sum/Min/Max/AVG/Std 35-39, Tot size/IAT/Number 40-42, Magnitue/Radius/Covariance/Variance/Weight 43-47; original spellings preserved verbatim incl. 'urg coun', 'Magnitue', 'Drate,'). Key protocol rows: 28 TCP 'Indicates if the transport layer protocol is TCP'; 29 UDP 'Indicates if the transport layer protocol is UDP'; 32 ICMP 'Indicates if the network layer protocol is ICMP'; 35 Tot sum 'Summation of packets lengths in flow'. In this table every listed feature is a per-flow indicator or aggregate (0/1 indicator semantics implied by 'Indicates if').",
+      "usage": "Official page-1 feature-semantics evidence for the CICIoT2023 protocol-indicator columns, per the #23 Rev 1 independent-review requirement (the page-2 attack-category panels do not document feature semantics). NOTE: README.pdf page 1 embeds TWO feature tables with CONFLICTING protocol semantics; this is the 47-row indicator-style table, and both tables are recorded as an official-source internal inconsistency."
+    },
+    {
+      "dataset_id": "ciciot2023",
+      "file": "ciciot2023/readme_p1_feature_table/readme_p1_window_table_39row.png",
+      "source_file": "datasets/incoming/ciciot2023/README.pdf",
+      "source_sha256": "0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92",
+      "extracted_at_utc": "2026-09-05 (README.pdf page 1, embedded images x16-x21: six byte-identical copies of one table image, SHA-256 cc88ca2f...; one copy archived)",
+      "sha256": "cc88ca2f654aa7be64c69721b25968b6244107c63c1e7aa7a32311b6f258a1ad",
+      "content": "README.pdf page-1 39-row window-aggregation feature table (rows 1-39: Header Length, Time-To-Live, Rate, flags 4-10, flag counts 11-14, IGMP/HTTPS/HTTP/Telnet/DNS/SMTP/SSH/IRC 15-22, TCP/UDP/DHCP/ARP/ICMP/IPv/LLC 23-29, Tot Sum/Min/Max/AVG/Std 30-34, Tot Size/IAT/Number 35-37, Variance 38, Protocol Type 39). Key protocol rows: 23 TCP 'Average no. of TCP packets in the window'; 24 UDP 'Average no. of UDP packets in the window'; 27 ICMP 'Average no. of ICMP packets in the window'; 30 Tot Sum 'Total packet length within the aggregated packets (window)'. This table describes window-aggregate semantics ('Average no. of ... packets in the window') for the same protocol names that the 47-row table describes as per-flow 0/1-style indicators.",
+      "usage": "Second official page-1 feature-semantics source for the CICIoT2023 protocol-indicator columns. Together with the 47-row table this constitutes an OFFICIAL-SOURCE INTERNAL INCONSISTENCY about the semantics of the protocol indicator columns; this inconsistency is one of the grounds for keeping all cross-dataset protocol mappings out of admission in #23 Rev 1 (dataset-native remains the mainline; tcp/udp stay candidates; no seven-gate pass is claimed)."
+    }
+  ],
+  "in_tree_frozen_docs_not_copied": {
+    "ton_iot": [
+      {
+        "file": "datasets/incoming/ton_iot/Network Features-Description.pdf",
+        "note": "46-feature official description (ts..type), already inside the frozen acquisition manifest"
+      },
+      {
+        "file": "datasets/incoming/ton_iot/Statistics of Network Records.pdf",
+        "note": "official per-feature statistics, already inside the frozen acquisition manifest"
+      }
+    ],
+    "ciciot2023": [
+      {
+        "file": "datasets/incoming/ciciot2023/README.pdf",
+        "note": "feature table and attack taxonomy embedded as images; already inside the frozen acquisition manifest"
+      },
+      {
+        "file": "datasets/incoming/ciciot2023/CSV-README.pdf",
+        "note": "CSV release structure note; already inside the frozen acquisition manifest"
+      }
+    ],
+    "ciciot2023_evidence_extraction": [
+      {
+        "file": "references/dataset_docs/ciciot2023/readme_p1_feature_table/readme_p1_feature_table_47row.png",
+        "sha256": "6327fa2b7bace407f2fc48adf3268282c0ea323ae26aa717b42a486417037902",
+        "note": "README.pdf page-1 47-row feature table (0/1-style protocol indicator semantics; TCP row 28, UDP row 29, ICMP row 32, Tot sum row 35), extracted for the #23 Rev 1 protocol-mapping evidence"
+      },
+      {
+        "file": "references/dataset_docs/ciciot2023/readme_p1_feature_table/readme_p1_window_table_39row.png",
+        "sha256": "cc88ca2f654aa7be64c69721b25968b6244107c63c1e7aa7a32311b6f258a1ad",
+        "note": "README.pdf page-1 39-row window-aggregation feature table ('Average no. of ... packets in the window' semantics; TCP row 23, UDP row 24, ICMP row 27), extracted for the #23 Rev 1 protocol-mapping evidence; together with the 47-row table this documents the official-source internal inconsistency on protocol-column semantics"
+      },
+      {
+        "file": "references/dataset_docs/ciciot2023/readme_p2_panels/readme_p2_0.png",
+        "sha256": "680b4ca826153c66b88b5c28d76b7eb780be2583b9e82324bdb06c9632094846",
+        "note": "README.pdf page-2 DDoS panel (12 attacks incl. ICMP Fragmentation), visually extracted for the type-mapping proposal"
+      },
+      {
+        "file": "references/dataset_docs/ciciot2023/readme_p2_panels/readme_p2_1.png",
+        "sha256": "4d201bdec18ee03736647dccfc21edbacfe2dcef28f1da0c030442b818cb9aef",
+        "note": "README.pdf page-2 DoS panel (4 attacks)"
+      },
+      {
+        "file": "references/dataset_docs/ciciot2023/readme_p2_panels/readme_p2_2.png",
+        "sha256": "8ef5d124782a4e94b7db99aa9f45acac81bd9ae66868ae04bd51a02bbe40f732",
+        "note": "README.pdf page-2 Recon panel (5 attacks)"
+      },
+      {
+        "file": "references/dataset_docs/ciciot2023/readme_p2_panels/readme_p2_3.png",
+        "sha256": "be658659a7d6507cf7a67c88760d269bf3e2d0d40f8ce9245b933471f70963e9",
+        "note": "README.pdf page-2 Web-based panel (6 attacks)"
+      },
+      {
+        "file": "references/dataset_docs/ciciot2023/readme_p2_panels/readme_p2_4.png",
+        "sha256": "5ef8e8d6dad3923c1620e91b889f876b31ba3dcbe6c06f64ff95223aca78ffa2",
+        "note": "README.pdf page-2 Brute Force panel (single attack name 'Dictionary Brute Force')"
+      },
+      {
+        "file": "references/dataset_docs/ciciot2023/readme_p2_panels/readme_p2_5.png",
+        "sha256": "cf9210525184cf2e1d93909b4afb4ee255148c907060e510b2b546b5688d31e1",
+        "note": "README.pdf page-2 Spoofing panel (ARP, DNS)"
+      },
+      {
+        "file": "references/dataset_docs/ciciot2023/readme_p2_panels/readme_p2_6.png",
+        "sha256": "ecdadabcf894255ddcb2fb7ca7989fe8f358f9d39e9d7233a4ed6587d27fa401",
+        "note": "README.pdf page-2 Mirai panel (3 attacks)"
+      }
+    ]
+  }
+}

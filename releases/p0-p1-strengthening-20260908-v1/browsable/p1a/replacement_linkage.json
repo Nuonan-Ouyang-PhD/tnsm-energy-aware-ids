@@ -1,0 +1,7 @@
+{
+  "invalid_original": "supp-lightlr-S09-p2-Static-MedRF",
+  "valid_replacement": "supp-lightlr-S09-p2-Static-MedRF-retry1",
+  "replacement_for": "supp-lightlr-S09-p2-Static-MedRF",
+  "paired_analysis_includes": "replacement only",
+  "paired_analysis_excludes": "interrupted original"
+}

@@ -1,0 +1,502 @@
+{"event": "sampled_shard", "dataset": "ton_iot", "ordinal": 1, "filled": {"train": 138441, "test": 35072, "validation": 37530}}
+{"event": "classifier_complete", "dataset": "ton_iot", "model": "TinyDT", "metrics": {"training_seconds": 0.28838866599835455, "validation": {"rows": 22842, "accuracy": 0.9803432273881446, "balanced_accuracy": 0.9762368362708659, "precision": 0.9783168451009622, "recall": 0.9911443674057802, "f1": 0.9846888320545609, "roc_auc": 0.9911565706288497, "average_precision": 0.9924167400516497, "confusion_matrix": [[7955, 320], [129, 14438]]}, "test": {"rows": 22490, "accuracy": 0.4831925300133393, "balanced_accuracy": 0.6598885963256163, "precision": 0.3153673782285647, "recall": 0.9975750792762544, "f1": 0.4792329405439312, "roc_auc": 0.990559626383811, "average_precision": 0.9518796174812332, "confusion_matrix": [[5519, 11610], [13, 5348]]}}}
+{"event": "classifier_complete", "dataset": "ton_iot", "model": "LightLR", "metrics": {"training_seconds": 4.477389000006951, "validation": {"rows": 22842, "accuracy": 0.9900183871815077, "balanced_accuracy": 0.9893293225572761, "precision": 0.9925121934464519, "recall": 0.9918308505526189, "f1": 0.992171405026782, "roc_auc": 0.9932420442099293, "average_precision": 0.994431951141177, "confusion_matrix": [[8166, 109], [119, 14448]]}, "test": {"rows": 22490, "accuracy": 0.9817696754112939, "balanced_accuracy": 0.9766264788466866, "precision": 0.9571560480147738, "recall": 0.9667972393210222, "f1": 0.9619524870081663, "roc_auc": 0.993825429208202, "average_precision": 0.9836994379213991, "confusion_matrix": [[16897, 232], [178, 5183]]}}}
+{"event": "classifier_complete", "dataset": "ton_iot", "model": "MedRF", "metrics": {"training_seconds": 0.5674467079807073, "validation": {"rows": 22842, "accuracy": 0.990631293231766, "balanced_accuracy": 0.9895227739228488, "precision": 0.9917768793257041, "recall": 0.9935470584197158, "f1": 0.9926611796982168, "roc_auc": 0.9982285914216155, "average_precision": 0.9988805848582203, "confusion_matrix": [[8155, 120], [94, 14473]]}, "test": {"rows": 22490, "accuracy": 0.9875944864384171, "balanced_accuracy": 0.9906384743946081, "precision": 0.9535880042841842, "recall": 0.9964558850960642, "f1": 0.9745507616528323, "roc_auc": 0.9966735134465616, "average_precision": 0.986483722512727, "confusion_matrix": [[16869, 260], [19, 5342]]}}}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 1, "train_loss": 0.236033132695247}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 2, "train_loss": 0.06509760861203356}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 3, "train_loss": 0.056931929032281677}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 4, "train_loss": 0.05289098397770778}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 5, "train_loss": 0.04785066661473337}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 6, "train_loss": 0.045159710700466954}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 7, "train_loss": 0.043215458181957045}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 8, "train_loss": 0.0423782534741848}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 9, "train_loss": 0.041152069084490796}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 10, "train_loss": 0.04004439647134769}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 11, "train_loss": 0.03930683511776174}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 12, "train_loss": 0.039440785761218906}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 13, "train_loss": 0.03860635500920842}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 14, "train_loss": 0.038571506231053876}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 15, "train_loss": 0.037575150518161106}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 16, "train_loss": 0.03778702792474159}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 17, "train_loss": 0.03792571698572603}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 18, "train_loss": 0.037066579206040416}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 19, "train_loss": 0.037247007079663844}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 20, "train_loss": 0.0370529630698514}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 21, "train_loss": 0.03688669848409658}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 22, "train_loss": 0.03655000266729535}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 23, "train_loss": 0.03658112015972157}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 24, "train_loss": 0.03629185250996409}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 25, "train_loss": 0.036258519377675054}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 26, "train_loss": 0.03583301412944312}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 27, "train_loss": 0.03647019327339776}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 28, "train_loss": 0.03571762535080498}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 29, "train_loss": 0.03579010031590222}
+{"event": "mlp_epoch", "dataset": "ton_iot", "epoch": 30, "train_loss": 0.03564897616828247}
+{"event": "classifier_complete", "dataset": "ton_iot", "model": "HeavyMLP", "metrics": {"training_seconds": 4.346699124987936, "validation": {"rows": 22842, "accuracy": 0.9876105419840644, "balanced_accuracy": 0.9855362812565005, "precision": 0.9875750955761878, "recall": 0.9930665202169286, "f1": 0.9903131952763992, "roc_auc": 0.9952508266314812, "average_precision": 0.9966640452862359, "confusion_matrix": [[8093, 182], [101, 14466]]}, "test": {"rows": 22490, "accuracy": 0.9871943085815919, "balanced_accuracy": 0.9882612566901702, "precision": 0.9574391343552751, "recall": 0.9903003171050178, "f1": 0.9735925178800661, "roc_auc": 0.9915349492160768, "average_precision": 0.9824741946288523, "confusion_matrix": [[16893, 236], [52, 5309]]}}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 1, "filled": {"train": 21}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 2, "filled": {"train": 2403}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 3, "filled": {"train": 4351}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 4, "filled": {"train": 4351, "test": 3829}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 5, "filled": {"train": 4351, "test": 3829, "validation": 1624}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 6, "filled": {"train": 4383, "test": 3829, "validation": 1624}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 7, "filled": {"train": 4417, "test": 3829, "validation": 1624}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 8, "filled": {"train": 4417, "test": 4140, "validation": 1624}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 9, "filled": {"train": 4560, "test": 4140, "validation": 1624}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 10, "filled": {"train": 4714, "test": 4140, "validation": 1624}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 11, "filled": {"train": 4875, "test": 4140, "validation": 1624}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 12, "filled": {"train": 4875, "test": 4140, "validation": 1760}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 13, "filled": {"train": 5021, "test": 4140, "validation": 1760}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 14, "filled": {"train": 5021, "test": 4140, "validation": 2063}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 15, "filled": {"train": 5158, "test": 4140, "validation": 2063}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 16, "filled": {"train": 5277, "test": 4140, "validation": 2063}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 17, "filled": {"train": 5277, "test": 4396, "validation": 2063}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 18, "filled": {"train": 5426, "test": 4396, "validation": 2063}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 19, "filled": {"train": 5582, "test": 4396, "validation": 2063}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 20, "filled": {"train": 5759, "test": 4396, "validation": 2063}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 21, "filled": {"train": 5961, "test": 4396, "validation": 2063}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 22, "filled": {"train": 7747, "test": 4396, "validation": 2063}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 23, "filled": {"train": 7747, "test": 4396, "validation": 5482}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 24, "filled": {"train": 7747, "test": 7438, "validation": 5482}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 25, "filled": {"train": 9487, "test": 7438, "validation": 5482}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 26, "filled": {"train": 11177, "test": 7438, "validation": 5482}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 27, "filled": {"train": 12923, "test": 7438, "validation": 5482}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 28, "filled": {"train": 14610, "test": 7438, "validation": 5482}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 29, "filled": {"train": 14610, "test": 10711, "validation": 5482}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 30, "filled": {"train": 14610, "test": 10711, "validation": 8691}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 31, "filled": {"train": 16327, "test": 10711, "validation": 8691}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 32, "filled": {"train": 18056, "test": 10711, "validation": 8691}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 33, "filled": {"train": 18056, "test": 13855, "validation": 8691}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 34, "filled": {"train": 18056, "test": 13855, "validation": 12053}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 35, "filled": {"train": 19778, "test": 13855, "validation": 12053}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 36, "filled": {"train": 21548, "test": 13855, "validation": 12053}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 37, "filled": {"train": 23334, "test": 13855, "validation": 12053}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 38, "filled": {"train": 25121, "test": 13855, "validation": 12053}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 39, "filled": {"train": 26884, "test": 13855, "validation": 12053}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 40, "filled": {"train": 26884, "test": 13855, "validation": 15459}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 41, "filled": {"train": 26884, "test": 13855, "validation": 18885}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 42, "filled": {"train": 28584, "test": 13855, "validation": 18885}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 43, "filled": {"train": 30314, "test": 13855, "validation": 18885}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 44, "filled": {"train": 30314, "test": 16990, "validation": 18885}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 45, "filled": {"train": 30314, "test": 20213, "validation": 18885}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 46, "filled": {"train": 32070, "test": 20213, "validation": 18885}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 47, "filled": {"train": 33855, "test": 20213, "validation": 18885}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 48, "filled": {"train": 35585, "test": 20213, "validation": 18885}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 49, "filled": {"train": 35711, "test": 20213, "validation": 18885}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 50, "filled": {"train": 35862, "test": 20213, "validation": 18885}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 51, "filled": {"train": 35862, "test": 20499, "validation": 18885}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 52, "filled": {"train": 35994, "test": 20499, "validation": 18885}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 53, "filled": {"train": 36131, "test": 20499, "validation": 18885}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 54, "filled": {"train": 36131, "test": 20793, "validation": 18885}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 55, "filled": {"train": 36131, "test": 21086, "validation": 18885}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 56, "filled": {"train": 36282, "test": 21086, "validation": 18885}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 57, "filled": {"train": 36282, "test": 21086, "validation": 19205}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 58, "filled": {"train": 36438, "test": 21086, "validation": 19205}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 59, "filled": {"train": 36564, "test": 21086, "validation": 19205}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 60, "filled": {"train": 36564, "test": 21086, "validation": 19461}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 61, "filled": {"train": 36687, "test": 21086, "validation": 19461}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 62, "filled": {"train": 36687, "test": 21358, "validation": 19461}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 63, "filled": {"train": 36861, "test": 21358, "validation": 19461}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 64, "filled": {"train": 36861, "test": 21358, "validation": 19747}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 65, "filled": {"train": 37007, "test": 21358, "validation": 19747}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 66, "filled": {"train": 37169, "test": 21358, "validation": 19747}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 67, "filled": {"train": 37169, "test": 21358, "validation": 20040}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 68, "filled": {"train": 37316, "test": 21358, "validation": 20040}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 69, "filled": {"train": 37316, "test": 24537, "validation": 20040}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 70, "filled": {"train": 37316, "test": 24537, "validation": 23452}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 71, "filled": {"train": 39027, "test": 24537, "validation": 23452}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 72, "filled": {"train": 39027, "test": 27884, "validation": 23452}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 73, "filled": {"train": 40814, "test": 27884, "validation": 23452}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 74, "filled": {"train": 42642, "test": 27884, "validation": 23452}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 75, "filled": {"train": 42642, "test": 31058, "validation": 23452}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 76, "filled": {"train": 43122, "test": 31058, "validation": 23452}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 77, "filled": {"train": 44852, "test": 31058, "validation": 23452}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 78, "filled": {"train": 46663, "test": 31058, "validation": 23452}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 79, "filled": {"train": 48484, "test": 31058, "validation": 23452}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 80, "filled": {"train": 50169, "test": 31058, "validation": 23452}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 81, "filled": {"train": 50169, "test": 31058, "validation": 26850}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 82, "filled": {"train": 51916, "test": 31058, "validation": 26850}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 83, "filled": {"train": 51916, "test": 31058, "validation": 30304}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 84, "filled": {"train": 53645, "test": 31058, "validation": 30304}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 85, "filled": {"train": 55351, "test": 31058, "validation": 30304}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 86, "filled": {"train": 55351, "test": 31058, "validation": 33719}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 87, "filled": {"train": 55351, "test": 34374, "validation": 33719}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 88, "filled": {"train": 55351, "test": 37502, "validation": 33719}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 89, "filled": {"train": 57102, "test": 37502, "validation": 33719}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 90, "filled": {"train": 58777, "test": 37502, "validation": 33719}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 91, "filled": {"train": 58777, "test": 40733, "validation": 33719}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 92, "filled": {"train": 58777, "test": 40733, "validation": 34504}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 93, "filled": {"train": 60502, "test": 40733, "validation": 34504}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 94, "filled": {"train": 62178, "test": 40733, "validation": 34504}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 95, "filled": {"train": 63847, "test": 40733, "validation": 34504}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 96, "filled": {"train": 65574, "test": 40733, "validation": 34504}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 97, "filled": {"train": 67187, "test": 40733, "validation": 34504}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 98, "filled": {"train": 67187, "test": 40733, "validation": 37973}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 99, "filled": {"train": 68941, "test": 40733, "validation": 37973}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 100, "filled": {"train": 70706, "test": 40733, "validation": 37973}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 101, "filled": {"train": 70706, "test": 43924, "validation": 37973}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 102, "filled": {"train": 70706, "test": 47165, "validation": 37973}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 103, "filled": {"train": 72410, "test": 47165, "validation": 37973}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 104, "filled": {"train": 72410, "test": 47165, "validation": 41402}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 105, "filled": {"train": 72410, "test": 47165, "validation": 44944}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 106, "filled": {"train": 74160, "test": 47165, "validation": 44944}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 107, "filled": {"train": 75870, "test": 47165, "validation": 44944}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 108, "filled": {"train": 76732, "test": 47165, "validation": 44944}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 109, "filled": {"train": 78511, "test": 47165, "validation": 44944}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 110, "filled": {"train": 80235, "test": 47165, "validation": 44944}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 111, "filled": {"train": 81465, "test": 47165, "validation": 44944}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 112, "filled": {"train": 83159, "test": 47165, "validation": 44944}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 113, "filled": {"train": 83159, "test": 47165, "validation": 48371}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 114, "filled": {"train": 83159, "test": 50356, "validation": 48371}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 115, "filled": {"train": 84820, "test": 50356, "validation": 48371}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 116, "filled": {"train": 86537, "test": 50356, "validation": 48371}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 117, "filled": {"train": 86698, "test": 50356, "validation": 48371}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 118, "filled": {"train": 88477, "test": 50356, "validation": 48371}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 119, "filled": {"train": 90295, "test": 50356, "validation": 48371}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 120, "filled": {"train": 90295, "test": 53530, "validation": 48371}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 121, "filled": {"train": 92055, "test": 53530, "validation": 48371}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 122, "filled": {"train": 92055, "test": 53530, "validation": 51863}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 123, "filled": {"train": 92055, "test": 55049, "validation": 51863}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 124, "filled": {"train": 93811, "test": 55049, "validation": 51863}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 125, "filled": {"train": 95631, "test": 55049, "validation": 51863}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 126, "filled": {"train": 97375, "test": 55049, "validation": 51863}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 127, "filled": {"train": 99145, "test": 55049, "validation": 51863}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 128, "filled": {"train": 100823, "test": 55049, "validation": 51863}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 129, "filled": {"train": 100823, "test": 55049, "validation": 55314}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 130, "filled": {"train": 102594, "test": 55049, "validation": 55314}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 131, "filled": {"train": 104301, "test": 55049, "validation": 55314}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 132, "filled": {"train": 105973, "test": 55049, "validation": 55314}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 133, "filled": {"train": 105973, "test": 55049, "validation": 58751}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 134, "filled": {"train": 105973, "test": 55049, "validation": 62141}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 135, "filled": {"train": 107686, "test": 55049, "validation": 62141}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 136, "filled": {"train": 107686, "test": 58294, "validation": 62141}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 137, "filled": {"train": 109422, "test": 58294, "validation": 62141}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 138, "filled": {"train": 109422, "test": 61370, "validation": 62141}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 139, "filled": {"train": 111114, "test": 61370, "validation": 62141}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 140, "filled": {"train": 112781, "test": 61370, "validation": 62141}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 141, "filled": {"train": 113405, "test": 61370, "validation": 62141}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 142, "filled": {"train": 115184, "test": 61370, "validation": 62141}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 143, "filled": {"train": 116924, "test": 61370, "validation": 62141}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 144, "filled": {"train": 118234, "test": 61370, "validation": 62141}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 145, "filled": {"train": 118234, "test": 63929, "validation": 62141}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 146, "filled": {"train": 119922, "test": 63929, "validation": 62141}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 147, "filled": {"train": 119922, "test": 63929, "validation": 65519}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 148, "filled": {"train": 121696, "test": 63929, "validation": 65519}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 149, "filled": {"train": 123469, "test": 63929, "validation": 65519}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 150, "filled": {"train": 125226, "test": 63929, "validation": 65519}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 151, "filled": {"train": 125226, "test": 63929, "validation": 68913}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 152, "filled": {"train": 126917, "test": 63929, "validation": 68913}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 153, "filled": {"train": 126917, "test": 63929, "validation": 72222}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 154, "filled": {"train": 126917, "test": 67057, "validation": 72222}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 155, "filled": {"train": 126917, "test": 67057, "validation": 75721}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 156, "filled": {"train": 128671, "test": 67057, "validation": 75721}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 157, "filled": {"train": 128671, "test": 70308, "validation": 75721}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 158, "filled": {"train": 130514, "test": 70308, "validation": 75721}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 159, "filled": {"train": 132205, "test": 70308, "validation": 75721}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 160, "filled": {"train": 133945, "test": 70308, "validation": 75721}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 161, "filled": {"train": 133945, "test": 73639, "validation": 75721}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 162, "filled": {"train": 133945, "test": 76866, "validation": 75721}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 163, "filled": {"train": 134462, "test": 76866, "validation": 75721}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 164, "filled": {"train": 136236, "test": 76866, "validation": 75721}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 165, "filled": {"train": 137929, "test": 76866, "validation": 75721}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 166, "filled": {"train": 139745, "test": 76866, "validation": 75721}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 167, "filled": {"train": 139745, "test": 76866, "validation": 79263}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 168, "filled": {"train": 141541, "test": 76866, "validation": 79263}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 169, "filled": {"train": 143291, "test": 76866, "validation": 79263}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 170, "filled": {"train": 145093, "test": 76866, "validation": 79263}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 171, "filled": {"train": 145093, "test": 76866, "validation": 79549}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 172, "filled": {"train": 145093, "test": 77119, "validation": 79549}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 173, "filled": {"train": 145222, "test": 77119, "validation": 79549}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 174, "filled": {"train": 145364, "test": 77119, "validation": 79549}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 175, "filled": {"train": 145461, "test": 77119, "validation": 79549}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 176, "filled": {"train": 145607, "test": 77119, "validation": 79549}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 177, "filled": {"train": 145755, "test": 77119, "validation": 79549}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 178, "filled": {"train": 145755, "test": 77119, "validation": 79833}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 179, "filled": {"train": 145895, "test": 77119, "validation": 79833}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 180, "filled": {"train": 146046, "test": 77119, "validation": 79833}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 181, "filled": {"train": 146198, "test": 77119, "validation": 79833}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 182, "filled": {"train": 146361, "test": 77119, "validation": 79833}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 183, "filled": {"train": 146361, "test": 77386, "validation": 79833}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 184, "filled": {"train": 147576, "test": 77386, "validation": 79833}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 185, "filled": {"train": 147643, "test": 77386, "validation": 79833}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 186, "filled": {"train": 147889, "test": 77386, "validation": 79833}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 187, "filled": {"train": 148090, "test": 77386, "validation": 79833}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 188, "filled": {"train": 149794, "test": 77386, "validation": 79833}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 189, "filled": {"train": 149794, "test": 80551, "validation": 79833}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 190, "filled": {"train": 151448, "test": 80551, "validation": 79833}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 191, "filled": {"train": 153214, "test": 80551, "validation": 79833}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 192, "filled": {"train": 154888, "test": 80551, "validation": 79833}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 193, "filled": {"train": 156574, "test": 80551, "validation": 79833}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 194, "filled": {"train": 158271, "test": 80551, "validation": 79833}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 195, "filled": {"train": 158271, "test": 80551, "validation": 82508}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 196, "filled": {"train": 159932, "test": 80551, "validation": 82508}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 197, "filled": {"train": 159932, "test": 83500, "validation": 82508}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 198, "filled": {"train": 159932, "test": 83500, "validation": 83603}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 199, "filled": {"train": 161659, "test": 83500, "validation": 83603}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 200, "filled": {"train": 161659, "test": 83500, "validation": 87038}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 201, "filled": {"train": 163402, "test": 83500, "validation": 87038}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 202, "filled": {"train": 165190, "test": 83500, "validation": 87038}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 203, "filled": {"train": 166900, "test": 83500, "validation": 87038}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 204, "filled": {"train": 168617, "test": 83500, "validation": 87038}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 205, "filled": {"train": 170283, "test": 83500, "validation": 87038}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 206, "filled": {"train": 170283, "test": 86197, "validation": 87038}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 207, "filled": {"train": 171353, "test": 86197, "validation": 87038}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 208, "filled": {"train": 172286, "test": 86197, "validation": 87038}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 209, "filled": {"train": 172286, "test": 89386, "validation": 87038}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 210, "filled": {"train": 172286, "test": 89386, "validation": 90205}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 211, "filled": {"train": 173974, "test": 89386, "validation": 90205}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 212, "filled": {"train": 173974, "test": 92458, "validation": 90205}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 213, "filled": {"train": 175654, "test": 92458, "validation": 90205}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 214, "filled": {"train": 177356, "test": 92458, "validation": 90205}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 215, "filled": {"train": 178576, "test": 92458, "validation": 90205}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 216, "filled": {"train": 179276, "test": 92458, "validation": 90205}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 217, "filled": {"train": 179956, "test": 92458, "validation": 90205}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 218, "filled": {"train": 180802, "test": 92458, "validation": 90205}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 219, "filled": {"train": 180802, "test": 92458, "validation": 91661}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 220, "filled": {"train": 181556, "test": 92458, "validation": 91661}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 221, "filled": {"train": 182735, "test": 92458, "validation": 91661}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 222, "filled": {"train": 182735, "test": 92458, "validation": 93704}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 223, "filled": {"train": 182735, "test": 94026, "validation": 93704}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 224, "filled": {"train": 184322, "test": 94026, "validation": 93704}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 225, "filled": {"train": 184692, "test": 94026, "validation": 93704}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 226, "filled": {"train": 184692, "test": 94026, "validation": 94127}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 227, "filled": {"train": 184910, "test": 94026, "validation": 94127}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 228, "filled": {"train": 185132, "test": 94026, "validation": 94127}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 229, "filled": {"train": 185350, "test": 94026, "validation": 94127}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 230, "filled": {"train": 185572, "test": 94026, "validation": 94127}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 231, "filled": {"train": 185572, "test": 94438, "validation": 94127}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 232, "filled": {"train": 185788, "test": 94438, "validation": 94127}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 233, "filled": {"train": 186030, "test": 94438, "validation": 94127}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 234, "filled": {"train": 186258, "test": 94438, "validation": 94127}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 235, "filled": {"train": 186457, "test": 94438, "validation": 94127}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 236, "filled": {"train": 186680, "test": 94438, "validation": 94127}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 237, "filled": {"train": 186905, "test": 94438, "validation": 94127}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 238, "filled": {"train": 187132, "test": 94438, "validation": 94127}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 239, "filled": {"train": 187132, "test": 94438, "validation": 94616}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 240, "filled": {"train": 187363, "test": 94438, "validation": 94616}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 241, "filled": {"train": 187565, "test": 94438, "validation": 94616}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 242, "filled": {"train": 187794, "test": 94438, "validation": 94616}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 243, "filled": {"train": 188028, "test": 94438, "validation": 94616}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 244, "filled": {"train": 188225, "test": 94438, "validation": 94616}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 245, "filled": {"train": 188225, "test": 94438, "validation": 95079}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 246, "filled": {"train": 188438, "test": 94438, "validation": 95079}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 247, "filled": {"train": 188438, "test": 94838, "validation": 95079}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 248, "filled": {"train": 188438, "test": 94838, "validation": 95545}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 249, "filled": {"train": 188657, "test": 94838, "validation": 95545}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 250, "filled": {"train": 188657, "test": 95254, "validation": 95545}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 251, "filled": {"train": 188657, "test": 95254, "validation": 95983}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 252, "filled": {"train": 188876, "test": 95254, "validation": 95983}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 253, "filled": {"train": 188876, "test": 95631, "validation": 95983}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 254, "filled": {"train": 188876, "test": 96049, "validation": 95983}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 255, "filled": {"train": 188876, "test": 96049, "validation": 96437}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 256, "filled": {"train": 188876, "test": 96458, "validation": 96437}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 257, "filled": {"train": 188876, "test": 96900, "validation": 96437}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 258, "filled": {"train": 189098, "test": 96900, "validation": 96437}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 259, "filled": {"train": 189346, "test": 96900, "validation": 96437}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 260, "filled": {"train": 189346, "test": 97339, "validation": 96437}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 261, "filled": {"train": 189561, "test": 97339, "validation": 96437}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 262, "filled": {"train": 189818, "test": 97339, "validation": 96437}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 263, "filled": {"train": 189818, "test": 97339, "validation": 96869}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 264, "filled": {"train": 190040, "test": 97339, "validation": 96869}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 265, "filled": {"train": 190250, "test": 97339, "validation": 96869}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 266, "filled": {"train": 190250, "test": 97339, "validation": 97289}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 267, "filled": {"train": 190483, "test": 97339, "validation": 97289}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 268, "filled": {"train": 190736, "test": 97339, "validation": 97289}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 269, "filled": {"train": 190804, "test": 97339, "validation": 97289}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 270, "filled": {"train": 191047, "test": 97339, "validation": 97289}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 271, "filled": {"train": 191269, "test": 97339, "validation": 97289}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 272, "filled": {"train": 191269, "test": 97786, "validation": 97289}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 273, "filled": {"train": 191496, "test": 97786, "validation": 97289}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 274, "filled": {"train": 191717, "test": 97786, "validation": 97289}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 275, "filled": {"train": 191952, "test": 97786, "validation": 97289}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 276, "filled": {"train": 191952, "test": 97786, "validation": 97702}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 277, "filled": {"train": 192206, "test": 97786, "validation": 97702}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 278, "filled": {"train": 192206, "test": 98244, "validation": 97702}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 279, "filled": {"train": 192206, "test": 98676, "validation": 97702}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 280, "filled": {"train": 192440, "test": 98676, "validation": 97702}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 281, "filled": {"train": 192682, "test": 98676, "validation": 97702}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 282, "filled": {"train": 192925, "test": 98676, "validation": 97702}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 283, "filled": {"train": 193168, "test": 98676, "validation": 97702}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 284, "filled": {"train": 193403, "test": 98676, "validation": 97702}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 285, "filled": {"train": 193642, "test": 98676, "validation": 97702}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 286, "filled": {"train": 193642, "test": 98676, "validation": 98194}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 287, "filled": {"train": 193642, "test": 99147, "validation": 98194}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 288, "filled": {"train": 193642, "test": 99147, "validation": 98635}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 289, "filled": {"train": 193642, "test": 99147, "validation": 99077}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 290, "filled": {"train": 193642, "test": 99580, "validation": 99077}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 291, "filled": {"train": 193856, "test": 99580, "validation": 99077}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 292, "filled": {"train": 193856, "test": 100000, "validation": 99077}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 293, "filled": {"train": 194102, "test": 100000, "validation": 99077}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 294, "filled": {"train": 194196, "test": 100000, "validation": 99077}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 295, "filled": {"train": 194449, "test": 100000, "validation": 99077}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 296, "filled": {"train": 194449, "test": 100000, "validation": 99560}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 297, "filled": {"train": 194691, "test": 100000, "validation": 99560}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 298, "filled": {"train": 194691, "test": 100000, "validation": 100000}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 299, "filled": {"train": 194927, "test": 100000, "validation": 100000}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 300, "filled": {"train": 195141, "test": 100000, "validation": 100000}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 301, "filled": {"train": 195378, "test": 100000, "validation": 100000}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 302, "filled": {"train": 196246, "test": 100000, "validation": 100000}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 303, "filled": {"train": 196915, "test": 100000, "validation": 100000}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 304, "filled": {"train": 196931, "test": 100000, "validation": 100000}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 305, "filled": {"train": 197459, "test": 100000, "validation": 100000}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 306, "filled": {"train": 197491, "test": 100000, "validation": 100000}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 307, "filled": {"train": 197499, "test": 100000, "validation": 100000}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 308, "filled": {"train": 199977, "test": 100000, "validation": 100000}}
+{"event": "sampled_shard", "dataset": "ciciot2023", "ordinal": 309, "filled": {"train": 200000, "test": 100000, "validation": 100000}}
+{"event": "classifier_complete", "dataset": "ciciot2023", "model": "TinyDT", "metrics": {"training_seconds": 0.17211750001297332, "validation": {"rows": 76709, "accuracy": 0.993155953017247, "balanced_accuracy": 0.8382624768946396, "precision": 0.9930565658435941, "recall": 1.0, "f1": 0.9965161881125703, "roc_auc": 0.9999955278226951, "average_precision": 0.9999999032130548, "confusion_matrix": [[1098, 525], [0, 75086]]}, "test": {"rows": 71145, "accuracy": 0.9816009557945041, "balanced_accuracy": 0.8290229885057472, "precision": 0.9809255967126163, "recall": 1.0, "f1": 0.9903709643012145, "roc_auc": 0.999728366865863, "average_precision": 0.9999696872017282, "confusion_matrix": [[2519, 1309], [0, 67317]]}}}
+{"event": "classifier_complete", "dataset": "ciciot2023", "model": "LightLR", "metrics": {"training_seconds": 2.341768625017721, "validation": {"rows": 76709, "accuracy": 0.9917871436206964, "balanced_accuracy": 0.8059149722735675, "precision": 0.9916794336731999, "recall": 1.0, "f1": 0.9958223365737855, "roc_auc": 0.999993345071937, "average_precision": 0.9999998568271896, "confusion_matrix": [[993, 630], [0, 75086]]}, "test": {"rows": 71145, "accuracy": 0.9769906528919812, "balanced_accuracy": 0.7863039622153603, "precision": 0.976273349576517, "recall": 0.9999851449113893, "f1": 0.9879869963087716, "roc_auc": 0.999977457364227, "average_precision": 0.9999987673560841, "confusion_matrix": [[2192, 1636], [1, 67316]]}}}
+{"event": "classifier_complete", "dataset": "ciciot2023", "model": "MedRF", "metrics": {"training_seconds": 0.8809561250091065, "validation": {"rows": 76709, "accuracy": 0.9940293837750459, "balanced_accuracy": 0.8589032655576094, "precision": 0.9939373080588796, "recall": 1.0, "f1": 0.9969594370311359, "roc_auc": 0.9999999507650205, "average_precision": 0.9999999989357706, "confusion_matrix": [[1165, 458], [0, 75086]]}, "test": {"rows": 71145, "accuracy": 0.9838639398411695, "balanced_accuracy": 0.8500522466039707, "precision": 0.9832323084787847, "recall": 1.0, "f1": 0.9915452710963162, "roc_auc": 0.9999972020588066, "average_precision": 0.9999998408216134, "confusion_matrix": [[2680, 1148], [0, 67317]]}}}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 1, "train_loss": 0.1666510239815712}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 2, "train_loss": 0.036990655168890954}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 3, "train_loss": 0.033954829651117326}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 4, "train_loss": 0.03221581014096737}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 5, "train_loss": 0.03140178598672152}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 6, "train_loss": 0.030497634602189065}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 7, "train_loss": 0.02998981848359108}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 8, "train_loss": 0.029683808988332748}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 9, "train_loss": 0.02915450244486332}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 10, "train_loss": 0.02878036845445633}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 11, "train_loss": 0.02834968375682831}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 12, "train_loss": 0.028233204020261766}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 13, "train_loss": 0.028099675571918486}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 14, "train_loss": 0.027841648510694504}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 15, "train_loss": 0.027715900385379792}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 16, "train_loss": 0.02769265805542469}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 17, "train_loss": 0.02745822761312127}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 18, "train_loss": 0.027444882534742355}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 19, "train_loss": 0.027172541939020158}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 20, "train_loss": 0.027063911255002022}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 21, "train_loss": 0.027141745801568033}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 22, "train_loss": 0.026940333952605724}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 23, "train_loss": 0.026942766466736795}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 24, "train_loss": 0.026869992249011994}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 25, "train_loss": 0.02663057895600796}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 26, "train_loss": 0.026563474963307382}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 27, "train_loss": 0.026469146463871003}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 28, "train_loss": 0.026458626346588136}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 29, "train_loss": 0.026446419866085053}
+{"event": "mlp_epoch", "dataset": "ciciot2023", "epoch": 30, "train_loss": 0.02646564366042614}
+{"event": "classifier_complete", "dataset": "ciciot2023", "model": "HeavyMLP", "metrics": {"training_seconds": 4.916980999987572, "validation": {"rows": 76709, "accuracy": 0.9949158508128121, "balanced_accuracy": 0.8798521256931608, "precision": 0.9948327945307117, "recall": 1.0, "f1": 0.9974097049720381, "roc_auc": 0.9999997210017828, "average_precision": 0.9999999939703005, "confusion_matrix": [[1233, 390], [0, 75086]]}, "test": {"rows": 71145, "accuracy": 0.986689155949118, "balanced_accuracy": 0.8763061650992685, "precision": 0.9861273877885854, "recall": 1.0, "f1": 0.9930152454990006, "roc_auc": 0.9999978792304269, "average_precision": 0.9999998793467252, "confusion_matrix": [[2881, 947], [0, 67317]]}}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 1, "filled": {"validation": 3543}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 2, "filled": {"validation": 7778}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 3, "filled": {"validation": 9892}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 4, "filled": {"validation": 12008}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 5, "filled": {"validation": 18591}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 6, "filled": {"validation": 26129}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 7, "filled": {"validation": 33405}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 8, "filled": {"validation": 41268}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 9, "filled": {"validation": 50139}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 10, "filled": {"validation": 67207}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 11, "filled": {"validation": 73018}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 12, "filled": {"validation": 73018, "train": 671}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 13, "filled": {"validation": 73018, "train": 3363}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 14, "filled": {"validation": 73018, "train": 4902}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 15, "filled": {"validation": 73018, "train": 6267}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 16, "filled": {"validation": 73018, "train": 11014}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 17, "filled": {"validation": 73018, "train": 16209}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 18, "filled": {"validation": 73018, "train": 21932}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 19, "filled": {"validation": 73018, "train": 24156}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 20, "filled": {"validation": 73018, "train": 29999}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 21, "filled": {"validation": 73018, "train": 37649}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 22, "filled": {"validation": 73018, "train": 42107}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 23, "filled": {"validation": 73018, "train": 44071}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 24, "filled": {"validation": 73018, "train": 46873}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 25, "filled": {"validation": 73018, "train": 48341}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 26, "filled": {"validation": 73018, "train": 49728}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 27, "filled": {"validation": 73018, "train": 54777}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 28, "filled": {"validation": 73018, "train": 59957}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 29, "filled": {"validation": 73018, "train": 68690}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 30, "filled": {"validation": 73018, "train": 71634}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 31, "filled": {"validation": 73018, "train": 73021}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 32, "filled": {"validation": 73018, "train": 74414}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 33, "filled": {"validation": 73018, "train": 79053}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 34, "filled": {"validation": 73018, "train": 84262}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 35, "filled": {"validation": 73018, "train": 88968}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 36, "filled": {"validation": 73018, "train": 94254}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 37, "filled": {"validation": 73018, "train": 100175}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 38, "filled": {"validation": 73018, "train": 110985}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 39, "filled": {"validation": 73018, "train": 115080}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 40, "filled": {"validation": 73018, "train": 118310}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 41, "filled": {"validation": 73018, "train": 121391}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 42, "filled": {"validation": 73018, "train": 122891}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 43, "filled": {"validation": 73018, "train": 124405}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 44, "filled": {"validation": 73018, "train": 129795}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 45, "filled": {"validation": 73018, "train": 135058}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 46, "filled": {"validation": 73018, "train": 138162}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 47, "filled": {"validation": 73018, "train": 143068}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 48, "filled": {"validation": 73018, "train": 146389}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 49, "filled": {"validation": 73018, "train": 154363}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 50, "filled": {"validation": 73018, "train": 157102}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 51, "filled": {"validation": 73018, "train": 157102, "test": 5734}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 52, "filled": {"validation": 73018, "train": 157102, "test": 9171}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 53, "filled": {"validation": 73018, "train": 157102, "test": 10873}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 54, "filled": {"validation": 73018, "train": 157102, "test": 12518}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 55, "filled": {"validation": 73018, "train": 157102, "test": 17656}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 56, "filled": {"validation": 73018, "train": 157102, "test": 23818}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 57, "filled": {"validation": 73018, "train": 157102, "test": 27314}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 58, "filled": {"validation": 73018, "train": 157102, "test": 33043}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 59, "filled": {"validation": 73018, "train": 157102, "test": 36683}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 60, "filled": {"validation": 73018, "train": 157102, "test": 46029}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 61, "filled": {"validation": 73018, "train": 157102, "test": 49177}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 62, "filled": {"validation": 76845, "train": 157102, "test": 49177}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 63, "filled": {"validation": 81167, "train": 157102, "test": 49177}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 64, "filled": {"validation": 83204, "train": 157102, "test": 49177}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 65, "filled": {"validation": 85155, "train": 157102, "test": 49177}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 66, "filled": {"validation": 92173, "train": 157102, "test": 49177}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 67, "filled": {"validation": 100000, "train": 157102, "test": 49177}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 68, "filled": {"validation": 100000, "train": 157102, "test": 51910}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 69, "filled": {"validation": 100000, "train": 157102, "test": 55105}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 70, "filled": {"validation": 100000, "train": 157102, "test": 56831}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 71, "filled": {"validation": 100000, "train": 157102, "test": 58400}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 72, "filled": {"validation": 100000, "train": 157102, "test": 63527}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 73, "filled": {"validation": 100000, "train": 157102, "test": 69678}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 74, "filled": {"validation": 100000, "train": 157102, "test": 76349}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 75, "filled": {"validation": 100000, "train": 157102, "test": 78951}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 76, "filled": {"validation": 100000, "train": 157102, "test": 86292}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 77, "filled": {"validation": 100000, "train": 157102, "test": 95316}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 78, "filled": {"validation": 100000, "train": 157102, "test": 100000}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 79, "filled": {"validation": 100000, "train": 158102, "test": 100000}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 80, "filled": {"validation": 100000, "train": 161120, "test": 100000}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 81, "filled": {"validation": 100000, "train": 162500, "test": 100000}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 82, "filled": {"validation": 100000, "train": 163929, "test": 100000}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 83, "filled": {"validation": 100000, "train": 168811, "test": 100000}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 84, "filled": {"validation": 100000, "train": 174059, "test": 100000}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 85, "filled": {"validation": 100000, "train": 179488, "test": 100000}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 86, "filled": {"validation": 100000, "train": 181677, "test": 100000}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 87, "filled": {"validation": 100000, "train": 187760, "test": 100000}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 88, "filled": {"validation": 100000, "train": 195662, "test": 100000}}
+{"event": "sampled_shard", "dataset": "n_baiot", "ordinal": 89, "filled": {"validation": 100000, "train": 200000, "test": 100000}}
+{"event": "classifier_complete", "dataset": "n_baiot", "model": "TinyDT", "metrics": {"training_seconds": 4.38446554201073, "validation": {"rows": 87039, "accuracy": 0.9951745769137973, "balanced_accuracy": 0.9881290981871687, "precision": 0.9981143697595193, "recall": 0.9966109779211487, "f1": 0.997362107299426, "roc_auc": 0.9884415519210734, "average_precision": 0.9979511402954119, "confusion_matrix": [[7220, 150], [270, 79399]]}, "test": {"rows": 83355, "accuracy": 0.9970727610821186, "balanced_accuracy": 0.9861148800207602, "precision": 0.9968846522526361, "recall": 0.9998664672577716, "f1": 0.9983733333333333, "roc_auc": 0.9886534964218272, "average_precision": 0.9974448993698893, "confusion_matrix": [[8233, 234], [10, 74878]]}}}
+{"event": "classifier_complete", "dataset": "n_baiot", "model": "LightLR", "metrics": {"training_seconds": 6.681516625016229, "validation": {"rows": 87039, "accuracy": 0.999528946793966, "balanced_accuracy": 0.9982650860404394, "precision": 0.99969878005924, "recall": 0.9997866171283686, "f1": 0.9997426966644701, "roc_auc": 0.999829494669882, "average_precision": 0.9999744888341298, "confusion_matrix": [[7346, 24], [17, 79652]]}, "test": {"rows": 83355, "accuracy": 0.9971087517245516, "balanced_accuracy": 0.9866586714929514, "precision": 0.9970171116585658, "recall": 0.9997729943382118, "f1": 0.9983931512238053, "roc_auc": 0.9965499741375133, "average_precision": 0.999483877405515, "confusion_matrix": [[8243, 224], [17, 74871]]}}}
+{"event": "classifier_complete", "dataset": "n_baiot", "model": "MedRF", "metrics": {"training_seconds": 4.233527042000787, "validation": {"rows": 87039, "accuracy": 0.9997931961534484, "balanced_accuracy": 0.9993944994906249, "precision": 0.9998995820101171, "recall": 0.9998744806637463, "f1": 0.9998870311793945, "roc_auc": 0.9999996338309729, "average_precision": 0.9999999661366566, "confusion_matrix": [[7362, 8], [10, 79659]]}, "test": {"rows": 83355, "accuracy": 0.9995201247675605, "balanced_accuracy": 0.9981092736768866, "precision": 0.9995861700707516, "recall": 0.9998798205319944, "f1": 0.9997329737379671, "roc_auc": 0.999996765375525, "average_precision": 0.9999996356165657, "confusion_matrix": [[8436, 31], [9, 74879]]}}}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 1, "train_loss": 0.12893033886313437}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 2, "train_loss": 0.004892364673167467}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 3, "train_loss": 0.0031878131951019167}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 4, "train_loss": 0.002609381691198796}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 5, "train_loss": 0.0022370162640884517}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 6, "train_loss": 0.0018950035498477519}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 7, "train_loss": 0.0017240896484348922}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 8, "train_loss": 0.001551017258837819}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 9, "train_loss": 0.0016108235978335142}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 10, "train_loss": 0.0012284222096204758}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 11, "train_loss": 0.0013520609053503721}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 12, "train_loss": 0.0010364401831571013}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 13, "train_loss": 0.001153394324472174}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 14, "train_loss": 0.0010614063003286719}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 15, "train_loss": 0.0009579849392338655}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 16, "train_loss": 0.0009669935264252126}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 17, "train_loss": 0.0008349961526226252}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 18, "train_loss": 0.0010496627533249556}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 19, "train_loss": 0.0009302521310374141}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 20, "train_loss": 0.0009098934624553658}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 21, "train_loss": 0.000905193661050871}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 22, "train_loss": 0.0007615771698520985}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 23, "train_loss": 0.0008422491609444842}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 24, "train_loss": 0.0008497166952374392}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 25, "train_loss": 0.0007913182032713667}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 26, "train_loss": 0.0007409119945717976}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 27, "train_loss": 0.0006446156956395134}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 28, "train_loss": 0.000810684440662153}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 29, "train_loss": 0.000657330829546554}
+{"event": "mlp_epoch", "dataset": "n_baiot", "epoch": 30, "train_loss": 0.0008130814314028248}
+{"event": "classifier_complete", "dataset": "n_baiot", "model": "HeavyMLP", "metrics": {"training_seconds": 5.539514750009403, "validation": {"rows": 87039, "accuracy": 0.9997587288456898, "balanced_accuracy": 0.9986984385684099, "precision": 0.9997615641392466, "recall": 0.9999748961327493, "f1": 0.9998682187568636, "roc_auc": 0.9999978455636315, "average_precision": 0.9999998005638898, "confusion_matrix": [[7351, 19], [2, 79667]]}, "test": {"rows": 83355, "accuracy": 0.9959690480475076, "balanced_accuracy": 0.9805772707344539, "precision": 0.9956387618338475, "recall": 0.9998931738062173, "f1": 0.9977614326830828, "roc_auc": 0.9945255100496548, "average_precision": 0.9987941716510275, "confusion_matrix": [[8139, 328], [8, 74880]]}}}
+CLASSIFICATION_CAMPAIGN_COMPLETE

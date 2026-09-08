@@ -1,0 +1,9 @@
+{
+  "status": "INVALID_SUPERSEDED",
+  "units": 240,
+  "reasons": [
+    "CFSM incorrectly substituted by fixed MedRF return",
+    "required telemetry absent"
+  ],
+  "eligible_for_inference": false
+}

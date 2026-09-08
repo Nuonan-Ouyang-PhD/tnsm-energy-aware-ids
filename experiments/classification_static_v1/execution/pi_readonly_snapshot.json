@@ -1,0 +1,14 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=8",
+    "pi@pi4b8g.local",
+    "cd ~/tnsm-energy-aware-ids && PYTHONPATH=src python3 -c 'import json; from pathlib import Path; from tnsm_exp.platform_info import snapshot; print(json.dumps(snapshot(Path.cwd())))'"
+  ],
+  "exit_code": 0,
+  "stdout": "{\"captured_at_utc\": \"2026-09-06T11:48:17.463Z\", \"monotonic_ns\": 191227659144076, \"hostname\": \"pi4b8g\", \"fqdn\": \"pi4b8g\", \"hardware_model\": \"Raspberry Pi 4 Model B Rev 1.5\\u0000\", \"architecture\": \"aarch64\", \"kernel\": \"6.18.34+rpt-rpi-v8\", \"python\": \"3.13.5\", \"cpu_count\": 4, \"memory_total_bytes\": 8199643136, \"memory_available_bytes\": 7943532544, \"temperature_c\": 31.154, \"throttled_hex\": \"0x0\", \"throttle_flags\": {\"undervoltage_now\": false, \"arm_frequency_capped_now\": false, \"throttled_now\": false, \"soft_temperature_limit_now\": false, \"undervoltage_occurred\": false, \"arm_frequency_capped_occurred\": false, \"throttled_occurred\": false, \"soft_temperature_limit_occurred\": false}, \"cpu_frequency_hz\": 1800000000, \"cpu_governors\": {\"cpu0\": \"ondemand\", \"cpu1\": \"ondemand\", \"cpu2\": \"ondemand\", \"cpu3\": \"ondemand\"}, \"ntp_synchronized\": true, \"disk_free_bytes\": 55570325504, \"load_1m\": 0.02978515625}\n",
+  "stderr": ""
+}

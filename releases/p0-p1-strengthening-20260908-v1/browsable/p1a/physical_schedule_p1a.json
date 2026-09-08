@@ -1,0 +1,362 @@
+{
+  "campaign_id": "TNSM-P1A-STATIC-LIGHTLR-20260908-V1",
+  "paired_block_count": 10,
+  "runs_per_block": 4,
+  "seconds_per_run": 500,
+  "trace_seeds": [
+    11,
+    23,
+    37,
+    53,
+    71,
+    89,
+    107,
+    131,
+    157,
+    191
+  ],
+  "method_orders": [
+    [
+      "DQN",
+      "Tabular-Q",
+      "Static-LightLR",
+      "Static-MedRF"
+    ],
+    [
+      "Tabular-Q",
+      "Static-MedRF",
+      "DQN",
+      "Static-LightLR"
+    ],
+    [
+      "Static-LightLR",
+      "Tabular-Q",
+      "Static-MedRF",
+      "DQN"
+    ],
+    [
+      "Tabular-Q",
+      "DQN",
+      "Static-MedRF",
+      "Static-LightLR"
+    ],
+    [
+      "Static-MedRF",
+      "Static-LightLR",
+      "Tabular-Q",
+      "DQN"
+    ],
+    [
+      "Static-LightLR",
+      "Static-MedRF",
+      "DQN",
+      "Tabular-Q"
+    ],
+    [
+      "DQN",
+      "Static-LightLR",
+      "Static-MedRF",
+      "Tabular-Q"
+    ],
+    [
+      "Static-MedRF",
+      "Tabular-Q",
+      "Static-LightLR",
+      "DQN"
+    ],
+    [
+      "DQN",
+      "Static-MedRF",
+      "Tabular-Q",
+      "Static-LightLR"
+    ],
+    [
+      "Static-LightLR",
+      "DQN",
+      "Tabular-Q",
+      "Static-MedRF"
+    ]
+  ],
+  "runs": [
+    {
+      "run_id": "supp-lightlr-S01-p1-DQN",
+      "method": "DQN",
+      "trace_seed": 11,
+      "block": 1,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S01-p2-Tabular-Q",
+      "method": "Tabular-Q",
+      "trace_seed": 11,
+      "block": 1,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S01-p3-Static-LightLR",
+      "method": "Static-LightLR",
+      "trace_seed": 11,
+      "block": 1,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S01-p4-Static-MedRF",
+      "method": "Static-MedRF",
+      "trace_seed": 11,
+      "block": 1,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S02-p1-Tabular-Q",
+      "method": "Tabular-Q",
+      "trace_seed": 23,
+      "block": 2,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S02-p2-Static-MedRF",
+      "method": "Static-MedRF",
+      "trace_seed": 23,
+      "block": 2,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S02-p3-DQN",
+      "method": "DQN",
+      "trace_seed": 23,
+      "block": 2,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S02-p4-Static-LightLR",
+      "method": "Static-LightLR",
+      "trace_seed": 23,
+      "block": 2,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S03-p1-Static-LightLR",
+      "method": "Static-LightLR",
+      "trace_seed": 37,
+      "block": 3,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S03-p2-Tabular-Q",
+      "method": "Tabular-Q",
+      "trace_seed": 37,
+      "block": 3,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S03-p3-Static-MedRF",
+      "method": "Static-MedRF",
+      "trace_seed": 37,
+      "block": 3,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S03-p4-DQN",
+      "method": "DQN",
+      "trace_seed": 37,
+      "block": 3,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S04-p1-Tabular-Q",
+      "method": "Tabular-Q",
+      "trace_seed": 53,
+      "block": 4,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S04-p2-DQN",
+      "method": "DQN",
+      "trace_seed": 53,
+      "block": 4,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S04-p3-Static-MedRF",
+      "method": "Static-MedRF",
+      "trace_seed": 53,
+      "block": 4,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S04-p4-Static-LightLR",
+      "method": "Static-LightLR",
+      "trace_seed": 53,
+      "block": 4,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S05-p1-Static-MedRF",
+      "method": "Static-MedRF",
+      "trace_seed": 71,
+      "block": 5,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S05-p2-Static-LightLR",
+      "method": "Static-LightLR",
+      "trace_seed": 71,
+      "block": 5,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S05-p3-Tabular-Q",
+      "method": "Tabular-Q",
+      "trace_seed": 71,
+      "block": 5,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S05-p4-DQN",
+      "method": "DQN",
+      "trace_seed": 71,
+      "block": 5,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S06-p1-Static-LightLR",
+      "method": "Static-LightLR",
+      "trace_seed": 89,
+      "block": 6,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S06-p2-Static-MedRF",
+      "method": "Static-MedRF",
+      "trace_seed": 89,
+      "block": 6,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S06-p3-DQN",
+      "method": "DQN",
+      "trace_seed": 89,
+      "block": 6,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S06-p4-Tabular-Q",
+      "method": "Tabular-Q",
+      "trace_seed": 89,
+      "block": 6,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S07-p1-DQN",
+      "method": "DQN",
+      "trace_seed": 107,
+      "block": 7,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S07-p2-Static-LightLR",
+      "method": "Static-LightLR",
+      "trace_seed": 107,
+      "block": 7,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S07-p3-Static-MedRF",
+      "method": "Static-MedRF",
+      "trace_seed": 107,
+      "block": 7,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S07-p4-Tabular-Q",
+      "method": "Tabular-Q",
+      "trace_seed": 107,
+      "block": 7,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S08-p1-Static-MedRF",
+      "method": "Static-MedRF",
+      "trace_seed": 131,
+      "block": 8,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S08-p2-Tabular-Q",
+      "method": "Tabular-Q",
+      "trace_seed": 131,
+      "block": 8,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S08-p3-Static-LightLR",
+      "method": "Static-LightLR",
+      "trace_seed": 131,
+      "block": 8,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S08-p4-DQN",
+      "method": "DQN",
+      "trace_seed": 131,
+      "block": 8,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S09-p1-DQN",
+      "method": "DQN",
+      "trace_seed": 157,
+      "block": 9,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S09-p2-Static-MedRF",
+      "method": "Static-MedRF",
+      "trace_seed": 157,
+      "block": 9,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S09-p3-Tabular-Q",
+      "method": "Tabular-Q",
+      "trace_seed": 157,
+      "block": 9,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S09-p4-Static-LightLR",
+      "method": "Static-LightLR",
+      "trace_seed": 157,
+      "block": 9,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S10-p1-Static-LightLR",
+      "method": "Static-LightLR",
+      "trace_seed": 191,
+      "block": 10,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S10-p2-DQN",
+      "method": "DQN",
+      "trace_seed": 191,
+      "block": 10,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S10-p3-Tabular-Q",
+      "method": "Tabular-Q",
+      "trace_seed": 191,
+      "block": 10,
+      "seconds": 500
+    },
+    {
+      "run_id": "supp-lightlr-S10-p4-Static-MedRF",
+      "method": "Static-MedRF",
+      "trace_seed": 191,
+      "block": 10,
+      "seconds": 500
+    }
+  ]
+}

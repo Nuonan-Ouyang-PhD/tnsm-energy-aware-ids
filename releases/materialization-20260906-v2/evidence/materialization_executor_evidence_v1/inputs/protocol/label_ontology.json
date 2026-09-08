@@ -1,0 +1,639 @@
+{
+  "schema_version": 1,
+  "kind": "label_ontology",
+  "status": "frozen",
+  "freeze_conditions": [
+    "TON-IoT type unique-value inventory completed (read-only pass)",
+    "Official field/statistics documents of all three datasets reviewed",
+    "TON-IoT label semantics re-verified against official description"
+  ],
+  "binary_label": {
+    "values": ["benign", "attack"],
+    "role": "the only mandatory cross-dataset unified label",
+    "derivation": {
+      "ton_iot": {
+        "source": "label column",
+        "rule": "0 -> benign, 1 -> attack",
+        "evidence_source": "Network Features-Description.pdf row 45: 'Tag normal and attack records, where 0 indicates normal and 1 indicates attacks'",
+        "semantic_disposition": "exact",
+        "decision_status": "frozen"
+      },
+      "ciciot2023": {
+        "source": "category directory name",
+        "rule": "Benign_Final -> benign; the other 33 categories -> attack",
+        "evidence_source": "frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename): 4 Benign_Final files (1,098,191 rows) + 33 attack directories; frozen CSVs carry no label column, directory name is the sole label carrier",
+        "semantic_disposition": "exact",
+        "decision_status": "frozen"
+      },
+      "n_baiot": {
+        "source": "file location",
+        "rule": "benign_traffic.csv -> benign; gafgyt_attacks_extracted/ and mirai_attacks_extracted/ contents -> attack",
+        "special_case": "root-level demonstrate_structure.csv is zero-row and never enters any pipeline, so it receives no label",
+        "evidence_source": "frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename): 89 data files (9 benign_traffic.csv + 45 gafgyt + 35 mirai) + 1 zero-row demonstrate_structure.csv; frozen CSVs carry no label column (115 aggregated statistics columns), so the file location is the sole label carrier",
+        "semantic_disposition": "exact",
+        "decision_status": "frozen"
+      }
+    }
+  },
+  "canonical_family": {
+    "role": "conservative standardized family for within-dataset multiclass and genuinely-shared cross-dataset comparison",
+    "absent_families": {
+      "value": "not_available",
+      "rule": "statement of coverage, never a negative class; families are never forced into an 'other' bucket for alignment"
+    },
+    "fixed_decisions": [
+      {
+        "source_family": "gafgyt",
+        "canonical_family": "bashlite",
+        "subtypes_kept_as_source_subtype": ["combo", "junk", "scan", "tcp", "udp"],
+        "rule": "Gafgyt tcp/udp are NOT re-labelled as ddos; Gafgyt scan is NOT merged into recon; malware family and behavior type are different axes. A separate behavior_tag may be added later if evidence supports it but never replaces canonical_family.",
+        "semantic_disposition": "exact",
+        "decision_status": "frozen",
+        "evidence_source": "Meidan et al. 2018 (references/dataset_docs/n_baiot/meidan2018_arxiv_v1_2026-09-04.pdf, p.4): 'BASHLITE (also known as Gafgyt, Q-Bot, Torlus, Lizard-Stresser, and Lizkebab)'"
+      }
+    ],
+    "candidate_families": ["benign", "backdoor", "bashlite", "brute_force", "ddos", "dos", "injection", "mirai", "password", "ransomware", "recon", "web_attack", "mitm", "spoofing"],
+    "note": "Final family assignments are frozen under LABEL-ONTOLOGY-ROOT-20260905-V1-FROZEN after completion of the required inventory and official-document reviews.",
+    "ton_iot_type_mapping": {
+      "description": "Mapping of the 9 TON-IoT attack type values plus normal to canonical_family. All 10 entries carry decision_status=frozen as TON-IOT-TYPE-MAPPING-20260904-V1-FROZEN (frozen from evidence v3 ZIP f774457585db719bc223a89cc965aabef7019bec1f0f6209a0ce160e3a4eecc4, source commit b95e7bc).",
+      "entries": [
+        {
+          "source_type": "normal",
+          "canonical_family": "benign",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "Network Features-Description.pdf row 45 (label=0 -> normal) + row 46 (type=normal); TON-IoT label census: 50,000 rows with label=0 and type=normal",
+          "rationale": "Direct 1:1 mapping; verified invariant: all label=0 rows have type=normal and vice versa (census confirmed zero exceptions). This is a coverage invariant, not one of the 9 attack classes."
+        },
+        {
+          "source_type": "backdoor",
+          "canonical_family": "backdoor",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "Network Features-Description.pdf row 46 lists backdoor as an attack category; Statistics of Network Records.pdf lists 20,000 backdoor rows in train/test",
+          "rationale": "Identity-preserving mapping: the official TON-IoT source label is retained without semantic broadening. Detailed attack mechanisms are not inferred from the selected dataset documentation."
+        },
+        {
+          "source_type": "ddos",
+          "canonical_family": "ddos",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "Network Features-Description.pdf row 46 lists DDoS as an attack category; Statistics of Network Records.pdf lists 20,000 ddos rows in train/test",
+          "rationale": "Identity-preserving mapping: the official TON-IoT source label is retained without semantic broadening. Detailed attack mechanisms are not inferred from the selected dataset documentation. CICIoT2023 also carries a DDoS category; candidate for cross-dataset family comparison, subject to separate CICIoT2023 mapping freeze and subtype-coverage audit."
+        },
+        {
+          "source_type": "dos",
+          "canonical_family": "dos",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "Network Features-Description.pdf row 46 lists DoS as an attack category; Statistics of Network Records.pdf lists 20,000 dos rows in train/test",
+          "rationale": "Identity-preserving mapping: the official TON-IoT source label is retained without semantic broadening. Detailed attack mechanisms are not inferred from the selected dataset documentation. CICIoT2023 also carries a DoS category; candidate for cross-dataset family comparison, subject to separate CICIoT2023 mapping freeze and subtype-coverage audit."
+        },
+        {
+          "source_type": "injection",
+          "canonical_family": "injection",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "Network Features-Description.pdf row 46 lists injection as an attack category; Statistics of Network Records.pdf lists 20,000 injection rows in train/test",
+          "rationale": "Identity-preserving mapping: the official TON-IoT source label is retained without semantic broadening. Detailed attack mechanisms are not inferred from the selected dataset documentation."
+        },
+        {
+          "source_type": "password",
+          "canonical_family": "password",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "Network Features-Description.pdf row 46 lists password as an attack category; Statistics of Network Records.pdf lists 20,000 password rows in train/test",
+          "rationale": "Identity-preserving mapping: the official TON-IoT source label is retained without semantic broadening. Detailed attack mechanisms are not inferred from the selected dataset documentation. CICIoT2023 carries a BruteForce category; candidate for cross-dataset family comparison, subject to separate CICIoT2023 mapping freeze and subtype-coverage audit."
+        },
+        {
+          "source_type": "ransomware",
+          "canonical_family": "ransomware",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "Network Features-Description.pdf row 46 lists ransomware as an attack category; Statistics of Network Records.pdf lists 20,000 ransomware rows in train/test",
+          "rationale": "Identity-preserving mapping: the official TON-IoT source label is retained without semantic broadening. Detailed attack mechanisms are not inferred from the selected dataset documentation."
+        },
+        {
+          "source_type": "scanning",
+          "canonical_family": "recon",
+          "semantic_disposition": "derived",
+          "decision_status": "frozen",
+          "evidence_source": "Network Features-Description.pdf row 46 lists scanning as an attack category; Statistics of Network Records.pdf lists 20,000 scanning rows in train/test; UNB CICIoT2023 official taxonomy (https://www.unb.ca/cic/datasets/iotdataset-2023.html) places Port Scan, OS Scan, Host Discovery, Ping Sweep, and Vulnerability Scan under the Recon category",
+          "rationale": "Scanning maps to canonical_family=recon as a derived mapping (source_type name differs from canonical_family name). The UNB CICIoT2023 official taxonomy explicitly places Port/OS/Vulnerability Scan under Recon, supporting scanning as a reconnaissance activity. Note: this does NOT merge Gafgyt scan into recon — that is a malware family subtype on a different axis. Candidate for cross-dataset family comparison, subject to separate CICIoT2023 mapping freeze and subtype-coverage audit."
+        },
+        {
+          "source_type": "xss",
+          "canonical_family": "web_attack",
+          "semantic_disposition": "derived",
+          "decision_status": "frozen",
+          "evidence_source": "Network Features-Description.pdf row 46 lists xss as an attack category; Statistics of Network Records.pdf lists 20,000 xss rows in train/test; UNB CICIoT2023 official taxonomy (https://www.unb.ca/cic/datasets/iotdataset-2023.html) places Cross-Site Scripting (XSS) under the Web-based category",
+          "rationale": "XSS maps to canonical_family=web_attack as a derived mapping (specific XSS to broader web_attack). The UNB CICIoT2023 official taxonomy places XSS under the Web-based category, supporting this family placement. Candidate for cross-dataset family comparison, subject to separate CICIoT2023 mapping freeze and subtype-coverage audit."
+        },
+        {
+          "source_type": "mitm",
+          "canonical_family": "mitm",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "Network Features-Description.pdf row 46 lists attack categories including normal, DoS, DDoS and backdoor attacks; Statistics of Network Records.pdf lists 1,043 mitm rows in train/test",
+          "rationale": "Identity-preserving mapping: the official TON-IoT source label is retained without semantic broadening. Detailed attack mechanisms are not inferred from the selected dataset documentation. The 1,043-row count is a natural imbalance point (the only attack class below 20,000), not an error. CICIoT2023 does carry a MITM-ArpSpoofing source subtype, but its official taxonomy places ARP spoofing under the Spoofing category; no cross-dataset MITM comparison is made until the CICIoT2023 mapping freeze."
+        }
+      ],
+      "coverage_invariant": {
+        "rule": "normal -> benign must hold for all rows; all label=0 rows must have type=normal and vice versa",
+        "evidence_source": "TON-IoT label census (TON-IOT-LABEL-CENSUS-20260903-V1-VERIFIED): 50,000 label=0 rows all have type=normal; 161,043 label=1 rows all have type in {backdoor,ddos,dos,injection,password,ransomware,scanning,xss,mitm}; zero exceptions"
+      }
+    },
+    "ciciot2023_type_mapping":     {
+      "description": "v2 (revised after user verification of v1, per DECISIONS.md #17), FROZEN as CICIOT2023-TYPE-MAPPING-20260904-V1-FROZEN (per DECISIONS.md #18): Mapping of the 34 CICIoT2023 category directory names (33 attack categories plus Benign_Final) to canonical_family. All 34 entries are exact; 0 derived. Evidence basis: official README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table (7 category panels visually extracted, archived under references/dataset_docs/ciciot2023/readme_p2_panels/ with SHA-256 in registry.json) plus frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename), plus the official UNB page snapshot unb_iotdataset_page_2026-09-04.html (SHA-256 99ae08c233d26aaa1c6cc5baa9eb6860587077cc2bc1097c63457bface422852). v1 -> v2 changes per user verification: (a) DictionaryBruteForce -> brute_force (exact; formerly password/derived, REJECTED) with candidate_families 13 -> 14; (b) explicitly recorded: TON-IoT password is NOT equated with CICIoT2023 brute_force - insufficient evidence for a cross-dataset comparison; the comparison-candidate phrase in the frozen TON-IoT password rationale is superseded by DECISIONS.md #17 and not established; (c) accepted as proposed in v1: spoofing family, MITM-ArpSpoofing -> spoofing (exact), Backdoor_Malware -> web_attack (exact). Official-source inconsistency disclosure: the UNB page states 33 attacks but its own category detail lists enumerate only 32 (the DDoS list omits DDoS-ICMP_Fragmentation); the frozen dataset directories and README.pdf both contain DDoS-ICMP_Fragmentation, so the formal enumeration baseline is the frozen inventory directories plus README.pdf, not the UNB page detail lists. Naming reconciliation between README attack names and the 34 directory names: normalization covers case, spacing, underscores and hyphens; the README lists the single attack name 'Dictionary Brute Force' (one attack name rendered across three lines by the PDF page layout), which is carried by the single DictionaryBruteForce directory; VulnerabilityScan lacks the Recon- prefix but its official category is Recon; Backdoor_Malware's directory name conflicts with its official Web-based category. All 34 entries carry decision_status=frozen as CICIOT2023-TYPE-MAPPING-20260904-V1-FROZEN (frozen from evidence V2R2 ZIP SHA-256 f8529ea2c721057ce205b862ff37bb3a4cbcb1c8d5524d30cc0b28f93f3d447b, source commit 93e8350, per DECISIONS.md #18; no mapping, semantic_disposition, evidence, or rationale was changed by the freeze).",
+      "entries": [
+        {
+          "source_type": "Backdoor_Malware",
+          "official_category": "Web-based",
+          "canonical_family": "web_attack",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, Web-based category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 1 file(s), 3218 rows",
+          "rationale": "Official CICIoT2023 classification places Backdoor_Malware under the Web-based category. Disclosure: the directory name contains 'Backdoor' while the official category is Web-based; the official category axis takes precedence, so the mapping targets web_attack and NOT the backdoor family (the backdoor family stays a TON-IoT member unless a future freeze decides otherwise). Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "Benign_Final",
+          "official_category": "benign",
+          "canonical_family": "benign",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, benign category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 4 file(s), 1098191 rows",
+          "rationale": "Official benign traffic directory: the README.pdf page-2 table and the dataset paper define the benign class, carried by the Benign_Final directory (4 files, 1,098,191 rows, matching DECISIONS.md #12 verified benign counts). Coverage invariant: the remaining 33 attack category directories all map to attack families and none may map to benign."
+        },
+        {
+          "source_type": "BrowserHijacking",
+          "official_category": "Web-based",
+          "canonical_family": "web_attack",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, Web-based category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 1 file(s), 5859 rows",
+          "rationale": "Official CICIoT2023 classification: the README.pdf page-2 \"Attacks Executed\" table places this subtype under the Web-based category, and the canonical_family web_attack is the normalized form of that category name (case, spacing and punctuation normalization only; no semantic shift). Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "CommandInjection",
+          "official_category": "Web-based",
+          "canonical_family": "web_attack",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, Web-based category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 1 file(s), 5409 rows",
+          "rationale": "Official CICIoT2023 classification: the README.pdf page-2 \"Attacks Executed\" table places this subtype under the Web-based category, and the canonical_family web_attack is the normalized form of that category name (case, spacing and punctuation normalization only; no semantic shift). Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "DDoS-ACK_Fragmentation",
+          "official_category": "DDoS",
+          "canonical_family": "ddos",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, DDoS category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 13 file(s), 285075 rows",
+          "rationale": "Official CICIoT2023 classification: the README.pdf page-2 \"Attacks Executed\" table places this subtype under the DDoS category, and the canonical_family ddos is the normalized form of that category name (case, spacing and punctuation normalization only; no semantic shift). Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "DDoS-HTTP_Flood",
+          "official_category": "DDoS",
+          "canonical_family": "ddos",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, DDoS category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 1 file(s), 28790 rows",
+          "rationale": "Official CICIoT2023 classification: the README.pdf page-2 \"Attacks Executed\" table places this subtype under the DDoS category, and the canonical_family ddos is the normalized form of that category name (case, spacing and punctuation normalization only; no semantic shift). Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "DDoS-ICMP_Flood",
+          "official_category": "DDoS",
+          "canonical_family": "ddos",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, DDoS category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 27 file(s), 7200501 rows",
+          "rationale": "Official CICIoT2023 classification: the README.pdf page-2 \"Attacks Executed\" table places this subtype under the DDoS category, and the canonical_family ddos is the normalized form of that category name (case, spacing and punctuation normalization only; no semantic shift). Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "DDoS-ICMP_Fragmentation",
+          "official_category": "DDoS",
+          "canonical_family": "ddos",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, DDoS category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 20 file(s), 452490 rows",
+          "rationale": "Official CICIoT2023 classification: the README.pdf page-2 \"Attacks Executed\" table places this subtype under the DDoS category, and the canonical_family ddos is the normalized form of that category name (case, spacing and punctuation normalization only; no semantic shift). Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "DDoS-PSHACK_FLOOD",
+          "official_category": "DDoS",
+          "canonical_family": "ddos",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, DDoS category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 16 file(s), 4094772 rows",
+          "rationale": "Official CICIoT2023 classification: the README.pdf page-2 \"Attacks Executed\" table places this subtype under the DDoS category, and the canonical_family ddos is the normalized form of that category name (case, spacing and punctuation normalization only; no semantic shift). Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "DDoS-RSTFINFLOOD",
+          "official_category": "DDoS",
+          "canonical_family": "ddos",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, DDoS category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 16 file(s), 4045279 rows",
+          "rationale": "Official CICIoT2023 classification: the README.pdf page-2 \"Attacks Executed\" table places this subtype under the DDoS category, and the canonical_family ddos is the normalized form of that category name (case, spacing and punctuation normalization only; no semantic shift). Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "DDoS-SYN_Flood",
+          "official_category": "DDoS",
+          "canonical_family": "ddos",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, DDoS category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 16 file(s), 4059179 rows",
+          "rationale": "Official CICIoT2023 classification: the README.pdf page-2 \"Attacks Executed\" table places this subtype under the DDoS category, and the canonical_family ddos is the normalized form of that category name (case, spacing and punctuation normalization only; no semantic shift). Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "DDoS-SlowLoris",
+          "official_category": "DDoS",
+          "canonical_family": "ddos",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, DDoS category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 1 file(s), 23426 rows",
+          "rationale": "Official CICIoT2023 classification: the README.pdf page-2 \"Attacks Executed\" table places this subtype under the DDoS category, and the canonical_family ddos is the normalized form of that category name (case, spacing and punctuation normalization only; no semantic shift). Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "DDoS-SynonymousIP_Flood",
+          "official_category": "DDoS",
+          "canonical_family": "ddos",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, DDoS category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 14 file(s), 3598133 rows",
+          "rationale": "Official CICIoT2023 classification: the README.pdf page-2 \"Attacks Executed\" table places this subtype under the DDoS category, and the canonical_family ddos is the normalized form of that category name (case, spacing and punctuation normalization only; no semantic shift). Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "DDoS-TCP_Flood",
+          "official_category": "DDoS",
+          "canonical_family": "ddos",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, DDoS category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 18 file(s), 4497649 rows",
+          "rationale": "Official CICIoT2023 classification: the README.pdf page-2 \"Attacks Executed\" table places this subtype under the DDoS category, and the canonical_family ddos is the normalized form of that category name (case, spacing and punctuation normalization only; no semantic shift). Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "DDoS-UDP_Flood",
+          "official_category": "DDoS",
+          "canonical_family": "ddos",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, DDoS category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 21 file(s), 5412231 rows",
+          "rationale": "Official CICIoT2023 classification: the README.pdf page-2 \"Attacks Executed\" table places this subtype under the DDoS category, and the canonical_family ddos is the normalized form of that category name (case, spacing and punctuation normalization only; no semantic shift). Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "DDoS-UDP_Fragmentation",
+          "official_category": "DDoS",
+          "canonical_family": "ddos",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, DDoS category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 13 file(s), 286925 rows",
+          "rationale": "Official CICIoT2023 classification: the README.pdf page-2 \"Attacks Executed\" table places this subtype under the DDoS category, and the canonical_family ddos is the normalized form of that category name (case, spacing and punctuation normalization only; no semantic shift). Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "DNS_Spoofing",
+          "official_category": "Spoofing",
+          "canonical_family": "spoofing",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, Spoofing category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 1 file(s), 178898 rows",
+          "rationale": "Official CICIoT2023 classification: the README.pdf page-2 \"Attacks Executed\" table places this subtype under the Spoofing category, and the canonical_family spoofing is the normalized form of that category name (case, spacing and punctuation normalization only; no semantic shift). Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "DictionaryBruteForce",
+          "official_category": "Brute Force",
+          "canonical_family": "brute_force",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, Brute Force category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 1 file(s), 13064 rows",
+          "rationale": "Official CICIoT2023 classification places DictionaryBruteForce under the Brute Force category (the README.pdf page-2 table lists the single attack name 'Dictionary Brute Force' - one name rendered across three lines by the PDF page layout - carried by this single directory), and the canonical_family brute_force is the normalized form of that category name (exact on the official category axis). v2 revision per user verification of v1: the earlier path A (DictionaryBruteForce -> password, derived) was REJECTED by the reviewer because it would force the official Brute Force category into the TON-IoT password family without cross-dataset equivalence evidence; the separate brute_force family (former path B) is adopted instead, so candidate_families extends 13 -> 14. Explicitly recorded: TON-IoT password is NOT equated with CICIoT2023 brute_force; there is insufficient evidence to establish a cross-dataset comparison between these two families, and the comparison-candidate phrase in the frozen TON-IoT password rationale (which predates this v2 decision) is recorded as NOT established by the CICIoT2023 mapping, per DECISIONS.md #17. Identity-preserving: the category directory name is retained verbatim as source_subtype."
+        },
+        {
+          "source_type": "DoS-HTTP_Flood",
+          "official_category": "DoS",
+          "canonical_family": "dos",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, DoS category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 2 file(s), 71861 rows",
+          "rationale": "Official CICIoT2023 classification: the README.pdf page-2 \"Attacks Executed\" table places this subtype under the DoS category, and the canonical_family dos is the normalized form of that category name (case, spacing and punctuation normalization only; no semantic shift). Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "DoS-SYN_Flood",
+          "official_category": "DoS",
+          "canonical_family": "dos",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, DoS category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 8 file(s), 2028836 rows",
+          "rationale": "Official CICIoT2023 classification: the README.pdf page-2 \"Attacks Executed\" table places this subtype under the DoS category, and the canonical_family dos is the normalized form of that category name (case, spacing and punctuation normalization only; no semantic shift). Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "DoS-TCP_Flood",
+          "official_category": "DoS",
+          "canonical_family": "dos",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, DoS category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 11 file(s), 2671430 rows",
+          "rationale": "Official CICIoT2023 classification: the README.pdf page-2 \"Attacks Executed\" table places this subtype under the DoS category, and the canonical_family dos is the normalized form of that category name (case, spacing and punctuation normalization only; no semantic shift). Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "DoS-UDP_Flood",
+          "official_category": "DoS",
+          "canonical_family": "dos",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, DoS category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 17 file(s), 3072993 rows",
+          "rationale": "Official CICIoT2023 classification places DoS-UDP_Flood under the DoS category, and the canonical_family dos is the normalized form of that category name. Quality note: the three registered truncated-line exceptions (DoS-UDP_Flood7/8/9.pcap.csv, quality exception record ciciot2023_20260903T142232Z) belong to this class and affect row counts only, not the label mapping. Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "MITM-ArpSpoofing",
+          "official_category": "Spoofing",
+          "canonical_family": "spoofing",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, Spoofing category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 2 file(s), 307560 rows",
+          "rationale": "Official CICIoT2023 classification places MITM-ArpSpoofing under the Spoofing category, and the proposed spoofing family is the normalized form of that category name (exact on the official category axis). Disclosure: the directory name carries a MITM- prefix signalling the man-in-the-middle attack semantics of ARP spoofing, so mapping to the mitm family was considered and rejected in favour of the official category axis, which takes precedence over directory-name hints; the mitm family alternative was considered and rejected at mapping verification (DECISIONS.md #17), so it is closed for this mapping. Consequence if this proposal stands: the TON-IoT mitm family has no CICIoT2023 member, so the deferred cross-dataset MITM comparison is not established. Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "Mirai-greeth_flood",
+          "official_category": "Mirai",
+          "canonical_family": "mirai",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, Mirai category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 29 file(s), 991834 rows",
+          "rationale": "Official CICIoT2023 classification places the Mirai GREETH flood under the Mirai category, and the canonical_family mirai keeps the botnet-malware name. The mirai family also exists in N-BaIoT (mirai_attacks_extracted/), recorded here as family presence only, subject to separate mapping freezes and subtype-coverage audits. Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "Mirai-greip_flood",
+          "official_category": "Mirai",
+          "canonical_family": "mirai",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, Mirai category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 22 file(s), 751646 rows",
+          "rationale": "Official CICIoT2023 classification places this Mirai GREIP flood attack under the Mirai category, and the canonical_family mirai keeps the botnet-malware name. The mirai family also exists in N-BaIoT (mirai_attacks_extracted/), recorded here as family presence only, subject to separate mapping freezes and subtype-coverage audits. Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "Mirai-udpplain",
+          "official_category": "Mirai",
+          "canonical_family": "mirai",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, Mirai category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 25 file(s), 890574 rows",
+          "rationale": "Official CICIoT2023 classification places this Mirai UDP plain attack under the Mirai category, and the canonical_family mirai keeps the botnet-malware name. The mirai family also exists in N-BaIoT (mirai_attacks_extracted/), recorded here as family presence only, subject to separate mapping freezes and subtype-coverage audits. Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "Recon-HostDiscovery",
+          "official_category": "Recon",
+          "canonical_family": "recon",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, Recon category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 1 file(s), 134378 rows",
+          "rationale": "Official CICIoT2023 classification: the README.pdf page-2 \"Attacks Executed\" table places this subtype under the Recon category, and the canonical_family recon is the normalized form of that category name (case, spacing and punctuation normalization only; no semantic shift). Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "Recon-OSScan",
+          "official_category": "Recon",
+          "canonical_family": "recon",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, Recon category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 1 file(s), 98259 rows",
+          "rationale": "Official CICIoT2023 classification: the README.pdf page-2 \"Attacks Executed\" table places this subtype under the Recon category, and the canonical_family recon is the normalized form of that category name (case, spacing and punctuation normalization only; no semantic shift). Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "Recon-PingSweep",
+          "official_category": "Recon",
+          "canonical_family": "recon",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, Recon category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 1 file(s), 2262 rows",
+          "rationale": "Official CICIoT2023 classification: the README.pdf page-2 \"Attacks Executed\" table places this subtype under the Recon category, and the canonical_family recon is the normalized form of that category name (case, spacing and punctuation normalization only; no semantic shift). Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "Recon-PortScan",
+          "official_category": "Recon",
+          "canonical_family": "recon",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, Recon category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 1 file(s), 82284 rows",
+          "rationale": "Official CICIoT2023 classification: the README.pdf page-2 \"Attacks Executed\" table places this subtype under the Recon category, and the canonical_family recon is the normalized form of that category name (case, spacing and punctuation normalization only; no semantic shift). Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "SqlInjection",
+          "official_category": "Web-based",
+          "canonical_family": "web_attack",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, Web-based category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 1 file(s), 5245 rows",
+          "rationale": "Official CICIoT2023 classification: the README.pdf page-2 \"Attacks Executed\" table places this subtype under the Web-based category, and the canonical_family web_attack is the normalized form of that category name (case, spacing and punctuation normalization only; no semantic shift). Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "Uploading_Attack",
+          "official_category": "Web-based",
+          "canonical_family": "web_attack",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, Web-based category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 1 file(s), 1252 rows",
+          "rationale": "Official CICIoT2023 classification: the README.pdf page-2 \"Attacks Executed\" table places this subtype under the Web-based category, and the canonical_family web_attack is the normalized form of that category name (case, spacing and punctuation normalization only; no semantic shift). Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "VulnerabilityScan",
+          "official_category": "Recon",
+          "canonical_family": "recon",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, Recon category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 1 file(s), 373351 rows",
+          "rationale": "Official CICIoT2023 classification places Vulnerability Scan under the Recon category. Disclosure: unlike the other Recon members this directory name has no Recon- prefix; the official category axis governs the mapping regardless of the directory-name prefix. Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        },
+        {
+          "source_type": "XSS",
+          "official_category": "Web-based",
+          "canonical_family": "web_attack",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "CICIoT2023 README.pdf (SHA-256 0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92) page-2 \"Attacks Executed\" classification table, Web-based category; frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename); 1 file(s), 3846 rows",
+          "rationale": "Official CICIoT2023 classification: the README.pdf page-2 \"Attacks Executed\" table places this subtype under the Web-based category, and the canonical_family web_attack is the normalized form of that category name (case, spacing and punctuation normalization only; no semantic shift). Identity-preserving: the category directory name is retained verbatim as source_subtype. Candidate for cross-dataset family comparison, subject to separate mapping freezes and subtype-coverage audits."
+        }
+      ],
+      "coverage_invariant": {
+        "rule": "Benign_Final -> benign must hold as the only benign source; all 33 attack category directories map to attack families; a directory-level audit requires every one of the 34 names to appear exactly once in this mapping",
+        "evidence_source": "frozen inventory ciciot2023_20260903T142539Z.json (label_source: Directory and filename): 34 distinct category directories (309 files); Benign_Final = 4 files, 1,098,191 rows matching DECISIONS.md #12 verified benign counts; frozen CSV files carry no label column (39 feature columns), so the directory name is the sole label carrier"
+      }
+    },
+    "n_baiot_type_mapping": {
+      "description": "Mapping of the N-BaIoT source families and subtypes to canonical_family. FROZEN as N-BAIOT-TYPE-MAPPING-20260905-V1-FROZEN (per DECISIONS.md #20, on explicit user authorization after V1R1 verification); the 11 entries were proposed as N-BAIOT-TYPE-MAPPING-20260904-V1-PROPOSED (DECISIONS.md #19) and are frozen without any mapping change; the gafgyt->bashlite family decision remains frozen as a fixed_decision, and this mapping extends that frozen family decision to the 5 gafgyt subtypes. Evidence basis: Meidan et al. 2018 (references/dataset_docs/n_baiot/meidan2018_arxiv_v1_2026-09-04.pdf, SHA-256 1fa5bc4d4d2a12c2e93b18c4d876bd83ab7f456797934fcc71c92db754811964) pages 4-5 'Attacks executed' enumeration (5 BASHLITE attacks: Scan, Junk, UDP, TCP, COMBO; 5 Mirai attacks: Scan, Ack, Syn, UDP, UDPplain) plus frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename). The N-BaIoT frozen CSVs carry no label column (115 aggregated statistics columns), so the file location is the sole label carrier. All 11 entries carry decision_status=frozen as N-BAIOT-TYPE-MAPPING-20260905-V1-FROZEN (frozen from evidence V1R1 ZIP SHA-256 480e15c672d5673f0d4eb82cf9f4da34cf53be9e516737f9981354459b632501, source commit 33b076c, per DECISIONS.md #20; no mapping, semantic_disposition, evidence, or rationale was changed by the freeze).",
+      "entries": [
+        {
+          "source_family": "benign",
+          "source_subtype": "benign_traffic",
+          "canonical_family": "benign",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "UCI page snapshot uci_dataset_page_2026-09-04.html (SHA-256 e0b79978d166b601ce1e8480625d8ad9fe40b328ad92d66f8eebde9730b5d57f): 'real traffic data, gathered from 9 commercial IoT devices authentically infected by Mirai and BASHLITE' (benign = pre-infection captures); frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename): 9 files (one benign_traffic.csv per device), 555,932 rows",
+          "rationale": "Coverage invariant: benign_traffic.csv is the only benign source in the tree. Identity-preserving mapping: pre-infection (normal) traffic retains the benign family without semantic broadening; the benign label derives from file location per the binary_label derivation, and this entry applies the same location axis for the family axis. Detailed device characteristics are not inferred from the selected dataset documentation."
+        },
+        {
+          "source_family": "gafgyt_attacks_extracted",
+          "source_subtype": "combo",
+          "canonical_family": "bashlite",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "Meidan et al. 2018 PDF p.5: 'COMBO: Sending spam data and opening a connection to a specified IP address and port'; frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename): 9 files, 515,156 rows",
+          "rationale": "COMBO is listed under BASHLITE Attacks (Meidan et al. 2018, p.5) and the gafgyt source family maps to canonical_family bashlite per the frozen fixed_decision (Meidan et al. 2018, p.4: 'BASHLITE (also known as Gafgyt, Q-Bot, Torlus, Lizard-Stresser, and Lizkebab)'). COMBO stays as source_subtype; the subtype does not replace or alter the frozen fixed_decision. The entry aligns with the frozen fixed_decision rather than conflicting with it."
+        },
+        {
+          "source_family": "gafgyt_attacks_extracted",
+          "source_subtype": "junk",
+          "canonical_family": "bashlite",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "Meidan et al. 2018 PDF p.5: 'Junk: Sending spam data'; frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename): 9 files, 261,789 rows",
+          "rationale": "Junk is listed under BASHLITE Attacks (Meidan et al. 2018, p.5) and the gafgyt source family maps to canonical_family bashlite per the frozen fixed_decision (Meidan et al. 2018, p.4: 'BASHLITE (also known as Gafgyt, Q-Bot, Torlus, Lizard-Stresser, and Lizkebab)'). Junk stays as source_subtype; the subtype does not replace or alter the frozen fixed_decision. The entry aligns with the frozen fixed_decision rather than conflicting with it."
+        },
+        {
+          "source_family": "gafgyt_attacks_extracted",
+          "source_subtype": "scan",
+          "canonical_family": "bashlite",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "Meidan et al. 2018 PDF p.4: 'Scan: Scanning the network for vulnerable devices'; frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename): 9 files, 255,111 rows",
+          "rationale": "Scan is listed under BASHLITE Attacks (Meidan et al. 2018, p.4) and the gafgyt source family maps to canonical_family bashlite per the frozen fixed_decision (Meidan et al. 2018, p.4: 'BASHLITE (also known as Gafgyt, Q-Bot, Torlus, Lizard-Stresser, and Lizkebab)'). Scan stays as source_subtype; the subtype does not replace or alter the frozen fixed_decision. The entry aligns with the frozen fixed_decision rather than conflicting with it."
+        },
+        {
+          "source_family": "gafgyt_attacks_extracted",
+          "source_subtype": "tcp",
+          "canonical_family": "bashlite",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "Meidan et al. 2018 PDF p.5: 'TCP: TCP flooding'; frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename): 9 files, 859,850 rows",
+          "rationale": "TCP is listed under BASHLITE Attacks (Meidan et al. 2018, p.5) and the gafgyt source family maps to canonical_family bashlite per the frozen fixed_decision (Meidan et al. 2018, p.4: 'BASHLITE (also known as Gafgyt, Q-Bot, Torlus, Lizard-Stresser, and Lizkebab)'). TCP stays as source_subtype; the subtype does not replace or alter the frozen fixed_decision. The entry aligns with the frozen fixed_decision rather than conflicting with it."
+        },
+        {
+          "source_family": "gafgyt_attacks_extracted",
+          "source_subtype": "udp",
+          "canonical_family": "bashlite",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "Meidan et al. 2018 PDF p.5: 'UDP: UDP flooding'; frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename): 9 files, 946,366 rows",
+          "rationale": "UDP is listed under BASHLITE Attacks (Meidan et al. 2018, p.5) and the gafgyt source family maps to canonical_family bashlite per the frozen fixed_decision (Meidan et al. 2018, p.4: 'BASHLITE (also known as Gafgyt, Q-Bot, Torlus, Lizard-Stresser, and Lizkebab)'). UDP stays as source_subtype; the subtype does not replace or alter the frozen fixed_decision. The entry aligns with the frozen fixed_decision rather than conflicting with it."
+        },
+        {
+          "source_family": "mirai_attacks_extracted",
+          "source_subtype": "ack",
+          "canonical_family": "mirai",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "Meidan et al. 2018 PDF p.5: 'Ack: Ack flooding'; frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename): 7 files, 643,821 rows",
+          "rationale": "Ack is listed under Mirai Attacks (Meidan et al. 2018, p.5) and the mirai source family maps to canonical_family mirai, the official botnet family name. Ack stays as source_subtype. Identity-preserving mapping: the official Mirai family membership from the paper enumeration is retained without semantic broadening. CICIoT2023 carries a frozen Mirai category (3 subtypes), recorded as presence-only; any cross-dataset mirai family comparison remains conditional on the N-BaIoT mapping freeze and a subtype-coverage audit, subject to separate freezes."
+        },
+        {
+          "source_family": "mirai_attacks_extracted",
+          "source_subtype": "scan",
+          "canonical_family": "mirai",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "Meidan et al. 2018 PDF p.5: 'Scan: Automatic scanning for vulnerable devices'; frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename): 7 files, 537,979 rows",
+          "rationale": "Scan is listed under Mirai Attacks (Meidan et al. 2018, p.5) and the mirai source family maps to canonical_family mirai, the official botnet family name. Scan stays as source_subtype. Identity-preserving mapping: the official Mirai family membership from the paper enumeration is retained without semantic broadening. CICIoT2023 carries a frozen Mirai category (3 subtypes), recorded as presence-only; any cross-dataset mirai family comparison remains conditional on the N-BaIoT mapping freeze and a subtype-coverage audit, subject to separate freezes."
+        },
+        {
+          "source_family": "mirai_attacks_extracted",
+          "source_subtype": "syn",
+          "canonical_family": "mirai",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "Meidan et al. 2018 PDF p.5: 'Syn: Syn flooding'; frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename): 7 files, 733,299 rows",
+          "rationale": "Syn is listed under Mirai Attacks (Meidan et al. 2018, p.5) and the mirai source family maps to canonical_family mirai, the official botnet family name. Syn stays as source_subtype. Identity-preserving mapping: the official Mirai family membership from the paper enumeration is retained without semantic broadening. CICIoT2023 carries a frozen Mirai category (3 subtypes), recorded as presence-only; any cross-dataset mirai family comparison remains conditional on the N-BaIoT mapping freeze and a subtype-coverage audit, subject to separate freezes."
+        },
+        {
+          "source_family": "mirai_attacks_extracted",
+          "source_subtype": "udp",
+          "canonical_family": "mirai",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "Meidan et al. 2018 PDF p.5: 'UDP: UDP flooding'; frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename): 7 files, 1,229,999 rows",
+          "rationale": "UDP is listed under Mirai Attacks (Meidan et al. 2018, p.5) and the mirai source family maps to canonical_family mirai, the official botnet family name. UDP stays as source_subtype. Identity-preserving mapping: the official Mirai family membership from the paper enumeration is retained without semantic broadening. CICIoT2023 carries a frozen Mirai category (3 subtypes), recorded as presence-only; any cross-dataset mirai family comparison remains conditional on the N-BaIoT mapping freeze and a subtype-coverage audit, subject to separate freezes."
+        },
+        {
+          "source_family": "mirai_attacks_extracted",
+          "source_subtype": "udpplain",
+          "canonical_family": "mirai",
+          "semantic_disposition": "exact",
+          "decision_status": "frozen",
+          "evidence_source": "Meidan et al. 2018 PDF p.5: 'UDPplain: UDP flooding with fewer options, optimized for higher PPS'; frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename): 7 files, 523,304 rows",
+          "rationale": "UDPplain is listed under Mirai Attacks (Meidan et al. 2018, p.5) and the mirai source family maps to canonical_family mirai, the official botnet family name. UDPplain stays as source_subtype. Identity-preserving mapping: the official Mirai family membership from the paper enumeration is retained without semantic broadening. CICIoT2023 carries a frozen Mirai category (3 subtypes), recorded as presence-only; any cross-dataset mirai family comparison remains conditional on the N-BaIoT mapping freeze and a subtype-coverage audit, subject to separate freezes."
+        }
+      ],
+      "coverage_invariant": {
+        "rule": "benign_traffic.csv -> benign must hold as the only benign source; all gafgyt_attacks_extracted/ and mirai_attacks_extracted/ contents map to attack families; a file-level audit requires every one of the 89 data files to be covered by exactly one (source_family, source_subtype) entry; the root-level demonstrate_structure.csv (zero rows) receives no label and is covered by the binary_label derivation special case",
+        "evidence_source": "frozen inventory n_baiot_20260903T224404Z.json (label_source: Directory and filename): 89 data files (9 benign + 45 gafgyt + 35 mirai) + 1 zero-row demonstrate_structure.csv, 7,062,606 rows total; gafgyt files span 9 devices, mirai files span 7 devices (Ennio_Doorbell and Samsung_SNH_1011_N_Webcam have no mirai files in the frozen tree)"
+      }
+    },
+    "semantic_disposition_values": ["exact", "derived", "unresolved", "rejected"],
+    "decision_status_values": ["proposed", "frozen"],
+    "decision_status": "frozen"
+  },
+  "source_subtype": {
+    "role": "official original labels, verbatim; never a cross-dataset unified task",
+    "per_dataset": {
+      "ton_iot": "type column value, verbatim",
+      "ciciot2023": "category directory name, verbatim (34 values)",
+      "n_baiot": "family directory + CSV filename, verbatim, stored as source_family and source_subtype"
+    }
+  },
+  "grouping_metadata": {
+    "role": "provenance and group-aware splits only; never model features",
+    "columns": ["dataset_id", "device_id", "capture_id", "source_file", "source_row"],
+    "notes": {
+      "device_id": "N-BaIoT only; derivable from path",
+      "capture_id": "CICIoT2023: filename stem (e.g. DDoS-ACK_Fragmentation12); N-BaIoT: device+family+subtype triple; TON-IoT: not available in the selected train_test_network.csv"
+    }
+  },
+  "verified_dataset_facts": {
+    "ton_iot": {
+      "files": 1,
+      "rows": 211043,
+      "columns": 44,
+      "label_location": "label column (0/1) + type column (attack subtype string)"
+    },
+    "ciciot2023": {
+      "files": 309,
+      "raw_rows": 46776700,
+      "category_directories": 34,
+      "attack_rows_raw": 45678509,
+      "benign_rows": 1098191,
+      "quality_exceptions": {
+        "truncated_final_lines": 3,
+        "files": [
+          "CSV/DoS-UDP_Flood/DoS-UDP_Flood7.pcap.csv",
+          "CSV/DoS-UDP_Flood/DoS-UDP_Flood8.pcap.csv",
+          "CSV/DoS-UDP_Flood/DoS-UDP_Flood9.pcap.csv"
+        ],
+        "rows_after_deterministic_exclusion": {
+          "attack": 45678506,
+          "benign": 1098191,
+          "total": 46776697
+        }
+      },
+      "largest_class": {"name": "DDoS-ICMP_Flood", "rows": 7200501},
+      "smallest_class": {"name": "Uploading_Attack", "rows": 1252},
+      "source_class_max_to_min_ratio": 5751.198882,
+      "binary_attack_to_benign_ratio": 41.594321
+    },
+    "n_baiot": {
+      "files": 90,
+      "data_files": 89,
+      "benign_files": 9,
+      "gafgyt_files": 45,
+      "mirai_files": 35,
+      "rows": 7062606,
+      "columns": 115,
+      "identical_header_across_files": true,
+      "malformed_rows": 0,
+      "special_case": {
+        "file": "demonstrate_structure.csv",
+        "location": "root of the extracted tree, not inside any device directory",
+        "bytes": 1776,
+        "data_rows": 0,
+        "disposition": "retained in frozen inventory as shipped; never enters training, evaluation, or label assignment"
+      }
+    }
+  }
+}

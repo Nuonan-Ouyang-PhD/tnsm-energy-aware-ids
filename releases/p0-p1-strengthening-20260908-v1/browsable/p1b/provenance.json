@@ -1,0 +1,302 @@
+{
+  "campaign_id": "TNSM-P1B-OVERHEAD-CORRECTED-20260908-R1",
+  "status": "PASS",
+  "replacement_for": "original P1B invalid historical attempt",
+  "authorization_sha256": "71cab227402e284108e44a6f0881ae0b1eb27e3cade3a3895fd6d7405acf2a1e",
+  "config_sha256": "59e184f6b0c7a8f6e47190dbd4e072857fe0d67d13cfea147c4579251063e618",
+  "tabular_policy_hash": "a89c52c9839fe4c97bbd81cdc97cd9d4bd58c9dab8a42dda728c225855501c17",
+  "dqn_policy_hash": "123c380bb3d78c9ac8d34614eb1f0fcc30caaee79b420a78652f39c90a88a471",
+  "source_hashes": {
+    "benchmark": "6c77bd6d5c1867c5ec2f156f8ecbdd3826f717b2ea75b37b4c91e4f7f7b72390",
+    "cfsm": "28f032dd41eb9870846933147db4aaf56bc67c98adfd5a7875fe3031b6e349e8",
+    "state": "53b05a803254dd684f9bd3ef9c2931db6e001409a455d9a8d90915c485f19815",
+    "tabular_q": "8418d333853f4ca46069e34f41e24e8c0d06b679806848bfad10a35ec0028bb3",
+    "dqn": "1022ab2832d3514f4e0107f85de9a4147675508e63a16665c96ce86ba88ae9a0"
+  },
+  "host": {
+    "platform": "Linux-6.18.34+rpt-rpi-v8-aarch64-with-glibc2.41",
+    "model": "Raspberry Pi 4 Model B Rev 1.5\u0000",
+    "cpuinfo_sha256": "9c8b094bd87a58b631f77238a99c182f714c091c30c7e48caf94d3282ffba561"
+  },
+  "order_seed": 20260908,
+  "orders": [
+    {
+      "block": 1,
+      "method_order": [
+        "CFSM",
+        "Tabular-Q",
+        "DQN",
+        "Static-LightLR"
+      ]
+    },
+    {
+      "block": 2,
+      "method_order": [
+        "DQN",
+        "Static-LightLR",
+        "CFSM",
+        "Tabular-Q"
+      ]
+    },
+    {
+      "block": 3,
+      "method_order": [
+        "CFSM",
+        "DQN",
+        "Tabular-Q",
+        "Static-LightLR"
+      ]
+    },
+    {
+      "block": 4,
+      "method_order": [
+        "Static-LightLR",
+        "CFSM",
+        "DQN",
+        "Tabular-Q"
+      ]
+    },
+    {
+      "block": 5,
+      "method_order": [
+        "Static-LightLR",
+        "DQN",
+        "Tabular-Q",
+        "CFSM"
+      ]
+    },
+    {
+      "block": 6,
+      "method_order": [
+        "Tabular-Q",
+        "Static-LightLR",
+        "DQN",
+        "CFSM"
+      ]
+    },
+    {
+      "block": 7,
+      "method_order": [
+        "Static-LightLR",
+        "Tabular-Q",
+        "DQN",
+        "CFSM"
+      ]
+    },
+    {
+      "block": 8,
+      "method_order": [
+        "Tabular-Q",
+        "CFSM",
+        "Static-LightLR",
+        "DQN"
+      ]
+    },
+    {
+      "block": 9,
+      "method_order": [
+        "Tabular-Q",
+        "CFSM",
+        "Static-LightLR",
+        "DQN"
+      ]
+    },
+    {
+      "block": 10,
+      "method_order": [
+        "Tabular-Q",
+        "CFSM",
+        "DQN",
+        "Static-LightLR"
+      ]
+    },
+    {
+      "block": 11,
+      "method_order": [
+        "DQN",
+        "CFSM",
+        "Static-LightLR",
+        "Tabular-Q"
+      ]
+    },
+    {
+      "block": 12,
+      "method_order": [
+        "DQN",
+        "Static-LightLR",
+        "Tabular-Q",
+        "CFSM"
+      ]
+    },
+    {
+      "block": 13,
+      "method_order": [
+        "DQN",
+        "Tabular-Q",
+        "Static-LightLR",
+        "CFSM"
+      ]
+    },
+    {
+      "block": 14,
+      "method_order": [
+        "Static-LightLR",
+        "CFSM",
+        "Tabular-Q",
+        "DQN"
+      ]
+    },
+    {
+      "block": 15,
+      "method_order": [
+        "DQN",
+        "Tabular-Q",
+        "CFSM",
+        "Static-LightLR"
+      ]
+    },
+    {
+      "block": 16,
+      "method_order": [
+        "Tabular-Q",
+        "DQN",
+        "CFSM",
+        "Static-LightLR"
+      ]
+    },
+    {
+      "block": 17,
+      "method_order": [
+        "DQN",
+        "CFSM",
+        "Static-LightLR",
+        "Tabular-Q"
+      ]
+    },
+    {
+      "block": 18,
+      "method_order": [
+        "DQN",
+        "Static-LightLR",
+        "CFSM",
+        "Tabular-Q"
+      ]
+    },
+    {
+      "block": 19,
+      "method_order": [
+        "Tabular-Q",
+        "Static-LightLR",
+        "CFSM",
+        "DQN"
+      ]
+    },
+    {
+      "block": 20,
+      "method_order": [
+        "CFSM",
+        "Static-LightLR",
+        "Tabular-Q",
+        "DQN"
+      ]
+    },
+    {
+      "block": 21,
+      "method_order": [
+        "DQN",
+        "CFSM",
+        "Tabular-Q",
+        "Static-LightLR"
+      ]
+    },
+    {
+      "block": 22,
+      "method_order": [
+        "CFSM",
+        "Static-LightLR",
+        "DQN",
+        "Tabular-Q"
+      ]
+    },
+    {
+      "block": 23,
+      "method_order": [
+        "CFSM",
+        "Tabular-Q",
+        "Static-LightLR",
+        "DQN"
+      ]
+    },
+    {
+      "block": 24,
+      "method_order": [
+        "DQN",
+        "Tabular-Q",
+        "Static-LightLR",
+        "CFSM"
+      ]
+    },
+    {
+      "block": 25,
+      "method_order": [
+        "CFSM",
+        "Static-LightLR",
+        "DQN",
+        "Tabular-Q"
+      ]
+    },
+    {
+      "block": 26,
+      "method_order": [
+        "Tabular-Q",
+        "CFSM",
+        "DQN",
+        "Static-LightLR"
+      ]
+    },
+    {
+      "block": 27,
+      "method_order": [
+        "CFSM",
+        "DQN",
+        "Tabular-Q",
+        "Static-LightLR"
+      ]
+    },
+    {
+      "block": 28,
+      "method_order": [
+        "Static-LightLR",
+        "Tabular-Q",
+        "DQN",
+        "CFSM"
+      ]
+    },
+    {
+      "block": 29,
+      "method_order": [
+        "DQN",
+        "Tabular-Q",
+        "Static-LightLR",
+        "CFSM"
+      ]
+    },
+    {
+      "block": 30,
+      "method_order": [
+        "Static-LightLR",
+        "CFSM",
+        "Tabular-Q",
+        "DQN"
+      ]
+    }
+  ],
+  "rows": 240,
+  "semantic_validation": {
+    "states": 5000,
+    "mismatches": [],
+    "status": "PASS"
+  },
+  "timing_boundary": "production selector call only; CFSM hidden state prepared before timer",
+  "joule_inference": false
+}

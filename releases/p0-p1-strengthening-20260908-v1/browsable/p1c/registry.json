@@ -1,0 +1,2562 @@
+[
+  {
+    "status": "PASS",
+    "analysis_family": "multiseed-derived-evaluation",
+    "algorithm": "DQN",
+    "seed": 1009,
+    "source_frozen_policy_directory": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - \u6587\u7ae0\u91cd\u6784/adaptive_scheduler_v1/p1c_multiseed/dqn-1009",
+    "source_metadata_sha256": "3fc373b4f9c79b2010c686a1959e9fc6986dc22c2ca2542e31f3c300999993af",
+    "policy_hash": "2b4694c5430526b12966b7e936b97445efedc7600d5693e5ccee146396bdc555",
+    "config_hash": "59e184f6b0c7a8f6e47190dbd4e072857fe0d67d13cfea147c4579251063e618",
+    "selected_checkpoint": 24,
+    "existing_validation_selection": {
+      "training_episode": 24,
+      "validation_traces": 5,
+      "mean_validation_episode_return": 246.59004000743695,
+      "mean_validation_balanced_accuracy": 0.989684550478761,
+      "mean_validation_power_component": 0.0,
+      "mean_validation_latency_component": 0.008310976122533155,
+      "mean_validation_thermal_component": 0.0,
+      "total_validation_switches": 5
+    },
+    "validation_trace_hashes": {
+      "ton_iot_train_predictions.npz": "7b0eade2a24e92f1b6030c1e7dde6b53ad6d7d5a7e856cd5e48a9fa98b473401",
+      "train_drift_211.npz": "a0efce2a8ce64c56c4d5a5c61d2f8ec50d46f78166263e91481fde7d7497b2ef",
+      "train_drift_223.npz": "a38a9d371fec014b0c27beb585a926633d486d04ab997dc9f42d3f0e85c5d629",
+      "train_drift_227.npz": "e635213e0cf9799b13f6a5d5916fcdcfdf5a1b3f5b98cc05338a84bec6bfe3db",
+      "train_drift_229.npz": "6c5b0ac5d475c9056103638ab6832c5290057a91ad76398ba0e06db43737ccb5",
+      "train_drift_233.npz": "fbe987cc242c17a729462c2f46a84359160ccd8273058555a2743d2a71d82401",
+      "train_drift_239.npz": "9cbf92780cbed608c09a430228af70dfe4c06a6fb28527f348c74e4e9df06f71",
+      "train_drift_241.npz": "1ac4283abbdab0439398fee30b4ed701fa26bb0dc98b97bc52a7264df9e892f8",
+      "train_drift_251.npz": "74be32dd4cf61a7326237014fed7b482f629d675323a89217ef1a309180ab8cb",
+      "train_drift_257.npz": "f5eea3807a2df8c0eab562367af3e248540c1e88b99c991e29d8f400fb6fb37d",
+      "train_drift_263.npz": "c3b81e495653db9d4e4d5ad37e1bf95a6d7c20532153e7efbfd9c3108f0fd6ca",
+      "validation_drift_401.npz": "0107b688f953ffc7c6e2ddba5118e5d47f72f51c951e9ff49984353ef0b88352",
+      "validation_drift_409.npz": "68281e67d5e2d7553540545388e7dc3d425911180f2f237405c2003aefc5310f",
+      "validation_drift_419.npz": "98ccee5e0eb2eb2fde96777a9afc473ae90ccee6a994fb49e03d39de30de5ab7",
+      "validation_drift_421.npz": "830b77354cd737e225503fc4f6f52218d7f4e161d5838899001c8cdce54a7bd4",
+      "validation_drift_431.npz": "7a0206e9be2ec6b3d8d25ec58fa6e372c6af852852a7f71a66e5e6d7cd45bb3e"
+    },
+    "test_trace_hashes": {
+      "test_drift_11.npz": "25445011131da284680c65cedd83831165ea133255fffadc837778c67f783e92",
+      "test_drift_23.npz": "f087a36b904d418be37f15e7d4dd14054ceb7345c716251a2486c820180f7c0b",
+      "test_drift_37.npz": "60f5bb140020ebf7bac6e4dcb3660d26ddcf12c8d0c6468276fb2444892faf05",
+      "test_drift_53.npz": "02b8a5f3256b6db0af3e33fd0122619f45173301d7d4829182719e8a6339c78a",
+      "test_drift_71.npz": "2bef3c6592a31c227bf503ae6b310210b77b257cd3aed38ba144a91de741dbd4",
+      "test_drift_89.npz": "a0651baf49db67ab72793abbeccf00ec6ec30ad6084819056191514016aaebae",
+      "test_drift_107.npz": "ea45edc179371abe259f4aa1a1967d96b765822e942e03c136f4da5bb440cdae",
+      "test_drift_131.npz": "618bb7a32171507173322c232199789d501ac8b1decde17441721919e3256b6d",
+      "test_drift_157.npz": "dd8d3dcc4fa173ad6f3f02093d602a45d5d44e71f466ab5e7aa8156125921c5c",
+      "test_drift_191.npz": "f98ef3f563e4ca6fcdffa5f0ce28851302a2475f5581885ed43ae383a531bc94"
+    },
+    "validation": {
+      "metrics": {
+        "samples": 250000,
+        "tn": 161807,
+        "fp": 2193,
+        "fn": 684,
+        "tp": 85316,
+        "accuracy": 0.988492,
+        "balanced_accuracy": 0.9893372802041974,
+        "precision": 0.9749397204858928,
+        "recall": 0.992046511627907,
+        "f1": 0.9834187275588009,
+        "false_positive_rate": 0.013371951219512195
+      },
+      "switches": 5,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 2500,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.989684550478761,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.49318008001487396
+      },
+      "labels_used_only_after_frozen_schedule": false
+    },
+    "test_descriptive_only": {
+      "metrics": {
+        "samples": 500000,
+        "tn": 323525,
+        "fp": 4475,
+        "fn": 5659,
+        "tp": 166341,
+        "accuracy": 0.979732,
+        "balanced_accuracy": 0.9767277722631877,
+        "precision": 0.973802219932559,
+        "recall": 0.9670988372093023,
+        "f1": 0.970438952674321,
+        "false_positive_rate": 0.01364329268292683
+      },
+      "switches": 10,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 5000,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.9765427869352868,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.48660919824313686
+      },
+      "labels_used_only_after_frozen_schedule": true
+    },
+    "test_used_for_action_selection_training_or_checkpoint_selection": false,
+    "retrained": false,
+    "checkpoint_reselected": false
+  },
+  {
+    "status": "PASS",
+    "analysis_family": "multiseed-derived-evaluation",
+    "algorithm": "DQN",
+    "seed": 1013,
+    "source_frozen_policy_directory": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - \u6587\u7ae0\u91cd\u6784/adaptive_scheduler_v1/p1c_multiseed/dqn-1013",
+    "source_metadata_sha256": "4a6ff34de36b483efce3556f1c07312710991a6048f4e5bc4c727bd2f1aac367",
+    "policy_hash": "73a064626a264bed8c3e8593c48d8a98e981de87f945e0ca9afe34460cddb960",
+    "config_hash": "59e184f6b0c7a8f6e47190dbd4e072857fe0d67d13cfea147c4579251063e618",
+    "selected_checkpoint": 49,
+    "existing_validation_selection": {
+      "training_episode": 49,
+      "validation_traces": 5,
+      "mean_validation_episode_return": 246.59004000743695,
+      "mean_validation_balanced_accuracy": 0.989684550478761,
+      "mean_validation_power_component": 0.0,
+      "mean_validation_latency_component": 0.008310976122533155,
+      "mean_validation_thermal_component": 0.0,
+      "total_validation_switches": 5
+    },
+    "validation_trace_hashes": {
+      "ton_iot_train_predictions.npz": "7b0eade2a24e92f1b6030c1e7dde6b53ad6d7d5a7e856cd5e48a9fa98b473401",
+      "train_drift_211.npz": "a0efce2a8ce64c56c4d5a5c61d2f8ec50d46f78166263e91481fde7d7497b2ef",
+      "train_drift_223.npz": "a38a9d371fec014b0c27beb585a926633d486d04ab997dc9f42d3f0e85c5d629",
+      "train_drift_227.npz": "e635213e0cf9799b13f6a5d5916fcdcfdf5a1b3f5b98cc05338a84bec6bfe3db",
+      "train_drift_229.npz": "6c5b0ac5d475c9056103638ab6832c5290057a91ad76398ba0e06db43737ccb5",
+      "train_drift_233.npz": "fbe987cc242c17a729462c2f46a84359160ccd8273058555a2743d2a71d82401",
+      "train_drift_239.npz": "9cbf92780cbed608c09a430228af70dfe4c06a6fb28527f348c74e4e9df06f71",
+      "train_drift_241.npz": "1ac4283abbdab0439398fee30b4ed701fa26bb0dc98b97bc52a7264df9e892f8",
+      "train_drift_251.npz": "74be32dd4cf61a7326237014fed7b482f629d675323a89217ef1a309180ab8cb",
+      "train_drift_257.npz": "f5eea3807a2df8c0eab562367af3e248540c1e88b99c991e29d8f400fb6fb37d",
+      "train_drift_263.npz": "c3b81e495653db9d4e4d5ad37e1bf95a6d7c20532153e7efbfd9c3108f0fd6ca",
+      "validation_drift_401.npz": "0107b688f953ffc7c6e2ddba5118e5d47f72f51c951e9ff49984353ef0b88352",
+      "validation_drift_409.npz": "68281e67d5e2d7553540545388e7dc3d425911180f2f237405c2003aefc5310f",
+      "validation_drift_419.npz": "98ccee5e0eb2eb2fde96777a9afc473ae90ccee6a994fb49e03d39de30de5ab7",
+      "validation_drift_421.npz": "830b77354cd737e225503fc4f6f52218d7f4e161d5838899001c8cdce54a7bd4",
+      "validation_drift_431.npz": "7a0206e9be2ec6b3d8d25ec58fa6e372c6af852852a7f71a66e5e6d7cd45bb3e"
+    },
+    "test_trace_hashes": {
+      "test_drift_11.npz": "25445011131da284680c65cedd83831165ea133255fffadc837778c67f783e92",
+      "test_drift_23.npz": "f087a36b904d418be37f15e7d4dd14054ceb7345c716251a2486c820180f7c0b",
+      "test_drift_37.npz": "60f5bb140020ebf7bac6e4dcb3660d26ddcf12c8d0c6468276fb2444892faf05",
+      "test_drift_53.npz": "02b8a5f3256b6db0af3e33fd0122619f45173301d7d4829182719e8a6339c78a",
+      "test_drift_71.npz": "2bef3c6592a31c227bf503ae6b310210b77b257cd3aed38ba144a91de741dbd4",
+      "test_drift_89.npz": "a0651baf49db67ab72793abbeccf00ec6ec30ad6084819056191514016aaebae",
+      "test_drift_107.npz": "ea45edc179371abe259f4aa1a1967d96b765822e942e03c136f4da5bb440cdae",
+      "test_drift_131.npz": "618bb7a32171507173322c232199789d501ac8b1decde17441721919e3256b6d",
+      "test_drift_157.npz": "dd8d3dcc4fa173ad6f3f02093d602a45d5d44e71f466ab5e7aa8156125921c5c",
+      "test_drift_191.npz": "f98ef3f563e4ca6fcdffa5f0ce28851302a2475f5581885ed43ae383a531bc94"
+    },
+    "validation": {
+      "metrics": {
+        "samples": 250000,
+        "tn": 161807,
+        "fp": 2193,
+        "fn": 684,
+        "tp": 85316,
+        "accuracy": 0.988492,
+        "balanced_accuracy": 0.9893372802041974,
+        "precision": 0.9749397204858928,
+        "recall": 0.992046511627907,
+        "f1": 0.9834187275588009,
+        "false_positive_rate": 0.013371951219512195
+      },
+      "switches": 5,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 2500,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.989684550478761,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.49318008001487396
+      },
+      "labels_used_only_after_frozen_schedule": false
+    },
+    "test_descriptive_only": {
+      "metrics": {
+        "samples": 500000,
+        "tn": 323525,
+        "fp": 4475,
+        "fn": 5659,
+        "tp": 166341,
+        "accuracy": 0.979732,
+        "balanced_accuracy": 0.9767277722631877,
+        "precision": 0.973802219932559,
+        "recall": 0.9670988372093023,
+        "f1": 0.970438952674321,
+        "false_positive_rate": 0.01364329268292683
+      },
+      "switches": 10,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 5000,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.9765427869352868,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.48660919824313686
+      },
+      "labels_used_only_after_frozen_schedule": true
+    },
+    "test_used_for_action_selection_training_or_checkpoint_selection": false,
+    "retrained": false,
+    "checkpoint_reselected": false
+  },
+  {
+    "status": "PASS",
+    "analysis_family": "multiseed-derived-evaluation",
+    "algorithm": "DQN",
+    "seed": 1019,
+    "source_frozen_policy_directory": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - \u6587\u7ae0\u91cd\u6784/adaptive_scheduler_v1/p1c_multiseed/dqn-1019",
+    "source_metadata_sha256": "9173edaa1bdc117426e6ff3e320ed4b6a757f98015f4a6e1f503171a486ba60c",
+    "policy_hash": "062ecabb69ccd500364e51a4720b79aee543650d259e9882ab473a31391b429f",
+    "config_hash": "59e184f6b0c7a8f6e47190dbd4e072857fe0d67d13cfea147c4579251063e618",
+    "selected_checkpoint": 24,
+    "existing_validation_selection": {
+      "training_episode": 24,
+      "validation_traces": 5,
+      "mean_validation_episode_return": 246.59004000743695,
+      "mean_validation_balanced_accuracy": 0.989684550478761,
+      "mean_validation_power_component": 0.0,
+      "mean_validation_latency_component": 0.008310976122533155,
+      "mean_validation_thermal_component": 0.0,
+      "total_validation_switches": 5
+    },
+    "validation_trace_hashes": {
+      "ton_iot_train_predictions.npz": "7b0eade2a24e92f1b6030c1e7dde6b53ad6d7d5a7e856cd5e48a9fa98b473401",
+      "train_drift_211.npz": "a0efce2a8ce64c56c4d5a5c61d2f8ec50d46f78166263e91481fde7d7497b2ef",
+      "train_drift_223.npz": "a38a9d371fec014b0c27beb585a926633d486d04ab997dc9f42d3f0e85c5d629",
+      "train_drift_227.npz": "e635213e0cf9799b13f6a5d5916fcdcfdf5a1b3f5b98cc05338a84bec6bfe3db",
+      "train_drift_229.npz": "6c5b0ac5d475c9056103638ab6832c5290057a91ad76398ba0e06db43737ccb5",
+      "train_drift_233.npz": "fbe987cc242c17a729462c2f46a84359160ccd8273058555a2743d2a71d82401",
+      "train_drift_239.npz": "9cbf92780cbed608c09a430228af70dfe4c06a6fb28527f348c74e4e9df06f71",
+      "train_drift_241.npz": "1ac4283abbdab0439398fee30b4ed701fa26bb0dc98b97bc52a7264df9e892f8",
+      "train_drift_251.npz": "74be32dd4cf61a7326237014fed7b482f629d675323a89217ef1a309180ab8cb",
+      "train_drift_257.npz": "f5eea3807a2df8c0eab562367af3e248540c1e88b99c991e29d8f400fb6fb37d",
+      "train_drift_263.npz": "c3b81e495653db9d4e4d5ad37e1bf95a6d7c20532153e7efbfd9c3108f0fd6ca",
+      "validation_drift_401.npz": "0107b688f953ffc7c6e2ddba5118e5d47f72f51c951e9ff49984353ef0b88352",
+      "validation_drift_409.npz": "68281e67d5e2d7553540545388e7dc3d425911180f2f237405c2003aefc5310f",
+      "validation_drift_419.npz": "98ccee5e0eb2eb2fde96777a9afc473ae90ccee6a994fb49e03d39de30de5ab7",
+      "validation_drift_421.npz": "830b77354cd737e225503fc4f6f52218d7f4e161d5838899001c8cdce54a7bd4",
+      "validation_drift_431.npz": "7a0206e9be2ec6b3d8d25ec58fa6e372c6af852852a7f71a66e5e6d7cd45bb3e"
+    },
+    "test_trace_hashes": {
+      "test_drift_11.npz": "25445011131da284680c65cedd83831165ea133255fffadc837778c67f783e92",
+      "test_drift_23.npz": "f087a36b904d418be37f15e7d4dd14054ceb7345c716251a2486c820180f7c0b",
+      "test_drift_37.npz": "60f5bb140020ebf7bac6e4dcb3660d26ddcf12c8d0c6468276fb2444892faf05",
+      "test_drift_53.npz": "02b8a5f3256b6db0af3e33fd0122619f45173301d7d4829182719e8a6339c78a",
+      "test_drift_71.npz": "2bef3c6592a31c227bf503ae6b310210b77b257cd3aed38ba144a91de741dbd4",
+      "test_drift_89.npz": "a0651baf49db67ab72793abbeccf00ec6ec30ad6084819056191514016aaebae",
+      "test_drift_107.npz": "ea45edc179371abe259f4aa1a1967d96b765822e942e03c136f4da5bb440cdae",
+      "test_drift_131.npz": "618bb7a32171507173322c232199789d501ac8b1decde17441721919e3256b6d",
+      "test_drift_157.npz": "dd8d3dcc4fa173ad6f3f02093d602a45d5d44e71f466ab5e7aa8156125921c5c",
+      "test_drift_191.npz": "f98ef3f563e4ca6fcdffa5f0ce28851302a2475f5581885ed43ae383a531bc94"
+    },
+    "validation": {
+      "metrics": {
+        "samples": 250000,
+        "tn": 161807,
+        "fp": 2193,
+        "fn": 684,
+        "tp": 85316,
+        "accuracy": 0.988492,
+        "balanced_accuracy": 0.9893372802041974,
+        "precision": 0.9749397204858928,
+        "recall": 0.992046511627907,
+        "f1": 0.9834187275588009,
+        "false_positive_rate": 0.013371951219512195
+      },
+      "switches": 5,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 2500,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.989684550478761,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.49318008001487396
+      },
+      "labels_used_only_after_frozen_schedule": false
+    },
+    "test_descriptive_only": {
+      "metrics": {
+        "samples": 500000,
+        "tn": 323525,
+        "fp": 4475,
+        "fn": 5659,
+        "tp": 166341,
+        "accuracy": 0.979732,
+        "balanced_accuracy": 0.9767277722631877,
+        "precision": 0.973802219932559,
+        "recall": 0.9670988372093023,
+        "f1": 0.970438952674321,
+        "false_positive_rate": 0.01364329268292683
+      },
+      "switches": 10,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 5000,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.9765427869352868,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.48660919824313686
+      },
+      "labels_used_only_after_frozen_schedule": true
+    },
+    "test_used_for_action_selection_training_or_checkpoint_selection": false,
+    "retrained": false,
+    "checkpoint_reselected": false
+  },
+  {
+    "status": "PASS",
+    "analysis_family": "multiseed-derived-evaluation",
+    "algorithm": "DQN",
+    "seed": 1021,
+    "source_frozen_policy_directory": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - \u6587\u7ae0\u91cd\u6784/adaptive_scheduler_v1/p1c_multiseed/dqn-1021",
+    "source_metadata_sha256": "5388f7d28be91ddaa192e4c37939875bfa5af09b3570bd2ac89d29f2571d23ad",
+    "policy_hash": "170a8916e6e04579ea4e0bde4f1d484d588253f911d0eaf3bde51f2499bf3605",
+    "config_hash": "59e184f6b0c7a8f6e47190dbd4e072857fe0d67d13cfea147c4579251063e618",
+    "selected_checkpoint": 24,
+    "existing_validation_selection": {
+      "training_episode": 24,
+      "validation_traces": 5,
+      "mean_validation_episode_return": 246.59004000743695,
+      "mean_validation_balanced_accuracy": 0.989684550478761,
+      "mean_validation_power_component": 0.0,
+      "mean_validation_latency_component": 0.008310976122533155,
+      "mean_validation_thermal_component": 0.0,
+      "total_validation_switches": 5
+    },
+    "validation_trace_hashes": {
+      "ton_iot_train_predictions.npz": "7b0eade2a24e92f1b6030c1e7dde6b53ad6d7d5a7e856cd5e48a9fa98b473401",
+      "train_drift_211.npz": "a0efce2a8ce64c56c4d5a5c61d2f8ec50d46f78166263e91481fde7d7497b2ef",
+      "train_drift_223.npz": "a38a9d371fec014b0c27beb585a926633d486d04ab997dc9f42d3f0e85c5d629",
+      "train_drift_227.npz": "e635213e0cf9799b13f6a5d5916fcdcfdf5a1b3f5b98cc05338a84bec6bfe3db",
+      "train_drift_229.npz": "6c5b0ac5d475c9056103638ab6832c5290057a91ad76398ba0e06db43737ccb5",
+      "train_drift_233.npz": "fbe987cc242c17a729462c2f46a84359160ccd8273058555a2743d2a71d82401",
+      "train_drift_239.npz": "9cbf92780cbed608c09a430228af70dfe4c06a6fb28527f348c74e4e9df06f71",
+      "train_drift_241.npz": "1ac4283abbdab0439398fee30b4ed701fa26bb0dc98b97bc52a7264df9e892f8",
+      "train_drift_251.npz": "74be32dd4cf61a7326237014fed7b482f629d675323a89217ef1a309180ab8cb",
+      "train_drift_257.npz": "f5eea3807a2df8c0eab562367af3e248540c1e88b99c991e29d8f400fb6fb37d",
+      "train_drift_263.npz": "c3b81e495653db9d4e4d5ad37e1bf95a6d7c20532153e7efbfd9c3108f0fd6ca",
+      "validation_drift_401.npz": "0107b688f953ffc7c6e2ddba5118e5d47f72f51c951e9ff49984353ef0b88352",
+      "validation_drift_409.npz": "68281e67d5e2d7553540545388e7dc3d425911180f2f237405c2003aefc5310f",
+      "validation_drift_419.npz": "98ccee5e0eb2eb2fde96777a9afc473ae90ccee6a994fb49e03d39de30de5ab7",
+      "validation_drift_421.npz": "830b77354cd737e225503fc4f6f52218d7f4e161d5838899001c8cdce54a7bd4",
+      "validation_drift_431.npz": "7a0206e9be2ec6b3d8d25ec58fa6e372c6af852852a7f71a66e5e6d7cd45bb3e"
+    },
+    "test_trace_hashes": {
+      "test_drift_11.npz": "25445011131da284680c65cedd83831165ea133255fffadc837778c67f783e92",
+      "test_drift_23.npz": "f087a36b904d418be37f15e7d4dd14054ceb7345c716251a2486c820180f7c0b",
+      "test_drift_37.npz": "60f5bb140020ebf7bac6e4dcb3660d26ddcf12c8d0c6468276fb2444892faf05",
+      "test_drift_53.npz": "02b8a5f3256b6db0af3e33fd0122619f45173301d7d4829182719e8a6339c78a",
+      "test_drift_71.npz": "2bef3c6592a31c227bf503ae6b310210b77b257cd3aed38ba144a91de741dbd4",
+      "test_drift_89.npz": "a0651baf49db67ab72793abbeccf00ec6ec30ad6084819056191514016aaebae",
+      "test_drift_107.npz": "ea45edc179371abe259f4aa1a1967d96b765822e942e03c136f4da5bb440cdae",
+      "test_drift_131.npz": "618bb7a32171507173322c232199789d501ac8b1decde17441721919e3256b6d",
+      "test_drift_157.npz": "dd8d3dcc4fa173ad6f3f02093d602a45d5d44e71f466ab5e7aa8156125921c5c",
+      "test_drift_191.npz": "f98ef3f563e4ca6fcdffa5f0ce28851302a2475f5581885ed43ae383a531bc94"
+    },
+    "validation": {
+      "metrics": {
+        "samples": 250000,
+        "tn": 161807,
+        "fp": 2193,
+        "fn": 684,
+        "tp": 85316,
+        "accuracy": 0.988492,
+        "balanced_accuracy": 0.9893372802041974,
+        "precision": 0.9749397204858928,
+        "recall": 0.992046511627907,
+        "f1": 0.9834187275588009,
+        "false_positive_rate": 0.013371951219512195
+      },
+      "switches": 5,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 2500,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.989684550478761,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.49318008001487396
+      },
+      "labels_used_only_after_frozen_schedule": false
+    },
+    "test_descriptive_only": {
+      "metrics": {
+        "samples": 500000,
+        "tn": 323525,
+        "fp": 4475,
+        "fn": 5659,
+        "tp": 166341,
+        "accuracy": 0.979732,
+        "balanced_accuracy": 0.9767277722631877,
+        "precision": 0.973802219932559,
+        "recall": 0.9670988372093023,
+        "f1": 0.970438952674321,
+        "false_positive_rate": 0.01364329268292683
+      },
+      "switches": 10,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 5000,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.9765427869352868,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.48660919824313686
+      },
+      "labels_used_only_after_frozen_schedule": true
+    },
+    "test_used_for_action_selection_training_or_checkpoint_selection": false,
+    "retrained": false,
+    "checkpoint_reselected": false
+  },
+  {
+    "status": "PASS",
+    "analysis_family": "multiseed-derived-evaluation",
+    "algorithm": "DQN",
+    "seed": 1031,
+    "source_frozen_policy_directory": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - \u6587\u7ae0\u91cd\u6784/adaptive_scheduler_v1/p1c_multiseed/dqn-1031",
+    "source_metadata_sha256": "277d5e750826c18e7dd6d3ec8de357124955c547dcc15efa9ae6b2719734f1d9",
+    "policy_hash": "97a79b5085ddd85676a083c8f2b2675a3bc2ea4249d38a62383097710ec516dd",
+    "config_hash": "59e184f6b0c7a8f6e47190dbd4e072857fe0d67d13cfea147c4579251063e618",
+    "selected_checkpoint": 24,
+    "existing_validation_selection": {
+      "training_episode": 24,
+      "validation_traces": 5,
+      "mean_validation_episode_return": 246.59004000743695,
+      "mean_validation_balanced_accuracy": 0.989684550478761,
+      "mean_validation_power_component": 0.0,
+      "mean_validation_latency_component": 0.008310976122533155,
+      "mean_validation_thermal_component": 0.0,
+      "total_validation_switches": 5
+    },
+    "validation_trace_hashes": {
+      "ton_iot_train_predictions.npz": "7b0eade2a24e92f1b6030c1e7dde6b53ad6d7d5a7e856cd5e48a9fa98b473401",
+      "train_drift_211.npz": "a0efce2a8ce64c56c4d5a5c61d2f8ec50d46f78166263e91481fde7d7497b2ef",
+      "train_drift_223.npz": "a38a9d371fec014b0c27beb585a926633d486d04ab997dc9f42d3f0e85c5d629",
+      "train_drift_227.npz": "e635213e0cf9799b13f6a5d5916fcdcfdf5a1b3f5b98cc05338a84bec6bfe3db",
+      "train_drift_229.npz": "6c5b0ac5d475c9056103638ab6832c5290057a91ad76398ba0e06db43737ccb5",
+      "train_drift_233.npz": "fbe987cc242c17a729462c2f46a84359160ccd8273058555a2743d2a71d82401",
+      "train_drift_239.npz": "9cbf92780cbed608c09a430228af70dfe4c06a6fb28527f348c74e4e9df06f71",
+      "train_drift_241.npz": "1ac4283abbdab0439398fee30b4ed701fa26bb0dc98b97bc52a7264df9e892f8",
+      "train_drift_251.npz": "74be32dd4cf61a7326237014fed7b482f629d675323a89217ef1a309180ab8cb",
+      "train_drift_257.npz": "f5eea3807a2df8c0eab562367af3e248540c1e88b99c991e29d8f400fb6fb37d",
+      "train_drift_263.npz": "c3b81e495653db9d4e4d5ad37e1bf95a6d7c20532153e7efbfd9c3108f0fd6ca",
+      "validation_drift_401.npz": "0107b688f953ffc7c6e2ddba5118e5d47f72f51c951e9ff49984353ef0b88352",
+      "validation_drift_409.npz": "68281e67d5e2d7553540545388e7dc3d425911180f2f237405c2003aefc5310f",
+      "validation_drift_419.npz": "98ccee5e0eb2eb2fde96777a9afc473ae90ccee6a994fb49e03d39de30de5ab7",
+      "validation_drift_421.npz": "830b77354cd737e225503fc4f6f52218d7f4e161d5838899001c8cdce54a7bd4",
+      "validation_drift_431.npz": "7a0206e9be2ec6b3d8d25ec58fa6e372c6af852852a7f71a66e5e6d7cd45bb3e"
+    },
+    "test_trace_hashes": {
+      "test_drift_11.npz": "25445011131da284680c65cedd83831165ea133255fffadc837778c67f783e92",
+      "test_drift_23.npz": "f087a36b904d418be37f15e7d4dd14054ceb7345c716251a2486c820180f7c0b",
+      "test_drift_37.npz": "60f5bb140020ebf7bac6e4dcb3660d26ddcf12c8d0c6468276fb2444892faf05",
+      "test_drift_53.npz": "02b8a5f3256b6db0af3e33fd0122619f45173301d7d4829182719e8a6339c78a",
+      "test_drift_71.npz": "2bef3c6592a31c227bf503ae6b310210b77b257cd3aed38ba144a91de741dbd4",
+      "test_drift_89.npz": "a0651baf49db67ab72793abbeccf00ec6ec30ad6084819056191514016aaebae",
+      "test_drift_107.npz": "ea45edc179371abe259f4aa1a1967d96b765822e942e03c136f4da5bb440cdae",
+      "test_drift_131.npz": "618bb7a32171507173322c232199789d501ac8b1decde17441721919e3256b6d",
+      "test_drift_157.npz": "dd8d3dcc4fa173ad6f3f02093d602a45d5d44e71f466ab5e7aa8156125921c5c",
+      "test_drift_191.npz": "f98ef3f563e4ca6fcdffa5f0ce28851302a2475f5581885ed43ae383a531bc94"
+    },
+    "validation": {
+      "metrics": {
+        "samples": 250000,
+        "tn": 161807,
+        "fp": 2193,
+        "fn": 684,
+        "tp": 85316,
+        "accuracy": 0.988492,
+        "balanced_accuracy": 0.9893372802041974,
+        "precision": 0.9749397204858928,
+        "recall": 0.992046511627907,
+        "f1": 0.9834187275588009,
+        "false_positive_rate": 0.013371951219512195
+      },
+      "switches": 5,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 2500,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.989684550478761,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.49318008001487396
+      },
+      "labels_used_only_after_frozen_schedule": false
+    },
+    "test_descriptive_only": {
+      "metrics": {
+        "samples": 500000,
+        "tn": 323525,
+        "fp": 4475,
+        "fn": 5659,
+        "tp": 166341,
+        "accuracy": 0.979732,
+        "balanced_accuracy": 0.9767277722631877,
+        "precision": 0.973802219932559,
+        "recall": 0.9670988372093023,
+        "f1": 0.970438952674321,
+        "false_positive_rate": 0.01364329268292683
+      },
+      "switches": 10,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 5000,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.9765427869352868,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.48660919824313686
+      },
+      "labels_used_only_after_frozen_schedule": true
+    },
+    "test_used_for_action_selection_training_or_checkpoint_selection": false,
+    "retrained": false,
+    "checkpoint_reselected": false
+  },
+  {
+    "status": "PASS",
+    "analysis_family": "multiseed-derived-evaluation",
+    "algorithm": "DQN",
+    "seed": 1033,
+    "source_frozen_policy_directory": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - \u6587\u7ae0\u91cd\u6784/adaptive_scheduler_v1/p1c_multiseed/dqn-1033",
+    "source_metadata_sha256": "0e2bdc10bc39aa81c3ab86768da08a5a2dc88fd591c2c77dcc3e45710f1df7fc",
+    "policy_hash": "320b3f3ab01e21a83c7fdb36feec9fe40e1f9c8c0733f1f3c79ab864f275be1f",
+    "config_hash": "59e184f6b0c7a8f6e47190dbd4e072857fe0d67d13cfea147c4579251063e618",
+    "selected_checkpoint": 24,
+    "existing_validation_selection": {
+      "training_episode": 24,
+      "validation_traces": 5,
+      "mean_validation_episode_return": 246.59004000743695,
+      "mean_validation_balanced_accuracy": 0.989684550478761,
+      "mean_validation_power_component": 0.0,
+      "mean_validation_latency_component": 0.008310976122533155,
+      "mean_validation_thermal_component": 0.0,
+      "total_validation_switches": 5
+    },
+    "validation_trace_hashes": {
+      "ton_iot_train_predictions.npz": "7b0eade2a24e92f1b6030c1e7dde6b53ad6d7d5a7e856cd5e48a9fa98b473401",
+      "train_drift_211.npz": "a0efce2a8ce64c56c4d5a5c61d2f8ec50d46f78166263e91481fde7d7497b2ef",
+      "train_drift_223.npz": "a38a9d371fec014b0c27beb585a926633d486d04ab997dc9f42d3f0e85c5d629",
+      "train_drift_227.npz": "e635213e0cf9799b13f6a5d5916fcdcfdf5a1b3f5b98cc05338a84bec6bfe3db",
+      "train_drift_229.npz": "6c5b0ac5d475c9056103638ab6832c5290057a91ad76398ba0e06db43737ccb5",
+      "train_drift_233.npz": "fbe987cc242c17a729462c2f46a84359160ccd8273058555a2743d2a71d82401",
+      "train_drift_239.npz": "9cbf92780cbed608c09a430228af70dfe4c06a6fb28527f348c74e4e9df06f71",
+      "train_drift_241.npz": "1ac4283abbdab0439398fee30b4ed701fa26bb0dc98b97bc52a7264df9e892f8",
+      "train_drift_251.npz": "74be32dd4cf61a7326237014fed7b482f629d675323a89217ef1a309180ab8cb",
+      "train_drift_257.npz": "f5eea3807a2df8c0eab562367af3e248540c1e88b99c991e29d8f400fb6fb37d",
+      "train_drift_263.npz": "c3b81e495653db9d4e4d5ad37e1bf95a6d7c20532153e7efbfd9c3108f0fd6ca",
+      "validation_drift_401.npz": "0107b688f953ffc7c6e2ddba5118e5d47f72f51c951e9ff49984353ef0b88352",
+      "validation_drift_409.npz": "68281e67d5e2d7553540545388e7dc3d425911180f2f237405c2003aefc5310f",
+      "validation_drift_419.npz": "98ccee5e0eb2eb2fde96777a9afc473ae90ccee6a994fb49e03d39de30de5ab7",
+      "validation_drift_421.npz": "830b77354cd737e225503fc4f6f52218d7f4e161d5838899001c8cdce54a7bd4",
+      "validation_drift_431.npz": "7a0206e9be2ec6b3d8d25ec58fa6e372c6af852852a7f71a66e5e6d7cd45bb3e"
+    },
+    "test_trace_hashes": {
+      "test_drift_11.npz": "25445011131da284680c65cedd83831165ea133255fffadc837778c67f783e92",
+      "test_drift_23.npz": "f087a36b904d418be37f15e7d4dd14054ceb7345c716251a2486c820180f7c0b",
+      "test_drift_37.npz": "60f5bb140020ebf7bac6e4dcb3660d26ddcf12c8d0c6468276fb2444892faf05",
+      "test_drift_53.npz": "02b8a5f3256b6db0af3e33fd0122619f45173301d7d4829182719e8a6339c78a",
+      "test_drift_71.npz": "2bef3c6592a31c227bf503ae6b310210b77b257cd3aed38ba144a91de741dbd4",
+      "test_drift_89.npz": "a0651baf49db67ab72793abbeccf00ec6ec30ad6084819056191514016aaebae",
+      "test_drift_107.npz": "ea45edc179371abe259f4aa1a1967d96b765822e942e03c136f4da5bb440cdae",
+      "test_drift_131.npz": "618bb7a32171507173322c232199789d501ac8b1decde17441721919e3256b6d",
+      "test_drift_157.npz": "dd8d3dcc4fa173ad6f3f02093d602a45d5d44e71f466ab5e7aa8156125921c5c",
+      "test_drift_191.npz": "f98ef3f563e4ca6fcdffa5f0ce28851302a2475f5581885ed43ae383a531bc94"
+    },
+    "validation": {
+      "metrics": {
+        "samples": 250000,
+        "tn": 161807,
+        "fp": 2193,
+        "fn": 684,
+        "tp": 85316,
+        "accuracy": 0.988492,
+        "balanced_accuracy": 0.9893372802041974,
+        "precision": 0.9749397204858928,
+        "recall": 0.992046511627907,
+        "f1": 0.9834187275588009,
+        "false_positive_rate": 0.013371951219512195
+      },
+      "switches": 5,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 2500,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.989684550478761,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.49318008001487396
+      },
+      "labels_used_only_after_frozen_schedule": false
+    },
+    "test_descriptive_only": {
+      "metrics": {
+        "samples": 500000,
+        "tn": 323525,
+        "fp": 4475,
+        "fn": 5659,
+        "tp": 166341,
+        "accuracy": 0.979732,
+        "balanced_accuracy": 0.9767277722631877,
+        "precision": 0.973802219932559,
+        "recall": 0.9670988372093023,
+        "f1": 0.970438952674321,
+        "false_positive_rate": 0.01364329268292683
+      },
+      "switches": 10,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 5000,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.9765427869352868,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.48660919824313686
+      },
+      "labels_used_only_after_frozen_schedule": true
+    },
+    "test_used_for_action_selection_training_or_checkpoint_selection": false,
+    "retrained": false,
+    "checkpoint_reselected": false
+  },
+  {
+    "status": "PASS",
+    "analysis_family": "multiseed-derived-evaluation",
+    "algorithm": "DQN",
+    "seed": 1039,
+    "source_frozen_policy_directory": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - \u6587\u7ae0\u91cd\u6784/adaptive_scheduler_v1/p1c_multiseed/dqn-1039",
+    "source_metadata_sha256": "8fa5dc1396cd77d6c3a53f1840eda3ef9337e67f2c005e033873e3106dda1e22",
+    "policy_hash": "2aac528edf322538299d43d4d5004f1295f29e5502f5aa1c10584e678f905265",
+    "config_hash": "59e184f6b0c7a8f6e47190dbd4e072857fe0d67d13cfea147c4579251063e618",
+    "selected_checkpoint": 74,
+    "existing_validation_selection": {
+      "training_episode": 74,
+      "validation_traces": 5,
+      "mean_validation_episode_return": 246.59004000743695,
+      "mean_validation_balanced_accuracy": 0.989684550478761,
+      "mean_validation_power_component": 0.0,
+      "mean_validation_latency_component": 0.008310976122533155,
+      "mean_validation_thermal_component": 0.0,
+      "total_validation_switches": 5
+    },
+    "validation_trace_hashes": {
+      "ton_iot_train_predictions.npz": "7b0eade2a24e92f1b6030c1e7dde6b53ad6d7d5a7e856cd5e48a9fa98b473401",
+      "train_drift_211.npz": "a0efce2a8ce64c56c4d5a5c61d2f8ec50d46f78166263e91481fde7d7497b2ef",
+      "train_drift_223.npz": "a38a9d371fec014b0c27beb585a926633d486d04ab997dc9f42d3f0e85c5d629",
+      "train_drift_227.npz": "e635213e0cf9799b13f6a5d5916fcdcfdf5a1b3f5b98cc05338a84bec6bfe3db",
+      "train_drift_229.npz": "6c5b0ac5d475c9056103638ab6832c5290057a91ad76398ba0e06db43737ccb5",
+      "train_drift_233.npz": "fbe987cc242c17a729462c2f46a84359160ccd8273058555a2743d2a71d82401",
+      "train_drift_239.npz": "9cbf92780cbed608c09a430228af70dfe4c06a6fb28527f348c74e4e9df06f71",
+      "train_drift_241.npz": "1ac4283abbdab0439398fee30b4ed701fa26bb0dc98b97bc52a7264df9e892f8",
+      "train_drift_251.npz": "74be32dd4cf61a7326237014fed7b482f629d675323a89217ef1a309180ab8cb",
+      "train_drift_257.npz": "f5eea3807a2df8c0eab562367af3e248540c1e88b99c991e29d8f400fb6fb37d",
+      "train_drift_263.npz": "c3b81e495653db9d4e4d5ad37e1bf95a6d7c20532153e7efbfd9c3108f0fd6ca",
+      "validation_drift_401.npz": "0107b688f953ffc7c6e2ddba5118e5d47f72f51c951e9ff49984353ef0b88352",
+      "validation_drift_409.npz": "68281e67d5e2d7553540545388e7dc3d425911180f2f237405c2003aefc5310f",
+      "validation_drift_419.npz": "98ccee5e0eb2eb2fde96777a9afc473ae90ccee6a994fb49e03d39de30de5ab7",
+      "validation_drift_421.npz": "830b77354cd737e225503fc4f6f52218d7f4e161d5838899001c8cdce54a7bd4",
+      "validation_drift_431.npz": "7a0206e9be2ec6b3d8d25ec58fa6e372c6af852852a7f71a66e5e6d7cd45bb3e"
+    },
+    "test_trace_hashes": {
+      "test_drift_11.npz": "25445011131da284680c65cedd83831165ea133255fffadc837778c67f783e92",
+      "test_drift_23.npz": "f087a36b904d418be37f15e7d4dd14054ceb7345c716251a2486c820180f7c0b",
+      "test_drift_37.npz": "60f5bb140020ebf7bac6e4dcb3660d26ddcf12c8d0c6468276fb2444892faf05",
+      "test_drift_53.npz": "02b8a5f3256b6db0af3e33fd0122619f45173301d7d4829182719e8a6339c78a",
+      "test_drift_71.npz": "2bef3c6592a31c227bf503ae6b310210b77b257cd3aed38ba144a91de741dbd4",
+      "test_drift_89.npz": "a0651baf49db67ab72793abbeccf00ec6ec30ad6084819056191514016aaebae",
+      "test_drift_107.npz": "ea45edc179371abe259f4aa1a1967d96b765822e942e03c136f4da5bb440cdae",
+      "test_drift_131.npz": "618bb7a32171507173322c232199789d501ac8b1decde17441721919e3256b6d",
+      "test_drift_157.npz": "dd8d3dcc4fa173ad6f3f02093d602a45d5d44e71f466ab5e7aa8156125921c5c",
+      "test_drift_191.npz": "f98ef3f563e4ca6fcdffa5f0ce28851302a2475f5581885ed43ae383a531bc94"
+    },
+    "validation": {
+      "metrics": {
+        "samples": 250000,
+        "tn": 161807,
+        "fp": 2193,
+        "fn": 684,
+        "tp": 85316,
+        "accuracy": 0.988492,
+        "balanced_accuracy": 0.9893372802041974,
+        "precision": 0.9749397204858928,
+        "recall": 0.992046511627907,
+        "f1": 0.9834187275588009,
+        "false_positive_rate": 0.013371951219512195
+      },
+      "switches": 5,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 2500,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.989684550478761,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.49318008001487396
+      },
+      "labels_used_only_after_frozen_schedule": false
+    },
+    "test_descriptive_only": {
+      "metrics": {
+        "samples": 500000,
+        "tn": 323525,
+        "fp": 4475,
+        "fn": 5659,
+        "tp": 166341,
+        "accuracy": 0.979732,
+        "balanced_accuracy": 0.9767277722631877,
+        "precision": 0.973802219932559,
+        "recall": 0.9670988372093023,
+        "f1": 0.970438952674321,
+        "false_positive_rate": 0.01364329268292683
+      },
+      "switches": 10,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 5000,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.9765427869352868,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.48660919824313686
+      },
+      "labels_used_only_after_frozen_schedule": true
+    },
+    "test_used_for_action_selection_training_or_checkpoint_selection": false,
+    "retrained": false,
+    "checkpoint_reselected": false
+  },
+  {
+    "status": "PASS",
+    "analysis_family": "multiseed-derived-evaluation",
+    "algorithm": "DQN",
+    "seed": 1049,
+    "source_frozen_policy_directory": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - \u6587\u7ae0\u91cd\u6784/adaptive_scheduler_v1/p1c_multiseed/dqn-1049",
+    "source_metadata_sha256": "964811deeda5cd404924c965c480d56bd051712350e52f55887469a739e26b08",
+    "policy_hash": "e0af2e4062ca45483d7478e97b8b2997b953b96f856eff7ca93c719282585904",
+    "config_hash": "59e184f6b0c7a8f6e47190dbd4e072857fe0d67d13cfea147c4579251063e618",
+    "selected_checkpoint": 49,
+    "existing_validation_selection": {
+      "training_episode": 49,
+      "validation_traces": 5,
+      "mean_validation_episode_return": 246.59004000743695,
+      "mean_validation_balanced_accuracy": 0.989684550478761,
+      "mean_validation_power_component": 0.0,
+      "mean_validation_latency_component": 0.008310976122533155,
+      "mean_validation_thermal_component": 0.0,
+      "total_validation_switches": 5
+    },
+    "validation_trace_hashes": {
+      "ton_iot_train_predictions.npz": "7b0eade2a24e92f1b6030c1e7dde6b53ad6d7d5a7e856cd5e48a9fa98b473401",
+      "train_drift_211.npz": "a0efce2a8ce64c56c4d5a5c61d2f8ec50d46f78166263e91481fde7d7497b2ef",
+      "train_drift_223.npz": "a38a9d371fec014b0c27beb585a926633d486d04ab997dc9f42d3f0e85c5d629",
+      "train_drift_227.npz": "e635213e0cf9799b13f6a5d5916fcdcfdf5a1b3f5b98cc05338a84bec6bfe3db",
+      "train_drift_229.npz": "6c5b0ac5d475c9056103638ab6832c5290057a91ad76398ba0e06db43737ccb5",
+      "train_drift_233.npz": "fbe987cc242c17a729462c2f46a84359160ccd8273058555a2743d2a71d82401",
+      "train_drift_239.npz": "9cbf92780cbed608c09a430228af70dfe4c06a6fb28527f348c74e4e9df06f71",
+      "train_drift_241.npz": "1ac4283abbdab0439398fee30b4ed701fa26bb0dc98b97bc52a7264df9e892f8",
+      "train_drift_251.npz": "74be32dd4cf61a7326237014fed7b482f629d675323a89217ef1a309180ab8cb",
+      "train_drift_257.npz": "f5eea3807a2df8c0eab562367af3e248540c1e88b99c991e29d8f400fb6fb37d",
+      "train_drift_263.npz": "c3b81e495653db9d4e4d5ad37e1bf95a6d7c20532153e7efbfd9c3108f0fd6ca",
+      "validation_drift_401.npz": "0107b688f953ffc7c6e2ddba5118e5d47f72f51c951e9ff49984353ef0b88352",
+      "validation_drift_409.npz": "68281e67d5e2d7553540545388e7dc3d425911180f2f237405c2003aefc5310f",
+      "validation_drift_419.npz": "98ccee5e0eb2eb2fde96777a9afc473ae90ccee6a994fb49e03d39de30de5ab7",
+      "validation_drift_421.npz": "830b77354cd737e225503fc4f6f52218d7f4e161d5838899001c8cdce54a7bd4",
+      "validation_drift_431.npz": "7a0206e9be2ec6b3d8d25ec58fa6e372c6af852852a7f71a66e5e6d7cd45bb3e"
+    },
+    "test_trace_hashes": {
+      "test_drift_11.npz": "25445011131da284680c65cedd83831165ea133255fffadc837778c67f783e92",
+      "test_drift_23.npz": "f087a36b904d418be37f15e7d4dd14054ceb7345c716251a2486c820180f7c0b",
+      "test_drift_37.npz": "60f5bb140020ebf7bac6e4dcb3660d26ddcf12c8d0c6468276fb2444892faf05",
+      "test_drift_53.npz": "02b8a5f3256b6db0af3e33fd0122619f45173301d7d4829182719e8a6339c78a",
+      "test_drift_71.npz": "2bef3c6592a31c227bf503ae6b310210b77b257cd3aed38ba144a91de741dbd4",
+      "test_drift_89.npz": "a0651baf49db67ab72793abbeccf00ec6ec30ad6084819056191514016aaebae",
+      "test_drift_107.npz": "ea45edc179371abe259f4aa1a1967d96b765822e942e03c136f4da5bb440cdae",
+      "test_drift_131.npz": "618bb7a32171507173322c232199789d501ac8b1decde17441721919e3256b6d",
+      "test_drift_157.npz": "dd8d3dcc4fa173ad6f3f02093d602a45d5d44e71f466ab5e7aa8156125921c5c",
+      "test_drift_191.npz": "f98ef3f563e4ca6fcdffa5f0ce28851302a2475f5581885ed43ae383a531bc94"
+    },
+    "validation": {
+      "metrics": {
+        "samples": 250000,
+        "tn": 161807,
+        "fp": 2193,
+        "fn": 684,
+        "tp": 85316,
+        "accuracy": 0.988492,
+        "balanced_accuracy": 0.9893372802041974,
+        "precision": 0.9749397204858928,
+        "recall": 0.992046511627907,
+        "f1": 0.9834187275588009,
+        "false_positive_rate": 0.013371951219512195
+      },
+      "switches": 5,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 2500,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.989684550478761,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.49318008001487396
+      },
+      "labels_used_only_after_frozen_schedule": false
+    },
+    "test_descriptive_only": {
+      "metrics": {
+        "samples": 500000,
+        "tn": 323525,
+        "fp": 4475,
+        "fn": 5659,
+        "tp": 166341,
+        "accuracy": 0.979732,
+        "balanced_accuracy": 0.9767277722631877,
+        "precision": 0.973802219932559,
+        "recall": 0.9670988372093023,
+        "f1": 0.970438952674321,
+        "false_positive_rate": 0.01364329268292683
+      },
+      "switches": 10,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 5000,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.9765427869352868,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.48660919824313686
+      },
+      "labels_used_only_after_frozen_schedule": true
+    },
+    "test_used_for_action_selection_training_or_checkpoint_selection": false,
+    "retrained": false,
+    "checkpoint_reselected": false
+  },
+  {
+    "status": "PASS",
+    "analysis_family": "multiseed-derived-evaluation",
+    "algorithm": "DQN",
+    "seed": 1051,
+    "source_frozen_policy_directory": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - \u6587\u7ae0\u91cd\u6784/adaptive_scheduler_v1/p1c_multiseed/dqn-1051",
+    "source_metadata_sha256": "0411e40d70a5ab22011e67af3359bb944410e2167127d86cc85f7a918975eaf9",
+    "policy_hash": "af6bc4e0023970c8112c47f0769818e9fa35e7dafa3962c1fb87d5f5d39fa5c7",
+    "config_hash": "59e184f6b0c7a8f6e47190dbd4e072857fe0d67d13cfea147c4579251063e618",
+    "selected_checkpoint": 24,
+    "existing_validation_selection": {
+      "training_episode": 24,
+      "validation_traces": 5,
+      "mean_validation_episode_return": 246.59004000743695,
+      "mean_validation_balanced_accuracy": 0.989684550478761,
+      "mean_validation_power_component": 0.0,
+      "mean_validation_latency_component": 0.008310976122533155,
+      "mean_validation_thermal_component": 0.0,
+      "total_validation_switches": 5
+    },
+    "validation_trace_hashes": {
+      "ton_iot_train_predictions.npz": "7b0eade2a24e92f1b6030c1e7dde6b53ad6d7d5a7e856cd5e48a9fa98b473401",
+      "train_drift_211.npz": "a0efce2a8ce64c56c4d5a5c61d2f8ec50d46f78166263e91481fde7d7497b2ef",
+      "train_drift_223.npz": "a38a9d371fec014b0c27beb585a926633d486d04ab997dc9f42d3f0e85c5d629",
+      "train_drift_227.npz": "e635213e0cf9799b13f6a5d5916fcdcfdf5a1b3f5b98cc05338a84bec6bfe3db",
+      "train_drift_229.npz": "6c5b0ac5d475c9056103638ab6832c5290057a91ad76398ba0e06db43737ccb5",
+      "train_drift_233.npz": "fbe987cc242c17a729462c2f46a84359160ccd8273058555a2743d2a71d82401",
+      "train_drift_239.npz": "9cbf92780cbed608c09a430228af70dfe4c06a6fb28527f348c74e4e9df06f71",
+      "train_drift_241.npz": "1ac4283abbdab0439398fee30b4ed701fa26bb0dc98b97bc52a7264df9e892f8",
+      "train_drift_251.npz": "74be32dd4cf61a7326237014fed7b482f629d675323a89217ef1a309180ab8cb",
+      "train_drift_257.npz": "f5eea3807a2df8c0eab562367af3e248540c1e88b99c991e29d8f400fb6fb37d",
+      "train_drift_263.npz": "c3b81e495653db9d4e4d5ad37e1bf95a6d7c20532153e7efbfd9c3108f0fd6ca",
+      "validation_drift_401.npz": "0107b688f953ffc7c6e2ddba5118e5d47f72f51c951e9ff49984353ef0b88352",
+      "validation_drift_409.npz": "68281e67d5e2d7553540545388e7dc3d425911180f2f237405c2003aefc5310f",
+      "validation_drift_419.npz": "98ccee5e0eb2eb2fde96777a9afc473ae90ccee6a994fb49e03d39de30de5ab7",
+      "validation_drift_421.npz": "830b77354cd737e225503fc4f6f52218d7f4e161d5838899001c8cdce54a7bd4",
+      "validation_drift_431.npz": "7a0206e9be2ec6b3d8d25ec58fa6e372c6af852852a7f71a66e5e6d7cd45bb3e"
+    },
+    "test_trace_hashes": {
+      "test_drift_11.npz": "25445011131da284680c65cedd83831165ea133255fffadc837778c67f783e92",
+      "test_drift_23.npz": "f087a36b904d418be37f15e7d4dd14054ceb7345c716251a2486c820180f7c0b",
+      "test_drift_37.npz": "60f5bb140020ebf7bac6e4dcb3660d26ddcf12c8d0c6468276fb2444892faf05",
+      "test_drift_53.npz": "02b8a5f3256b6db0af3e33fd0122619f45173301d7d4829182719e8a6339c78a",
+      "test_drift_71.npz": "2bef3c6592a31c227bf503ae6b310210b77b257cd3aed38ba144a91de741dbd4",
+      "test_drift_89.npz": "a0651baf49db67ab72793abbeccf00ec6ec30ad6084819056191514016aaebae",
+      "test_drift_107.npz": "ea45edc179371abe259f4aa1a1967d96b765822e942e03c136f4da5bb440cdae",
+      "test_drift_131.npz": "618bb7a32171507173322c232199789d501ac8b1decde17441721919e3256b6d",
+      "test_drift_157.npz": "dd8d3dcc4fa173ad6f3f02093d602a45d5d44e71f466ab5e7aa8156125921c5c",
+      "test_drift_191.npz": "f98ef3f563e4ca6fcdffa5f0ce28851302a2475f5581885ed43ae383a531bc94"
+    },
+    "validation": {
+      "metrics": {
+        "samples": 250000,
+        "tn": 161807,
+        "fp": 2193,
+        "fn": 684,
+        "tp": 85316,
+        "accuracy": 0.988492,
+        "balanced_accuracy": 0.9893372802041974,
+        "precision": 0.9749397204858928,
+        "recall": 0.992046511627907,
+        "f1": 0.9834187275588009,
+        "false_positive_rate": 0.013371951219512195
+      },
+      "switches": 5,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 2500,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.989684550478761,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.49318008001487396
+      },
+      "labels_used_only_after_frozen_schedule": false
+    },
+    "test_descriptive_only": {
+      "metrics": {
+        "samples": 500000,
+        "tn": 323525,
+        "fp": 4475,
+        "fn": 5659,
+        "tp": 166341,
+        "accuracy": 0.979732,
+        "balanced_accuracy": 0.9767277722631877,
+        "precision": 0.973802219932559,
+        "recall": 0.9670988372093023,
+        "f1": 0.970438952674321,
+        "false_positive_rate": 0.01364329268292683
+      },
+      "switches": 10,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 5000,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.9765427869352868,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.48660919824313686
+      },
+      "labels_used_only_after_frozen_schedule": true
+    },
+    "test_used_for_action_selection_training_or_checkpoint_selection": false,
+    "retrained": false,
+    "checkpoint_reselected": false
+  },
+  {
+    "status": "PASS",
+    "analysis_family": "multiseed-derived-evaluation",
+    "algorithm": "DQN",
+    "seed": 1061,
+    "source_frozen_policy_directory": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - \u6587\u7ae0\u91cd\u6784/adaptive_scheduler_v1/p1c_multiseed/dqn-1061",
+    "source_metadata_sha256": "0b6fad9fc20384d9aa6c0fd6613c7cea2f92d8e4ae2990dc68c6133c08d3a968",
+    "policy_hash": "0dd5edbde76310fe633d3a1b4a3707fffaabffc38a8a4d8ef2aa9be0c7838ba5",
+    "config_hash": "59e184f6b0c7a8f6e47190dbd4e072857fe0d67d13cfea147c4579251063e618",
+    "selected_checkpoint": 24,
+    "existing_validation_selection": {
+      "training_episode": 24,
+      "validation_traces": 5,
+      "mean_validation_episode_return": 246.59004000743695,
+      "mean_validation_balanced_accuracy": 0.989684550478761,
+      "mean_validation_power_component": 0.0,
+      "mean_validation_latency_component": 0.008310976122533155,
+      "mean_validation_thermal_component": 0.0,
+      "total_validation_switches": 5
+    },
+    "validation_trace_hashes": {
+      "ton_iot_train_predictions.npz": "7b0eade2a24e92f1b6030c1e7dde6b53ad6d7d5a7e856cd5e48a9fa98b473401",
+      "train_drift_211.npz": "a0efce2a8ce64c56c4d5a5c61d2f8ec50d46f78166263e91481fde7d7497b2ef",
+      "train_drift_223.npz": "a38a9d371fec014b0c27beb585a926633d486d04ab997dc9f42d3f0e85c5d629",
+      "train_drift_227.npz": "e635213e0cf9799b13f6a5d5916fcdcfdf5a1b3f5b98cc05338a84bec6bfe3db",
+      "train_drift_229.npz": "6c5b0ac5d475c9056103638ab6832c5290057a91ad76398ba0e06db43737ccb5",
+      "train_drift_233.npz": "fbe987cc242c17a729462c2f46a84359160ccd8273058555a2743d2a71d82401",
+      "train_drift_239.npz": "9cbf92780cbed608c09a430228af70dfe4c06a6fb28527f348c74e4e9df06f71",
+      "train_drift_241.npz": "1ac4283abbdab0439398fee30b4ed701fa26bb0dc98b97bc52a7264df9e892f8",
+      "train_drift_251.npz": "74be32dd4cf61a7326237014fed7b482f629d675323a89217ef1a309180ab8cb",
+      "train_drift_257.npz": "f5eea3807a2df8c0eab562367af3e248540c1e88b99c991e29d8f400fb6fb37d",
+      "train_drift_263.npz": "c3b81e495653db9d4e4d5ad37e1bf95a6d7c20532153e7efbfd9c3108f0fd6ca",
+      "validation_drift_401.npz": "0107b688f953ffc7c6e2ddba5118e5d47f72f51c951e9ff49984353ef0b88352",
+      "validation_drift_409.npz": "68281e67d5e2d7553540545388e7dc3d425911180f2f237405c2003aefc5310f",
+      "validation_drift_419.npz": "98ccee5e0eb2eb2fde96777a9afc473ae90ccee6a994fb49e03d39de30de5ab7",
+      "validation_drift_421.npz": "830b77354cd737e225503fc4f6f52218d7f4e161d5838899001c8cdce54a7bd4",
+      "validation_drift_431.npz": "7a0206e9be2ec6b3d8d25ec58fa6e372c6af852852a7f71a66e5e6d7cd45bb3e"
+    },
+    "test_trace_hashes": {
+      "test_drift_11.npz": "25445011131da284680c65cedd83831165ea133255fffadc837778c67f783e92",
+      "test_drift_23.npz": "f087a36b904d418be37f15e7d4dd14054ceb7345c716251a2486c820180f7c0b",
+      "test_drift_37.npz": "60f5bb140020ebf7bac6e4dcb3660d26ddcf12c8d0c6468276fb2444892faf05",
+      "test_drift_53.npz": "02b8a5f3256b6db0af3e33fd0122619f45173301d7d4829182719e8a6339c78a",
+      "test_drift_71.npz": "2bef3c6592a31c227bf503ae6b310210b77b257cd3aed38ba144a91de741dbd4",
+      "test_drift_89.npz": "a0651baf49db67ab72793abbeccf00ec6ec30ad6084819056191514016aaebae",
+      "test_drift_107.npz": "ea45edc179371abe259f4aa1a1967d96b765822e942e03c136f4da5bb440cdae",
+      "test_drift_131.npz": "618bb7a32171507173322c232199789d501ac8b1decde17441721919e3256b6d",
+      "test_drift_157.npz": "dd8d3dcc4fa173ad6f3f02093d602a45d5d44e71f466ab5e7aa8156125921c5c",
+      "test_drift_191.npz": "f98ef3f563e4ca6fcdffa5f0ce28851302a2475f5581885ed43ae383a531bc94"
+    },
+    "validation": {
+      "metrics": {
+        "samples": 250000,
+        "tn": 161807,
+        "fp": 2193,
+        "fn": 684,
+        "tp": 85316,
+        "accuracy": 0.988492,
+        "balanced_accuracy": 0.9893372802041974,
+        "precision": 0.9749397204858928,
+        "recall": 0.992046511627907,
+        "f1": 0.9834187275588009,
+        "false_positive_rate": 0.013371951219512195
+      },
+      "switches": 5,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 2500,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.989684550478761,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.49318008001487396
+      },
+      "labels_used_only_after_frozen_schedule": false
+    },
+    "test_descriptive_only": {
+      "metrics": {
+        "samples": 500000,
+        "tn": 323525,
+        "fp": 4475,
+        "fn": 5659,
+        "tp": 166341,
+        "accuracy": 0.979732,
+        "balanced_accuracy": 0.9767277722631877,
+        "precision": 0.973802219932559,
+        "recall": 0.9670988372093023,
+        "f1": 0.970438952674321,
+        "false_positive_rate": 0.01364329268292683
+      },
+      "switches": 10,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 5000,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.9765427869352868,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.48660919824313686
+      },
+      "labels_used_only_after_frozen_schedule": true
+    },
+    "test_used_for_action_selection_training_or_checkpoint_selection": false,
+    "retrained": false,
+    "checkpoint_reselected": false
+  },
+  {
+    "status": "PASS",
+    "analysis_family": "multiseed-derived-evaluation",
+    "algorithm": "Tabular-Q",
+    "seed": 1009,
+    "source_frozen_policy_directory": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - \u6587\u7ae0\u91cd\u6784/adaptive_scheduler_v1/p1c_multiseed/tabularq-1009",
+    "source_metadata_sha256": "4fea059d1072a05fe11a75b0c1e68c8c01c2227244ef96536485ac30d022701a",
+    "policy_hash": "96aa40551aee7189b52458144efcfb751820c674075ee8e9d4fcb01298bd6acf",
+    "config_hash": "59e184f6b0c7a8f6e47190dbd4e072857fe0d67d13cfea147c4579251063e618",
+    "selected_checkpoint": 74,
+    "existing_validation_selection": {
+      "training_episode": 74,
+      "validation_traces": 5,
+      "mean_validation_episode_return": 246.59004000743715,
+      "mean_validation_balanced_accuracy": 0.989684550478761,
+      "mean_validation_power_component": 0.0,
+      "mean_validation_latency_component": 0.008310976122533155,
+      "mean_validation_thermal_component": 0.0,
+      "total_validation_switches": 5
+    },
+    "validation_trace_hashes": {
+      "ton_iot_train_predictions.npz": "7b0eade2a24e92f1b6030c1e7dde6b53ad6d7d5a7e856cd5e48a9fa98b473401",
+      "train_drift_211.npz": "a0efce2a8ce64c56c4d5a5c61d2f8ec50d46f78166263e91481fde7d7497b2ef",
+      "train_drift_223.npz": "a38a9d371fec014b0c27beb585a926633d486d04ab997dc9f42d3f0e85c5d629",
+      "train_drift_227.npz": "e635213e0cf9799b13f6a5d5916fcdcfdf5a1b3f5b98cc05338a84bec6bfe3db",
+      "train_drift_229.npz": "6c5b0ac5d475c9056103638ab6832c5290057a91ad76398ba0e06db43737ccb5",
+      "train_drift_233.npz": "fbe987cc242c17a729462c2f46a84359160ccd8273058555a2743d2a71d82401",
+      "train_drift_239.npz": "9cbf92780cbed608c09a430228af70dfe4c06a6fb28527f348c74e4e9df06f71",
+      "train_drift_241.npz": "1ac4283abbdab0439398fee30b4ed701fa26bb0dc98b97bc52a7264df9e892f8",
+      "train_drift_251.npz": "74be32dd4cf61a7326237014fed7b482f629d675323a89217ef1a309180ab8cb",
+      "train_drift_257.npz": "f5eea3807a2df8c0eab562367af3e248540c1e88b99c991e29d8f400fb6fb37d",
+      "train_drift_263.npz": "c3b81e495653db9d4e4d5ad37e1bf95a6d7c20532153e7efbfd9c3108f0fd6ca",
+      "validation_drift_401.npz": "0107b688f953ffc7c6e2ddba5118e5d47f72f51c951e9ff49984353ef0b88352",
+      "validation_drift_409.npz": "68281e67d5e2d7553540545388e7dc3d425911180f2f237405c2003aefc5310f",
+      "validation_drift_419.npz": "98ccee5e0eb2eb2fde96777a9afc473ae90ccee6a994fb49e03d39de30de5ab7",
+      "validation_drift_421.npz": "830b77354cd737e225503fc4f6f52218d7f4e161d5838899001c8cdce54a7bd4",
+      "validation_drift_431.npz": "7a0206e9be2ec6b3d8d25ec58fa6e372c6af852852a7f71a66e5e6d7cd45bb3e"
+    },
+    "test_trace_hashes": {
+      "test_drift_11.npz": "25445011131da284680c65cedd83831165ea133255fffadc837778c67f783e92",
+      "test_drift_23.npz": "f087a36b904d418be37f15e7d4dd14054ceb7345c716251a2486c820180f7c0b",
+      "test_drift_37.npz": "60f5bb140020ebf7bac6e4dcb3660d26ddcf12c8d0c6468276fb2444892faf05",
+      "test_drift_53.npz": "02b8a5f3256b6db0af3e33fd0122619f45173301d7d4829182719e8a6339c78a",
+      "test_drift_71.npz": "2bef3c6592a31c227bf503ae6b310210b77b257cd3aed38ba144a91de741dbd4",
+      "test_drift_89.npz": "a0651baf49db67ab72793abbeccf00ec6ec30ad6084819056191514016aaebae",
+      "test_drift_107.npz": "ea45edc179371abe259f4aa1a1967d96b765822e942e03c136f4da5bb440cdae",
+      "test_drift_131.npz": "618bb7a32171507173322c232199789d501ac8b1decde17441721919e3256b6d",
+      "test_drift_157.npz": "dd8d3dcc4fa173ad6f3f02093d602a45d5d44e71f466ab5e7aa8156125921c5c",
+      "test_drift_191.npz": "f98ef3f563e4ca6fcdffa5f0ce28851302a2475f5581885ed43ae383a531bc94"
+    },
+    "validation": {
+      "metrics": {
+        "samples": 250000,
+        "tn": 161807,
+        "fp": 2193,
+        "fn": 684,
+        "tp": 85316,
+        "accuracy": 0.988492,
+        "balanced_accuracy": 0.9893372802041974,
+        "precision": 0.9749397204858928,
+        "recall": 0.992046511627907,
+        "f1": 0.9834187275588009,
+        "false_positive_rate": 0.013371951219512195
+      },
+      "switches": 5,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 2500,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.989684550478761,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.49318008001487396
+      },
+      "labels_used_only_after_frozen_schedule": false
+    },
+    "test_descriptive_only": {
+      "metrics": {
+        "samples": 500000,
+        "tn": 323525,
+        "fp": 4475,
+        "fn": 5659,
+        "tp": 166341,
+        "accuracy": 0.979732,
+        "balanced_accuracy": 0.9767277722631877,
+        "precision": 0.973802219932559,
+        "recall": 0.9670988372093023,
+        "f1": 0.970438952674321,
+        "false_positive_rate": 0.01364329268292683
+      },
+      "switches": 10,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 5000,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.9765427869352868,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.48660919824313686
+      },
+      "labels_used_only_after_frozen_schedule": true
+    },
+    "test_used_for_action_selection_training_or_checkpoint_selection": false,
+    "retrained": false,
+    "checkpoint_reselected": false
+  },
+  {
+    "status": "PASS",
+    "analysis_family": "multiseed-derived-evaluation",
+    "algorithm": "Tabular-Q",
+    "seed": 1013,
+    "source_frozen_policy_directory": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - \u6587\u7ae0\u91cd\u6784/adaptive_scheduler_v1/p1c_multiseed/tabularq-1013",
+    "source_metadata_sha256": "769ed5076d185dddee0a1caa52d7e6106e1ae69ac2c91d59bc0400031a6810a8",
+    "policy_hash": "2a2ac45ef4d1a0cf4e55301ffa50d05bd1df564aa592789b9321e6951e7c4b73",
+    "config_hash": "59e184f6b0c7a8f6e47190dbd4e072857fe0d67d13cfea147c4579251063e618",
+    "selected_checkpoint": 49,
+    "existing_validation_selection": {
+      "training_episode": 49,
+      "validation_traces": 5,
+      "mean_validation_episode_return": 246.59004000743715,
+      "mean_validation_balanced_accuracy": 0.989684550478761,
+      "mean_validation_power_component": 0.0,
+      "mean_validation_latency_component": 0.008310976122533155,
+      "mean_validation_thermal_component": 0.0,
+      "total_validation_switches": 5
+    },
+    "validation_trace_hashes": {
+      "ton_iot_train_predictions.npz": "7b0eade2a24e92f1b6030c1e7dde6b53ad6d7d5a7e856cd5e48a9fa98b473401",
+      "train_drift_211.npz": "a0efce2a8ce64c56c4d5a5c61d2f8ec50d46f78166263e91481fde7d7497b2ef",
+      "train_drift_223.npz": "a38a9d371fec014b0c27beb585a926633d486d04ab997dc9f42d3f0e85c5d629",
+      "train_drift_227.npz": "e635213e0cf9799b13f6a5d5916fcdcfdf5a1b3f5b98cc05338a84bec6bfe3db",
+      "train_drift_229.npz": "6c5b0ac5d475c9056103638ab6832c5290057a91ad76398ba0e06db43737ccb5",
+      "train_drift_233.npz": "fbe987cc242c17a729462c2f46a84359160ccd8273058555a2743d2a71d82401",
+      "train_drift_239.npz": "9cbf92780cbed608c09a430228af70dfe4c06a6fb28527f348c74e4e9df06f71",
+      "train_drift_241.npz": "1ac4283abbdab0439398fee30b4ed701fa26bb0dc98b97bc52a7264df9e892f8",
+      "train_drift_251.npz": "74be32dd4cf61a7326237014fed7b482f629d675323a89217ef1a309180ab8cb",
+      "train_drift_257.npz": "f5eea3807a2df8c0eab562367af3e248540c1e88b99c991e29d8f400fb6fb37d",
+      "train_drift_263.npz": "c3b81e495653db9d4e4d5ad37e1bf95a6d7c20532153e7efbfd9c3108f0fd6ca",
+      "validation_drift_401.npz": "0107b688f953ffc7c6e2ddba5118e5d47f72f51c951e9ff49984353ef0b88352",
+      "validation_drift_409.npz": "68281e67d5e2d7553540545388e7dc3d425911180f2f237405c2003aefc5310f",
+      "validation_drift_419.npz": "98ccee5e0eb2eb2fde96777a9afc473ae90ccee6a994fb49e03d39de30de5ab7",
+      "validation_drift_421.npz": "830b77354cd737e225503fc4f6f52218d7f4e161d5838899001c8cdce54a7bd4",
+      "validation_drift_431.npz": "7a0206e9be2ec6b3d8d25ec58fa6e372c6af852852a7f71a66e5e6d7cd45bb3e"
+    },
+    "test_trace_hashes": {
+      "test_drift_11.npz": "25445011131da284680c65cedd83831165ea133255fffadc837778c67f783e92",
+      "test_drift_23.npz": "f087a36b904d418be37f15e7d4dd14054ceb7345c716251a2486c820180f7c0b",
+      "test_drift_37.npz": "60f5bb140020ebf7bac6e4dcb3660d26ddcf12c8d0c6468276fb2444892faf05",
+      "test_drift_53.npz": "02b8a5f3256b6db0af3e33fd0122619f45173301d7d4829182719e8a6339c78a",
+      "test_drift_71.npz": "2bef3c6592a31c227bf503ae6b310210b77b257cd3aed38ba144a91de741dbd4",
+      "test_drift_89.npz": "a0651baf49db67ab72793abbeccf00ec6ec30ad6084819056191514016aaebae",
+      "test_drift_107.npz": "ea45edc179371abe259f4aa1a1967d96b765822e942e03c136f4da5bb440cdae",
+      "test_drift_131.npz": "618bb7a32171507173322c232199789d501ac8b1decde17441721919e3256b6d",
+      "test_drift_157.npz": "dd8d3dcc4fa173ad6f3f02093d602a45d5d44e71f466ab5e7aa8156125921c5c",
+      "test_drift_191.npz": "f98ef3f563e4ca6fcdffa5f0ce28851302a2475f5581885ed43ae383a531bc94"
+    },
+    "validation": {
+      "metrics": {
+        "samples": 250000,
+        "tn": 161807,
+        "fp": 2193,
+        "fn": 684,
+        "tp": 85316,
+        "accuracy": 0.988492,
+        "balanced_accuracy": 0.9893372802041974,
+        "precision": 0.9749397204858928,
+        "recall": 0.992046511627907,
+        "f1": 0.9834187275588009,
+        "false_positive_rate": 0.013371951219512195
+      },
+      "switches": 5,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 2500,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.989684550478761,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.49318008001487396
+      },
+      "labels_used_only_after_frozen_schedule": false
+    },
+    "test_descriptive_only": {
+      "metrics": {
+        "samples": 500000,
+        "tn": 323525,
+        "fp": 4475,
+        "fn": 5659,
+        "tp": 166341,
+        "accuracy": 0.979732,
+        "balanced_accuracy": 0.9767277722631877,
+        "precision": 0.973802219932559,
+        "recall": 0.9670988372093023,
+        "f1": 0.970438952674321,
+        "false_positive_rate": 0.01364329268292683
+      },
+      "switches": 10,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 5000,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.9765427869352868,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.48660919824313686
+      },
+      "labels_used_only_after_frozen_schedule": true
+    },
+    "test_used_for_action_selection_training_or_checkpoint_selection": false,
+    "retrained": false,
+    "checkpoint_reselected": false
+  },
+  {
+    "status": "PASS",
+    "analysis_family": "multiseed-derived-evaluation",
+    "algorithm": "Tabular-Q",
+    "seed": 1019,
+    "source_frozen_policy_directory": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - \u6587\u7ae0\u91cd\u6784/adaptive_scheduler_v1/p1c_multiseed/tabularq-1019",
+    "source_metadata_sha256": "b54827b86021d9336484f9af36d326ffdf078c2bbcfe919631b764130678962f",
+    "policy_hash": "a122cc8a8424feec0d82e989bbbd1324ebaf3f98c8bf56bb512fb6f7be09e3a9",
+    "config_hash": "59e184f6b0c7a8f6e47190dbd4e072857fe0d67d13cfea147c4579251063e618",
+    "selected_checkpoint": 49,
+    "existing_validation_selection": {
+      "training_episode": 49,
+      "validation_traces": 5,
+      "mean_validation_episode_return": 246.59004000743715,
+      "mean_validation_balanced_accuracy": 0.989684550478761,
+      "mean_validation_power_component": 0.0,
+      "mean_validation_latency_component": 0.008310976122533155,
+      "mean_validation_thermal_component": 0.0,
+      "total_validation_switches": 5
+    },
+    "validation_trace_hashes": {
+      "ton_iot_train_predictions.npz": "7b0eade2a24e92f1b6030c1e7dde6b53ad6d7d5a7e856cd5e48a9fa98b473401",
+      "train_drift_211.npz": "a0efce2a8ce64c56c4d5a5c61d2f8ec50d46f78166263e91481fde7d7497b2ef",
+      "train_drift_223.npz": "a38a9d371fec014b0c27beb585a926633d486d04ab997dc9f42d3f0e85c5d629",
+      "train_drift_227.npz": "e635213e0cf9799b13f6a5d5916fcdcfdf5a1b3f5b98cc05338a84bec6bfe3db",
+      "train_drift_229.npz": "6c5b0ac5d475c9056103638ab6832c5290057a91ad76398ba0e06db43737ccb5",
+      "train_drift_233.npz": "fbe987cc242c17a729462c2f46a84359160ccd8273058555a2743d2a71d82401",
+      "train_drift_239.npz": "9cbf92780cbed608c09a430228af70dfe4c06a6fb28527f348c74e4e9df06f71",
+      "train_drift_241.npz": "1ac4283abbdab0439398fee30b4ed701fa26bb0dc98b97bc52a7264df9e892f8",
+      "train_drift_251.npz": "74be32dd4cf61a7326237014fed7b482f629d675323a89217ef1a309180ab8cb",
+      "train_drift_257.npz": "f5eea3807a2df8c0eab562367af3e248540c1e88b99c991e29d8f400fb6fb37d",
+      "train_drift_263.npz": "c3b81e495653db9d4e4d5ad37e1bf95a6d7c20532153e7efbfd9c3108f0fd6ca",
+      "validation_drift_401.npz": "0107b688f953ffc7c6e2ddba5118e5d47f72f51c951e9ff49984353ef0b88352",
+      "validation_drift_409.npz": "68281e67d5e2d7553540545388e7dc3d425911180f2f237405c2003aefc5310f",
+      "validation_drift_419.npz": "98ccee5e0eb2eb2fde96777a9afc473ae90ccee6a994fb49e03d39de30de5ab7",
+      "validation_drift_421.npz": "830b77354cd737e225503fc4f6f52218d7f4e161d5838899001c8cdce54a7bd4",
+      "validation_drift_431.npz": "7a0206e9be2ec6b3d8d25ec58fa6e372c6af852852a7f71a66e5e6d7cd45bb3e"
+    },
+    "test_trace_hashes": {
+      "test_drift_11.npz": "25445011131da284680c65cedd83831165ea133255fffadc837778c67f783e92",
+      "test_drift_23.npz": "f087a36b904d418be37f15e7d4dd14054ceb7345c716251a2486c820180f7c0b",
+      "test_drift_37.npz": "60f5bb140020ebf7bac6e4dcb3660d26ddcf12c8d0c6468276fb2444892faf05",
+      "test_drift_53.npz": "02b8a5f3256b6db0af3e33fd0122619f45173301d7d4829182719e8a6339c78a",
+      "test_drift_71.npz": "2bef3c6592a31c227bf503ae6b310210b77b257cd3aed38ba144a91de741dbd4",
+      "test_drift_89.npz": "a0651baf49db67ab72793abbeccf00ec6ec30ad6084819056191514016aaebae",
+      "test_drift_107.npz": "ea45edc179371abe259f4aa1a1967d96b765822e942e03c136f4da5bb440cdae",
+      "test_drift_131.npz": "618bb7a32171507173322c232199789d501ac8b1decde17441721919e3256b6d",
+      "test_drift_157.npz": "dd8d3dcc4fa173ad6f3f02093d602a45d5d44e71f466ab5e7aa8156125921c5c",
+      "test_drift_191.npz": "f98ef3f563e4ca6fcdffa5f0ce28851302a2475f5581885ed43ae383a531bc94"
+    },
+    "validation": {
+      "metrics": {
+        "samples": 250000,
+        "tn": 161807,
+        "fp": 2193,
+        "fn": 684,
+        "tp": 85316,
+        "accuracy": 0.988492,
+        "balanced_accuracy": 0.9893372802041974,
+        "precision": 0.9749397204858928,
+        "recall": 0.992046511627907,
+        "f1": 0.9834187275588009,
+        "false_positive_rate": 0.013371951219512195
+      },
+      "switches": 5,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 2500,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.989684550478761,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.49318008001487396
+      },
+      "labels_used_only_after_frozen_schedule": false
+    },
+    "test_descriptive_only": {
+      "metrics": {
+        "samples": 500000,
+        "tn": 323525,
+        "fp": 4475,
+        "fn": 5659,
+        "tp": 166341,
+        "accuracy": 0.979732,
+        "balanced_accuracy": 0.9767277722631877,
+        "precision": 0.973802219932559,
+        "recall": 0.9670988372093023,
+        "f1": 0.970438952674321,
+        "false_positive_rate": 0.01364329268292683
+      },
+      "switches": 10,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 5000,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.9765427869352868,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.48660919824313686
+      },
+      "labels_used_only_after_frozen_schedule": true
+    },
+    "test_used_for_action_selection_training_or_checkpoint_selection": false,
+    "retrained": false,
+    "checkpoint_reselected": false
+  },
+  {
+    "status": "PASS",
+    "analysis_family": "multiseed-derived-evaluation",
+    "algorithm": "Tabular-Q",
+    "seed": 1021,
+    "source_frozen_policy_directory": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - \u6587\u7ae0\u91cd\u6784/adaptive_scheduler_v1/p1c_multiseed/tabularq-1021",
+    "source_metadata_sha256": "1972cb0a8b340de1e5d2d6fd2a0a59e1f569ed1d689116cb1fd2b07d78341206",
+    "policy_hash": "150e41db24790c2b1b3376296424d4acd8b0e1c0007c03b42021494eaad307a9",
+    "config_hash": "59e184f6b0c7a8f6e47190dbd4e072857fe0d67d13cfea147c4579251063e618",
+    "selected_checkpoint": 24,
+    "existing_validation_selection": {
+      "training_episode": 24,
+      "validation_traces": 5,
+      "mean_validation_episode_return": 246.59004000743715,
+      "mean_validation_balanced_accuracy": 0.989684550478761,
+      "mean_validation_power_component": 0.0,
+      "mean_validation_latency_component": 0.008310976122533155,
+      "mean_validation_thermal_component": 0.0,
+      "total_validation_switches": 5
+    },
+    "validation_trace_hashes": {
+      "ton_iot_train_predictions.npz": "7b0eade2a24e92f1b6030c1e7dde6b53ad6d7d5a7e856cd5e48a9fa98b473401",
+      "train_drift_211.npz": "a0efce2a8ce64c56c4d5a5c61d2f8ec50d46f78166263e91481fde7d7497b2ef",
+      "train_drift_223.npz": "a38a9d371fec014b0c27beb585a926633d486d04ab997dc9f42d3f0e85c5d629",
+      "train_drift_227.npz": "e635213e0cf9799b13f6a5d5916fcdcfdf5a1b3f5b98cc05338a84bec6bfe3db",
+      "train_drift_229.npz": "6c5b0ac5d475c9056103638ab6832c5290057a91ad76398ba0e06db43737ccb5",
+      "train_drift_233.npz": "fbe987cc242c17a729462c2f46a84359160ccd8273058555a2743d2a71d82401",
+      "train_drift_239.npz": "9cbf92780cbed608c09a430228af70dfe4c06a6fb28527f348c74e4e9df06f71",
+      "train_drift_241.npz": "1ac4283abbdab0439398fee30b4ed701fa26bb0dc98b97bc52a7264df9e892f8",
+      "train_drift_251.npz": "74be32dd4cf61a7326237014fed7b482f629d675323a89217ef1a309180ab8cb",
+      "train_drift_257.npz": "f5eea3807a2df8c0eab562367af3e248540c1e88b99c991e29d8f400fb6fb37d",
+      "train_drift_263.npz": "c3b81e495653db9d4e4d5ad37e1bf95a6d7c20532153e7efbfd9c3108f0fd6ca",
+      "validation_drift_401.npz": "0107b688f953ffc7c6e2ddba5118e5d47f72f51c951e9ff49984353ef0b88352",
+      "validation_drift_409.npz": "68281e67d5e2d7553540545388e7dc3d425911180f2f237405c2003aefc5310f",
+      "validation_drift_419.npz": "98ccee5e0eb2eb2fde96777a9afc473ae90ccee6a994fb49e03d39de30de5ab7",
+      "validation_drift_421.npz": "830b77354cd737e225503fc4f6f52218d7f4e161d5838899001c8cdce54a7bd4",
+      "validation_drift_431.npz": "7a0206e9be2ec6b3d8d25ec58fa6e372c6af852852a7f71a66e5e6d7cd45bb3e"
+    },
+    "test_trace_hashes": {
+      "test_drift_11.npz": "25445011131da284680c65cedd83831165ea133255fffadc837778c67f783e92",
+      "test_drift_23.npz": "f087a36b904d418be37f15e7d4dd14054ceb7345c716251a2486c820180f7c0b",
+      "test_drift_37.npz": "60f5bb140020ebf7bac6e4dcb3660d26ddcf12c8d0c6468276fb2444892faf05",
+      "test_drift_53.npz": "02b8a5f3256b6db0af3e33fd0122619f45173301d7d4829182719e8a6339c78a",
+      "test_drift_71.npz": "2bef3c6592a31c227bf503ae6b310210b77b257cd3aed38ba144a91de741dbd4",
+      "test_drift_89.npz": "a0651baf49db67ab72793abbeccf00ec6ec30ad6084819056191514016aaebae",
+      "test_drift_107.npz": "ea45edc179371abe259f4aa1a1967d96b765822e942e03c136f4da5bb440cdae",
+      "test_drift_131.npz": "618bb7a32171507173322c232199789d501ac8b1decde17441721919e3256b6d",
+      "test_drift_157.npz": "dd8d3dcc4fa173ad6f3f02093d602a45d5d44e71f466ab5e7aa8156125921c5c",
+      "test_drift_191.npz": "f98ef3f563e4ca6fcdffa5f0ce28851302a2475f5581885ed43ae383a531bc94"
+    },
+    "validation": {
+      "metrics": {
+        "samples": 250000,
+        "tn": 161807,
+        "fp": 2193,
+        "fn": 684,
+        "tp": 85316,
+        "accuracy": 0.988492,
+        "balanced_accuracy": 0.9893372802041974,
+        "precision": 0.9749397204858928,
+        "recall": 0.992046511627907,
+        "f1": 0.9834187275588009,
+        "false_positive_rate": 0.013371951219512195
+      },
+      "switches": 5,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 2500,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.989684550478761,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.49318008001487396
+      },
+      "labels_used_only_after_frozen_schedule": false
+    },
+    "test_descriptive_only": {
+      "metrics": {
+        "samples": 500000,
+        "tn": 323525,
+        "fp": 4475,
+        "fn": 5659,
+        "tp": 166341,
+        "accuracy": 0.979732,
+        "balanced_accuracy": 0.9767277722631877,
+        "precision": 0.973802219932559,
+        "recall": 0.9670988372093023,
+        "f1": 0.970438952674321,
+        "false_positive_rate": 0.01364329268292683
+      },
+      "switches": 10,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 5000,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.9765427869352868,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.48660919824313686
+      },
+      "labels_used_only_after_frozen_schedule": true
+    },
+    "test_used_for_action_selection_training_or_checkpoint_selection": false,
+    "retrained": false,
+    "checkpoint_reselected": false
+  },
+  {
+    "status": "PASS",
+    "analysis_family": "multiseed-derived-evaluation",
+    "algorithm": "Tabular-Q",
+    "seed": 1031,
+    "source_frozen_policy_directory": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - \u6587\u7ae0\u91cd\u6784/adaptive_scheduler_v1/p1c_multiseed/tabularq-1031",
+    "source_metadata_sha256": "32488fa3a3ec2d4314dcc0f601b61d33d48920b8c1fd4d45b91cfe1d679d84f8",
+    "policy_hash": "fe63d11b8fd9a2a61e15a2438d1a19d297564ba26944a45b8e07cd556d2b6074",
+    "config_hash": "59e184f6b0c7a8f6e47190dbd4e072857fe0d67d13cfea147c4579251063e618",
+    "selected_checkpoint": 74,
+    "existing_validation_selection": {
+      "training_episode": 74,
+      "validation_traces": 5,
+      "mean_validation_episode_return": 246.59004000743715,
+      "mean_validation_balanced_accuracy": 0.989684550478761,
+      "mean_validation_power_component": 0.0,
+      "mean_validation_latency_component": 0.008310976122533155,
+      "mean_validation_thermal_component": 0.0,
+      "total_validation_switches": 5
+    },
+    "validation_trace_hashes": {
+      "ton_iot_train_predictions.npz": "7b0eade2a24e92f1b6030c1e7dde6b53ad6d7d5a7e856cd5e48a9fa98b473401",
+      "train_drift_211.npz": "a0efce2a8ce64c56c4d5a5c61d2f8ec50d46f78166263e91481fde7d7497b2ef",
+      "train_drift_223.npz": "a38a9d371fec014b0c27beb585a926633d486d04ab997dc9f42d3f0e85c5d629",
+      "train_drift_227.npz": "e635213e0cf9799b13f6a5d5916fcdcfdf5a1b3f5b98cc05338a84bec6bfe3db",
+      "train_drift_229.npz": "6c5b0ac5d475c9056103638ab6832c5290057a91ad76398ba0e06db43737ccb5",
+      "train_drift_233.npz": "fbe987cc242c17a729462c2f46a84359160ccd8273058555a2743d2a71d82401",
+      "train_drift_239.npz": "9cbf92780cbed608c09a430228af70dfe4c06a6fb28527f348c74e4e9df06f71",
+      "train_drift_241.npz": "1ac4283abbdab0439398fee30b4ed701fa26bb0dc98b97bc52a7264df9e892f8",
+      "train_drift_251.npz": "74be32dd4cf61a7326237014fed7b482f629d675323a89217ef1a309180ab8cb",
+      "train_drift_257.npz": "f5eea3807a2df8c0eab562367af3e248540c1e88b99c991e29d8f400fb6fb37d",
+      "train_drift_263.npz": "c3b81e495653db9d4e4d5ad37e1bf95a6d7c20532153e7efbfd9c3108f0fd6ca",
+      "validation_drift_401.npz": "0107b688f953ffc7c6e2ddba5118e5d47f72f51c951e9ff49984353ef0b88352",
+      "validation_drift_409.npz": "68281e67d5e2d7553540545388e7dc3d425911180f2f237405c2003aefc5310f",
+      "validation_drift_419.npz": "98ccee5e0eb2eb2fde96777a9afc473ae90ccee6a994fb49e03d39de30de5ab7",
+      "validation_drift_421.npz": "830b77354cd737e225503fc4f6f52218d7f4e161d5838899001c8cdce54a7bd4",
+      "validation_drift_431.npz": "7a0206e9be2ec6b3d8d25ec58fa6e372c6af852852a7f71a66e5e6d7cd45bb3e"
+    },
+    "test_trace_hashes": {
+      "test_drift_11.npz": "25445011131da284680c65cedd83831165ea133255fffadc837778c67f783e92",
+      "test_drift_23.npz": "f087a36b904d418be37f15e7d4dd14054ceb7345c716251a2486c820180f7c0b",
+      "test_drift_37.npz": "60f5bb140020ebf7bac6e4dcb3660d26ddcf12c8d0c6468276fb2444892faf05",
+      "test_drift_53.npz": "02b8a5f3256b6db0af3e33fd0122619f45173301d7d4829182719e8a6339c78a",
+      "test_drift_71.npz": "2bef3c6592a31c227bf503ae6b310210b77b257cd3aed38ba144a91de741dbd4",
+      "test_drift_89.npz": "a0651baf49db67ab72793abbeccf00ec6ec30ad6084819056191514016aaebae",
+      "test_drift_107.npz": "ea45edc179371abe259f4aa1a1967d96b765822e942e03c136f4da5bb440cdae",
+      "test_drift_131.npz": "618bb7a32171507173322c232199789d501ac8b1decde17441721919e3256b6d",
+      "test_drift_157.npz": "dd8d3dcc4fa173ad6f3f02093d602a45d5d44e71f466ab5e7aa8156125921c5c",
+      "test_drift_191.npz": "f98ef3f563e4ca6fcdffa5f0ce28851302a2475f5581885ed43ae383a531bc94"
+    },
+    "validation": {
+      "metrics": {
+        "samples": 250000,
+        "tn": 161807,
+        "fp": 2193,
+        "fn": 684,
+        "tp": 85316,
+        "accuracy": 0.988492,
+        "balanced_accuracy": 0.9893372802041974,
+        "precision": 0.9749397204858928,
+        "recall": 0.992046511627907,
+        "f1": 0.9834187275588009,
+        "false_positive_rate": 0.013371951219512195
+      },
+      "switches": 5,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 2500,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.989684550478761,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.49318008001487396
+      },
+      "labels_used_only_after_frozen_schedule": false
+    },
+    "test_descriptive_only": {
+      "metrics": {
+        "samples": 500000,
+        "tn": 323525,
+        "fp": 4475,
+        "fn": 5659,
+        "tp": 166341,
+        "accuracy": 0.979732,
+        "balanced_accuracy": 0.9767277722631877,
+        "precision": 0.973802219932559,
+        "recall": 0.9670988372093023,
+        "f1": 0.970438952674321,
+        "false_positive_rate": 0.01364329268292683
+      },
+      "switches": 10,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 5000,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.9765427869352868,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.48660919824313686
+      },
+      "labels_used_only_after_frozen_schedule": true
+    },
+    "test_used_for_action_selection_training_or_checkpoint_selection": false,
+    "retrained": false,
+    "checkpoint_reselected": false
+  },
+  {
+    "status": "PASS",
+    "analysis_family": "multiseed-derived-evaluation",
+    "algorithm": "Tabular-Q",
+    "seed": 1033,
+    "source_frozen_policy_directory": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - \u6587\u7ae0\u91cd\u6784/adaptive_scheduler_v1/p1c_multiseed/tabularq-1033",
+    "source_metadata_sha256": "ede7c43a95b628b06090ef18feb092080550c8b1ab34acae79a83b79e5020056",
+    "policy_hash": "4eaaab016a9a72d4150a18ba1ff2f8de6befc51bde15615bdf0a24649c3d6b9e",
+    "config_hash": "59e184f6b0c7a8f6e47190dbd4e072857fe0d67d13cfea147c4579251063e618",
+    "selected_checkpoint": 24,
+    "existing_validation_selection": {
+      "training_episode": 24,
+      "validation_traces": 5,
+      "mean_validation_episode_return": 246.59004000743715,
+      "mean_validation_balanced_accuracy": 0.989684550478761,
+      "mean_validation_power_component": 0.0,
+      "mean_validation_latency_component": 0.008310976122533155,
+      "mean_validation_thermal_component": 0.0,
+      "total_validation_switches": 5
+    },
+    "validation_trace_hashes": {
+      "ton_iot_train_predictions.npz": "7b0eade2a24e92f1b6030c1e7dde6b53ad6d7d5a7e856cd5e48a9fa98b473401",
+      "train_drift_211.npz": "a0efce2a8ce64c56c4d5a5c61d2f8ec50d46f78166263e91481fde7d7497b2ef",
+      "train_drift_223.npz": "a38a9d371fec014b0c27beb585a926633d486d04ab997dc9f42d3f0e85c5d629",
+      "train_drift_227.npz": "e635213e0cf9799b13f6a5d5916fcdcfdf5a1b3f5b98cc05338a84bec6bfe3db",
+      "train_drift_229.npz": "6c5b0ac5d475c9056103638ab6832c5290057a91ad76398ba0e06db43737ccb5",
+      "train_drift_233.npz": "fbe987cc242c17a729462c2f46a84359160ccd8273058555a2743d2a71d82401",
+      "train_drift_239.npz": "9cbf92780cbed608c09a430228af70dfe4c06a6fb28527f348c74e4e9df06f71",
+      "train_drift_241.npz": "1ac4283abbdab0439398fee30b4ed701fa26bb0dc98b97bc52a7264df9e892f8",
+      "train_drift_251.npz": "74be32dd4cf61a7326237014fed7b482f629d675323a89217ef1a309180ab8cb",
+      "train_drift_257.npz": "f5eea3807a2df8c0eab562367af3e248540c1e88b99c991e29d8f400fb6fb37d",
+      "train_drift_263.npz": "c3b81e495653db9d4e4d5ad37e1bf95a6d7c20532153e7efbfd9c3108f0fd6ca",
+      "validation_drift_401.npz": "0107b688f953ffc7c6e2ddba5118e5d47f72f51c951e9ff49984353ef0b88352",
+      "validation_drift_409.npz": "68281e67d5e2d7553540545388e7dc3d425911180f2f237405c2003aefc5310f",
+      "validation_drift_419.npz": "98ccee5e0eb2eb2fde96777a9afc473ae90ccee6a994fb49e03d39de30de5ab7",
+      "validation_drift_421.npz": "830b77354cd737e225503fc4f6f52218d7f4e161d5838899001c8cdce54a7bd4",
+      "validation_drift_431.npz": "7a0206e9be2ec6b3d8d25ec58fa6e372c6af852852a7f71a66e5e6d7cd45bb3e"
+    },
+    "test_trace_hashes": {
+      "test_drift_11.npz": "25445011131da284680c65cedd83831165ea133255fffadc837778c67f783e92",
+      "test_drift_23.npz": "f087a36b904d418be37f15e7d4dd14054ceb7345c716251a2486c820180f7c0b",
+      "test_drift_37.npz": "60f5bb140020ebf7bac6e4dcb3660d26ddcf12c8d0c6468276fb2444892faf05",
+      "test_drift_53.npz": "02b8a5f3256b6db0af3e33fd0122619f45173301d7d4829182719e8a6339c78a",
+      "test_drift_71.npz": "2bef3c6592a31c227bf503ae6b310210b77b257cd3aed38ba144a91de741dbd4",
+      "test_drift_89.npz": "a0651baf49db67ab72793abbeccf00ec6ec30ad6084819056191514016aaebae",
+      "test_drift_107.npz": "ea45edc179371abe259f4aa1a1967d96b765822e942e03c136f4da5bb440cdae",
+      "test_drift_131.npz": "618bb7a32171507173322c232199789d501ac8b1decde17441721919e3256b6d",
+      "test_drift_157.npz": "dd8d3dcc4fa173ad6f3f02093d602a45d5d44e71f466ab5e7aa8156125921c5c",
+      "test_drift_191.npz": "f98ef3f563e4ca6fcdffa5f0ce28851302a2475f5581885ed43ae383a531bc94"
+    },
+    "validation": {
+      "metrics": {
+        "samples": 250000,
+        "tn": 161807,
+        "fp": 2193,
+        "fn": 684,
+        "tp": 85316,
+        "accuracy": 0.988492,
+        "balanced_accuracy": 0.9893372802041974,
+        "precision": 0.9749397204858928,
+        "recall": 0.992046511627907,
+        "f1": 0.9834187275588009,
+        "false_positive_rate": 0.013371951219512195
+      },
+      "switches": 5,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 2500,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.989684550478761,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.49318008001487396
+      },
+      "labels_used_only_after_frozen_schedule": false
+    },
+    "test_descriptive_only": {
+      "metrics": {
+        "samples": 500000,
+        "tn": 323525,
+        "fp": 4475,
+        "fn": 5659,
+        "tp": 166341,
+        "accuracy": 0.979732,
+        "balanced_accuracy": 0.9767277722631877,
+        "precision": 0.973802219932559,
+        "recall": 0.9670988372093023,
+        "f1": 0.970438952674321,
+        "false_positive_rate": 0.01364329268292683
+      },
+      "switches": 10,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 5000,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.9765427869352868,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.48660919824313686
+      },
+      "labels_used_only_after_frozen_schedule": true
+    },
+    "test_used_for_action_selection_training_or_checkpoint_selection": false,
+    "retrained": false,
+    "checkpoint_reselected": false
+  },
+  {
+    "status": "PASS",
+    "analysis_family": "multiseed-derived-evaluation",
+    "algorithm": "Tabular-Q",
+    "seed": 1039,
+    "source_frozen_policy_directory": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - \u6587\u7ae0\u91cd\u6784/adaptive_scheduler_v1/p1c_multiseed/tabularq-1039",
+    "source_metadata_sha256": "a9ab2ebe45c7a343f46829cb484472f58688374ca0d2388463f5cbe8d066e423",
+    "policy_hash": "52e5acb7d20dad8f9075813cbb37bb5bb7e282dbdac2d7e29e7e688438fb5779",
+    "config_hash": "59e184f6b0c7a8f6e47190dbd4e072857fe0d67d13cfea147c4579251063e618",
+    "selected_checkpoint": 74,
+    "existing_validation_selection": {
+      "training_episode": 74,
+      "validation_traces": 5,
+      "mean_validation_episode_return": 246.59004000743715,
+      "mean_validation_balanced_accuracy": 0.989684550478761,
+      "mean_validation_power_component": 0.0,
+      "mean_validation_latency_component": 0.008310976122533155,
+      "mean_validation_thermal_component": 0.0,
+      "total_validation_switches": 5
+    },
+    "validation_trace_hashes": {
+      "ton_iot_train_predictions.npz": "7b0eade2a24e92f1b6030c1e7dde6b53ad6d7d5a7e856cd5e48a9fa98b473401",
+      "train_drift_211.npz": "a0efce2a8ce64c56c4d5a5c61d2f8ec50d46f78166263e91481fde7d7497b2ef",
+      "train_drift_223.npz": "a38a9d371fec014b0c27beb585a926633d486d04ab997dc9f42d3f0e85c5d629",
+      "train_drift_227.npz": "e635213e0cf9799b13f6a5d5916fcdcfdf5a1b3f5b98cc05338a84bec6bfe3db",
+      "train_drift_229.npz": "6c5b0ac5d475c9056103638ab6832c5290057a91ad76398ba0e06db43737ccb5",
+      "train_drift_233.npz": "fbe987cc242c17a729462c2f46a84359160ccd8273058555a2743d2a71d82401",
+      "train_drift_239.npz": "9cbf92780cbed608c09a430228af70dfe4c06a6fb28527f348c74e4e9df06f71",
+      "train_drift_241.npz": "1ac4283abbdab0439398fee30b4ed701fa26bb0dc98b97bc52a7264df9e892f8",
+      "train_drift_251.npz": "74be32dd4cf61a7326237014fed7b482f629d675323a89217ef1a309180ab8cb",
+      "train_drift_257.npz": "f5eea3807a2df8c0eab562367af3e248540c1e88b99c991e29d8f400fb6fb37d",
+      "train_drift_263.npz": "c3b81e495653db9d4e4d5ad37e1bf95a6d7c20532153e7efbfd9c3108f0fd6ca",
+      "validation_drift_401.npz": "0107b688f953ffc7c6e2ddba5118e5d47f72f51c951e9ff49984353ef0b88352",
+      "validation_drift_409.npz": "68281e67d5e2d7553540545388e7dc3d425911180f2f237405c2003aefc5310f",
+      "validation_drift_419.npz": "98ccee5e0eb2eb2fde96777a9afc473ae90ccee6a994fb49e03d39de30de5ab7",
+      "validation_drift_421.npz": "830b77354cd737e225503fc4f6f52218d7f4e161d5838899001c8cdce54a7bd4",
+      "validation_drift_431.npz": "7a0206e9be2ec6b3d8d25ec58fa6e372c6af852852a7f71a66e5e6d7cd45bb3e"
+    },
+    "test_trace_hashes": {
+      "test_drift_11.npz": "25445011131da284680c65cedd83831165ea133255fffadc837778c67f783e92",
+      "test_drift_23.npz": "f087a36b904d418be37f15e7d4dd14054ceb7345c716251a2486c820180f7c0b",
+      "test_drift_37.npz": "60f5bb140020ebf7bac6e4dcb3660d26ddcf12c8d0c6468276fb2444892faf05",
+      "test_drift_53.npz": "02b8a5f3256b6db0af3e33fd0122619f45173301d7d4829182719e8a6339c78a",
+      "test_drift_71.npz": "2bef3c6592a31c227bf503ae6b310210b77b257cd3aed38ba144a91de741dbd4",
+      "test_drift_89.npz": "a0651baf49db67ab72793abbeccf00ec6ec30ad6084819056191514016aaebae",
+      "test_drift_107.npz": "ea45edc179371abe259f4aa1a1967d96b765822e942e03c136f4da5bb440cdae",
+      "test_drift_131.npz": "618bb7a32171507173322c232199789d501ac8b1decde17441721919e3256b6d",
+      "test_drift_157.npz": "dd8d3dcc4fa173ad6f3f02093d602a45d5d44e71f466ab5e7aa8156125921c5c",
+      "test_drift_191.npz": "f98ef3f563e4ca6fcdffa5f0ce28851302a2475f5581885ed43ae383a531bc94"
+    },
+    "validation": {
+      "metrics": {
+        "samples": 250000,
+        "tn": 161807,
+        "fp": 2193,
+        "fn": 684,
+        "tp": 85316,
+        "accuracy": 0.988492,
+        "balanced_accuracy": 0.9893372802041974,
+        "precision": 0.9749397204858928,
+        "recall": 0.992046511627907,
+        "f1": 0.9834187275588009,
+        "false_positive_rate": 0.013371951219512195
+      },
+      "switches": 5,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 2500,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.989684550478761,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.49318008001487396
+      },
+      "labels_used_only_after_frozen_schedule": false
+    },
+    "test_descriptive_only": {
+      "metrics": {
+        "samples": 500000,
+        "tn": 323525,
+        "fp": 4475,
+        "fn": 5659,
+        "tp": 166341,
+        "accuracy": 0.979732,
+        "balanced_accuracy": 0.9767277722631877,
+        "precision": 0.973802219932559,
+        "recall": 0.9670988372093023,
+        "f1": 0.970438952674321,
+        "false_positive_rate": 0.01364329268292683
+      },
+      "switches": 10,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 5000,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.9765427869352868,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.48660919824313686
+      },
+      "labels_used_only_after_frozen_schedule": true
+    },
+    "test_used_for_action_selection_training_or_checkpoint_selection": false,
+    "retrained": false,
+    "checkpoint_reselected": false
+  },
+  {
+    "status": "PASS",
+    "analysis_family": "multiseed-derived-evaluation",
+    "algorithm": "Tabular-Q",
+    "seed": 1049,
+    "source_frozen_policy_directory": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - \u6587\u7ae0\u91cd\u6784/adaptive_scheduler_v1/p1c_multiseed/tabularq-1049",
+    "source_metadata_sha256": "6a02c0463af437d02c0afffe3cd3017a99d56ef6ce1025eaf3203ef0d60d1718",
+    "policy_hash": "d280e003e814dbb1e7a3852ca11539d8f6cb29da6c732854f85ea632b70be528",
+    "config_hash": "59e184f6b0c7a8f6e47190dbd4e072857fe0d67d13cfea147c4579251063e618",
+    "selected_checkpoint": 49,
+    "existing_validation_selection": {
+      "training_episode": 49,
+      "validation_traces": 5,
+      "mean_validation_episode_return": 246.59004000743715,
+      "mean_validation_balanced_accuracy": 0.989684550478761,
+      "mean_validation_power_component": 0.0,
+      "mean_validation_latency_component": 0.008310976122533155,
+      "mean_validation_thermal_component": 0.0,
+      "total_validation_switches": 5
+    },
+    "validation_trace_hashes": {
+      "ton_iot_train_predictions.npz": "7b0eade2a24e92f1b6030c1e7dde6b53ad6d7d5a7e856cd5e48a9fa98b473401",
+      "train_drift_211.npz": "a0efce2a8ce64c56c4d5a5c61d2f8ec50d46f78166263e91481fde7d7497b2ef",
+      "train_drift_223.npz": "a38a9d371fec014b0c27beb585a926633d486d04ab997dc9f42d3f0e85c5d629",
+      "train_drift_227.npz": "e635213e0cf9799b13f6a5d5916fcdcfdf5a1b3f5b98cc05338a84bec6bfe3db",
+      "train_drift_229.npz": "6c5b0ac5d475c9056103638ab6832c5290057a91ad76398ba0e06db43737ccb5",
+      "train_drift_233.npz": "fbe987cc242c17a729462c2f46a84359160ccd8273058555a2743d2a71d82401",
+      "train_drift_239.npz": "9cbf92780cbed608c09a430228af70dfe4c06a6fb28527f348c74e4e9df06f71",
+      "train_drift_241.npz": "1ac4283abbdab0439398fee30b4ed701fa26bb0dc98b97bc52a7264df9e892f8",
+      "train_drift_251.npz": "74be32dd4cf61a7326237014fed7b482f629d675323a89217ef1a309180ab8cb",
+      "train_drift_257.npz": "f5eea3807a2df8c0eab562367af3e248540c1e88b99c991e29d8f400fb6fb37d",
+      "train_drift_263.npz": "c3b81e495653db9d4e4d5ad37e1bf95a6d7c20532153e7efbfd9c3108f0fd6ca",
+      "validation_drift_401.npz": "0107b688f953ffc7c6e2ddba5118e5d47f72f51c951e9ff49984353ef0b88352",
+      "validation_drift_409.npz": "68281e67d5e2d7553540545388e7dc3d425911180f2f237405c2003aefc5310f",
+      "validation_drift_419.npz": "98ccee5e0eb2eb2fde96777a9afc473ae90ccee6a994fb49e03d39de30de5ab7",
+      "validation_drift_421.npz": "830b77354cd737e225503fc4f6f52218d7f4e161d5838899001c8cdce54a7bd4",
+      "validation_drift_431.npz": "7a0206e9be2ec6b3d8d25ec58fa6e372c6af852852a7f71a66e5e6d7cd45bb3e"
+    },
+    "test_trace_hashes": {
+      "test_drift_11.npz": "25445011131da284680c65cedd83831165ea133255fffadc837778c67f783e92",
+      "test_drift_23.npz": "f087a36b904d418be37f15e7d4dd14054ceb7345c716251a2486c820180f7c0b",
+      "test_drift_37.npz": "60f5bb140020ebf7bac6e4dcb3660d26ddcf12c8d0c6468276fb2444892faf05",
+      "test_drift_53.npz": "02b8a5f3256b6db0af3e33fd0122619f45173301d7d4829182719e8a6339c78a",
+      "test_drift_71.npz": "2bef3c6592a31c227bf503ae6b310210b77b257cd3aed38ba144a91de741dbd4",
+      "test_drift_89.npz": "a0651baf49db67ab72793abbeccf00ec6ec30ad6084819056191514016aaebae",
+      "test_drift_107.npz": "ea45edc179371abe259f4aa1a1967d96b765822e942e03c136f4da5bb440cdae",
+      "test_drift_131.npz": "618bb7a32171507173322c232199789d501ac8b1decde17441721919e3256b6d",
+      "test_drift_157.npz": "dd8d3dcc4fa173ad6f3f02093d602a45d5d44e71f466ab5e7aa8156125921c5c",
+      "test_drift_191.npz": "f98ef3f563e4ca6fcdffa5f0ce28851302a2475f5581885ed43ae383a531bc94"
+    },
+    "validation": {
+      "metrics": {
+        "samples": 250000,
+        "tn": 161807,
+        "fp": 2193,
+        "fn": 684,
+        "tp": 85316,
+        "accuracy": 0.988492,
+        "balanced_accuracy": 0.9893372802041974,
+        "precision": 0.9749397204858928,
+        "recall": 0.992046511627907,
+        "f1": 0.9834187275588009,
+        "false_positive_rate": 0.013371951219512195
+      },
+      "switches": 5,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 2500,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.989684550478761,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.49318008001487396
+      },
+      "labels_used_only_after_frozen_schedule": false
+    },
+    "test_descriptive_only": {
+      "metrics": {
+        "samples": 500000,
+        "tn": 323525,
+        "fp": 4475,
+        "fn": 5659,
+        "tp": 166341,
+        "accuracy": 0.979732,
+        "balanced_accuracy": 0.9767277722631877,
+        "precision": 0.973802219932559,
+        "recall": 0.9670988372093023,
+        "f1": 0.970438952674321,
+        "false_positive_rate": 0.01364329268292683
+      },
+      "switches": 10,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 5000,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.9765427869352868,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.48660919824313686
+      },
+      "labels_used_only_after_frozen_schedule": true
+    },
+    "test_used_for_action_selection_training_or_checkpoint_selection": false,
+    "retrained": false,
+    "checkpoint_reselected": false
+  },
+  {
+    "status": "PASS",
+    "analysis_family": "multiseed-derived-evaluation",
+    "algorithm": "Tabular-Q",
+    "seed": 1051,
+    "source_frozen_policy_directory": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - \u6587\u7ae0\u91cd\u6784/adaptive_scheduler_v1/p1c_multiseed/tabularq-1051",
+    "source_metadata_sha256": "3bbf3a660262603a1af3a4f63c9c589ea184b1ca07180c87aa76da0b94a081e5",
+    "policy_hash": "8e5a05c76f9be48539c8f9066d79e75b0484116cc5567aa191aea3e2cae44158",
+    "config_hash": "59e184f6b0c7a8f6e47190dbd4e072857fe0d67d13cfea147c4579251063e618",
+    "selected_checkpoint": 49,
+    "existing_validation_selection": {
+      "training_episode": 49,
+      "validation_traces": 5,
+      "mean_validation_episode_return": 246.59004000743715,
+      "mean_validation_balanced_accuracy": 0.989684550478761,
+      "mean_validation_power_component": 0.0,
+      "mean_validation_latency_component": 0.008310976122533155,
+      "mean_validation_thermal_component": 0.0,
+      "total_validation_switches": 5
+    },
+    "validation_trace_hashes": {
+      "ton_iot_train_predictions.npz": "7b0eade2a24e92f1b6030c1e7dde6b53ad6d7d5a7e856cd5e48a9fa98b473401",
+      "train_drift_211.npz": "a0efce2a8ce64c56c4d5a5c61d2f8ec50d46f78166263e91481fde7d7497b2ef",
+      "train_drift_223.npz": "a38a9d371fec014b0c27beb585a926633d486d04ab997dc9f42d3f0e85c5d629",
+      "train_drift_227.npz": "e635213e0cf9799b13f6a5d5916fcdcfdf5a1b3f5b98cc05338a84bec6bfe3db",
+      "train_drift_229.npz": "6c5b0ac5d475c9056103638ab6832c5290057a91ad76398ba0e06db43737ccb5",
+      "train_drift_233.npz": "fbe987cc242c17a729462c2f46a84359160ccd8273058555a2743d2a71d82401",
+      "train_drift_239.npz": "9cbf92780cbed608c09a430228af70dfe4c06a6fb28527f348c74e4e9df06f71",
+      "train_drift_241.npz": "1ac4283abbdab0439398fee30b4ed701fa26bb0dc98b97bc52a7264df9e892f8",
+      "train_drift_251.npz": "74be32dd4cf61a7326237014fed7b482f629d675323a89217ef1a309180ab8cb",
+      "train_drift_257.npz": "f5eea3807a2df8c0eab562367af3e248540c1e88b99c991e29d8f400fb6fb37d",
+      "train_drift_263.npz": "c3b81e495653db9d4e4d5ad37e1bf95a6d7c20532153e7efbfd9c3108f0fd6ca",
+      "validation_drift_401.npz": "0107b688f953ffc7c6e2ddba5118e5d47f72f51c951e9ff49984353ef0b88352",
+      "validation_drift_409.npz": "68281e67d5e2d7553540545388e7dc3d425911180f2f237405c2003aefc5310f",
+      "validation_drift_419.npz": "98ccee5e0eb2eb2fde96777a9afc473ae90ccee6a994fb49e03d39de30de5ab7",
+      "validation_drift_421.npz": "830b77354cd737e225503fc4f6f52218d7f4e161d5838899001c8cdce54a7bd4",
+      "validation_drift_431.npz": "7a0206e9be2ec6b3d8d25ec58fa6e372c6af852852a7f71a66e5e6d7cd45bb3e"
+    },
+    "test_trace_hashes": {
+      "test_drift_11.npz": "25445011131da284680c65cedd83831165ea133255fffadc837778c67f783e92",
+      "test_drift_23.npz": "f087a36b904d418be37f15e7d4dd14054ceb7345c716251a2486c820180f7c0b",
+      "test_drift_37.npz": "60f5bb140020ebf7bac6e4dcb3660d26ddcf12c8d0c6468276fb2444892faf05",
+      "test_drift_53.npz": "02b8a5f3256b6db0af3e33fd0122619f45173301d7d4829182719e8a6339c78a",
+      "test_drift_71.npz": "2bef3c6592a31c227bf503ae6b310210b77b257cd3aed38ba144a91de741dbd4",
+      "test_drift_89.npz": "a0651baf49db67ab72793abbeccf00ec6ec30ad6084819056191514016aaebae",
+      "test_drift_107.npz": "ea45edc179371abe259f4aa1a1967d96b765822e942e03c136f4da5bb440cdae",
+      "test_drift_131.npz": "618bb7a32171507173322c232199789d501ac8b1decde17441721919e3256b6d",
+      "test_drift_157.npz": "dd8d3dcc4fa173ad6f3f02093d602a45d5d44e71f466ab5e7aa8156125921c5c",
+      "test_drift_191.npz": "f98ef3f563e4ca6fcdffa5f0ce28851302a2475f5581885ed43ae383a531bc94"
+    },
+    "validation": {
+      "metrics": {
+        "samples": 250000,
+        "tn": 161807,
+        "fp": 2193,
+        "fn": 684,
+        "tp": 85316,
+        "accuracy": 0.988492,
+        "balanced_accuracy": 0.9893372802041974,
+        "precision": 0.9749397204858928,
+        "recall": 0.992046511627907,
+        "f1": 0.9834187275588009,
+        "false_positive_rate": 0.013371951219512195
+      },
+      "switches": 5,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 2500,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.989684550478761,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.49318008001487396
+      },
+      "labels_used_only_after_frozen_schedule": false
+    },
+    "test_descriptive_only": {
+      "metrics": {
+        "samples": 500000,
+        "tn": 323525,
+        "fp": 4475,
+        "fn": 5659,
+        "tp": 166341,
+        "accuracy": 0.979732,
+        "balanced_accuracy": 0.9767277722631877,
+        "precision": 0.973802219932559,
+        "recall": 0.9670988372093023,
+        "f1": 0.970438952674321,
+        "false_positive_rate": 0.01364329268292683
+      },
+      "switches": 10,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 5000,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.9765427869352868,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.48660919824313686
+      },
+      "labels_used_only_after_frozen_schedule": true
+    },
+    "test_used_for_action_selection_training_or_checkpoint_selection": false,
+    "retrained": false,
+    "checkpoint_reselected": false
+  },
+  {
+    "status": "PASS",
+    "analysis_family": "multiseed-derived-evaluation",
+    "algorithm": "Tabular-Q",
+    "seed": 1061,
+    "source_frozen_policy_directory": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - \u6587\u7ae0\u91cd\u6784/adaptive_scheduler_v1/p1c_multiseed/tabularq-1061",
+    "source_metadata_sha256": "109b9ee02909574f6226108acc300a14f3fa7050aa677ce6d8b43a1cc8ff9629",
+    "policy_hash": "17dd528c453054b01bf256ba954eafb40be683d8f745f6e4f8234ebc062a22f7",
+    "config_hash": "59e184f6b0c7a8f6e47190dbd4e072857fe0d67d13cfea147c4579251063e618",
+    "selected_checkpoint": 24,
+    "existing_validation_selection": {
+      "training_episode": 24,
+      "validation_traces": 5,
+      "mean_validation_episode_return": 246.59004000743715,
+      "mean_validation_balanced_accuracy": 0.989684550478761,
+      "mean_validation_power_component": 0.0,
+      "mean_validation_latency_component": 0.008310976122533155,
+      "mean_validation_thermal_component": 0.0,
+      "total_validation_switches": 5
+    },
+    "validation_trace_hashes": {
+      "ton_iot_train_predictions.npz": "7b0eade2a24e92f1b6030c1e7dde6b53ad6d7d5a7e856cd5e48a9fa98b473401",
+      "train_drift_211.npz": "a0efce2a8ce64c56c4d5a5c61d2f8ec50d46f78166263e91481fde7d7497b2ef",
+      "train_drift_223.npz": "a38a9d371fec014b0c27beb585a926633d486d04ab997dc9f42d3f0e85c5d629",
+      "train_drift_227.npz": "e635213e0cf9799b13f6a5d5916fcdcfdf5a1b3f5b98cc05338a84bec6bfe3db",
+      "train_drift_229.npz": "6c5b0ac5d475c9056103638ab6832c5290057a91ad76398ba0e06db43737ccb5",
+      "train_drift_233.npz": "fbe987cc242c17a729462c2f46a84359160ccd8273058555a2743d2a71d82401",
+      "train_drift_239.npz": "9cbf92780cbed608c09a430228af70dfe4c06a6fb28527f348c74e4e9df06f71",
+      "train_drift_241.npz": "1ac4283abbdab0439398fee30b4ed701fa26bb0dc98b97bc52a7264df9e892f8",
+      "train_drift_251.npz": "74be32dd4cf61a7326237014fed7b482f629d675323a89217ef1a309180ab8cb",
+      "train_drift_257.npz": "f5eea3807a2df8c0eab562367af3e248540c1e88b99c991e29d8f400fb6fb37d",
+      "train_drift_263.npz": "c3b81e495653db9d4e4d5ad37e1bf95a6d7c20532153e7efbfd9c3108f0fd6ca",
+      "validation_drift_401.npz": "0107b688f953ffc7c6e2ddba5118e5d47f72f51c951e9ff49984353ef0b88352",
+      "validation_drift_409.npz": "68281e67d5e2d7553540545388e7dc3d425911180f2f237405c2003aefc5310f",
+      "validation_drift_419.npz": "98ccee5e0eb2eb2fde96777a9afc473ae90ccee6a994fb49e03d39de30de5ab7",
+      "validation_drift_421.npz": "830b77354cd737e225503fc4f6f52218d7f4e161d5838899001c8cdce54a7bd4",
+      "validation_drift_431.npz": "7a0206e9be2ec6b3d8d25ec58fa6e372c6af852852a7f71a66e5e6d7cd45bb3e"
+    },
+    "test_trace_hashes": {
+      "test_drift_11.npz": "25445011131da284680c65cedd83831165ea133255fffadc837778c67f783e92",
+      "test_drift_23.npz": "f087a36b904d418be37f15e7d4dd14054ceb7345c716251a2486c820180f7c0b",
+      "test_drift_37.npz": "60f5bb140020ebf7bac6e4dcb3660d26ddcf12c8d0c6468276fb2444892faf05",
+      "test_drift_53.npz": "02b8a5f3256b6db0af3e33fd0122619f45173301d7d4829182719e8a6339c78a",
+      "test_drift_71.npz": "2bef3c6592a31c227bf503ae6b310210b77b257cd3aed38ba144a91de741dbd4",
+      "test_drift_89.npz": "a0651baf49db67ab72793abbeccf00ec6ec30ad6084819056191514016aaebae",
+      "test_drift_107.npz": "ea45edc179371abe259f4aa1a1967d96b765822e942e03c136f4da5bb440cdae",
+      "test_drift_131.npz": "618bb7a32171507173322c232199789d501ac8b1decde17441721919e3256b6d",
+      "test_drift_157.npz": "dd8d3dcc4fa173ad6f3f02093d602a45d5d44e71f466ab5e7aa8156125921c5c",
+      "test_drift_191.npz": "f98ef3f563e4ca6fcdffa5f0ce28851302a2475f5581885ed43ae383a531bc94"
+    },
+    "validation": {
+      "metrics": {
+        "samples": 250000,
+        "tn": 161807,
+        "fp": 2193,
+        "fn": 684,
+        "tp": 85316,
+        "accuracy": 0.988492,
+        "balanced_accuracy": 0.9893372802041974,
+        "precision": 0.9749397204858928,
+        "recall": 0.992046511627907,
+        "f1": 0.9834187275588009,
+        "false_positive_rate": 0.013371951219512195
+      },
+      "switches": 5,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 2500,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.989684550478761,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.49318008001487396
+      },
+      "labels_used_only_after_frozen_schedule": false
+    },
+    "test_descriptive_only": {
+      "metrics": {
+        "samples": 500000,
+        "tn": 323525,
+        "fp": 4475,
+        "fn": 5659,
+        "tp": 166341,
+        "accuracy": 0.979732,
+        "balanced_accuracy": 0.9767277722631877,
+        "precision": 0.973802219932559,
+        "recall": 0.9670988372093023,
+        "f1": 0.970438952674321,
+        "false_positive_rate": 0.01364329268292683
+      },
+      "switches": 10,
+      "action_counts": {
+        "TinyDT": 0,
+        "LightLR": 5000,
+        "MedRF": 0,
+        "HeavyMLP": 0
+      },
+      "action_occupancy": {
+        "TinyDT": 0.0,
+        "LightLR": 1.0,
+        "MedRF": 0.0,
+        "HeavyMLP": 0.0
+      },
+      "unique_states": 4,
+      "reward_components_mean": {
+        "detection": 0.9765427869352868,
+        "power": 0.0,
+        "latency": 0.008310976122533153,
+        "thermal": 0.0,
+        "reward": 0.48660919824313686
+      },
+      "labels_used_only_after_frozen_schedule": true
+    },
+    "test_used_for_action_selection_training_or_checkpoint_selection": false,
+    "retrained": false,
+    "checkpoint_reselected": false
+  }
+]
