@@ -1,0 +1,13 @@
+{
+  "status": "INVALID_PACKAGING_ATTEMPT_RETAINED",
+  "attempt_id": "FINAL-PACKAGING-ATTEMPT-1",
+  "package": "TNSM_REVIEWER_REVISION_EVIDENCE_20260909_V1.invalid-manifest-attempt-1.zip",
+  "sha256": "6094c4cf0008968c5b9020291274ebe90318cdcad390972a75fe33bc3a3fba60",
+  "size_bytes": 327665325,
+  "zip_crc": "PASS",
+  "failure_reason": "The root manifest omitted validation/frozen_runtime/protocol/MANIFEST_SHA256.txt because the packager excluded every file with the manifest basename instead of excluding only the root manifest itself.",
+  "physical_experiments_rerun": false,
+  "evidence_values_changed": false,
+  "correction": "Exclude only the root MANIFEST_SHA256.txt and cover the nested protocol manifest like every other content file.",
+  "replacement_packaging_attempt": "FINAL-PACKAGING-ATTEMPT-2"
+}

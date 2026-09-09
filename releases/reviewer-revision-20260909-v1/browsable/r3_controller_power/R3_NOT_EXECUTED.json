@@ -1,0 +1,9 @@
+{
+  "status": "STOP_R3_PREDECLARED_STREAM_NOT_UNIQUELY_IDENTIFIED",
+  "protocol_text": "Cycle the four original observed-support encoded states at exactly one scheduler decision per second.",
+  "observed_frozen_artifact": "adaptive_scheduler_v1/p1b_replacement_runtime/p1b_observed_states.json",
+  "observed_unique_encoded_state_indices": [40, 41, 42, 43, 76, 77, 78, 79],
+  "observed_unique_encoded_state_count": 8,
+  "reason": "The protocol does not identify four state indices, while the frozen observed-support artifact contains eight. Selecting a subset would modify or complete the protocol after issuance.",
+  "action": "Do not execute R3 unless an external clarification identifies the exact four already-predeclared states. Do not infer a subset from frequencies or outcomes."
+}

@@ -1,0 +1,17 @@
+{
+  "status": "EVIDENCE_COMPLETE_WITH_R3_NOT_EXECUTED",
+  "existing_frozen_evidence": {
+    "V1": "referenced by immutable SHA-256; not modified",
+    "P0_P1": "referenced by immutable SHA-256; not modified"
+  },
+  "new_revision_physical_evidence": {
+    "R1_valid_runs": 40,
+    "R2_valid_runs": 60,
+    "R3": "not executed because the predeclared four-state stream was not uniquely identified by the task bundle"
+  },
+  "software_only_diagnostics": {
+    "R4A": "validation-selected frozen TinyDT threshold applied once to test"
+  },
+  "optional_reference_load": "not available; no improvised calibration source used",
+  "interpretation": "factual evidence handoff only; no manuscript conclusion is asserted"
+}

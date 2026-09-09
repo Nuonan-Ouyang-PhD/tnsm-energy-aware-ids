@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "source_file": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Downloads/tnsm-energy-aware-ids/datasets/incoming/ton_iot/train_test_network.csv",
+  "source_sha256_before": "26ddc513552de36de6428b2e578efaed2b57504c716dfba847cc0109a64e1974",
+  "source_sha256_after": "26ddc513552de36de6428b2e578efaed2b57504c716dfba847cc0109a64e1974",
+  "materialized_features": "/Volumes/RESEARCH_DATA/TNSM-MATERIALIZATION-20260906-V1/datasets/ton_iot/features/0001-26ddc513552de36d.csv",
+  "materialized_features_sha256": "b08c91287c91d8f8134c58a1b37b99cae8319911d478d500e9b014acc196004d",
+  "materialized_rows": 211043,
+  "source_groups": 1004,
+  "classifier_pool_records": [
+    {
+      "split": "train",
+      "path": "tnsm_experiments_v1/results/ton_iot/train_pool.npz",
+      "sha256": "c87ebdab8ad1ba818702c5bc31d7b3f13b6921c3b3d97510a9f243dbfe351e2c",
+      "rows": 138441
+    },
+    {
+      "split": "validation",
+      "path": "tnsm_experiments_v1/results/ton_iot/validation_pool.npz",
+      "sha256": "da4f045a085cfd092cccd04c28c260b211ed3c32ddd330316025b1d1c3b70a39",
+      "rows": 22842
+    },
+    {
+      "split": "test",
+      "path": "tnsm_experiments_v1/results/ton_iot/test_pool.npz",
+      "sha256": "3cd16eaa00a8f2fc226188e7e25542570219ab5ae6750c96f2b1540576fac8a3",
+      "rows": 22490
+    }
+  ],
+  "classifier_unique_source_rows": 183773,
+  "derived_artifacts_checked": [
+    {
+      "path": "adaptive_scheduler_v1/policy_inputs/ton_iot_train_predictions.npz",
+      "sha256": "7b0eade2a24e92f1b6030c1e7dde6b53ad6d7d5a7e856cd5e48a9fa98b473401",
+      "source_id_occurrences": 138441,
+      "unique_source_ids": 138441,
+      "all_in_classifier_pools": true
+    },
+    {
+      "path": "adaptive_scheduler_v1/policy_inputs/train_drift_211.npz",
+      "sha256": "a0efce2a8ce64c56c4d5a5c61d2f8ec50d46f78166263e91481fde7d7497b2ef",
+      "source_id_occurrences": 50000,
+      "unique_source_ids": 31397,
+      "all_in_classifier_pools": true
+    },
+    {
+      "path": "adaptive_scheduler_v1/policy_inputs/train_drift_223.npz",
+      "sha256": "a38a9d371fec014b0c27beb585a926633d486d04ab997dc9f42d3f0e85c5d629",
+      "source_id_occurrences": 50000,
+      "unique_source_ids": 31432,
+      "all_in_classifier_pools": true
+    },
+    {
+      "path": "adaptive_scheduler_v1/policy_inputs/train_drift_227.npz",
+      "sha256": "e635213e0cf9799b13f6a5d5916fcdcfdf5a1b3f5b98cc05338a84bec6bfe3db",
+      "source_id_occurrences": 50000,
+      "unique_source_ids": 31388,
+      "all_in_classifier_pools": true
+    },
+    {
+      "path": "adaptive_scheduler_v1/policy_inputs/train_drift_229.npz",
+      "sha256": "6c5b0ac5d475c9056103638ab6832c5290057a91ad76398ba0e06db43737ccb5",
+      "source_id_occurrences": 50000,
+      "unique_source_ids": 31322,
+      "all_in_classifier_pools": true
+    },
+    {
+      "path": "adaptive_scheduler_v1/policy_inputs/train_drift_233.npz",
+      "sha256": "fbe987cc242c17a729462c2f46a84359160ccd8273058555a2743d2a71d82401",
+      "source_id_occurrences": 50000,
+      "unique_source_ids": 31361,
+      "all_in_classifier_pools": true
+    },
+    {
+      "path": "adaptive_scheduler_v1/policy_inputs/train_drift_239.npz",
+      "sha256": "9cbf92780cbed608c09a430228af70dfe4c06a6fb28527f348c74e4e9df06f71",
+      "source_id_occurrences": 50000,
+      "unique_source_ids": 31317,
+      "all_in_classifier_pools": true
+    },
+    {
+      "path": "adaptive_scheduler_v1/policy_inputs/train_drift_241.npz",
+      "sha256": "1ac4283abbdab0439398fee30b4ed701fa26bb0dc98b97bc52a7264df9e892f8",
+      "source_id_occurrences": 50000,
+      "unique_source_ids": 31375,
+      "all_in_classifier_pools": true
+    },
+    {
+      "path": "adaptive_scheduler_v1/policy_inputs/train_drift_251.npz",
+      "sha256": "74be32dd4cf61a7326237014fed7b482f629d675323a89217ef1a309180ab8cb",
+      "source_id_occurrences": 50000,
+      "unique_source_ids": 31320,
+      "all_in_classifier_pools": true
+    },
+    {
+      "path": "adaptive_scheduler_v1/policy_inputs/train_drift_257.npz",
+      "sha256": "f5eea3807a2df8c0eab562367af3e248540c1e88b99c991e29d8f400fb6fb37d",
+      "source_id_occurrences": 50000,
+      "unique_source_ids": 31430,
+      "all_in_classifier_pools": true
+    },
+    {
+      "path": "adaptive_scheduler_v1/policy_inputs/train_drift_263.npz",
+      "sha256": "c3b81e495653db9d4e4d5ad37e1bf95a6d7c20532153e7efbfd9c3108f0fd6ca",
+      "source_id_occurrences": 50000,
+      "unique_source_ids": 31348,
+      "all_in_classifier_pools": true
+    },
+    {
+      "path": "adaptive_scheduler_v1/policy_inputs/validation_drift_401.npz",
+      "sha256": "0107b688f953ffc7c6e2ddba5118e5d47f72f51c951e9ff49984353ef0b88352",
+      "source_id_occurrences": 50000,
+      "unique_source_ids": 18200,
+      "all_in_classifier_pools": true
+    },
+    {
+      "path": "adaptive_scheduler_v1/policy_inputs/validation_drift_409.npz",
+      "sha256": "68281e67d5e2d7553540545388e7dc3d425911180f2f237405c2003aefc5310f",
+      "source_id_occurrences": 50000,
+      "unique_source_ids": 18186,
+      "all_in_classifier_pools": true
+    },
+    {
+      "path": "adaptive_scheduler_v1/policy_inputs/validation_drift_419.npz",
+      "sha256": "98ccee5e0eb2eb2fde96777a9afc473ae90ccee6a994fb49e03d39de30de5ab7",
+      "source_id_occurrences": 50000,
+      "unique_source_ids": 18178,
+      "all_in_classifier_pools": true
+    },
+    {
+      "path": "adaptive_scheduler_v1/policy_inputs/validation_drift_421.npz",
+      "sha256": "830b77354cd737e225503fc4f6f52218d7f4e161d5838899001c8cdce54a7bd4",
+      "source_id_occurrences": 50000,
+      "unique_source_ids": 18191,
+      "all_in_classifier_pools": true
+    },
+    {
+      "path": "adaptive_scheduler_v1/policy_inputs/validation_drift_431.npz",
+      "sha256": "7a0206e9be2ec6b3d8d25ec58fa6e372c6af852852a7f71a66e5e6d7cd45bb3e",
+      "source_id_occurrences": 50000,
+      "unique_source_ids": 18260,
+      "all_in_classifier_pools": true
+    }
+  ],
+  "derived_artifact_count": 16,
+  "unused_source_rows": 27270,
+  "entirely_unused_source_groups": 33,
+  "rows_in_entirely_unused_groups": 2867,
+  "rows_in_entirely_unused_groups_with_prior_used_fingerprint": 2867,
+  "eligible_untouched_rows": 0,
+  "eligible_untouched_groups": 0,
+  "revision_holdout_created": false,
+  "revision_holdout_id": null,
+  "decision": "NO_DEFENSIBLE_UNTOUCHED_POOL_USE_FROZEN_TEST_POSTHOC_PHYSICAL_ROBUSTNESS",
+  "reason": "Every source-group-disjoint unrepresented row duplicates a feature fingerprint already present in a frozen classifier pool.",
+  "test_pool_path": "tnsm_experiments_v1/results/ton_iot/test_pool.npz",
+  "test_pool_sha256": "3cd16eaa00a8f2fc226188e7e25542570219ab5ae6750c96f2b1540576fac8a3",
+  "test_predictions_sha256": "533af761c775427369ea24d603e29e888da734230fb436e8f9404d1ef5d0db98",
+  "no_split_membership_changed": true,
+  "no_source_bytes_modified": true
+}

@@ -1,0 +1,10 @@
+{
+  "status": "INVALID_VALIDATION_ATTEMPT_RETAINED",
+  "attempt_id": "FINAL-VALIDATION-ATTEMPT-1",
+  "utc_date": "2026-09-10",
+  "failure_reason": "The validator required r3_controller_power to contain no entries even though record_stage_stops.py correctly created the required R3_NOT_EXECUTED.json stop record.",
+  "evidence_changed": false,
+  "physical_experiments_rerun": false,
+  "correction": "Validate that R3_NOT_EXECUTED.json is the only R3 entry and that its status matches the precondition stop record.",
+  "replacement_validator_attempt": "FINAL-VALIDATION-ATTEMPT-2"
+}

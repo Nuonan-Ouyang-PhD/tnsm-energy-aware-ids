@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "source_artifact": "adaptive_scheduler_v1/cost_registry/cost_registry.csv",
+  "source_artifact_sha256": "3f88d066ce6cfa058c24c936b548967db19e8c2d23725e3d3fd554247ee12594",
+  "source_field": "tight_loop_batch_ms_p95",
+  "medrf_p95_seconds_per_100_rows": 0.027407827000000003,
+  "formula": "ceil(N_t/100) * L95_MedRF <= 1.0 seconds => MedRF else LightLR",
+  "predeclared_mapping": {
+    "50": "MedRF",
+    "100": "MedRF",
+    "4000": "LightLR"
+  }
+}

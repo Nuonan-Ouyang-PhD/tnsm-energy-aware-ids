@@ -1,0 +1,3 @@
+# Preserve evidence and executed-source bytes exactly across checkouts.
+experiments/reviewer_revision_v1/** -text
+releases/reviewer-revision-20260909-v1/** -text

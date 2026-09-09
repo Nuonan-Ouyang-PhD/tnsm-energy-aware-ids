@@ -1,0 +1,144 @@
+{
+  "lock_id": "TNSM-REVIEWER-REVISION-20260909-V2-PREVALIDATION-CORRECTED",
+  "status": "FROZEN_BEFORE_FIRST_VALID_FORMAL_RUN",
+  "supersedes_prevalidation_lock_sha256": "2d8480f8d440f4ef5d37df6e692c610cb9df0621f8a2a2aca674152ccf089130",
+  "supersession_reason": "The first attempted formal segment was interrupted and retained as INVALID after pre-validation found missing scheduler-selection telemetry; no valid formal run completed under the superseded lock.",
+  "git_commit": "8024d7150ee02ebd875c3feee77bc6898ac52533",
+  "git_worktree_status_sha256_at_freeze": "e34eae7d8c78f60616a8a3ca9c0bba4164cc1bb1974cc832320a3b552c04700f",
+  "source_pool_decision": "NO_DEFENSIBLE_UNTOUCHED_POOL_USE_FROZEN_TEST_POSTHOC_PHYSICAL_ROBUSTNESS",
+  "experiment_label": "post-hoc physical robustness on frozen test pool",
+  "frozen_package_checks": [
+    {
+      "path": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - 文章重构/TNSM_ADAPTIVE_SCHEDULER_20260907_V1.zip",
+      "sha256": "cc40aa48f2cabdbc7112823c57b89fbdfa571590a501a7985aeac338e13e040f",
+      "size_bytes": 93360624,
+      "zip_crc": "PASS",
+      "entries": 625
+    },
+    {
+      "path": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - 文章重构/TNSM_P0_P1_STRENGTHENING_20260908_V1.zip",
+      "sha256": "d4e1e96960f1279c79445c744a02be1033e288dad27f440b87753934a3f4b108",
+      "size_bytes": 141322551,
+      "zip_crc": "PASS",
+      "entries": 1918
+    },
+    {
+      "path": "/Users/nuonanouyang/Downloads/TNSM_REVIEWER_REQUESTED_REVISION_CODEX_TASK_20260908.zip",
+      "sha256": "2708c0a4d80f0bcde15390a03f2428cec6c781e628e536dfb76ff524755a7172",
+      "size_bytes": 12502,
+      "zip_crc": "PASS",
+      "entries": 12
+    }
+  ],
+  "six_recovered_executed_source_identities": [
+    {
+      "path": "controller.py",
+      "sha256": "85fb202505a5d8f4b6587fb88e30c092b036dae6b97f4274c5256cd2a90ba3c9"
+    },
+    {
+      "path": "worker.py",
+      "sha256": "a16cea9c47d640724e321471ab64bc7f3a44bc67f8808db68ce8b26e0bbee96d"
+    },
+    {
+      "path": "scheduler/artifacts.py",
+      "sha256": "a1e69f5a2828a561ba52c612383d9770dc4ab47c53ea1ce7e168cee66ffa53b3"
+    },
+    {
+      "path": "scheduler/cli.py",
+      "sha256": "13f495d4b26383ef5a023b0332d852e42902181fecaef70b66e8ecf4f8ea2e24"
+    },
+    {
+      "path": "scheduler/evaluation.py",
+      "sha256": "b9b8b8a216106278a8e34f98b500f996019e40b8097891918e60a7da8faa65bd"
+    },
+    {
+      "path": "scheduler/trace_io.py",
+      "sha256": "bef536cf60e0eb09a6f49696852dc435b5bb0195d49a2732ac289dc119cdcead"
+    }
+  ],
+  "models": {
+    "TinyDT": "9941090e54203557d63b2f6117622bcba3535019796f7dfefb955293d085c2f2",
+    "LightLR": "a6cafb1426058f0268dd9da065fa3848b95c0a5531b3ec5c1b65987e5ca5268f",
+    "MedRF": "35bc9b8674c5ae3b7c163ab29d7fd3d3abfe61dfaa1d26323530f9d14a2b2688",
+    "HeavyMLP": "2999008343be15af0374bc647af6764e010bebc841b953b0307a10ebbc26b8a0"
+  },
+  "policies": {
+    "tabular-frozen": {
+      "identity_sha256": "a89c52c9839fe4c97bbd81cdc97cd9d4bd58c9dab8a42dda728c225855501c17",
+      "weights_sha256": "be15663941cba21dae094696582ef4fae3f8783461f1fc5325640103dd4514a3",
+      "metadata_sha256": "0db754447036e18e44f5fcd87d48e5d70885b1ce54e585771edaa220e59c33bf"
+    },
+    "dqn-frozen": {
+      "identity_sha256": "123c380bb3d78c9ac8d34614eb1f0fcc30caaee79b420a78652f39c90a88a471",
+      "weights_sha256": "86407959ddb8bd44ea37449233c12e2a7d942d357ae6d11e29d0826d775aa775",
+      "metadata_sha256": "043b3a7b50aaf6945a8095c24bb3ada8332061c1f7cd72d1f3cd08a784d288f4"
+    }
+  },
+  "scheduler_config_sha256": "59e184f6b0c7a8f6e47190dbd4e072857fe0d67d13cfea147c4579251063e618",
+  "cascade_rule_sha256": "9e4384f8dd78b83e68cb6f9f85031725bd88ea361f284e399efc0d35f9c69961",
+  "cascade_band_inclusive": [
+    0.3,
+    0.7
+  ],
+  "workload_generator_source_sha256": "6b18041146e5e6bb779d501be7c713c294a61d73315f55062fdbe3df8bb14022",
+  "r2_workload_registry_sha256": "b8e9fd9a4cd8cad9ba5ffa749bd4f97e11d6fdcabcb2287346d0a3c8db88fd99",
+  "method_order_schedule_sha256": "b0b443b9400a1b27e08db533560009d3aa76298da4b3cda5f9c6250553462f4f",
+  "power_meter_parser_sha256": "96eac1a44f4be7f8d2e6669ff4e015def2aa9dc660bde38f6c7346b7a6c18c22",
+  "worker_sha256": "d6de0d4c2c314248636c77032d50efc2f6b7605c1a20ca103cf2e8111abef7ce",
+  "controller_sha256": "cd93b3824cc27b4971657c0d815ea328040ae85196eaece409b2c98b5d282fab",
+  "deadline_guard": {
+    "source_artifact": "adaptive_scheduler_v1/cost_registry/cost_registry.csv",
+    "source_artifact_sha256": "3f88d066ce6cfa058c24c936b548967db19e8c2d23725e3d3fd554247ee12594",
+    "source_field": "tight_loop_batch_ms_p95",
+    "medrf_p95_seconds_per_100_rows": 0.027407827000000003,
+    "formula": "ceil(N_t/100) * L95_MedRF <= 1.0 seconds => MedRF else LightLR",
+    "predeclared_mapping": {
+      "50": "MedRF",
+      "100": "MedRF",
+      "4000": "LightLR"
+    }
+  },
+  "validity_rules": {
+    "meter_serial": "075356",
+    "meter_vid": "0x5FC9",
+    "meter_pid": "0x0063",
+    "voltage_envelope_v": [
+      4.75,
+      5.5
+    ],
+    "maximum_temperature_c_exclusive": 70,
+    "required_throttle_flag": "throttled=0x0",
+    "clock_offset_bound_seconds": 0.25,
+    "failed_attempt_rule": "retain INVALID; no scientific-outcome retry; replacement only for predeclared instrument/harness validity failure with new ID and replacement_for"
+  },
+  "idle_reference_semantics": {
+    "duration_seconds": 60,
+    "immediately_precedes_each_method_run": true,
+    "four_detector_artifacts_resident_and_warmed": true,
+    "telemetry_active": true,
+    "detector_inference_during_idle": false,
+    "raw_energy_primary": true,
+    "idle_adjustment_is_sensitivity_not_replacement": true
+  },
+  "r3_precondition": {
+    "status": "STOP_R3_PREDECLARED_STREAM_NOT_UNIQUELY_IDENTIFIED",
+    "protocol_text": "Cycle the four original observed-support encoded states at exactly one scheduler decision per second.",
+    "observed_frozen_artifact": "adaptive_scheduler_v1/p1b_replacement_runtime/p1b_observed_states.json",
+    "observed_unique_encoded_state_indices": [
+      40,
+      41,
+      42,
+      43,
+      76,
+      77,
+      78,
+      79
+    ],
+    "observed_unique_encoded_state_count": 8,
+    "reason": "The protocol does not identify four state indices, while the frozen observed-support artifact contains eight. Selecting a subset would modify or complete the protocol after issuance.",
+    "action": "Do not execute R3 unless an external clarification identifies the exact four already-predeclared states. Do not infer a subset from frequencies or outcomes.",
+    "observed_frozen_artifact_sha256": "4181c94daf2b8cb1e55d3c0410147ab5ab7e9d999bed4b46788d8caddf14b062"
+  },
+  "labels_absent_from_pi_runtime": true,
+  "test_driven_selection": false
+}

@@ -1,0 +1,20 @@
+{
+  "status": "INVALID_ATTEMPT_RETAINED",
+  "attempt_id": "r2v2-b03-p2-Tabular-Q",
+  "campaign": "R2",
+  "block": 3,
+  "position": 2,
+  "method": "Tabular-Q",
+  "failure_class": "PREDECLARED_INSTRUMENT_HARNESS_VALIDITY_FAILURE",
+  "observed_stop_local": "2026-09-09 09:30:04 AEST",
+  "last_complete_pi_window": 228,
+  "power_samples_retained": 229,
+  "pi_outcomes_retained": 229,
+  "host_sleep_observed": false,
+  "scientific_summary_produced": false,
+  "scientific_outcome_used_for_retry": false,
+  "automatic_retry": false,
+  "replacement_permitted_by": "02_R1_FIXED_RATE_CASCADE_PHYSICAL.md validity rule applied to the shared R1/R2 physical harness",
+  "replacement_run_id": "r2v2-b03-p2-Tabular-Q-retry1",
+  "raw_attempt_directory_retained": "r2_variable_load/r2v2-b03-p2-Tabular-Q"
+}

@@ -1,0 +1,27 @@
+{
+  "status": "FROZEN_BEFORE_TEST_APPLICATION",
+  "analysis_label": "post-hoc revision analysis; does not replace threshold=0.5 primary result",
+  "selection_partition": "validation",
+  "selection_criterion": "maximum balanced_accuracy",
+  "tie_break": "highest threshold among exact equal maxima",
+  "threshold": 0.6467505097389221,
+  "validation_cache": "tnsm_experiments_v1/results/ton_iot/validation_predictions.npz",
+  "validation_cache_sha256": "a153c8b1823668569d88d4e7c822d9f31a438b89836a9b32d9403d4d6cef1b36",
+  "model_index": 0,
+  "model_artifact_sha256": "9941090e54203557d63b2f6117622bcba3535019796f7dfefb955293d085c2f2",
+  "candidate_count": 24,
+  "candidate_metrics_sha256": "c2d4f882c9326a1520fa6cdd653a0d25dbb22737ae80ee2f6f1b07e0bb591549",
+  "validation_metrics": {
+    "tn": 8093,
+    "fp": 182,
+    "fn": 181,
+    "tp": 14386,
+    "f1": 0.9875407585378411,
+    "recall": 0.9875746550422188,
+    "fpr": 0.021993957703927494,
+    "balanced_accuracy": 0.9827903486691456
+  },
+  "validation_auroc": 0.9911565706288497,
+  "validation_average_precision": 0.9924167400516497,
+  "test_accessed_during_selection": false
+}

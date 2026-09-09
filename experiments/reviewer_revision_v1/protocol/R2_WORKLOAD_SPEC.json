@@ -1,0 +1,25 @@
+{
+  "campaign": "R2_variable_load",
+  "duration_s": 500,
+  "factorial_cells": {
+    "load_rows_per_s": [
+      50,
+      100,
+      4000
+    ],
+    "attack_prevalence": [
+      0.1,
+      0.5,
+      0.9
+    ],
+    "cell_duration_s": 50
+  },
+  "per_block_cell_order": "permute all 9 factorial cells with RNG seed 20260908 + integer block_id; freeze generated schedules before first hardware run",
+  "recovery_cell": {
+    "duration_s": 50,
+    "load_rows_per_s": 100,
+    "attack_prevalence": 0.1
+  },
+  "state_input_rule": "policy receives causal measured/scheduled arrival count under frozen state encoder; never receives cell/phase ID",
+  "high_rate_rationale": "4000 rows/s is selected from pre-existing MedRF 30.95 ms/100-row batch timing to cross its simple 1-s inference-service regime; it is not selected from new campaign outcomes"
+}

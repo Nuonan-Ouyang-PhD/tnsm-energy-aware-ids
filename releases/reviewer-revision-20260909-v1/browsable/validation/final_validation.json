@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "R0": "PASS",
+  "R1": {
+    "valid_formal_runs": 40,
+    "blocks": 10,
+    "status": "PASS"
+  },
+  "R2": {
+    "valid_formal_runs": 60,
+    "blocks": 10,
+    "status": "PASS"
+  },
+  "R3": "NOT_EXECUTED_PREDECLARED_AMBIGUITY",
+  "R4": "PASS",
+  "no_test_driven_selection": true,
+  "no_policy_retraining": true,
+  "frozen_v1_p1_unchanged": true,
+  "all_attempts_retained": true,
+  "replacement_linkage": "PASS"
+}

@@ -1,0 +1,9 @@
+{
+  "status": "REFERENCE_LOAD_NOT_AVAILABLE",
+  "inventory_scope": "physically available equipment disclosed for this experiment",
+  "available_measurement_device": "POWER-Z KM003C USB meter",
+  "available_powered_device": "Raspberry Pi 4B and its user-verified official 5V/3A supply",
+  "independently_specified_stable_usb_electronic_or_resistive_reference_load": false,
+  "reason": "No independently specified electronic/resistive USB reference load was supplied or identified. The Pi and its supply are not a traceable reference load.",
+  "action": "R4B not executed; no improvised calibration source used."
+}

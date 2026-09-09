@@ -1,0 +1,2 @@
+condition,block_id,segment_id,valid,order,energy_j,mean_power_w,preceding_idle_power_w,decision_count,decision_mean_ms,decision_p50_ms,decision_p95_ms,decision_p99_ms,cpu,rss,temperature,throttle,undervoltage,failure_reason
+ALL,,R3-NOT-EXECUTED,false,,,,,0,,,,,,,,,,"The protocol does not identify four state indices, while the frozen observed-support artifact contains eight. Selecting a subset would modify or complete the protocol after issuance."

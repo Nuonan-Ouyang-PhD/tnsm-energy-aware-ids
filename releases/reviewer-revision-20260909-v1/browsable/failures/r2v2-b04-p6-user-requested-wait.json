@@ -1,0 +1,18 @@
+{
+  "status": "INVALID_PRESTART_ATTEMPT_RETAINED",
+  "attempt_id": "r2v2-b04-p6-Static-LightLR-idle",
+  "campaign": "R2",
+  "block": 4,
+  "position": 6,
+  "method": "Static-LightLR",
+  "stage": "idle",
+  "failure_class": "PRESTART_EXTERNAL_LOAD_WAIT",
+  "reason": "User requested a 30-minute wait while an unrelated Zeek build completed; the coordinator was interrupted before the start barrier",
+  "power_samples_retained": 0,
+  "start_sent": false,
+  "formal_statistics": false,
+  "scientific_outcome_produced": false,
+  "automatic_retry": false,
+  "replacement_run_id": "r2v2-b04-p6-Static-LightLR-resume1-idle",
+  "raw_attempt_directory_retained": "r2_variable_load/r2v2-b04-p6-Static-LightLR-idle"
+}

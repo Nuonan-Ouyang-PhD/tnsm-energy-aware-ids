@@ -1,0 +1,12 @@
+{
+  "id": "ConfidenceCascade_0p3_0p7",
+  "base_model": "LightLR",
+  "deferred_model": "MedRF",
+  "defer_when": {
+    "score_lower_inclusive": 0.3,
+    "score_upper_inclusive": 0.7
+  },
+  "final_score": "MedRF score for deferred rows; LightLR score otherwise",
+  "labels_available_to_decision": false,
+  "frozen_before_physical_execution": true
+}

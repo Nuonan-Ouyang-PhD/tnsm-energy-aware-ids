@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "read_only_checks": [
+    {
+      "path": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - 文章重构/TNSM_ADAPTIVE_SCHEDULER_20260907_V1.zip",
+      "sha256": "cc40aa48f2cabdbc7112823c57b89fbdfa571590a501a7985aeac338e13e040f",
+      "size_bytes": 93360624,
+      "zip_crc": "PASS",
+      "entries": 625
+    },
+    {
+      "path": "/Volumes/RESEARCH_DATA/10_PROJECTS/COMPLETE_RESEARCH_BY_SOURCE_PATH/Documents/ChatGPT/TNSM - 文章重构/TNSM_P0_P1_STRENGTHENING_20260908_V1.zip",
+      "sha256": "d4e1e96960f1279c79445c744a02be1033e288dad27f440b87753934a3f4b108",
+      "size_bytes": 141322551,
+      "zip_crc": "PASS",
+      "entries": 1918
+    },
+    {
+      "path": "/Users/nuonanouyang/Downloads/TNSM_REVIEWER_REQUESTED_REVISION_CODEX_TASK_20260908.zip",
+      "sha256": "2708c0a4d80f0bcde15390a03f2428cec6c781e628e536dfb76ff524755a7172",
+      "size_bytes": 12502,
+      "zip_crc": "PASS",
+      "entries": 12
+    }
+  ]
+}

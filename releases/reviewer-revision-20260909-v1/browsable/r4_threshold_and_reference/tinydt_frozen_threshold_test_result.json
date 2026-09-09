@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "analysis_label": "post-hoc revision analysis; does not replace threshold=0.5 primary result",
+  "threshold": 0.6467505097389221,
+  "threshold_lock_sha256": "ae3d831f3ca1511554e3b69a4a0b7b61d8b2e06689be18370b37e1098e122987",
+  "test_cache": "tnsm_experiments_v1/results/ton_iot/test_predictions.npz",
+  "test_cache_sha256": "533af761c775427369ea24d603e29e888da734230fb436e8f9404d1ef5d0db98",
+  "metrics": {
+    "tn": 16817,
+    "fp": 312,
+    "fn": 21,
+    "tp": 5340,
+    "f1": 0.9697630073549441,
+    "recall": 0.996082820369334,
+    "fpr": 0.01821472356821764,
+    "balanced_accuracy": 0.9889340484005582
+  },
+  "auroc": 0.990559626383811,
+  "average_precision": 0.9518796174812332,
+  "test_applications": 1
+}
