@@ -1,0 +1,51 @@
+\documentclass[journal]{IEEEtran}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,booktabs,array,tabularx,url,graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\newcommand{\FPR}{\operatorname{FPR}}
+\newcommand{\BA}{\operatorname{BA}}
+\newcommand{\ind}{\mathbf{1}}
+\newcommand{\ton}{TON-IoT}
+\newcommand{\cic}{CICIoT2023}
+\newcommand{\nb}{N-BaIoT}
+\hyphenation{data-set data-sets pre-pro-cess-ing}
+\makeatletter
+\newcommand{\tableinput}[1]{\@@input #1.tex }
+\makeatother
+\input{tables/dynamic_numbers}
+\begin{document}
+\title{When Learned IDS Model Selection Collapses to a Static Choice:\\A Measurement Study at the Edge}
+\author{Nuonan~Ouyang,
+        Adrian~Shatte,
+        Zhigang~Lu,
+        Chao~Chen,~\IEEEmembership{Member,~IEEE,}
+        and~Wei~Xiang,~\IEEEmembership{Senior Member,~IEEE}%
+\thanks{(\textit{Corresponding author: Nuonan Ouyang.})}%
+\thanks{N. Ouyang and A. Shatte are with the College of Science and Engineering, Division of Research, James Cook University, Bebegu Yumba Campus, Building 17, Douglas, Townsville, QLD, Australia (e-mail: nuonan.ouyang@my.jcu.edu.au; adrian.shatte@jcu.edu.au; ORCID: 0009-0004-7124-8940; 0000-0002-6225-9697).}%
+\thanks{Z. Lu is with the School of Computer, Data and Mathematical Sciences, Western Sydney University, Penrith (Kingswood) Campus, Kingswood, NSW, Australia (e-mail: z.lu@westernsydney.edu.au; ORCID: 0000-0001-5102-6217).}%
+\thanks{C. Chen is with the College of Business and Law, RMIT University, Melbourne, VIC 3000, Australia (e-mail: chao.chen@rmit.edu.au; ORCID: 0000-0003-1355-3870).}%
+\thanks{W. Xiang is with the Australian Centre for AI in Medical Innovation and the Cisco-La Trobe Centre for AI and Internet of Things, La Trobe University, Melbourne, VIC, Australia (e-mail: w.xiang@latrobe.edu.au; ORCID: 0000-0002-0608-065X).}%
+}
+\markboth{IEEE Transactions on Network and Service Management,~Vol.~XX, No.~XX, Month~Year}%
+{Ouyang \MakeLowercase{\textit{et al.}}: When Learned IDS Model Selection Collapses to a Static Choice}
+\maketitle
+\begin{abstract}
+Learned model selection can appear to save energy when it merely fixes a cheaper detector. On one Raspberry Pi 4B, primary Tabular-Q uses 13.1 J less than Static-MedRF over 500 s (1.08\%; 26.1 mW), but missed-positive presentations rise from 57.8 to 565.9 per 50,000-row replay and the policy selects LightLR throughout. A matched Static-LightLR control resolves no directional Tabular-Q energy difference. We derive a pairwise non-degeneracy test showing that the executed reward scaling requires a 0.7967 balanced-accuracy advantage for MedRF to outrank LightLR before held-out evaluation. Under a prospectively frozen 50/100/4000 rows/s $\times$ 0.10/0.50/0.90 factorial, DeadlineGuard switches between MedRF and LightLR, uses 43.7 J less than Static-MedRF (2.98\%; 95\% paired CI 41.4--46.0 J), and eliminates 512/5,000 deadline misses at a 1.373-pp F1 cost. Frozen DQN remains LightLR, whereas Tabular-Q falls to TinyDT (67.76\% FPR). The results separate detector choice, conditional adaptation, reward specification, and off-support controller behavior in edge IDS orchestration.
+\end{abstract}
+\begin{IEEEkeywords}
+Intrusion detection, IoT, edge resource management, model selection, reinforcement learning, energy measurement, reproducibility.
+\end{IEEEkeywords}
+\input{sections/01_introduction}
+\input{sections/02_background}
+\input{sections/03_data}
+\input{sections/04_methods}
+\input{sections/05_evaluation}
+\input{sections/06_results}
+\input{sections/07_reviewer_revision}
+\input{sections/10_discussion}
+\input{sections/08_limitations}
+\input{sections/09_boundary}
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+\end{document}

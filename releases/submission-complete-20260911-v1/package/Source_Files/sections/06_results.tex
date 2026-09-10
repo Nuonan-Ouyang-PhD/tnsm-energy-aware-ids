@@ -1,0 +1,23 @@
+\section{Completed Static Results}
+\subsection{TON-IoT Detection Operating Points}
+Table~\ref{tab:classification} shows the four \ton{} operating points used by the physical study. TinyDT has recall 0.9976 but F1 0.4792 and FPR 67.78\%; LightLR, MedRF, and HeavyMLP have F1 0.9620--0.9746 and FPR 1.35--1.52\%. Full confusion counts, plus \cic{}/\nb{} detector and overlap audits, are retained in the supplement rather than used to imply cross-dataset dynamic-power generality.
+
+\begin{table}[t]
+\centering\small
+\caption{TON-IoT held-out detection at threshold 0.5. BA denotes balanced accuracy; FPR is a percentage.}
+\label{tab:classification}
+\setlength{\tabcolsep}{4.2pt}
+\begin{tabular}{lrrrr}\toprule
+Model & F1 & Recall & BA & FPR (\%)\\\midrule
+\tableinput{tables/ton_classification_rows}
+\bottomrule\end{tabular}
+\end{table}
+
+For attack prevalence $p$, recall $r$, and FPR $f$,
+\begin{equation}\label{eq:prevalence}
+ F1=\frac{2pr}{p(1+r)+(1-p)f},
+\end{equation}
+so high attack prevalence can coexist with high F1 and poor normal-class behavior. Static replay and encoded-overlap diagnostics are supplementary and do not change the fixed split, model, or primary threshold.
+
+\subsection{Static Physical Resource Measurements}
+Across fifteen static segments, idle averages 2.335 W and active means span 2.347 W (LightLR) to 2.397 W (MedRF). MedRF's paired increment is 61.6 mW [32.1,91.0]; TinyDT and LightLR intervals cross zero. No accepted workload window records undervoltage or throttling. Full segment statistics are supplementary; labels such as ``Tiny'' or ``Heavy'' are not used as empirical cost ranks.

@@ -1,0 +1,4 @@
+\section{Dataset-Native Data Preparation}
+The main systems study uses \ton{}. Its frozen pipeline retains 32 native features and admits no feature into a cross-dataset core. The \ton{} split groups unordered IP pairs, fits imputation/scaling/categorical encoding on training data only, and uses training seed 11. Source-row identifiers and raw-field fingerprints are cross-partition disjoint; the independent encoded-float32 audit finds zero \ton{} train--test vector matches. Exact counts, lineage, and split membership are supplementary.
+
+The same ledger also records dataset-native \cic{} and \nb{} pipelines (39 and 115 native features), but these are supplementary detector/data audits only. Their coverage and encoded-overlap limitations are retained rather than used to imply cross-dataset dynamic-power generality~\cite{CICSource}.

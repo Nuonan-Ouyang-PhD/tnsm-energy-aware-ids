@@ -43,6 +43,45 @@ equivalence, or statistical significance from these files alone.
 - `releases/reviewer-revision-20260909-v1/`: complete reviewer-revision evidence archive plus browsable registries, factual summaries, stop/failure records, and validators.
 - `releases/materialization-20260906-v2/`: materialization request, executor review chain, rebind, failure preservation, and successful run evidence.
 - `releases/feature-protocol-freeze-20260905-v1/`: final feature-protocol freeze evidence.
+- `releases/submission-complete-20260911-v1/`: the latest submission bundle, extracted LaTeX source, PDFs, dataset links, and reproduction notes.
+
+## Datasets and downloads
+
+The experiments use three dataset-native pipelines:
+
+- **TON-IoT** (UNSW Canberra) is the primary dynamic Raspberry Pi/KM003C study and uses 32 native features. Download from the [official UNSW dataset page](https://research.unsw.edu.au/projects/toniot-datasets).
+- **CICIoT2023** (Canadian Institute for Cybersecurity, University of New Brunswick) is used for supplementary classification/replay analysis with 39 native features. Download from the [official CICIoT2023 page](https://www.unb.ca/cic/datasets/iotdataset-2023.html).
+- **N-BaIoT** (UCI Machine Learning Repository, Dataset 442) is used for supplementary classification/replay analysis with 115 native features. Download from the [official UCI record](https://archive.ics.uci.edu/dataset/442/detection+of+iot+botnet+attacks+n+baiot).
+
+The repository intentionally does not commit raw datasets, generated materializations,
+or large physical traces. Place downloaded files only in the ignored paths documented
+by the relevant request/inventory files, preserve the original filenames, and run the
+read-only preflight before any derived work.
+
+## Reproduce the software and paper artifacts
+
+```bash
+python3 -m venv .venv
+. .venv/bin/activate
+pip install -e .
+make test
+```
+
+For the frozen dataset checks and deterministic pipelines:
+
+```bash
+make snapshot
+make preflight
+PYTHONPATH=src python3 experiments/classification_static_v1/classification_campaign.py --help
+PYTHONPATH=src python3 experiments/classification_static_v1/static_replay.py --help
+PYTHONPATH=src python3 -m unittest discover -s experiments/adaptive_scheduler_v1/scheduler -v
+```
+
+Read each stage plan and `experiments/reviewer_revision_v1/protocol/00_READ_FIRST.md`
+before running a campaign. The default checks never start physical experiments.
+The latest manuscript/source bundle is documented in
+`releases/submission-complete-20260911-v1/README.md`; its archive SHA-256 is
+`5e731e5cb330c12c74b23107152f87099b0ba1c419bf9384e47b7645d0871a64`.
 
 ## Reconstructing large archives
 

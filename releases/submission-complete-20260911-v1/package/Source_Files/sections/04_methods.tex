@@ -1,0 +1,51 @@
+\section{Frozen Detectors and Causal Scheduling}
+\subsection{Detector Pool}
+Each dataset has four separately fitted configurations: depth-6 TinyDT; L2 LightLR; 25-tree, depth-10 MedRF; and a 64/32/16 HeavyMLP. All use threshold 0.5 and training seed 11. Names do not assert a resource ranking. During \ton{} physical experiments all models remain resident; an action selects one model for the next batch without loading, fitting, or updating it.
+
+\subsection{Decision Information and State Encoding}
+Before window $t$, the controller constructs
+\begin{equation}
+ s_t=(\widetilde T_t,h_{t-1},q_t,\lambda_{t-1},a_{t-1}).
+\end{equation}
+The kernel temperature is smoothed as $\widetilde T_t=0.9\widetilde T_{t-1}+0.1T_t$, initialized at $T_0$. The threat observation $h_{t-1}$ is the arithmetic mean attack probability from the single detector selected in the preceding window; it is not the preceding ground-truth attack fraction. Queue utilization is bounded to $[0,1]$, and the preceding arrival count is divided by 100 and bounded to $[0,2]$. Initial threat, arrival ratio, and preceding action are 0.5, 1, and TinyDT.
+
+Each of the first four state variables has three bins. Their two boundaries are $(45,70)$ degrees Celsius, $(1/3,0.7)$ for threat, $(1/3,2/3)$ for queue utilization, and $(0.9,1.1)$ for arrival ratio. Including four previous actions gives $3^4\times4=324$ states. Boundary equality enters the higher bin. The flat index is row-major in this listed order, with previous action changing fastest.
+
+The executed order is state, committed/logged action, selected-model inference, outcome log, then lagged-state update. Ground truth, cell identity, and unselected current-window outputs are unavailable online. Original software traces use 35$^\circ$C, zero queue, and 100 arrivals/window; the variable-load experiment varies causal arrival count and prevalence without revealing factorial-cell identity.
+
+\subsection{Reward and Cost Provenance}
+The unchanged per-window training reward is
+\begin{equation}\label{eq:reward}
+ r_t=0.5B_t-0.2\overline P_t-0.2\overline L_t-0.1\overline H_t,
+\end{equation}
+where $B_t$ is balanced accuracy over classes present in the window. All evaluated phase windows contain both classes. With $[x]_0^1=\min(1,\max(0,x))$, the normalization is
+\begin{align}
+ \overline P_t&=\left[\frac{P_t-2.347219336}{0.049806200}\right]_0^1,\\
+ \overline L_t&=\left[\frac{L_t-1.2979595}{29.6547998}\right]_0^1,\\
+ \overline H_t&=\left[\frac{\max(0,T_t^{\rm post}-\widetilde T_t)}{1\,{}^\circ\mathrm C}\right]_0^1.
+\end{align}
+$P_t$ and $L_t$ are frozen \ton{} paced-profile lookups, not contemporaneous training measurements. Their means are 2.353132/1.297960, 2.347219/1.544420, 2.397026/30.952759, and 2.366688/4.417836 W/ms for TinyDT, LightLR, MedRF, and HeavyMLP. No fitted thermal response or switching-energy penalty is used.
+
+\subsection{Pre-deployment Pairwise Non-degeneracy Check}
+The scalar objective can be screened before policy evaluation. For two actions $a,b$, let $D_a(s)$ denote the detection term and let $C_a=\sum_j w_j\bar C_{j,a}$ collect normalized resource penalties that are fixed on the declared support (as in the executed training profiles at neutral thermal cost). Then
+\begin{equation}
+ U_a(s)-U_b(s)=w_D\Delta D_{ab}(s)-\Delta C_{ab},\qquad
+ \tau_{ab}=\frac{\Delta C_{ab}}{w_D}.
+\end{equation}
+A strict pairwise preference reversal is possible on support $\mathcal S$ iff
+\begin{equation}\label{eq:nondeg}
+ \min_{s\in\mathcal S}\Delta D_{ab}(s)<\tau_{ab}<\max_{s\in\mathcal S}\Delta D_{ab}(s).
+\end{equation}
+If $\tau_{ab}$ lies outside this attainable interval, no optimizer can make the pair exchange rank under the frozen scalar utility on that support. For MedRF versus LightLR, the declared min--max scaling gives $\tau=0.7967$: an almost 80-percentage-point balanced-accuracy advantage would be required to offset the frozen nonthermal resource penalty. This threshold is determined only by the declared weights and resource profiles and can therefore be inspected before held-out evaluation; whether reversal is attainable is then checked against calibration/validation support rather than test outcomes. Candidate-pool min--max denominators make this exchange rate change whenever pool membership changes. For deployment, external denominators such as idle-relative power budgets, latency SLOs, or thermal headroom preserve a physically interpretable exchange rate. The proof and numerical decomposition are supplementary.
+
+\subsection{Policies and Offline Selection}
+CFSM is a fixed heuristic initialized to TinyDT. At a smoothed temperature of at least 70 degrees it steps down one model rank, bypassing cooldown. Otherwise it holds for two complete windows after a switch; when no cooldown remains, threat below 0.7 steps down one rank and threat at least 0.7 steps up one rank. Boundary actions hold. Queue and load are logged but not used by CFSM. This fixed ordering is evaluated as implemented, not asserted to be optimal.
+
+Tabular-Q uses zero initialization, learning rate 0.1, discount 0.9, and the update
+\begin{equation}
+ \begin{aligned}
+ Q(s_t,a_t)&\leftarrow Q(s_t,a_t)+0.1\delta_t,\\
+ \delta_t&=r_t+0.9\max_aQ(s_{t+1},a)-Q(s_t,a_t),
+\end{aligned}
+\end{equation}
+with zero terminal bootstrap~\cite{Watkins1992}. DQN uses one-hot state, two 64-unit ReLU layers, Adam 0.001, replay 10,000, batch 32, and a target copy every 250 updates~\cite{Mnih2015}. Both train for 1,000 episodes with epsilon 1 to 0.01. Checkpoints are selected every 25 episodes on five validation traces; test execution freezes the policy and performs no update. Full training, tie rules, seeds, and later multi-seed/sensitivity results appear in the supplement.

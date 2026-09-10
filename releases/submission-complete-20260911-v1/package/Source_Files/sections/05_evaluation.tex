@@ -1,0 +1,38 @@
+\section{Completed Evaluation and Measurement Methods}
+\subsection{Classification and Static Evidence}
+The held-out classification evaluation uses the frozen threshold and reports attack-class F1, recall, balanced accuracy, false-positive rate, and the full confusion counts. In particular,
+\begin{align}
+ \FPR &= \frac{FP}{TN+FP},\\
+ \BA &= \tfrac12\left(\frac{TP}{TP+FN}+\frac{TN}{TN+FP}\right),\\
+ F1 &= \frac{2TP}{2TP+FP+FN}.
+\end{align}
+Counts are pooled over the declared evaluation unit before metrics are calculated. The supplement retains 50 static traces and 200 model--trace evaluations. These reuse fixed held-out pools and do not constitute fresh attacks, classifier retraining, or physical repeats.
+
+\subsection{Pi Prediction Consistency and Inference Timing}
+Pi parity checks cover 12 dataset--model combinations and 10,000 encoded rows each with zero threshold-label disagreements. Tight-loop timing reports 100-row inference after warm-up and excludes encoding, transport, queueing, and controller cost.
+
+\subsection{Static Whole-Device Power}
+The physical reference uses one Pi 4B 8 GB and inline POWER-Z KM003C. Fifteen valid 1,800-second segments comprise three repeats of instrumented idle and four \ton{} detectors, all resident, at 100 preencoded rows/s. This is resource characterization, not another detection test.
+
+The meter records nominally 1 Hz boundary samples, including raw ADC replies, signed current, voltage, and monotonic request/receive times. Under the recorded connector orientation, consumed power is calculated as $P_i=V_i(-I_i)$. Using the observed sampling times $\tau_i$, input energy is approximated by
+\begin{equation}
+ E=\sum_{i=1}^{n-1}\frac{P_i+P_{i+1}}{2}(\tau_{i+1}-\tau_i),
+ \qquad \bar P=\frac{E}{\tau_n-\tau_1}.
+\end{equation}
+No missing sample is filled. This is 1-Hz load-side USB energy, not calibrated wall-side measurement or a subsecond waveform.
+
+\subsection{Statistical Units and Interval Reporting}
+For an outcome $z$ observed over $n$ declared repetitions, the two-sided interval is
+\begin{equation}\label{eq:tci}
+ \bar z \pm t_{0.975,n-1}\frac{s_z}{\sqrt n},
+\end{equation}
+using the sample SD~\cite{NISTMean}. Physical scheduler inference uses ten paired blocks, never rows, windows, or meter frames. Raw energy is primary. Drift sensitivity subtracts each run's preceding idle power; it is reported separately rather than substituted for raw measurement. Exact $2^{10}$ sign-flip tests are secondary diagnostics.
+
+\subsection{Physical Campaigns}
+The primary campaign contains ten matched 500-second blocks of Static-MedRF, CFSM, Tabular-Q, and DQN. matched-control subsequently adds ten blocks with the missing Static-LightLR control; scheduler-overhead isolates state-to-action timing; multi-seed--hyperparameter sensitivity test seeds, reward/state variants, and Tabular-Q $\alpha/\gamma$. They do not replace the frozen primary policy.
+
+A fixed-rate confidence-cascade control uses ten new matched blocks at 100 rows/s with Static-LightLR, a fixed confidence cascade, frozen Tabular-Q, and Static-MedRF. The cascade first runs LightLR and escalates a row to MedRF iff LightLR attack probability is in the fixed band $[0.3,0.7]$.
+
+A variable-load campaign uses ten blocks and six methods over 500 seconds. Each run visits the nine predeclared 50-second cells $\{50,100,4000\}$ rows/s $\times\{0.10,0.50,0.90\}$ attack prevalence exactly once, followed by 50 seconds at 100/0.10. DeadlineGuard uses only current causal arrival count: MedRF is chosen when $\lceil N/100\rceil L_{95}^{\rm RF}\le1$ s, otherwise LightLR. The threshold and workload were frozen from previously measured latency. Completion timestamps define a one-second service deadline; queue, states, actions, fallbacks, and misses are retained.
+
+controller-only power arm predeclared controller-only physical power over four ``original observed-support states.'' The frozen artifact contains eight such states and no rule uniquely identifies four; under the stop rule controller-only power arm is \texttt{NOT\_EXECUTED}. TinyDT threshold diagnostic chooses a TinyDT threshold on validation by maximum balanced accuracy (highest-threshold tie break), hashes it, and applies it once to test. This diagnostic never replaces threshold 0.5.
