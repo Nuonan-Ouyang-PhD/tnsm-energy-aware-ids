@@ -122,3 +122,32 @@ make test
 
 The full final validator report is available at
 `releases/p0-p1-strengthening-20260908-v1/browsable/analysis/FINAL_VALIDATOR_REPORT.json`.
+
+## Hardware, data, and algorithms at a glance
+
+The primary deployment platform is a Raspberry Pi 4B (8 GB) with active cooling;
+the cross-device comparison uses a Raspberry Pi 3B+. Physical input-side power is
+measured inline with a POWER-Z KM003C (serial 075356). The final evidence also
+records CPU temperature, frequency, throttling, undervoltage, controller timing,
+switching, and end-to-end latency.
+
+The main detector benchmark is UNSW-NB15 (official train/test split). TON-IoT,
+CICIoT2023, and N-BaIoT are retained for the supplementary pipelines described
+above. Raw datasets are not redistributed here; download them from their official
+sources and preserve the documented hashes.
+
+The four frozen detector actions are FISVDD, LUCID, TinyDL, and OI-SVDD+AS-ELM.
+Scheduling baselines are Static-Light, Round-Robin, Safe-Greedy, Threshold, and
+Unshielded-Q. FSSQL-R applies a calibrated latency/thermal feasible-set guard and
+masked tabular Q-learning. Guard parameters are device-specific; Q evaluation uses
+epsilon=0 with no replay or Q updates. The empirical claims are intentionally
+bounded: shielding is not asserted universally necessary, Q-learning benefit is
+device-/regime-dependent, and KM003C measurements do not establish a universal
+energy saving.
+
+For a reproducible software-only run, create the environment, install the pinned
+dependencies, run `make test`, then follow the stage-specific `00_READ_FIRST.md`
+and protocol files. Physical campaigns require the named Raspberry Pi hardware,
+active cooling, network access, and KM003C capture; never substitute CPU or
+temperature proxies for physical energy. Every accepted campaign has a manifest,
+SHA-256 hashes, run-level raw evidence, and explicit invalid-attempt provenance.
