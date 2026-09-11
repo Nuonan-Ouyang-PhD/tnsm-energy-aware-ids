@@ -1,16 +1,20 @@
 # TNSM submission-complete package (2026-09-11)
 
-This release mirrors the user-supplied `TNSM_Submission_Complete.zip`.
+This release is the refreshed merged submission bundle based on the verified
+eight-page manuscript baseline. The main PDF was freshly compiled from the
+included LaTeX source after restoring the DeadlineGuard, DQN block-diagnostic,
+cascade-window, and Tabular-Q support analyses.
 
-SHA-256 of the supplied archive:
+SHA-256 of the refreshed archive:
 
 ```text
-5e731e5cb330c12c74b23107152f87099b0ba1c419bf9384e47b7645d0871a64
+419b834d9e523123075a049491ef16092dcdf73b7301e78d25888b1b47fe88fd
 ```
 
-The archive contains the manuscript PDF, supplementary material, response to
-reviewers, cover letter, and the complete LaTeX source tree. It does not contain
-the raw datasets or the large physical-evidence archives.
+The archive contains the refreshed 8-page manuscript PDF, 26-page supplement,
+response to reviewers, cover letter, complete LaTeX source tree, offline
+threshold diagnostics, and the final validation report. It does not contain the
+raw datasets or the large physical-evidence archives.
 
 ## Datasets used
 
@@ -84,3 +88,14 @@ then verify the archive's `MANIFEST_SHA256.txt`.
 The PDFs in this release are for reading and submission. For byte-level
 reproduction, use the source tree and the corresponding evidence archive rather
 than retyping values from the PDFs.
+
+## Fresh-build integrity
+
+The latest `.tex` source modification predates the delivered manuscript PDF.
+The main PDF contains the restored `0.7967` non-degeneracy threshold, the
+`43.714 J` DeadlineGuard comparison, `512/5,000` deadline count, `314/324`
+support map, `66.76%` cascade-window statistic, all-detector threshold table,
+CFSM occupancy, and the explicitly non-measured DQN timing sensitivity bound.
+The archive contains 84 files, passes ZIP CRC, and includes the source manifest
+at `Source_Files/MANIFEST_SHA256.txt` plus the validation report at
+`Source_Files/FINAL_VALIDATION_REPORT.json`.

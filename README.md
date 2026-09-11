@@ -25,6 +25,7 @@ classification/static baselines, Raspberry Pi power measurements, the evidence-l
 | Reviewer R2 frozen variable-load factorial | 60/60 valid physical runs |
 | Reviewer R3 controller-only power | Not executed; predeclared state-set ambiguity recorded |
 | Reviewer R4 TinyDT/reference diagnostics | R4A complete; R4B not executed because no stable reference load was available |
+| Merged submission manuscript | 8-page freshly compiled main PDF; source/PDF timestamp check passed |
 
 The repository reports evidence and factual summaries. It does not infer superiority,
 equivalence, or statistical significance from these files alone.
@@ -80,8 +81,9 @@ PYTHONPATH=src python3 -m unittest discover -s experiments/adaptive_scheduler_v1
 Read each stage plan and `experiments/reviewer_revision_v1/protocol/00_READ_FIRST.md`
 before running a campaign. The default checks never start physical experiments.
 The latest manuscript/source bundle is documented in
-`releases/submission-complete-20260911-v1/README.md`; its archive SHA-256 is
-`5e731e5cb330c12c74b23107152f87099b0ba1c419bf9384e47b7645d0871a64`.
+`releases/submission-complete-20260911-v1/README.md`; its refreshed archive
+SHA-256 is
+`419b834d9e523123075a049491ef16092dcdf73b7301e78d25888b1b47fe88fd`.
 
 ## Reconstructing large archives
 

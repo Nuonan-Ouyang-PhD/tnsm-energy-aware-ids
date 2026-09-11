@@ -27,7 +27,11 @@ The strongest paired comparison is DeadlineGuard against Static-MedRF. DeadlineG
 
 The frozen learned policies do not provide useful load adaptation. DQN remains LightLR in all 5,000 windows and reproduces its detection. Tabular-Q reaches new load-related states and selects TinyDT in every window through the frozen tabular default, yielding F1 0.7434 with FPR 67.76\%. Here ``fallback'' is registry terminology, not an exception branch. On unseen zero-initialized rows, \texttt{np.argmax} returns the first maximum and the configured action order places TinyDT first. Thus the variable-load failure is the hardware realization of the off-support tie behavior already visible in the 314/324-state TinyDT greedy map.
 
+The fixed heuristic provides a switching contrast rather than a no-op baseline. CFSM averages 9.8 switches per run, but spends 74.20\% of windows on TinyDT and only 22.26\% on HeavyMLP (LightLR 2.28\%, MedRF 1.26\%). Its switching changes detector identity without reaching a reliable security operating point; the low F1 is not evidence that CFSM simply selected one static model.
+
 Variable-load raw energy is heterogeneous across methods, so Table~\ref{tab:r2} now reports run SDs and selected paired contrasts are separated in Table~\ref{tab:r2pairs}. For DQN versus Static-LightLR, all ten raw block differences are positive (median +5.72 J; exact sign-flip $p=0.00195$), but one Block~4 excursion is +392.0 J and inflates the SD of differences to 122.2 J, giving a Student-$t$ interval of $[-43.2,131.7]$ J. That run coincides with a 3.919-W preceding idle and a 49.2$^\circ$C maximum temperature, unlike the other DQN blocks; idle-adjusted power does not resolve a DQN--LightLR difference. We therefore report a consistent raw direction but an unstable magnitude and make no controller-power attribution because the controller-only power arm was not executed.
+
+For scale only, the isolated DQN state-to-action timing is 1.5669~ms. Five thousand decisions therefore amount to 7.8345~s of controller CPU time. If an external device-power increment were hypothetically 0.2, 0.5, or 1.0~W, the corresponding upper-bound contributions would be 1.57, 3.92, and 7.83~J, respectively. These are sensitivity calculations, not measurements: no controller-power increment was measured and none is used to attribute the physical DQN premium.
 
 DeadlineGuard uses +7.550 J [5.033,10.068] and +14.160 adjusted mW [0.374,27.947] relative to Static-LightLR. Static-MedRF uses +51.264 J [49.537,52.991] and +98.609 adjusted mW [79.296,117.922] relative to LightLR. Cascade improves F1 by 1.384 pp but its raw +31.262 J interval crosses zero; the idle-adjusted +98.843 mW interval [77.885,119.802] does not. Raw and preceding-idle-adjusted endpoints are retained separately because they answer different questions.
 
@@ -81,3 +85,17 @@ Result & $\tau$ & TN & FP & FN & TP & F1 & Rec. & FPR & BA\\\midrule
 \tableinput{tables/r4_threshold_rows}
 \bottomrule\end{tabular}}
 \end{table}
+
+The same validation-only procedure was also applied offline to the other frozen TON-IoT detector scores. Table~\ref{tab:allthreshold} shows the resulting test diagnostics; no detector was retrained and no physical campaign was changed. TinyDT is the clear F1/FPR outlier: its validation-selected threshold changes test F1 by +49.05 points, whereas the other detectors change by at most 0.29 points. This separates calibration sensitivity from the sparse-state and deterministic-tie mechanism.
+
+\begin{table*}[t]
+\centering
+\footnotesize
+\caption{Offline validation-selected threshold diagnostic for every frozen TON-IoT detector. The physical campaigns remain fixed at $\tau=0.5$.}
+\label{tab:allthreshold}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrrrr}\toprule
+Model & $\tau=0.5$ F1 & $\tau=0.5$ FPR (\%) & $\tau^\star$ & $\tau^\star$ F1 & $\tau^\star$ FPR (\%) & $\Delta$F1 (pp) & Validation BA\\\midrule
+\tableinput{tables/all_detector_threshold_rows}
+\bottomrule\end{tabular}
+\end{table*}
