@@ -25,7 +25,7 @@ classification/static baselines, Raspberry Pi power measurements, the evidence-l
 | Reviewer R2 frozen variable-load factorial | 60/60 valid physical runs |
 | Reviewer R3 controller-only power | Not executed; predeclared state-set ambiguity recorded |
 | Reviewer R4 TinyDT/reference diagnostics | R4A complete; R4B not executed because no stable reference load was available |
-| Merged submission manuscript | 8-page freshly compiled main PDF; source/PDF timestamp check passed |
+| Final submission manuscript | 10-page freshly compiled main PDF; complete source and manifest verified |
 
 The repository reports evidence and factual summaries. It does not infer superiority,
 equivalence, or statistical significance from these files alone.
@@ -44,7 +44,8 @@ equivalence, or statistical significance from these files alone.
 - `releases/reviewer-revision-20260909-v1/`: complete reviewer-revision evidence archive plus browsable registries, factual summaries, stop/failure records, and validators.
 - `releases/materialization-20260906-v2/`: materialization request, executor review chain, rebind, failure preservation, and successful run evidence.
 - `releases/feature-protocol-freeze-20260905-v1/`: final feature-protocol freeze evidence.
-- `releases/submission-complete-20260911-v1/`: the latest submission bundle, extracted LaTeX source, PDFs, dataset links, and reproduction notes.
+- `releases/submission-final/`: the current final submission ZIP, its complete extracted LaTeX source/PDFs, checksums, and reproduction notes.
+- `releases/submission-complete-20260911-v1/`: preserved prior merged submission bundle.
 
 ## Datasets and downloads
 
@@ -80,10 +81,9 @@ PYTHONPATH=src python3 -m unittest discover -s experiments/adaptive_scheduler_v1
 
 Read each stage plan and `experiments/reviewer_revision_v1/protocol/00_READ_FIRST.md`
 before running a campaign. The default checks never start physical experiments.
-The latest manuscript/source bundle is documented in
-`releases/submission-complete-20260911-v1/README.md`; its refreshed archive
-SHA-256 is
-`419b834d9e523123075a049491ef16092dcdf73b7301e78d25888b1b47fe88fd`.
+The current manuscript/source bundle is documented in
+`releases/submission-final/README.md`; its archive SHA-256 is
+`354b0f4e0573f2ee791a6d667cd8f0b7126b69984e78533128b5ecdea8450db4`.
 
 ## Reconstructing large archives
 
@@ -106,7 +106,7 @@ content-level verification.
 
 ## Evidence boundaries
 
-- The physical power measurements apply to the recorded Raspberry Pi 4B and KM003C setup.
+- The physical power measurements apply to the recorded Raspberry Pi 4B and POWER-Z KM003C (HW 2.4, FW 2.0.6) setup.
 - TON-IoT power measurements are not claimed as measured costs for CICIoT2023 or N-BaIoT.
 - Invalid and interrupted attempts remain preserved and are excluded according to their registries.
 - Test traces are descriptive after policy freeze and were not used for training or checkpoint selection.
@@ -122,32 +122,3 @@ make test
 
 The full final validator report is available at
 `releases/p0-p1-strengthening-20260908-v1/browsable/analysis/FINAL_VALIDATOR_REPORT.json`.
-
-## Hardware, data, and algorithms at a glance
-
-The primary deployment platform is a Raspberry Pi 4B (8 GB) with active cooling;
-the cross-device comparison uses a Raspberry Pi 3B+. Physical input-side power is
-measured inline with a POWER-Z KM003C (serial 075356). The final evidence also
-records CPU temperature, frequency, throttling, undervoltage, controller timing,
-switching, and end-to-end latency.
-
-The main detector benchmark is UNSW-NB15 (official train/test split). TON-IoT,
-CICIoT2023, and N-BaIoT are retained for the supplementary pipelines described
-above. Raw datasets are not redistributed here; download them from their official
-sources and preserve the documented hashes.
-
-The four frozen detector actions are FISVDD, LUCID, TinyDL, and OI-SVDD+AS-ELM.
-Scheduling baselines are Static-Light, Round-Robin, Safe-Greedy, Threshold, and
-Unshielded-Q. FSSQL-R applies a calibrated latency/thermal feasible-set guard and
-masked tabular Q-learning. Guard parameters are device-specific; Q evaluation uses
-epsilon=0 with no replay or Q updates. The empirical claims are intentionally
-bounded: shielding is not asserted universally necessary, Q-learning benefit is
-device-/regime-dependent, and KM003C measurements do not establish a universal
-energy saving.
-
-For a reproducible software-only run, create the environment, install the pinned
-dependencies, run `make test`, then follow the stage-specific `00_READ_FIRST.md`
-and protocol files. Physical campaigns require the named Raspberry Pi hardware,
-active cooling, network access, and KM003C capture; never substitute CPU or
-temperature proxies for physical energy. Every accepted campaign has a manifest,
-SHA-256 hashes, run-level raw evidence, and explicit invalid-attempt provenance.

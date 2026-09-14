@@ -1,0 +1,232 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{parskip}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{amsmath,amssymb}
+\newenvironment{qbox}
+    {\par\vspace{4pt}\noindent\begin{minipage}{\linewidth}\rule{\linewidth}{0.4pt}\par\noindent\textbf{Prior reviewer comment}\par\noindent}
+    {\par\rule{\linewidth}{0.4pt}\end{minipage}\par\vspace{4pt}}
+\begin{document}
+
+\begin{center}
+\textbf{\large Response to the Editor and Prior Reviewers}\\
+\vspace{2pt}
+Prior manuscript ID: TNSM-2026-10776\\
+Prior title: \emph{Energy-Aware Intrusion Detection System with Q-learning-Based Dynamic Scheduler on Lightweight IoT Devices}\\
+Rebuilt title: \emph{When Learned IDS Model Selection Collapses to a Static Choice: A Measurement Study at the Edge}\\
+\vspace{4pt}
+Nuonan Ouyang, Adrian Shatte, Zhigang Lu, Chao Chen, Wei Xiang\\
+13 September 2026
+\end{center}
+
+\vspace{4pt}
+\section*{Reconstruction summary}
+This response accompanies a new manuscript submission following the 30 May 2026 decision on prior manuscript TNSM-2026-10776, which invited a new manuscript that fully considers the prior reviews.
+
+We did not restore or tune the legacy numerical story. Instead, we rebuilt the dataset lineage, detector pipeline, scheduler implementation, and physical evidence, and we now retain results even when they weaken the original claim. The methodological novelty is deliberately separated from algorithmic novelty: we do not claim a new RL update rule. The contribution is a three-layer service-management method---an analytic reward-feasibility test, an attribution protocol that distinguishes model choice from adaptation, and a prospectively frozen physical instantiation with explicit SLO and off-support checks. Beyond addressing every prior comment, the rebuilt paper offers three positive, transferable contributions absent from the prior submission:
+\begin{itemize}
+    \item A pairwise \emph{non-degeneracy theorem} (Theorem~1, Sec.~V-D) that certifies before deployment whether a declared reward permits any state to reverse the preferred action, together with a validation-only audit in Supplementary Algorithm~S1.
+    \item A \emph{five-instrument evaluation protocol} (Sec.~VI) that separates detector choice from adaptive value, and a six-item practitioner decision checklist consolidating it in Sec.~IX-G.
+    \item A \emph{positive service-management result} under prospectively frozen variable load: the causal DeadlineGuard rule cuts energy by 43.714~J per run against Static-MedRF (2.98\%; 95\% CI 41.418--46.010~J) and eliminates all 512/5{,}000 deadline misses at a 1.373-pp F1 cost (Sec.~VIII-B).
+\end{itemize}
+The unfavorable outcomes for the learned policies (both collapse to LightLR on observed support; frozen Tabular-Q defaults to TinyDT off-support with 67.76\% FPR) are retained because they anchor the reward-audit and off-support-safety arguments.
+
+\begin{center}
+\small
+\begin{tabular}{p{3.6cm}p{6.8cm}p{4.2cm}}\toprule
+\textbf{Concern} & \textbf{Final rebuilt evidence} & \textbf{Status / boundary}\\\midrule
+RL formulation & Explicit five-field causal state, 324-state encoding, reward normalization, frozen Q/DQN configurations & Closed descriptively\\
+Non-degeneracy check & Theorem~1 and Corollary~1; proof, audit, and $\tau_{ab}$ matrix in Supplement & New theoretical contribution\\
+Relevant static control & Ten matched P1A blocks with Static-LightLR, Q, DQN, Static-MedRF & Closed as attribution\\
+Physical statistics & Ten paired blocks, Student-$t$ CIs, exact sign-flip robustness, raw energy reconstruction & Closed for declared effects\\
+Decision overhead & Corrected 240-unit P1B replacement with raw timing arrays and telemetry & Closed for state-to-action timing\\
+Policy variability & 10 new Q seeds + 10 new DQN seeds & Closed on held-out support\\
+Sensitivity & 85 P1D + 35 P1E valid policies & Closed as post-hoc sensitivity\\
+Fixed confidence cascade & R1: 40 runs, 10 paired blocks, band $[0.3, 0.7]$ & Closed prospectively for R1\\
+Variable load and deadlines & R2: 60 runs, 10 paired blocks, fixed $3\times3$ factorial; DeadlineGuard positive result & Closed prospectively for R2\\
+Controller-only power & R3 stopped before measurement: four-state subset ambiguous & Explicit \texttt{NOT\_EXECUTED} boundary\\
+TinyDT calibration & R4 validation-selected threshold applied once to test & Post-hoc diagnostic; primary unchanged\\
+Executed-source provenance & 6/6 historical source bytes recovered and hash-matched & Closed\\
+Generalization & One Pi; TON-only dynamic energy & Boundary stated\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Associate Editor}
+
+\begin{qbox}
+The manuscript addresses a relevant IoT IDS scheduling problem with practical implementation. However, significant concerns remain regarding methodological novelty, RL formulation, baseline comparisons, statistical validation, scalability, reproducibility, and experimental rigor. Substantial technical revision and stronger evaluation are required before the work can be reconsidered.
+\end{qbox}
+
+\textbf{Author response.} We agree. Tabular Q-learning is not presented as a methodological advance. The paper's positive contributions are (i) the pairwise non-degeneracy theorem in Sec.~V-D that converts reward specification into a checkable pre-deployment audit, (ii) the evaluation protocol in Sec.~VI that separates detector operating-point choice from conditional adaptation, and (iii) the R2 DeadlineGuard positive service-management result in Sec.~VIII-B. Where R2 shows the frozen learned policies fail to realize useful adaptation, we retain that outcome. R3's unresolved predeclared state subset is reported as a stop (Sec.~VIII-C) rather than being selected after the fact.
+
+\textbf{Location / evidence.} Introduction; Section V (methods and non-degeneracy framework); Section VI (evaluation protocol); Sections VII--VIII (results); Section IX (discussion, including practitioner checklist); Section X (limitations); Supplementary Tables S14--S22.
+
+\section*{Reviewer 1}
+
+\begin{qbox}
+The manuscript tackles a relevant IoT scheduling problem with a practical prototype; however, the current contribution is largely engineering-oriented, with limited methodological novelty and insufficient validation against state-of-the-art approaches.
+\end{qbox}
+
+\textbf{Author response.} The rebuilt paper adds a formal theoretical contribution (Theorem~1) and a portable evaluation framework, so the claim is measurement-grounded service-management methodology rather than an engineering artifact alone. The novelty is the composition of a pre-deployment reward audit with matched-static attribution, prospectively frozen service stress, and off-support safety reporting; it is not a claim that Tabular-Q or DQN is new. The same four-detector pool is evaluated with a rule controller, Tabular-Q, and DQN; physical whole-device effects use matched blocks; P1A adds the static detector actually realized by the learned policies; P1B isolates state-to-action overhead; and P1C--P1E test whether the realized policy persists across new training seeds and predeclared reward/state/hyperparameter perturbations. The negative empirical result is retained.
+
+\textbf{Location / evidence.} Introduction; Sec.~V-D (Theorem 1 and Corollary 1); Supplementary Theorem~S1 and Algorithm~S1; Sec.~VI (evaluation protocol); Sec.~VII-D--F (P1A--P1D results); Sec.~IX (discussion and practitioner checklist).
+
+\begin{qbox}
+Comment 1: The use of tabular Q-learning is too basic for this problem setting. More advanced approaches (e.g., DQN, PPO) are widely used for dynamic scheduling and would provide stronger generalization in larger state spaces.
+\end{qbox}
+
+\textbf{Author response.} We added DQN under the same 324-state/four-action interface. The reviewer cited DQN and PPO as examples of stronger methods; we selected DQN as the neural function-approximation comparator while keeping the state, action set, reward, and checkpoint protocol directly comparable with Tabular-Q. We did not add PPO simply to multiply RL families after observing the outcome: the key question is whether stronger function approximation changes the realized schedule under the same objective and state support. It does not in the primary campaign. The primary Q and DQN policies both select LightLR in all formal windows, and P1C shows the same held-out LightLR behavior for all ten new seeds per algorithm. The prospectively frozen variable-load campaign then tests the stronger generalization question under new load-related states: DQN still remains LightLR, whereas Tabular-Q enters unvisited table rows and defaults to TinyDT. P1A further shows that both learned methods reproduce Static-LightLR detection exactly. The corrected P1B benchmark measures mean state-to-action time of 10.8~$\mu$s for Tabular-Q and 1.567~ms for DQN on observed support. We therefore retain Tabular-Q as a transparent low-overhead baseline and DQN as the requested stronger DRL comparator, not as claims that either algorithm is universally preferable.
+
+\textbf{Location / evidence.} Sec.~V-E (Policies); Sec.~VII-E (P1B overhead); Sec.~VII-F (P1C robustness); Sec.~IX.
+
+\begin{qbox}
+Comment 2: The state representation is not formally defined. For example, it is unclear whether network load, IDS alerts, and queue lengths are jointly encoded, or treated independently, which affects policy optimality.
+\end{qbox}
+
+\textbf{Author response.} The state is now explicit: $s_t=(\widetilde T_t, h_{t-1}, q_t, \lambda_{t-1}, a_{t-1})$. The first four variables use three bins each and previous action has four values, giving $3^4\times 4=324$ states. Threat is the previous selected detector's mean attack probability, not ground truth. Current-window labels, phase identifiers, and unselected detector outputs are excluded before action commitment. The physical learned-policy runs reach only four unique state indices because temperature, queue, and fixed scheduled arrival/load remain in one bin each. P1D additionally removes each state component in turn; all thirty state-ablation policies remain single-action LightLR on held-out support.
+
+\textbf{Location / evidence.} Sec.~III-B and Sec.~V-B (state encoding); Sec.~VII-F (P1D); Sec.~IX-D.
+
+\begin{qbox}
+Comment 3: The reward function is heuristic and lacks theoretical grounding. For instance, combining latency reduction and IDS accuracy without normalization may bias the agent toward one objective.
+\end{qbox}
+
+\textbf{Author response.} The executed reward and every normalization constant are now reported (Sec.~V-C), and we add a pre-deployment pairwise non-degeneracy criterion rather than treating the collapse only as a post-hoc diagnostic. Theorem 1 (Sec.~V-D) states that strict preference reversal on support $\mathcal S$ is possible if and only if the implied exchange threshold $\tau_{ab}=\Delta C_{ab}/w_D$ lies strictly between the minimum and maximum attainable detection-term difference $\Delta D_{ab}(s)$. Under the executed min--max scaling, MedRF requires a 0.7967 balanced-accuracy advantage over LightLR---an almost 80-percentage-point exchange rate determined solely by the declared weights and resource profiles. Corollary 1 makes attainability immediately checkable when detection scores are bounded. Supplementary Algorithm~S1 operationalizes the audit at freeze time, and Supplementary Theorem~S1 retains the complete proof. We also explain why candidate-pool extrema make the exchange rate depend on pool membership and recommend external power/SLO/thermal budgets as normalization references (Sec.~IX-B). P1D retains the empirical sensitivity evidence.
+
+\textbf{Location / evidence.} Sec.~V-C (Reward and Cost Provenance); Sec.~V-D (Theorem 1 and Corollary 1); Supplementary Theorem~S1 and Algorithm~S1; Sec.~IX-B; Supplementary Table S17.
+
+\begin{qbox}
+Comment 4: The evaluation lacks strong baselines. A meaningful comparison should include at least one DRL-based scheduler and one optimization-based method (e.g., MILP or heuristic scheduling).
+\end{qbox}
+
+\textbf{Author response.} The requested two baseline classes are now explicit: DQN is the DRL-based scheduler, while CFSM is the heuristic scheduling baseline; the later DeadlineGuard provides a second causal heuristic under changing load, and the ConfidenceCascade provides a non-RL conditional computation baseline. The primary physical matrix contains Static-MedRF, CFSM, Tabular-Q, and DQN. Once the learned policies were observed to select LightLR throughout, we added the more relevant missing static control as P1A: a new ten-block matched physical campaign including Static-LightLR. That control changes the interpretation: Tabular-Q versus Static-LightLR has +0.455~J with CI $[-1.861, 2.772]$~J and identical detection, while DQN has +4.525~J $[2.693, 6.357]$~J. We do not call the label-informed reference a full-horizon oracle or claim that P1A was predeclared before the primary result.
+
+\textbf{Location / evidence.} Sec.~V-E; Sec.~VII-D (P1A); Sec.~VIII (R1/R2).
+
+\begin{qbox}
+Comment 5: The reported improvements are not statistically validated. For example, results should include mean $\pm$ standard deviation over multiple runs and significance testing (e.g., t-test).
+\end{qbox}
+
+\textbf{Author response.} We separate uncertainty sources instead of calling every seed or window an independent experiment. Classifier training uses one seed. The primary physical campaign uses ten trace-matched blocks and Student-$t$ intervals over the ten block differences; Tabular-Q versus Static-MedRF saves 13.068~J $[9.736, 16.400]$~J and DQN saves 6.227~J $[1.600, 10.853]$~J. P1A and R1/R2 likewise use ten matched physical blocks. R2 now reports run-level energy SD in the main table because variability is method-dependent. In particular, DQN-minus-Static-LightLR raw energy is positive in all ten R2 blocks (median +5.72~J; exact sign-flip $p=0.00195$), but one +392.0-J thermal/power excursion inflates the paired SD to 122.2~J and the Student-$t$ interval to $[-43.2, 131.7]$~J. We therefore retain both the planned $t$ interval and robust direction diagnostic rather than hiding the skew or claiming a precise premium. P1C adds ten new policy-training seeds per learned algorithm, but these are software policy robustness rather than physical replications.
+
+\textbf{Location / evidence.} Sec.~VI-D (statistical units); Sec.~VII-C (primary paired); Sec.~VII-D (P1A); Sec.~VIII-B (R2 paired contrasts); Supplementary paired diagnostics.
+
+\begin{qbox}
+Comment 6: Scalability is not demonstrated. The current setup (single device / limited nodes) does not reflect realistic IoT deployments with multiple edge nodes and dynamic traffic patterns.
+\end{qbox}
+
+\textbf{Author response.} We address the dynamic-traffic half of this concern with a new prospectively frozen physical campaign rather than leaving it as future work. R2 uses ten paired blocks and 60 valid runs over a fixed $3\times 3$ factorial of $50/100/4000$ rows/s and $0.10/0.50/0.90$ attack prevalence. This changes the service regime materially: Static-MedRF records 512/5{,}000 deadline misses, whereas the predeclared causal DeadlineGuard switches between MedRF and LightLR, records zero deadline misses, and uses 43.714~J less energy per run than Static-MedRF (95\% paired CI 41.418--46.010~J; 2.98\%) at a 1.373-pp F1 cost.
+
+The multi-node half remains deliberately outside the evidence boundary. All physical effects are conditional on one Pi 4B 8~GB and TON-IoT replay, and repeated blocks on one board do not estimate board-to-board or fleet variability. A defensible multi-node claim would require a separate design that models between-node hardware and workload variability rather than treating repeated runs on one board as independent nodes.
+
+\textbf{Location / evidence.} Sec.~VIII-B (R2); Sec.~X (Limitations); Conclusion.
+
+\begin{qbox}
+Comment 7: The convergence behavior of the RL model is not analyzed. Learning curves (reward vs episodes) are needed to show stability and training efficiency.
+\end{qbox}
+
+\textbf{Author response.} All 1{,}000-episode training curves and validation observations are retained (supplement), and the checkpoint rule is explicit. P1C adds ten new seeds per learned algorithm. Selected checkpoint episodes vary across those seeds, while every frozen policy still selects LightLR on the four-state held-out support. This is stronger evidence for realized-policy stability than a single reward curve, but it remains support-limited: global 324-state greedy maps vary, especially for DQN.
+
+\textbf{Location / evidence.} Sec.~V-E; Sec.~VII-F (P1C); Supplement: training figures and P1C global maps.
+
+\begin{qbox}
+Comment 8: The integration between IDS and scheduling is not deeply explored. For example, how IDS confidence scores influence scheduling decisions is not formally modeled.
+\end{qbox}
+
+\textbf{Author response.} The scheduler uses the previous selected detector's mean attack probability as lagged threat context. It is combined with smoothed temperature, queue/backlog, lagged arrival/load, and previous action before the next action is committed. This causal ordering avoids using the current selected detector's own output to choose itself. Ground truth is used only during offline training reward calculation and post-hoc evaluation; formal test deployment performs no policy update. The confidence-cascade baseline (R1) uses the LightLR posterior directly for escalation, providing a second, non-RL point of integration.
+
+\textbf{Location / evidence.} Sec.~V-B (state encoding); Sec.~V-C (reward); Sec.~VIII-A (R1 cascade).
+
+\begin{qbox}
+Comment 9: The computational overhead is not evaluated. In edge environments, latency and resource constraints are critical, yet training/inference costs are not reported.
+\end{qbox}
+
+\textbf{Author response.} We now separate offline training, classifier inference, and controller decision time. Both learned schedulers train offline for 1{,}000 episodes and are frozen before test deployment. The original training harness did not instrument training energy, but archived process-start and policy-creation timestamps indicate approximately 26.7~s for the Tabular-Q run and 256.9~s (4.28~min) for DQN on the Mac orchestration host; we report these provenance-derived wall-clock values as approximate, not as calibrated compute benchmarks. P1B then times only encoded state-to-action selection on the Pi. On observed states the mean decision time is 0.739~$\mu$s for Static-LightLR, 6.582~$\mu$s for CFSM, 10.796~$\mu$s for Tabular-Q, and 1.567~ms for DQN. DQN is much more expensive computationally than Tabular-Q but still uses only 0.157\% of the one-second decision interval. Classifier inference is reported separately.
+
+\textbf{Location / evidence.} Sec.~V-E; Sec.~VII-E (P1B); Supplementary Table S15; Sec.~X (Limitations).
+
+\section*{Reviewer 2}
+
+\begin{qbox}
+Comment 1: I'm not convinced the dynamic scheduler actually beats the simplest static option. Looking at Table V, static TinyDT matches the scheduler's F1 on TON-IoT and slightly beats it on CIC-IoT, while using less power and being faster on both. So what is the dynamic scheduler really buying us? I'd like to see a setting where the dynamic approach clearly wins over TinyDT, for example traffic that shifts over time, concept drift, or scenarios where the best static model changes. Otherwise the case for the added complexity is hard to make.
+\end{qbox}
+
+\textbf{Author response.} We agree with the concern and now answer it with a prospectively frozen variable-load campaign rather than a workload chosen after seeing the result. R2 contains ten paired blocks and six methods; every 500-second run visits $50/100/4000$ rows/s $\times$ $0.10/0.50/0.90$ attack prevalence exactly once, followed by a fixed recovery cell. A DeadlineGuard rule was frozen from pre-R2 MedRF latency.
+
+The dynamic controller that succeeds in this experiment is DeadlineGuard, not either learned policy. DQN remains LightLR in all 5{,}000 windows. Tabular-Q reaches new load-related states and selects TinyDT in all 5{,}000 windows, producing F1 0.7434 and FPR 67.76\%. In contrast, DeadlineGuard selects MedRF in 3{,}500 and LightLR in 1{,}500 windows and records zero deadline misses. Relative to Static-MedRF it uses 43.714~J less per run (95\% paired CI 41.418--46.010~J; 2.98\%), eliminates the 10.24-pp deadline-miss rate, and loses 1.373 F1 pp. All ten energy differences have the same direction (exact sign-flip $p=0.00195$). This is now the central positive R2 comparison. A separate R1 confidence cascade recovers MedRF-like F1 with 1.34\% row escalation, scoped to the 100-row implementation regime.
+
+\textbf{Location / evidence.} Introduction; Sec.~VIII-A (R1); Sec.~VIII-B (R2); Sec.~IX-A/-C (attribution and design principle); Supplementary Tables S19--S22.
+
+\begin{qbox}
+Comment 2: The reward weights are picked without a good explanation, and everything depends on them. Also, the cost indices are normalized so TinyDT = 1.0, which essentially bakes ``TinyDT is cheapest'' into the reward. Please include a sweep over different weight settings to show the conclusions hold up.
+\end{qbox}
+
+\textbf{Author response.} Beyond the requested sweep, we now provide the analytic tool that explains why any sweep in the same normalization family produces the same collapse: Theorem 1 shows that pairwise preference reversal on support $\mathcal S$ requires $\tau_{ab}\in(\min\Delta D_{ab},\max\Delta D_{ab})$. Under the executed candidate-range min--max scaling, $\tau_{\text{MedRF,LightLR}}=0.7967$, which exceeds the achievable balanced-accuracy gap by roughly $60\times$, so no state in the support can reverse the preferred action. P1D provides the requested sensitivity while preserving the original default policy. It contains 55 reward-weight runs and 30 Tabular-Q state-ablation runs. All 85 valid policies are single-action on held-out support. Eighty choose LightLR; the five detection-only Tabular-Q runs choose MedRF---the exception is exactly the one predicted by Theorem~1 when the resource penalty is removed.
+
+\textbf{Location / evidence.} Sec.~V-D (Theorem 1); Sec.~VII-F (P1D and Table V); Sec.~IX-B; Supplementary Table S17.
+
+\begin{qbox}
+Comment 3: Table III mixes things that shouldn't be compared directly. The IoT pool models and the UNSW-NB15 reference architectures sit in one table.
+\end{qbox}
+
+\textbf{Author response.} The rebuilt main classification table now contains only the four TON-IoT detector configurations used by the physical scheduling study (Table~II). CICIoT2023 and N-BaIoT detector/coverage audits remain in the supplement, where their dataset-native dimensions and split boundaries are explicit. We do not compare F1 across an unrelated UNSW-NB15 architecture table or claim a common cross-dataset power model.
+
+\textbf{Location / evidence.} Sec.~IV (Dataset-Native Data Preparation); Sec.~VII-A (Table II).
+
+\begin{qbox}
+Comment 4: The CFSM baseline can't be reproduced from what's written. The thresholds are described as ``fixed'' but the actual values aren't given.
+\end{qbox}
+
+\textbf{Author response.} The complete rule is now reported: TinyDT initialization; temperature step-down at smoothed 70~$^{\circ}$C; two complete cooldown windows after a switch; threat threshold 0.7; one-rank up/down movement with boundary holding. Queue/load are logged but not used by CFSM. The unfavorable primary CFSM result is retained without retuning. P1B additionally validates the corrected benchmark CFSM against the frozen semantics on 5{,}000 states with zero mismatches.
+
+\textbf{Location / evidence.} Sec.~V-E; Sec.~VII-E (P1B audit); reproducibility supplement.
+
+\section*{Reviewer 3}
+
+\begin{qbox}
+Comment 1: Table 2 shows the values for the Q-learning hyper parameters. The authors should include a discussion justifying the rationale/selection of these values.
+\end{qbox}
+
+\textbf{Author response.} The method now states zero initialization, $\alpha=0.1$, $\gamma=0.9$, linear epsilon decay from 1 to 0.01, 1{,}000 episodes, and the exact validation checkpoint rule. These are baseline choices for the compact discrete controller, not universal optima. P1E adds 35 valid Tabular-Q sensitivity runs over predeclared $\gamma\in\{0, 0.5, 0.9, 0.99\}$ and $\alpha\in\{0.05, 0.10, 0.20\}$ settings. All 35 select LightLR on held-out support; none is used to replace the primary configuration. Theorem 1 explains why: the collapse is a property of the reward normalization, not of the learning-rate/discount pair.
+
+\textbf{Location / evidence.} Sec.~V-E; Sec.~VII-F; Supplementary Table S18.
+
+\begin{qbox}
+Comment 2: A description/discussion on algorithm 1 seems to be missing from the paper. Including this will help the reader in understanding the proposed IDS scheduling algorithm.
+\end{qbox}
+
+\textbf{Author response.} Section~V-E now states the causal sequence explicitly: construct the pre-action state; select and commit one action; run only the selected resident detector; log prediction, inference timing, and telemetry; update lagged history; and, during offline training only, compute the labelled reward and update the learner. Formal test execution freezes the policy and skips the update step. The separate pre-deployment reward audit that operationalizes Theorem~1 is retained as Supplementary Algorithm~S1 together with the complete theorem proof, keeping the main method compact without omitting reproducible detail.
+
+\textbf{Location / evidence.} Sec.~V-E (causal scheduling sequence); Supplementary Theorem~S1 and Algorithm~S1; executed-source provenance supplement.
+
+\begin{qbox}
+Comment 3: The rationale for using Q learning to solve the IDS problem may be discussed.
+\end{qbox}
+
+\textbf{Author response.} We clarify that Q-learning does not perform intrusion detection. It selects among four pretrained detector operating points in a compact discrete controller. Its advantages are transparency and low state-to-action cost relative to a neural value approximator. The rebuilt result also shows the limitation of that rationale: under narrow observed state support and the retained scalar utility, the learned selector becomes static. The contribution is consequently the measurement of that boundary together with the analytic tool that predicts it, not an assertion that Q-learning is intrinsically preferable.
+
+\textbf{Location / evidence.} Introduction; Sec.~V-D; Sec.~IX-B/C.
+
+\begin{qbox}
+Comment 4: In table V, it is observed that the dynamic algorithm offers reduced power consumption versus static RF. This seems to be counter intuitive. The reasoning for this may be explained by the authors.
+\end{qbox}
+
+\textbf{Author response.} The legacy explanation based on frequent runtime mixing is not supported by the rebuilt campaign. The actual primary learned policies run LightLR throughout, whereas Static-MedRF runs MedRF throughout. P1A verifies this directly: Static-MedRF is +12.471~J $[10.611, 14.331]$~J relative to Static-LightLR, while Tabular-Q is only +0.455~J with an interval crossing zero. The lower primary energy versus RF is therefore primarily detector operating-point selection, not a mechanism that makes MedRF cheaper or evidence of repeated adaptive switching. Theorem 1 explains why this collapse is inevitable under the executed normalization: preference reversal on the support requires a balanced-accuracy advantage of 0.7967, which no observed state provides.
+
+\textbf{Location / evidence.} Sec.~VII-D (P1A); Sec.~IX-A/B; Conclusion.
+
+\section*{Reproducibility and protocol deviations}
+The archives preserve all known deviations rather than deleting them. P0 recovers 6/6 byte-exact historical executed files. P1A/P1B/P1D invalid attempts and authorized replacements remain linked, and P1C uses frozen checkpoints without reselection. The reviewer archive retains 40 R1 and 60 R2 valid formal runs plus all attempts. Frozen R1 source also preserves the confidence-cascade implementation: one LightLR batch call plus at most one MedRF deferred-sub-batch call per window, rather than one MedRF call per deferred row. R3 is explicitly \texttt{NOT\_EXECUTED\_}\allowbreak\texttt{PREDECLARED\_AMBIGUITY}; R4 is post-hoc and does not replace threshold 0.5. The reviewer ZIP has 1{,}912 entries, a 1{,}911-file manifest, passing CRC/final validation, no policy retraining, and no test-driven selection.
+
+\section*{Closing statement}
+The new manuscript replaces the earlier ``negative result'' framing with a positive framework whose central object is the pairwise non-degeneracy theorem and its associated evaluation protocol. Under that framing, (i) the collapse of the learned selectors is a \emph{predicted} consequence of the declared reward, not an artifact of insufficient training; (ii) the DeadlineGuard positive result under variable load is the study's headline service-management contribution; and (iii) the off-support TinyDT failure is a transferable safety principle for discrete controllers. Reporting all three, together with the R3 protocol stop and R4 calibration diagnostic, provides a more reproducible service-management contribution than the earlier dynamic-switching claim.
+
+\vspace{6pt}
+Corresponding author: Nuonan Ouyang, \href{mailto:nuonan.ouyang@my.jcu.edu.au}{nuonan.ouyang@my.jcu.edu.au}
+
+\end{document}

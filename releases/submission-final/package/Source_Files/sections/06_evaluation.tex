@@ -1,0 +1,34 @@
+\section{Evaluation Protocol and Measurement Instrumentation}
+\label{sec:eval}
+Our evaluation protocol is designed to separate detector choice from adaptive value along five instruments: (i) paired physical blocks across trace-matched detectors; (ii) matched-static-action attribution controls; (iii) prospectively frozen factorial workloads; (iv) separate raw and drift-adjusted power endpoints; and (v) full occupancy and off-support action reporting. This section describes each instrument together with the classification, timing, and power measurement pipelines that feed them.
+
+\subsection{Classification and Static Evidence}
+The held-out classification evaluation uses the frozen threshold 0.5 and reports attack-class F1, recall, balanced accuracy, false-positive rate, and the full confusion counts. In particular,
+\begin{align}
+    \FPR &= \frac{FP}{TN+FP},\qquad F1 = \frac{2TP}{2TP+FP+FN},\\
+    \BA &= \tfrac12\!\left(\tfrac{TP}{TP+FN}+\tfrac{TN}{TN+FP}\right).
+\end{align}
+Counts are pooled over the declared evaluation unit before metrics are calculated. The supplement retains 50 static traces and 200 model--trace evaluations; these reuse fixed held-out pools and do not constitute fresh attacks, classifier retraining, or physical repeats.
+
+\subsection{Pi Prediction Consistency and Inference Timing}
+Pi parity checks cover 12 dataset--model combinations and 10{,}000 encoded rows each with \emph{zero} threshold-label disagreements against the training-host outputs. Tight-loop timing reports 100-row inference after warm-up and excludes encoding, transport, queueing, and controller cost; these boundaries are re-stated wherever a timing figure is used.
+
+\subsection{Static Whole-Device Power}
+The physical reference uses one Raspberry Pi 4B 8~GB and an inline POWER-Z KM003C USB-C meter. Fifteen valid 1{,}800-second segments comprise three repeats of instrumented idle and four TON-IoT detectors, all resident, at 100 pre-encoded rows/s. This is resource characterization, not another detection test.
+
+The meter records nominally 1~Hz boundary samples, including raw ADC replies, signed current, voltage, and monotonic request/receive times. Under the recorded connector orientation, consumed power is $P_i=V_i(-I_i)$. Using the observed sampling times $\tau_i$, input energy is approximated by
+\begin{equation}\label{eq:trap}
+    E=\sum_{i=1}^{n-1}\frac{P_i+P_{i+1}}{2}(\tau_{i+1}-\tau_i),\qquad
+    \bar P = \frac{E}{\tau_n-\tau_1}.
+\end{equation}
+No missing sample is filled. This is 1-Hz load-side USB energy, not calibrated wall-side measurement or a subsecond waveform.
+
+\subsection{Statistical Units and Interval Reporting}
+For an outcome $z$ observed over $n$ declared repetitions, the two-sided Student-$t$ interval is
+\begin{equation}\label{eq:tci}
+    \bar z\pm t_{0.975,\,n-1}\,\frac{s_z}{\sqrt n},
+\end{equation}
+using the sample SD~\cite{NISTMean}. Physical scheduler inference uses \emph{ten paired blocks}, never rows, windows, or meter frames. Raw energy is primary. Drift sensitivity subtracts each run's immediately preceding idle power; it is reported separately rather than substituted for raw measurement. Exact $2^{10}$ sign-flip tests supply a non-parametric robustness diagnostic under sign-symmetry and exchangeability, and are reported alongside the classical interval when both directional stability and magnitude precision matter.
+
+\subsection{Physical Campaigns Overview}
+Six physical campaigns are executed. The \emph{primary} campaign contains ten matched 500-second blocks of Static-MedRF, CFSM, Tabular-Q, and DQN. \emph{P1A} adds ten matched blocks with Static-LightLR to enable the attribution comparison against the static action the learned policies realize. \emph{P1B} isolates state-to-action decision timing. \emph{P1C--P1E} test seed, reward/state, and Tabular-Q $\alpha/\gamma$ variations. \emph{R1} adds ten matched blocks at 100 rows/s comparing Static-LightLR, the confidence cascade, frozen Tabular-Q, and Static-MedRF. \emph{R2} adds ten matched blocks and six methods over a prospectively frozen $50/100/4000\text{ rows/s}\times 0.10/0.50/0.90$ prevalence factorial with a fixed one-second service deadline. Two additional protocols are recorded: \emph{R3} was predeclared for controller-only power measurement but stopped before execution because its four-state design condition became ambiguous once the frozen artifact was inspected; \emph{R4} is a post-hoc TinyDT threshold diagnostic conducted on validation only. R3 and R4 are reported in full because omitting either would misrepresent the executed evaluation surface.

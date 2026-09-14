@@ -1,0 +1,56 @@
+\documentclass[journal]{IEEEtran}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array,tabularx,url,graphicx,enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\newcommand{\FPR}{\operatorname{FPR}}
+\newcommand{\BA}{\operatorname{BA}}
+\newcommand{\ind}{\mathbf{1}}
+\newcommand{\ton}{TON-IoT}
+\newcommand{\cic}{CICIoT2023}
+\newcommand{\nb}{N-BaIoT}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\hyphenation{data-set data-sets pre-pro-cess-ing}
+\makeatletter
+\newcommand{\tableinput}[1]{\@@input #1.tex }
+\makeatother
+\input{tables/dynamic_numbers}
+\begin{document}
+\title{When Learned IDS Model Selection Collapses to a Static Choice:\\A Measurement Study at the Edge}
+\author{Nuonan~Ouyang,
+        Adrian~Shatte,
+        Zhigang~Lu,
+        Chao~Chen,~\IEEEmembership{Member,~IEEE,}
+        and~Wei~Xiang,~\IEEEmembership{Senior Member,~IEEE}%
+\thanks{(\textit{Corresponding author: Nuonan Ouyang.})}%
+\thanks{N. Ouyang and A. Shatte are with the College of Science and Engineering, Division of Research, James Cook University, Bebegu Yumba Campus, Building 17, Douglas, Townsville, QLD, Australia (e-mail: nuonan.ouyang@my.jcu.edu.au; adrian.shatte@jcu.edu.au; ORCID: 0009-0004-7124-8940; 0000-0002-6225-9697).}%
+\thanks{Z. Lu is with the School of Computer, Data and Mathematical Sciences, Western Sydney University, Penrith (Kingswood) Campus, Kingswood, NSW, Australia (e-mail: z.lu@westernsydney.edu.au; ORCID: 0000-0001-5102-6217).}%
+\thanks{C. Chen is with the College of Business and Law, RMIT University, Melbourne, VIC 3000, Australia (e-mail: chao.chen@rmit.edu.au; ORCID: 0000-0003-1355-3870).}%
+\thanks{W. Xiang is with the Australian Centre for AI in Medical Innovation and the Cisco-La Trobe Centre for AI and Internet of Things, La Trobe University, Melbourne, VIC, Australia (e-mail: w.xiang@latrobe.edu.au; ORCID: 0000-0002-0608-065X).}%
+}
+\markboth{IEEE Transactions on Network and Service Management,~Vol.~XX, No.~XX, Month~Year}%
+{Ouyang \MakeLowercase{\textit{et al.}}: When Learned IDS Model Selection Collapses to a Static Choice}
+\maketitle
+\begin{abstract}
+Runtime model selection is an attractive way to trade detection quality against energy and latency at the edge, yet published evaluations often compare a learned selector only against a more expensive static detector, conflating detector choice with adaptive value. We develop a framework and physical measurement study that separates these two effects. First, we derive a \emph{pairwise non-degeneracy criterion} that, given the declared reward, cost profile, and support region, decides before deployment whether any state can flip a preferred action; the criterion turns reward normalization from an unaudited hyperparameter into a pre-deployment screening test. Second, we specify an evaluation protocol built on trace-matched paired blocks, prospectively frozen factorial workloads, separated raw and drift-adjusted endpoints, and explicit off-support behavior reporting. Third, we execute the protocol on a Raspberry Pi 4B with four frozen TON-IoT detectors, tabular Q-learning, DQN, a fixed confidence cascade, and a causal DeadlineGuard rule. Under a $50/100/4000\text{ rows/s}\times 0.10/0.50/0.90$ prevalence factorial, DeadlineGuard cuts energy by 43.7~J per run against Static-MedRF (2.98\%; 95\% paired CI 41.4--46.0~J) and eliminates all 512/5,000 deadline misses at a 1.373-pp F1 cost, whereas both learned selectors realize a static schedule that the non-degeneracy criterion correctly predicts. When the workload shifts off the training support, Q-learning's deterministic tie rule promotes a TinyDT default with 67.76\% FPR, exposing a transferable safety risk in sparse discrete controllers. The framework and evidence together indicate when learned model selection adds adaptive value and when a simple causal rule or an audited static choice is preferable in edge intrusion detection service management.
+\end{abstract}
+\begin{IEEEkeywords}
+Intrusion detection, IoT, edge resource management, model selection, reinforcement learning, service management, energy measurement, reproducibility.
+\end{IEEEkeywords}
+\input{sections/01_introduction}
+\input{sections/02_background}
+\input{sections/03_system_model}
+\input{sections/04_data}
+\input{sections/05_methods}
+\input{sections/06_evaluation}
+\input{sections/07_static_results}
+\input{sections/08_dynamic_results}
+\input{sections/09_discussion}
+\input{sections/10_limitations}
+\input{sections/11_conclusion}
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+\end{document}

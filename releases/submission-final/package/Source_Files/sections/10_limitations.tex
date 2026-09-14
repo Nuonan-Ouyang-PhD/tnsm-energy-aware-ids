@@ -1,0 +1,7 @@
+\section{Limitations and Reproducibility Boundary}
+\label{sec:limits}
+Classifier results use one training seed, fixed dataset-native splits, and threshold 0.5; replay reuses held-out pools. Only TON-IoT receives dynamic physical testing. Ten paired blocks on one Raspberry Pi 4B 8~GB do not estimate board, meter, site, or fleet variability, and CICIoT2023/N-BaIoT are not dynamic-power evidence.
+
+The ChargerLAB POWER-Z KM003C (HW~2.4, FW~2.0.6) was not independently laboratory calibrated. Its nominal 1-Hz load-side USB measurements exclude AC conversion, packet capture, and feature encoding. Models remain resident, temperatures stay low, and the factorial is scheduled feature replay rather than live traffic. Pairing cannot remove ambient drift; R3 supplies no controller-only joule value; and R1 cascade cost is specific to 100-row windows.
+
+P1 controls and R4 are post-hoc to the primary campaign; R1/R2 are prospectively frozen only for their own execution. No equivalence margin was declared. Invalid attempts and authorized replacements remain archived. Manifests, CRC, source hashes, and leakage validators establish integrity, not external validity. The theorem assumes a linear utility with $w_D>0$ and support-fixed normalized costs; non-linear objectives, switching penalties, and load-dependent costs require support-conditioned extensions.

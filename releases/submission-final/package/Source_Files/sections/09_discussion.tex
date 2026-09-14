@@ -1,0 +1,21 @@
+\section{Discussion}
+\label{sec:discuss}
+\subsection{Attribution and Conditional Value}
+The primary 13.1-J Tabular-Q saving against Static-MedRF is only 26.1~mW over 500~s, while missed-positive presentations rise almost tenfold. P1A resolves no Tabular-Q difference against the matched Static-LightLR action, so this is detector choice rather than adaptation. R2 supplies the positive contrast: DeadlineGuard uses the causal arrival count to switch, removes Static-MedRF's 512 deadline misses, and saves 43.7~J at a 1.373-pp F1 cost. The confidence cascade reaches MedRF-like F1, but its 1.34\% deferred rows activate MedRF in 66.76\% of windows; call granularity, not row fraction alone, controls serving cost.
+
+\subsection{External-Budget Normalization Rule}
+Theorem~\ref{thm:nondeg} makes reward design a deployment contract. Candidate-range scaling yields $\tau_{\text{MedRF,LightLR}}=0.7967$, about $60\times$ the attainable balanced-accuracy gap, and therefore suppresses reversal by construction. A portable design replaces pool extrema with external denominators:
+\begin{align}
+\bar P_a&=\frac{P_a-P_{\rm idle}}{B_P}, &
+\bar L_a&=\frac{L_a}{\Delta_{\rm SLO}},\\
+\bar E_a&=\frac{E_a}{B_E}, &
+\bar H_a&=\frac{[T_a-T_{\rm safe}]_+}{B_T}.
+\end{align}
+where $B_P$, $\Delta_{\rm SLO}$, $B_E$, and $B_T$ are operator-set power, latency, energy, and thermal budgets. These denominators remain interpretable when the detector pool changes. The validation-only audit should be run before policy freeze; if no relevant pair can reverse, use an audited static schedule or redesign the pre-test contract.
+
+\subsection{Support, Safety, and Measurement}
+Frozen Tabular-Q maps 314/324 states to TinyDT because unseen zero-initialized rows tie and \texttt{np.argmax} selects action zero. R2 enters those new load states and raises FPR to 67.76\%; DQN remains LightLR, but seed-dependent global maps show that this is not validated off-support generalization. Deployments should therefore archive state coverage, full action maps, and the security quality of tied/default actions.
+
+Small whole-device effects also require paired blocks and joint raw/drift-adjusted reporting. In R2, DQN-minus-LightLR is positive in all ten raw blocks, yet one thermal/power excursion widens the interval across zero; neither that direction nor the adjustment supports a controller-power claim because R3 stopped before measurement. The practical checklist is concise: audit reward attainability; include the realized static action and simple causal controls; freeze a load/threat stress factorial; report confusion counts, deadlines, occupancy, and off-support defaults; retain both raw and adjusted power endpoints; and select detector thresholds on validation only.
+
+The portable contribution is this audit-and-attribution framework, not a universal numeric ranking. The 43.7-J DeadlineGuard saving, 66.76\% cascade activation, and controller timings are specific to the Pi 4B, resident pool, windowing regime, and meter chain used here.

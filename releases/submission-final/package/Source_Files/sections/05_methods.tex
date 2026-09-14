@@ -1,0 +1,68 @@
+\section{Detector Pool, Reward Specification, and Non-degeneracy Framework}
+\label{sec:methods}
+This section specifies the frozen detector artifacts, the reward specification used by both learned controllers, and the pre-deployment pairwise non-degeneracy screening test. The last of these is stated as a theorem so that it can be applied to future learned selectors without re-derivation.
+
+\subsection{Detector Pool}
+Each dataset has four separately fitted configurations: depth-6 TinyDT; L2-regularized LightLR; 25-tree, depth-10 MedRF; and a 64/32/16 HeavyMLP. All use threshold 0.5 and training seed 11. Detector names do not assert a resource ranking; the physical measurements determine the empirical order. During TON-IoT physical experiments all models remain resident, and an action selects one model for the next batch without loading, fitting, or updating it. This design deliberately isolates the effect of controller decisions from model instantiation cost so that any observed switching cost is attributable to inference itself, not to hot-swapping detectors.
+
+\subsection{Causal State Encoding}
+Before window $t$ the controller constructs $s_t$ per~\eqref{eq:state}. The kernel temperature is smoothed as $\widetilde T_t=0.9\widetilde T_{t-1}+0.1T_t$, initialized at $T_0$. The threat observation $h_{t-1}$ is the arithmetic mean attack probability from the single detector selected in the preceding window; it is \emph{not} the preceding ground-truth attack fraction. Queue utilization is bounded to $[0,1]$, and the preceding arrival count is divided by 100 and bounded to $[0,2]$. Initial values are $h_0=0.5$, $\lambda_0/100=1$, and $a_0=\text{TinyDT}$.
+
+Each of the first four state variables has three bins. Their two boundaries are $(45,70)$~$^{\circ}$C, $(1/3,0.7)$ for threat, $(1/3,2/3)$ for queue utilization, and $(0.9,1.1)$ for arrival ratio. Including four previous actions yields $3^4\times 4=324$ encoded states. Boundary equality enters the higher bin. The flat index is row-major in the listed order, with previous action changing fastest.
+
+The executed order within a window is: (i) state construction from causal telemetry and lagged context; (ii) action commitment and log; (iii) selected-detector inference; (iv) outcome log; and (v) lagged-state update for $t+1$. Ground truth, cell identity, and unselected current-window outputs are unavailable online. This information boundary is what enables preference-reversal analysis to be conducted purely on state features that the deployment can observe.
+
+\subsection{Reward and Cost Provenance}
+The unchanged per-window training reward is
+\begin{equation}\label{eq:reward}
+    r_t = 0.5\,B_t \;-\; 0.2\,\overline P_t \;-\; 0.2\,\overline L_t \;-\; 0.1\,\overline H_t,
+\end{equation}
+where $B_t$ is balanced accuracy over the classes present in the window. With $[x]_0^1=\min(1,\max(0,x))$, the normalization is
+\begin{align}
+    \overline P_t &= \left[\tfrac{P_t-2.347219336}{0.049806200}\right]_0^1, & \overline L_t &= \left[\tfrac{L_t-1.2979595}{29.6547998}\right]_0^1,\\
+    \overline H_t &= \left[\tfrac{\max(0,T_t^{\rm post}-\widetilde T_t)}{1\,^{\circ}\mathrm{C}}\right]_0^1.
+\end{align}
+$P_t$ and $L_t$ are frozen TON-IoT paced-profile lookups, not contemporaneous training measurements. Their means, listed as (power W, batch latency ms) for the four detectors, are 2.353132/1.297960 for TinyDT, 2.347219/1.544420 for LightLR, 2.397026/30.952759 for MedRF, and 2.366688/4.417836 for HeavyMLP. No fitted thermal response or switching-energy penalty is used, and consequently no thermal control action is claimed.
+
+\subsection{Pairwise Non-degeneracy Criterion}
+Reward normalization is often reported as a hyperparameter without evidence that it permits any state to reverse the preferred action. We now show that this question can be answered before deployment with only the declared weights, cost profile, and a support region.
+
+Consider two actions $a,b\in\mathcal M$. Decompose the scalar utility into a detection contribution and a normalized resource cost:
+\begin{equation}
+    U_a(s) = w_D\, D_a(s) - C_a,\qquad C_a=\sum_j w_j\,\overline C_{j,a},
+\end{equation}
+where $w_D=0.5$ in our specification and $\overline C_{j,a}$ collects the normalized resource penalties that are fixed on the declared support (as they are for the executed paced profiles at neutral thermal cost). Let $\Delta D_{ab}(s)=D_a(s)-D_b(s)$ and $\Delta C_{ab}=C_a-C_b$. Then
+\begin{equation}\label{eq:diff}
+    U_a(s)-U_b(s) = w_D\,\Delta D_{ab}(s) - \Delta C_{ab},\qquad
+    \tau_{ab}=\frac{\Delta C_{ab}}{w_D}.
+\end{equation}
+
+\begin{theorem}[Pairwise non-degeneracy]\label{thm:nondeg}
+Let $\mathcal S$ be a support region. Under the frozen scalar utility~\eqref{eq:diff}, a strict pairwise preference reversal between actions $a$ and $b$ exists on $\mathcal S$ if and only if
+\begin{equation}\label{eq:nondeg}
+    \min_{s\in\mathcal S}\Delta D_{ab}(s) < \tau_{ab} < \max_{s\in\mathcal S}\Delta D_{ab}(s).
+\end{equation}
+If \eqref{eq:nondeg} fails, every $s\in\mathcal S$ yields the same sign of $U_a(s)-U_b(s)$; consequently no policy that maximizes the frozen utility can prefer $a$ on one state and $b$ on another within $\mathcal S$.
+\end{theorem}
+
+\begin{corollary}[Attainability under bounded detection]\label{cor:bound}
+If $D_a(s),D_b(s)\in[0,1]$ for every $s\in\mathcal S$, then reversal is impossible whenever $|\tau_{ab}|\ge 1$; and reversal is guaranteed impossible whenever the attainable interval $[\min\Delta D_{ab},\max\Delta D_{ab}]$ does not straddle $\tau_{ab}$.
+\end{corollary}
+
+Because balanced accuracy lies in $[0,1]$, the corollary gives an immediate ceiling. Under the executed candidate-range scaling, the frozen nonthermal penalties imply $\tau_{\text{MedRF},\text{LightLR}}=0.7967$, while the attainable held-out balanced-accuracy gap is only 0.014. The audit therefore predicts that this pair cannot reverse on the declared support; the observed LightLR collapse is a consequence of the objective rather than evidence of failed optimization. Supplementary Theorem~S1 gives the proof, Supplementary Table~S11A gives the full pairwise matrix, and Supplementary Algorithm~S1 gives the validation-only reward audit. If reversal is unattainable, the engineer should use an audited static schedule or renormalize against an external deployment contract---for example idle-relative power, the latency SLO, an energy envelope, or thermal headroom---rather than against detector-pool extrema.
+
+\subsection{Policies}
+Four policies are evaluated in the physical study. \emph{Static-\{TinyDT, LightLR, MedRF, HeavyMLP\}} freeze a single detector. \emph{CFSM} is a fixed heuristic initialized to TinyDT; at a smoothed temperature of at least 70~$^{\circ}$C it steps down one model rank, bypassing cooldown; otherwise it holds for two windows after a switch and steps down/up one rank when threat crosses 0.7. Queue and load are logged but not used by CFSM. \emph{Tabular-Q} uses zero initialization, $\alpha=0.1$, $\gamma=0.9$, and the update
+\begin{equation}
+    \begin{aligned}
+        Q(s_t,a_t) &\leftarrow Q(s_t,a_t) + 0.1\,\delta_t,\\
+        \delta_t &= r_t + 0.9\max_a Q(s_{t+1},a) - Q(s_t,a_t),
+    \end{aligned}
+\end{equation}
+with zero terminal bootstrap~\cite{Watkins1992}. \emph{DQN} uses one-hot state, two 64-unit ReLU layers, Adam $10^{-3}$, replay 10{,}000, batch 32, and a target copy every 250 updates~\cite{Mnih2015}. Both learners train for 1{,}000 episodes with $\varepsilon$ linearly annealed from 1 to 0.01; checkpoints are selected every 25 episodes on five validation traces. Test execution freezes the policy and performs no update.
+
+Two prospectively frozen causal policies join the reviewer campaigns. \emph{ConfidenceCascade} first executes LightLR on the full 100-row batch and, when its posterior $p_{\text{LR}}$ falls in $[0.3,0.7]$, invokes MedRF once on the deferred sub-batch. \emph{DeadlineGuard} uses only the current causal arrival count $N$: it selects MedRF when the predicted MedRF cost $\lceil N/100\rceil L_{95}^{\text{RF}}\le 1$~s, otherwise LightLR. Both thresholds were frozen from pre-experiment latency data.
+
+Archived process-start and policy-creation timestamps indicate approximately 26.7~s for the Tabular-Q training run and 256.9~s for DQN; these are provenance-derived wall-clock intervals rather than calibrated compute benchmarks, and training energy was not instrumented. Deployment cost is measured separately in Section~\ref{sec:dynamicresults}.
+
+The runtime sequence is causal: observe telemetry and lagged context; encode $s_t$; commit and log $a_t$; run only the selected resident detector; log outcome and telemetry; then update the lagged state. Ground truth is used only after the outcome during offline training. Formal test deployment freezes the policy and omits the update.

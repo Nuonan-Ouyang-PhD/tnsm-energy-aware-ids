@@ -1,0 +1,13 @@
+\section{Compact System Model and Service Objectives}
+\label{sec:system}
+An edge node processes batches in decision windows $t=1,2,\ldots$ using a resident detector pool $\mathcal M=\{m_1,\ldots,m_K\}$. Before inference, a frozen controller commits one action $a_t=\pi(s_t)\in\mathcal M$ from the causal state
+\begin{equation}\label{eq:state}
+s_t=(\widetilde T_t,h_{t-1},q_t,\lambda_{t-1},a_{t-1}),
+\end{equation}
+where $\widetilde T_t$ is smoothed temperature, $h_{t-1}$ the preceding selected detector's mean posterior, $q_t$ queue utilization, $\lambda_{t-1}$ preceding arrival count, and $a_{t-1}$ preceding action. Ground truth, current outputs of unselected detectors, and factorial-cell identity are unavailable at decision time. Because all models remain resident, selection excludes fitting and model-loading cost.
+
+For each completed window we record attack-class F1, recall, and false-positive rate; completion latency is checked against deadline $\Delta_{\rm SLO}$; and resource cost is whole-device USB energy. In the physical study $\Delta_{\rm SLO}=1$~s and each run lasts 500~s. Training optimizes a scalar surrogate, but evaluation jointly reports security, timeliness, energy, action occupancy, and state support. Test policies are frozen and never updated online.
+
+The network-layer adversary may vary traffic prevalence and arrival rate but cannot alter the meter, controller memory, detector artifacts, or training pipeline. Adversarial-ML attacks and hardware tampering are outside scope. The operational risk considered here is induced entry into unvisited discrete states: deterministic ties can then expose an unaudited default action.
+
+We credit a selector with \emph{adaptive value} only when it realizes more than one action on deployment support, improves a service objective without a comparable regression, and survives a paired comparison with the static instance of its dominant realized action. Otherwise the measured difference is attributed to detector operating-point choice rather than conditional adaptation.

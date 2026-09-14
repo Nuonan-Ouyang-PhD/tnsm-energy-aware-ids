@@ -1,0 +1,49 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{parskip}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\begin{document}
+\thispagestyle{empty}
+
+\begin{flushright}
+College of Science and Engineering\\
+James Cook University, Australia\\
+\href{mailto:nuonan.ouyang@my.jcu.edu.au}{nuonan.ouyang@my.jcu.edu.au}\\
+13 September 2026
+\end{flushright}
+
+\vspace{4pt}
+Editor-in-Chief and Editorial Team\\
+IEEE Transactions on Network and Service Management
+
+\vspace{6pt}
+Dear Editor-in-Chief and Editorial Team,
+
+Please consider our new manuscript, ``When Learned IDS Model Selection Collapses to a Static Choice: A Measurement Study at the Edge,'' following the 30 May 2026 decision on prior manuscript TNSM-2026-10776 (``Energy-Aware Intrusion Detection System with Q-learning-Based Dynamic Scheduler on Lightweight IoT Devices''). The decision invited a new manuscript that fully considers the prior reviews; the accompanying response maps each prior comment to the rebuilt evidence and current manuscript.
+
+The submission offers three interlocking, portable contributions to network and service management, together with a physical measurement study that instantiates them at the edge.
+
+\textbf{(1) A pre-deployment reward-audit framework.} We prove that under a linear scalar utility with fixed detection weight, a strict pairwise action reversal on a support region exists if and only if the implied exchange threshold $\tau_{ab}=\Delta C_{ab}/w_D$ lies strictly between the attainable minimum and maximum of the detection-difference $\Delta D_{ab}(\cdot)$ (Theorem~1). Supplementary Algorithm~S1 turns the theorem into a validation-only audit that a deployment engineer can run at policy-freeze time using declared weights, measured cost profiles, and validation-support scores. Under the executed candidate-range normalization, the audit correctly predicts the LightLR collapse of both learned selectors before any test outcome is inspected---this is the paper's core theoretical contribution and is directly applicable to any TNSM study whose learned orchestrator concentrates on a single realized action.
+
+\textbf{(2) An evaluation protocol that separates detector choice from adaptive value.} Its five instruments---paired physical blocks, matched-static-action attribution, prospectively frozen factorial workloads, joint raw and drift-adjusted power endpoints, and full occupancy plus off-support action reporting---together isolate what a learned selector adds \emph{beyond} the schedule it realizes. We consolidate the protocol into a practitioner-facing six-item decision checklist in the Discussion, so the framework is usable by TNSM readers who are not measurement specialists.
+
+\textbf{(3) A positive service-management result via a simple causal rule.} Under a prospectively frozen $50/100/4000\text{ rows/s}\times 0.10/0.50/0.90$ factorial (R2), the causal DeadlineGuard rule cuts energy against Static-MedRF by 43.714~J per 500-second run (95\% paired CI 41.418--46.010~J; 2.98\%) and eliminates all 512/5,000 deadline misses at a 1.373-pp F1 cost. The finding supports a broader design principle: when the switch criterion is expressible from a causal telemetry channel, a simple threshold rule is often preferable to a learned selector on the same channel, both operationally and evaluatively. The finding sits naturally in TNSM's remit because it changes the practical guidance operators receive about learned versus rule-based orchestration under SLO stress.
+
+The manuscript also documents unfavorable outcomes for the learned policies: both realize a static LightLR schedule on the observed support, and when the R2 factorial pushes Tabular-Q off the training support, its zero-initialized ties promote a TinyDT default with 67.76\% FPR. These outcomes are retained because they anchor the safety principle that discrete controllers must audit their default action assignments, not only their occupancy on visited states.
+
+Relative to the prior submission, we rebuilt the data lineage, detector evaluation, scheduler implementation, and physical evidence, and added DQN as the stronger DRL comparator, explicit causal state/reward definitions, reward and state sensitivity, learning curves, matched physical statistics, isolated scheduler-overhead measurements, a validation-only TinyDT threshold diagnostic, and an expanded related-work discussion covering conditional cascades and inference-service management. Multi-node scalability remains explicitly outside the evidence boundary and is not claimed.
+
+All known failed or invalid attempts and authorized replacements remain archived, executed-source identities are hash-bound, and the evidence packages pass CRC, manifest, source-binding, and test-leakage checks. The reproducibility archive is intended for release under a DOI upon acceptance. We confirm that the submission is original, is not under consideration elsewhere, and is submitted with the approval of all authors.
+
+Thank you for your consideration.
+
+\vspace{18pt}
+Sincerely,
+
+\vspace{34pt}
+Nuonan Ouyang\\
+on behalf of all authors
+
+\end{document}
