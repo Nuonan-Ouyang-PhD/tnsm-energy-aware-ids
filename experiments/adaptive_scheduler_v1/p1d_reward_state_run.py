@@ -15,7 +15,12 @@ from scheduler.dqn import DQNPolicy
 from scheduler.isolation import Partition
 from scheduler.metrics import binary_metrics
 from scheduler.reward import RewardFunction
-from scheduler.state import ACTION_ORDER, EncodedState, StateEncoder as BaseEncoder
+from scheduler.state import (
+    ACTION_ORDER,
+    EncodedState,
+    OnlineStateTracker,
+    StateEncoder as BaseEncoder,
+)
 from scheduler.tabular_q import TabularQPolicy
 from scheduler.trace_io import load_npz_episode
 from scheduler.window_log import JsonlWindowLogger
@@ -156,20 +161,20 @@ def evaluate(policy, episodes, config, config_hash, run_id, partition, log_path)
             else episode.load_labels_posthoc(schedule_complete=True, policy_frozen=True)
         )
         labels_all.extend(labels.astype(int).tolist())
+        tracker = OnlineStateTracker(config)
         for window_index, (action, probabilities) in enumerate(
             zip(scheduled.actions, scheduled.selected_probabilities)
         ):
             row_slice = episode._slice(window_index)
             predictions_all.extend((probabilities >= 0.5).astype(int).tolist())
             action_counts[action.value] += 1
-            state = None
             # Reward is descriptive here and cannot influence the frozen policy.
+            state = tracker.begin_window(episode.pre_decision(window_index))
             outcome = episode.outcome_for_action(window_index, action)
-            pre_temperature = float(episode.temperatures[window_index])
             c = reward.calculate(
                 labels=labels[row_slice].tolist(),
                 attack_probabilities=probabilities.tolist(),
-                predecision_smoothed_temperature_c=pre_temperature,
+                predecision_smoothed_temperature_c=state.smoothed_temperature_c,
                 cost=outcome.cost,
                 prediction_threshold=float(config["actions"]["prediction_threshold"]),
             )
@@ -178,6 +183,12 @@ def evaluate(policy, episodes, config, config_hash, run_id, partition, log_path)
             components["latency"].append(c.latency)
             components["thermal"].append(c.positive_thermal_increment)
             components["reward"].append(c.scalar_reward)
+            tracker.complete_window(
+                window_index=window_index,
+                selected_action=action,
+                selected_attack_probabilities=probabilities.tolist(),
+                arrivals_in_window=int(episode.arrivals[window_index]),
+            )
         switches += scheduled.switches
     for line in log_path.read_text().splitlines():
         item = json.loads(line)
@@ -191,6 +202,11 @@ def evaluate(policy, episodes, config, config_hash, run_id, partition, log_path)
         "action_occupancy": {key: value / total for key, value in action_counts.items()},
         "unique_states": len(unique_states),
         "reward_components_mean": {key: float(np.mean(value)) for key, value in components.items()},
+        "thermal_component_provenance": (
+            "software traces reuse predecision temperature as an action-invariant "
+            "post-temperature proxy; frozen inputs use the constant 35C fallback, "
+            "so the executed thermal component is zero and is not an action-level cost"
+        ),
         "labels_used_only_after_frozen_schedule": partition is Partition.TEST,
     }
 

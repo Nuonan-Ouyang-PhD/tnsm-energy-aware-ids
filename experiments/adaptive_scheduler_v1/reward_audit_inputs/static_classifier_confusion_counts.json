@@ -1,0 +1,17 @@
+{
+  "purpose": "Tracked minimum input for reproducing the aggregate LightLR/MedRF balanced-accuracy gaps cited by the manuscript; these test counts do not enter the validation-only reward audit.",
+  "original_source_artifact": "tnsm_experiments_v1/results/ton_iot/classification_metrics.json",
+  "original_source_sha256": "375998f5d9a88d69948e4e2c3503ee21cea613ce708663482cab63aa7be7ae83",
+  "prediction_threshold": 0.5,
+  "confusion_matrix_layout": "[[true_negative,false_positive],[false_negative,true_positive]]",
+  "models": {
+    "LightLR": {
+      "validation_confusion_matrix": [[8166, 109], [119, 14448]],
+      "test_confusion_matrix": [[16897, 232], [178, 5183]]
+    },
+    "MedRF": {
+      "validation_confusion_matrix": [[8155, 120], [94, 14473]],
+      "test_confusion_matrix": [[16869, 260], [19, 5342]]
+    }
+  }
+}

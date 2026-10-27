@@ -95,7 +95,13 @@ class NpzTraceEpisode:
         )
 
     def outcome_for_action(self, window_index: int, action: str | Action) -> ActionOutcome:
-        """Reveal only the selected action's outcome after action commitment."""
+        """Reveal only the selected action's outcome after action commitment.
+
+        Compact software traces contain predecision telemetry only.  The value
+        below is therefore an action-invariant proxy, not a measured
+        post-inference temperature response.  It must not be interpreted as an
+        action-level thermal cost.
+        """
 
         selected = Action.parse(action)
         column = ACTION_ORDER.index(selected)
@@ -107,7 +113,10 @@ class NpzTraceEpisode:
             post_temperature_c=float(self.temperatures[window_index]),
             origin=CostOrigin.TON_STATIC_PROFILE_LOOKUP_PROXY,
             latency_origin="TON scheduled-static-profile mean of per-run medians",
-            temperature_origin=self.online_observation_origin,
+            temperature_origin=(
+                f"{self.online_observation_origin}; predecision proxy reused as "
+                "post_temperature_c; action-invariant and not a measured response"
+            ),
         )
         return ActionOutcome(
             action=selected,

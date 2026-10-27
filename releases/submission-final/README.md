@@ -8,7 +8,7 @@ The authoritative downloadable artifact is `TNSM_Submission_Final.zip`.
 Its SHA-256 is:
 
 ```text
-354b0f4e0573f2ee791a6d667cd8f0b7126b69984e78533128b5ecdea8450db4
+942a929951c5c21b2df70bd621c0726ee4aa0d3b035a840942653cadaedf2a92
 ```
 
 The `package/` directory is a byte-for-byte extraction of that archive so the
@@ -31,6 +31,14 @@ The compact system model, pairwise non-degeneracy theorem/corollary,
 external-budget/SLO normalization rule, focused related-work positioning,
 supplementary proof and reward-audit pseudocode, and strengthened methodology
 response are included without changing the frozen experimental results.
+
+The reward audit is now executable at
+`experiments/adaptive_scheduler_v1/reward_audit.py`, with deterministic,
+hash-bound outputs under `reward_audit_v1/`. It uses 2,500 validation windows
+and keeps the aggregate held-out test gap as a separately labelled post-hoc
+diagnostic. The manuscript also discloses that the software trace adapter's
+constant 35 C temperature proxy makes the executed thermal component zero and
+cannot provide action-level thermal attribution.
 
 ## Reproduction
 

@@ -77,13 +77,14 @@ make preflight
 PYTHONPATH=src python3 experiments/classification_static_v1/classification_campaign.py --help
 PYTHONPATH=src python3 experiments/classification_static_v1/static_replay.py --help
 PYTHONPATH=src python3 -m unittest discover -s experiments/adaptive_scheduler_v1/scheduler -v
+python3 experiments/adaptive_scheduler_v1/reward_audit.py --check
 ```
 
 Read each stage plan and `experiments/reviewer_revision_v1/protocol/00_READ_FIRST.md`
 before running a campaign. The default checks never start physical experiments.
 The current manuscript/source bundle is documented in
 `releases/submission-final/README.md`; its archive SHA-256 is
-`354b0f4e0573f2ee791a6d667cd8f0b7126b69984e78533128b5ecdea8450db4`.
+`942a929951c5c21b2df70bd621c0726ee4aa0d3b035a840942653cadaedf2a92`.
 
 ## Reconstructing large archives
 
@@ -110,6 +111,7 @@ content-level verification.
 - TON-IoT power measurements are not claimed as measured costs for CICIoT2023 or N-BaIoT.
 - Invalid and interrupted attempts remain preserved and are excluded according to their registries.
 - Test traces are descriptive after policy freeze and were not used for training or checkpoint selection.
+- The compact software-policy traces have no action-attributable post-action temperature. Their fixed 35 C fallback makes the executed thermal reward component zero; it is not evidence of thermal-aware adaptation.
 - Dataset splits, classifier thresholds, workloads, seeds, reward/state matrices, and gamma/alpha matrices remain frozen.
 - R1 and R2 are post-hoc physical robustness experiments over the already frozen test pool, not new unseen-test generalization evidence.
 - R3 and R4B stop records are part of the evidence: no missing protocol choice or unavailable reference load was improvised after observing results.

@@ -1,0 +1,36 @@
+{
+  "config_sha256": "59e184f6b0c7a8f6e47190dbd4e072857fe0d67d13cfea147c4579251063e618",
+  "medrf_minus_lightlr": {
+    "action_a": "MedRF",
+    "action_b": "LightLR",
+    "strict_reversal_attainable": false,
+    "tau_ab": 0.7966756095509868,
+    "validation_delta_ba_max": 0.10526315789473673,
+    "validation_delta_ba_min": -0.10526315789473684,
+    "validation_windows": 2500
+  },
+  "policy_input_manifest_sha256": "50f5733f16514b719fc6112ca61545064a6a9d191cc1f89e059226c6cd7ab947",
+  "prediction_threshold": 0.5,
+  "scope": "validation-only pairwise reward audit",
+  "static_classifier_aggregate_diagnostic": {
+    "input_snapshot": "reward_audit_inputs/static_classifier_confusion_counts.json",
+    "input_snapshot_sha256": "0184c0ad82a6cd031fa2729ce2a5f89f084474e5f9d6617c30243fc407999952",
+    "original_source_artifact": "tnsm_experiments_v1/results/ton_iot/classification_metrics.json",
+    "original_source_sha256": "375998f5d9a88d69948e4e2c3503ee21cea613ce708663482cab63aa7be7ae83",
+    "test_balanced_accuracy_gap_medrf_minus_lightlr": 0.01401199554792143,
+    "test_gap_role": "posthoc descriptive only; not used for validation audit",
+    "validation_balanced_accuracy_gap_medrf_minus_lightlr": 0.00019345136557269438
+  },
+  "status": "PASS",
+  "test_used_for_reward_audit": false,
+  "thermal_treatment": "excluded from action differences because compact software traces provide no action-attributable post-action temperature; frozen inputs use a constant 35C predecision proxy and the executed thermal component is zero",
+  "validation_trace_sha256": {
+    "validation_drift_401.npz": "0107b688f953ffc7c6e2ddba5118e5d47f72f51c951e9ff49984353ef0b88352",
+    "validation_drift_409.npz": "68281e67d5e2d7553540545388e7dc3d425911180f2f237405c2003aefc5310f",
+    "validation_drift_419.npz": "98ccee5e0eb2eb2fde96777a9afc473ae90ccee6a994fb49e03d39de30de5ab7",
+    "validation_drift_421.npz": "830b77354cd737e225503fc4f6f52218d7f4e161d5838899001c8cdce54a7bd4",
+    "validation_drift_431.npz": "7a0206e9be2ec6b3d8d25ec58fa6e372c6af852852a7f71a66e5e6d7cd45bb3e"
+  },
+  "validation_traces": 5,
+  "validation_windows": 2500
+}

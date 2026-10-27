@@ -268,7 +268,7 @@ With multiple normalized resource terms, $\Delta C_{ab}=\sum_j w_j(\bar C_{j,a}-
 \end{algorithmic}
 \end{algorithm}
 
-Algorithm~\ref{alg:supp-audit} uses only quantities available at policy freeze and therefore does not inspect test outcomes. A failed audit calls for an audited static schedule or a pre-test redesign of the normalization, not post-hoc reward tuning.
+Algorithm~\ref{alg:supp-audit} uses only quantities available at policy freeze and therefore does not inspect test outcomes. The supplied implementation verifies the configuration, manifest, and five validation-trace hashes, evaluates all four actions on each of 2{,}500 validation windows, and emits a pairwise CSV plus JSON audit. For MedRF minus LightLR it obtains $\tau=0.79667561$ and an observed validation-window balanced-accuracy difference range of $[-0.10526316,0.10526316]$, hence no strict reversal on that support. The separately reported aggregate test-set difference, 0.014011996, is explicitly tagged post-hoc descriptive and does not enter the audit. A failed audit calls for an audited static schedule or a pre-test redesign of the normalization, not post-hoc reward tuning.
 
 \begin{table}[h!]
 \centering\small
@@ -276,15 +276,15 @@ Algorithm~\ref{alg:supp-audit} uses only quantities available at policy freeze a
 \setlength{\tabcolsep}{6pt}
 \begin{tabular}{lrrrr}\toprule
 $a\backslash b$ & TinyDT & LightLR & MedRF & HeavyMLP\\\midrule
-TinyDT     & --       & $-0.003$ & $-0.797$ & $-0.397$\\
-LightLR    & $0.003$  & --       & $-0.794$ & $-0.394$\\
-MedRF      & $0.797$  & $0.794$  & --       & $0.399$\\
-HeavyMLP   & $0.397$  & $0.394$  & $-0.399$ & --\\
+TinyDT     & --       & $0.044$  & $-0.753$ & $-0.151$\\
+LightLR    & $-0.044$ & --       & $-0.797$ & $-0.195$\\
+MedRF      & $0.753$  & $0.797$  & --       & $0.602$\\
+HeavyMLP   & $0.151$  & $0.195$  & $-0.602$ & --\\
 \bottomrule\end{tabular}
 \end{table}
 
 \subsection{Executed reward decomposition}
-The fixed reward is $0.5\,\mathrm{BA}-0.2\,\widetilde P-0.2\,\widetilde L-0.1\,\widetilde H$. The power min--max span is 0.049806200 W; the batch-latency span is 29.654800 ms. Under the training environment, temperature is held at 35 degrees Celsius and the thermal penalty is zero. The nonthermal resource penalty is 0.001662195 for LightLR and 0.4 for MedRF. Consequently, at equal thermal cost, MedRF requires an immediate balanced-accuracy improvement greater than 0.79667561 to exceed LightLR's single-window reward. This calculation explains the strength of the declared normalization; it is not a proof of a global optimal policy and did not lead to post-test reward changes.
+The fixed reward is $0.5\,\mathrm{BA}-0.2\,\widetilde P-0.2\,\widetilde L-0.1\,\widetilde H$. The power min--max span is 0.049806200 W; the batch-latency span is 29.654800 ms. The compact software traces omit temperature telemetry, so the adapter supplies a constant 35 degrees Celsius predecision fallback and reuses that same, action-invariant value in the outcome field. The executed thermal penalty is consequently zero for every action; it is not a measured post-inference temperature rise and cannot provide action-level thermal attribution. The nonthermal resource penalty is 0.001662195 for LightLR and 0.4 for MedRF. Consequently, at equal thermal cost, MedRF requires an immediate balanced-accuracy improvement greater than 0.79667561 to exceed LightLR's single-window reward. This calculation explains the strength of the declared normalization; it is not a proof of a global optimal policy and did not lead to post-test reward changes.
 
 Independent recomputation of the label-informed one-step reference selects LightLR in 4,991 of 5,000 held-out windows and HeavyMLP in nine, with neither MedRF nor TinyDT selected. This is a diagnostic reference using unavailable deployment labels, not a deployable comparison policy. Its CSV retains the objective and selected predictions.
 
