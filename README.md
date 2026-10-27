@@ -44,8 +44,7 @@ equivalence, or statistical significance from these files alone.
 - `releases/reviewer-revision-20260909-v1/`: complete reviewer-revision evidence archive plus browsable registries, factual summaries, stop/failure records, and validators.
 - `releases/materialization-20260906-v2/`: materialization request, executor review chain, rebind, failure preservation, and successful run evidence.
 - `releases/feature-protocol-freeze-20260905-v1/`: final feature-protocol freeze evidence.
-- `releases/submission-final/`: the current final submission ZIP, its complete extracted LaTeX source/PDFs, checksums, and reproduction notes.
-- `releases/submission-complete-20260911-v1/`: preserved prior merged submission bundle.
+- `releases/submission/`: the current submission ZIP, its complete extracted LaTeX source/PDFs, checksums, and reproduction notes.
 
 ## Datasets and downloads
 
@@ -83,7 +82,7 @@ python3 experiments/adaptive_scheduler_v1/reward_audit.py --check
 Read each stage plan and `experiments/reviewer_revision_v1/protocol/00_READ_FIRST.md`
 before running a campaign. The default checks never start physical experiments.
 The current manuscript/source bundle is documented in
-`releases/submission-final/README.md`; its archive SHA-256 is
+`releases/submission/README.md`; its archive SHA-256 is
 `942a929951c5c21b2df70bd621c0726ee4aa0d3b035a840942653cadaedf2a92`.
 
 ## Reconstructing large archives
