@@ -8,7 +8,7 @@ The authoritative downloadable artifact is `TNSM_Submission_Final.zip`.
 Its SHA-256 is:
 
 ```text
-942a929951c5c21b2df70bd621c0726ee4aa0d3b035a840942653cadaedf2a92
+0f66889aedf77a003adc713ebfde0c8c5259cb3cb2f53cb84bea6920d9e56e4d
 ```
 
 The `package/` directory is a byte-for-byte extraction of that archive so the
@@ -32,13 +32,22 @@ external-budget/SLO normalization rule, focused related-work positioning,
 supplementary proof and reward-audit pseudocode, and strengthened methodology
 response are included without changing the frozen experimental results.
 
-The reward audit is now executable at
+The retrospective audit is executable at
 `experiments/adaptive_scheduler_v1/reward_audit.py`, with deterministic,
-hash-bound outputs under `reward_audit_v1/`. It uses 2,500 validation windows
-and keeps the aggregate held-out test gap as a separately labelled post-hoc
-diagnostic. The manuscript also discloses that the software trace adapter's
-constant 35 C temperature proxy makes the executed thermal component zero and
-cannot provide action-level thermal attribution.
+hash-bound outputs under `reward_audit_validation/`. It reads no test metrics.
+MedRF and HeavyMLP cannot reverse against LightLR on observed validation support,
+but TinyDT has greater immediate reward in seven of 2,500 windows. Neither global
+LightLR optimality nor execution before test inspection is established. The former
+`reward_audit_v1/` remains a historical attempt that read aggregate test diagnostics.
+The current adapter reports unavailable post-action temperature as null, flags
+the missing measurement, and omits the thermal penalty. Historical frozen runs
+used a constant 35 C proxy and had zero thermal penalty; they are not rerun.
+
+Seven focused regression tests and deterministic audit regeneration pass. Twelve
+of thirteen scheduler infrastructure tests pass in the bundled Python environment;
+the DQN unit test cannot run there because PyTorch is unavailable. All four PDFs
+were rebuilt and checked for unresolved references and layout. No frozen
+experiment, checkpoint, trace, configuration, or historical source was changed.
 
 ## Reproduction
 

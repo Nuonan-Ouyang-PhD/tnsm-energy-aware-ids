@@ -163,13 +163,13 @@ class SchedulerInfrastructureTests(unittest.TestCase):
         perfect = reward.calculate(
             labels=[0, 1],
             attack_probabilities=[0.1, 0.9],
-            predecision_smoothed_temperature_c=40.0,
+            predecision_temperature_c=40.0,
             cost=cost,
         )
         wrong = reward.calculate(
             labels=[0, 1],
             attack_probabilities=[0.9, 0.1],
-            predecision_smoothed_temperature_c=40.0,
+            predecision_temperature_c=40.0,
             cost=cost,
         )
         self.assertAlmostEqual(perfect.scalar_reward, 0.5)

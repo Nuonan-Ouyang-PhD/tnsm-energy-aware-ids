@@ -58,7 +58,7 @@ class LabelInformedPerWindowUtilityReference:
             scores[action.value] = self.reward.calculate(
                 labels=labels.tolist(),
                 attack_probabilities=outcome.attack_probabilities.tolist(),
-                predecision_smoothed_temperature_c=state.smoothed_temperature_c,
+                predecision_temperature_c=episode.pre_decision(window_index).raw_temperature_c,
                 cost=outcome.cost,
                 prediction_threshold=self.threshold,
             )

@@ -1,4 +1,4 @@
-# TNSM new manuscript submission - 2026-09-13
+# TNSM submission package
 
 Main manuscript: `main.tex`
 Supplement: `supplement.tex`
@@ -27,7 +27,7 @@ The manuscript is now organized into eleven sections corresponding to the files 
 
 The manuscript is a new submission that fully considers the prior TNSM-2026-10776 reviews. No experiment, split, threshold, policy, or frozen raw measurement was changed. The reorganization introduces three positive framework contributions and consolidates them with the earlier evidence:
 
-- Pairwise non-degeneracy theorem (Theorem 1) and compact corollary in Section V-D. The complete proof and executable validation-only reward audit are Supplementary Theorem S1 and Algorithm S1. Across 2,500 windows in five hash-bound validation traces, the observed MedRF-minus-LightLR balanced-accuracy difference spans [-0.1053, 0.1053], while tau_{MedRF,LightLR}=0.7967; the threshold therefore lies outside the observed validation support without using a test outcome. The aggregate test gap 0.0140 remains a separately labelled post-hoc descriptive statistic.
+- Pairwise theorem and retrospective validation-only audit: MedRF and HeavyMLP cannot reverse against LightLR on observed support; TinyDT wins seven windows. Global optimality and pre-test audit execution are not established.
 - Explicit system model, service objectives, and network-layer threat model in Section III, with an operational off-support threat surface identified as directly relevant to service management.
 - Positive service-management result promoted in Section VIII-B: DeadlineGuard cuts energy by 43.714 J against Static-MedRF per 500-s run (2.98%; 95% paired CI 41.418-46.010 J), eliminates all 512/5,000 deadline misses, and costs 1.373 F1 pp. All ten paired-block energy differences share sign (exact sign-flip p=0.00195).
 
@@ -51,4 +51,4 @@ See `Response_to_Reviewers.pdf`. Every prior comment maps to a section in the ne
 
 Run `pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex` from this directory. A generated `main.bbl`, IEEEtran.cls, and IEEEtran.bst are included for submission-system portability. All figures are under `figures/` and all table rows are under `tables/`.
 
-The executable audit cited in Section V-D and Supplementary Algorithm S1 is `experiments/adaptive_scheduler_v1/reward_audit.py` in the companion repository. Its deterministic outputs are under `experiments/adaptive_scheduler_v1/reward_audit_v1/`; `python3 reward_audit.py --check` verifies them against the five hash-bound validation traces.
+The executable audit cited in Section V-D and Supplementary Algorithm S1 is `experiments/adaptive_scheduler_v1/reward_audit.py` in the companion repository. Its deterministic outputs are under `experiments/adaptive_scheduler_v1/reward_audit_validation/`; `python3 reward_audit.py --check` verifies them against the five hash-bound validation traces.

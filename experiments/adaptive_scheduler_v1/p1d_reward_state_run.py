@@ -174,7 +174,7 @@ def evaluate(policy, episodes, config, config_hash, run_id, partition, log_path)
             c = reward.calculate(
                 labels=labels[row_slice].tolist(),
                 attack_probabilities=probabilities.tolist(),
-                predecision_smoothed_temperature_c=state.smoothed_temperature_c,
+                predecision_temperature_c=episode.pre_decision(window_index).raw_temperature_c,
                 cost=outcome.cost,
                 prediction_threshold=float(config["actions"]["prediction_threshold"]),
             )
@@ -203,9 +203,10 @@ def evaluate(policy, episodes, config, config_hash, run_id, partition, log_path)
         "unique_states": len(unique_states),
         "reward_components_mean": {key: float(np.mean(value)) for key, value in components.items()},
         "thermal_component_provenance": (
-            "software traces reuse predecision temperature as an action-invariant "
-            "post-temperature proxy; frozen inputs use the constant 35C fallback, "
-            "so the executed thermal component is zero and is not an action-level cost"
+            "post-action temperature is unavailable; the current adapter emits null "
+            "and omits the thermal penalty. Historical frozen runs reused the constant "
+            "35C predecision fallback, giving zero thermal penalty. No measured thermal "
+            "effect or new experimental result is implied."
         ),
         "labels_used_only_after_frozen_schedule": partition is Partition.TEST,
     }

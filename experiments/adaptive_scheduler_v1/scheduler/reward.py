@@ -61,7 +61,7 @@ def balanced_accuracy(labels: Sequence[int], predictions: Sequence[int]) -> floa
 class CostObservation:
     power_watts: float
     latency_batch_ms: float
-    post_temperature_c: float
+    post_temperature_c: float | None
     origin: CostOrigin
     latency_origin: str
     temperature_origin: str
@@ -69,7 +69,8 @@ class CostObservation:
     def validate(self) -> None:
         power = _finite(self.power_watts, "power_watts")
         latency = _finite(self.latency_batch_ms, "latency_batch_ms")
-        _finite(self.post_temperature_c, "post_temperature_c")
+        if self.post_temperature_c is not None:
+            _finite(self.post_temperature_c, "post_temperature_c")
         if power <= 0.0:
             raise RewardError("power_watts must be positive")
         if latency < 0.0:
@@ -88,6 +89,7 @@ class RewardComponents:
     latency: float
     positive_thermal_increment: float
     scalar_reward: float
+    thermal_measurement_available: bool = True
 
     def as_dict(self) -> dict[str, float]:
         return asdict(self)
@@ -115,7 +117,7 @@ class RewardFunction:
         *,
         labels: Sequence[int],
         attack_probabilities: Sequence[float],
-        predecision_smoothed_temperature_c: float,
+        predecision_temperature_c: float,
         cost: CostObservation,
         prediction_threshold: float = 0.5,
     ) -> RewardComponents:
@@ -137,9 +139,14 @@ class RewardFunction:
         power = _normalize(cost.power_watts, *self.power_bounds)
         latency = _normalize(cost.latency_batch_ms, *self.latency_bounds)
         pre_temperature = _finite(
-            predecision_smoothed_temperature_c, "predecision_smoothed_temperature_c"
+            predecision_temperature_c, "predecision_temperature_c"
         )
-        positive_increment = max(0.0, cost.post_temperature_c - pre_temperature)
+        # Missing post-action telemetry contributes no thermal penalty, and is
+        # explicitly distinguished from a measured zero temperature increment.
+        positive_increment = (
+            max(0.0, cost.post_temperature_c - pre_temperature)
+            if cost.post_temperature_c is not None else 0.0
+        )
         thermal = max(0.0, min(1.0, positive_increment / self.thermal_scale_c))
         scalar = (
             self.weights["detection"] * detection
@@ -147,5 +154,8 @@ class RewardFunction:
             - self.weights["latency"] * latency
             - self.weights["positive_thermal_increment"] * thermal
         )
-        return RewardComponents(detection, power, latency, thermal, scalar)
+        return RewardComponents(
+            detection, power, latency, thermal, scalar,
+            thermal_measurement_available=cost.post_temperature_c is not None,
+        )
 

@@ -98,9 +98,8 @@ class NpzTraceEpisode:
         """Reveal only the selected action's outcome after action commitment.
 
         Compact software traces contain predecision telemetry only.  The value
-        below is therefore an action-invariant proxy, not a measured
-        post-inference temperature response.  It must not be interpreted as an
-        action-level thermal cost.
+        is retained only in pre_decision(). Post-action temperature is missing,
+        rather than fabricated from a pre-action observation.
         """
 
         selected = Action.parse(action)
@@ -110,12 +109,11 @@ class NpzTraceEpisode:
         cost = CostObservation(
             power_watts=float(registry["mean_watts"]),
             latency_batch_ms=float(registry["mean_batch_latency_ms_median"]),
-            post_temperature_c=float(self.temperatures[window_index]),
+            post_temperature_c=None,
             origin=CostOrigin.TON_STATIC_PROFILE_LOOKUP_PROXY,
             latency_origin="TON scheduled-static-profile mean of per-run medians",
             temperature_origin=(
-                f"{self.online_observation_origin}; predecision proxy reused as "
-                "post_temperature_c; action-invariant and not a measured response"
+                "unavailable: compact trace contains no post-action measurement"
             ),
         )
         return ActionOutcome(

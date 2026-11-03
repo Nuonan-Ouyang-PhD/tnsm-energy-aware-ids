@@ -83,7 +83,7 @@ Read each stage plan and `experiments/reviewer_revision_v1/protocol/00_READ_FIRS
 before running a campaign. The default checks never start physical experiments.
 The current manuscript/source bundle is documented in
 `releases/submission/README.md`; its archive SHA-256 is
-`942a929951c5c21b2df70bd621c0726ee4aa0d3b035a840942653cadaedf2a92`.
+`0f66889aedf77a003adc713ebfde0c8c5259cb3cb2f53cb84bea6920d9e56e4d`.
 
 ## Reconstructing large archives
 
@@ -111,6 +111,8 @@ content-level verification.
 - Invalid and interrupted attempts remain preserved and are excluded according to their registries.
 - Test traces are descriptive after policy freeze and were not used for training or checkpoint selection.
 - The compact software-policy traces have no action-attributable post-action temperature. Their fixed 35 C fallback makes the executed thermal reward component zero; it is not evidence of thermal-aware adaptation.
+- The current adapter represents missing post-action temperature as null and flags the unavailable measurement. Historical frozen runtime copies retain the originally executed bytes.
+- The retrospective reward audit opens only configuration, the manifest, and five validation traces. TinyDT beats LightLR in 7/2,500 validation windows; pairwise exclusions for MedRF and HeavyMLP do not prove global LightLR optimality or pre-test audit execution. Run `python3 experiments/adaptive_scheduler_v1/reward_audit.py --check`; current outputs are in `reward_audit_validation/`. The former `reward_audit_v1/` is retained as a superseded historical audit attempt that also read aggregate test diagnostics.
 - Dataset splits, classifier thresholds, workloads, seeds, reward/state matrices, and gamma/alpha matrices remain frozen.
 - R1 and R2 are post-hoc physical robustness experiments over the already frozen test pool, not new unseen-test generalization evidence.
 - R3 and R4B stop records are part of the evidence: no missing protocol choice or unavailable reference load was improvised after observing results.
