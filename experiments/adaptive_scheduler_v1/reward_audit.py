@@ -188,7 +188,7 @@ def write_outputs(output_dir: Path) -> None:
 
 def check_outputs(output_dir: Path) -> None:
     with TemporaryDirectory() as temporary:
-        expected = Path(temporary) / "reward_audit_v1"
+        expected = Path(temporary) / "reward_audit_validation"
         write_outputs(expected)
         expected_names = sorted(path.name for path in expected.iterdir())
         actual_names = sorted(path.name for path in output_dir.iterdir())

@@ -4,6 +4,42 @@ This repository contains the frozen protocol, deterministic materialization work
 classification/static baselines, Raspberry Pi power measurements, the evidence-locked
 40-run adaptive scheduling study, and the P0/P1 strengthening analyses.
 
+## Start here
+
+- [Latest submission ZIP](releases/submission/TNSM_Submission_Final.zip)
+- [Main paper](releases/submission/package/Manuscript.pdf) · [Supplement](releases/submission/package/Supplementary_Material.pdf) · [Reviewer response](releases/submission/package/Response_to_Reviewers.pdf)
+- [Editable LaTeX and build instructions](releases/submission/README.md)
+- [Current reward audit](experiments/adaptive_scheduler_v1/reward_audit_validation/README.md)
+
+`releases/submission/` is the only active manuscript. The dated evidence directories
+record distinct experimental stages, not alternative manuscript versions.
+
+## Quick verification
+
+Python 3.11 or newer is required. These commands verify supplied artifacts and run
+unit tests; they do not train policies or launch physical campaigns.
+
+```bash
+python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install -e '.[audit]'
+make check-submission
+make audit
+make test
+```
+
+For the additional scheduler infrastructure tests (including DQN), install its
+separate dependencies:
+
+```bash
+python -m pip install -e '.[scheduler]'
+make test-scheduler
+```
+
+Artifact verification reproduces derived calculations from frozen inputs; it does
+not recreate the original physical measurements. Raw-data retraining and physical
+campaign execution require their own stage inputs and protocols.
+
 ## Current verified state
 
 | Stage | Status |
@@ -59,24 +95,15 @@ or large physical traces. Place downloaded files only in the ignored paths docum
 by the relevant request/inventory files, preserve the original filenames, and run the
 read-only preflight before any derived work.
 
-## Reproduce the software and paper artifacts
+## Dataset and campaign tools
 
-```bash
-python3 -m venv .venv
-. .venv/bin/activate
-pip install -e .
-make test
-```
-
-For the frozen dataset checks and deterministic pipelines:
+After acquiring the raw datasets and following the stage documentation:
 
 ```bash
 make snapshot
 make preflight
 PYTHONPATH=src python3 experiments/classification_static_v1/classification_campaign.py --help
 PYTHONPATH=src python3 experiments/classification_static_v1/static_replay.py --help
-PYTHONPATH=src python3 -m unittest discover -s experiments/adaptive_scheduler_v1/scheduler -v
-python3 experiments/adaptive_scheduler_v1/reward_audit.py --check
 ```
 
 Read each stage plan and `experiments/reviewer_revision_v1/protocol/00_READ_FIRST.md`
@@ -112,16 +139,10 @@ content-level verification.
 - Test traces are descriptive after policy freeze and were not used for training or checkpoint selection.
 - The compact software-policy traces have no action-attributable post-action temperature. Their fixed 35 C fallback makes the executed thermal reward component zero; it is not evidence of thermal-aware adaptation.
 - The current adapter represents missing post-action temperature as null and flags the unavailable measurement. Historical frozen runtime copies retain the originally executed bytes.
-- The retrospective reward audit opens only configuration, the manifest, and five validation traces. TinyDT beats LightLR in 7/2,500 validation windows; pairwise exclusions for MedRF and HeavyMLP do not prove global LightLR optimality or pre-test audit execution. Run `python3 experiments/adaptive_scheduler_v1/reward_audit.py --check`; current outputs are in `reward_audit_validation/`. The former `reward_audit_v1/` is retained as a superseded historical audit attempt that also read aggregate test diagnostics.
+- The retrospective reward audit opens only configuration, the manifest, and five validation traces. TinyDT beats LightLR in 7/2,500 validation windows; pairwise exclusions for MedRF and HeavyMLP do not prove global LightLR optimality or pre-test audit execution. Current outputs are in `reward_audit_validation/`. The superseded audit that also read aggregate test diagnostics was removed from the active tree; its bytes remain available in [Git history](https://github.com/Nuonan-Ouyang-PhD/tnsm-energy-aware-ids/tree/c69f8cea3b267d4226f89693c535804536e836a8/experiments/adaptive_scheduler_v1/reward_audit_v1).
 - Dataset splits, classifier thresholds, workloads, seeds, reward/state matrices, and gamma/alpha matrices remain frozen.
 - R1 and R2 are post-hoc physical robustness experiments over the already frozen test pool, not new unseen-test generalization evidence.
 - R3 and R4B stop records are part of the evidence: no missing protocol choice or unavailable reference load was improvised after observing results.
-
-## Basic checks
-
-```bash
-make test
-```
 
 The full final validator report is available at
 `releases/p0-p1-strengthening-20260908-v1/browsable/analysis/FINAL_VALIDATOR_REPORT.json`.

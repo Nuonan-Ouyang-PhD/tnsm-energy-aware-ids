@@ -9,6 +9,10 @@ description = "Auditable experiment harness for an energy-aware IDS scheduler"
 requires-python = ">=3.11"
 license = {text = "MIT"}
 
+[project.optional-dependencies]
+audit = ["numpy"]
+scheduler = ["numpy", "torch"]
+
 [project.scripts]
 tnsm-exp = "tnsm_exp.cli:main"
 

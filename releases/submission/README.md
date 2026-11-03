@@ -38,7 +38,8 @@ hash-bound outputs under `reward_audit_validation/`. It reads no test metrics.
 MedRF and HeavyMLP cannot reverse against LightLR on observed validation support,
 but TinyDT has greater immediate reward in seven of 2,500 windows. Neither global
 LightLR optimality nor execution before test inspection is established. The former
-`reward_audit_v1/` remains a historical attempt that read aggregate test diagnostics.
+The superseded audit that read aggregate test diagnostics is available only in
+[Git history](https://github.com/Nuonan-Ouyang-PhD/tnsm-energy-aware-ids/tree/c69f8cea3b267d4226f89693c535804536e836a8/experiments/adaptive_scheduler_v1/reward_audit_v1).
 The current adapter reports unavailable post-action temperature as null, flags
 the missing measurement, and omits the thermal penalty. Historical frozen runs
 used a constant 35 C proxy and had zero thermal penalty; they are not rerun.
