@@ -1,0 +1,56 @@
+\documentclass[journal]{IEEEtran}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array,tabularx,url,graphicx,enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\newcommand{\FPR}{\operatorname{FPR}}
+\newcommand{\BA}{\operatorname{BA}}
+\newcommand{\ind}{\mathbf{1}}
+\newcommand{\ton}{TON-IoT}
+\newcommand{\cic}{CICIoT2023}
+\newcommand{\nb}{N-BaIoT}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\hyphenation{data-set data-sets pre-pro-cess-ing}
+\makeatletter
+\newcommand{\tableinput}[1]{\@@input #1.tex }
+\makeatother
+\input{tables/dynamic_numbers}
+\begin{document}
+\title{When Learned IDS Model Selection Collapses to a Static Choice:\\A Measurement Study at the Edge}
+\author{Nuonan~Ouyang,
+        Adrian~Shatte,
+        Zhigang~Lu,
+        Chao~Chen,~\IEEEmembership{Member,~IEEE,}
+        and~Wei~Xiang,~\IEEEmembership{Senior Member,~IEEE}%
+\thanks{(\textit{Corresponding author: Nuonan Ouyang.})}%
+\thanks{N. Ouyang and A. Shatte are with the College of Science and Engineering, Division of Research, James Cook University, Bebegu Yumba Campus, Building 17, Douglas, Townsville, QLD, Australia (e-mail: nuonan.ouyang@my.jcu.edu.au; adrian.shatte@jcu.edu.au; ORCID: 0009-0004-7124-8940; 0000-0002-6225-9697).}%
+\thanks{Z. Lu is with the School of Computer, Data and Mathematical Sciences, Western Sydney University, Penrith (Kingswood) Campus, Kingswood, NSW, Australia (e-mail: z.lu@westernsydney.edu.au; ORCID: 0000-0001-5102-6217).}%
+\thanks{C. Chen is with the College of Business and Law, RMIT University, Melbourne, VIC 3000, Australia (e-mail: chao.chen@rmit.edu.au; ORCID: 0000-0003-1355-3870).}%
+\thanks{W. Xiang is with the Australian Centre for AI in Medical Innovation and the Cisco-La Trobe Centre for AI and Internet of Things, La Trobe University, Melbourne, VIC, Australia (e-mail: w.xiang@latrobe.edu.au; ORCID: 0000-0002-0608-065X).}%
+}
+\markboth{IEEE Transactions on Network and Service Management,~Vol.~XX, No.~XX, Month~Year}%
+{Ouyang \MakeLowercase{\textit{et al.}}: When Learned IDS Model Selection Collapses to a Static Choice}
+\maketitle
+\begin{abstract}
+Runtime IDS selection can conflate detector operating-point choice with adaptive value. We study this distinction using matched static controls, causal-state auditing and guarded whole-device measurement. A corrected follow-up on one Raspberry Pi 4B compares six frozen methods in ten paired blocks. Tabular-Q and DQN select LightLR throughout; DeadlineGuard selects MedRF throughout. DQN and Q have mean energy differences of +0.60 J and +0.25 J against Static-LightLR, with paired intervals spanning zero; neither adaptive savings nor equivalence is established. The confidence cascade saves 12.06 J against Static-MedRF while losing 0.0446 F1 percentage points, an implementation-specific trade-off. No method records a deadline-miss window. Historical interface defects, constant-coordinate ablations and measurement interruptions are reported separately, not pooled into the corrected comparison. Immediate pairwise utility preferences do not prove long-horizon optimality. All-valid-block, recovered-block-exclusion and preceding-idle-adjusted analyses are retained. These single-board findings motivate separating model choice, information availability, training support and measurement interference before crediting adaptation.
+\end{abstract}
+\begin{IEEEkeywords}
+Intrusion detection, IoT, edge resource management, model selection, reinforcement learning, service management, energy measurement, reproducibility.
+\end{IEEEkeywords}
+\input{sections/followup_introduction}
+\input{sections/02_background}
+\input{sections/followup_system}
+\input{sections/04_data}
+\input{sections/followup_methods}
+\input{sections/followup_evaluation}
+\input{sections/followup_historical_context}
+\input{sections/followup_results}
+\input{sections/followup_discussion}
+\input{sections/followup_limits}
+\input{sections/followup_conclusion}
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+\end{document}

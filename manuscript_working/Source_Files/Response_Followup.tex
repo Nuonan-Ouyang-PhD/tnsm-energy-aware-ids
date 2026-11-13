@@ -1,0 +1,29 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=0.92in]{geometry}
+\usepackage{xcolor,amsmath,booktabs}
+\usepackage[most]{tcolorbox}
+\usepackage[hidelinks]{hyperref}
+\definecolor{ReviewerBlue}{RGB}{33,150,243}
+\definecolor{AuthorGreen}{RGB}{67,160,71}
+\definecolor{WhereOrange}{RGB}{251,140,0}
+\definecolor{ExcerptPurple}{RGB}{142,36,170}
+\newtcolorbox{commentbox}{breakable,colback=ReviewerBlue!6,colframe=ReviewerBlue!70!black,title=Reviewer concern}
+\newtcolorbox{responsebox}{breakable,colback=AuthorGreen!5,colframe=AuthorGreen!60!black,title=Author response}
+\newtcolorbox{wherebox}{breakable,colback=WhereOrange!6,colframe=WhereOrange!80!black,title=Location}
+\newtcolorbox{excerptbox}{breakable,colback=ExcerptPurple!4,colframe=ExcerptPurple!70!black,title=Revised interpretation}
+\begin{document}
+\begin{center}{\Large Response revision working note}\\Prior manuscript: TNSM-2026-10776\\14 November 2026\end{center}
+This working note supersedes the old letter's positive DeadlineGuard and load-generalization interpretation. It is not a declaration that all review comments or independent acceptance checks are closed. The prior full letter is historical source material; its unchanged excerpts must not be submitted with this note as if current.
+
+\section*{Reviewer 2, Comment 1: value beyond a static detector}
+\begin{commentbox}The reviewer asks whether dynamic scheduling beats the simplest static alternative, and requests changing-traffic conditions rather than unnecessary complexity.\end{commentbox}
+\begin{responsebox}We agree and now distinguish static operating-point selection from adaptation. A corrected follow-up retains the six-method order, frozen classifiers and threshold 0.5, with ten blocks of the fixed load--prevalence factorial. Both Q and DQN select LightLR throughout, while DeadlineGuard selects MedRF throughout; their detection summaries match the corresponding static baselines. All methods have zero recorded deadline-miss windows. We therefore withdraw the earlier use of DeadlineGuard switching superiority as the new study's positive result. Q and DQN show no resolved energy benefit over directly deploying LightLR; intervals crossing zero do not prove equivalence. The fixed confidence cascade instead has a specific energy--detection trade-off.\end{responsebox}
+\begin{wherebox}Current manuscript: corrected state/system, objective/training support, follow-up results, discussion and limitations; all three sensitivity sets are reported in the follow-up tables.\end{wherebox}
+\begin{excerptbox}DQN minus Static-LightLR is +0.599 J, 95\% paired CI $[-4.119,5.317]$ J; Q minus Static-LightLR is +0.246 J $[-4.055,4.547]$ J. Cascade minus Static-MedRF is $-12.064$ J $[-16.548,-7.580]$ J, at $-0.0446$ F1 percentage points. These are not claims of general RL uselessness or cost-free cascade improvement.\end{excerptbox}
+
+\section*{Reward, state and information concerns}
+\begin{responsebox}The common view now uses current arrivals, FIFO carryover before appending arrivals, prior selected-detector threat and previous action. No temperature reward is fabricated. Training includes deadline and pending-work penalties, but the calibrated fixed surrogate never develops backlog, so no queue-adaptation competence or queue-ablation robustness is claimed. Fifteen historical constant-coordinate ablations do not validate changes in those coordinates. Immediate pairwise utility reversals do not establish long-horizon or global policy optimality. Cascade's current-row confidence is observed after LightLR entry inference, not at the RL pre-window decision. These computation and training-coverage differences are disclosed rather than labelled identical comparisons.\end{responsebox}
+
+\section*{Measurement, provenance and independent-review scope}
+\begin{responsebox}All sixty accepted runs and both invalid attempts remain archived. Blocks 1 and 5 span explicitly authorized recovery periods. Raw and idle-adjusted results are reported for all blocks, exclusion of block 1, and exclusion of both recovered blocks. The monitor cadence repair and rejected-snapshot logging preserve the 5\% external CPU and 1.5-second gap limits; exact old rejected-gap duration is unavailable. Historical results are never pooled or overwritten. Author-side validation and JSON recomputation are separate from independent ZIP/raw-log acceptance, which remains incomplete due to the review environment. We do not mark that boundary as closed or request further physical measurements.\end{responsebox}
+\end{document}

@@ -1,0 +1,16 @@
+\section{Static Operating Points and Historical Context}\label{sec:staticresults}
+The frozen detector pool predates the follow-up. Table~\ref{tab:classification} reports its original TON-IoT classification evaluation, not a pooled average of physical blocks. MedRF's aggregate held-out BA advantage over LightLR is approximately 0.0140, a descriptive post-freeze statistic rather than a statewise attainability bound. At prevalence $p$, recall $r$ and FPR $f$,
+\begin{equation}F1=\frac{2pr}{p(1+r)+(1-p)f}.
+\end{equation}
+Thus F1 alone can conceal normal-class errors; recall and FPR accompany energy throughout.
+\begin{table}[t]\centering\small
+\caption{Historical frozen TON-IoT classification at threshold 0.5, separate from new physical-block statistics.}\label{tab:classification}
+\begin{tabular}{lrrrr}\toprule Model & F1 & Recall & BA & FPR (\%)\\\midrule
+\tableinput{tables/ton_classification_rows}
+\bottomrule\end{tabular}\end{table}
+
+Fifteen original static-power segments characterize one Pi and resident TON detectors at 100 encoded rows/s. Idle averages 2.335 W; active means span approximately 2.347--2.397 W. Those static powers are training proxies, not new three-dataset measurements. The corrected same-runtime latency calibration uses training-origin warm input; it excludes a full closed-loop controller/transport energy measurement.
+
+The original 40-run campaign and P1A motivated including Static-LightLR when learned policies selected it. Historical DQN versus Static-LightLR was +4.525 J in P1A, but neither that observation nor isolated timing attributes the difference to CPU computation. P1B measures approximately 10.8 microseconds per Q decision and 1.567 ms per DQN decision on its declared support, not joules. CFSM's historical switching does not establish useful switching. Historical R1 cascade call granularity is likewise a different, 100-row serving regime, not the corrected variable-load trade-off.
+
+P1C--P1E remain separately archived. Fifteen minus-temperature/queue/arrival runs remove constant training coordinates and therefore do not establish robustness to changes in those dimensions. Historical R2's queue timing/normalization and unequal arrival visibility invalidate its use as an interface-matched RL versus DeadlineGuard comparison. These qualifications change interpretation without rewriting past executed bytes. No historical energy, confusion count, failed attempt or seed is pooled into the new ten-block array.

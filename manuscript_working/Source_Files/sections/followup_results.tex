@@ -1,0 +1,22 @@
+\section{Corrected Follow-up: Matched Static Attribution}\label{sec:dynamicresults}
+The main current comparison is the November follow-up, not historical R2. It contains 60 accepted 500-second runs: six methods in ten trace-matched blocks. Classifiers, threshold 0.5 and held-out pool are unchanged. New policies were trained on training caches and selected by validation before deployment. Historical test outcomes had already been inspected before this follow-up was designed; it is not a new untouched-test experiment.
+
+\subsection{Realized Actions and Feasibility}
+In all 5,000 windows per method, Q, DQN and Static-LightLR use LightLR; DeadlineGuard and Static-MedRF use MedRF. Their within-block detection summaries coincide. No method records a deadline-miss window. Thus neither learned policies nor DeadlineGuard demonstrate useful load-conditioned switching here. Historical Tabular-Q TinyDT behavior is not reproduced under the corrected interface. This does not establish global policy optimality.
+
+\subsection{Paired Energy and Detection}
+DQN minus Static-LightLR is +0.599 J, paired Student-$t$ 95\% CI $[-4.119,5.317]$ J. Q minus Static-LightLR is +0.246 J $[-4.055,4.547]$ J. Neither contrast resolves energy savings. No equivalence margin was declared, so an interval crossing zero does not establish equivalence.
+
+Cascade minus Static-MedRF is $-12.064$ J $[-16.548,-7.580]$ J. Mean F1 changes by $-0.0004457$ ($-0.0446$ percentage points), recall by $-0.2411$ pp and FPR by $-0.1534$ pp. This is a detection--energy trade-off, not a free improvement. The historical 1.373-pp DeadlineGuard trade-off is not a new-study result.
+Tables~\ref{tab:followup} and~\ref{tab:sensitivity} retain method summaries and all registered sensitivity endpoints for the key contrasts.
+\input{tables/followup_summary}
+
+\subsection{Interruptions and Sensitivity}
+Two rejected attempts are preserved: block 1 Static-LightLR exceeded 5\% external CPU, coincident with man-db maintenance; block 5 Cascade's idle failed the 1.5-second monitor-gap limit. Accepted runs were retained; explicitly authorized new IDs recover only the interrupted portion. Both blocks span periods. Idle subtraction does not guarantee elimination of temporal confounding.
+
+The derived monitor waits relative to actual sampling time rather than adding one second after processing, and retains rejected snapshots. CPU accounting, 5\% and 1.5-second limits, service loop and policies are unchanged. The old rejected gap lacks its right snapshot; exact duration is unavailable. Both executed source versions are preserved.
+
+We report A: all ten blocks; B: exclude block 1 ($n=9$); C: exclude blocks 1 and 5 ($n=8$), each with raw and preceding-idle-adjusted results. Registration timestamps are actual campaign-time additions, not backdated original preregistration. All method pairs are retained; nominal intervals are not multiplicity-adjusted and no favourable set is selected.
+
+\subsection{Historical Evidence Boundary}
+The original study, P0/P1 and old R1/R2 are not pooled. Old R2 used mismatched arrival timing and post-append queue encoding; its TinyDT behavior is an implementation diagnostic, not an interface-matched algorithm comparison. Constant-coordinate ablations do not establish load/queue/thermal robustness. The historical DQN block-4 excursion lacked the later process-aware gate; no precise external-process joule attribution follows. R3 remains NOT EXECUTED; timing is not controller-only energy. Threshold diagnostics do not replace frozen threshold=0.5 results.

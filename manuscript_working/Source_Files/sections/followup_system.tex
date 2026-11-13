@@ -1,0 +1,6 @@
+\section{Compact System Model and Service Objectives}\label{sec:system}
+All four frozen detectors remain resident. Before one-second window $t$, the common observation is
+\begin{equation}\label{eq:state}s_t=(N_t,Q_t^-,h_{t-1},a_{t-1}),\end{equation}
+where $N_t$ is current scheduled arrivals, $Q_t^-$ is FIFO carryover measured before appending current arrivals, and $h_{t-1}$ is the preceding selected path's mean posterior. Initial threat is 0.5 and prior action TinyDT. Temperature is safety telemetry only. Ground truth, cell identity, future arrivals and unselected predictions are not online features.
+
+Static methods ignore the view. DeadlineGuard uses $N_t+Q_t^-$ and fixed calibrated MedRF p95 batch latency. RL commits a greedy frozen action. Cascade sees current-row LightLR confidence only after entry inference; this is not information given to pre-window RL. Shared load information does not imply identical computation. Rows are served FIFO in batches of at most 100. Per-batch completion times determine row deadlines; window misses and unfinished rows are separately reported. No policy updates online.

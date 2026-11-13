@@ -4,15 +4,38 @@ This repository contains the frozen protocol, deterministic materialization work
 classification/static baselines, Raspberry Pi power measurements, the evidence-locked
 40-run adaptive scheduling study, and the P0/P1 strengthening analyses.
 
+## Current evidence and manuscript status
+
+The November 2026 corrected follow-up is the main current comparison:
+[evidence and read-only reanalysis](releases/supplemental-followup-20261113/README.md).
+It contains 60 accepted runs in ten paired blocks, with two invalid attempts
+retained. Blocks 1 and 5 were recovered across periods. These are **author-validated**
+artifacts; full independent byte-level and raw-log acceptance is **not complete**.
+The independent review has so far reported execution-environment limitations;
+it must not be replaced by our own PASS counts.
+
+The working manuscript is now [manuscript_working/](manuscript_working/README.md),
+pending scientific consistency and publication checks. The previous
+`releases/submission/` bundle is historical, not the current submission-ready result.
+No new measurement is planned or enabled by the read-only reanalysis entry point.
+
+In the corrected follow-up, Q/DQN realize LightLR; DeadlineGuard realizes MedRF.
+Neither policy switching nor an RL energy advantage over matched Static-LightLR
+is established. Cascade has an implementation-specific energy/detection trade-off.
+See the [scientific corrections](docs/SCIENTIFIC_CORRECTIONS_20261114.md) before
+interpreting historical variable-load, ablation or reward-audit claims.
+
 ## Start here
 
-- [Latest submission ZIP](releases/submission/TNSM_Submission_Final.zip)
-- [Main paper](releases/submission/package/Manuscript.pdf) · [Supplement](releases/submission/package/Supplementary_Material.pdf) · [Reviewer response](releases/submission/package/Response_to_Reviewers.pdf)
-- [Editable LaTeX and build instructions](releases/submission/README.md)
+- [Current corrected evidence and safe reanalysis](releases/supplemental-followup-20261113/README.md)
+- [Current manuscript and response working tree](manuscript_working/README.md)
+- [Historical submission ZIP](releases/submission/TNSM_Submission_Final.zip)
+- [Historical main paper](releases/submission/package/Manuscript.pdf) · [Historical supplement](releases/submission/package/Supplementary_Material.pdf) · [Historical reviewer response](releases/submission/package/Response_to_Reviewers.pdf)
+- [Historical LaTeX and build instructions](releases/submission/README.md)
 - [Current reward audit](experiments/adaptive_scheduler_v1/reward_audit_validation/README.md)
 
-`releases/submission/` is the only active manuscript. The dated evidence directories
-record distinct experimental stages, not alternative manuscript versions.
+The links above retain the previous submission for provenance. Dated evidence
+directories record distinct experimental stages and must not be pooled.
 
 ## Quick verification
 
@@ -40,7 +63,7 @@ Artifact verification reproduces derived calculations from frozen inputs; it doe
 not recreate the original physical measurements. Raw-data retraining and physical
 campaign execution require their own stage inputs and protocols.
 
-## Current verified state
+## Historical author-reported state (not independent acceptance)
 
 | Stage | Status |
 | --- | --- |
@@ -61,7 +84,7 @@ campaign execution require their own stage inputs and protocols.
 | Reviewer R2 frozen variable-load factorial | 60/60 valid physical runs |
 | Reviewer R3 controller-only power | Not executed; predeclared state-set ambiguity recorded |
 | Reviewer R4 TinyDT/reference diagnostics | R4A complete; R4B not executed because no stable reference load was available |
-| Final submission manuscript | 10-page freshly compiled main PDF; complete source and manifest verified |
+| Previous submission manuscript | Historical bundle; scientific interpretation superseded in part by corrected follow-up |
 
 The repository reports evidence and factual summaries. It does not infer superiority,
 equivalence, or statistical significance from these files alone.
@@ -80,7 +103,7 @@ equivalence, or statistical significance from these files alone.
 - `releases/reviewer-revision-20260909-v1/`: complete reviewer-revision evidence archive plus browsable registries, factual summaries, stop/failure records, and validators.
 - `releases/materialization-20260906-v2/`: materialization request, executor review chain, rebind, failure preservation, and successful run evidence.
 - `releases/feature-protocol-freeze-20260905-v1/`: final feature-protocol freeze evidence.
-- `releases/submission/`: the current submission ZIP, its complete extracted LaTeX source/PDFs, checksums, and reproduction notes.
+- `releases/submission/`: previous submission ZIP, historical source/PDFs and checksums; not the corrected current manuscript.
 
 ## Datasets and downloads
 
@@ -108,9 +131,9 @@ PYTHONPATH=src python3 experiments/classification_static_v1/static_replay.py --h
 
 Read each stage plan and `experiments/reviewer_revision_v1/protocol/00_READ_FIRST.md`
 before running a campaign. The default checks never start physical experiments.
-The current manuscript/source bundle is documented in
+The previous manuscript/source bundle is documented in
 `releases/submission/README.md`; its archive SHA-256 is
-`0f66889aedf77a003adc713ebfde0c8c5259cb3cb2f53cb84bea6920d9e56e4d`.
+`b13688a26a6f98577b1f2ca14726ebcf092e82f769c86879cad59f77548f1c0a`.
 
 ## Reconstructing large archives
 

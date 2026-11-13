@@ -1,0 +1,62 @@
+{
+  "epoch": 1794567860.9567392,
+  "timing": "Actual offline analysis execution registration AFTER measurement; not backdated preregistration",
+  "original_registration": {
+    "registered_epoch": 1794524186.158102,
+    "status": "ADDITIONAL_ANALYSIS_REGISTERED_DURING_ONGOING_CAMPAIGN_NOT_ORIGINAL_PREREGISTRATION",
+    "inspection_boundary": "Operational progress and guard incidents already inspected; no aggregate outcome contrast computed by this export",
+    "main_set": "All complete valid six-method blocks; block 1 includes explicitly authorized replacement and is marked cross-period recovered",
+    "sensitivity_set": "Same complete-block rules, exclude block 1 regardless of results",
+    "report_both": true,
+    "select_better_result": false,
+    "unit": "paired block on one Pi, not independent rows/windows/power frames",
+    "statistics": "For both sets: method-paired block differences, Student-t 95% CI, n and block IDs; raw and preceding-idle-adjusted energy/power; report detector/deadline/backlog outcomes separately",
+    "missing": "No imputation or incomplete block pairing; if fewer than two complete blocks, report effect descriptively and CI unavailable",
+    "original_rule": "CAMPAIGN_PLAN.md section 8 requires paired-block Student-t 95% CI and both raw/idle-adjusted reporting; physical lock fixes ten blocks and guard rules",
+    "difference": "Excluding recovered block 1 is an additional sensitivity analysis, not a change to original acceptance rules or a substitute primary result",
+    "precedence": "Any more specific frozen rule takes precedence; document conflict before analysis, never silently change it",
+    "no_experimental_changes": true
+  },
+  "later_registration": "Block 5 is now also cross-period recovered. Preserve the registered all-block and exclude-block-1 analyses; additionally report exclusion of all recovered blocks {1,5}, regardless of outcome. This does not change validity rules.",
+  "sets": {
+    "all_valid": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "exclude_block1": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "exclude_all_recovered": [
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  },
+  "contrasts": "All 15 unordered method pairs, fixed lexicographic method order; difference first minus second",
+  "inference": "Block-level paired mean, sample SD, Student-t 95% CI; nominal unadjusted multiple-comparison intervals; descriptive sensitivity, no confirmatory significance claim",
+  "added_implementation_detail": "All-pairs enumeration and exported diagnostic metrics specified now, not claimed as originally predeclared",
+  "old_evidence": "Historical V1/P0/P1/R1/R2 excluded from all new-study statistics; references only",
+  "no_outcome_selection": true,
+  "no_new_measurements": true
+}

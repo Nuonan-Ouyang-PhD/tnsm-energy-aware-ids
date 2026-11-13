@@ -1,0 +1,32 @@
+\begin{table*}[t]\centering\small
+\caption{Corrected follow-up: means over ten blocks; energy mean $\pm$ sample SD. Each method has zero deadline-miss windows. No historical experiment is pooled.}\label{tab:followup}
+\begin{tabular}{lrrrr}\toprule Method & Energy (J) & F1 & Recall (\%) & FPR (\%)\\\midrule
+Cascade & $1480.56\pm9.28$ & 0.99017 & 99.408 & 1.364\\
+DQN & $1440.57\pm8.73$ & 0.97633 & 96.680 & 1.351\\
+DeadlineGuard & $1492.11\pm10.75$ & 0.99062 & 99.649 & 1.517\\
+Static-LightLR & $1439.97\pm9.95$ & 0.97633 & 96.680 & 1.351\\
+Static-MedRF & $1492.63\pm10.58$ & 0.99062 & 99.649 & 1.517\\
+Q & $1440.21\pm9.57$ & 0.97633 & 96.680 & 1.351\\
+\bottomrule\end{tabular}\end{table*}
+\begin{table*}[t]\centering\footnotesize
+\caption{All registered block sets, nominal paired 95\% intervals. A: all blocks; B: exclude 1; C: exclude 1 and 5. Energy differences are first minus second; adjusted energy subtracts preceding idle power times observed duration.}\label{tab:sensitivity}
+\begin{tabular}{llllrr}\toprule Set & Contrast & Endpoint & $n$ & Difference (J) & 95\% CI (J)\\\midrule
+A & Cascade--Static-MedRF & Raw & 10 & -12.064 & $[-16.548,-7.580]$\\
+B & Cascade--Static-MedRF & Raw & 9 & -11.717 & $[-16.748,-6.686]$\\
+C & Cascade--Static-MedRF & Raw & 8 & -11.359 & $[-17.129,-5.588]$\\
+A & Cascade--Static-MedRF & Adjusted & 10 & -16.089 & $[-26.719,-5.460]$\\
+B & Cascade--Static-MedRF & Adjusted & 9 & -16.412 & $[-28.498,-4.326]$\\
+C & Cascade--Static-MedRF & Adjusted & 8 & -14.862 & $[-28.287,-1.438]$\\
+A & DQN--Static-LightLR & Raw & 10 & 0.599 & $[-4.119,5.317]$\\
+B & DQN--Static-LightLR & Raw & 9 & 1.045 & $[-4.207,6.298]$\\
+C & DQN--Static-LightLR & Raw & 8 & 2.376 & $[-2.580,7.333]$\\
+A & DQN--Static-LightLR & Adjusted & 10 & 0.974 & $[-9.667,11.615]$\\
+B & DQN--Static-LightLR & Adjusted & 9 & 2.117 & $[-9.647,13.882]$\\
+C & DQN--Static-LightLR & Adjusted & 8 & 3.775 & $[-9.161,16.711]$\\
+A & Q--Static-LightLR & Raw & 10 & 0.246 & $[-4.055,4.547]$\\
+B & Q--Static-LightLR & Raw & 9 & 0.489 & $[-4.372,5.350]$\\
+C & Q--Static-LightLR & Raw & 8 & 2.235 & $[-0.934,5.404]$\\
+A & Q--Static-LightLR & Adjusted & 10 & -4.793 & $[-17.147,7.562]$\\
+B & Q--Static-LightLR & Adjusted & 9 & -2.694 & $[-15.693,10.306]$\\
+C & Q--Static-LightLR & Adjusted & 8 & 1.593 & $[-8.224,11.410]$\\
+\bottomrule\end{tabular}\end{table*}

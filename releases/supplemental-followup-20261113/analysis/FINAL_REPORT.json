@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "accepted_runs": 60,
+  "complete_blocks": 10,
+  "invalid_attempts": 2,
+  "training_artifacts": 25,
+  "checks": 197922,
+  "transition_records": 12500000,
+  "measurement_stopped": true,
+  "new_measurements": 0,
+  "analysis_sets": [
+    "all_valid",
+    "exclude_block1",
+    "exclude_all_recovered"
+  ],
+  "unresolved_limitations": [
+    "No new physical measurements or historical pooling",
+    "Historical test inspected before new design",
+    "Queue never varied in training; no queue-ablation claim",
+    "Thermal is safety telemetry only",
+    "Training uses historical TON power proxy and new warm-input p95 latency, not new variable-load energy",
+    "Recovered blocks 1 and 5 span different periods; exclusions reported, not outcome-selected",
+    "KM003C uncalibrated load-side whole-Pi input, not CPU-only joules or wall power",
+    "Monitor repair changes instrumentation cadence; retain both executed implementations",
+    "Old failed gap lacks rejected right snapshot; exact failure gap not recoverable"
+  ],
+  "source_boundary": "Original and repaired executed runtime copies retained separately; current_tools are not substituted for executed_source",
+  "registration_boundary": "All real registration epochs retained; execution-time additions not labelled prospective preregistration"
+}

@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "checks": 197922,
+  "failed": [],
+  "accepted_formal": 60,
+  "invalid_attempts": 2,
+  "limitations": [
+    "No new physical measurements or historical pooling",
+    "Historical test inspected before new design",
+    "Queue never varied in training; no queue-ablation claim",
+    "Thermal is safety telemetry only",
+    "Training uses historical TON power proxy and new warm-input p95 latency, not new variable-load energy",
+    "Recovered blocks 1 and 5 span different periods; exclusions reported, not outcome-selected",
+    "KM003C uncalibrated load-side whole-Pi input, not CPU-only joules or wall power",
+    "Monitor repair changes instrumentation cadence; retain both executed implementations",
+    "Old failed gap lacks rejected right snapshot; exact failure gap not recoverable"
+  ]
+}

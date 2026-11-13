@@ -1,0 +1,20 @@
+\section{Methods, Objective and Training Support}\label{sec:methods}
+The four frozen detectors are depth-6 TinyDT, L2 LightLR, 25-tree depth-10 MedRF and a 64/32/16 HeavyMLP, with classifier seed 11 and threshold 0.5. No detector is refitted in the follow-up.
+
+Current arrivals are binned as $N\leq50$, $50<N\leq100$, or $N>100$; carryover as zero, $1$--$100$, or above $100$; prior threat as below $1/3$, $[1/3,0.7)$, or at least $0.7$. Prior action changes fastest, giving $3^3\times4=108$ full states. This corrects the historical 324-state interface; the two implementations are not interchangeable.
+
+The corrected training objective is
+\begin{align}
+r_t={}&0.5 B_t-0.2\bar P_t-0.2\min(c_t,1)\nonumber\\
+&-\ind[c_t>1\ \mathrm{or}\ Q_{t+1}>0]-Q_{t+1}/W_t,
+\end{align}
+with zero pending fraction for zero work. $B$ is balanced accuracy, $W=N+Q^-$ and $c$ is completion seconds. Power is min--max normalized historical TON static mean power. Simulated completion uses the newly calibrated warm-input p95 per 100 rows. These are training surrogates, not measurements of variable-load energy or causal thermal response. Temperature has no reward component.
+
+There are 25 frozen policies: Q full/minus-arrival/minus-threat/minus-previous-action for five seeds (2003, 2011, 2017, 2027, 2029), and five full DQN policies. Each uses 1,000 episodes of 500 windows. Original policy hyperparameters are retained; last-episode checkpoints alone are eligible. Full-policy seed selection maximizes summed validation reward, ties choosing the lowest seed. Selected policies are Q seed 2011 and DQN seed 2003. No physical/test result changes selection. Workload traces and prediction pools are hash-bound.
+
+The fixed surrogate has zero carryover throughout. Queue ablation is NOT IDENTIFIABLE/NOT EXECUTED, not evidence of robustness. Validation resamples an existing validation pool rather than creating independent examples. Full-source and transition archives disclose this limitation.
+
+\subsection{Immediate Pairwise Preferences, Not Policy Optimality}
+For fixed-support immediate utility $U_a=w_DD_a-C_a$, $w_D>0$, action $a$ beats $b$ iff $D_a-D_b>(C_a-C_b)/w_D$. Strict preference reversals require the threshold to lie strictly between attainable differences. This algebra applies only to the declared instantaneous costs and support. It does not determine transition dynamics, long-horizon return, a globally optimal policy, or inevitable learned collapse. The retrospective historical audit finds TinyDT-favouring windows and cannot prove global LightLR optimality or execution before test inspection. Load-dependent cost terms require a support-conditioned audit; historical numeric thresholds are not transferred to the corrected objective.
+
+External denominators such as an idle-relative power budget and latency SLO can make objectives interpretable independently of pool extrema. This is a design rule, not an experimentally established benefit of a different reward, which we do not tune here.

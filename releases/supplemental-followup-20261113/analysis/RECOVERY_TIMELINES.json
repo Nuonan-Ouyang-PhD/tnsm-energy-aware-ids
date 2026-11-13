@@ -1,0 +1,1470 @@
+[
+  {
+    "block": 1,
+    "classification": "CROSS_PERIOD_RECOVERED",
+    "attempts": [
+      {
+        "campaign": "physical_01",
+        "path": "physical_01/r2_variable_load/supp01-b01-p1-DQN",
+        "spec": {
+          "campaign": "R2",
+          "run_id": "supp01-b01-p1-DQN",
+          "stage": "r2",
+          "method": "DQN",
+          "block": 1,
+          "position": 1,
+          "seconds": 500,
+          "formal_statistics": true,
+          "preceding_idle_run_id": "supp01-b01-p1-DQN-idle"
+        },
+        "summary": {
+          "campaign": "R2",
+          "run_id": "supp01-b01-p1-DQN",
+          "stage": "r2",
+          "method": "DQN",
+          "block": 1,
+          "position": 1,
+          "seconds": 500,
+          "formal_statistics": true,
+          "preceding_idle_run_id": "supp01-b01-p1-DQN-idle",
+          "status": "PASS",
+          "power_samples": 501,
+          "observed_duration_seconds": 499.9965103545692,
+          "energy_joules": 1430.1464849490985,
+          "mean_watts": 2.860312932854111,
+          "voltage_min": 5.35008,
+          "voltage_max": 5.383989,
+          "measurement_scope": "uncalibrated KM003C USB load-side whole-Pi input; not AC-wall power",
+          "posthoc": {
+            "labels_loaded_only_after_run": true,
+            "completed_metrics": {
+              "rows": 627500,
+              "tn": 311476,
+              "fp": 4274,
+              "fn": 10361,
+              "tp": 301389,
+              "fpr": 0.013536025336500395,
+              "recall": 0.9667650360866079,
+              "precision": 0.9860172804690133,
+              "f1": 0.9762962555048241,
+              "balanced_accuracy": 0.9766145053750537
+            },
+            "scheduled_rows": 627500,
+            "completed_rows": 627500,
+            "final_backlog_rows": 0,
+            "missed_positive_presentations": 0,
+            "deadline_miss_windows": 0,
+            "unique_encoded_states": [
+              1,
+              5,
+              9,
+              37,
+              40,
+              41,
+              45,
+              73,
+              77,
+              81
+            ]
+          }
+        },
+        "failure": null,
+        "start": {
+          "start_utc_epoch": 1794487306.982707,
+          "prestart_adc_hex": "41fa80020100000bcb6a5100bb2ff5ff47665100c81df5ff27665100c01df5ffdf0e5d1129001e019602f37f008000f00000ff00000000000000000000000000",
+          "baseline_volts": 5.350632
+        }
+      },
+      {
+        "campaign": "physical_01",
+        "path": "physical_01/r2_variable_load/supp01-b01-p1-DQN-idle",
+        "spec": {
+          "campaign": "R2",
+          "run_id": "supp01-b01-p1-DQN-idle",
+          "stage": "idle",
+          "method": "DQN",
+          "block": 1,
+          "position": 1,
+          "seconds": 60,
+          "formal_statistics": false,
+          "preceding_idle_run_id": "supp01-b01-p1-DQN-idle"
+        },
+        "summary": {
+          "campaign": "R2",
+          "run_id": "supp01-b01-p1-DQN-idle",
+          "stage": "idle",
+          "method": "DQN",
+          "block": 1,
+          "position": 1,
+          "seconds": 60,
+          "formal_statistics": false,
+          "preceding_idle_run_id": "supp01-b01-p1-DQN-idle",
+          "status": "PASS",
+          "power_samples": 61,
+          "observed_duration_seconds": 59.99930743750883,
+          "energy_joules": 171.43912172688576,
+          "mean_watts": 2.857351677024689,
+          "voltage_min": 5.364534,
+          "voltage_max": 5.383632,
+          "measurement_scope": "uncalibrated KM003C USB load-side whole-Pi input; not AC-wall power"
+        },
+        "failure": null,
+        "start": {
+          "start_utc_epoch": 1794487231.0864298,
+          "prestart_adc_hex": "41fa80020100000bfda75100274bf6ffd9a651008042f6ffb9a651007842f6ffd90e641124001c019602ef7f008000f00000ff00000000000000000000000000",
+          "baseline_volts": 5.350632
+        }
+      },
+      {
+        "campaign": "physical_01",
+        "path": "physical_01/r2_variable_load/supp01-b01-p2-ConfidenceCascade_0p3_0p7",
+        "spec": {
+          "campaign": "R2",
+          "run_id": "supp01-b01-p2-ConfidenceCascade_0p3_0p7",
+          "stage": "r2",
+          "method": "ConfidenceCascade_0p3_0p7",
+          "block": 1,
+          "position": 2,
+          "seconds": 500,
+          "formal_statistics": true,
+          "preceding_idle_run_id": "supp01-b01-p2-ConfidenceCascade_0p3_0p7-idle"
+        },
+        "summary": {
+          "campaign": "R2",
+          "run_id": "supp01-b01-p2-ConfidenceCascade_0p3_0p7",
+          "stage": "r2",
+          "method": "ConfidenceCascade_0p3_0p7",
+          "block": 1,
+          "position": 2,
+          "seconds": 500,
+          "formal_statistics": true,
+          "preceding_idle_run_id": "supp01-b01-p2-ConfidenceCascade_0p3_0p7-idle",
+          "status": "PASS",
+          "power_samples": 501,
+          "observed_duration_seconds": 499.9996758964844,
+          "energy_joules": 1478.751278275683,
+          "mean_watts": 2.9575044736265608,
+          "voltage_min": 5.348569,
+          "voltage_max": 5.384076,
+          "measurement_scope": "uncalibrated KM003C USB load-side whole-Pi input; not AC-wall power",
+          "posthoc": {
+            "labels_loaded_only_after_run": true,
+            "completed_metrics": {
+              "rows": 627500,
+              "tn": 311422,
+              "fp": 4328,
+              "fn": 1816,
+              "tp": 309934,
+              "fpr": 0.013707046714172605,
+              "recall": 0.9941748195669607,
+              "precision": 0.9862280517529959,
+              "f1": 0.9901854916519173,
+              "balanced_accuracy": 0.9902338864263941
+            },
+            "scheduled_rows": 627500,
+            "completed_rows": 627500,
+            "final_backlog_rows": 0,
+            "missed_positive_presentations": 0,
+            "deadline_miss_windows": 0,
+            "unique_encoded_states": [
+              1,
+              5,
+              9,
+              37,
+              40,
+              41,
+              45,
+              73,
+              77,
+              81
+            ]
+          }
+        },
+        "failure": null,
+        "start": {
+          "start_utc_epoch": 1794487898.930955,
+          "prestart_adc_hex": "41fa80020100000b2eb15100de5ef6ff99ac5100984cf6ff79ac5100904cf6ffd90e651124001d019802f37f008000f00000ff00000000000000000000000000",
+          "baseline_volts": 5.350632
+        }
+      },
+      {
+        "campaign": "physical_01",
+        "path": "physical_01/r2_variable_load/supp01-b01-p2-ConfidenceCascade_0p3_0p7-idle",
+        "spec": {
+          "campaign": "R2",
+          "run_id": "supp01-b01-p2-ConfidenceCascade_0p3_0p7-idle",
+          "stage": "idle",
+          "method": "ConfidenceCascade_0p3_0p7",
+          "block": 1,
+          "position": 2,
+          "seconds": 60,
+          "formal_statistics": false,
+          "preceding_idle_run_id": "supp01-b01-p2-ConfidenceCascade_0p3_0p7-idle"
+        },
+        "summary": {
+          "campaign": "R2",
+          "run_id": "supp01-b01-p2-ConfidenceCascade_0p3_0p7-idle",
+          "stage": "idle",
+          "method": "ConfidenceCascade_0p3_0p7",
+          "block": 1,
+          "position": 2,
+          "seconds": 60,
+          "formal_statistics": false,
+          "preceding_idle_run_id": "supp01-b01-p2-ConfidenceCascade_0p3_0p7-idle",
+          "status": "PASS",
+          "power_samples": 61,
+          "observed_duration_seconds": 60.00116139603779,
+          "energy_joules": 171.36716614138143,
+          "mean_watts": 2.8560641519965273,
+          "voltage_min": 5.364429,
+          "voltage_max": 5.383951,
+          "measurement_scope": "uncalibrated KM003C USB load-side whole-Pi input; not AC-wall power"
+        },
+        "failure": null,
+        "start": {
+          "start_utc_epoch": 1794487823.0741708,
+          "prestart_adc_hex": "41fa80020100000bbc8751009e3bf6ffb473510056a1f5ff947351004ea1f5ffdb0e631125001d019802f07f008000f00000ff00000000000000000000000000",
+          "baseline_volts": 5.350632
+        }
+      },
+      {
+        "campaign": "physical_01",
+        "path": "physical_01/r2_variable_load/supp01-b01-p3-Static-MedRF",
+        "spec": {
+          "campaign": "R2",
+          "run_id": "supp01-b01-p3-Static-MedRF",
+          "stage": "r2",
+          "method": "Static-MedRF",
+          "block": 1,
+          "position": 3,
+          "seconds": 500,
+          "formal_statistics": true,
+          "preceding_idle_run_id": "supp01-b01-p3-Static-MedRF-idle"
+        },
+        "summary": {
+          "campaign": "R2",
+          "run_id": "supp01-b01-p3-Static-MedRF",
+          "stage": "r2",
+          "method": "Static-MedRF",
+          "block": 1,
+          "position": 3,
+          "seconds": 500,
+          "formal_statistics": true,
+          "preceding_idle_run_id": "supp01-b01-p3-Static-MedRF-idle",
+          "status": "PASS",
+          "power_samples": 501,
+          "observed_duration_seconds": 499.9966905209585,
+          "energy_joules": 1493.93535933448,
+          "mean_watts": 2.9878904953909053,
+          "voltage_min": 5.346977,
+          "voltage_max": 5.383886,
+          "measurement_scope": "uncalibrated KM003C USB load-side whole-Pi input; not AC-wall power",
+          "posthoc": {
+            "labels_loaded_only_after_run": true,
+            "completed_metrics": {
+              "rows": 627500,
+              "tn": 310973,
+              "fp": 4777,
+              "fn": 1061,
+              "tp": 310689,
+              "fpr": 0.015129057798891529,
+              "recall": 0.9965966319165999,
+              "precision": 0.9848573221836902,
+              "f1": 0.9906922017295476,
+              "balanced_accuracy": 0.9907337870588542
+            },
+            "scheduled_rows": 627500,
+            "completed_rows": 627500,
+            "final_backlog_rows": 0,
+            "missed_positive_presentations": 0,
+            "deadline_miss_windows": 0,
+            "unique_encoded_states": [
+              2,
+              6,
+              10,
+              38,
+              40,
+              42,
+              46,
+              74,
+              78,
+              82
+            ]
+          }
+        },
+        "failure": null,
+        "start": {
+          "start_utc_epoch": 1794488491.026998,
+          "prestart_adc_hex": "41fa80020100000b7a6a51002039f5ff19745100201cf5fff9735100181cf5ffea0e5c1128001e019602eb7f008000f00000ff00000000000000000000000000",
+          "baseline_volts": 5.350632
+        }
+      },
+      {
+        "campaign": "physical_01",
+        "path": "physical_01/r2_variable_load/supp01-b01-p3-Static-MedRF-idle",
+        "spec": {
+          "campaign": "R2",
+          "run_id": "supp01-b01-p3-Static-MedRF-idle",
+          "stage": "idle",
+          "method": "Static-MedRF",
+          "block": 1,
+          "position": 3,
+          "seconds": 60,
+          "formal_statistics": false,
+          "preceding_idle_run_id": "supp01-b01-p3-Static-MedRF-idle"
+        },
+        "summary": {
+          "campaign": "R2",
+          "run_id": "supp01-b01-p3-Static-MedRF-idle",
+          "stage": "idle",
+          "method": "Static-MedRF",
+          "block": 1,
+          "position": 3,
+          "seconds": 60,
+          "formal_statistics": false,
+          "preceding_idle_run_id": "supp01-b01-p3-Static-MedRF-idle",
+          "status": "PASS",
+          "power_samples": 61,
+          "observed_duration_seconds": 59.995242645498365,
+          "energy_joules": 171.59079476455227,
+          "mean_watts": 2.8600733524565096,
+          "voltage_min": 5.364746,
+          "voltage_max": 5.383394,
+          "measurement_scope": "uncalibrated KM003C USB load-side whole-Pi input; not AC-wall power"
+        },
+        "failure": null,
+        "start": {
+          "start_utc_epoch": 1794488415.2723148,
+          "prestart_adc_hex": "41fa80020100000b5b895100dbf1f5ff57635100d427f5ff37635100cc27f5ffeb0e621126001d019402ee7f008000f00000ff00000000000000000000000000",
+          "baseline_volts": 5.350632
+        }
+      },
+      {
+        "campaign": "physical_01",
+        "path": "physical_01/r2_variable_load/supp01-b01-p4-Tabular-Q",
+        "spec": {
+          "campaign": "R2",
+          "run_id": "supp01-b01-p4-Tabular-Q",
+          "stage": "r2",
+          "method": "Tabular-Q",
+          "block": 1,
+          "position": 4,
+          "seconds": 500,
+          "formal_statistics": true,
+          "preceding_idle_run_id": "supp01-b01-p4-Tabular-Q-idle"
+        },
+        "summary": {
+          "campaign": "R2",
+          "run_id": "supp01-b01-p4-Tabular-Q",
+          "stage": "r2",
+          "method": "Tabular-Q",
+          "block": 1,
+          "position": 4,
+          "seconds": 500,
+          "formal_statistics": true,
+          "preceding_idle_run_id": "supp01-b01-p4-Tabular-Q-idle",
+          "status": "PASS",
+          "power_samples": 501,
+          "observed_duration_seconds": 499.9938946249895,
+          "energy_joules": 1431.6172190282805,
+          "mean_watts": 2.863269400723456,
+          "voltage_min": 5.363984,
+          "voltage_max": 5.384385,
+          "measurement_scope": "uncalibrated KM003C USB load-side whole-Pi input; not AC-wall power",
+          "posthoc": {
+            "labels_loaded_only_after_run": true,
+            "completed_metrics": {
+              "rows": 627500,
+              "tn": 311476,
+              "fp": 4274,
+              "fn": 10361,
+              "tp": 301389,
+              "fpr": 0.013536025336500395,
+              "recall": 0.9667650360866079,
+              "precision": 0.9860172804690133,
+              "f1": 0.9762962555048241,
+              "balanced_accuracy": 0.9766145053750537
+            },
+            "scheduled_rows": 627500,
+            "completed_rows": 627500,
+            "final_backlog_rows": 0,
+            "missed_positive_presentations": 0,
+            "deadline_miss_windows": 0,
+            "unique_encoded_states": [
+              1,
+              5,
+              9,
+              37,
+              40,
+              41,
+              45,
+              73,
+              77,
+              81
+            ]
+          }
+        },
+        "failure": null,
+        "start": {
+          "start_utc_epoch": 1794489083.040152,
+          "prestart_adc_hex": "41fa80020100000b81ae5100c554f6ff29ac5100b043f6ff09ac5100a843f6ffed0e651124001c019702ee7f008000f00000ff00000000000000000000000000",
+          "baseline_volts": 5.350632
+        }
+      },
+      {
+        "campaign": "physical_01",
+        "path": "physical_01/r2_variable_load/supp01-b01-p4-Tabular-Q-idle",
+        "spec": {
+          "campaign": "R2",
+          "run_id": "supp01-b01-p4-Tabular-Q-idle",
+          "stage": "idle",
+          "method": "Tabular-Q",
+          "block": 1,
+          "position": 4,
+          "seconds": 60,
+          "formal_statistics": false,
+          "preceding_idle_run_id": "supp01-b01-p4-Tabular-Q-idle"
+        },
+        "summary": {
+          "campaign": "R2",
+          "run_id": "supp01-b01-p4-Tabular-Q-idle",
+          "stage": "idle",
+          "method": "Tabular-Q",
+          "block": 1,
+          "position": 4,
+          "seconds": 60,
+          "formal_statistics": false,
+          "preceding_idle_run_id": "supp01-b01-p4-Tabular-Q-idle",
+          "status": "PASS",
+          "power_samples": 61,
+          "observed_duration_seconds": 59.99808368796948,
+          "energy_joules": 173.33741627229216,
+          "mean_watts": 2.8890492098674962,
+          "voltage_min": 5.365222,
+          "voltage_max": 5.383583,
+          "measurement_scope": "uncalibrated KM003C USB load-side whole-Pi input; not AC-wall power"
+        },
+        "failure": null,
+        "start": {
+          "start_utc_epoch": 1794489007.261457,
+          "prestart_adc_hex": "41fa80020100000b0ba85100d626f6ff75a85100aa23f6ff55a85100a223f6ffed0e671123001c019602ea7f008000f00000ff00000000000000000000000000",
+          "baseline_volts": 5.350632
+        }
+      },
+      {
+        "campaign": "physical_01",
+        "path": "physical_01/r2_variable_load/supp01-b01-p5-DeadlineGuard",
+        "spec": {
+          "campaign": "R2",
+          "run_id": "supp01-b01-p5-DeadlineGuard",
+          "stage": "r2",
+          "method": "DeadlineGuard",
+          "block": 1,
+          "position": 5,
+          "seconds": 500,
+          "formal_statistics": true,
+          "preceding_idle_run_id": "supp01-b01-p5-DeadlineGuard-idle"
+        },
+        "summary": {
+          "campaign": "R2",
+          "run_id": "supp01-b01-p5-DeadlineGuard",
+          "stage": "r2",
+          "method": "DeadlineGuard",
+          "block": 1,
+          "position": 5,
+          "seconds": 500,
+          "formal_statistics": true,
+          "preceding_idle_run_id": "supp01-b01-p5-DeadlineGuard-idle",
+          "status": "PASS",
+          "power_samples": 501,
+          "observed_duration_seconds": 499.9994299164973,
+          "energy_joules": 1482.2446889442774,
+          "mean_watts": 2.964492757905385,
+          "voltage_min": 5.347114,
+          "voltage_max": 5.384203,
+          "measurement_scope": "uncalibrated KM003C USB load-side whole-Pi input; not AC-wall power",
+          "posthoc": {
+            "labels_loaded_only_after_run": true,
+            "completed_metrics": {
+              "rows": 627500,
+              "tn": 310973,
+              "fp": 4777,
+              "fn": 1061,
+              "tp": 310689,
+              "fpr": 0.015129057798891529,
+              "recall": 0.9965966319165999,
+              "precision": 0.9848573221836902,
+              "f1": 0.9906922017295476,
+              "balanced_accuracy": 0.9907337870588542
+            },
+            "scheduled_rows": 627500,
+            "completed_rows": 627500,
+            "final_backlog_rows": 0,
+            "missed_positive_presentations": 0,
+            "deadline_miss_windows": 0,
+            "unique_encoded_states": [
+              2,
+              6,
+              10,
+              38,
+              40,
+              42,
+              46,
+              74,
+              78,
+              82
+            ]
+          }
+        },
+        "failure": null,
+        "start": {
+          "start_utc_epoch": 1794489674.852313,
+          "prestart_adc_hex": "41fa80020100000b13b25100fb5ff6ff91ad51002e4bf6ff71ad5100264bf6ffd20e661124001a019202f07f008000f00000ff00000000000000000000000000",
+          "baseline_volts": 5.350632
+        }
+      },
+      {
+        "campaign": "physical_01",
+        "path": "physical_01/r2_variable_load/supp01-b01-p5-DeadlineGuard-idle",
+        "spec": {
+          "campaign": "R2",
+          "run_id": "supp01-b01-p5-DeadlineGuard-idle",
+          "stage": "idle",
+          "method": "DeadlineGuard",
+          "block": 1,
+          "position": 5,
+          "seconds": 60,
+          "formal_statistics": false,
+          "preceding_idle_run_id": "supp01-b01-p5-DeadlineGuard-idle"
+        },
+        "summary": {
+          "campaign": "R2",
+          "run_id": "supp01-b01-p5-DeadlineGuard-idle",
+          "stage": "idle",
+          "method": "DeadlineGuard",
+          "block": 1,
+          "position": 5,
+          "seconds": 60,
+          "formal_statistics": false,
+          "preceding_idle_run_id": "supp01-b01-p5-DeadlineGuard-idle",
+          "status": "PASS",
+          "power_samples": 61,
+          "observed_duration_seconds": 59.9946232495131,
+          "energy_joules": 170.85251251930453,
+          "mean_watts": 2.8477970735601064,
+          "voltage_min": 5.360229,
+          "voltage_max": 5.3843,
+          "measurement_scope": "uncalibrated KM003C USB load-side whole-Pi input; not AC-wall power"
+        },
+        "failure": null,
+        "start": {
+          "start_utc_epoch": 1794489599.046429,
+          "prestart_adc_hex": "41fa80020100000ba9675100d612f5ffbe7351007a0ef5ff9e735100720ef5ffd30e5b1129001d019602ea7f008000f00000ff00000000000000000000000000",
+          "baseline_volts": 5.350632
+        }
+      },
+      {
+        "campaign": "physical_01",
+        "path": "physical_01/r2_variable_load/supp01-b01-p6-Static-LightLR",
+        "spec": {
+          "campaign": "R2",
+          "run_id": "supp01-b01-p6-Static-LightLR",
+          "stage": "r2",
+          "method": "Static-LightLR",
+          "block": 1,
+          "position": 6,
+          "seconds": 500,
+          "formal_statistics": true,
+          "preceding_idle_run_id": "supp01-b01-p6-Static-LightLR-idle"
+        },
+        "summary": null,
+        "failure": {
+          "status": "INVALID",
+          "reason": "RuntimeError('Pi failed: {\\'event\\': \\'failed\\', \\'utc_epoch\\': 1794490676.801403, \\'status\\': \\'INVALID_RETAIN_NO_RETRY\\', \\'error\\': \\'RuntimeError(\"RuntimeError(\\\\\\'external CPU exceeds fixed 5 percent gate\\\\\\')\")\\'}')",
+          "stage": "r2",
+          "samples_retained": 410,
+          "start_sent": true,
+          "automatic_retry": false
+        },
+        "start": {
+          "start_utc_epoch": 1794490266.801205,
+          "prestart_adc_hex": "41fa80020100000b61b551004068f6ffb7af5100aa50f6ff97af5100a250f6ffd40e641124001c019702ea7f008000f00000ff00000000000000000000000000",
+          "baseline_volts": 5.350632
+        }
+      },
+      {
+        "campaign": "physical_01",
+        "path": "physical_01/r2_variable_load/supp01-b01-p6-Static-LightLR-idle",
+        "spec": {
+          "campaign": "R2",
+          "run_id": "supp01-b01-p6-Static-LightLR-idle",
+          "stage": "idle",
+          "method": "Static-LightLR",
+          "block": 1,
+          "position": 6,
+          "seconds": 60,
+          "formal_statistics": false,
+          "preceding_idle_run_id": "supp01-b01-p6-Static-LightLR-idle"
+        },
+        "summary": {
+          "campaign": "R2",
+          "run_id": "supp01-b01-p6-Static-LightLR-idle",
+          "stage": "idle",
+          "method": "Static-LightLR",
+          "block": 1,
+          "position": 6,
+          "seconds": 60,
+          "formal_statistics": false,
+          "preceding_idle_run_id": "supp01-b01-p6-Static-LightLR-idle",
+          "status": "PASS",
+          "power_samples": 61,
+          "observed_duration_seconds": 59.993928249459714,
+          "energy_joules": 170.35122678548652,
+          "mean_watts": 2.8394744561008247,
+          "voltage_min": 5.365501,
+          "voltage_max": 5.384366,
+          "measurement_scope": "uncalibrated KM003C USB load-side whole-Pi input; not AC-wall power"
+        },
+        "failure": null,
+        "start": {
+          "start_utc_epoch": 1794490191.032436,
+          "prestart_adc_hex": "41fa80020100000be7655100252cf5ff72645100ee18f5ff52645100e618f5ffd40e5c1129001d019702ec7f008000f00000ff00000000000000000000000000",
+          "baseline_volts": 5.350632
+        }
+      },
+      {
+        "campaign": "physical_resume_02",
+        "path": "physical_resume_02/r2_variable_load/supp02-b01-p6-Static-LightLR",
+        "spec": {
+          "campaign": "R2",
+          "run_id": "supp02-b01-p6-Static-LightLR",
+          "stage": "r2",
+          "method": "Static-LightLR",
+          "block": 1,
+          "position": 6,
+          "seconds": 500,
+          "formal_statistics": true,
+          "preceding_idle_run_id": "supp02-b01-p6-Static-LightLR-idle",
+          "replacement_for": "supp01-b01-p6-Static-LightLR",
+          "replacement_reason": "user-authorized recovery after external CPU guard; fresh preceding idle"
+        },
+        "summary": {
+          "campaign": "R2",
+          "run_id": "supp02-b01-p6-Static-LightLR",
+          "stage": "r2",
+          "method": "Static-LightLR",
+          "block": 1,
+          "position": 6,
+          "seconds": 500,
+          "formal_statistics": true,
+          "preceding_idle_run_id": "supp02-b01-p6-Static-LightLR-idle",
+          "replacement_for": "supp01-b01-p6-Static-LightLR",
+          "replacement_reason": "user-authorized recovery after external CPU guard; fresh preceding idle",
+          "status": "PASS",
+          "power_samples": 501,
+          "observed_duration_seconds": 500.00020639551803,
+          "energy_joules": 1433.5604833450943,
+          "mean_watts": 2.867119783168843,
+          "voltage_min": 5.363259,
+          "voltage_max": 5.38356,
+          "measurement_scope": "uncalibrated KM003C USB load-side whole-Pi input; not AC-wall power",
+          "posthoc": {
+            "labels_loaded_only_after_run": true,
+            "completed_metrics": {
+              "rows": 627500,
+              "tn": 311476,
+              "fp": 4274,
+              "fn": 10361,
+              "tp": 301389,
+              "fpr": 0.013536025336500395,
+              "recall": 0.9667650360866079,
+              "precision": 0.9860172804690133,
+              "f1": 0.9762962555048241,
+              "balanced_accuracy": 0.9766145053750537
+            },
+            "scheduled_rows": 627500,
+            "completed_rows": 627500,
+            "final_backlog_rows": 0,
+            "missed_positive_presentations": 0,
+            "deadline_miss_windows": 0,
+            "unique_encoded_states": [
+              1,
+              5,
+              9,
+              37,
+              40,
+              41,
+              45,
+              73,
+              77,
+              81
+            ]
+          }
+        },
+        "failure": null,
+        "start": {
+          "start_utc_epoch": 1794516393.919536,
+          "prestart_adc_hex": "41fa80020100000b0cae51009265f6ff9da45100a42af6ff7da451009c2af6ffb10d6711230015018e02fa7f008000f00000ff00000000000000000000000000",
+          "baseline_volts": 5.383158
+        }
+      },
+      {
+        "campaign": "physical_resume_02",
+        "path": "physical_resume_02/r2_variable_load/supp02-b01-p6-Static-LightLR-idle",
+        "spec": {
+          "campaign": "R2",
+          "run_id": "supp02-b01-p6-Static-LightLR-idle",
+          "stage": "idle",
+          "method": "Static-LightLR",
+          "block": 1,
+          "position": 6,
+          "seconds": 60,
+          "formal_statistics": false,
+          "preceding_idle_run_id": "supp02-b01-p6-Static-LightLR-idle",
+          "replacement_for": "supp01-b01-p6-Static-LightLR-idle",
+          "replacement_reason": "user-authorized recovery after external CPU guard; fresh preceding idle"
+        },
+        "summary": {
+          "campaign": "R2",
+          "run_id": "supp02-b01-p6-Static-LightLR-idle",
+          "stage": "idle",
+          "method": "Static-LightLR",
+          "block": 1,
+          "position": 6,
+          "seconds": 60,
+          "formal_statistics": false,
+          "preceding_idle_run_id": "supp02-b01-p6-Static-LightLR-idle",
+          "replacement_for": "supp01-b01-p6-Static-LightLR-idle",
+          "replacement_reason": "user-authorized recovery after external CPU guard; fresh preceding idle",
+          "status": "PASS",
+          "power_samples": 61,
+          "observed_duration_seconds": 59.99693252053112,
+          "energy_joules": 170.7233211814595,
+          "mean_watts": 2.845534163318058,
+          "voltage_min": 5.365026,
+          "voltage_max": 5.383369,
+          "measurement_scope": "uncalibrated KM003C USB load-side whole-Pi input; not AC-wall power"
+        },
+        "failure": null,
+        "start": {
+          "start_utc_epoch": 1794516318.302927,
+          "prestart_adc_hex": "41fa80020100000b21a95100ea34f6fff1a15100442cf6ffd1a151003c2cf6ffb00d6711240014018e02f97f008000f00000ff00000000000000000000000000",
+          "baseline_volts": 5.383158
+        }
+      }
+    ]
+  },
+  {
+    "block": 5,
+    "classification": "CROSS_PERIOD_RECOVERED",
+    "attempts": [
+      {
+        "campaign": "physical_resume_02",
+        "path": "physical_resume_02/r2_variable_load/supp02-b05-p1-Static-LightLR",
+        "spec": {
+          "campaign": "R2",
+          "run_id": "supp02-b05-p1-Static-LightLR",
+          "stage": "r2",
+          "method": "Static-LightLR",
+          "block": 5,
+          "position": 1,
+          "seconds": 500,
+          "formal_statistics": true,
+          "preceding_idle_run_id": "supp02-b05-p1-Static-LightLR-idle"
+        },
+        "summary": {
+          "campaign": "R2",
+          "run_id": "supp02-b05-p1-Static-LightLR",
+          "stage": "r2",
+          "method": "Static-LightLR",
+          "block": 5,
+          "position": 1,
+          "seconds": 500,
+          "formal_statistics": true,
+          "preceding_idle_run_id": "supp02-b05-p1-Static-LightLR-idle",
+          "status": "PASS",
+          "power_samples": 501,
+          "observed_duration_seconds": 499.99924874998396,
+          "energy_joules": 1452.063600527765,
+          "mean_watts": 2.904131564513299,
+          "voltage_min": 5.364666,
+          "voltage_max": 5.385145,
+          "measurement_scope": "uncalibrated KM003C USB load-side whole-Pi input; not AC-wall power",
+          "posthoc": {
+            "labels_loaded_only_after_run": true,
+            "completed_metrics": {
+              "rows": 627500,
+              "tn": 311525,
+              "fp": 4225,
+              "fn": 10443,
+              "tp": 301307,
+              "fpr": 0.013380839271575613,
+              "recall": 0.9665020048115477,
+              "precision": 0.9861716612335205,
+              "f1": 0.9762377649113371,
+              "balanced_accuracy": 0.976560582769986
+            },
+            "scheduled_rows": 627500,
+            "completed_rows": 627500,
+            "final_backlog_rows": 0,
+            "missed_positive_presentations": 0,
+            "deadline_miss_windows": 0,
+            "unique_encoded_states": [
+              1,
+              5,
+              9,
+              37,
+              40,
+              41,
+              45,
+              73,
+              77,
+              81
+            ]
+          }
+        },
+        "failure": null,
+        "start": {
+          "start_utc_epoch": 1794527635.630676,
+          "prestart_adc_hex": "41fa80020100000bfd9b51001978f5ff7db05100cc3ef6ff5db05100c43ef6ff3a0e621126001a019202f27f008000f00000ff00000000000000000000000000",
+          "baseline_volts": 5.383158
+        }
+      },
+      {
+        "campaign": "physical_resume_02",
+        "path": "physical_resume_02/r2_variable_load/supp02-b05-p1-Static-LightLR-idle",
+        "spec": {
+          "campaign": "R2",
+          "run_id": "supp02-b05-p1-Static-LightLR-idle",
+          "stage": "idle",
+          "method": "Static-LightLR",
+          "block": 5,
+          "position": 1,
+          "seconds": 60,
+          "formal_statistics": false,
+          "preceding_idle_run_id": "supp02-b05-p1-Static-LightLR-idle"
+        },
+        "summary": {
+          "campaign": "R2",
+          "run_id": "supp02-b05-p1-Static-LightLR-idle",
+          "stage": "idle",
+          "method": "Static-LightLR",
+          "block": 5,
+          "position": 1,
+          "seconds": 60,
+          "formal_statistics": false,
+          "preceding_idle_run_id": "supp02-b05-p1-Static-LightLR-idle",
+          "status": "PASS",
+          "power_samples": 61,
+          "observed_duration_seconds": 59.99706660449738,
+          "energy_joules": 171.43928282033673,
+          "mean_watts": 2.8574610813970303,
+          "voltage_min": 5.366635,
+          "voltage_max": 5.384944,
+          "measurement_scope": "uncalibrated KM003C USB load-side whole-Pi input; not AC-wall power"
+        },
+        "failure": null,
+        "start": {
+          "start_utc_epoch": 1794527560.096561,
+          "prestart_adc_hex": "41fa80020100000b2dad51008c1cf6ff84a85100ea2ef6ff64a85100e22ef6ff320e671123001a019202f87f008000f00000ff00000000000000000000000000",
+          "baseline_volts": 5.383158
+        }
+      },
+      {
+        "campaign": "physical_resume_02",
+        "path": "physical_resume_02/r2_variable_load/supp02-b05-p2-Tabular-Q",
+        "spec": {
+          "campaign": "R2",
+          "run_id": "supp02-b05-p2-Tabular-Q",
+          "stage": "r2",
+          "method": "Tabular-Q",
+          "block": 5,
+          "position": 2,
+          "seconds": 500,
+          "formal_statistics": true,
+          "preceding_idle_run_id": "supp02-b05-p2-Tabular-Q-idle"
+        },
+        "summary": {
+          "campaign": "R2",
+          "run_id": "supp02-b05-p2-Tabular-Q",
+          "stage": "r2",
+          "method": "Tabular-Q",
+          "block": 5,
+          "position": 2,
+          "seconds": 500,
+          "formal_statistics": true,
+          "preceding_idle_run_id": "supp02-b05-p2-Tabular-Q-idle",
+          "status": "PASS",
+          "power_samples": 501,
+          "observed_duration_seconds": 499.997818354459,
+          "energy_joules": 1438.5888560720673,
+          "mean_watts": 2.877190266162764,
+          "voltage_min": 5.364869,
+          "voltage_max": 5.385158,
+          "measurement_scope": "uncalibrated KM003C USB load-side whole-Pi input; not AC-wall power",
+          "posthoc": {
+            "labels_loaded_only_after_run": true,
+            "completed_metrics": {
+              "rows": 627500,
+              "tn": 311525,
+              "fp": 4225,
+              "fn": 10443,
+              "tp": 301307,
+              "fpr": 0.013380839271575613,
+              "recall": 0.9665020048115477,
+              "precision": 0.9861716612335205,
+              "f1": 0.9762377649113371,
+              "balanced_accuracy": 0.976560582769986
+            },
+            "scheduled_rows": 627500,
+            "completed_rows": 627500,
+            "final_backlog_rows": 0,
+            "missed_positive_presentations": 0,
+            "deadline_miss_windows": 0,
+            "unique_encoded_states": [
+              1,
+              5,
+              9,
+              37,
+              40,
+              41,
+              45,
+              73,
+              77,
+              81
+            ]
+          }
+        },
+        "failure": null,
+        "start": {
+          "start_utc_epoch": 1794528227.390767,
+          "prestart_adc_hex": "41fa80020100000b71b55100c85af6ff15b251004847f6fff5b151004047f6ff440e671123001a019402f37f008000f00000ff00000000000000000000000000",
+          "baseline_volts": 5.383158
+        }
+      },
+      {
+        "campaign": "physical_resume_02",
+        "path": "physical_resume_02/r2_variable_load/supp02-b05-p2-Tabular-Q-idle",
+        "spec": {
+          "campaign": "R2",
+          "run_id": "supp02-b05-p2-Tabular-Q-idle",
+          "stage": "idle",
+          "method": "Tabular-Q",
+          "block": 5,
+          "position": 2,
+          "seconds": 60,
+          "formal_statistics": false,
+          "preceding_idle_run_id": "supp02-b05-p2-Tabular-Q-idle"
+        },
+        "summary": {
+          "campaign": "R2",
+          "run_id": "supp02-b05-p2-Tabular-Q-idle",
+          "stage": "idle",
+          "method": "Tabular-Q",
+          "block": 5,
+          "position": 2,
+          "seconds": 60,
+          "formal_statistics": false,
+          "preceding_idle_run_id": "supp02-b05-p2-Tabular-Q-idle",
+          "status": "PASS",
+          "power_samples": 61,
+          "observed_duration_seconds": 59.995884436997585,
+          "energy_joules": 174.25752881436068,
+          "mean_watts": 2.9044913738599965,
+          "voltage_min": 5.366518,
+          "voltage_max": 5.384934,
+          "measurement_scope": "uncalibrated KM003C USB load-side whole-Pi input; not AC-wall power"
+        },
+        "failure": null,
+        "start": {
+          "start_utc_epoch": 1794528151.63958,
+          "prestart_adc_hex": "41fa80020100000bbfa65100c7c1f5ff08b05100de3af6ffe8af5100d63af6ff410e631126001a019502f67f008000f00000ff00000000000000000000000000",
+          "baseline_volts": 5.383158
+        }
+      },
+      {
+        "campaign": "physical_resume_02",
+        "path": "physical_resume_02/r2_variable_load/supp02-b05-p3-DeadlineGuard",
+        "spec": {
+          "campaign": "R2",
+          "run_id": "supp02-b05-p3-DeadlineGuard",
+          "stage": "r2",
+          "method": "DeadlineGuard",
+          "block": 5,
+          "position": 3,
+          "seconds": 500,
+          "formal_statistics": true,
+          "preceding_idle_run_id": "supp02-b05-p3-DeadlineGuard-idle"
+        },
+        "summary": {
+          "campaign": "R2",
+          "run_id": "supp02-b05-p3-DeadlineGuard",
+          "stage": "r2",
+          "method": "DeadlineGuard",
+          "block": 5,
+          "position": 3,
+          "seconds": 500,
+          "formal_statistics": true,
+          "preceding_idle_run_id": "supp02-b05-p3-DeadlineGuard-idle",
+          "status": "PASS",
+          "power_samples": 501,
+          "observed_duration_seconds": 500.00001979095396,
+          "energy_joules": 1495.7517592257548,
+          "mean_watts": 2.9915034000420975,
+          "voltage_min": 5.348073,
+          "voltage_max": 5.384767,
+          "measurement_scope": "uncalibrated KM003C USB load-side whole-Pi input; not AC-wall power",
+          "posthoc": {
+            "labels_loaded_only_after_run": true,
+            "completed_metrics": {
+              "rows": 627500,
+              "tn": 310970,
+              "fp": 4780,
+              "fn": 1103,
+              "tp": 310647,
+              "fpr": 0.015138558986539985,
+              "recall": 0.9964619085805935,
+              "precision": 0.9848459389969787,
+              "f1": 0.9906198728588579,
+              "balanced_accuracy": 0.9906616747970267
+            },
+            "scheduled_rows": 627500,
+            "completed_rows": 627500,
+            "final_backlog_rows": 0,
+            "missed_positive_presentations": 0,
+            "deadline_miss_windows": 0,
+            "unique_encoded_states": [
+              2,
+              6,
+              10,
+              38,
+              40,
+              42,
+              46,
+              74,
+              78,
+              82
+            ]
+          }
+        },
+        "failure": null,
+        "start": {
+          "start_utc_epoch": 1794528818.918138,
+          "prestart_adc_hex": "41fa80020100000b40b15100fc3ff6ff76ab5100c039f6ff56ab5100b839f6ff4f0e651124001a019302f37f008000f00000ff00000000000000000000000000",
+          "baseline_volts": 5.383158
+        }
+      },
+      {
+        "campaign": "physical_resume_02",
+        "path": "physical_resume_02/r2_variable_load/supp02-b05-p3-DeadlineGuard-idle",
+        "spec": {
+          "campaign": "R2",
+          "run_id": "supp02-b05-p3-DeadlineGuard-idle",
+          "stage": "idle",
+          "method": "DeadlineGuard",
+          "block": 5,
+          "position": 3,
+          "seconds": 60,
+          "formal_statistics": false,
+          "preceding_idle_run_id": "supp02-b05-p3-DeadlineGuard-idle"
+        },
+        "summary": {
+          "campaign": "R2",
+          "run_id": "supp02-b05-p3-DeadlineGuard-idle",
+          "stage": "idle",
+          "method": "DeadlineGuard",
+          "block": 5,
+          "position": 3,
+          "seconds": 60,
+          "formal_statistics": false,
+          "preceding_idle_run_id": "supp02-b05-p3-DeadlineGuard-idle",
+          "status": "PASS",
+          "power_samples": 61,
+          "observed_duration_seconds": 59.9978198754834,
+          "energy_joules": 172.90893151580428,
+          "mean_watts": 2.8819202410129434,
+          "voltage_min": 5.366629,
+          "voltage_max": 5.385049,
+          "measurement_scope": "uncalibrated KM003C USB load-side whole-Pi input; not AC-wall power"
+        },
+        "failure": null,
+        "start": {
+          "start_utc_epoch": 1794528743.3749912,
+          "prestart_adc_hex": "41fa80020100000ba9b151000547f6ff20b15100323cf6ff00b151002a3cf6ff4c0e661124001a019402f67f008000f00000ff00000000000000000000000000",
+          "baseline_volts": 5.383158
+        }
+      },
+      {
+        "campaign": "physical_resume_02",
+        "path": "physical_resume_02/r2_variable_load/supp02-b05-p4-DQN",
+        "spec": {
+          "campaign": "R2",
+          "run_id": "supp02-b05-p4-DQN",
+          "stage": "r2",
+          "method": "DQN",
+          "block": 5,
+          "position": 4,
+          "seconds": 500,
+          "formal_statistics": true,
+          "preceding_idle_run_id": "supp02-b05-p4-DQN-idle"
+        },
+        "summary": {
+          "campaign": "R2",
+          "run_id": "supp02-b05-p4-DQN",
+          "stage": "r2",
+          "method": "DQN",
+          "block": 5,
+          "position": 4,
+          "seconds": 500,
+          "formal_statistics": true,
+          "preceding_idle_run_id": "supp02-b05-p4-DQN-idle",
+          "status": "PASS",
+          "power_samples": 501,
+          "observed_duration_seconds": 499.99500558298314,
+          "energy_joules": 1442.4617141486362,
+          "mean_watts": 2.884952245606449,
+          "voltage_min": 5.336045,
+          "voltage_max": 5.38409,
+          "measurement_scope": "uncalibrated KM003C USB load-side whole-Pi input; not AC-wall power",
+          "posthoc": {
+            "labels_loaded_only_after_run": true,
+            "completed_metrics": {
+              "rows": 627500,
+              "tn": 311525,
+              "fp": 4225,
+              "fn": 10443,
+              "tp": 301307,
+              "fpr": 0.013380839271575613,
+              "recall": 0.9665020048115477,
+              "precision": 0.9861716612335205,
+              "f1": 0.9762377649113371,
+              "balanced_accuracy": 0.976560582769986
+            },
+            "scheduled_rows": 627500,
+            "completed_rows": 627500,
+            "final_backlog_rows": 0,
+            "missed_positive_presentations": 0,
+            "deadline_miss_windows": 0,
+            "unique_encoded_states": [
+              1,
+              5,
+              9,
+              37,
+              40,
+              41,
+              45,
+              73,
+              77,
+              81
+            ]
+          }
+        },
+        "failure": null,
+        "start": {
+          "start_utc_epoch": 1794529410.919611,
+          "prestart_adc_hex": "41fa80020100000b00ae5100b84cf6ff2a9051001e15f6ff0a9051001615f6ff740e661124001b019502f97f008000f00000ff00000000000000000000000000",
+          "baseline_volts": 5.383158
+        }
+      },
+      {
+        "campaign": "physical_resume_02",
+        "path": "physical_resume_02/r2_variable_load/supp02-b05-p4-DQN-idle",
+        "spec": {
+          "campaign": "R2",
+          "run_id": "supp02-b05-p4-DQN-idle",
+          "stage": "idle",
+          "method": "DQN",
+          "block": 5,
+          "position": 4,
+          "seconds": 60,
+          "formal_statistics": false,
+          "preceding_idle_run_id": "supp02-b05-p4-DQN-idle"
+        },
+        "summary": {
+          "campaign": "R2",
+          "run_id": "supp02-b05-p4-DQN-idle",
+          "stage": "idle",
+          "method": "DQN",
+          "block": 5,
+          "position": 4,
+          "seconds": 60,
+          "formal_statistics": false,
+          "preceding_idle_run_id": "supp02-b05-p4-DQN-idle",
+          "status": "PASS",
+          "power_samples": 61,
+          "observed_duration_seconds": 59.99894600000698,
+          "energy_joules": 171.6313700839392,
+          "mean_watts": 2.8605730854658553,
+          "voltage_min": 5.365662,
+          "voltage_max": 5.384049,
+          "measurement_scope": "uncalibrated KM003C USB load-side whole-Pi input; not AC-wall power"
+        },
+        "failure": null,
+        "start": {
+          "start_utc_epoch": 1794529335.179345,
+          "prestart_adc_hex": "41fa80020100000bc9735100e861f5ff2f7951000045f5ff0f795100f844f5ff740e5f1128001d019302fd7f008000f00000ff00000000000000000000000000",
+          "baseline_volts": 5.383158
+        }
+      },
+      {
+        "campaign": "physical_resume_02",
+        "path": "physical_resume_02/r2_variable_load/supp02-b05-p5-Static-MedRF",
+        "spec": {
+          "campaign": "R2",
+          "run_id": "supp02-b05-p5-Static-MedRF",
+          "stage": "r2",
+          "method": "Static-MedRF",
+          "block": 5,
+          "position": 5,
+          "seconds": 500,
+          "formal_statistics": true,
+          "preceding_idle_run_id": "supp02-b05-p5-Static-MedRF-idle"
+        },
+        "summary": {
+          "campaign": "R2",
+          "run_id": "supp02-b05-p5-Static-MedRF",
+          "stage": "r2",
+          "method": "Static-MedRF",
+          "block": 5,
+          "position": 5,
+          "seconds": 500,
+          "formal_statistics": true,
+          "preceding_idle_run_id": "supp02-b05-p5-Static-MedRF-idle",
+          "status": "PASS",
+          "power_samples": 501,
+          "observed_duration_seconds": 500.00224929198157,
+          "energy_joules": 1504.3759705510079,
+          "mean_watts": 3.008738406039673,
+          "voltage_min": 5.326528,
+          "voltage_max": 5.367256,
+          "measurement_scope": "uncalibrated KM003C USB load-side whole-Pi input; not AC-wall power",
+          "posthoc": {
+            "labels_loaded_only_after_run": true,
+            "completed_metrics": {
+              "rows": 627500,
+              "tn": 310970,
+              "fp": 4780,
+              "fn": 1103,
+              "tp": 310647,
+              "fpr": 0.015138558986539985,
+              "recall": 0.9964619085805935,
+              "precision": 0.9848459389969787,
+              "f1": 0.9906198728588579,
+              "balanced_accuracy": 0.9906616747970267
+            },
+            "scheduled_rows": 627500,
+            "completed_rows": 627500,
+            "final_backlog_rows": 0,
+            "missed_positive_presentations": 0,
+            "deadline_miss_windows": 0,
+            "unique_encoded_states": [
+              2,
+              6,
+              10,
+              38,
+              40,
+              42,
+              46,
+              74,
+              78,
+              82
+            ]
+          }
+        },
+        "failure": null,
+        "start": {
+          "start_utc_epoch": 1794530002.80922,
+          "prestart_adc_hex": "41fa80020100000b690b5100be34f5ff33035100b4fff4ff13035100acfff4ffb70e5f11330021019702f47f008000f00000ff00000000000000000000000000",
+          "baseline_volts": 5.383158
+        }
+      },
+      {
+        "campaign": "physical_resume_02",
+        "path": "physical_resume_02/r2_variable_load/supp02-b05-p5-Static-MedRF-idle",
+        "spec": {
+          "campaign": "R2",
+          "run_id": "supp02-b05-p5-Static-MedRF-idle",
+          "stage": "idle",
+          "method": "Static-MedRF",
+          "block": 5,
+          "position": 5,
+          "seconds": 60,
+          "formal_statistics": false,
+          "preceding_idle_run_id": "supp02-b05-p5-Static-MedRF-idle"
+        },
+        "summary": {
+          "campaign": "R2",
+          "run_id": "supp02-b05-p5-Static-MedRF-idle",
+          "stage": "idle",
+          "method": "Static-MedRF",
+          "block": 5,
+          "position": 5,
+          "seconds": 60,
+          "formal_statistics": false,
+          "preceding_idle_run_id": "supp02-b05-p5-Static-MedRF-idle",
+          "status": "PASS",
+          "power_samples": 61,
+          "observed_duration_seconds": 60.00524733396014,
+          "energy_joules": 172.04982934659276,
+          "mean_watts": 2.8672463991198427,
+          "voltage_min": 5.344965,
+          "voltage_max": 5.36602,
+          "measurement_scope": "uncalibrated KM003C USB load-side whole-Pi input; not AC-wall power"
+        },
+        "failure": null,
+        "start": {
+          "start_utc_epoch": 1794529927.110997,
+          "prestart_adc_hex": "41fa80020100000b7d185100afacf5ff8a115100fe60f5ff6a115100f660f5ffad0e6111320020019a02f37f008000f00000ff00000000000000000000000000",
+          "baseline_volts": 5.383158
+        }
+      },
+      {
+        "campaign": "physical_resume_02",
+        "path": "physical_resume_02/r2_variable_load/supp02-b05-p6-ConfidenceCascade_0p3_0p7-idle",
+        "spec": {
+          "campaign": "R2",
+          "run_id": "supp02-b05-p6-ConfidenceCascade_0p3_0p7-idle",
+          "stage": "idle",
+          "method": "ConfidenceCascade_0p3_0p7",
+          "block": 5,
+          "position": 6,
+          "seconds": 60,
+          "formal_statistics": false,
+          "preceding_idle_run_id": "supp02-b05-p6-ConfidenceCascade_0p3_0p7-idle"
+        },
+        "summary": null,
+        "failure": {
+          "status": "INVALID",
+          "reason": "RuntimeError('Pi failed: {\\'event\\': \\'failed\\', \\'utc_epoch\\': 1794530519.1074748, \\'status\\': \\'INVALID_RETAIN_NO_RETRY\\', \\'error\\': \\'RuntimeError(\"RuntimeError(\\\\\\'continuous CPU monitor gap exceeds 1.5 seconds\\\\\\')\")\\'}')",
+          "stage": "idle",
+          "samples_retained": 0,
+          "start_sent": true,
+          "automatic_retry": false
+        },
+        "start": {
+          "start_utc_epoch": 1794530519.1042418,
+          "prestart_adc_hex": "41fa80020100000bc26c51003fb9f6ff89615100227df6ff696151001a7df6ffef0e69112a0021019902f27f008000f00000ff00000000000000000000000000",
+          "baseline_volts": 5.383158
+        }
+      },
+      {
+        "campaign": "physical_resume_03",
+        "path": "physical_resume_03/r2_variable_load/supp03-b05-p6-ConfidenceCascade_0p3_0p7",
+        "spec": {
+          "campaign": "R2",
+          "run_id": "supp03-b05-p6-ConfidenceCascade_0p3_0p7",
+          "stage": "r2",
+          "method": "ConfidenceCascade_0p3_0p7",
+          "block": 5,
+          "position": 6,
+          "seconds": 500,
+          "formal_statistics": true,
+          "preceding_idle_run_id": "supp03-b05-p6-ConfidenceCascade_0p3_0p7-idle",
+          "recovery_for": "supp02-b05-p6-ConfidenceCascade_0p3_0p7-idle"
+        },
+        "summary": {
+          "campaign": "R2",
+          "run_id": "supp03-b05-p6-ConfidenceCascade_0p3_0p7",
+          "stage": "r2",
+          "method": "ConfidenceCascade_0p3_0p7",
+          "block": 5,
+          "position": 6,
+          "seconds": 500,
+          "formal_statistics": true,
+          "preceding_idle_run_id": "supp03-b05-p6-ConfidenceCascade_0p3_0p7-idle",
+          "recovery_for": "supp02-b05-p6-ConfidenceCascade_0p3_0p7-idle",
+          "status": "PASS",
+          "power_samples": 501,
+          "observed_duration_seconds": 499.99899150046986,
+          "energy_joules": 1489.7919359883274,
+          "mean_watts": 2.9795898818066466,
+          "voltage_min": 5.335034,
+          "voltage_max": 5.373309,
+          "measurement_scope": "uncalibrated KM003C USB load-side whole-Pi input; not AC-wall power",
+          "posthoc": {
+            "labels_loaded_only_after_run": true,
+            "completed_metrics": {
+              "rows": 627500,
+              "tn": 311455,
+              "fp": 4295,
+              "fn": 1876,
+              "tp": 309874,
+              "fpr": 0.013602533650039588,
+              "recall": 0.9939823576583802,
+              "precision": 0.986329014002018,
+              "f1": 0.990140896825308,
+              "balanced_accuracy": 0.9901899120041703
+            },
+            "scheduled_rows": 627500,
+            "completed_rows": 627500,
+            "final_backlog_rows": 0,
+            "missed_positive_presentations": 0,
+            "deadline_miss_windows": 0,
+            "unique_encoded_states": [
+              1,
+              5,
+              9,
+              37,
+              40,
+              41,
+              45,
+              73,
+              77,
+              81
+            ]
+          }
+        },
+        "failure": null,
+        "start": {
+          "start_utc_epoch": 1794546668.4757178,
+          "prestart_adc_hex": "41fa80020100000b91745100915cf6ff863451002a7bf5ff66345100227bf5ff060f63112a001f019602e57f008000f00000ff00000000000000000000000000",
+          "baseline_volts": 5.326207
+        }
+      },
+      {
+        "campaign": "physical_resume_03",
+        "path": "physical_resume_03/r2_variable_load/supp03-b05-p6-ConfidenceCascade_0p3_0p7-idle",
+        "spec": {
+          "campaign": "R2",
+          "run_id": "supp03-b05-p6-ConfidenceCascade_0p3_0p7-idle",
+          "stage": "idle",
+          "method": "ConfidenceCascade_0p3_0p7",
+          "block": 5,
+          "position": 6,
+          "seconds": 60,
+          "formal_statistics": false,
+          "preceding_idle_run_id": "supp03-b05-p6-ConfidenceCascade_0p3_0p7-idle",
+          "recovery_for": "supp02-b05-p6-ConfidenceCascade_0p3_0p7-idle",
+          "replacement_for": "supp02-b05-p6-ConfidenceCascade_0p3_0p7-idle"
+        },
+        "summary": {
+          "campaign": "R2",
+          "run_id": "supp03-b05-p6-ConfidenceCascade_0p3_0p7-idle",
+          "stage": "idle",
+          "method": "ConfidenceCascade_0p3_0p7",
+          "block": 5,
+          "position": 6,
+          "seconds": 60,
+          "formal_statistics": false,
+          "preceding_idle_run_id": "supp03-b05-p6-ConfidenceCascade_0p3_0p7-idle",
+          "recovery_for": "supp02-b05-p6-ConfidenceCascade_0p3_0p7-idle",
+          "replacement_for": "supp02-b05-p6-ConfidenceCascade_0p3_0p7-idle",
+          "status": "PASS",
+          "power_samples": 61,
+          "observed_duration_seconds": 59.99608493800042,
+          "energy_joules": 173.7317278552398,
+          "mean_watts": 2.8957177461624886,
+          "voltage_min": 5.352399,
+          "voltage_max": 5.372879,
+          "measurement_scope": "uncalibrated KM003C USB load-side whole-Pi input; not AC-wall power"
+        },
+        "failure": null,
+        "start": {
+          "start_utc_epoch": 1794546592.717545,
+          "prestart_adc_hex": "41fa80020100000bb4795100a838f6ff347251008228f6ff147251007a28f6ff050f63112a0020019902e77f008000f00000ff00000000000000000000000000",
+          "baseline_volts": 5.326207
+        }
+      }
+    ]
+  }
+]

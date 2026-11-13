@@ -1,0 +1,43 @@
+{
+  "status": "WORKING_DRAFT_NOT_SUBMISSION_RELEASE",
+  "files": {
+    "manuscript_working/README.md": "f18706a866578ac041cab2b5c7cc0aae73a4c72e7307091c082ee987023a2b8c",
+    "manuscript_working/Response_Followup.pdf": "5dc5c824950abec71f4b194d551ae9757d4607ccaf8c0e1b90ff5cb3456369d3",
+    "manuscript_working/Source_Files/IEEEtran.bst": "314f0ece704568faf827011bac498650691b2b5ee06320720830e782416d5a5f",
+    "manuscript_working/Source_Files/IEEEtran.cls": "da751920a317ed318b7b5cd7fa585a6cc7d28502d457856382e9be24b10a3bd7",
+    "manuscript_working/Source_Files/Response_Followup.tex": "3a4973c15d595864f999299ce71568e0a7c61b330d9a167b507afe1be2aae551",
+    "manuscript_working/Source_Files/Supplement_Followup.tex": "51f1093b4dd487cb7b8c734af6c58b05e4d7cbb985abfcf635c4eb800f6a2de3",
+    "manuscript_working/Source_Files/figures/experiment_setup_schematic.pdf": "9fd6b37d67e6e79c1354332ff75dffc547c34f962cee352a268271cebd88108d",
+    "manuscript_working/Source_Files/main.tex": "3034896995af54905a0f85dd08afd4a67ca9cf4d6cf2b8de3077840f4afa969c",
+    "manuscript_working/Source_Files/references.bib": "76aa0625e49d9fa004c99a90dd8999868d2b2f15bb9c4e1c56b62fef8c451cc3",
+    "manuscript_working/Source_Files/sections/02_background.tex": "da9239dcad340cf8ba6facd4711664244cf0777459ef3e79291f32dd1a4ff4e6",
+    "manuscript_working/Source_Files/sections/04_data.tex": "d9af7676875a7be33d23c3ef4e39ccb1939fcf09f7718a5f40ef7f82c0ce1dcc",
+    "manuscript_working/Source_Files/sections/followup_conclusion.tex": "42d4b7bc8582728d24775796e61cf8129c201e22048f8660d867040e94bbc526",
+    "manuscript_working/Source_Files/sections/followup_discussion.tex": "a75fd9f18ef681af5001a6770bb9b183fa37aa9f86732bb9ed8b9339ad78971c",
+    "manuscript_working/Source_Files/sections/followup_evaluation.tex": "e99f7e4db498899d5db14d4d4a877e36ae8aec745e3fb20c3310e584ba2ddf2e",
+    "manuscript_working/Source_Files/sections/followup_historical_context.tex": "5e55a0cdc8871456a0fd209409cb99eb40a4f1daab4853351f9d3f0f09d3a9fb",
+    "manuscript_working/Source_Files/sections/followup_introduction.tex": "ac143afff6fca3103f3569e36a02c082bb341ca242b3e37971927926a8175cbb",
+    "manuscript_working/Source_Files/sections/followup_limits.tex": "08acd022c04722807af92cd244c4ddf24cf6ad237bc792cfe1de6703e142e3c0",
+    "manuscript_working/Source_Files/sections/followup_methods.tex": "393c92e12514f658c49355d360e5ddcb5c485143e310e604e9e4b31bc65ac6c4",
+    "manuscript_working/Source_Files/sections/followup_results.tex": "dbc3c39d3a36864667ef0af3671df37e672aabdc7fc0a94f1f9e46fafe3b9d3d",
+    "manuscript_working/Source_Files/sections/followup_system.tex": "b3240161182f2e1c54f365c200041e11cce607feb548e60f2e2bfcb1ee29bc65",
+    "manuscript_working/Source_Files/tables/dynamic_numbers.tex": "0b75e40ab29f91e5472b2f5a639b8fc71abcd3736f4305054590753bb46d5900",
+    "manuscript_working/Source_Files/tables/followup_all_statistics.tex": "85e7d2a4e8e2bbef6bf013eb3d014788a030138358d07a70fb8823e376df4fa2",
+    "manuscript_working/Source_Files/tables/followup_summary.tex": "39d7e8d468b39e7225f9f57fba8852df9ba84b0ca094e88759c0a906486bb99d",
+    "manuscript_working/Source_Files/tables/ton_classification_rows.tex": "198a7a70e435414629ca0f06fb491835e1f002ac19eab8571ad1332d11121b40",
+    "manuscript_working/Supplement_Followup.pdf": "f122e1fe2d7300a0d8f372ac80a7bf0c57cc6c717b3ad2ff35424832abfd3912",
+    "manuscript_working/main.pdf": "21a4e3ccb90d6885942e00f6bb79b78fd38311b117dd4c52d6b5e6e564cfd29b"
+  },
+  "pdf_pages": {
+    "main": 6,
+    "Supplement_Followup": 10,
+    "Response_Followup": 2
+  },
+  "open_items": [
+    "full independent ZIP/raw-log review incomplete",
+    "full prior-comment reconciliation pending",
+    "reference audit pending",
+    "Tectonic bibliography rerun consistency warning retained",
+    "final journal-length/layout and claim-evidence audit pending"
+  ]
+}

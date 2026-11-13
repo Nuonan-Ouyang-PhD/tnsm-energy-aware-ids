@@ -1,0 +1,27 @@
+{
+  "original_sha256": "300e40e4474faabcaa63ab6bc02d927e8f52f2f0268cc42e1b4a2115f4735f11",
+  "original_member_coverage": "COMPLETE across PART_1 and PART_2; original MANIFEST duplicated identically",
+  "packages": [
+    {
+      "file": "TNSM_EVIDENCE_PART_1.zip",
+      "size_bytes": 295096361,
+      "sha256": "9df5f43b5c8ede34cc68a904893ddccf150853189ccbed7aa2171aeac498e7ec",
+      "crc": "PASS",
+      "member_hashes": "PASS"
+    },
+    {
+      "file": "TNSM_EVIDENCE_PART_2.zip",
+      "size_bytes": 424378955,
+      "sha256": "fa9e7eac8c0c9053ba5f77dcab5175a67fef731ba0913c57b458b30ba72d959c",
+      "crc": "PASS",
+      "member_hashes": "PASS"
+    },
+    {
+      "file": "TNSM_REVIEW_SUMMARIES.zip",
+      "size_bytes": 472699,
+      "sha256": "6e559f5705a523f077896631dbd73bb3e1523867f4a2102828227635d1b2556e",
+      "crc": "PASS",
+      "member_hashes": "PASS"
+    }
+  ]
+}

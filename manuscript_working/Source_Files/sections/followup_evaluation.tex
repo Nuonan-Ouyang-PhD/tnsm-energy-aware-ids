@@ -1,0 +1,14 @@
+\section{Measurement and Statistical Protocol}\label{sec:eval}
+The corrected follow-up retains six methods and the previously fixed ten-block order. Each formal run has 60 seconds of preceding instrumented idle and 500 one-second workload windows: nine load--prevalence cells, 50 windows each, followed by 50 recovery windows. Rows are repeated presentations from fixed pools, not fresh network attacks. Ground-truth labels are used for post-run metrics, never online control.
+
+One Raspberry Pi 4B 8 GB is powered through POWER-Z KM003C HW 2.4/FW 2.0.6. All detectors remain resident. Wi-Fi stays enabled and Ethernet orchestration is pinned; these platform conditions are disclosed rather than attributed to scheduler savings. The meter is not independently laboratory calibrated. Nominal 1-Hz samples retain raw frames, signed current, voltage and request/receive times. With $P_i=V_i(-I_i)$, energy is
+\begin{equation}\label{eq:trap}
+E=\sum_i\tfrac12(P_i+P_{i+1})(\tau_{i+1}-\tau_i).
+\end{equation}
+This is whole-device load-side input, not CPU-only joules or wall energy. No missing samples are filled.
+
+Continuous process-aware CPU accounting brackets explicitly allowed worker PID/starttime counters with global busy/total counters. Its conservative external fraction is $\max(0,B_{\rm upper}-A)/T_{\rm lower}$, including unattributed kernel/IRQ and transient work. Fractions above 5\%, intervals above 1.5 seconds, missing coverage, thermal/throttle, clock, disk or meter failures reject the attempt. Replacements require explicit authorization; invalid bytes remain archived. Monitor cadence was repaired after the second interruption without relaxing either threshold.
+
+Physical statistics use paired blocks, never rows/windows/power frames. For block differences $d_b$, report $\bar d\pm t_{.975,n-1}s_d/\sqrt n$. Raw energy is primary. Also report preceding-idle-adjusted energy $E_b-\bar P_{{\rm idle},b}\Delta\tau_b$ and corresponding power. All pairs and A/B/C sets are retained, with nominal unadjusted intervals; there is no equivalence margin or result-driven exclusion. Historical studies are never pooled with these ten blocks.
+
+Authors report 197,922 integrity/accounting checks and a separate 12.5-million-transition audit. These are author-side results, not independent acceptance. External ZIP/raw-log review remains incomplete due to the review environment's inability to open attachments. This manuscript is a working revision, not an independently certified submission release.

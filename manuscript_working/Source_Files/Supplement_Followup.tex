@@ -1,0 +1,27 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=.8in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,longtable,array}
+\usepackage[hidelinks]{hyperref}
+\begin{document}
+\title{Supplement: Corrected Matched-Static Follow-up}
+\author{Nuonan Ouyang et al.}\date{Working revision, 14 November 2026}\maketitle
+\section{Evidence and timing boundary}
+The main follow-up consists of 60 accepted runs in ten six-method blocks, two invalid attempts, and 25 frozen training artifacts. Blocks 1 and 5 span recovery periods. Historical V1/P0/P1/R1/R2 remain distinct. Original author validation is not independent acceptance: full external ZIP/raw-log review is incomplete. This supplement is an editing draft, not a final release certificate.
+
+\section{Immediate pairwise preference lemma}
+For $U_a(s)=w_DD_a(s)-C_a$, $w_D>0$ and support-fixed $C_a$, let $\delta(s)=D_a(s)-D_b(s)$ and $\tau=(C_a-C_b)/w_D$. Then $U_a-U_b=w_D(\delta-\tau)$, so strict reversals over attainable support require and, when extrema are attained, are implied by $\min\delta<\tau<\max\delta$. Equality gives a tie, not a strict reversal. If extrema are not attained, state the condition in terms of existence of values on both sides rather than silently assuming attainment. Load/state-dependent costs require state-dependent thresholds. This statement does not involve transition probabilities, discounting or long-horizon value and proves no global optimality or necessary learned collapse.
+
+\section{Reward audit procedure}
+Freeze the objective, cost provenance and training/validation artifact hashes; compute immediate action-pair differences only on the declared validation support; record the attainable range and any ties/reversals; retain every pair including TinyDT-favouring cases. Do not inspect test to choose weights/support or call a retrospective audit pre-test. Freeze policy/checkpoint selection using validation only, then describe previously viewed historical test honestly. The code and cache bindings, not this pseudocode alone, establish what was executed.
+
+\section{Information and training coverage}
+Q/DQN use current arrivals, pre-append FIFO carryover, prior selected-detector mean probability and prior action. DeadlineGuard uses current work count and calibrated fixed MedRF p95. Cascade receives current-row confidence only after LightLR inference. Static controls ignore observations. No online truth, cell identity or future arrival is a feature. Queue is constant in the training surrogate; queue ablation is not identifiable and was not executed. Temperature is safety-only. Training uses historical TON power proxies and warm-input latency, not contemporaneous energy. Exact 25-run configuration/seed/checkpoint/hash registry, transition coverage, selected-policy support and physical action maps are provided as JSON.
+
+\section{Recovery and instrumentation}
+Block 1 keeps five accepted runs and a new-numbered Static-LightLR replacement after external-load rejection. Block 5 keeps its accepted runs and new-numbered Cascade idle/workload after gap rejection. Full timelines and replacement/recovery links remain. The second implementation changes only sample-relative waiting and rejected-gap logging; 5\% CPU and 1.5-second gap limits stay fixed. The old rejected right snapshot is absent, so exact failed-gap duration is unknown. Raw guards and ADC logs remain the evidence, not an inferred clean environment.
+
+\section{All paired results}
+\setlength{\tabcolsep}{4pt}
+Set A includes blocks 1--10 ($n=10$, df=9); B excludes block 1 ($n=9$, df=8); C excludes 1 and 5 ($n=8$, df=7). Registration epochs distinguish original rules, campaign-time sensitivities and later all-pair enumeration. Report every set, raw and adjusted outcomes, without favourable selection. Below, C means Cascade, LR means Static-LightLR, RF means Static-MedRF, Q means Tabular-Q and DG means DeadlineGuard. Differences are first minus second. CI is paired Student-$t$ 95\%, nominal and not multiplicity-adjusted. No equivalence margin is specified. F1/recall/FPR/BA differences use the raw unit fraction, not percentage points. Energy is J, power W, and count outcomes are rows/windows.
+\input{tables/followup_all_statistics}
+\end{document}
