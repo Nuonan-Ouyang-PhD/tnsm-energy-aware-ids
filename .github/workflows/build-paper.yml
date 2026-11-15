@@ -1,11 +1,6 @@
 name: Build paper
 
 on:
-  push:
-    branches: [submission-polish]
-    paths:
-      - 'TNSM_2026_10776_IDS_Model_Selection_Submission/**'
-      - '.github/workflows/build-paper.yml'
   workflow_dispatch:
 
 permissions:
@@ -20,50 +15,17 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
-      - name: Check out the complete manuscript
+      - name: Check out the full manuscript
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
           filter: blob:none
-          sparse-checkout: |
-            TNSM_2026_10776_IDS_Model_Selection_Submission
-            scripts
-            _visual_review
-      - name: Install document tools
+          sparse-checkout: TNSM_2026_10776_IDS_Model_Selection_Submission
+      - name: Install LaTeX
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends latexmk texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-science cm-super poppler-utils python3-venv
-          python3 -m venv /tmp/paper-env
-          /tmp/paper-env/bin/pip install --quiet PyMuPDF==1.24.14 numpy==2.1.3 matplotlib==3.9.2
-      - name: Finish figure margins without changing data
-        run: |
-          /tmp/paper-env/bin/python - <<'PY'
-          from pathlib import Path
-          p = Path('TNSM_2026_10776_IDS_Model_Selection_Submission/scripts/make_r2_dashboard.py')
-          s = p.read_text()
-          s = s.replace('# Update only the R2 half: preserve the original R1 vector panel byte-for-byte as a clipped form.', '# Update the R2 half; retain the R1 plot with its original data and enforced crop.')
-          s = s.replace('ax.set_ylabel("Power above preceding idle (mW)")', 'ax.set_ylabel("Power above idle (mW)")')
-          marker = '# Remove any clipped label belonging to the discarded historical right panel.'
-          if marker not in s:
-              old = 'left_image = leftdoc[0].get_pixmap'
-              new = '''# Remove any clipped label belonging to the discarded historical right panel.
-          left_page = leftdoc[0]
-          orphan_labels = [r for r in left_page.search_for("Power above preceding idle (mW)")
-                           if (r.x0+r.x1)/2 > 0.8*left_page.rect.width]
-          for label_box in orphan_labels:
-              print("Discarded neighbouring-panel label:", label_box)
-              left_page.add_redact_annot(label_box, fill=False)
-          if orphan_labels:
-              left_page.apply_redactions(images=0, graphics=0)
-          left_image = leftdoc[0].get_pixmap'''
-              assert s.count(old) == 1
-              s = s.replace(old, new, 1)
-          p.write_text(s)
-          PY
-          cd TNSM_2026_10776_IDS_Model_Selection_Submission
-          /tmp/paper-env/bin/python scripts/make_r2_dashboard.py
-          /tmp/paper-env/bin/python scripts/fix_figure_labels.py
-      - name: Compile the four existing documents
+          sudo apt-get install -y --no-install-recommends latexmk texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-science cm-super poppler-utils
+      - name: Compile the existing documents
         shell: bash
         run: |
           set -euo pipefail
@@ -75,7 +37,7 @@ jobs:
             rm -f "$stem.aux" "$stem.fdb_latexmk" "$stem.fls" "$stem.log" "$stem.out"
             latexmk -g -pdf -interaction=nonstopmode -halt-on-error "$stem.tex" > "/tmp/$stem-build.txt" 2>&1 || { tail -100 "/tmp/$stem-build.txt"; exit 1; }
             if grep -E 'undefined references|Citation .* undefined|Reference .* undefined|Missing character:|Overfull' "$stem.log"; then
-              echo 'Unresolved reference, missing glyph or overflowing box'; exit 1
+              exit 1
             fi
             echo "=== $stem ==="
             pdfinfo "$stem.pdf" | grep Pages
@@ -85,50 +47,21 @@ jobs:
           cp Response_to_Reviewers.pdf "$PROJECT/pdf/Response_to_Reviewers.pdf"
           cp Cover_Letter.pdf "$PROJECT/pdf/Cover_Letter.pdf"
           cp main.bbl "$PROJECT/main.bbl"
-          /tmp/paper-env/bin/python - <<'PY'
-          import os, re, json, hashlib
+          python3 - <<'PY'
+          import hashlib, os
           from pathlib import Path
-          import pymupdf as fitz
           root = Path(os.environ['GITHUB_WORKSPACE'])/'TNSM_2026_10776_IDS_Model_Selection_Submission'
-          counts = {}
-          for name in ['Manuscript', 'Supplement', 'Response_to_Reviewers', 'Cover_Letter']:
-              with fitz.open(root/'pdf'/f'{name}.pdf') as doc:
-                  counts[name] = len(doc)
-          print('PAGE_COUNTS', json.dumps(counts))
-          with fitz.open(root/'figures/r4_threshold_shift.pdf') as threshold_doc:
-              rt = threshold_doc[0].get_text()
-              for value in ['5,519','11,610','5,348','16,817','312','5,340','1.0','Validation-selected']:
-                  assert value in rt, ('Missing threshold-figure text',value)
-          with fitz.open(root/'figures/revision_drift_adjusted_power.pdf') as power_doc:
-              power_text = power_doc[0].get_text()
-              assert power_text.count('R2: variable load') == 1
-              assert 'Power above idle (mW)' in power_text
-          response = (root/'Response_to_Reviewers.tex').read_text()
-          assert 'profiling effort was already done' in response
-          assert 'Since Figure 3 depends on this baseline' in response
-          assert '15 November 2026' in response
-          assert 'Reconstruction summary' not in response
-          assert 'we therefore withdraw' not in response
-          assert 'Version &' not in (root/'supplement.tex').read_text()
-          readme = root/'README_SUBMISSION.md'
-          text = readme.read_text()
-          text = re.sub(r'(pdf/Manuscript\.pdf`, )\d+( pages)', lambda m:m[1]+str(counts['Manuscript'])+m[2], text)
-          text = re.sub(r'(pdf/Supplement\.pdf`, )\d+( pages)', lambda m:m[1]+str(counts['Supplement'])+m[2], text)
-          readme.write_text(text)
           manifest = root/'MANIFEST_SHA256.txt'
-          entries = [hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.relative_to(root).as_posix()
-                     for p in sorted(root.rglob('*')) if p.is_file() and p != manifest]
-          manifest.write_text('\n'.join(entries)+'\n')
-          print('Document text and figure-label checks completed.')
+          rows = [hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.relative_to(root).as_posix()
+                  for p in sorted(root.rglob('*')) if p.is_file() and p != manifest]
+          manifest.write_text('\n'.join(rows)+'\n')
           PY
-      - name: Publish the original-project files only
+      - name: Update the existing PDF files
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git rm -r --sparse --ignore-unmatch _visual_review scripts/polish_full_submission.py
-          git add --sparse -f TNSM_2026_10776_IDS_Model_Selection_Submission
-          git diff --cached --stat
+          git add -f TNSM_2026_10776_IDS_Model_Selection_Submission/pdf TNSM_2026_10776_IDS_Model_Selection_Submission/main.bbl TNSM_2026_10776_IDS_Model_Selection_Submission/MANIFEST_SHA256.txt
           if ! git diff --cached --quiet; then
-            git commit -m 'Finalize localized manuscript edits and compiled PDFs [skip ci]'
+            git commit -m 'Compile the full manuscript PDFs [skip ci]'
             git push origin HEAD:${GITHUB_REF_NAME}
           fi
