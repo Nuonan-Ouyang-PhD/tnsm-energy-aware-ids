@@ -6,6 +6,7 @@ on:
     paths:
       - 'paper/Source_Files/**'
       - 'scripts/build_paper.py'
+      - 'scripts/prepare_reviewer_comments.py'
       - '.github/workflows/build-paper.yml'
   workflow_dispatch:
 
@@ -37,7 +38,18 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends latexmk texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-science cm-super poppler-utils python3-numpy python3-scipy python3-matplotlib
       - name: Build four PDFs and submission archive
-        run: /usr/bin/python3 scripts/build_paper.py
+        run: |
+          /usr/bin/python3 scripts/prepare_reviewer_comments.py
+          /usr/bin/python3 scripts/build_paper.py
+          /usr/bin/python3 -m zipfile -e paper/TNSM_Submission.zip paper-package
+      - name: Store the submission files
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: TNSM_Submission
+          path: paper-package/
+          if-no-files-found: error
+          retention-days: 90
       - name: Store build output
         if: always()
         uses: actions/upload-artifact@v4
