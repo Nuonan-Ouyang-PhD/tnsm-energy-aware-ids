@@ -35,7 +35,7 @@ jobs:
       - name: Install document tools
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends latexmk texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-science poppler-utils python3-numpy python3-scipy python3-matplotlib
+          sudo apt-get install -y --no-install-recommends latexmk texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-science cm-super poppler-utils python3-numpy python3-scipy python3-matplotlib
       - name: Build four PDFs and submission archive
         run: /usr/bin/python3 scripts/build_paper.py
       - name: Store build output
