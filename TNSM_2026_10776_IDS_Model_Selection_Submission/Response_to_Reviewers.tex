@@ -47,7 +47,7 @@
 {\LARGE\bfseries Response to the Editor and Prior Reviewers}\\[6pt]
 {\large Prior manuscript ID: \paperid}\\[4pt]
 Prior title: \emph{Energy-Aware Intrusion Detection System with Q-learning-Based Dynamic Scheduler on Lightweight IoT Devices}\\
-Rebuilt title: \emph{When Learned IDS Model Selection Collapses to a Static Choice: A Measurement Study at the Edge}\\
+New manuscript title: \emph{When Learned IDS Model Selection Collapses to a Static Choice: A Measurement Study at the Edge}\\
 \vspace{4pt}
 Nuonan Ouyang, Adrian Shatte, Zhigang Lu, Chao Chen, Wei Xiang\\
 15 November 2026
@@ -63,9 +63,9 @@ This response accompanies a new manuscript submission following the 30 May 2026 
 
 \section*{Summary of changes}
 
-We did not restore or tune the legacy numerical story. Instead, we rebuilt the dataset lineage, detector pipeline, scheduler implementation, and physical evidence, and we now retain results even when they weaken the original claim. The methodological novelty is deliberately separated from algorithmic novelty: we do not claim a new RL update rule. The contribution is a three-layer service-management method---an analytic reward-feasibility test, an attribution protocol that distinguishes model choice from adaptation, and a prospectively frozen physical instantiation with explicit SLO and off-support checks. Beyond addressing every prior comment, the rebuilt paper offers three positive, transferable contributions absent from the prior submission:
+We revised the data preparation and detector evaluation, clarified the scheduler implementation, and expanded the physical comparison. The manuscript distinguishes fixed-load characterization from the variable-load experiment and reports the detection and resource trade-offs together. The methodological novelty is deliberately separated from algorithmic novelty: we do not claim a new RL update rule. The contribution is a three-layer service-management method---an analytic reward-feasibility test, an attribution protocol that distinguishes model choice from adaptation, and a prospectively frozen physical instantiation with explicit SLO and off-support checks. Beyond addressing every prior comment, the rebuilt paper offers three positive, transferable contributions absent from the prior submission:
 \begin{itemize}
-    \item A pairwise \emph{non-degeneracy theorem} (Theorem~1, Sec.~V-D) that certifies before deployment whether a declared reward permits any state to reverse the preferred action, together with a validation-only audit in Supplementary Algorithm~S1.
+    \item A pairwise \emph{non-degeneracy theorem} (Theorem~1, Sec.~V-D) that identifies when two actions can reverse immediate-utility preference under fixed resource differences, together with a validation-only audit in Supplementary Algorithm~S1.
     \item A \emph{five-instrument evaluation protocol} (Sec.~VI) that separates detector choice from adaptive value, and a six-item practitioner decision checklist consolidating it in Sec.~IX-C.
     \item A variable-load matched-control result (Sec.~VIII-B): Q/DQN remain LightLR, DeadlineGuard remains MedRF, and all methods record zero deadline misses. Cascade saves 12.064~J against Static-MedRF with a 0.0446-pp F1 cost, rather than a cost-free adaptive gain.
 \end{itemize}
@@ -217,13 +217,13 @@ Sec.~V-E; Sec.~VII-E (P1B); Supplementary Table S15; Sec.~X (Limitations).
 \section*{Reviewer 2}
 
 \begin{rcommentbox}
-Comment 1: I'm not convinced the dynamic scheduler actually beats the simplest static option. Looking at Table V, static TinyDT matches the scheduler's F1 on TON-IoT and slightly beats it on CIC-IoT, while using less power and being faster on both. So what is the dynamic scheduler really buying us? I'd like to see a setting where the dynamic approach clearly wins over TinyDT, for example traffic that shifts over time, concept drift, or scenarios where the best static model changes. Otherwise the case for the added complexity is hard to make.
+Comment 1: I'm not convinced the dynamic scheduler actually beats the simplest static option. Looking at Table V, static TinyDT matches the scheduler's F1 on TON-IoT and slightly beats it on CIC-IoT, while using less power and being faster on both. So what is the dynamic scheduler really buying us? The authors frame it as ``you don't need to pick a model in advance,'' but they themselves profiled all four models on the hardware to set up the cost indices---so the profiling effort was already done. I'd like to see a setting where the dynamic approach clearly wins over TinyDT, for example traffic that shifts over time, concept drift, or scenarios where the best static model changes. Otherwise the case for the added complexity is hard to make.
 \end{rcommentbox}
 
 \begin{authorresponsebox}
 We agree with the concern. Corrected R2 retains ten paired blocks and six methods under the fixed load--prevalence schedule, using the actual 108-state setting, last-episode checkpoints and validation-selected seeds. Historical test outcomes preceded the follow-up design, so fixed execution is not represented as an untouched-test design.
 
-The corrected comparison does not demonstrate adaptive switching by Q, DQN or DeadlineGuard. Q/DQN use LightLR in all 5{,}000 windows; DeadlineGuard uses MedRF throughout. They match the corresponding static detection summaries and all methods record no misses. Q/DQN show no resolved energy benefit against Static-LightLR, but no equivalence margin was declared. Cascade minus Static-MedRF is $-12.064$~J $[-16.548,-7.580]$~J, at $-0.0446$ F1 pp, $-0.2411$ recall pp and $-0.1534$ FPR pp. We report this specific trade-off, not a free improvement or universal RL failure. Historical R1 retains its distinct fixed-rate cascade result; old R2's TinyDT trajectory is an interface diagnostic, not the corrected result.
+The corrected comparison does not demonstrate adaptive switching by Q, DQN or DeadlineGuard. Q/DQN use LightLR in all 5{,}000 windows; DeadlineGuard uses MedRF throughout. They match the corresponding static detection summaries and all methods record no misses. Q/DQN show no resolved energy benefit against Static-LightLR, but no equivalence margin was declared. Cascade minus Static-MedRF is $-12.064$~J $[-16.548,-7.580]$~J, at $-0.0446$ F1 pp, $-0.2411$ recall pp and $-0.1534$ FPR pp. We report this specific trade-off, not a free improvement or universal RL failure. All compared selectors use prior detector profiling; we do not claim that runtime selection avoids that profiling cost. Historical R1 retains its distinct fixed-rate cascade result; old R2's TinyDT trajectory is an interface diagnostic, not the corrected result.
 \end{authorresponsebox}
 
 \begin{wherebox}
@@ -234,7 +234,7 @@ Introduction; Sec.~VIII-A (R1); Sec.~VIII-B (R2); Sec.~IX-A/-C (attribution and 
 \end{excerptbox}
 
 \begin{rcommentbox}
-Comment 2: The reward weights are picked without a good explanation, and everything depends on them. Also, the cost indices are normalized so TinyDT = 1.0, which essentially bakes ``TinyDT is cheapest'' into the reward. Please include a sweep over different weight settings to show the conclusions hold up.
+Comment 2: The reward weights are picked without a good explanation, and everything depends on them. The weights $\vec{w}=[0.5,0.2,0.2,0.1]$ are just stated and used throughout. The authors admit in the Limitations that different weights would change the results, but no sensitivity analysis is provided. This is a problem because all the main findings---which model gets picked most often, the power and latency savings, the thermal behavior---flow directly from this choice. Also, the cost indices are normalized so TinyDT = 1.0, which essentially bakes ``TinyDT is cheapest'' into the reward, and then the paper reports that TinyDT dominates as a finding. Please include a sweep over different weight settings to show the conclusions hold up.
 \end{rcommentbox}
 
 \begin{authorresponsebox}
@@ -246,7 +246,7 @@ Sec.~V-D (Theorem 1); Sec.~VII-F (P1D); Sec.~IX-B; Supplementary Table S17.
 \end{wherebox}
 
 \begin{rcommentbox}
-Comment 3: Table III mixes things that shouldn't be compared directly. The IoT pool models and the UNSW-NB15 reference architectures sit in one table.
+Comment 3: Table III mixes things that shouldn't be compared directly. The IoT pool models and the UNSW-NB15 reference architectures sit in one table, which makes it tempting to compare F1 across them---but the text itself says you shouldn't. I'd suggest splitting them into two tables.
 \end{rcommentbox}
 
 \begin{authorresponsebox}
@@ -258,7 +258,7 @@ Sec.~IV (Dataset-Native Data Preparation); Sec.~VII-A (Table I).
 \end{wherebox}
 
 \begin{rcommentbox}
-Comment 4: The CFSM baseline can't be reproduced from what's written. The thresholds are described as ``fixed'' but the actual values aren't given.
+Comment 4: The CFSM baseline can't be reproduced from what's written. The thresholds are described as ``fixed'' but the actual values aren't given. Since Figure 3 depends on this baseline, please add the threshold values somewhere.
 \end{rcommentbox}
 
 \begin{authorresponsebox}

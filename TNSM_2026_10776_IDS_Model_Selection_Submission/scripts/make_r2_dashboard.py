@@ -177,6 +177,9 @@ leftdoc = pymupdf.open("figures/r1_idle_panel_source.pdf")
 rightdoc = pymupdf.open(stream=panel.getvalue(), filetype="pdf");rect=leftdoc[0].rect
 combined=pymupdf.open();page=combined.new_page(width=2*rect.width,height=rect.height)
 half=rect.width
-page.show_pdf_page(pymupdf.Rect(0,0,half,rect.height),leftdoc,0)
+# Rasterize only the unchanged R1 source panel at 600 dpi to enforce its crop.
+# A PDF CropBox alone allowed hidden historical R2 content to overlay the new panel.
+left_image = leftdoc[0].get_pixmap(matrix=pymupdf.Matrix(600/72, 600/72), clip=leftdoc[0].rect, alpha=False)
+page.insert_image(pymupdf.Rect(0,0,half,rect.height), pixmap=left_image)
 page.show_pdf_page(pymupdf.Rect(half,0,2*half,rect.height),rightdoc,0)
 combined.save("figures/revision_drift_adjusted_power.pdf")

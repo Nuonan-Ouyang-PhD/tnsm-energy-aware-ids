@@ -453,6 +453,8 @@ Each corrected R2 run visits all nine $50/100/4000$ rows/s by $0.10/0.50/0.90$ p
 
 Corrected R2 trains 25 artifacts: Q full/minus-arrival/minus-threat/minus-previous-action and full DQN over seeds 2003, 2011, 2017, 2027 and 2029, 1,000 episodes of 500 windows each. Last-episode checkpoints are eligible; validation selects Q 2011 and DQN 2003. Historical test outputs had already been inspected before this design; fixed execution is not a new unseen-test study. Training reward is $0.5B-0.2\bar P-0.2\min(c,1)-\mathbf1[c>1\ \mathrm{or}\ Q'>0]-Q'/W$, with zero fraction for zero work. Here $c$ uses new warm-input p95 batch latency, and $\bar P$ uses historical TON power proxies. There is no thermal term. Training carryover remains zero; queue ablation is not identifiable and is not executed.
 
+The frozen physical configuration uses a MedRF warm-input batch p95 of 15.221096~ms. DeadlineGuard multiplies this value by $\lceil(N_t+Q_t^-)/100\rceil$, where $Q_t^-$ is the pre-arrival carryover. For $N_t=4{,}000$ and zero carryover, the resulting estimate is 0.608844~s. Table~S6 reports an earlier tight-loop characterization (MedRF p95 27.4078~ms for TON-IoT); it is not the calibration used in this variable-load rule. The frozen value is retained in the companion repository's physical-run configuration, without adjustment from these physical outcomes.
+
 \begin{table}[h!]
 \centering\footnotesize
 \caption*{\textbf{Table S20.} R2 method results over ten blocks. Energy is mean$\pm$SD across physical runs; completion is seconds.}
