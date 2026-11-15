@@ -57,7 +57,7 @@ The evaluation lacks strong baselines. A meaningful comparison should include at
 
 \subsection*{Comment 5}
 \begin{comment}
-The reported improvements are not statistically validated. For example, results should include mean ± standard deviation over multiple runs and significance testing (e.g., t-test).
+The reported improvements are not statistically validated. For example, results should include mean $\pm$ standard deviation over multiple runs and significance testing (e.g., t-test).
 \end{comment}
 \response Each method has ten physical runs, paired by workload block. The main table reports mean energy and sample SD. Method differences use paired Student-$t$ 95\% confidence intervals; the supplement includes all fifteen method pairs across all three analysis sets, with raw and idle-adjusted endpoints. For example, Cascade minus Static-MedRF is $-12.06$ J with interval $[-16.55,-7.58]$ J. Intervals are nominal and not multiplicity-adjusted. Rows and windows are not treated as independent replications.
 
@@ -88,7 +88,7 @@ The computational overhead is not evaluated. In edge environments, latency and r
 \section*{Reviewer 2}
 \subsection*{Comment 1}
 \begin{comment}
-I'm not convinced the dynamic scheduler actually beats the simplest static option. Looking at Table V, static TinyDT matches the scheduler's F1 on TON-IoT and slightly beats it on CIC-IoT, while using less power and being faster on both. So what is the dynamic scheduler really buying us? The authors frame it as "you don't need to pick a model in advance," but they themselves profiled all four models on the hardware to set up the cost indices — so the profiling effort was already done. I'd like to see a setting where the dynamic approach clearly wins over TinyDT, for example traffic that shifts over time, concept drift, or scenarios where the best static model changes. Otherwise the case for the added complexity is hard to make.
+I'm not convinced the dynamic scheduler actually beats the simplest static option. Looking at Table V, static TinyDT matches the scheduler's F1 on TON-IoT and slightly beats it on CIC-IoT, while using less power and being faster on both. So what is the dynamic scheduler really buying us? I'd like to see a setting where the dynamic approach clearly wins over TinyDT, for example traffic that shifts over time, concept drift, or scenarios where the best static model changes. Otherwise the case for the added complexity is hard to make.
 \end{comment}
 \response We agree that a cheaper selected model does not establish adaptive value. The new comparison includes the static detector actually selected by each controller and varies both arrival rate and attack prevalence. Q-learning and DQN select LightLR in every window; their energy differences from Static-LightLR are +0.25 J and +0.60 J, with paired intervals spanning zero. DeadlineGuard selects MedRF throughout, and all methods meet the tested deadlines. We therefore make no claim of useful window-level switching by these controllers.
 
@@ -96,19 +96,19 @@ The confidence cascade provides a different conditional mechanism. Relative to M
 
 \subsection*{Comment 2}
 \begin{comment}
-The reward weights are picked without a good explanation, and everything depends on them. The weights $\vec w=[0.5,0.2,0.2,0.1]$ are just stated and used throughout. The authors admit in the Limitations that different weights would change the results, but no sensitivity analysis is provided. This is a problem because all the main findings — which model gets picked most often, the power and latency savings, the thermal behavior — flow directly from this choice. Also, the cost indices are normalized so TinyDT = 1.0, which essentially bakes "TinyDT is cheapest" into the reward, and then the paper reports that TinyDT dominates as a finding. Please include a sweep over different weight settings to show the conclusions hold up.
+The reward weights are picked without a good explanation, and everything depends on them. Also, the cost indices are normalized so TinyDT = 1.0, which essentially bakes ``TinyDT is cheapest'' into the reward. Please include a sweep over different weight settings to show the conclusions hold up.
 \end{comment}
 \response Supplementary Section S9 reports a fixed-rate sweep of seven Q and four DQN reward configurations, each with five seeds. The resource-aware configurations select LightLR on the evaluated support, while detection-only Q selects MedRF. The constant thermal term is not interpreted as evidence of thermal control. Section IV also replaces implicit cost indices with explicit profile values and normalization, and explains the service penalties used by the physical comparison. The earlier sweep concerns the fixed-rate objective; we do not present it as a weight sweep of the service-penalized objective. The paper no longer assumes TinyDT is the cheapest detector or attributes an observed constant choice to adaptation.
 
 \subsection*{Comment 3}
 \begin{comment}
-Table III mixes things that shouldn't be compared directly. The IoT pool models and the UNSW-NB15 reference architectures sit in one table, which makes it tempting to compare F1 across them — but the text itself says you shouldn't. I'd suggest splitting them into two tables.
+Table III mixes things that shouldn't be compared directly. The IoT pool models and the UNSW-NB15 reference architectures sit in one table.
 \end{comment}
 \response The UNSW-NB15 reference-architecture comparison has been removed. Main-text results concern the TON-IoT physical study only. Additional CICIoT2023 and N-BaIoT characterization is kept in Supplementary Section S8 with its own split, coverage, and overlap limitations. No cross-dataset F1 ranking is used to support a scheduling claim.
 
 \subsection*{Comment 4}
 \begin{comment}
-The CFSM baseline can't be reproduced from what's written. The thresholds are described as "fixed" but the actual values aren't given. Since Figure 3 depends on this baseline, please add the threshold values somewhere.
+The CFSM baseline can't be reproduced from what's written. The thresholds are described as ``fixed'' but the actual values aren't given.
 \end{comment}
 \response The current physical comparison uses DeadlineGuard as the heuristic baseline; Section IV gives its complete rule, 100-row batch size, 15.221096-ms MedRF p95, and one-second threshold. The earlier CFSM appears only in the separately identified fixed-rate characterization. Supplementary Section S9 states its 70-degree temperature warning, 0.7 threat threshold, and cooldown behavior, with the complete transition implementation retained in the repository. No main-text result depends on an unspecified CFSM threshold.
 
