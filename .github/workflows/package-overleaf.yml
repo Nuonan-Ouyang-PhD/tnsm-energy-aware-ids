@@ -1,0 +1,110 @@
+name: Package Overleaf source
+
+on:
+  push:
+    branches: [overleaf-package]
+    paths: ['.github/workflows/package-overleaf.yml']
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out the full manuscript
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            TNSM_2026_10776_IDS_Model_Selection_Submission
+            releases/overleaf
+      - name: Assemble the Overleaf archive without editing sources
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path, PurePosixPath
+          import zipfile, hashlib, json
+          root = Path('TNSM_2026_10776_IDS_Model_Selection_Submission')
+          out = Path('releases/overleaf/TNSM_Overleaf.zip')
+          out.parent.mkdir(parents=True, exist_ok=True)
+          allowed = {'.tex', '.bib', '.bbl', '.bst', '.cls', '.sty', '.clo', '.pdf', '.png', '.jpg', '.jpeg', '.eps', '.svg'}
+          members = {}
+          for path in sorted(root.rglob('*')):
+              if not path.is_file():
+                  continue
+              rel = path.relative_to(root)
+              if path.is_symlink():
+                  raise RuntimeError(f'Unexpected symbolic link: {rel}')
+              if rel.parts[0] in {'pdf', 'scripts'} or path.suffix.lower() not in allowed:
+                  continue
+              if rel.parts[0].startswith('.'):
+                  continue
+              members[rel.as_posix()] = path.read_bytes()
+          required = {'main.tex', 'supplement.tex', 'Response_to_Reviewers.tex', 'Cover_Letter.tex', 'references.bib', 'IEEEtran.cls', 'IEEEtran.bst'}
+          assert required <= members.keys(), required - members.keys()
+          assert b'When Learned IDS Model Selection Collapses' in members['main.tex']
+          assert b'15.221096' in members['sections/05_methods.tex']
+          assert b'profiled all four models' in members['Response_to_Reviewers.tex']
+          members['README_Overleaf.txt'] = (
+              'OVERLEAF PROJECT\n\n'
+              'Upload TNSM_Overleaf.zip as a new Overleaf project.\n'
+              'Compiler: pdfLaTeX. Main document: main.tex.\n\n'
+              'To compile the other documents, change the main document to:\n'
+              'supplement.tex\n'
+              'Response_to_Reviewers.tex\n'
+              'Cover_Letter.tex\n\n'
+              'The manuscript sources, figure files, tables and bibliography are unchanged.\n'
+          ).encode('utf-8')
+          with zipfile.ZipFile(out, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=9) as z:
+              for name, data in sorted(members.items()):
+                  p = PurePosixPath(name)
+                  assert not p.is_absolute() and '..' not in p.parts
+                  info = zipfile.ZipInfo(name, date_time=(2026, 11, 16, 0, 0, 0))
+                  info.compress_type = zipfile.ZIP_DEFLATED
+                  info.external_attr = 0o100644 << 16
+                  z.writestr(info, data)
+          with zipfile.ZipFile(out) as z:
+              assert z.testzip() is None
+              assert len(z.namelist()) == len(set(z.namelist())) == len(members)
+              for name, data in members.items():
+                  assert z.read(name) == data
+              z.extractall('/tmp/overleaf-compile')
+          print(json.dumps({'archive': str(out), 'bytes': out.stat().st_size, 'files': len(members), 'sha256': hashlib.sha256(out.read_bytes()).hexdigest()}))
+          PY
+      - name: Install LaTeX tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends latexmk texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-science cm-super poppler-utils
+      - name: Compile from a clean extraction of the ZIP
+        run: |
+          set -euo pipefail
+          cd /tmp/overleaf-compile
+          for stem in main supplement Response_to_Reviewers Cover_Letter; do
+            latexmk -pdf -interaction=nonstopmode -halt-on-error "$stem.tex" > "/tmp/$stem-overleaf-build.txt" 2>&1 || { tail -80 "/tmp/$stem-overleaf-build.txt"; exit 1; }
+            if grep -E 'undefined references|Citation .* undefined|Reference .* undefined|Missing character:' "$stem.log"; then
+              exit 1
+            fi
+            echo "=== $stem ==="
+            pdfinfo "$stem.pdf" | grep Pages
+          done
+          python3 - <<'PY'
+          import subprocess, re
+          expected = {'main':11, 'supplement':32, 'Response_to_Reviewers':10, 'Cover_Letter':2}
+          for stem, pages in expected.items():
+              info = subprocess.check_output(['pdfinfo', stem+'.pdf'], text=True)
+              actual = int(re.search(r'Pages:\s+(\d+)', info).group(1))
+              assert actual == pages, (stem, actual, pages)
+          print('All four documents compile from the uploaded ZIP with the expected page counts.')
+          PY
+      - name: Publish the downloadable archive only
+        run: |
+          git diff --exit-code -- TNSM_2026_10776_IDS_Model_Selection_Submission
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add --sparse -f releases/overleaf/TNSM_Overleaf.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'Add the complete Overleaf-ready source archive [skip ci]'
+            git push origin HEAD:overleaf-package
+          fi
