@@ -16,8 +16,8 @@ On Ubuntu:
 
 ```bash
 sudo apt-get install latexmk texlive-latex-base texlive-latex-recommended \
-  texlive-latex-extra texlive-fonts-recommended texlive-science poppler-utils \
-  python3-numpy python3-scipy python3-matplotlib
+  texlive-latex-extra texlive-fonts-recommended texlive-science cm-super \
+  poppler-utils python3-numpy python3-scipy python3-matplotlib
 /usr/bin/python3 scripts/build_paper.py
 ```
 
