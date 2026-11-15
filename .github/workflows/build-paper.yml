@@ -92,15 +92,17 @@ jobs:
           root = Path(os.environ['GITHUB_WORKSPACE'])/'TNSM_2026_10776_IDS_Model_Selection_Submission'
           counts = {}
           for name in ['Manuscript', 'Supplement', 'Response_to_Reviewers', 'Cover_Letter']:
-              doc = fitz.open(root/'pdf'/f'{name}.pdf')
-              counts[name] = len(doc)
+              with fitz.open(root/'pdf'/f'{name}.pdf') as doc:
+                  counts[name] = len(doc)
           print('PAGE_COUNTS', json.dumps(counts))
-          rt = fitz.open(root/'figures/r4_threshold_shift.pdf')[0].get_text()
-          for value in ['5,519','11,610','5,348','16,817','312','5,340','1.0','Validation-selected']:
-              assert value in rt, ('Missing threshold-figure text',value)
-          right = fitz.open(root/'figures/revision_drift_adjusted_power.pdf')[0]
-          assert right.get_text().count('R2: variable load') == 1
-          assert 'Power above idle (mW)' in right.get_text()
+          with fitz.open(root/'figures/r4_threshold_shift.pdf') as threshold_doc:
+              rt = threshold_doc[0].get_text()
+              for value in ['5,519','11,610','5,348','16,817','312','5,340','1.0','Validation-selected']:
+                  assert value in rt, ('Missing threshold-figure text',value)
+          with fitz.open(root/'figures/revision_drift_adjusted_power.pdf') as power_doc:
+              power_text = power_doc[0].get_text()
+              assert power_text.count('R2: variable load') == 1
+              assert 'Power above idle (mW)' in power_text
           response = (root/'Response_to_Reviewers.tex').read_text()
           assert 'profiling effort was already done' in response
           assert 'Since Figure 3 depends on this baseline' in response
