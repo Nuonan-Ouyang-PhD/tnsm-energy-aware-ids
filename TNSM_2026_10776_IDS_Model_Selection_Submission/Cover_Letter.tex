@@ -1,0 +1,55 @@
+\documentclass[11pt]{article}
+\usepackage{iftex}
+\ifXeTeX
+\usepackage{newunicodechar}
+\newunicodechar{–}{--}
+\newunicodechar{—}{---}
+\fi
+\usepackage[margin=1in]{geometry}
+\usepackage{parskip}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\begin{document}
+\thispagestyle{empty}
+
+\begin{flushright}
+College of Science and Engineering\\
+James Cook University, Australia\\
+\href{mailto:nuonan.ouyang@my.jcu.edu.au}{nuonan.ouyang@my.jcu.edu.au}\\
+8 November 2026
+\end{flushright}
+
+\vspace{4pt}
+Editor-in-Chief and Editorial Team\\
+IEEE Transactions on Network and Service Management
+
+\vspace{6pt}
+Dear Editor-in-Chief and Editorial Team,
+
+Please consider our new manuscript, ``When Learned IDS Model Selection Collapses to a Static Choice: A Measurement Study at the Edge,'' following the 30 May 2026 decision on prior manuscript TNSM-2026-10776 (``Energy-Aware Intrusion Detection System with Q-learning-Based Dynamic Scheduler on Lightweight IoT Devices''). The decision invited a new manuscript that fully considers the prior reviews; the accompanying response maps each prior comment to the rebuilt evidence and current manuscript.
+
+The submission offers three interlocking, portable contributions to network and service management, together with a physical measurement study that instantiates them at the edge.
+
+\textbf{(1) A pre-deployment reward-audit framework.} We prove that, under fixed resource differences and a linear scalar utility with fixed detection weight, a strict pairwise action reversal on a support region exists if and only if the implied exchange threshold $\tau_{ab}=\Delta C_{ab}/w_D$ lies strictly between the attainable minimum and maximum of the detection-difference $\Delta D_{ab}(\cdot)$ (Theorem~1). Supplementary Algorithm~S1 turns the theorem into a validation-only audit that a deployment engineer can run at policy-freeze time using declared weights, measured cost profiles, and validation-support scores. Under the executed candidate-range normalization, the retrospective validation-only audit excludes MedRF/LightLR and HeavyMLP/LightLR reversals but identifies seven TinyDT-favoring windows. It establishes neither global LightLR optimality nor execution before test inspection. The theorem remains a reusable screening tool for future deployments.
+
+\textbf{(2) An evaluation protocol that separates detector choice from adaptive value.} Its five instruments---paired physical blocks, matched-static-action attribution, prospectively frozen factorial workloads, joint raw and drift-adjusted power endpoints, and full occupancy plus off-support action reporting---together isolate what a learned selector adds \emph{beyond} the schedule it realizes. We consolidate the protocol into a practitioner-facing six-item decision checklist in the Discussion, so the framework is usable by TNSM readers who are not measurement specialists.
+
+\textbf{(3) A controlled variable-load attribution result.} The corrected $50/100/4000$ rows/s by $0.10/0.50/0.90$ prevalence comparison contains ten paired blocks and six methods. Q and DQN remain LightLR without resolved energy savings over Static-LightLR; DeadlineGuard remains MedRF and all methods have zero recorded misses. Cascade uses 12.064~J less than Static-MedRF, paired 95\% CI $[-16.548,-7.580]$~J for the difference, with $-0.0446$ F1 pp, $-0.2411$ recall pp and $-0.1534$ FPR pp. This is an implementation-specific trade-off, not cost-free adaptation or equivalence of learned and static deployment.
+
+The manuscript retains the original fixed-load, static and R1 evidence separately from corrected variable-load execution. Historical R2's queue/arrival interface no longer serves as evidence of corrected-policy load generalization. Constant-coordinate ablations are explicitly limited, and immediate pairwise utility preferences do not prove long-horizon RL collapse. The original fixed-cost exchange threshold is not transferred to the new service-dependent reward.
+
+Relative to the prior submission, we rebuilt the data lineage, detector evaluation, scheduler implementation, and physical evidence, and added DQN as the stronger DRL comparator, explicit causal state/reward definitions, reward and state sensitivity, learning curves, matched physical statistics, isolated scheduler-overhead measurements, a validation-only TinyDT threshold diagnostic, and an expanded related-work discussion covering conditional cascades and inference-service management. Multi-node scalability remains explicitly outside the evidence boundary and is not claimed.
+
+Invalid attempts and their authorized recovery links remain archived, including the cross-period recoveries in blocks 1 and 5. All three block-set analyses and raw/idle-adjusted endpoints are reported without selecting the favourable result. The reproducibility archive is intended for DOI release upon acceptance. We confirm that the submission is original, is not under consideration elsewhere, and is submitted with approval of all authors.
+
+Thank you for your consideration.
+
+\vspace{18pt}
+Sincerely,
+
+\vspace{34pt}
+Nuonan Ouyang\\
+on behalf of all authors
+
+\end{document}

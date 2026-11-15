@@ -14,8 +14,12 @@ artifacts; full independent byte-level and raw-log acceptance is **not complete*
 The independent review has so far reported execution-environment limitations;
 it must not be replaced by our own PASS counts.
 
-The working manuscript is now [manuscript_working/](manuscript_working/README.md),
-pending scientific consistency and publication checks. The previous
+The active manuscript is the [complete original submission project](TNSM_2026_10776_IDS_Model_Selection_Submission/README_SUBMISSION.md),
+locally revised from the author-supplied full master without replacing it with
+the later condensed draft. Its title, authors, section structure, theory and
+unaffected evidence are retained; corrected variable-load results are updated
+locally in the corresponding text, tables, figures and response. The earlier
+`manuscript_working/` condensed tree is not the submission master. The previous
 `releases/submission/` bundle is historical, not the current submission-ready result.
 No new measurement is planned or enabled by the read-only reanalysis entry point.
 
@@ -28,7 +32,8 @@ interpreting historical variable-load, ablation or reward-audit claims.
 ## Start here
 
 - [Current corrected evidence and safe reanalysis](releases/supplemental-followup-20261113/README.md)
-- [Current manuscript and response working tree](manuscript_working/README.md)
+- [Current complete manuscript, supplement, response and build instructions](TNSM_2026_10776_IDS_Model_Selection_Submission/README_SUBMISSION.md)
+- [Current main PDF](TNSM_2026_10776_IDS_Model_Selection_Submission/pdf/Manuscript.pdf) · [Supplement](TNSM_2026_10776_IDS_Model_Selection_Submission/pdf/Supplement.pdf) · [Reviewer response](TNSM_2026_10776_IDS_Model_Selection_Submission/pdf/Response_to_Reviewers.pdf) · [Cover letter](TNSM_2026_10776_IDS_Model_Selection_Submission/pdf/Cover_Letter.pdf)
 - [Historical submission ZIP](releases/submission/TNSM_Submission_Final.zip)
 - [Historical main paper](releases/submission/package/Manuscript.pdf) · [Historical supplement](releases/submission/package/Supplementary_Material.pdf) · [Historical reviewer response](releases/submission/package/Response_to_Reviewers.pdf)
 - [Historical LaTeX and build instructions](releases/submission/README.md)

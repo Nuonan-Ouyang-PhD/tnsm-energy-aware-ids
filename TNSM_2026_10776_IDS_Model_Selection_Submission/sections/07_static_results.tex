@@ -1,0 +1,65 @@
+\section{Static and Attribution Results}
+\label{sec:staticresults}
+This section reports the classification operating points, the static physical resource characterization, and the primary/P1A attribution and robustness evidence. Together these anchor the pairwise non-degeneracy analysis of Section~\ref{sec:methods} in measured, rather than declared, cost profiles.
+
+\subsection{TON-IoT Detection Operating Points}
+Table~\ref{tab:classification} shows the four TON-IoT operating points used by the physical study. TinyDT has recall 0.9976 but F1 0.4792 and FPR 67.78\%; LightLR, MedRF, and HeavyMLP have F1 0.9620--0.9746 and FPR 1.35--1.52\%. MedRF's aggregate held-out balanced-accuracy advantage over LightLR is 0.0140; this post-freeze test statistic is descriptive and is not treated as a statewise attainability bound. The non-degeneracy conclusion instead uses the validation-only window audit in Section~\ref{sec:methods}, where the observed difference range $[-0.1053,0.1053]$ does not straddle $\tau_{\text{MedRF,LightLR}}=0.7967$. Full confusion counts, plus \cic{}/\nb{} detector and overlap audits, are retained in the supplement.
+
+\begin{table}[t]
+\centering\footnotesize
+\caption{TON-IoT held-out detection at threshold 0.5. BA denotes balanced accuracy; FPR is a percentage.}
+\label{tab:classification}
+\setlength{\tabcolsep}{4.2pt}
+\begin{tabular}{lrrrr}\toprule
+Model & F1 & Recall & BA & FPR (\%)\\\midrule
+\tableinput{tables/ton_classification_rows}
+\bottomrule\end{tabular}
+\end{table}
+
+For attack prevalence $p$, recall $r$, and FPR $f$,
+\begin{equation}\label{eq:prevalence}
+    F1 = \frac{2pr}{p(1+r) + (1-p)f},
+\end{equation}
+so high attack prevalence can coexist with high F1 and poor normal-class behavior. This identity motivates our decision to report attack-class F1, recall, and FPR jointly throughout, rather than summarizing with F1 alone.
+
+\subsection{Static Physical Resource Measurements}
+Across fifteen static segments, idle averages 2.335~W and active means span 2.347~W (LightLR) to 2.397~W (MedRF). MedRF's paired increment is 61.6~mW with 95\% CI $[32.1,\,91.0]$; TinyDT and LightLR intervals cross zero, indicating that the whole-device signal at this cadence is dominated by background platform power. No accepted workload window records undervoltage or throttling. Full segment statistics are supplementary; labels such as ``Tiny'' or ``Heavy'' are not used as empirical cost ranks.
+
+\subsection{Primary Dynamic Comparison}
+All forty primary runs contain 501 power samples and 500 decisions. Relative to Static-MedRF, Tabular-Q saves \TQSavingJ{} J (95\% paired CI \TQSavingJLow{}--\TQSavingJHigh{}) and DQN saves \DQSavingJ{} J (\DQSavingJLow{}--\DQSavingJHigh{}), but both lose \TQFOneDropPP{}~pp of F1 and \TQRecallDropPP{}~pp of recall. Both select LightLR in all 5{,}000 windows; consequently the primary contrast measures a detector operating-point change and not adaptive switching. This is the core observation that motivates the P1A attribution control below.
+
+\subsection{P1A: Matched Attribution Against Static-LightLR}
+P1A executes ten matched blocks comparing Tabular-Q, DQN, Static-LightLR, and Static-MedRF on the same traces. Because both learned policies realize LightLR throughout, Static-LightLR is the correct baseline for isolating adaptive value. Table~\ref{tab:p1a} reports three key paired contrasts.
+
+\begin{table}[t]
+\centering\footnotesize
+\caption{P1A paired contrasts over ten trace-matched blocks. Each difference is first-minus-second method; intervals are Student-$t$ 95\% CIs, and $p$ is the exact two-sided sign-flip diagnostic over the ten block-level differences.}
+\label{tab:p1a}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrrr}\toprule
+Outcome & Mean & 95\% CI & $p$\\\midrule
+\multicolumn{4}{l}{\emph{Tabular-Q $-$ Static-LightLR}}\\
+\quad Energy (J)  & $+0.456$  & $[-1.861,\,+2.772]$   & 0.664\\
+\quad Power (mW)  & $+0.910$  & $[-3.722,\,+5.542]$   & 0.668\\
+\multicolumn{4}{l}{\emph{DQN $-$ Static-LightLR}}\\
+\quad Energy (J)  & $+4.525$  & $[+2.693,\,+6.357]$   & 0.00195\\
+\quad Power (mW)  & $+9.045$  & $[+5.381,\,+12.709]$  & 0.00195\\
+\multicolumn{4}{l}{\emph{Static-MedRF $-$ Static-LightLR}}\\
+\quad Energy (J)  & $+12.471$ & $[+10.611,\,+14.331]$ & 0.00195\\
+\quad F1 (pp)     & $+1.343$  & $[+1.292,\,+1.393]$   & 0.00195\\
+\bottomrule\end{tabular}
+\end{table}
+
+Three findings emerge. First, Tabular-Q's energy contrast against the matched Static-LightLR control has an interval that includes zero, so the primary campaign's 13.1-J saving against Static-MedRF is fully explained by detector operating-point choice rather than by adaptation. Second, DQN carries a small but resolvable +4.5-J energy premium over Static-LightLR despite reproducing identical detection, indicating that its per-window controller cost, although a tiny fraction of each one-second window, is not free at 100 rows/s. Third, Static-MedRF's +12.5-J energy penalty against Static-LightLR is closely matched by the primary Tabular-Q saving against Static-MedRF, which confirms the compositional picture: (Static-MedRF $-$ Static-LightLR) $\approx$ (Static-MedRF $-$ Tabular-Q).
+
+\subsection{P1B: Isolated Scheduler Overhead}
+The isolated benchmark reports state-to-action decision time on the observed state support after correction of an earlier benchmarking substitution that was retained as an invalid attempt in the archive. On observed support, means are 0.739~$\mu$s for Static-LightLR, 6.582~$\mu$s for CFSM, 10.796~$\mu$s for Tabular-Q, and 1.567~ms for DQN. DQN is roughly $145\times$ Tabular-Q's controller cost but remains 0.157\% of the one-second decision interval. These timings are not converted into joules; the R2 physical evidence in Section~\ref{sec:dynamicresults} bounds what can be attributed to controller cost alone.
+
+The full 240-unit benchmark, confidence intervals, and raw timing arrays are retained in Supplementary Table~S15.
+
+\subsection{P1C--P1E: Multi-seed and Sensitivity Coverage}
+P1C trains ten additional Tabular-Q and ten additional DQN policies under the frozen state, reward, split, and training-horizon protocol. All twenty policies select LightLR in 100\% of held-out windows (10/10 per algorithm; per-algorithm Wilson 95\% interval $[0.7225, 1.0]$). Greedy full-state maps vary across seeds---for DQN especially, from 0/324 to 311/324 TinyDT cells---but the observed-support behavior is unanimous, evidence for policy stability that is scoped to that support rather than to the whole encoded grid.
+
+P1D varies reward weights and separately ablates state components; all 85 valid policies are single-action on held-out support. Only the five \emph{detection-only} Tabular-Q variants choose MedRF rather than LightLR, describing those runs rather than proving a necessary policy outcome. All thirty state-ablation policies remain LightLR. Fifteen minus-temperature, minus-queue and minus-arrival runs remove coordinates that never vary in training; they cannot establish adaptation to changes in those variables or identify them as irrelevant. Other ablations remain support-limited. P1E retains 35 Tabular-Q runs (five per setting) in one-at-a-time sweeps over $\gamma\in\{0,0.5,0.9,0.99\}$ and $\alpha\in\{0.05,0.10,0.20\}$; all thirty-five select LightLR.
+
+The full P1C--P1E matrices are retained in Supplementary Tables~S16--S18. Together with Table~\ref{tab:p1a}, they document the observed collapse through matched attribution, isolated timing, and sanctioned reward/state/hyperparameter perturbations. Only removing all resource penalties changes the collapsed detector in this matrix; this is not a proof of global optimality.

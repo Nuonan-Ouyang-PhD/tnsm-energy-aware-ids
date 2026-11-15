@@ -1,0 +1,21 @@
+\section{Discussion}
+\label{sec:discuss}
+\subsection{Attribution and Conditional Value}
+The primary 13.1-J Tabular-Q saving against Static-MedRF is only 26.1~mW over 500~s, while false negatives rise almost tenfold (57.8 to 565.9 per run). P1A resolves no Tabular-Q difference against its realized Static-LightLR control; that historical result concerns detector choice rather than adaptation. Corrected R2 likewise resolves no Q/DQN benefit over Static-LightLR, while DeadlineGuard stays MedRF and all methods record no misses. The new Cascade--MedRF comparison instead combines lower energy with slightly lower F1/recall and lower FPR. In the separate fixed-rate R1 regime, 1.34\% deferred rows activate MedRF in 66.76\% of windows: call granularity, not row fraction alone, controls serving cost.
+
+\subsection{External-Budget Normalization Rule}
+Theorem~\ref{thm:nondeg} screens immediate pairwise preferences under fixed resource differences, not long-horizon policy optimality. For the original fixed-cost reward, candidate-range scaling yields $\tau_{\text{MedRF,LightLR}}=0.7967$, outside its observed validation range $[-0.1053,0.1053]$. It does not transfer to the corrected load-dependent completion/deadline/backlog reward. A portable design replaces pool extrema with external denominators:
+\begin{align}
+\overline P_a&=\frac{P_a-P_{\rm idle}}{B_P}, &
+\overline L_a&=\frac{L_a}{\Delta_{\rm SLO}},\\
+\overline E_a&=\frac{E_a}{B_E}, &
+\overline H_a&=\frac{[T_a-T_{\rm safe}]_+}{B_T},
+\end{align}
+where $B_P$, $\Delta_{\rm SLO}$, $B_E$, and $B_T$ are operator-set power, latency, energy, and thermal budgets. These denominators remain interpretable when the detector pool changes. The validation-only audit should be run before policy freeze; if no relevant pair can reverse, use an audited static schedule or redesign the pre-test contract.
+
+\subsection{Support, Safety, and Measurement}
+The original fixed-load Tabular-Q maps 314/324 states to TinyDT because unseen zero-initialized rows tie and \texttt{np.argmax} chooses action zero. That remains a default-action warning, but historical R2's post-append queue and unequal arrival timing do not isolate algorithmic load generalization. Corrected R2 instead trains and deploys the shared 108-state semantics; its Q and DQN stay LightLR. Training carryover remains zero, so neither successful encoding nor the deletion of constant coordinates establishes queue-adaptation competence. Deployments should retain both action maps and actual training/deployment support.
+
+Small whole-device effects require paired blocks and joint raw/drift-adjusted reporting. Corrected R2 retains both recovered-block exclusion sets as well; temporal recovery and monitor cadence remain possible confounders. The original DQN excursion lacked the later process-aware guard and supports no precise background-process or controller-power allocation. R3 supplies no controller-only power. The practical checklist remains: audit immediate reward attainability; include the realized static action and causal controls; fix load/threat schedules before execution; report confusion counts, deadlines, occupancy and support; retain all raw/adjusted sensitivities; and select detector thresholds on validation only.
+
+The portable contribution is this audit-and-attribution framework, not a universal numeric ranking. Corrected R2's Cascade trade-off, the separate R1 call-granularity result and original controller timings are conditional on their own Pi, resident pool, batching and instrumentation settings; they are not interchangeable costs.
