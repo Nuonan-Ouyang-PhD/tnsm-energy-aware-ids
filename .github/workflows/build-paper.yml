@@ -2,11 +2,10 @@ name: Build paper
 
 on:
   push:
-    branches: [submission-preparation]
+    branches: [submission-polish]
     paths:
-      - 'paper/Source_Files/**'
-      - 'scripts/build_paper.py'
-      - 'scripts/prepare_reviewer_comments.py'
+      - 'TNSM_2026_10776_IDS_Model_Selection_Submission/**'
+      - 'scripts/polish_full_submission.py'
       - '.github/workflows/build-paper.yml'
   workflow_dispatch:
 
@@ -22,53 +21,91 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
-      - name: Check out manuscript and result sources
+      - name: Check out the complete manuscript
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
           filter: blob:none
           sparse-checkout: |
-            paper
+            TNSM_2026_10776_IDS_Model_Selection_Submission
             scripts
-            manuscript_working/Source_Files
-            releases/submission/package/Source_Files
-            releases/supplemental-followup-20261113/analysis
+            releases/supplemental-followup-20261113/executed_source/cadence_repair
       - name: Install document tools
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends latexmk texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-science cm-super poppler-utils python3-numpy python3-scipy python3-matplotlib
-      - name: Build four PDFs and submission archive
+          sudo apt-get install -y --no-install-recommends latexmk texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-science cm-super poppler-utils python3-venv
+          python3 -m venv /tmp/paper-env
+          /tmp/paper-env/bin/pip install --quiet PyMuPDF==1.24.14 numpy==2.1.3 matplotlib==3.9.2
+      - name: Apply localized editorial changes
         run: |
-          /usr/bin/python3 scripts/prepare_reviewer_comments.py
-          /usr/bin/python3 scripts/build_paper.py
-          /usr/bin/python3 -m zipfile -e paper/TNSM_Submission.zip paper-package
-      - name: Store the submission files
-        if: success()
-        uses: actions/upload-artifact@v4
-        with:
-          name: TNSM_Submission
-          path: paper-package/
-          if-no-files-found: error
-          retention-days: 90
-      - name: Store build output
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: paper-build-output
-          path: |
-            paper-build/
-            paper/*.pdf
-            paper/TNSM_Submission.zip
-          if-no-files-found: warn
-          retention-days: 14
-      - name: Publish compiled paper files on the same branch
-        if: success()
+          if [ -f scripts/polish_full_submission.py ]; then
+            /tmp/paper-env/bin/python scripts/polish_full_submission.py
+          fi
+          cd TNSM_2026_10776_IDS_Model_Selection_Submission
+          /tmp/paper-env/bin/python scripts/make_r2_dashboard.py
+          /tmp/paper-env/bin/python scripts/fix_figure_labels.py
+      - name: Compile the four existing documents
+        shell: bash
+        run: |
+          set -euo pipefail
+          PROJECT="$GITHUB_WORKSPACE/TNSM_2026_10776_IDS_Model_Selection_Submission"
+          BUILD=$(mktemp -d)
+          cp -a "$PROJECT/." "$BUILD/"
+          cd "$BUILD"
+          for stem in main supplement Response_to_Reviewers Cover_Letter; do
+            latexmk -pdf -interaction=nonstopmode -halt-on-error "$stem.tex" > "/tmp/$stem-build.txt" 2>&1 || { tail -100 "/tmp/$stem-build.txt"; exit 1; }
+            if grep -E 'undefined references|Citation .* undefined|Reference .* undefined|Missing character:' "$stem.log"; then
+              echo 'Unresolved references or missing glyphs'; exit 1
+            fi
+            echo "=== $stem ==="
+            pdfinfo "$stem.pdf" | grep Pages
+            grep -E 'Overfull|Underfull' "$stem.log" || true
+          done
+          mkdir -p "$PROJECT/pdf"
+          cp main.pdf "$PROJECT/pdf/Manuscript.pdf"
+          cp supplement.pdf "$PROJECT/pdf/Supplement.pdf"
+          cp Response_to_Reviewers.pdf "$PROJECT/pdf/Response_to_Reviewers.pdf"
+          cp Cover_Letter.pdf "$PROJECT/pdf/Cover_Letter.pdf"
+          cp main.bbl "$PROJECT/main.bbl"
+          /tmp/paper-env/bin/python - <<'PY'
+          import os, re, json, hashlib
+          from pathlib import Path
+          import pymupdf as fitz
+          root = Path(os.environ['GITHUB_WORKSPACE'])/'TNSM_2026_10776_IDS_Model_Selection_Submission'
+          preview = Path(os.environ['GITHUB_WORKSPACE'])/'_visual_review'
+          preview.mkdir(exist_ok=True)
+          counts = {}
+          for name in ['Manuscript', 'Supplement', 'Response_to_Reviewers', 'Cover_Letter']:
+              doc = fitz.open(root/'pdf'/f'{name}.pdf')
+              counts[name] = len(doc)
+              for i,page in enumerate(doc):
+                  page.get_pixmap(matrix=fitz.Matrix(1.5,1.5),alpha=False).save(preview/f'{name}-{i+1:02d}.png')
+          print('PAGE_COUNTS', json.dumps(counts))
+          for name in ['r1_idle_panel_source', 'revision_drift_adjusted_power', 'r1_energy_security_frontier', 'r4_threshold_shift']:
+              d = fitz.open(root/'figures'/f'{name}.pdf')
+              print('FIGURE', name, list(d[0].rect), d[0].get_text())
+              d[0].get_pixmap(matrix=fitz.Matrix(2,2),alpha=False).save(preview/f'{name}.png')
+          readme = root/'README_SUBMISSION.md'
+          text = readme.read_text()
+          text = re.sub(r'(pdf/Manuscript\.pdf`, )\d+( pages)', lambda m:m[1]+str(counts['Manuscript'])+m[2], text)
+          text = re.sub(r'(pdf/Supplement\.pdf`, )\d+( pages)', lambda m:m[1]+str(counts['Supplement'])+m[2], text)
+          text = text.replace('The unchanged R1 half of the combined idle-adjusted plot is preserved in `figures/r1_idle_panel_source.pdf`.', 'The unchanged R1 half of the combined idle-adjusted plot is preserved in `figures/r1_idle_panel_source.pdf` and rendered at 600 dpi to enforce its crop. `python3 scripts/fix_figure_labels.py` separates the retained R1/R4 figure labels without changing plotted data.')
+          readme.write_text(text)
+          manifest = root/'MANIFEST_SHA256.txt'
+          if manifest.exists():
+              entries = []
+              for p in sorted(root.rglob('*')):
+                  if p.is_file() and p != manifest:
+                      entries.append(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.relative_to(root).as_posix())
+              manifest.write_text('\n'.join(entries)+'\n')
+          PY
+      - name: Publish only manuscript changes and page previews
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -f paper/Source_Files paper/Manuscript.pdf paper/Supplementary_Material.pdf paper/Response_to_Reviewers.pdf paper/Cover_Letter.pdf paper/TNSM_Submission.zip paper/BUILD.txt
+          git add -f TNSM_2026_10776_IDS_Model_Selection_Submission _visual_review
+          git diff --cached --stat
           if ! git diff --cached --quiet; then
-            git commit -m 'Build manuscript PDFs and submission archive [skip ci]'
-            git pull --rebase origin ${GITHUB_REF_NAME}
+            git commit -m 'Compile localized full-manuscript corrections [skip ci]'
             git push origin HEAD:${GITHUB_REF_NAME}
           fi
