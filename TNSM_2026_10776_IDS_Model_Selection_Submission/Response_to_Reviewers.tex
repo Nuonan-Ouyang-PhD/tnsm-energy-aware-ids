@@ -50,7 +50,7 @@ Prior title: \emph{Energy-Aware Intrusion Detection System with Q-learning-Based
 Rebuilt title: \emph{When Learned IDS Model Selection Collapses to a Static Choice: A Measurement Study at the Edge}\\
 \vspace{4pt}
 Nuonan Ouyang, Adrian Shatte, Zhigang Lu, Chao Chen, Wei Xiang\\
-8 November 2026
+15 November 2026
 \end{center}
 
 \begin{tcolorbox}[colback=SoftGray,colframe=black!25,title=How to Read This Letter]
@@ -61,7 +61,7 @@ Blue-framed boxes contain the prior review comments; green-framed boxes give our
 This response accompanies a new manuscript submission following the 30 May 2026 decision on prior manuscript TNSM-2026-10776, which invited a new manuscript that fully considers the prior reviews.
 \end{tcolorbox}
 
-\section*{Reconstruction summary}
+\section*{Summary of changes}
 
 We did not restore or tune the legacy numerical story. Instead, we rebuilt the dataset lineage, detector pipeline, scheduler implementation, and physical evidence, and we now retain results even when they weaken the original claim. The methodological novelty is deliberately separated from algorithmic novelty: we do not claim a new RL update rule. The contribution is a three-layer service-management method---an analytic reward-feasibility test, an attribution protocol that distinguishes model choice from adaptation, and a prospectively frozen physical instantiation with explicit SLO and off-support checks. Beyond addressing every prior comment, the rebuilt paper offers three positive, transferable contributions absent from the prior submission:
 \begin{itemize}
@@ -169,7 +169,7 @@ Comment 6: Scalability is not demonstrated. The current setup (single device / l
 \end{rcommentbox}
 
 \begin{authorresponsebox}
-We address dynamic traffic with the fixed $50/100/4000$ rows/s by $0.10/0.50/0.90$ prevalence workload in ten corrected paired blocks. Shared current arrivals and pre-append carryover replace the historical mismatched interface. In these runs all methods have zero recorded deadline misses, and DeadlineGuard remains MedRF; we therefore withdraw the earlier interpretation that it dynamically removes static-control misses. This is fixed replay on a previously viewed test pool, not a claim of unseen-test or multi-node generalization.
+We address dynamic traffic with the fixed $50/100/4000$ rows/s by $0.10/0.50/0.90$ prevalence workload in ten corrected paired blocks. Shared current arrivals and pre-append carryover replace the historical mismatched interface. In these runs all methods have zero recorded deadline misses, and DeadlineGuard remains MedRF; the experiment therefore does not demonstrate that DeadlineGuard removes misses relative to Static-MedRF. This is fixed replay on a previously viewed test pool, not a claim of unseen-test or multi-node generalization.
 
 The multi-node half remains deliberately outside the evidence boundary. All physical effects are conditional on one Pi 4B 8~GB and TON-IoT replay, and repeated blocks on one board do not estimate board-to-board or fleet variability. A defensible multi-node claim would require a separate design that models between-node hardware and workload variability rather than treating repeated runs on one board as independent nodes.
 \end{authorresponsebox}
@@ -195,7 +195,7 @@ Comment 8: The integration between IDS and scheduling is not deeply explored. Fo
 \end{rcommentbox}
 
 \begin{authorresponsebox}
-The scheduler uses the previous selected detector's mean attack probability as lagged threat context. It is combined with smoothed temperature, queue/backlog, lagged arrival/load, and previous action before the next action is committed. This causal ordering avoids using the current selected detector's own output to choose itself. Ground truth is used only during offline training reward calculation and post-hoc evaluation; formal test deployment performs no policy update. The confidence-cascade baseline (R1) uses the LightLR posterior directly for escalation, providing a second, non-RL point of integration.
+Both settings use the previous selected detector's mean attack probability as lagged threat context. The original fixed-load controller combines it with smoothed temperature, queue utilization, preceding arrivals, and previous action. Corrected variable-load R2 instead combines it with current scheduled arrivals, FIFO carryover measured before appending those arrivals, and previous action; temperature is safety-only. This causal ordering avoids using the current selected detector's own output to choose itself. Ground truth is used only during offline training reward calculation and post-hoc evaluation; formal test deployment performs no policy update. The confidence-cascade baseline uses the LightLR posterior after entry inference for conditional escalation, providing a separate, non-RL point of integration.
 \end{authorresponsebox}
 
 \begin{wherebox}
@@ -207,7 +207,7 @@ Comment 9: The computational overhead is not evaluated. In edge environments, la
 \end{rcommentbox}
 
 \begin{authorresponsebox}
-We now separate offline training, classifier inference, and controller decision time. Both learned schedulers train offline for 1{,}000 episodes and are frozen before test deployment. The original training harness did not instrument training energy, but archived process-start and policy-creation timestamps indicate approximately 26.7~s for the Tabular-Q run and 256.9~s (4.28~min) for DQN on the Mac orchestration host; we report these provenance-derived wall-clock values as approximate, not as calibrated compute benchmarks. P1B then times only encoded state-to-action selection on the Pi. On observed states the mean decision time is 0.739~$\mu$s for Static-LightLR, 6.582~$\mu$s for CFSM, 10.796~$\mu$s for Tabular-Q, and 1.567~ms for DQN. DQN is much more expensive computationally than Tabular-Q but still uses only 0.157\% of the one-second decision interval. Classifier inference is reported separately.
+We now separate offline training, classifier inference, and controller decision time. Both learned schedulers train offline for 1{,}000 episodes and are frozen before test deployment. For the original fixed-load campaign, the training harness did not instrument training energy, but archived process-start and policy-creation timestamps indicate approximately 26.7~s for the Tabular-Q run and 256.9~s (4.28~min) for DQN on the Mac orchestration host; we report these provenance-derived wall-clock values as approximate, not as calibrated compute benchmarks. The original fixed-load P1B benchmark then times only encoded state-to-action selection on the Pi. These timings and the historical training durations are not measurements of corrected R2 training or controller overhead. On observed states the mean decision time is 0.739~$\mu$s for Static-LightLR, 6.582~$\mu$s for CFSM, 10.796~$\mu$s for Tabular-Q, and 1.567~ms for DQN. DQN is much more expensive computationally than Tabular-Q but still uses only 0.157\% of the one-second decision interval. Classifier inference is reported separately.
 \end{authorresponsebox}
 
 \begin{wherebox}
