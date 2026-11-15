@@ -1,0 +1,10 @@
+\begin{table*}[t]\centering\small
+\caption{Physical results over ten paired blocks per method. Energy is mean $\pm$ sample SD; detection entries are block means. All methods complete 627,500 rows per run, with zero recorded deadline-miss windows, late completed rows, and final backlog.}\label{tab:results}
+\begin{tabular}{lrrrrr}\toprule Method & Energy (J) & F1 & Recall (\%) & FPR (\%) & Window action\\\midrule
+Static-LightLR & $1440.0\pm9.9$ & 0.9763 & 96.680 & 1.351 & LightLR\\
+Q-learning & $1440.2\pm9.6$ & 0.9763 & 96.680 & 1.351 & LightLR\\
+DQN & $1440.6\pm8.7$ & 0.9763 & 96.680 & 1.351 & LightLR\\
+Cascade & $1480.6\pm9.3$ & 0.9902 & 99.408 & 1.364 & Cascade\\
+DeadlineGuard & $1492.1\pm10.7$ & 0.9906 & 99.649 & 1.517 & MedRF\\
+Static-MedRF & $1492.6\pm10.6$ & 0.9906 & 99.649 & 1.517 & MedRF\\
+\bottomrule\end{tabular}\end{table*}

@@ -1,0 +1,74 @@
+name: Build paper
+
+on:
+  push:
+    branches: [submission-preparation]
+    paths:
+      - 'paper/Source_Files/**'
+      - 'scripts/build_paper.py'
+      - 'scripts/prepare_reviewer_comments.py'
+      - '.github/workflows/build-paper.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: paper-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  paper:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Check out manuscript and result sources
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            paper
+            scripts
+            manuscript_working/Source_Files
+            releases/submission/package/Source_Files
+            releases/supplemental-followup-20261113/analysis
+      - name: Install document tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends latexmk texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-science cm-super poppler-utils python3-numpy python3-scipy python3-matplotlib
+      - name: Build four PDFs and submission archive
+        run: |
+          /usr/bin/python3 scripts/prepare_reviewer_comments.py
+          /usr/bin/python3 scripts/build_paper.py
+          /usr/bin/python3 -m zipfile -e paper/TNSM_Submission.zip paper-package
+      - name: Store the submission files
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: TNSM_Submission
+          path: paper-package/
+          if-no-files-found: error
+          retention-days: 90
+      - name: Store build output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper-build-output
+          path: |
+            paper-build/
+            paper/*.pdf
+            paper/TNSM_Submission.zip
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Publish compiled paper files on the same branch
+        if: success()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f paper/Source_Files paper/Manuscript.pdf paper/Supplementary_Material.pdf paper/Response_to_Reviewers.pdf paper/Cover_Letter.pdf paper/TNSM_Submission.zip paper/BUILD.txt
+          if ! git diff --cached --quiet; then
+            git commit -m 'Build manuscript PDFs and submission archive [skip ci]'
+            git pull --rebase origin ${GITHUB_REF_NAME}
+            git push origin HEAD:${GITHUB_REF_NAME}
+          fi

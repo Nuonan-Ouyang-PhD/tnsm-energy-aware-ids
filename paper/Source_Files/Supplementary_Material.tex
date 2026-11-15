@@ -1,0 +1,155 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[margin=22mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array,longtable,graphicx,url,microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{Supplementary Material}\fancyfoot[C]{\thepage}
+\setlength{\headheight}{13pt}
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\newcommand{\BA}{\operatorname{BA}}
+\makeatletter\newcommand{\tableinput}[1]{\@@input #1.tex }\makeatother
+\begin{document}
+\begin{center}
+{\Large\bfseries Supplementary Material}\par\medskip
+{\large Model Selection for Energy-Aware Edge Intrusion Detection: A Controlled Measurement Study}\par\medskip
+Nuonan Ouyang, Adrian Shatte, Zhigang Lu, Chao Chen, and Wei Xiang
+\end{center}
+
+\section{Reading the Results}\label{sec:guide}
+Sections S2--S7 give details of the six-method physical comparison reported in the paper. Each of ten blocks contains one 500-second workload per method, with a fresh 60-second preceding idle. The block is the unit of paired inference. The methods share the workload within a block and the fixed detector pool.
+
+Additional classifier and fixed-rate software experiments are presented separately in Sections S8--S9. Their state definitions, workloads, and policy-selection procedures differ from the physical comparison; their observations are not combined with the ten-block estimates. This distinction is particularly important for training curves and reward-weight sensitivity, which describe the specified fixed-rate objective rather than the physical study's service-penalized objective.
+
+\section{Controller Configuration}\label{sec:configuration}
+The deployed action order is TinyDT, LightLR, MedRF, HeavyMLP. The common observation contains current arrivals, FIFO carryover before current arrivals are appended, previous mean selected-path score, and previous action. The three numerical coordinates have three bins each and previous action has four values, giving 108 states. All models use binary threshold 0.5. No policy is updated during deployment.
+
+\begin{table}[h!]\centering\small
+\caption{Policy-training parameters for the physical comparison.}
+\begin{tabular}{p{.39\linewidth}p{.52\linewidth}}\toprule
+Parameter & Value\\\midrule
+Episodes and windows per episode & 1,000 and 500\\
+Training seeds & 2003, 2011, 2017, 2027, 2029\\
+Exploration & Linear, 1.0 to 0.01 across episodes\\
+Discount & 0.9\\
+Q-learning rate and initialization & 0.1; zero Q table\\
+Tie breaking & First maximizing action in the configured order\\
+DQN network & One-hot 108 inputs; 64/64 ReLU hidden units; 4 outputs\\
+DQN optimizer and loss & Adam, learning rate 0.001; Smooth-L1 loss\\
+Replay and minibatch & Capacity 10,000; warm-up 320; minibatch 32\\
+Target network & Hard update every 250 optimizer steps\\
+Gradient norm & Clipped at 10\\
+Eligible checkpoint & Last episode only\\
+Seed selection & Maximum summed validation reward; smallest seed breaks a tie\\
+Selected policies & Q seed 2011; DQN seed 2003\\\bottomrule
+\end{tabular}\end{table}
+
+Twenty-five policies are trained: five full Q policies, five full DQN policies, and five Q policies for each of three coordinate removals (arrival, threat, previous action). Each has 500,000 recorded transitions. The full-state policies selected for deployment each visit 36 encoded states in training. The physical comparison reaches 12 states for each selected learned policy; every one occurs in the corresponding training record. This is support coverage, not proof of optimal behavior throughout the 108-state space. The training simulator never produces nonzero carryover, and temperature is not an action-attributable reward component.
+
+The physical controller loads the recorded policy weights and uses the common count-based observation. Some configuration files retain descriptive fields from the earlier five-coordinate scheduler; the execution entry point uses the 108-state encoder specified here. Reproduction should use the supplied runtime entry point rather than infer execution from unused descriptive fields.
+
+\section{Information and Computation}\label{sec:information}
+\begin{table}[h!]\centering\small
+\caption{Information available to the deployed methods.}
+\begin{tabular}{p{.23\linewidth}p{.33\linewidth}p{.34\linewidth}}\toprule
+Method & Before window inference & During inference\\\midrule
+Static-LightLR / Static-MedRF & Fixed action & Selected model scores\\
+Q / DQN & Arrival, pre-arrival backlog, prior threat, prior action & Selected model scores; no online updates\\
+DeadlineGuard & Current work count and fixed MedRF batch p95 & Selected model scores\\
+Cascade & Fixed LightLR entry path & Current LightLR scores; MedRF scores on the uncertain subset\\\bottomrule
+\end{tabular}\end{table}
+
+Cascade evaluates LightLR on the full batch. The uncertainty mask is inclusive at both 0.3 and 0.7. If any row is deferred, MedRF is called once on that subset; otherwise MedRF is not called. The final vector combines LightLR and deferred MedRF scores in the original row order. This is sub-batch inference, not one forest call per uncertain row. The mean completed score becomes the next window's context, and the common previous-action field records the LightLR entry action for Cascade.
+
+No deployed method sees ground-truth labels, future-window arrival counts, true current prevalence, or cached counterfactual detector scores. Offline training uses labels and model-score caches to construct its reward. The cascade's use of current confidence follows paid entry inference and is not a claim that it receives the same information as pre-window RL.
+
+\section{Utility and Reward Interpretation}\label{sec:utility}
+For immediate utility $U_a(s)=w_DD_a(s)-C_a(s)$, define
+\[
+g_{ab}(s)=D_a(s)-D_b(s)-[C_a(s)-C_b(s)]/w_D.
+\]
+For $w_D>0$, the sign of $U_a-U_b$ is the sign of $g_{ab}$. A strict pairwise reversal exists exactly when two attainable states have margins of opposite signs. On finite support this is equivalent to $\min g_{ab}<0<\max g_{ab}$. A zero margin is a tie. On nonfinite support the existence formulation avoids assuming extrema are attained.
+
+With state-independent costs, the implied threshold is $\tau_{ab}=(C_a-C_b)/w_D$. With state-dependent completion and pending-work costs, the threshold itself depends on state and must remain inside $g_{ab}(s)$. A third detector can dominate both members of a reversing pair. Long-horizon values also contain future-state terms. Neither the pairwise algebra nor a sampled action map proves that a learned policy must be constant or globally optimal.
+
+For a min--max power term, $\Delta C_P=w_P(P_a-P_b)/(P_{\max}-P_{\min})$. Its denominator depends on the candidate pool. A budget-based denominator has a direct physical interpretation, but changing it would define another objective. We retain the measured policies and do not present such a change as an observed improvement.
+
+\section{Timing, Interruptions, and Analysis Sets}\label{sec:timing}
+The meter supplies boundary-inclusive samples at nominal 1 Hz. Voltage and signed current are decoded from the original frames; the recorded orientation is used consistently to obtain positive consumed power. The integration times are request/receive midpoints, and adjacent samples are combined by the trapezoidal rule. Average power is energy divided by the observed integration duration, not automatically by 500.
+
+Preceding idle retains the instrumented runtime and detector residency but performs no detector inference. Adjusted energy is $E-\bar P_{\mathrm{idle}}\Delta\tau$, and adjusted mean power is $E/\Delta\tau-\bar P_{\mathrm{idle}}$. Negative adjusted values are possible when a workload mean is below its preceding idle; they are not negative physical consumption.
+
+Two attempts fail the fixed monitoring conditions. In block 1, the Static-LightLR workload stops after an external-CPU trigger. Its later workload uses a newly collected idle and replaces the failed workload. In block 5, Cascade's preceding idle stops on a sampling-interval trigger before the formal workload begins; a new idle is followed by the first completed workload for that position. Failed attempts are excluded; accepted portions of each block are retained. Both blocks consequently span separated measurement periods.
+
+The CPU calculation brackets allowed worker-process counters with global CPU counters and conservatively includes unattributed kernel and transient work in external activity. The ceiling is 5\% and the interval limit is 1.5 s. Before the block-5 recovery, sample-relative waiting replaces an additional one-second wait after processing, and rejected-interval snapshots are retained. The ceiling, interval limit, policies, and service logic stay unchanged. The earlier failed interval lacks the rejected right snapshot, so its exact duration cannot be recovered.
+
+Set A contains all ten complete blocks. Set B excludes block 1 ($n=9$, df=8); set C excludes blocks 1 and 5 ($n=8$, df=7). Set A uses df=9. Recovery sensitivities were added during execution; the complete method-pair enumeration was recorded later. They are additional analyses, not original preregistered endpoints. All sets and raw/adjusted outcomes are reported. Their agreement cannot establish complete removal of temporal drift or instrumentation effects.
+
+\section{Run-Level Results}\label{sec:runs}
+The following table gives all accepted workloads. Order is the actual within-block position. Raw and preceding-idle-adjusted energies are in joules. The original full-precision values are available in the repository. Every listed workload completes 627,500 rows, with zero recorded late-completed rows, window deadline misses, and final backlog.
+\input{tables/run_results}
+
+\section{Complete Paired Comparisons}\label{sec:paired}
+Each difference is the first method minus the second within a block. C denotes Cascade, DG DeadlineGuard, LR Static-LightLR, RF Static-MedRF, and Q Tabular-Q. Energy is in J and power in W. F1, recall, FPR, and balanced-accuracy differences are expressed in percentage points. Counts retain their row or window units. SD is the sample standard deviation of block differences.
+
+The intervals are nominal Student-$t$ 95\% intervals, without multiplicity correction. An interval spanning zero does not establish equivalence. All methods have the same completed-row count and zero recorded late rows, final backlog, and deadline-miss windows; their corresponding pairwise differences, SDs, and formula-based intervals are zero. Such zero intervals summarize the observed constant differences and are not guarantees of future service reliability.
+\input{tables/all_pairs}
+
+\section{Additional Dataset Characterization}\label{sec:datasets}
+The physical experiment uses TON-IoT only. Separate static classification pipelines retain 39 CICIoT2023 features and 115 N-BaIoT features~\cite{CICSource,NBaIoTSource}. Their power costs are not inferred from TON-IoT measurements.
+
+CICIoT2023 is split by capture file under the recorded grouping rule. The binary test partition covers 17 original labels: 16 attack categories and benign traffic. Seventeen other attack categories occur only in training because their available capture groups are insufficient for the chosen split. Thus this is not an evaluation of all 34 original labels in test. High F1 must be read together with FPR and class balance.
+
+N-BaIoT is split by physical-device identifier, with five training, two validation, and two test devices. Disjoint source-row identifiers and raw-field fingerprints do not imply unique encoded feature vectors. A post-hoc comparison of saved float32 vectors identifies 14,449 N-BaIoT test rows (17.3343\%) matching training vectors, representing seven distinct vectors; 21,832 validation rows also match training vectors. The corresponding test-match counts are zero for TON-IoT and 13 for CICIoT2023. Matching encoded vectors alone does not identify the mechanism that produced the repetition.
+
+The fixed-model diagnostic below excludes only test vectors with exact training matches, without refitting classifiers or changing thresholds. All excluded N-BaIoT rows are attacks, so benign counts and FPR are unchanged. The remaining class mixture differs from the primary test set; the result is a sensitivity diagnostic, not an alternative split selected to improve performance.
+\begin{table}[h!]\centering\small
+\caption{Sensitivity to exact training-vector matches. F1 and BA are fractions; FPR is a percentage.}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{llrrrrr}\toprule
+Dataset & Model & Retained & Original F1 & Diagnostic F1 & BA & FPR\\\midrule
+\tableinput{tables/overlap_rows}
+\bottomrule\end{tabular}\end{table}
+
+\section{Fixed-Rate Software Characterization}\label{sec:software}
+These experiments use the earlier fixed-rate formulation, with 324 encoded states and 100 records per window. Their resource terms use static profile power and latency. Temperature, queue, and arrival coordinates are constant in the compact training traces. Results in this section are not estimates for the 108-state service-penalized objective of the main comparison.
+
+\subsection{Training Curves and Computational Cost}
+The recorded Q-learning and DQN runs use seed 20260907, 1,000 episodes, and 500 windows per episode. Validation is recorded every 25 episodes; the selected checkpoints are episode 50 for Q and 25 for DQN (one-based). Figure~\ref{fig:training} shows training returns with a trailing 25-episode mean; Figure~\ref{fig:validation} shows the recorded validation trajectory. These curves demonstrate the executed learning and selection process, not monotonic convergence across all seeds.
+
+\begin{figure}[h!]\centering\includegraphics[width=.87\linewidth]{figures/training_returns.pdf}
+\caption{Fixed-rate training returns. The trailing mean smooths the displayed curve only.}\label{fig:training}\end{figure}
+\begin{figure}[h!]\centering\includegraphics[width=.87\linewidth]{figures/validation_returns.pdf}
+\caption{Fixed-rate validation returns and checkpoint selection. These checkpoints are separate from the final-episode policies in the main physical comparison.}\label{fig:validation}\end{figure}
+
+Recorded process-start and artifact-creation timestamps delimit about 26.7 s for this Q run and 256.9 s for this DQN run. These are elapsed timestamp intervals from the fixed-rate training activity, not isolated training benchmarks and not timings for the 25 main-study policies. Training energy is not measured. The main comparison's training effort is reported as 500,000 recorded transitions per policy, with DQN replay updates configured after warm-up; it is performed offline and excluded from deployment energy.
+
+A separate 324-state decision microbenchmark uses 30 blocks per state stream, each with 1,000 warm-up and 10,000 timed selections. On its observed-state stream, mean decision times are 0.739 microseconds for Static-LightLR, 6.582 microseconds for CFSM, 10.796 microseconds for Q, and 1.5669 ms for DQN. These timings characterize that implementation and state interface. They are not substituted for the current whole-device measurements or converted into controller-only energy.
+
+\subsection{Reward and Hyperparameter Sensitivity}
+The fixed-rate reward sweep includes seven Q configurations and four DQN configurations, each with five seeds (55 policies). All resource-aware configurations select LightLR on evaluated support; the five detection-only Q policies select MedRF. The thermal term is zero on the compact traces, so increasing its weight is not a test of thermal control. The following table reports the reward families only.
+\begin{table}[h!]\centering\small
+\caption{Fixed-rate reward sensitivity. LR counts LightLR-only policies; Single counts any single-action policy.}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lllrrrr}\toprule
+Family & Algorithm & Variant & $n$ & LR & Single & Mean F1\\\midrule
+\tableinput{tables/reward_rows}
+\bottomrule\end{tabular}\end{table}
+
+The associated state-removal experiment has five full-state controls, fifteen removals of constant temperature/queue/arrival coordinates, and ten removals of threat or previous-action coordinates. The fifteen constant-coordinate removals do not intervene on a varying signal and cannot establish adaptation to changes in those coordinates. They are not counted as fifteen independent robustness findings.
+
+The fixed-rate Q hyperparameter sweep contains 35 policies. Its seven settings vary learning rate or discount while holding the remaining design fixed. All select LightLR throughout their evaluated support. These observations characterize that objective and support; they do not establish universal insensitivity to learning rate or discount.
+\begin{table}[h!]\centering\small
+\caption{Fixed-rate Q hyperparameter sensitivity. Each configuration has five seeds.}
+\begin{tabular}{lrrrr}\toprule
+Variant & $n$ & LR & Single & Mean F1\\\midrule
+\tableinput{tables/hyperparameter_rows}
+\bottomrule\end{tabular}\end{table}
+
+\subsection{Finite-State Baseline}
+The fixed-rate CFSM uses the recorded ordered detector pool, a 70$^\circ$C temperature warning, and threat threshold 0.7. Its exact transition priorities, one-step moves, two-window cooldown, and temperature override are given in the archived implementation. It is not one of the six methods in the main comparison, whose explicitly specified heuristic is DeadlineGuard. No fixed-rate CFSM measurement is pooled with that comparison.
+
+\bibliographystyle{IEEEtran}\bibliography{references}
+\end{document}

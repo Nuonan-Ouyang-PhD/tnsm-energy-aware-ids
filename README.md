@@ -1,176 +1,76 @@
-# TNSM Energy-Aware IDS: Auditable Experiment Repository
+# Energy-Aware Edge Intrusion Detection
 
-This repository contains the frozen protocol, deterministic materialization workflow,
-classification/static baselines, Raspberry Pi power measurements, the evidence-locked
-40-run adaptive scheduling study, and the P0/P1 strengthening analyses.
+Code and experiment results for **When Learned IDS Model Selection Collapses to a Static Choice: A Measurement Study at the Edge**.
 
-## Current evidence and manuscript status
+The study compares static deployment, Q-learning, DQN, a deadline-based rule, and a confidence cascade on a Raspberry Pi 4B. Each method is evaluated in ten paired blocks with varying arrival rate and attack prevalence.
 
-The November 2026 corrected follow-up is the main current comparison:
-[evidence and read-only reanalysis](releases/supplemental-followup-20261113/README.md).
-It contains 60 accepted runs in ten paired blocks, with two invalid attempts
-retained. Blocks 1 and 5 were recovered across periods. These are **author-validated**
-artifacts; full independent byte-level and raw-log acceptance is **not complete**.
-The independent review has so far reported execution-environment limitations;
-it must not be replaced by our own PASS counts.
+## Paper
 
-The active manuscript is the [complete original submission project](TNSM_2026_10776_IDS_Model_Selection_Submission/README_SUBMISSION.md),
-locally revised from the author-supplied full master without replacing it with
-the later condensed draft. Its title, authors, section structure, theory and
-unaffected evidence are retained; corrected variable-load results are updated
-locally in the corresponding text, tables, figures and response. The earlier
-`manuscript_working/` condensed tree is not the submission master. The previous
-`releases/submission/` bundle is historical, not the current submission-ready result.
-No new measurement is planned or enabled by the read-only reanalysis entry point.
+[Manuscript](TNSM_2026_10776_IDS_Model_Selection_Submission/pdf/Manuscript.pdf) · [Supplement](TNSM_2026_10776_IDS_Model_Selection_Submission/pdf/Supplement.pdf) · [Reviewer response](TNSM_2026_10776_IDS_Model_Selection_Submission/pdf/Response_to_Reviewers.pdf) · [Cover letter](TNSM_2026_10776_IDS_Model_Selection_Submission/pdf/Cover_Letter.pdf) · [Complete original project and build instructions](TNSM_2026_10776_IDS_Model_Selection_Submission/README_SUBMISSION.md)
 
-In the corrected follow-up, Q/DQN realize LightLR; DeadlineGuard realizes MedRF.
-Neither policy switching nor an RL energy advantage over matched Static-LightLR
-is established. Cascade has an implementation-specific energy/detection trade-off.
-See the [scientific corrections](docs/SCIENTIFIC_CORRECTIONS_20261114.md) before
-interpreting historical variable-load, ablation or reward-audit claims.
+The active source is the complete author-supplied `TNSM_2026_10776_IDS_Model_Selection_Submission` project, locally revised against the frozen follow-up results. Its title, authors, section structure, theory and unaffected results are preserved. The later condensed `paper/` and `manuscript_working/` drafts are not the submission master. No new submission ZIP was produced for this localized revision.
 
-## Start here
+## Main results
 
-- [Current corrected evidence and safe reanalysis](releases/supplemental-followup-20261113/README.md)
-- [Current complete manuscript, supplement, response and build instructions](TNSM_2026_10776_IDS_Model_Selection_Submission/README_SUBMISSION.md)
-- [Current main PDF](TNSM_2026_10776_IDS_Model_Selection_Submission/pdf/Manuscript.pdf) · [Supplement](TNSM_2026_10776_IDS_Model_Selection_Submission/pdf/Supplement.pdf) · [Reviewer response](TNSM_2026_10776_IDS_Model_Selection_Submission/pdf/Response_to_Reviewers.pdf) · [Cover letter](TNSM_2026_10776_IDS_Model_Selection_Submission/pdf/Cover_Letter.pdf)
-- [Historical submission ZIP](releases/submission/TNSM_Submission_Final.zip)
-- [Historical main paper](releases/submission/package/Manuscript.pdf) · [Historical supplement](releases/submission/package/Supplementary_Material.pdf) · [Historical reviewer response](releases/submission/package/Response_to_Reviewers.pdf)
-- [Historical LaTeX and build instructions](releases/submission/README.md)
-- [Current reward audit](experiments/adaptive_scheduler_v1/reward_audit_validation/README.md)
+Q-learning and DQN select LightLR throughout the physical experiment. Their energy differences from Static-LightLR are +0.25 J and +0.60 J per 500-second run; the paired intervals span zero. DeadlineGuard selects MedRF throughout. All methods complete the workload without recorded deadline misses.
 
-The links above retain the previous submission for provenance. Dated evidence
-directories record distinct experimental stages and must not be pooled.
+Cascade uses 12.06 J less energy than Static-MedRF, with a paired 95% interval of −16.55 to −7.58 J. F1 decreases by 0.0446 percentage points and recall by 0.2411 points, while false-positive rate decreases by 0.1534 points. This is an implementation-specific energy–detection trade-off, not a cost-free improvement.
 
-## Quick verification
+These measurements concern whole-device USB input on one Raspberry Pi 4B and TON-IoT feature replay. They do not include packet capture, feature extraction, or training energy.
 
-Python 3.11 or newer is required. These commands verify supplied artifacts and run
-unit tests; they do not train policies or launch physical campaigns.
+## Reproduce the reported tables
+
+Python 3.11 or newer:
 
 ```bash
-python3 -m venv .venv
-. .venv/bin/activate
-python -m pip install -e '.[audit]'
-make check-submission
-make audit
-make test
+python3 experiments/scheduler_followup/reanalyse_json.py releases/supplemental-followup-20261113/analysis
 ```
 
-For the additional scheduler infrastructure tests (including DQN), install its
-separate dependencies:
+This reads the existing run summaries and paired statistics. It does not train policies or start a hardware experiment.
+
+Compile the complete original project without generating a replacement manuscript:
 
 ```bash
-python -m pip install -e '.[scheduler]'
-make test-scheduler
+cd TNSM_2026_10776_IDS_Model_Selection_Submission
+pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex
+pdflatex supplement.tex && pdflatex supplement.tex
+pdflatex Response_to_Reviewers.tex && pdflatex Response_to_Reviewers.tex
+pdflatex Cover_Letter.tex
 ```
 
-Artifact verification reproduces derived calculations from frozen inputs; it does
-not recreate the original physical measurements. Raw-data retraining and physical
-campaign execution require their own stage inputs and protocols.
+The [project README](TNSM_2026_10776_IDS_Model_Selection_Submission/README_SUBMISSION.md) describes the original figure organization and the read-only corrected R2 plotting input. `scripts/build_paper.py` is retained with the historical condensed draft and is not the active manuscript build.
 
-## Historical author-reported state (not independent acceptance)
+## Code and results
 
-| Stage | Status |
+| Resource | Contents |
 | --- | --- |
-| Label ontology and feature protocol | Frozen |
-| Materialization | Complete and validated |
-| 12 classification models and prediction cache | Complete |
-| Raspberry Pi parity and timing | Complete |
-| 15-segment static physical-power study | Complete |
-| Original adaptive physical study | 40/40 valid runs; evidence locked |
-| P0 exact executed-source recovery | Complete, 6/6 source hashes matched |
-| P1A Static-LightLR matched physical control | 40 valid runs in 10 paired blocks |
-| P1B isolated scheduler overhead | Corrected replacement 240/240 valid; original 240 retained as invalid history |
-| P1C multi-seed frozen-policy evaluation | 20/20 complete; no retraining |
-| P1D reward/state sensitivity | 85/85 valid |
-| P1E gamma/alpha sensitivity | 35/35 valid |
-| Reviewer R0 provenance/source audit | PASS |
-| Reviewer R1 fixed-band confidence cascade | 40/40 valid physical runs |
-| Reviewer R2 frozen variable-load factorial | 60/60 valid physical runs |
-| Reviewer R3 controller-only power | Not executed; predeclared state-set ambiguity recorded |
-| Reviewer R4 TinyDT/reference diagnostics | R4A complete; R4B not executed because no stable reference load was available |
-| Previous submission manuscript | Historical bundle; scientific interpretation superseded in part by corrected follow-up |
+| [Physical experiment](releases/supplemental-followup-20261113/) | Six-method run summaries, paired results, and runtime sources |
+| [Executed controllers](releases/supplemental-followup-20261113/executed_source/) | State encoder, service loop, model selection, measurement code, and deployed policy weights |
+| [Run metrics](releases/supplemental-followup-20261113/analysis/RUN_METRICS.json) | Per-run energy, detection, completion, and occupancy |
+| [Paired results](releases/supplemental-followup-20261113/analysis/PAIRED_STATISTICS_AND_SENSITIVITIES.json) | All method pairs, three block sets, raw and idle-adjusted outcomes |
+| [Classification pipeline](experiments/classification_static_v1/) | Dataset preparation, fixed detectors, and static replay |
+| [Complete manuscript project](TNSM_2026_10776_IDS_Model_Selection_Submission/README_SUBMISSION.md) | Original full source, localized corrections and compilation instructions |
 
-The repository reports evidence and factual summaries. It does not infer superiority,
-equivalence, or statistical significance from these files alone.
+Methods use current arrivals and pre-arrival FIFO carryover. Labels and future arrivals are not online inputs. Cascade observes current confidence only after LightLR inference. Training has no nonzero carryover, and temperature is safety telemetry rather than a learned control variable.
 
-## Repository map
+## Datasets
 
-- `config/` and `docs/`: active frozen protocol and decision history.
-- `src/tnsm_exp/`: acquisition, inventory, preflight, and validation tooling.
-- `experiments/classification_static_v1/`: classification, cache, Pi parity, and static replay code/logs.
-- `experiments/static_physical_v1/`: static physical-campaign controller and measurement code.
-- `experiments/adaptive_scheduler_v1/`: scheduler implementation, configuration, cost registry, analysis, and packaging scripts.
-- `experiments/reviewer_revision_v1/`: exact frozen reviewer-revision runtime source, protocol, configuration, and validation/packaging scripts.
-- `releases/article-data-20260907-v1/`: the previously published article-data archive and browsable summaries.
-- `releases/adaptive-scheduler-20260907-v1/`: evidence-locked original adaptive-study archive.
-- `releases/p0-p1-strengthening-20260908-v1/`: P0/P1 final archive, registries, validators, and factual summaries.
-- `releases/reviewer-revision-20260909-v1/`: complete reviewer-revision evidence archive plus browsable registries, factual summaries, stop/failure records, and validators.
-- `releases/materialization-20260906-v2/`: materialization request, executor review chain, rebind, failure preservation, and successful run evidence.
-- `releases/feature-protocol-freeze-20260905-v1/`: final feature-protocol freeze evidence.
-- `releases/submission/`: previous submission ZIP, historical source/PDFs and checksums; not the corrected current manuscript.
+The physical study uses the 32-feature TON-IoT network-record pipeline. CICIoT2023 and N-BaIoT provide separate static classification characterization with 39 and 115 features. Download the source data from the original providers:
 
-## Datasets and downloads
+- [TON-IoT — UNSW](https://research.unsw.edu.au/projects/toniot-datasets)
+- [CICIoT2023 — University of New Brunswick](https://www.unb.ca/cic/datasets/iotdataset-2023.html)
+- [N-BaIoT — UCI](https://archive.ics.uci.edu/dataset/442/detection+of+iot+botnet+attacks+n+baiot)
 
-The experiments use three dataset-native pipelines:
+Source datasets are not redistributed here. The [experiment directory](releases/supplemental-followup-20261113/README.md) describes the available summaries, runtime files, and raw-archive boundary. Additional fixed-rate experiments are kept separately and are not pooled with the six-method physical comparison.
 
-- **TON-IoT** (UNSW Canberra) is the primary dynamic Raspberry Pi/KM003C study and uses 32 native features. Download from the [official UNSW dataset page](https://research.unsw.edu.au/projects/toniot-datasets).
-- **CICIoT2023** (Canadian Institute for Cybersecurity, University of New Brunswick) is used for supplementary classification/replay analysis with 39 native features. Download from the [official CICIoT2023 page](https://www.unb.ca/cic/datasets/iotdataset-2023.html).
-- **N-BaIoT** (UCI Machine Learning Repository, Dataset 442) is used for supplementary classification/replay analysis with 115 native features. Download from the [official UCI record](https://archive.ics.uci.edu/dataset/442/detection+of+iot+botnet+attacks+n+baiot).
+## Citation
 
-The repository intentionally does not commit raw datasets, generated materializations,
-or large physical traces. Place downloaded files only in the ignored paths documented
-by the relevant request/inventory files, preserve the original filenames, and run the
-read-only preflight before any derived work.
-
-## Dataset and campaign tools
-
-After acquiring the raw datasets and following the stage documentation:
-
-```bash
-make snapshot
-make preflight
-PYTHONPATH=src python3 experiments/classification_static_v1/classification_campaign.py --help
-PYTHONPATH=src python3 experiments/classification_static_v1/static_replay.py --help
+```bibtex
+@misc{ouyang_edge_ids,
+  author = {Nuonan Ouyang and Adrian Shatte and Zhigang Lu and Chao Chen and Wei Xiang},
+  title = {When Learned IDS Model Selection Collapses to a Static Choice: A Measurement Study at the Edge},
+  year = {2026},
+  howpublished = {Research manuscript and accompanying code},
+  url = {https://github.com/Nuonan-Ouyang-PhD/tnsm-energy-aware-ids}
+}
 ```
-
-Read each stage plan and `experiments/reviewer_revision_v1/protocol/00_READ_FIRST.md`
-before running a campaign. The default checks never start physical experiments.
-The previous manuscript/source bundle is documented in
-`releases/submission/README.md`; its archive SHA-256 is
-`b13688a26a6f98577b1f2ca14726ebcf092e82f769c86879cad59f77548f1c0a`.
-
-## Reconstructing large archives
-
-Large archives are split into GitHub-compatible parts. Reassemble them in lexical order:
-
-```bash
-cat releases/adaptive-scheduler-20260907-v1/TNSM_ADAPTIVE_SCHEDULER_20260907_V1.zip.part-* \
-  > TNSM_ADAPTIVE_SCHEDULER_20260907_V1.zip
-
-cat releases/p0-p1-strengthening-20260908-v1/TNSM_P0_P1_STRENGTHENING_20260908_V1.zip.part-* \
-  > TNSM_P0_P1_STRENGTHENING_20260908_V1.zip
-
-cat releases/reviewer-revision-20260909-v1/TNSM_REVIEWER_REVISION_EVIDENCE_20260909_V1.zip.part-* \
-  > TNSM_REVIEWER_REVISION_EVIDENCE_20260909_V1.zip
-```
-
-Verify the reconstructed files against each release directory's
-`ARCHIVE_SHA256.txt`, then use the archive's root `MANIFEST_SHA256.txt` for
-content-level verification.
-
-## Evidence boundaries
-
-- The physical power measurements apply to the recorded Raspberry Pi 4B and POWER-Z KM003C (HW 2.4, FW 2.0.6) setup.
-- TON-IoT power measurements are not claimed as measured costs for CICIoT2023 or N-BaIoT.
-- Invalid and interrupted attempts remain preserved and are excluded according to their registries.
-- Test traces are descriptive after policy freeze and were not used for training or checkpoint selection.
-- The compact software-policy traces have no action-attributable post-action temperature. Their fixed 35 C fallback makes the executed thermal reward component zero; it is not evidence of thermal-aware adaptation.
-- The current adapter represents missing post-action temperature as null and flags the unavailable measurement. Historical frozen runtime copies retain the originally executed bytes.
-- The retrospective reward audit opens only configuration, the manifest, and five validation traces. TinyDT beats LightLR in 7/2,500 validation windows; pairwise exclusions for MedRF and HeavyMLP do not prove global LightLR optimality or pre-test audit execution. Current outputs are in `reward_audit_validation/`. The superseded audit that also read aggregate test diagnostics was removed from the active tree; its bytes remain available in [Git history](https://github.com/Nuonan-Ouyang-PhD/tnsm-energy-aware-ids/tree/c69f8cea3b267d4226f89693c535804536e836a8/experiments/adaptive_scheduler_v1/reward_audit_v1).
-- Dataset splits, classifier thresholds, workloads, seeds, reward/state matrices, and gamma/alpha matrices remain frozen.
-- R1 and R2 are post-hoc physical robustness experiments over the already frozen test pool, not new unseen-test generalization evidence.
-- R3 and R4B stop records are part of the evidence: no missing protocol choice or unavailable reference load was improvised after observing results.
-
-The full final validator report is available at
-`releases/p0-p1-strengthening-20260908-v1/browsable/analysis/FINAL_VALIDATOR_REPORT.json`.

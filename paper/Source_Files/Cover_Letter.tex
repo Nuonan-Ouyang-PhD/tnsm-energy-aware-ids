@@ -1,0 +1,25 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[margin=25mm]{geometry}
+\usepackage{parskip,microtype}
+\usepackage[hidelinks]{hyperref}
+\pagestyle{empty}
+\begin{document}
+Dear Editor,
+
+Please consider our manuscript, \textit{Model Selection for Energy-Aware Edge Intrusion Detection: A Controlled Measurement Study}, for publication as a regular paper in \textit{IEEE Transactions on Network and Service Management}.
+
+The paper examines whether runtime detector selection provides benefits beyond directly deploying the detector selected by the controller. We compare static, tabular Q-learning, DQN, deadline-based, and confidence-cascade methods in ten paired physical blocks on a Raspberry Pi 4B, with varying arrival rates and attack prevalence. The study reports whole-device energy together with detection quality, completed work, and deadline outcomes.
+
+Both learned controllers retain the lightweight detector and show no resolved energy benefit over its direct static deployment. The confidence cascade offers a measurable energy--detection trade-off relative to a static random forest. We also formalize the controller information boundary and a pairwise immediate-utility condition that clarifies how resource normalization influences action preferences. These results address the attribution of benefits in learned network-service control and the design of useful static and conditional baselines.
+
+This submission follows the invitation to submit a new manuscript after the decision on TNSM-2026-10776, \textit{Energy-Aware Intrusion Detection System with Q-learning-Based Dynamic Scheduler on Lightweight IoT Devices}. The new paper expands the comparison methods, defines the state and service model, and replaces the earlier main evaluation with paired measurements and sensitivity analyses. A point-by-point response to the prior reviewers is enclosed. Code, configurations, and result-reproduction instructions accompany the study in the public repository.
+
+Thank you for considering our manuscript.
+
+Sincerely,\\
+Nuonan Ouyang\\
+On behalf of the authors\\
+James Cook University\\
+\href{mailto:nuonan.ouyang@my.jcu.edu.au}{nuonan.ouyang@my.jcu.edu.au}
+\end{document}
