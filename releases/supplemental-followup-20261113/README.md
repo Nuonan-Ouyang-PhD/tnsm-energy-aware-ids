@@ -1,50 +1,35 @@
-# Corrected supplemental paired follow-up
+# Paired Physical Experiment
 
-60 accepted runs / ten complete six-method blocks; two invalid attempts retained.
-Blocks 1 and 5 span recovery periods. Original V1/P0/P1/R1/R2 are historical,
-separate evidence, never pooled. No new measurement or retraining is authorized
-by this directory. See `docs/SCIENTIFIC_CORRECTIONS_20261114.md` from repo root.
+This directory contains the six-method Raspberry Pi comparison reported in the [paper](../../paper/README.md): 60 accepted workloads in ten complete blocks. Methods share each block's 500-window workload. Each workload has a fresh 60-second preceding idle.
 
-## Status and interpretation
+## Contents
 
-Author-side raw-frame/state/accounting validation reports 197,922 checks, plus
-12.5 million training-transition records. Independent full ZIP/raw-log acceptance
-is **NOT COMPLETE**. The external reviewer reported an unavailable execution
-environment; absence of independent PASS is not a failed artifact finding.
+`analysis/RUN_METRICS.json` gives run-level energy, detection, completion, and state/action occupancy. `analysis/PAIRED_STATISTICS_AND_SENSITIVITIES.json` gives every method pair across three block sets. Differences are first minus second; intervals are nominal paired Student-t 95% intervals.
 
-Q/DQN realize LightLR; DeadlineGuard realizes MedRF. Current detection summaries
-match their corresponding static controls. All methods have zero recorded
-deadline-miss windows. RL/static intervals spanning zero establish neither
-adaptive savings nor equivalence. Cascade has an implementation-specific trade-off.
-See all three block sets and both raw/idle-adjusted outcomes, not a selected set.
-Queue is constant in the training surrogate; temperature is safety-only. Earlier
-constant-coordinate ablations do not prove load/queue/thermal robustness.
+`executed_source/` contains the deployed state encoder, FIFO service loop, selectors, monitoring and measurement code, and policy weights. The two runtime snapshots preserve the implementations used before and after the monitor-cadence change; they must not be interchanged when reproducing a particular run. Configuration files may contain unused descriptive fields from earlier code. The executed entry points and common encoder define the actual 108-state interface.
 
-## Safe reanalysis
+The method set is Static-LightLR, Static-MedRF, Confidence Cascade, DeadlineGuard, Tabular-Q, and DQN. The cascade confidence band is [0.3, 0.7]. DeadlineGuard uses the current work count and a fixed MedRF p95 of 0.015221096 seconds per 100-row batch.
 
-From repository root, using Python 3.11+ standard library only:
+## Analysis
 
 ```bash
 python3 experiments/scheduler_followup/reanalyse_json.py releases/supplemental-followup-20261113/analysis
 ```
 
-This reads existing JSON and checks all exported paired statistics. It never
-imports a physical launcher, connects to a Pi, opens HID, trains or changes files.
-It is author-side derived-table checking, not independent evidence acceptance.
+Run this from the repository root. It reads the supplied JSON without training, hardware access, or changes to the experimental files. The paper build uses the same run metrics to generate tables and the paired-energy plot.
 
-## Evidence downloads and packaging
+Set A includes all ten blocks; B excludes block 1; C excludes blocks 1 and 5. Blocks 1 and 5 span separated measurement periods after interruptions. Both raw and preceding-idle-adjusted energy/power are retained. Exclusion and adjustment quantify sensitivity; they do not establish that all temporal drift has been removed.
 
-The full evidence ZIP SHA-256 is
-`300e40e4474faabcaa63ab6bc02d927e8f52f2f0268cc42e1b4a2115f4735f11`.
-Large raw logs remain outside normal Git; this directory publishes browsable
-summaries and source bindings, not a claim that Git contains all original bytes.
-The two separately uploaded files are **independent standard ZIPs**, not byte
-chunks: `TNSM_EVIDENCE_PART_1.zip` and `TNSM_EVIDENCE_PART_2.zip`. Do NOT use `cat`
-or old `.zip.part-*` reconstruction instructions for these files. Read each
-UPLOAD_PART_INFO and its local manifest, then validate the combined original
-member set against the full original MANIFEST_SHA256. Repeated original manifest
-bytes must match. Uploaded packaging sidecars are distinct from original evidence.
+Q-learning and DQN select LightLR in every physical window. DeadlineGuard selects MedRF. All methods complete the workload without recorded deadline misses. Training carryover is constant at zero; the experiment does not establish queue adaptation. Cascade observes current confidence after entry inference and is not a same-information policy ablation.
 
-The small review ZIP omits full raw logs. Its review cannot stand in for ADC,
-CPU-accounting, executable binding or full ZIP integrity acceptance. Existing
-hash/self-test reports are author declarations until independently reproduced.
+## Raw recordings
+
+The repository provides summaries and runtime files, not the complete raw ADC, CPU, and row-level recording archives. The complete raw recording is retained separately as two standard ZIP files, `TNSM_EVIDENCE_PART_1.zip` and `TNSM_EVIDENCE_PART_2.zip`. They are not byte-split parts and must not be concatenated. Their local contents together cover the complete original archive. The original archive SHA-256 is:
+
+```text
+300e40e4474faabcaa63ab6bc02d927e8f52f2f0268cc42e1b4a2115f4735f11
+```
+
+No public download URL for those full raw archives is configured in this directory. The summary files are sufficient for the published table calculations, but not for rebuilding the original ADC integration from raw frames. Contact the corresponding author for the complete recordings.
+
+Failed attempts and recovery associations remain in the registries. Additional fixed-rate experiments elsewhere in the repository are separate datasets and are not pooled with these ten blocks.

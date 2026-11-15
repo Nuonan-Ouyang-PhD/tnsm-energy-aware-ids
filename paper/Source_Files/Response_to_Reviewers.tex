@@ -1,0 +1,140 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,microtype,parskip}
+\usepackage[hidelinks]{hyperref}
+\newenvironment{comment}{\begin{quote}\small\itshape}{\end{quote}}
+\newcommand{\response}{\noindent\textbf{Response.} }
+\begin{document}
+\begin{center}
+{\Large\bfseries Response to the Editor and Reviewers}\par\medskip
+Prior manuscript: TNSM-2026-10776\par
+\textit{Energy-Aware Intrusion Detection System with Q-learning-Based Dynamic Scheduler on Lightweight IoT Devices}\par\medskip
+New manuscript:\par
+\textit{Model Selection for Energy-Aware Edge Intrusion Detection: A Controlled Measurement Study}\par\medskip
+Nuonan Ouyang, Adrian Shatte, Zhigang Lu, Chao Chen, and Wei Xiang
+\end{center}
+
+Dear Editor and Reviewers,
+
+Thank you for your comments on our previous submission. Following the invitation to submit a new manuscript, we have expanded the controller comparisons, defined the state and service model, and added paired physical measurements under varying arrival rates and attack prevalence. The paper now separates detector choice from the additional value of runtime selection. We respond to each comment below.
+
+\section*{Associate Editor}
+\begin{comment}
+The manuscript addresses a relevant IoT IDS scheduling problem with practical implementation. However, significant concerns remain regarding methodological novelty, RL formulation, baseline comparisons, statistical validation, scalability, reproducibility, and experimental rigor. Substantial technical revision and stronger evaluation are required before the work can be reconsidered.
+\end{comment}
+\response The new manuscript compares six methods in ten paired physical blocks: Static-LightLR, Static-MedRF, Q-learning, DQN, DeadlineGuard, and a confidence cascade. Sections III--V define the decision timeline, state encoding, reward, training procedure, and measurement boundary. Section VI reports energy and detection outcomes together, with paired confidence intervals and recovery sensitivities. We position the contribution as a controlled evaluation of model selection rather than a new RL algorithm. Multi-node deployment remains outside the scope and is stated in Section VII.
+
+\section*{Reviewer 1}
+\begin{comment}
+The manuscript tackles a relevant IoT scheduling problem with a practical prototype; however, the current contribution is largely engineering-oriented, with limited methodological novelty and insufficient validation against state-of-the-art approaches.
+\end{comment}
+\response We have strengthened the comparison with a neural value-based controller and two nonlearning selection mechanisms. The contribution is now the separation of detector operating-point choice from adaptive value, supported by a causal execution model, an immediate-utility preference condition, and physical matched controls. The related-work section covers runtime IDS selection, conditional inference, model serving, and learned resource control.
+
+\subsection*{Comment 1}
+\begin{comment}
+The use of tabular Q-learning is too basic for this problem setting. More advanced approaches (e.g., DQN, PPO) are widely used for dynamic scheduling and would provide stronger generalization in larger state spaces.
+\end{comment}
+\response We added DQN with the same 108-state observation and four actions as Q-learning. Both algorithms are trained with five seeds; validation selects the deployed policy. DQN provides the requested deep-RL comparison while holding the state and objective fixed. We do not claim that DQN covers all policy-gradient approaches or that adding PPO would necessarily reproduce its behavior. The comparison is defined in Section IV and reported in Section VI.
+
+\subsection*{Comment 2}
+\begin{comment}
+The state representation is not formally defined. For example, it is unclear whether network load, IDS alerts, and queue lengths are jointly encoded, or treated independently, which affects policy optimality.
+\end{comment}
+\response Section III defines the joint observation as current arrivals, FIFO carryover before current arrivals are appended, the preceding selected-path mean attack probability, and the previous action. It gives every bin boundary and the 108-state index formula. Algorithm 1 shows when the observation is constructed, the action is committed, and detector feedback becomes available. Ground truth and future arrivals are excluded from online state.
+
+\subsection*{Comment 3}
+\begin{comment}
+The reward function is heuristic and lacks theoretical grounding. For instance, combining latency reduction and IDS accuracy without normalization may bias the agent toward one objective.
+\end{comment}
+\response Section IV now gives the full reward, power-normalization constants, completion term, deadline penalty, and pending-work fraction. It distinguishes fixed training proxies from measured energy. Proposition 1 states the exact condition for a strict reversal of immediate pairwise preference and explains the effect of candidate-range normalization. The result is limited to immediate utility; it is not presented as a proof of long-horizon optimality.
+
+\subsection*{Comment 4}
+\begin{comment}
+The evaluation lacks strong baselines. A meaningful comparison should include at least one DRL-based scheduler and one optimization-based method (e.g., MILP or heuristic scheduling).
+\end{comment}
+\response DQN supplies the DRL-based scheduler. DeadlineGuard supplies the heuristic scheduling baseline: it chooses MedRF when the calibrated completion estimate fits the one-second service budget and LightLR otherwise. The confidence cascade provides an additional input-dependent nonlearning alternative. Static-LightLR and Static-MedRF complete the matched controls. Their rules and measured outcomes appear in Sections IV and VI. We do not claim an exact MILP solution.
+
+\subsection*{Comment 5}
+\begin{comment}
+The reported improvements are not statistically validated. For example, results should include mean $\pm$ standard deviation over multiple runs and significance testing (e.g., t-test).
+\end{comment}
+\response Each method has ten physical runs, paired by workload block. The main table reports mean energy and sample SD. Method differences use paired Student-$t$ 95\% confidence intervals; the supplement includes all fifteen method pairs across all three analysis sets, with raw and idle-adjusted endpoints. For example, Cascade minus Static-MedRF is $-12.06$ J with interval $[-16.55,-7.58]$ J. Intervals are nominal and not multiplicity-adjusted. Rows and windows are not treated as independent replications.
+
+\subsection*{Comment 6}
+\begin{comment}
+Scalability is not demonstrated. The current setup (single device / limited nodes) does not reflect realistic IoT deployments with multiple edge nodes and dynamic traffic patterns.
+\end{comment}
+\response We added varying traffic conditions: each physical run covers the nine combinations of 50/100/4,000 rows per second and attack proportions 0.10/0.50/0.90, followed by a recovery segment. The six-method design gives 60 runs and measures completion, deadlines, backlog, and energy under these changes. All methods complete the tested workload without recorded deadline misses. This addresses changing offered load on one device, not multi-node scalability. Section VII explicitly limits the claim to a single-board service; coordinated multi-node scheduling and inter-board variation are not evaluated.
+
+\subsection*{Comment 7}
+\begin{comment}
+The convergence behavior of the RL model is not analyzed. Learning curves (reward vs episodes) are needed to show stability and training efficiency.
+\end{comment}
+\response Supplementary Section S9 provides the recorded training-return and validation-return curves for the fixed-rate software experiment, with their training horizon and checkpoint-selection rule. They are identified as a separate objective and state interface, not curves for the physical study's 108-state policies. Section IV reports the latter's five-seed design and final-episode selection rule. We avoid claiming monotonic or universal convergence from a single learning trajectory.
+
+\subsection*{Comment 8}
+\begin{comment}
+The integration between IDS and scheduling is not deeply explored. For example, how IDS confidence scores influence scheduling decisions is not formally modeled.
+\end{comment}
+\response The mean probability produced by the preceding selected inference path supplies the threat coordinate of the RL state. The confidence cascade additionally uses current-row LightLR probabilities: scores in $[0.3,0.7]$ trigger MedRF inference on that subset. Sections III--IV and Supplementary Section S3 specify both feedback paths and their different timing. The energy and detection consequences of the cascade are reported against both static models.
+
+\subsection*{Comment 9}
+\begin{comment}
+The computational overhead is not evaluated. In edge environments, latency and resource constraints are critical, yet training/inference costs are not reported.
+\end{comment}
+\response Section IV reports training horizon, transition count, network size, minibatch and replay parameters. Training is offline and excluded from deployment energy. Supplementary Section S9 gives the separately measured fixed-rate decision overhead and recorded training elapsed-time intervals, with their measurement boundaries. The main study reports whole-device energy against matched static inference and service completion. We do not convert decision time to joules or represent the earlier timing values as measurements of the current runtime. Dedicated training-energy measurements are unavailable.
+
+\section*{Reviewer 2}
+\subsection*{Comment 1}
+\begin{comment}
+I'm not convinced the dynamic scheduler actually beats the simplest static option. Looking at Table V, static TinyDT matches the scheduler's F1 on TON-IoT and slightly beats it on CIC-IoT, while using less power and being faster on both. So what is the dynamic scheduler really buying us? I'd like to see a setting where the dynamic approach clearly wins over TinyDT, for example traffic that shifts over time, concept drift, or scenarios where the best static model changes. Otherwise the case for the added complexity is hard to make.
+\end{comment}
+\response We agree that a cheaper selected model does not establish adaptive value. The new comparison includes the static detector actually selected by each controller and varies both arrival rate and attack prevalence. Q-learning and DQN select LightLR in every window; their energy differences from Static-LightLR are +0.25 J and +0.60 J, with paired intervals spanning zero. DeadlineGuard selects MedRF throughout, and all methods meet the tested deadlines. We therefore make no claim of useful window-level switching by these controllers.
+
+The confidence cascade provides a different conditional mechanism. Relative to MedRF, it reduces energy by 12.06 J while reducing F1 by 0.0446 percentage points and recall by 0.2411 points; FPR also decreases by 0.1534 points. Relative to LightLR it improves F1 and recall at higher energy. Section VI presents these as operating-point trade-offs, not a universal dynamic win or an avoided profiling cost. The contribution is the controlled distinction between model choice and adaptation; the experiment does not demonstrate a regime in which the learned controllers outperform every static alternative.
+
+\subsection*{Comment 2}
+\begin{comment}
+The reward weights are picked without a good explanation, and everything depends on them. Also, the cost indices are normalized so TinyDT = 1.0, which essentially bakes ``TinyDT is cheapest'' into the reward. Please include a sweep over different weight settings to show the conclusions hold up.
+\end{comment}
+\response Supplementary Section S9 reports a fixed-rate sweep of seven Q and four DQN reward configurations, each with five seeds. The resource-aware configurations select LightLR on the evaluated support, while detection-only Q selects MedRF. The constant thermal term is not interpreted as evidence of thermal control. Section IV also replaces implicit cost indices with explicit profile values and normalization, and explains the service penalties used by the physical comparison. The earlier sweep concerns the fixed-rate objective; we do not present it as a weight sweep of the service-penalized objective. The paper no longer assumes TinyDT is the cheapest detector or attributes an observed constant choice to adaptation.
+
+\subsection*{Comment 3}
+\begin{comment}
+Table III mixes things that shouldn't be compared directly. The IoT pool models and the UNSW-NB15 reference architectures sit in one table.
+\end{comment}
+\response The UNSW-NB15 reference-architecture comparison has been removed. Main-text results concern the TON-IoT physical study only. Additional CICIoT2023 and N-BaIoT characterization is kept in Supplementary Section S8 with its own split, coverage, and overlap limitations. No cross-dataset F1 ranking is used to support a scheduling claim.
+
+\subsection*{Comment 4}
+\begin{comment}
+The CFSM baseline can't be reproduced from what's written. The thresholds are described as ``fixed'' but the actual values aren't given.
+\end{comment}
+\response The current physical comparison uses DeadlineGuard as the heuristic baseline; Section IV gives its complete rule, 100-row batch size, 15.221096-ms MedRF p95, and one-second threshold. The earlier CFSM appears only in the separately identified fixed-rate characterization. Supplementary Section S9 states its 70-degree temperature warning, 0.7 threat threshold, and cooldown behavior, with the complete transition implementation retained in the repository. No main-text result depends on an unspecified CFSM threshold.
+
+\section*{Reviewer 3}
+\subsection*{Comment 1}
+\begin{comment}
+Table 2 shows the values for the Q-learning hyper parameters. The authors should include a discussion justifying the rationale/selection of these values.
+\end{comment}
+\response Section IV states the learning rate, discount, exploration schedule, initialization, training horizon, and validation-only seed-selection rule. These are fixed compact-controller settings, not values optimized on the physical test. Supplementary Section S9 reports 35 fixed-rate Q runs over the learning-rate/discount matrix and identifies the objective to which those results apply. The unit service penalty is justified relative to the range of the base one-window score.
+
+\subsection*{Comment 2}
+\begin{comment}
+A description/discussion on algorithm 1 seems to be missing from the paper. Including this will help the reader in understanding the proposed IDS scheduling algorithm.
+\end{comment}
+\response Algorithm 1 is now accompanied by a step-by-step explanation in Section III. It shows pre-arrival backlog observation, joint state encoding, action commitment, FIFO batch execution, deadline recording, and next-window feedback. The text also explains how the cascade differs inside the inference step.
+
+\subsection*{Comment 3}
+\begin{comment}
+The rationale for using Q learning to solve the IDS problem may be discussed.
+\end{comment}
+\response Q-learning is used to select among four already trained detectors, not to learn intrusion labels directly. Its small discrete state--action table provides an interpretable reference for the same value-based problem addressed by DQN. Sections II and IV state this role. The revised conclusions depend on measured behavior and matched static controls rather than assuming that Q-learning is the best scheduling approach.
+
+\subsection*{Comment 4}
+\begin{comment}
+In table V, it is observed that the dynamic algorithm offers reduced power consumption versus static RF. This seems to be counter intuitive. The reasoning for this may be explained by the authors.
+\end{comment}
+\response Section VI separates the detector-choice effect from controller overhead. Q-learning and DQN execute LightLR throughout, so their lower energy relative to Static-MedRF accompanies a change in the detector and detection operating point. Static-LightLR already produces the same detection summaries. Against that matched baseline, the learned controllers show no resolved energy saving. The paper therefore does not attribute the RF-relative reduction to dynamic switching.
+
+\end{document}
