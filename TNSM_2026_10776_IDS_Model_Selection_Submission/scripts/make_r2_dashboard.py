@@ -162,14 +162,14 @@ ax.set_title("R2 raw paired energy differences")
 ax.text(.02,.96,"Mean +0.60 J; paired 95% CI [-4.12, 5.32] J",transform=ax.transAxes,va="top",fontsize=8)
 fig3.savefig("figures/r2_dqn_block_energy_differences.pdf")
 
-# Update only the R2 half: preserve the original R1 vector panel byte-for-byte as a clipped form.
+# Update the R2 half; retain the R1 plot with its original data and enforced crop.
 fig4, ax = plt.subplots(figsize=(3.5,2.47),layout="constrained")
 for i,(m,col) in enumerate(zip(full_methods,palette)):
     vals = [1000*r["idle_adjusted_mean_watts"] for r in rows if r["method"]==m]
     ax.scatter(i+np.linspace(-.08,.08,10),vals,s=10,color=col,alpha=.65)
     ax.errorbar(i,np.mean(vals),yerr=2.2621571628540993*np.std(vals,ddof=1)/np.sqrt(10),
                 marker="D",color="black",capsize=2,markersize=3,lw=1)
-ax.set_xticks(range(6),short,rotation=35,ha="right");ax.set_ylabel("Power above preceding idle (mW)")
+ax.set_xticks(range(6),short,rotation=35,ha="right");ax.set_ylabel("Power above idle (mW)")
 ax.set_title("R2: variable load");ax.spines[["top","right"]].set_visible(False);ax.grid(axis="y",alpha=.2)
 panel = BytesIO();fig4.savefig(panel, format="pdf")
 # Unchanged original R1 vector half, retained locally for reproducible plotting.
@@ -177,6 +177,18 @@ leftdoc = pymupdf.open("figures/r1_idle_panel_source.pdf")
 rightdoc = pymupdf.open(stream=panel.getvalue(), filetype="pdf");rect=leftdoc[0].rect
 combined=pymupdf.open();page=combined.new_page(width=2*rect.width,height=rect.height)
 half=rect.width
-page.show_pdf_page(pymupdf.Rect(0,0,half,rect.height),leftdoc,0)
+# Rasterize only the unchanged R1 source panel at 600 dpi to enforce its crop.
+# A PDF CropBox alone allowed hidden historical R2 content to overlay the new panel.
+# Remove any clipped label belonging to the discarded historical right panel.
+left_page = leftdoc[0]
+orphan_labels = [r for r in left_page.search_for("Power above preceding idle (mW)")
+                 if (r.x0+r.x1)/2 > 0.8*left_page.rect.width]
+for label_box in orphan_labels:
+    print("Discarded neighbouring-panel label:", label_box)
+    left_page.add_redact_annot(label_box, fill=False)
+if orphan_labels:
+    left_page.apply_redactions(images=0, graphics=0)
+left_image = leftdoc[0].get_pixmap(matrix=pymupdf.Matrix(600/72, 600/72), clip=leftdoc[0].rect, alpha=False)
+page.insert_image(pymupdf.Rect(0,0,half,rect.height), pixmap=left_image)
 page.show_pdf_page(pymupdf.Rect(half,0,2*half,rect.height),rightdoc,0)
 combined.save("figures/revision_drift_adjusted_power.pdf")
